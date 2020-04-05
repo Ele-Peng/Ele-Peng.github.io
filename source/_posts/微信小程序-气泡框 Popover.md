@@ -17,6 +17,7 @@ categories:
 ![popover问题截图](https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png)
 #### 问题描述
 - 模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？
+<!-- more -->
 
 #### 问题解决过程记录
 - 定位问题发生的原因范围

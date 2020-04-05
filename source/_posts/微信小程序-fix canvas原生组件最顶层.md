@@ -15,6 +15,7 @@ categories:
 - 就像这样
 	- ![canvas顶层问题截图](https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png)
 	- 柱状图是用canvas画的，它置于了我的tooltip之上。【这看起来真是一个可怕的问题
+  <!-- more -->
 ---
 
 #### 解决问题
