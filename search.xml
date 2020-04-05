@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>微信小程序-气泡框</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
+    <content><![CDATA[<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><ul>
+<li>记录基于<a href="https://developers.weixin.qq.com/community/develop/doc/000e4e7103c3c090e517e0cdb5b806" target="_blank" rel="noopener">微信小程序-气泡框</a>实现中产生的问题及思考</li>
+</ul>
+<hr>
+<h4 id="问题截图"><a href="#问题截图" class="headerlink" title="问题截图"></a>问题截图</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png" alt="popover问题截图"></p>
+<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><ul>
+<li>模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？</li>
+</ul>
+<h4 id="问题解决过程记录"><a href="#问题解决过程记录" class="headerlink" title="问题解决过程记录"></a>问题解决过程记录</h4><ul>
+<li><p>定位问题发生的原因范围</p>
+<ul>
+<li>样式<ul>
+<li>样式在判断显示条件(wx:if=”“)生效后，仍然渲染</li>
+<li>否定原因<ul>
+<li>查询代码发现，整个样式背景的设定是在::before伪元素选择器中</li>
+<li>且显示条件生效，在调试器中已没有该元素，但仍显示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>逻辑<ul>
+<li>会不会是组件在渲染时，多渲染一份，我们使用判断条件进行开关时，只是对其中一个进行了操作</li>
+<li>怀疑依据<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzk5ZjcwMDAwZmViM2IwYzc0MWJmNjFiYzE5YTUwMDIxMjYyMTI3LnBuZw?x-oss-process=image/format,png" alt="popover问题依据截图"></li>
+<li>上图可见：在popover组件下，有2个通过&lt;slot&gt;插入的相同内容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开始解决问题</p>
+<ul>
+<li>查询官方关于<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html" target="_blank" rel="noopener">slot</a>方面的介绍<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JjMTE0ZmI0YTdhOWZkY2ZlYzU3ZDE5ZWQyYWY0YzI3MzE1NTU4LnBuZw?x-oss-process=image/format,png" alt="官方slot基础例子"></li>
+</ul>
+</li>
+<li>基于官方基础代码，复现问题<ul>
+<li>产生一个child-tag组件，并在其中编写  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/child-tag.js.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./component-tag-name'</span>: &#123;</span><br><span class="line">      type: <span class="string">'parent'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>与component-tag-name绑定形成父子组件  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/component-tag-name.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./child-tag'</span>: &#123;</span><br><span class="line">      type: <span class="string">'child'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    visible: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>并将index.html中进行调用  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引用组件的页面模版 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">bindtap</span>=<span class="string">"onTap"</span>&gt;</span>222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">my-component</span> <span class="attr">id</span>=<span class="string">"component"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">			这里是插入到组件slot name="content"中的内容</span><br><span class="line">			<span class="tag">&lt;<span class="name">child-component</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"child"</span>&gt;</span>这里是插入到组件slot name="child"中的内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>但是其结构树仍然非常正常，并没有出现那个所谓的”拷贝”组件<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzcwNTRhNjJkYmM2MGEyNmU5ZGI1ODYzNzNjOGY2OTgyMzg3NTI0LnBuZw?x-oss-process=image/format,png" alt="改写v1.1后的结构树截图"></li>
+<li>仔细复现了几次，发现：多出来的那个组件会有所延迟。抓住这个问题，想到我们在onReady中，注册了该组件，于是，继续模拟</li>
+</ul>
+</li>
+<li>修改index.js代码，并在component-tag-name组件注册onTap方法，控制显隐  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">onReady() &#123;</span><br><span class="line">  <span class="keyword">this</span>.component = <span class="keyword">this</span>.selectComponent(<span class="string">'#component'</span>)</span><br><span class="line">&#125;,</span><br><span class="line">onTap() &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'onTap'</span>)</span><br><span class="line">  wx.createSelectorQuery().select(<span class="string">'#component'</span>).boundingClientRect(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 调用自定义组件 popover 中的 onDisplay 方法</span></span><br><span class="line">      <span class="keyword">this</span>.component.onTap();</span><br><span class="line">  &#125;).exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>最终复现<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmZjQ3OTNhMjUwYTNjMzlhYjBlOGQxMGJhYTllZmI2NDc1NjIyLnBuZw?x-oss-process=image/format,png" alt="官方模拟最终运行截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>得出问题来源：<ul>
+<li>在组件中进行了一次setData</li>
+</ul>
+</li>
+<li>思考背后问题<ul>
+<li>在组件中setData为什么会”拷贝“一份相同的在页面级wxml中？</li>
+<li>猜想一：从<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/interactive-animation.html#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WXS响应事件</a>中，我隐隐得到了答案</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzZlYWJjYjdjOTliMzAxNWMwOGQwZmM2YWM3ZmMxMGMzNDU5NDAxLnBuZw?x-oss-process=image/format,png" alt="wxs相应事件"></li>
+<li>我们在页面级通过selectComponent实例化组件，对选中的组件进行操作，官方可以通过拷贝一份相同的组件，使我们便捷的将事件的处理从2次的逻辑层和渲染层通信以及一次渲染，减少到直接对页面上元素进行操作，即一次逻辑层和渲染层通信以及一次渲染。</li>
+<li>猜想二：问题层面是在微信开发者工具中的wxml，渲染方式对于这种情况就是这样处理的。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>官方已给出问题原因</p>
+<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzJkMWVkZmYyNWIwM2YxZDU2ZGVjYjZhM2NkYjAwMGU5NTE5ODQucG5n?x-oss-process=image/format,png" alt="wxml面板"></li>
+</ul>
+</li>
+</ul>
+<h4 id="如何解决问题"><a href="#如何解决问题" class="headerlink" title="如何解决问题"></a>如何解决问题</h4><ul>
+<li>在popover以及popover-item加入  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">options: &#123;</span><br><span class="line">		    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">		  &#125;,</span><br></pre></td></tr></table></figure></li>
+<li>就可以解决了。最后建议slot中可以写上name这样代码可能会更易读。<h4 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h4></li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信小程序-fix canvas原生组件最顶层</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/</url>
+    <content><![CDATA[<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><ul>
+<li>大家应该都知道过，在微信小程序中，canvas等原生组件的层级是最高的，页面中无论你设置多大的z-index都无法覆盖在其之上，这就可能会产生一些问题</li>
+<li>就像这样<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png" alt="canvas顶层问题截图"></li>
+<li>柱状图是用canvas画的，它置于了我的tooltip之上。【这看起来真是一个可怕的问题</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><ul>
+<li>微信官方提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html" target="_blank" rel="noopener">cover-view</a>原生组件，覆盖在原生组件之上的文本视图</li>
+<li>微信官方提供了将canvas转化为图片的方式–<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
+</ul>
+<h5 id="方法一：cover-view"><a href="#方法一：cover-view" class="headerlink" title="方法一：cover-view"></a>方法一：cover-view</h5><ul>
+<li>将tooltip用cover-view改写，效果如下<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2Y0MTZjZjhlMjNiZWEwMjNjYTM1M2JhOGExMDM1MDM2MzYyOTIucG5n?x-oss-process=image/format,png" alt="cover-view version0.1 截图"></li>
+<li>看上去，是解决了我们的问题，且tooltip后的灰色背景不能滑动了，【妈耶，好棒！</li>
+<li>但是，这产生了一个：<strong>当文本超出tooltip宽度时，scroll-y: auto，失效了，溢出部分被直接截取</strong></li>
+<li>罪魁祸首就是它<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2M5ZDljYjZiZTQ0ZGY3YmJmNmRlMjAxNDM1ZmYzOTJjNDMxNDMucG5n?x-oss-process=image/format,png" alt="cover内置样式"></li>
+</ul>
+</li>
+<li>那我们可以：<ul>
+<li>在tooltip分段内容中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content-rule</span> &#123;</span><br><span class="line">    <span class="attribute">white-space</span>: pre-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在内容wrapper中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>完美解决<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2FhZjRkMDAyODdjZGI4M2Y0NWRhMGVkOTg3Mzc5MGNhNDQxMjkucG5n?x-oss-process=image/format,png" alt="cover-view解决图"><h5 id="方法二：wx-canvasToTempFilePath"><a href="#方法二：wx-canvasToTempFilePath" class="headerlink" title="方法二：wx.canvasToTempFilePath"></a>方法二：wx.canvasToTempFilePath</h5></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>首先我们要做的就是将网络图片绘制进canvas，官方关于canvas类型有两种<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2E4ZjJmNjA5OGYxNmQ4MzY3NWJiN2I3OWY0ZDM1NWM1MTAwMDg3LnBuZw?x-oss-process=image/format,png" alt="两种canvas类型"></li>
+<li>新canvas 2D接口尝试  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzE5ZWE3ZGYxYjg2ODUzOWFhNzVhY2E0OTAxYzI2MzU2OTk4NDYucG5n?x-oss-process=image/format,png" alt="canvas2d 运行截图"></li>
+<li>第二种旧canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line">   wx.getImageInfo(&#123;</span><br><span class="line">       src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">       success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">         <span class="keyword">const</span> poster = res.path                                  </span><br><span class="line">         ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">         ctx.draw()</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">     <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">     wx.canvasGetImageData(&#123;</span><br><span class="line">       canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">       x: <span class="number">0</span>,</span><br><span class="line">       y: <span class="number">0</span>,</span><br><span class="line">       width: <span class="number">150</span>,</span><br><span class="line">       height: <span class="number">100</span>,</span><br><span class="line">       success(res) &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzU4NTg5MzQ4MDc3Njk3OTA0OTRmZmIzOWRiNDdjMWRmNjk4ODQucG5n?x-oss-process=image/format,png" alt="旧canvas"></li>
+<li>虽然两种方法，都能实现将网络图片绘制进canvas，但新版的进行了createImage，将其打印的话，其实就是新建了一个img标签，并将img标签的东西绘制进canvas<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzFjMjE1NzMzZTRkY2UzNGZiNzI4NDFhZWEyMDc0ZWIwMjQ1OTQucG5n?x-oss-process=image/format,png" alt="img console"></li>
+<li>为什么微信官方会仅支持以下方式进行新版canvas2d 图片的绘制，考虑是什么？</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JhYWQ1OWRhNDI4M2FjZmViZTY1NGQ0ZWZiNTAxZDZlMjAxMjE2LnBuZw?x-oss-process=image/format,png" alt="经典报错"></li>
+</ul>
+</li>
+<li>现在我们要将canvas的内容导成图片，同样分成新旧两版</li>
+<li>主要思路都是：在wxml中，如果canvas绘制图片没有完成，则显示canvas内容，绘制完成后，就利用canvasToTempFilePath，将图层内容生成指定大小图片，显示image<ul>
+<li>canvas2d   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">   <span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'img'</span>, img)</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">           wx.canvasToTempFilePath(&#123;</span><br><span class="line">             x: <span class="number">0</span>,</span><br><span class="line">             y: <span class="number">0</span>,</span><br><span class="line">             width: <span class="number">100</span>,</span><br><span class="line">             height: <span class="number">100</span>,</span><br><span class="line">             destWidth: <span class="number">100</span>,</span><br><span class="line">             destHeight: <span class="number">100</span>,</span><br><span class="line">             canvas: canvas,</span><br><span class="line">             success(res) &#123;</span><br><span class="line">               that.setData(&#123;</span><br><span class="line">                 imgPath: res.tempFilePath</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125;,</span><br><span class="line">             fail(err) &#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>canvas2d 需要踩得坑是：它的官方文档🙃<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UwM2Q1ZDg0YzYyNmI0NzlmZjBjOTlmNzA1YmRhYjg5NDc5MjcucG5n?x-oss-process=image/format,png" alt="canvas2d 转图片误导"></li>
+<li>尝试下来，会<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxMjRiY2Q3ZmNjYWI5ODBlNDdkMTk2YTMyZGQyODI4NDUzODcucG5n?x-oss-process=image/format,png" alt="ctx.draw报错"></li>
+</ul>
+</li>
+<li>那我们可以继续往下看<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxODk5NWFiNDY4N2IwYmZlYzhjZTZkZWU2ZWQxYmZjMTA1MTY1LnBuZw?x-oss-process=image/format,png" alt="canvas2d tempath正确实力">这才是符合我们需要</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JmMzVlMzY4YzRjMmRhYTgxNTA0NzM0YTIxZGMxM2I2NDYwNzIucG5n?x-oss-process=image/format,png" alt="canvas2d运行截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>旧版canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">wx.getImageInfo(&#123;</span><br><span class="line">  src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">    <span class="keyword">const</span> poster = res.path</span><br><span class="line">    ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">    ctx.draw(<span class="literal">false</span>, () =&gt; &#123;</span><br><span class="line">      wx.canvasToTempFilePath(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        width: <span class="number">100</span>,</span><br><span class="line">        height: <span class="number">100</span>,</span><br><span class="line">        destWidth: <span class="number">100</span>,</span><br><span class="line">        destHeight: <span class="number">100</span>,</span><br><span class="line">        canvasId: <span class="string">"myCanvas"</span>,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          that.setData(&#123;</span><br><span class="line">            imgPath: res.tempFilePath</span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="built_in">console</span>.log(res.tempFilePath)</span><br><span class="line">        &#125;,</span><br><span class="line">        fail(err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">    wx.canvasGetImageData(&#123;</span><br><span class="line">      canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">      x: <span class="number">0</span>,</span><br><span class="line">      y: <span class="number">0</span>,</span><br><span class="line">      width: <span class="number">150</span>,</span><br><span class="line">      height: <span class="number">100</span>,</span><br><span class="line">      success(res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2EzZTRiYTBkYzc2NDgzYTM1NTYxZDcwNDUzNzZkNjZmNDU5MTgucG5n?x-oss-process=image/format,png" alt="旧版canvas运行截图"><h4 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h4></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>感谢<a href="https://github.com/skadieyes" target="_blank" rel="noopener">Skady宝贝</a>在探讨问题中给予的帮助，欢迎大家去github找她玩👈</li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信小程序-获取图片主色调</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E4%B8%BB%E8%89%B2%E8%B0%83/</url>
+    <content><![CDATA[<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><ul>
+<li>是的我要开始做：根据图片的主色调来改变一下页面背景颜色了🙆</li>
+<li>记录一下，自己碰到的问题以及思考</li>
+<li>时间多的话，会考虑将代码发在github，欢迎大家去star😘</li>
+</ul>
+<hr>
+<h4 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h4><ul>
+<li>理一下思路<ol>
+<li>将网络图片绘制进canvas</li>
+<li>通过canvas的getImageData获取图片的像素数据<ul>
+<li><a href="https://blog.csdn.net/Elle_Peng/article/details/105030971" target="_blank" rel="noopener">canvas 2d 与旧版 canvas 将网络图片绘制进canvas的两种方法实践</a></li>
+</ul>
+</li>
+<li>分析目前主要用于获取图片主色调的算法，并实践</li>
+<li>得到主要色调，再将rgb转换成hsb，并对b值，进行修改，制作渐变，左侧35，右侧15<ul>
+<li>嗯，祝我成功<h4 id="颜色空间基础知识背景-减色算法"><a href="#颜色空间基础知识背景-减色算法" class="headerlink" title="颜色空间基础知识背景+减色算法"></a>颜色空间基础知识背景+减色算法</h4></li>
+<li><a href="http://www.360doc.com/content/17/0417/19/41797635_646363886.shtml" target="_blank" rel="noopener">颜色空间 RGB CMY HSV HSL LAB</a></li>
+<li>图片颜色量化算法</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>比较常见的应用就是用于提取图片的主色调用于上色配色,当然也可以用于图像分割</li>
+<li>主流算法<ul>
+<li>两个大方向</li>
+<li><strong>在颜色空间合理地选取采样点来构造颜色表，使得减色后的图像和原图尽可能地接近</strong><ul>
+<li>直接量化<ul>
+<li>对每个颜色通道单独重新采样，将每个通道的色阶从256减少到某个指定的数字。这样得到一个新的小的多的颜色空间，而原图像中的每一个像素将被用在新的颜色空间中的最近邻取代</li>
+</ul>
+</li>
+<li>统计量化<ul>
+<li>核心：调整直方图使得累积分布曲线呈线性，从而使图像像素点的亮度值尽可能均匀地分布</li>
+<li>利用原图的直方图来引导采样点的选取，使得每个采样点可以大致覆盖相同数量的像素点</li>
+<li>对每个颜色通道建立直方图，然后根据这些直方图对各个颜色通道单独采样，在像素值分布多的区域进行密集采样，别的区域稀疏采样，再利用这些采样点来组合成最终的颜色表，原图中的每个像素点用颜色表中最接近的颜色替换掉</li>
+</ul>
+</li>
+<li>颜色空间分割(Median-Cut)<ul>
+<li>核心：在颜色空间建立一棵二叉树，通过不断地细化这棵树来近似得到一个颜色三维直方图，然后再根据这棵树来分配采样点</li>
+<li>基于图像颜色样本分布的自适应方法，不论图像中颜色样本的分布如何，总是可以生成一个和颜色样本分布匹配良好的颜色表：在颜色样本分布密集的区域内采样点分布也相对密集，其他区域则分配了较少的采样点。且相同数目的颜色样本总是用同样数量的采样点来代表，所以颜色样本分布密集的区域，采样点的数量自然就会多，反之则相应的比较少</li>
+<li>最重要、应用最广泛的减色算法之一</li>
+</ul>
+</li>
+<li>k均值聚类(k-Means clustering)<ul>
+<li>核心：将像素按颜色的相似程度归类</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>从一个初始的颜色表出发，通过不断修改颜色表来改善减色效果</strong><ul>
+<li>神经网络方法(ANN)<ul>
+<li>颜色表通过神经元来编码，通过缓慢的调节神经元的颜色值以保证整个神经网络逐步收敛于最小误差状态（即通过神经网络产生的图像和原图之间误差最小）<h4 id="直接量化实践"><a href="#直接量化实践" class="headerlink" title="直接量化实践"></a>直接量化实践</h4><ul>
+<li>首先我们可以来看一看getImageData后的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzljZjVjMjQzMDI0NmE0YjE0YzFlYmMzMjYwZDkwYTgwNTQzMDIucG5n?x-oss-process=image/format,png" alt="getImageData数据"></li>
+<li>可以简单看作是外层循环为rgba的打平了二维数组<ul>
+<li>如果按满足需求做，只要一个主色调的话，可以把整个getImageData获得的数据，进行各个通道的平均值求值，再拼接，像这样<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">getUniqueColor(imageData) &#123;</span><br><span class="line">   <span class="keyword">let</span> res_r = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_g = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_b = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_a = <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imageData.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">0</span>) &#123;</span><br><span class="line">       res_r += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">1</span>) &#123;</span><br><span class="line">       res_g += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">2</span>) &#123;</span><br><span class="line">       res_b += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">3</span>) &#123;</span><br><span class="line">       res_a += imageData[i]</span><br><span class="line">     &#125; </span><br><span class="line">   &#125;</span><br><span class="line">   res_r = <span class="built_in">Math</span>.round(res_r / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_g =  <span class="built_in">Math</span>.round(res_g / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_b =  <span class="built_in">Math</span>.round(res_b / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_a =  <span class="built_in">Math</span>.round(res_a / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_r'</span>, res_r)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_g'</span>, res_g)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_b'</span>, res_b)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_a'</span>, res_a)</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzc4NzFiOTVmYzA4NWQ3NGQwNDc4OWY0ZWI5Yzc0YThmNzQ5OTYucG5n?x-oss-process=image/format,png" alt="暴力法求主色调"></li>
+<li>无相关点越多，误差越大👎<ul>
+<li>我们可以“对每个颜色通道单独重新采样，将每个通道的色阶从256减少到某个指定的数字。这样得到一个新的小的多的颜色空间，而原图像中的每一个像素将被用在新的颜色空间中的最近邻取代”<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> COLOR_SIZE = <span class="number">40</span> <span class="comment">// 单位色块的大小（像素个数，默认40）。以单位色块的平均像素值为作为统计单位</span></span><br><span class="line"><span class="keyword">const</span> LEVEL = <span class="number">32</span> <span class="comment">// 色深，颜色分区参数（0-255），总256，2^8，即8bit，4个通道（rgba），即默认色深4*8bit，32bit</span></span><br><span class="line"><span class="comment">// 分区块，可以拓展性的求主要色板，用来做palette</span></span><br><span class="line">   <span class="keyword">const</span> mapData = that.getLevelData(imageData);</span><br><span class="line">   <span class="keyword">const</span> colors = that.getMostColor(mapData);</span><br><span class="line">   <span class="keyword">if</span> (!colors) &#123;</span><br><span class="line">     <span class="keyword">return</span></span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">const</span> color = that.getAverageColor(colors)</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'color'</span>, color)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>将getImageData数据分成特定大小的区块，分别算出各个区块的averageColor，再利用map特性，将averageColor作key，count各个averageColor个数  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取每段的颜色数据</span></span><br><span class="line"><span class="comment">// 根据像素数据，按单位色块进行切割</span></span><br><span class="line">getLevelData(imageData) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = imageData.length;</span><br><span class="line">  <span class="keyword">const</span> mapData = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i += COLOR_SIZE * <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> blockColor = <span class="keyword">this</span>.getBlockColor(imageData, i); <span class="comment">// 该区块平均rgba [&#123;r,g,b,a&#125;]数据</span></span><br><span class="line">    <span class="comment">// 获取各个区块的平均rgba数据，将各个通道的颜色进行LEVEL色深降级</span></span><br><span class="line">    <span class="comment">// 根据r_g_b_a 建立map索引</span></span><br><span class="line">    <span class="keyword">const</span> key = <span class="keyword">this</span>.getColorLevel(blockColor);</span><br><span class="line">    !mapData[key] &amp;&amp; (mapData[key] = []);</span><br><span class="line">    mapData[key].push(blockColor);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> mapData;</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 获取单位块的全部色值</span></span><br><span class="line"><span class="comment">// 并根据全部色值，计算平均色值</span></span><br><span class="line"><span class="comment">// 处理最后边界值，小于COLOR_SIZE</span></span><br><span class="line">getBlockColor(imageData, start) &#123;</span><br><span class="line">  <span class="keyword">let</span> data = [],</span><br><span class="line">    count = COLOR_SIZE,</span><br><span class="line">    len = COLOR_SIZE * <span class="number">4</span>;</span><br><span class="line">  imageData.length &lt;= start + len &amp;&amp; (count = <span class="built_in">Math</span>.floor((imageData.length - start - <span class="number">1</span>) / <span class="number">4</span>));</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; count; i += <span class="number">4</span>) &#123;</span><br><span class="line">    data.push(&#123;</span><br><span class="line">      r: imageData[start + i + <span class="number">0</span>],</span><br><span class="line">      g: imageData[start + i + <span class="number">1</span>],</span><br><span class="line">      b: imageData[start + i + <span class="number">2</span>],</span><br><span class="line">      a: imageData[start + i + <span class="number">3</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getAverageColor(data);</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 取出各个通道的平均值，即为改色块的平均色值</span></span><br><span class="line">getAverageColor(colorArr) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = colorArr.length;</span><br><span class="line">  <span class="keyword">let</span> sr = <span class="number">0</span>, sg = <span class="number">0</span>, sb = <span class="number">0</span>, sa = <span class="number">0</span>;</span><br><span class="line">  colorArr.map(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">    sr += item.r;</span><br><span class="line">    sg += item.g;</span><br><span class="line">    sb += item.b;</span><br><span class="line">    sa += item.a;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    r: <span class="built_in">Math</span>.round(sr / len),</span><br><span class="line">    g: <span class="built_in">Math</span>.round(sg / len),</span><br><span class="line">    b: <span class="built_in">Math</span>.round(sb / len),</span><br><span class="line">    a: <span class="built_in">Math</span>.round(sa / len)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line">getColorLevel(color) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getLevel(color.r) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.g) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.b) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.a)</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 色深降级</span></span><br><span class="line">getLevel(value) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.round(value / LEVEL)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>把出现次数最多的averageColor区块，作为采样区块，再获取一遍averageColor，即是最终主色调  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 根据色块颜色，获取</span></span><br><span class="line">getMostColor(colorData) &#123;</span><br><span class="line">  <span class="keyword">let</span> rst = <span class="literal">null</span>, len = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> colorData) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, colorData[key].length)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, colorData[key])</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, key)</span><br><span class="line">    colorData[key].length &gt; len &amp;&amp; (</span><br><span class="line">      rst = colorData[key],</span><br><span class="line">      len = colorData[key].length</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> rst;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2ViYzI3MmNkNzU2NjNhODUxYmM2MWQ0MDE4OWJjZGI3NzQ5NDUucG5n?x-oss-process=image/format,png" alt="区块获取主色调"></li>
+<li>颜色可信度提高了很多<h4 id="拓展实践-医学灰色影像"><a href="#拓展实践-医学灰色影像" class="headerlink" title="拓展实践-医学灰色影像"></a>拓展实践-医学灰色影像</h4><ul>
+<li>核心：将<strong>三通道转成单通道</strong>即可<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> greyImageData = that.greyTheImage(imageData)</span><br><span class="line">   wx.canvasPutImageData(&#123;</span><br><span class="line">     canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">     x: <span class="number">150</span>,</span><br><span class="line">     y: <span class="number">0</span>,</span><br><span class="line">     width: <span class="number">150</span>,</span><br><span class="line">     height: <span class="number">100</span>,</span><br><span class="line">     data: greyImageData,</span><br><span class="line">     success (res) &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'canvasPutImageData it worked!'</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line"> greyTheImage(imageData) &#123;</span><br><span class="line">     <span class="comment">// imageData有4个通道rgba</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imageData.length; i += <span class="number">4</span>) &#123;</span><br><span class="line">       <span class="keyword">let</span> sum_rgb = <span class="number">0</span></span><br><span class="line">       <span class="comment">// 但我们只需要rgb三通道，a-alpha通道无用</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j += <span class="number">1</span>) &#123;</span><br><span class="line">         sum_rgb = sum_rgb + imageData[i + j]</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">let</span> grey = <span class="built_in">Math</span>.round(sum_rgb / <span class="number">3</span>)</span><br><span class="line">       imageData[i] = grey</span><br><span class="line">       imageData[i + <span class="number">1</span>] = grey</span><br><span class="line">       imageData[i + <span class="number">2</span>] = grey</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> imageData</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></li>
+<li>运行截图<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmNWJhNzk2OTJjOWEwOTA2MDNlMzkxMzBlMDRiZTY4MTAwNzcwLnBuZw?x-oss-process=image/format,png" alt="医学灰色影像"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="格式化rgba输出"><a href="#格式化rgba输出" class="headerlink" title="格式化rgba输出"></a>格式化rgba输出</h4><ul>
+<li>像这样<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxNDVhYzM4YzQ1MjFkNDgzNGNkZGQ5NTNmNjQ1MWQ3NTI0NTkucG5n?x-oss-process=image/format,png" alt="格式化rgba输出">  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对最终颜色的字符串格式化</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * result:&#123;</span></span><br><span class="line"><span class="comment"> *   hex:'#ffffff',            十六位值</span></span><br><span class="line"><span class="comment"> *   hexa:'#ffffff00',         十六位值带alpha值</span></span><br><span class="line"><span class="comment"> *   rgb:'rgb(0,0,0)',         RGB值</span></span><br><span class="line"><span class="comment"> *   rgba:'rgba(0,0,0,0)'      RGB值带alpha值</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">	</span><br><span class="line">colorStrFormat(color) &#123;</span><br><span class="line">  <span class="keyword">const</span> rgba = <span class="string">'rgba('</span> + color.r + <span class="string">','</span> + color.g + <span class="string">','</span> + color.b + <span class="string">','</span> + (color.a / <span class="number">255</span>).toFixed(<span class="number">4</span>).replace(<span class="regexp">/\.*0+$/</span>, <span class="string">''</span>) + <span class="string">')'</span>;</span><br><span class="line">  <span class="keyword">const</span> rgb = <span class="string">'rgb('</span> + color.r + <span class="string">','</span> + color.g + <span class="string">','</span> + color.b + <span class="string">')'</span>;</span><br><span class="line">  <span class="keyword">const</span> hex = <span class="string">'#'</span> + <span class="keyword">this</span>.Num2Hex(color.r) + <span class="keyword">this</span>.Num2Hex(color.g) + <span class="keyword">this</span>.Num2Hex(color.b);</span><br><span class="line">  <span class="keyword">const</span> hexa = hex + <span class="keyword">this</span>.Num2Hex(color.a);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    rgba: rgba,</span><br><span class="line">    rgb: rgb,</span><br><span class="line">    hex: hex,</span><br><span class="line">    hexa: hexa</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">	</span><br><span class="line">Num2Hex(num) &#123;</span><br><span class="line">  <span class="keyword">const</span> hex = num.toString(<span class="number">16</span>) + <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">if</span> (hex.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'0'</span> + hex;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> hex;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4></li>
+<li><a href="https://blog.csdn.net/u012843346/article/details/16839649" target="_blank" rel="noopener">phg1024 JavaScript图像处理(6) - 减色算法(Color Reduction)</a></li>
+<li><a href="https://github.com/whoiam2007s/ImgMainColor" target="_blank" rel="noopener">获取图片主色调的插件</a></li>
+<li>其实也可以利用 <a href="https://blog.csdn.net/nanhupatar/article/details/82793637" target="_blank" rel="noopener">CSS新特性去改变背景颜色</a>，比如高斯模糊等来达到业务需求<h4 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h4></li>
+<li>周六听了一天 John Lennon 歌曲【这也是我拖更的原因😶 羡慕他和 Yoko 那段伊甸园般的爱情，他对 Yoko 的痴爱，他和母亲的两次分别感同身受，Beatles在一起做音乐的欢乐，他对 Sean 的宠溺父爱，但他的人生却在一次枪杀后戛然而止，心痛 心痛 🌧</li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
+      </tags>
+  </entry>
+</search>
