@@ -1,6 +1,6 @@
 ---
-layout: 微信小程序-fix
-title: canvas原生组件最顶层
+layout: 微信小程序-fix canvas原生组件最顶层
+title: 微信小程序-fix canvas原生组件最顶层
 date: 2020-04-05 12:04:24
 tags: 
 - 微信小程序
