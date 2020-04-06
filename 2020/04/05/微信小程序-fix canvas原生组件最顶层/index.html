@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>微信小程序-fix canvas原生组件最顶层 | Be kind.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="EllePeng">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'hexo-theme-lx',
+    version: '0.3.9',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/css/main.min.css">
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "greenish",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+<div class="single">
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Search..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
+    <span>2020-04-05</span>
+    <h2>微信小程序-fix ca...</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a></div>
+    <div class="social-links">
+    <a href="https://github.com/Ele-Peng" target="_blank"><i class="fa fa-github fa-fw"></i></a>
+    <a href="mailto:EllePeng@aliyun.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+    <a href="https://weibo.com/3199262327/profile?topnav=1&amp;wvr=6" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><ul>
+<li>大家应该都知道过，在微信小程序中，canvas等原生组件的层级是最高的，页面中无论你设置多大的z-index都无法覆盖在其之上，这就可能会产生一些问题</li>
+<li>就像这样<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png" alt="canvas顶层问题截图"></li>
+<li>柱状图是用canvas画的，它置于了我的tooltip之上。【这看起来真是一个可怕的问题<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><ul>
+<li>微信官方提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html" target="_blank" rel="noopener">cover-view</a>原生组件，覆盖在原生组件之上的文本视图</li>
+<li>微信官方提供了将canvas转化为图片的方式–<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
+</ul>
+<h5 id="方法一：cover-view"><a href="#方法一：cover-view" class="headerlink" title="方法一：cover-view"></a>方法一：cover-view</h5><ul>
+<li>将tooltip用cover-view改写，效果如下<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2Y0MTZjZjhlMjNiZWEwMjNjYTM1M2JhOGExMDM1MDM2MzYyOTIucG5n?x-oss-process=image/format,png" alt="cover-view version0.1 截图"></li>
+<li>看上去，是解决了我们的问题，且tooltip后的灰色背景不能滑动了，【妈耶，好棒！</li>
+<li>但是，这产生了一个：<strong>当文本超出tooltip宽度时，scroll-y: auto，失效了，溢出部分被直接截取</strong></li>
+<li>罪魁祸首就是它<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2M5ZDljYjZiZTQ0ZGY3YmJmNmRlMjAxNDM1ZmYzOTJjNDMxNDMucG5n?x-oss-process=image/format,png" alt="cover内置样式"></li>
+</ul>
+</li>
+<li>那我们可以：<ul>
+<li>在tooltip分段内容中加上  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content-rule</span> &#123;</span><br><span class="line">    <span class="attribute">white-space</span>: pre-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在内容wrapper中加上  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>完美解决<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2FhZjRkMDAyODdjZGI4M2Y0NWRhMGVkOTg3Mzc5MGNhNDQxMjkucG5n?x-oss-process=image/format,png" alt="cover-view解决图"><h5 id="方法二：wx-canvasToTempFilePath"><a href="#方法二：wx-canvasToTempFilePath" class="headerlink" title="方法二：wx.canvasToTempFilePath"></a>方法二：wx.canvasToTempFilePath</h5></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>首先我们要做的就是将网络图片绘制进canvas，官方关于canvas类型有两种<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2E4ZjJmNjA5OGYxNmQ4MzY3NWJiN2I3OWY0ZDM1NWM1MTAwMDg3LnBuZw?x-oss-process=image/format,png" alt="两种canvas类型"></li>
+<li>新canvas 2D接口尝试  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzE5ZWE3ZGYxYjg2ODUzOWFhNzVhY2E0OTAxYzI2MzU2OTk4NDYucG5n?x-oss-process=image/format,png" alt="canvas2d 运行截图"></li>
+<li>第二种旧canvas  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line">   wx.getImageInfo(&#123;</span><br><span class="line">       src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">       success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">         <span class="keyword">const</span> poster = res.path                                  </span><br><span class="line">         ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">         ctx.draw()</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">     <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">     wx.canvasGetImageData(&#123;</span><br><span class="line">       canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">       x: <span class="number">0</span>,</span><br><span class="line">       y: <span class="number">0</span>,</span><br><span class="line">       width: <span class="number">150</span>,</span><br><span class="line">       height: <span class="number">100</span>,</span><br><span class="line">       success(res) &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzU4NTg5MzQ4MDc3Njk3OTA0OTRmZmIzOWRiNDdjMWRmNjk4ODQucG5n?x-oss-process=image/format,png" alt="旧canvas"></li>
+<li>虽然两种方法，都能实现将网络图片绘制进canvas，但新版的进行了createImage，将其打印的话，其实就是新建了一个img标签，并将img标签的东西绘制进canvas<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzFjMjE1NzMzZTRkY2UzNGZiNzI4NDFhZWEyMDc0ZWIwMjQ1OTQucG5n?x-oss-process=image/format,png" alt="img console"></li>
+<li>为什么微信官方会仅支持以下方式进行新版canvas2d 图片的绘制，考虑是什么？</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JhYWQ1OWRhNDI4M2FjZmViZTY1NGQ0ZWZiNTAxZDZlMjAxMjE2LnBuZw?x-oss-process=image/format,png" alt="经典报错"></li>
+</ul>
+</li>
+<li>现在我们要将canvas的内容导成图片，同样分成新旧两版</li>
+<li>主要思路都是：在wxml中，如果canvas绘制图片没有完成，则显示canvas内容，绘制完成后，就利用canvasToTempFilePath，将图层内容生成指定大小图片，显示image<ul>
+<li>canvas2d   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">   <span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'img'</span>, img)</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">           wx.canvasToTempFilePath(&#123;</span><br><span class="line">             x: <span class="number">0</span>,</span><br><span class="line">             y: <span class="number">0</span>,</span><br><span class="line">             width: <span class="number">100</span>,</span><br><span class="line">             height: <span class="number">100</span>,</span><br><span class="line">             destWidth: <span class="number">100</span>,</span><br><span class="line">             destHeight: <span class="number">100</span>,</span><br><span class="line">             canvas: canvas,</span><br><span class="line">             success(res) &#123;</span><br><span class="line">               that.setData(&#123;</span><br><span class="line">                 imgPath: res.tempFilePath</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125;,</span><br><span class="line">             fail(err) &#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>canvas2d 需要踩得坑是：它的官方文档🙃<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UwM2Q1ZDg0YzYyNmI0NzlmZjBjOTlmNzA1YmRhYjg5NDc5MjcucG5n?x-oss-process=image/format,png" alt="canvas2d 转图片误导"></li>
+<li>尝试下来，会<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxMjRiY2Q3ZmNjYWI5ODBlNDdkMTk2YTMyZGQyODI4NDUzODcucG5n?x-oss-process=image/format,png" alt="ctx.draw报错"></li>
+</ul>
+</li>
+<li>那我们可以继续往下看<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxODk5NWFiNDY4N2IwYmZlYzhjZTZkZWU2ZWQxYmZjMTA1MTY1LnBuZw?x-oss-process=image/format,png" alt="canvas2d tempath正确实力">这才是符合我们需要</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JmMzVlMzY4YzRjMmRhYTgxNTA0NzM0YTIxZGMxM2I2NDYwNzIucG5n?x-oss-process=image/format,png" alt="canvas2d运行截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>旧版canvas  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">wx.getImageInfo(&#123;</span><br><span class="line">  src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">    <span class="keyword">const</span> poster = res.path</span><br><span class="line">    ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">    ctx.draw(<span class="literal">false</span>, () =&gt; &#123;</span><br><span class="line">      wx.canvasToTempFilePath(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        width: <span class="number">100</span>,</span><br><span class="line">        height: <span class="number">100</span>,</span><br><span class="line">        destWidth: <span class="number">100</span>,</span><br><span class="line">        destHeight: <span class="number">100</span>,</span><br><span class="line">        canvasId: <span class="string">"myCanvas"</span>,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          that.setData(&#123;</span><br><span class="line">            imgPath: res.tempFilePath</span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="built_in">console</span>.log(res.tempFilePath)</span><br><span class="line">        &#125;,</span><br><span class="line">        fail(err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">    wx.canvasGetImageData(&#123;</span><br><span class="line">      canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">      x: <span class="number">0</span>,</span><br><span class="line">      y: <span class="number">0</span>,</span><br><span class="line">      width: <span class="number">150</span>,</span><br><span class="line">      height: <span class="number">100</span>,</span><br><span class="line">      success(res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2EzZTRiYTBkYzc2NDgzYTM1NTYxZDcwNDUzNzZkNjZmNDU5MTgucG5n?x-oss-process=image/format,png" alt="旧版canvas运行截图"><h4 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h4></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>感谢<a href="https://github.com/skadieyes" target="_blank" rel="noopener">Skady宝贝</a>在探讨问题中给予的帮助，欢迎大家去github找她玩👈</li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E4%B8%BB%E8%89%B2%E8%B0%83/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>微信小程序-获...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>微信小程序-气泡框</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Be kind.</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>Be kind.
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button> 
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar.jpeg" alt="EllePeng"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>EllePeng</p>
+          <span class="tagline">stay awesome.</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/local.search.js"></script>
+
+</body>
+</html>
