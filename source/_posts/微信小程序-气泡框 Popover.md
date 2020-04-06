@@ -6,7 +6,8 @@ tags:
 - 微信小程序
 categories:
 - 微信小程序
-
+description:
+  - 记录基于[微信小程序-气泡框](https://developers.weixin.qq.com/community/develop/doc/000e4e7103c3c090e517e0cdb5b806)实现中产生的问题及思考
 
 ---
 
