@@ -186,10 +186,10 @@ font:
 示例：
 
 ```markdown
-{% note default %}
+
 ### title
 content
-{% endnote %}
+
 ```
 
 ### Label tag
@@ -199,7 +199,7 @@ content
 示例：
 
 ```markdown
-{% label default@content %}
+
 ```
 
 ### Button tag
@@ -207,7 +207,7 @@ content
 标准样式：
 
 ```markdown
-{% btn url,content,hand-o-right fa-fw,title %}
+
 ```
 
 说明：
@@ -225,9 +225,9 @@ content
 示例：
 
 ```markdown
-{% cq %}
+
 人类的悲欢并不相通，我只觉得他们吵闹。<br><strong>——鲁迅</strong>
-{% endcq %}
+
 ```
 
 ### video tag
@@ -235,7 +235,7 @@ content
 示例：
 
 ```markdown
-{% video url %}
+
 ```
 
 说明：
