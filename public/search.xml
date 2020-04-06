@@ -29,8 +29,8 @@
 </ul>
 </li>
 <li>算法<ul>
-<li>if-else, switch —&gt; branch</li>
-<li>for, while loop —&gt; iteration</li>
+<li>if-else, switch –&gt; branch</li>
+<li>for, while loop –&gt; iteration</li>
 <li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
 <li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
 <li>动态规划 dynamic programing</li>
@@ -50,19 +50,19 @@
 </ul>
 </li>
 <li>刷题第二遍<ul>
-<li>马上自己写 —&gt; LeetCode提交</li>
-<li>多种解法比较、体会 —&gt; 优化</li>
+<li>马上自己写 –&gt; LeetCode提交</li>
+<li>多种解法比较、体会 –&gt; 优化</li>
 <li>多种解法自己写一遍，直到通过</li>
 </ul>
 </li>
 <li>刷题第三遍<ul>
 <li>24h后，再重复做题</li>
-<li>不同解法的熟练程度 —&gt; 专项练习</li>
+<li>不同解法的熟练程度 –&gt; 专项练习</li>
 </ul>
 </li>
 <li>刷题第四遍<ul>
 <li>过了一周后：反复回来练习相同的题目</li>
-<li>不熟练的题目 —&gt; 专项练习</li>
+<li>不熟练的题目 –&gt; 专项练习</li>
 </ul>
 </li>
 <li>刷题第五遍<ul>
@@ -137,6 +137,7 @@
 <h4 id="问题截图"><a href="#问题截图" class="headerlink" title="问题截图"></a>问题截图</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png" alt="popover问题截图"></p>
 <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><ul>
 <li>模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？<a id="more"></a>
+
 </li>
 </ul>
 <h4 id="问题解决过程记录"><a href="#问题解决过程记录" class="headerlink" title="问题解决过程记录"></a>问题解决过程记录</h4><ul>
@@ -198,7 +199,8 @@
 </li>
 </ul>
 </li>
-<li>官方已给出问题原因<ul>
+<li><p>官方已给出问题原因</p>
+<ul>
 <li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzJkMWVkZmYyNWIwM2YxZDU2ZGVjYjZhM2NkYjAwMGU5NTE5ODQucG5n?x-oss-process=image/format,png" alt="wxml面板"></li>
 </ul>
 </li>
@@ -232,7 +234,7 @@
 <hr>
 <h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><ul>
 <li>微信官方提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html" target="_blank" rel="noopener">cover-view</a>原生组件，覆盖在原生组件之上的文本视图</li>
-<li>微信官方提供了将canvas转化为图片的方式—<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
+<li>微信官方提供了将canvas转化为图片的方式–<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
 </ul>
 <h5 id="方法一：cover-view"><a href="#方法一：cover-view" class="headerlink" title="方法一：cover-view"></a>方法一：cover-view</h5><ul>
 <li>将tooltip用cover-view改写，效果如下<ul>
