@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>OOP-面向对象</title>
+    <url>/2020/04/09/OOP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<ul>
+<li>A feature of objects is an object’s procedures that can access and often modify the data fields of the object with which they are associated (objects have a notion of “this” or “self”).</li>
+<li>Languages with abstract data type support which may be used to resemble OO programming, but without all features of object-orientation. This includes object-based and prototype-based languages. Examples: JavaScript, Lua, Modula-2, CLU.</li>
+<li>The Document Object Model of HTML, XHTML, and XML documents on the Internet has bindings to the popular JavaScript/ECMAScript language. JavaScript is perhaps the best known prototype-based programming language, which employs cloning from prototypes rather than inheriting from a class (contrast to class-based programming). </li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects" target="_blank" rel="noopener">引入 Javascript 对象</a></li>
+<li><a href="https://software.intel.com/en-us/blogs/2008/08/22/flaws-of-object-oriented-modeling/" target="_blank" rel="noopener">Flaws of Object Oriented Modeling</a></li>
+<li><a href="https://books.google.com/books?id=xb-sAQAAQBAJ&printsec=frontcover&dq=isbn:9788090466180&hl=zh-CN&sa=X&ved=0ahUKEwiG-8y8qdroAhWmUt8KHey5Dl0Q6AEIKDAA#v=onepage&q&f=false" target="_blank" rel="noopener">learn object oriented thinking &amp; programming</a></li>
+<li><a href="https://books.google.com/books?id=WzsFCAAAQBAJ&printsec=frontcover&dq=isbn:9780735619654&hl=zh-CN&sa=X&ved=0ahUKEwiqzaPSqNroAhVvUd8KHc80CYEQ6AEIKDAA#v=onepage&q&f=false" target="_blank" rel="noopener">Obejct thinking</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener">Javascript Object-orientation (prototype-based)</a></li>
+<li><a href="https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep" target="_blank" rel="noopener">Introduction to Object Oriented Programming Concepts (OOP) and More</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Elle-训练算法计划</title>
     <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
     <content><![CDATA[<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><ul>
@@ -128,6 +150,108 @@
       </tags>
   </entry>
   <entry>
+    <title>微信小程序-气泡框</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
+    <content><![CDATA[<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><ul>
+<li>记录基于<a href="https://developers.weixin.qq.com/community/develop/doc/000e4e7103c3c090e517e0cdb5b806" target="_blank" rel="noopener">微信小程序-气泡框</a>实现中产生的问题及思考</li>
+</ul>
+<hr>
+<h4 id="问题截图"><a href="#问题截图" class="headerlink" title="问题截图"></a>问题截图</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png" alt="popover问题截图"></p>
+<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><ul>
+<li>模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？<a id="more"></a>
+
+</li>
+</ul>
+<h4 id="问题解决过程记录"><a href="#问题解决过程记录" class="headerlink" title="问题解决过程记录"></a>问题解决过程记录</h4><ul>
+<li><p>定位问题发生的原因范围</p>
+<ul>
+<li>样式<ul>
+<li>样式在判断显示条件(wx:if=”“)生效后，仍然渲染</li>
+<li>否定原因<ul>
+<li>查询代码发现，整个样式背景的设定是在::before伪元素选择器中</li>
+<li>且显示条件生效，在调试器中已没有该元素，但仍显示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>逻辑<ul>
+<li>会不会是组件在渲染时，多渲染一份，我们使用判断条件进行开关时，只是对其中一个进行了操作</li>
+<li>怀疑依据<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzk5ZjcwMDAwZmViM2IwYzc0MWJmNjFiYzE5YTUwMDIxMjYyMTI3LnBuZw?x-oss-process=image/format,png" alt="popover问题依据截图"></li>
+<li>上图可见：在popover组件下，有2个通过&lt;slot&gt;插入的相同内容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开始解决问题</p>
+<ul>
+<li>查询官方关于<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html" target="_blank" rel="noopener">slot</a>方面的介绍<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JjMTE0ZmI0YTdhOWZkY2ZlYzU3ZDE5ZWQyYWY0YzI3MzE1NTU4LnBuZw?x-oss-process=image/format,png" alt="官方slot基础例子"></li>
+</ul>
+</li>
+<li>基于官方基础代码，复现问题<ul>
+<li>产生一个child-tag组件，并在其中编写  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/child-tag.js.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./component-tag-name'</span>: &#123;</span><br><span class="line">      type: <span class="string">'parent'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>与component-tag-name绑定形成父子组件  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/component-tag-name.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./child-tag'</span>: &#123;</span><br><span class="line">      type: <span class="string">'child'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    visible: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>并将index.html中进行调用  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引用组件的页面模版 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">bindtap</span>=<span class="string">"onTap"</span>&gt;</span>222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">my-component</span> <span class="attr">id</span>=<span class="string">"component"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">			这里是插入到组件slot name="content"中的内容</span><br><span class="line">			<span class="tag">&lt;<span class="name">child-component</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"child"</span>&gt;</span>这里是插入到组件slot name="child"中的内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>但是其结构树仍然非常正常，并没有出现那个所谓的”拷贝”组件<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzcwNTRhNjJkYmM2MGEyNmU5ZGI1ODYzNzNjOGY2OTgyMzg3NTI0LnBuZw?x-oss-process=image/format,png" alt="改写v1.1后的结构树截图"></li>
+<li>仔细复现了几次，发现：多出来的那个组件会有所延迟。抓住这个问题，想到我们在onReady中，注册了该组件，于是，继续模拟</li>
+</ul>
+</li>
+<li>修改index.js代码，并在component-tag-name组件注册onTap方法，控制显隐  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">onReady() &#123;</span><br><span class="line">  <span class="keyword">this</span>.component = <span class="keyword">this</span>.selectComponent(<span class="string">'#component'</span>)</span><br><span class="line">&#125;,</span><br><span class="line">onTap() &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'onTap'</span>)</span><br><span class="line">  wx.createSelectorQuery().select(<span class="string">'#component'</span>).boundingClientRect(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 调用自定义组件 popover 中的 onDisplay 方法</span></span><br><span class="line">      <span class="keyword">this</span>.component.onTap();</span><br><span class="line">  &#125;).exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>最终复现<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmZjQ3OTNhMjUwYTNjMzlhYjBlOGQxMGJhYTllZmI2NDc1NjIyLnBuZw?x-oss-process=image/format,png" alt="官方模拟最终运行截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>得出问题来源：<ul>
+<li>在组件中进行了一次setData</li>
+</ul>
+</li>
+<li>思考背后问题<ul>
+<li>在组件中setData为什么会”拷贝“一份相同的在页面级wxml中？</li>
+<li>猜想一：从<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/interactive-animation.html#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WXS响应事件</a>中，我隐隐得到了答案</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzZlYWJjYjdjOTliMzAxNWMwOGQwZmM2YWM3ZmMxMGMzNDU5NDAxLnBuZw?x-oss-process=image/format,png" alt="wxs相应事件"></li>
+<li>我们在页面级通过selectComponent实例化组件，对选中的组件进行操作，官方可以通过拷贝一份相同的组件，使我们便捷的将事件的处理从2次的逻辑层和渲染层通信以及一次渲染，减少到直接对页面上元素进行操作，即一次逻辑层和渲染层通信以及一次渲染。</li>
+<li>猜想二：问题层面是在微信开发者工具中的wxml，渲染方式对于这种情况就是这样处理的。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>官方已给出问题原因</p>
+<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzJkMWVkZmYyNWIwM2YxZDU2ZGVjYjZhM2NkYjAwMGU5NTE5ODQucG5n?x-oss-process=image/format,png" alt="wxml面板"></li>
+</ul>
+</li>
+</ul>
+<h4 id="如何解决问题"><a href="#如何解决问题" class="headerlink" title="如何解决问题"></a>如何解决问题</h4><ul>
+<li>在popover以及popover-item加入  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">options: &#123;</span><br><span class="line">		    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">		  &#125;,</span><br></pre></td></tr></table></figure></li>
+<li>就可以解决了。最后建议slot中可以写上name这样代码可能会更易读。<h4 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h4></li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组、链表、跳表</title>
+    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
+    <content><![CDATA[<h3 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h3><ul>
+<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
+<li>数学归纳法</li>
+<li>找最近重复问题</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>微信小程序-fix canvas原生组件最顶层</title>
     <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/</url>
     <content><![CDATA[<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><ul>
@@ -212,98 +336,6 @@
 </ul>
 </li>
 <li>感谢<a href="https://github.com/skadieyes" target="_blank" rel="noopener">Skady宝贝</a>在探讨问题中给予的帮助，欢迎大家去github找她玩👈</li>
-<li>祝大家多多发财</li>
-</ul>
-<hr>
-]]></content>
-      <categories>
-        <category>微信小程序</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微信小程序-气泡框</title>
-    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
-    <content><![CDATA[<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><ul>
-<li>记录基于<a href="https://developers.weixin.qq.com/community/develop/doc/000e4e7103c3c090e517e0cdb5b806" target="_blank" rel="noopener">微信小程序-气泡框</a>实现中产生的问题及思考</li>
-</ul>
-<hr>
-<h4 id="问题截图"><a href="#问题截图" class="headerlink" title="问题截图"></a>问题截图</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png" alt="popover问题截图"></p>
-<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><ul>
-<li>模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？<a id="more"></a>
-
-</li>
-</ul>
-<h4 id="问题解决过程记录"><a href="#问题解决过程记录" class="headerlink" title="问题解决过程记录"></a>问题解决过程记录</h4><ul>
-<li><p>定位问题发生的原因范围</p>
-<ul>
-<li>样式<ul>
-<li>样式在判断显示条件(wx:if=”“)生效后，仍然渲染</li>
-<li>否定原因<ul>
-<li>查询代码发现，整个样式背景的设定是在::before伪元素选择器中</li>
-<li>且显示条件生效，在调试器中已没有该元素，但仍显示</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>逻辑<ul>
-<li>会不会是组件在渲染时，多渲染一份，我们使用判断条件进行开关时，只是对其中一个进行了操作</li>
-<li>怀疑依据<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzk5ZjcwMDAwZmViM2IwYzc0MWJmNjFiYzE5YTUwMDIxMjYyMTI3LnBuZw?x-oss-process=image/format,png" alt="popover问题依据截图"></li>
-<li>上图可见：在popover组件下，有2个通过&lt;slot&gt;插入的相同内容</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>开始解决问题</p>
-<ul>
-<li>查询官方关于<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html" target="_blank" rel="noopener">slot</a>方面的介绍<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JjMTE0ZmI0YTdhOWZkY2ZlYzU3ZDE5ZWQyYWY0YzI3MzE1NTU4LnBuZw?x-oss-process=image/format,png" alt="官方slot基础例子"></li>
-</ul>
-</li>
-<li>基于官方基础代码，复现问题<ul>
-<li>产生一个child-tag组件，并在其中编写  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/child-tag.js.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./component-tag-name'</span>: &#123;</span><br><span class="line">      type: <span class="string">'parent'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>与component-tag-name绑定形成父子组件  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/component-tag-name.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./child-tag'</span>: &#123;</span><br><span class="line">      type: <span class="string">'child'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    visible: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>并将index.html中进行调用  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引用组件的页面模版 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">bindtap</span>=<span class="string">"onTap"</span>&gt;</span>222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">my-component</span> <span class="attr">id</span>=<span class="string">"component"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">			这里是插入到组件slot name="content"中的内容</span><br><span class="line">			<span class="tag">&lt;<span class="name">child-component</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"child"</span>&gt;</span>这里是插入到组件slot name="child"中的内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>但是其结构树仍然非常正常，并没有出现那个所谓的”拷贝”组件<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzcwNTRhNjJkYmM2MGEyNmU5ZGI1ODYzNzNjOGY2OTgyMzg3NTI0LnBuZw?x-oss-process=image/format,png" alt="改写v1.1后的结构树截图"></li>
-<li>仔细复现了几次，发现：多出来的那个组件会有所延迟。抓住这个问题，想到我们在onReady中，注册了该组件，于是，继续模拟</li>
-</ul>
-</li>
-<li>修改index.js代码，并在component-tag-name组件注册onTap方法，控制显隐  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">onReady() &#123;</span><br><span class="line">  <span class="keyword">this</span>.component = <span class="keyword">this</span>.selectComponent(<span class="string">'#component'</span>)</span><br><span class="line">&#125;,</span><br><span class="line">onTap() &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'onTap'</span>)</span><br><span class="line">  wx.createSelectorQuery().select(<span class="string">'#component'</span>).boundingClientRect(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 调用自定义组件 popover 中的 onDisplay 方法</span></span><br><span class="line">      <span class="keyword">this</span>.component.onTap();</span><br><span class="line">  &#125;).exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>最终复现<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmZjQ3OTNhMjUwYTNjMzlhYjBlOGQxMGJhYTllZmI2NDc1NjIyLnBuZw?x-oss-process=image/format,png" alt="官方模拟最终运行截图"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>得出问题来源：<ul>
-<li>在组件中进行了一次setData</li>
-</ul>
-</li>
-<li>思考背后问题<ul>
-<li>在组件中setData为什么会”拷贝“一份相同的在页面级wxml中？</li>
-<li>猜想一：从<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/interactive-animation.html#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WXS响应事件</a>中，我隐隐得到了答案</li>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzZlYWJjYjdjOTliMzAxNWMwOGQwZmM2YWM3ZmMxMGMzNDU5NDAxLnBuZw?x-oss-process=image/format,png" alt="wxs相应事件"></li>
-<li>我们在页面级通过selectComponent实例化组件，对选中的组件进行操作，官方可以通过拷贝一份相同的组件，使我们便捷的将事件的处理从2次的逻辑层和渲染层通信以及一次渲染，减少到直接对页面上元素进行操作，即一次逻辑层和渲染层通信以及一次渲染。</li>
-<li>猜想二：问题层面是在微信开发者工具中的wxml，渲染方式对于这种情况就是这样处理的。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>官方已给出问题原因</p>
-<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzJkMWVkZmYyNWIwM2YxZDU2ZGVjYjZhM2NkYjAwMGU5NTE5ODQucG5n?x-oss-process=image/format,png" alt="wxml面板"></li>
-</ul>
-</li>
-</ul>
-<h4 id="如何解决问题"><a href="#如何解决问题" class="headerlink" title="如何解决问题"></a>如何解决问题</h4><ul>
-<li>在popover以及popover-item加入  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">options: &#123;</span><br><span class="line">		    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">		  &#125;,</span><br></pre></td></tr></table></figure></li>
-<li>就可以解决了。最后建议slot中可以写上name这样代码可能会更易读。<h4 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h4></li>
 <li>祝大家多多发财</li>
 </ul>
 <hr>
