@@ -46,8 +46,35 @@ description:
 			- "react-hooks/exhaustive-deps": "warn"
 				- 必须提供 useEffect 和 useCallback 等hooks 的第二个参数，声明回调函数依赖的变量
 - 自定义 hooks
-- 额外7个内置 hooks
+- 额外 hooks
 	- useReducer
+		- [简单项目：使用 Hooks：useReducer 代替 Redux](https://fed.taobao.org/blog/taofed/do71ct/use-the-react-hooks-instead-of-the-redux/?spm=taofed.bloginfo.blog.3.707f5ac8tD5Gxz)
+		
+			```javascript
+			import providers from './providers';
+			
+			// 数据 Provider 组合器
+			const ProvidersComposer = (props) => (
+			  props.providers.reduceRight((children, Parent) => (
+			    <Parent>{children}</Parent>
+			  ), props.children)
+			);
+			
+			const Provider = (props) => {
+			  return (
+			    <ProvidersComposer providers={providers}>
+			      {props.children}
+			    </ProvidersComposer>
+			  );
+			};
+			
+			export default Provider;
+			```
 	- useContext
+
+	
+## react-hooks 改写 TO DO Lists
+
+
 ## 写在后面
 - 祝大家多多发财
