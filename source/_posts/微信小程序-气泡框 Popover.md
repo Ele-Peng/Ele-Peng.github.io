@@ -11,16 +11,16 @@ description:
 
 ---
 
-####  写在前面
+##  写在前面
 - 记录基于[微信小程序-气泡框](https://developers.weixin.qq.com/community/develop/doc/000e4e7103c3c090e517e0cdb5b806)实现中产生的问题及思考
 - - -
-#### 问题截图
+## 问题截图
 ![popover问题截图](https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png)
-#### 问题描述
+## 问题描述
 - 模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？
 <!-- more -->
 
-#### 问题解决过程记录
+## 问题解决过程记录
 - 定位问题发生的原因范围
 	- 样式
 		- 样式在判断显示条件(wx:if="{{visible}}")生效后，仍然渲染
@@ -148,7 +148,7 @@ description:
 - 官方已给出问题原因
 	- ![wxml面板](https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzJkMWVkZmYyNWIwM2YxZDU2ZGVjYjZhM2NkYjAwMGU5NTE5ODQucG5n?x-oss-process=image/format,png)
 
-#### 如何解决问题
+## 如何解决问题
 - 在popover以及popover-item加入
 	```javascript
 	options: {
@@ -156,6 +156,6 @@ description:
 			  },
 	```
 - 就可以解决了。最后建议slot中可以写上name这样代码可能会更易读。
-####  写在后面
+##  写在后面
 - 祝大家多多发财
 ---

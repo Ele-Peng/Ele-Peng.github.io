@@ -10,12 +10,12 @@ description:
 
 
 ---
-#### 写在前面
+## 写在前面
 - 简单记录一下自己整个算法训练的基础步骤+学习方法
 - 主要的数据结构和算法会单开文档来写
 
 <!-- more -->
-#### Chunk it up 切碎知识点
+## Chunk it up 切碎知识点
 - 数据结构
 	- 一维数据结构
 		- 基础：数组 array(string), 链表 linked list
@@ -37,7 +37,7 @@ description:
 	- 贪心 greedy
 	- 数学 math, 集合 geometry
 
-#### Deliberate Practicing 刻意练习
+## Deliberate Practicing 刻意练习
 - 刻意练习-过遍数 (五遍刷题法)
 	- 刷题第一遍
 		- 5分钟（5~15 mins）：读题+思考
@@ -67,19 +67,19 @@ description:
 	- **Coding**
 	- **Test cases**
 
-#### Feedback 反馈
+## Feedback 反馈
 - 即时反馈
 - 主动型反馈
 - 被动型反馈
 	- code review
 
-#### 指法
+## 指法
 - top tips for vscode
 
-#### 自顶向下的编程方式
+## 自顶向下的编程方式
 - [自顶向下的编程方式](http://markhneedham.com/blog/2008/09/15/clean-code-book-review/)
 
-#### Big O Notation
+## Big O Notation
 - O(1): constant Complexity 常数复杂度
 - O(log n): Logarithmic Complexity 对数复杂度
 - O(n): Linear Complexity 线性时间复杂度
@@ -89,7 +89,7 @@ description:
 - O(n!): Factorial 阶乘
 - ![时间复杂度](http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png)
 
-#### master theorem
+## master theorem
 - 二分查找
 - 二叉树的遍历（每个节点都访问一次，且仅访问一次）
 - 二维有序矩阵

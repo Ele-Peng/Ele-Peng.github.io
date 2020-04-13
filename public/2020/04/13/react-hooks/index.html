@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>Tag-前端概念 | Be kind.</title>
+  <title>react-hooks | Be kind.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="EllePeng">
   <meta name="keywords" content="">
@@ -62,8 +62,7 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
 <meta name="generator" content="Hexo 4.2.0"></head>
 <body>
-
-<div id="page">
+<div class="single">
 <a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
 <div class="popup search-popup local-search-popup">
   <div class="local-search-header clearfix">
@@ -82,36 +81,128 @@
   <div id="local-search-result"></div>
 </div>
 
-<div id="lx-aside" style="background-image: url(/images/cover.jpeg)">
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
   <div class="overlay">
-  <div class="featured">
+  <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
-    <span>EllePeng</span>
-    <h1>Be kind.</h1>
-    
+    <span>2020-04-13</span>
+    <h2>react-hooks</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/" rel="tag">前端概念</a></div>
     <div class="social-links">
     <a href="https://github.com/Ele-Peng" target="_blank"><i class="fa fa-github fa-fw"></i></a>
     <a href="mailto:EllePeng@aliyun.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
     <a href="https://weibo.com/3199262327/profile?topnav=1&amp;wvr=6" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
 </div>
-  </div>
-  </div>
 </div>
 
 <div id="lx-main-content">
   <div class="lx-post">
-  <h2 class="pagehead">Tag 前端概念</h2>
-    <div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-04-13</span>
-    <h2 class="title"><a href="/2020/04/13/react-hooks/">react-hooks</a></h2>
-    <p><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/" rel="tag">前端概念</a></p></div></div><div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-04-12</span>
-    <h2 class="title"><a href="/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">自己的前端知识体系</a></h2>
-    <p><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/" rel="tag">前端概念</a></p></div></div><div class="lx-entry padding"><div>
-    <span class="lx-post-detail">2020-04-09</span>
-    <h2 class="title"><a href="/2020/04/09/OOP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">OOP-面向对象</a></h2>
-    <p><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/" rel="tag">前端概念</a></p></div></div>
+    <div class="lx-entry padding">
+      <div>
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>记录学习 react-hooks 过程中的思考🤔<a id="more"></a>
 
+</li>
+</ul>
+<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
+<li>react 16.8 推出</li>
+<li>能够在函数组件内部使用 state 和组件生命周期方法</li>
+<li>定义组件<ul>
+<li>class</li>
+<li>F(x) + react-hooks(灵活、可测试、代码复用)</li>
+</ul>
+</li>
+<li>什么是 hooks ?<ul>
+<li>允许你hook一些业务逻辑到组件内部 state 和 render 函数上</li>
+<li>hooks 允许我们去操作这个内部state了</li>
+<li>更好的去关注分离和代码复用(传统 HOC，函数作为子组件)，将相关代码</li>
+</ul>
+</li>
+<li>三个基础 hooks<ul>
+<li>useState<ul>
+<li>允许操作组件的内部状态</li>
+<li>如果要根据之前的状态决定下一个状态<ul>
+<li>参数可以写成一个函数，函数接受的参数就是之前的状态，prevState =&gt; nowState</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>useEffect<ul>
+<li>使用副作用</li>
+<li>指定一个函数在每次render完，去执行什么样的逻辑</li>
+<li>第二个参数，传入一个数组，这个数组是当前闭包中的任何变量<ul>
+<li>只有当数组中的发生变化，才会调用回调函数</li>
+<li>函数组件内部，很容易监听props变化</li>
+</ul>
+</li>
+<li>可以在 useEffect 回调函数中，返回一个函数，作为组建销毁时的一个回调，允许执行一些资源回收的逻辑</li>
+</ul>
+</li>
+<li>useCallback<ul>
+<li>将回调函数进行一个缓存，只有在需要时才会返回一个新的事件处理函数</li>
+</ul>
+</li>
+<li>useEffect 和 useCallback，现在都有一个约定，回调函数内如果使用了外部闭包中的变量，那么都应该在第二个参数中进行声明<ul>
+<li>eslint-plugin-react-hooks<ul>
+<li>“react-hooks/rules-of-hooks”: “error”<ul>
+<li>确保对hooks的调用，都发生在顶层作用域</li>
+</ul>
+</li>
+<li>“react-hooks/exhaustive-deps”: “warn”<ul>
+<li>必须提供 useEffect 和 useCallback 等hooks 的第二个参数，声明回调函数依赖的变量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>自定义 hooks</li>
+<li>额外7个内置 hooks<ul>
+<li>useReducer</li>
+<li>useContext<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
+</ul>
+</li>
+<li>祝大家多多发财</li>
+</ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>No newer post</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>自己的前端知识体系</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
 
 <footer>
   <div>
@@ -119,8 +210,6 @@
   </div>
 </footer>
 
-  </div>
-</div>
 </div>
 
 <button class="hamburger hamburger--arrow-r" type="button">

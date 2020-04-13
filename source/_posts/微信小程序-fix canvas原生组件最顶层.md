@@ -11,7 +11,7 @@ description:
 
 ---
 
-#### 写在前面
+## 写在前面
 - 大家应该都知道过，在微信小程序中，canvas等原生组件的层级是最高的，页面中无论你设置多大的z-index都无法覆盖在其之上，这就可能会产生一些问题
 - 就像这样
 	- ![canvas顶层问题截图](https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png)
@@ -19,12 +19,12 @@ description:
   <!-- more -->
 ---
 
-#### 解决问题
+## 解决问题
 - 微信官方提供了[cover-view](https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html)原生组件，覆盖在原生组件之上的文本视图
 - 微信官方提供了将canvas转化为图片的方式--[wx.canvasToTempFilePath](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html)，这样就可以”降级“
 
 
-##### 方法一：cover-view
+### 方法一：cover-view
 - 将tooltip用cover-view改写，效果如下
 	- ![cover-view version0.1 截图](https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2Y0MTZjZjhlMjNiZWEwMjNjYTM1M2JhOGExMDM1MDM2MzYyOTIucG5n?x-oss-process=image/format,png)
 	- 看上去，是解决了我们的问题，且tooltip后的灰色背景不能滑动了，【妈耶，好棒！
@@ -46,7 +46,7 @@ description:
 			```
 	- 完美解决
 		- ![cover-view解决图](https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2FhZjRkMDAyODdjZGI4M2Y0NWRhMGVkOTg3Mzc5MGNhNDQxMjkucG5n?x-oss-process=image/format,png)
-##### 方法二：wx.canvasToTempFilePath
+### 方法二：wx.canvasToTempFilePath
 - 首先我们要做的就是将网络图片绘制进canvas，官方关于canvas类型有两种
 ![两种canvas类型](https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2E4ZjJmNjA5OGYxNmQ4MzY3NWJiN2I3OWY0ZDM1NWM1MTAwMDg3LnBuZw?x-oss-process=image/format,png)
 - 新canvas 2D接口尝试
@@ -210,7 +210,7 @@ description:
 		```
 		- 运行截图
 			- ![旧版canvas运行截图](https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2EzZTRiYTBkYzc2NDgzYTM1NTYxZDcwNDUzNzZkNjZmNDU5MTgucG5n?x-oss-process=image/format,png)
-#### 写在后面
+## 写在后面
 - 感谢[Skady宝贝](https://github.com/skadieyes)在探讨问题中给予的帮助，欢迎大家去github找她玩👈
 - 祝大家多多发财
 ----
