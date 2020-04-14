@@ -103,29 +103,46 @@
       <div>
         <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>记录学习 react-hooks 过程中的思考🤔<a id="more"></a>
-
 </li>
 </ul>
 <h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li><p>react 16.8 推出</p>
-</li>
-<li><p>能够在函数组件内部使用 state 和组件生命周期方法</p>
-</li>
-<li><p>定义组件</p>
-<ul>
+<li>react 16.8 推出</li>
+<li>能够在函数组件内部使用 state 和组件生命周期方法</li>
+<li>定义组件<ul>
 <li>class</li>
 <li>F(x) + react-hooks(灵活、可测试、代码复用)</li>
 </ul>
 </li>
-<li><p>什么是 hooks ?</p>
-<ul>
+<li>什么是 hooks ?<ul>
 <li>允许你hook一些业务逻辑到组件内部 state 和 render 函数上</li>
 <li>hooks 允许我们去操作这个内部state了</li>
 <li>更好的去关注分离和代码复用(传统 HOC，函数作为子组件)，将相关代码</li>
 </ul>
 </li>
-<li><p>三个基础 hooks</p>
-<ul>
+<li>Why Hooks?<ul>
+<li>Mixins<ul>
+<li>命名空间耦合</li>
+<li>静态检查</li>
+<li>组件参数不清晰</li>
+</ul>
+</li>
+<li>HOC<ul>
+<li>解决命名空间解耦</li>
+<li>对 Class 进行静态检查</li>
+<li>组件参数不清晰</li>
+<li>组件实例增加</li>
+</ul>
+</li>
+<li>Hooks<ul>
+<li>命名空间解耦</li>
+<li>静态检查</li>
+<li>组件参数清晰</li>
+<li>单组件实例</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>三个基础 hooks<ul>
 <li>useState<ul>
 <li>允许操作组件的内部状态</li>
 <li>如果要根据之前的状态决定下一个状态<ul>
@@ -143,12 +160,8 @@
 </ul>
 </li>
 <li>可以在 useEffect 回调函数中，返回一个函数，作为组建销毁时的一个回调，允许执行一些资源回收的逻辑</li>
-</ul>
-</li>
-<li>useCallback<ul>
+<li><strong>useCallback</strong><ul>
 <li>将回调函数进行一个缓存，只有在需要时才会返回一个新的事件处理函数</li>
-</ul>
-</li>
 <li>useEffect 和 useCallback，现在都有一个约定，回调函数内如果使用了外部闭包中的变量，那么都应该在第二个参数中进行声明<ul>
 <li>eslint-plugin-react-hooks<ul>
 <li>“react-hooks/rules-of-hooks”: “error”<ul>
@@ -165,8 +178,12 @@
 </li>
 </ul>
 </li>
-<li><p>自定义 hooks</p>
+</ul>
 </li>
+<li>useContext</li>
+</ul>
+</li>
+<li>自定义 hooks</li>
 <li><p>额外 hooks</p>
 <ul>
 <li><p>useReducer</p>
@@ -175,8 +192,12 @@
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> providers <span class="keyword">from</span> <span class="string">'./providers'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数据 Provider 组合器</span></span><br><span class="line"><span class="keyword">const</span> ProvidersComposer = <span class="function">(<span class="params">props</span>) =&gt;</span> (</span><br><span class="line">  props.providers.reduceRight(<span class="function">(<span class="params">children, Parent</span>) =&gt;</span> (</span><br><span class="line">    &lt;Parent&gt;&#123;children&#125;&lt;<span class="regexp">/Parent&gt;</span></span><br><span class="line"><span class="regexp">  ), props.children)</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Provider = (props) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;ProvidersComposer providers=&#123;providers&#125;&gt;</span></span><br><span class="line"><span class="regexp">      &#123;props.children&#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>ProvidersComposer&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Provider;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><p>useContext</p>
-</li>
+<li>useCallback</li>
+<li>useMemo</li>
+<li>useRef</li>
+<li>useImperativeHandle</li>
+<li>useLayoutEffect</li>
+<li>useDebugValue</li>
 </ul>
 </li>
 </ul>
@@ -196,7 +217,7 @@
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>没有更新的文章</h3>
+						<h3>No newer post</h3>
 					</div>
 				</div>
 			</div>
@@ -250,12 +271,12 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
     
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>友链</span>
+      <i class="fa fa-link fa-fw"></i>Friends</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>

@@ -25,6 +25,21 @@ description:
 	- 允许你hook一些业务逻辑到组件内部 state 和 render 函数上
 	- hooks 允许我们去操作这个内部state了
 	- 更好的去关注分离和代码复用(传统 HOC，函数作为子组件)，将相关代码
+- Why Hooks?
+	- Mixins
+		- 命名空间耦合
+		- 静态检查
+		- 组件参数不清晰
+	- HOC
+		- 解决命名空间解耦
+		- 对 Class 进行静态检查
+		- 组件参数不清晰
+		- 组件实例增加
+	- Hooks
+		- 命名空间解耦
+		- 静态检查
+		- 组件参数清晰
+		- 单组件实例
 - 三个基础 hooks
 	- useState
 		- 允许操作组件的内部状态
@@ -37,14 +52,15 @@ description:
 			- 只有当数组中的发生变化，才会调用回调函数
 			- 函数组件内部，很容易监听props变化
 		- 可以在 useEffect 回调函数中，返回一个函数，作为组建销毁时的一个回调，允许执行一些资源回收的逻辑
-	- useCallback
-		- 将回调函数进行一个缓存，只有在需要时才会返回一个新的事件处理函数
-	- useEffect 和 useCallback，现在都有一个约定，回调函数内如果使用了外部闭包中的变量，那么都应该在第二个参数中进行声明
-		- eslint-plugin-react-hooks
-			- "react-hooks/rules-of-hooks": "error"
-				- 确保对hooks的调用，都发生在顶层作用域
-			- "react-hooks/exhaustive-deps": "warn"
-				- 必须提供 useEffect 和 useCallback 等hooks 的第二个参数，声明回调函数依赖的变量
+		- **useCallback**
+			- 将回调函数进行一个缓存，只有在需要时才会返回一个新的事件处理函数
+			- useEffect 和 useCallback，现在都有一个约定，回调函数内如果使用了外部闭包中的变量，那么都应该在第二个参数中进行声明
+				- eslint-plugin-react-hooks
+					- "react-hooks/rules-of-hooks": "error"
+						- 确保对hooks的调用，都发生在顶层作用域
+					- "react-hooks/exhaustive-deps": "warn"
+						- 必须提供 useEffect 和 useCallback 等hooks 的第二个参数，声明回调函数依赖的变量
+	- useContext
 - 自定义 hooks
 - 额外 hooks
 	- useReducer
@@ -70,7 +86,12 @@ description:
 			
 			export default Provider;
 			```
-	- useContext
+	- useCallback
+	- useMemo
+	- useRef
+	- useImperativeHandle
+	- useLayoutEffect
+	- useDebugValue
 
 	
 ## react-hooks 改写 TO DO Lists
