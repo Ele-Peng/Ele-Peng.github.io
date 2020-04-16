@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>【未完】react-hooks | Be kind.</title>
+  <title>【未完】前端性能监控 | Be kind.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="EllePeng">
   <meta name="keywords" content="">
@@ -86,9 +86,9 @@
   <div class="overlay">
   <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
-    <span>2020-04-13</span>
-    <h2>【未完】react-ho...</h2>
-    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/react/" rel="tag">react</a></div>
+    <span>2020-04-16</span>
+    <h2>【未完】前端性能监控</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/" rel="tag">性能监控</a></div>
     <div class="social-links">
     <a href="https://github.com/Ele-Peng" target="_blank"><i class="fa fa-github fa-fw"></i></a>
     <a href="mailto:EllePeng@aliyun.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
@@ -102,106 +102,75 @@
     <div class="lx-entry padding">
       <div>
         <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>记录学习 react-hooks 过程中的思考🤔<a id="more"></a>
-</li>
+<li>记录 性能监控 方面的学习过程🤔</li>
 </ul>
-<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>react 16.8 推出</li>
-<li>能够在函数组件内部使用 state 和组件生命周期方法</li>
-<li>定义组件<ul>
-<li>class</li>
-<li>F(x) + react-hooks(灵活、可测试、代码复用)</li>
+<a id="more"></a>
+<h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
+<li>Gmail SPA</li>
+<li>Angular/React/Vue MVVM/工程化</li>
+<li>weex/react native 跨端</li>
+<li>Node 全栈</li>
 </ul>
-</li>
-<li>什么是 hooks ?<ul>
-<li>允许你hook一些业务逻辑到组件内部 state 和 render 函数上</li>
-<li>hooks 允许我们去操作这个内部state了</li>
-<li>更好的去关注分离和代码复用(传统 HOC，函数作为子组件)，将相关代码</li>
-</ul>
-</li>
-<li>Why Hooks?<ul>
-<li>Mixins<ul>
-<li>命名空间耦合</li>
-<li>静态检查</li>
-<li>组件参数不清晰</li>
+<h3 id="前端变化给监控带来了什么样的改变"><a href="#前端变化给监控带来了什么样的改变" class="headerlink" title="前端变化给监控带来了什么样的改变"></a>前端变化给监控带来了什么样的改变</h3><ul>
+<li>传统监控模式能否使用于新的技术？比如 PV 统计<ul>
+<li>导致 PV 下降的原因和解法</li>
+<li>原因<ul>
+<li>业内路由替代了请求新的页面</li>
 </ul>
 </li>
-<li>HOC<ul>
-<li>解决命名空间解耦</li>
-<li>对 Class 进行静态检查</li>
-<li>组件参数不清晰</li>
-<li>组件实例增加</li>
+<li>解法<ul>
+<li>哈希路由：监听 hash change 变化上报 PV</li>
+<li>非哈希路由(Angular): 轻量 hack pushState 和 replaceState</li>
 </ul>
 </li>
-<li>Hooks<ul>
-<li>命名空间解耦</li>
-<li>静态检查</li>
-<li>组件参数清晰</li>
-<li>单组件实例</li>
+<li>案例<ul>
+<li>下拉刷新</li>
+<li>滚屏分页</li>
+<li>阿里云邮后台一直开着，每周上百次查看</li>
+<li>未关闭的浏览器 Ta b几小时后再次浏览</li>
+<li>查找信息时，浏览器 Tab 之间快速切换</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>三个基础 hooks<ul>
-<li>useState<ul>
-<li>允许操作组件的内部状态</li>
-<li>如果要根据之前的状态决定下一个状态<ul>
-<li>参数可以写成一个函数，函数接受的参数就是之前的状态，prevState =&gt; nowState</li>
+<li>SPA模式下首屏如何计算？<ul>
+<li>第一阶段：自定义打点时期<ul>
+<li>页头和首屏dom处分别通过 new Date() 打点</li>
 </ul>
 </li>
+<li>第二阶段：W3C标准时期<ul>
+<li>Navigaion Timing API</li>
 </ul>
 </li>
-<li>useEffect<ul>
-<li>使用副作用</li>
-<li>指定一个函数在每次render完，去执行什么样的逻辑</li>
-<li>第二个参数，传入一个数组，这个数组是当前闭包中的任何变量<ul>
-<li>只有当数组中的发生变化，才会调用回调函数</li>
-<li>函数组件内部，很容易监听props变化</li>
-</ul>
-</li>
-<li>可以在 useEffect 回调函数中，返回一个函数，作为组建销毁时的一个回调，允许执行一些资源回收的逻辑</li>
-<li><strong>useCallback</strong><ul>
-<li>将回调函数进行一个缓存，只有在需要时才会返回一个新的事件处理函数</li>
-<li>useEffect 和 useCallback，现在都有一个约定，回调函数内如果使用了外部闭包中的变量，那么都应该在第二个参数中进行声明<ul>
-<li>eslint-plugin-react-hooks<ul>
-<li>“react-hooks/rules-of-hooks”: “error”<ul>
-<li>确保对hooks的调用，都发生在顶层作用域</li>
-</ul>
-</li>
-<li>“react-hooks/exhaustive-deps”: “warn”<ul>
-<li>必须提供 useEffect 和 useCallback 等hooks 的第二个参数，声明回调函数依赖的变量</li>
+<li>第三阶段：SPA盛行导致w3c标准失去原来的意义</li>
+<li>现阶段：用户感官指标FMP<ul>
+<li>FMP：主要内容可见时间</li>
+<li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
+<li>什么原因导致猜想不成立？<ul>
+<li>元素是否可见</li>
+<li>每个元素对页面的影响是否等效？ —&gt; 权重</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
+<li>下一阶段：W3C/paint-timing 首屏加载时间计算已经在提案中</li>
 </ul>
 </li>
+<li>跨端开发给监控带来什么挑战？</li>
+<li>前端监控的上报模式在 Node.js 端是否合理？</li>
+</ul>
+<h3 id="前端监控的最佳实践"><a href="#前端监控的最佳实践" class="headerlink" title="前端监控的最佳实践"></a>前端监控的最佳实践</h3><ul>
+<li>主动监控</li>
+<li>性能样本分布 &amp; 慢会话<ul>
+<li>慢会话追踪</li>
 </ul>
 </li>
-<li>useContext</li>
+<li>搜索报错明细</li>
+<li>出错行为还原</li>
 </ul>
-</li>
-<li>自定义 hooks</li>
-<li><p>额外 hooks</p>
-<ul>
-<li><p>useReducer</p>
-<ul>
-<li><p><a href="https://fed.taobao.org/blog/taofed/do71ct/use-the-react-hooks-instead-of-the-redux/?spm=taofed.bloginfo.blog.3.707f5ac8tD5Gxz" target="_blank" rel="noopener">简单项目：使用 Hooks：useReducer 代替 Redux</a></p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> providers <span class="keyword">from</span> <span class="string">'./providers'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数据 Provider 组合器</span></span><br><span class="line"><span class="keyword">const</span> ProvidersComposer = <span class="function">(<span class="params">props</span>) =&gt;</span> (</span><br><span class="line">  props.providers.reduceRight(<span class="function">(<span class="params">children, Parent</span>) =&gt;</span> (</span><br><span class="line">    &lt;Parent&gt;&#123;children&#125;&lt;<span class="regexp">/Parent&gt;</span></span><br><span class="line"><span class="regexp">  ), props.children)</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Provider = (props) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;ProvidersComposer providers=&#123;providers&#125;&gt;</span></span><br><span class="line"><span class="regexp">      &#123;props.children&#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>ProvidersComposer&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Provider;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>useCallback</li>
-<li>useMemo</li>
-<li>useRef</li>
-<li>useImperativeHandle</li>
-<li>useLayoutEffect</li>
-<li>useDebugValue</li>
-</ul>
-</li>
-</ul>
-<h2 id="react-hooks-改写-TO-DO-Lists"><a href="#react-hooks-改写-TO-DO-Lists" class="headerlink" title="react-hooks 改写 TO DO Lists"></a>react-hooks 改写 TO DO Lists</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<h3 id="阿里云ARMS前端监控系统架构"><a href="#阿里云ARMS前端监控系统架构" class="headerlink" title="阿里云ARMS前端监控系统架构"></a>阿里云ARMS前端监控系统架构</h3><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
 
@@ -212,12 +181,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/">
+		<a class="copy" href="#">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>【未完】计算机...</h3>
+						<h3>No newer post</h3>
 					</div>
 				</div>
 			</div>
@@ -225,12 +194,12 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">
+		<a class="copy" href="/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>自己的前端知识体系</h3>
+						<h3>【未完】计算机...</h3>
 					</div>
 				</div>
 			</div>
