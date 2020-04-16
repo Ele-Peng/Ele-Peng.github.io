@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>【未完】react-hooks | Be kind.</title>
+  <title>【未完】计算机图形学初探 | Be kind.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="EllePeng">
   <meta name="keywords" content="">
@@ -86,9 +86,9 @@
   <div class="overlay">
   <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
-    <span>2020-04-13</span>
-    <h2>【未完】react-ho...</h2>
-    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/react/" rel="tag">react</a></div>
+    <span>2020-04-15</span>
+    <h2>【未完】计算机图形学初探</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/" rel="tag">计算机图形学</a></div>
     <div class="social-links">
     <a href="https://github.com/Ele-Peng" target="_blank"><i class="fa fa-github fa-fw"></i></a>
     <a href="mailto:EllePeng@aliyun.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
@@ -102,106 +102,44 @@
     <div class="lx-entry padding">
       <div>
         <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>记录学习 react-hooks 过程中的思考🤔<a id="more"></a>
+<li><p>记录 计算机图形学 方面的学习过程🤔</p>
+<a id="more"></a>
 </li>
 </ul>
 <h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>react 16.8 推出</li>
-<li>能够在函数组件内部使用 state 和组件生命周期方法</li>
-<li>定义组件<ul>
-<li>class</li>
-<li>F(x) + react-hooks(灵活、可测试、代码复用)</li>
+<li>前端与图形学<ul>
+<li>shader</li>
 </ul>
 </li>
-<li>什么是 hooks ?<ul>
-<li>允许你hook一些业务逻辑到组件内部 state 和 render 函数上</li>
-<li>hooks 允许我们去操作这个内部state了</li>
-<li>更好的去关注分离和代码复用(传统 HOC，函数作为子组件)，将相关代码</li>
+<li>图形学应用场景<ul>
+<li>Image<ul>
+<li>pattern（多用于背景）</li>
+<li>photo</li>
+<li>shape</li>
 </ul>
 </li>
-<li>Why Hooks?<ul>
-<li>Mixins<ul>
-<li>命名空间耦合</li>
-<li>静态检查</li>
-<li>组件参数不清晰</li>
+<li>来自数学的图形—分形</li>
+<li>来自物理的图形—光的衍射<ul>
+<li>相变</li>
+<li>绿幕<ul>
+<li>PNG24 —&gt; 2张 jpg</li>
 </ul>
 </li>
-<li>HOC<ul>
-<li>解决命名空间解耦</li>
-<li>对 Class 进行静态检查</li>
-<li>组件参数不清晰</li>
-<li>组件实例增加</li>
-</ul>
-</li>
-<li>Hooks<ul>
-<li>命名空间解耦</li>
-<li>静态检查</li>
-<li>组件参数清晰</li>
-<li>单组件实例</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>三个基础 hooks<ul>
-<li>useState<ul>
-<li>允许操作组件的内部状态</li>
-<li>如果要根据之前的状态决定下一个状态<ul>
-<li>参数可以写成一个函数，函数接受的参数就是之前的状态，prevState =&gt; nowState</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>useEffect<ul>
-<li>使用副作用</li>
-<li>指定一个函数在每次render完，去执行什么样的逻辑</li>
-<li>第二个参数，传入一个数组，这个数组是当前闭包中的任何变量<ul>
-<li>只有当数组中的发生变化，才会调用回调函数</li>
-<li>函数组件内部，很容易监听props变化</li>
-</ul>
-</li>
-<li>可以在 useEffect 回调函数中，返回一个函数，作为组建销毁时的一个回调，允许执行一些资源回收的逻辑</li>
-<li><strong>useCallback</strong><ul>
-<li>将回调函数进行一个缓存，只有在需要时才会返回一个新的事件处理函数</li>
-<li>useEffect 和 useCallback，现在都有一个约定，回调函数内如果使用了外部闭包中的变量，那么都应该在第二个参数中进行声明<ul>
-<li>eslint-plugin-react-hooks<ul>
-<li>“react-hooks/rules-of-hooks”: “error”<ul>
-<li>确保对hooks的调用，都发生在顶层作用域</li>
-</ul>
-</li>
-<li>“react-hooks/exhaustive-deps”: “warn”<ul>
-<li>必须提供 useEffect 和 useCallback 等hooks 的第二个参数，声明回调函数依赖的变量</li>
+<li>3D效果<ul>
+<li>three.js</li>
+<li>babylon.js</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
+<li>图形学基础设施<ul>
+<li></li>
 </ul>
 </li>
 </ul>
-</li>
-<li>useContext</li>
-</ul>
-</li>
-<li>自定义 hooks</li>
-<li><p>额外 hooks</p>
-<ul>
-<li><p>useReducer</p>
-<ul>
-<li><p><a href="https://fed.taobao.org/blog/taofed/do71ct/use-the-react-hooks-instead-of-the-redux/?spm=taofed.bloginfo.blog.3.707f5ac8tD5Gxz" target="_blank" rel="noopener">简单项目：使用 Hooks：useReducer 代替 Redux</a></p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> providers <span class="keyword">from</span> <span class="string">'./providers'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数据 Provider 组合器</span></span><br><span class="line"><span class="keyword">const</span> ProvidersComposer = <span class="function">(<span class="params">props</span>) =&gt;</span> (</span><br><span class="line">  props.providers.reduceRight(<span class="function">(<span class="params">children, Parent</span>) =&gt;</span> (</span><br><span class="line">    &lt;Parent&gt;&#123;children&#125;&lt;<span class="regexp">/Parent&gt;</span></span><br><span class="line"><span class="regexp">  ), props.children)</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Provider = (props) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;ProvidersComposer providers=&#123;providers&#125;&gt;</span></span><br><span class="line"><span class="regexp">      &#123;props.children&#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>ProvidersComposer&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Provider;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>useCallback</li>
-<li>useMemo</li>
-<li>useRef</li>
-<li>useImperativeHandle</li>
-<li>useLayoutEffect</li>
-<li>useDebugValue</li>
-</ul>
-</li>
-</ul>
-<h2 id="react-hooks-改写-TO-DO-Lists"><a href="#react-hooks-改写-TO-DO-Lists" class="headerlink" title="react-hooks 改写 TO DO Lists"></a>react-hooks 改写 TO DO Lists</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
 
@@ -212,12 +150,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/">
+		<a class="copy" href="/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>【未完】计算机...</h3>
+						<h3>【未完】前端性...</h3>
 					</div>
 				</div>
 			</div>
@@ -225,12 +163,12 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">
+		<a class="copy" href="/2020/04/13/react-hooks/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>自己的前端知识体系</h3>
+						<h3>【未完】rea...</h3>
 					</div>
 				</div>
 			</div>
