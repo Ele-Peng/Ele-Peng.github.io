@@ -102,6 +102,28 @@
 
   <div class="lx-entry padding">
     <div>
+      <h2 class="title"><a href="/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E4%B8%BB%E8%89%B2%E8%B0%83/">微信小程序-获取图片主色调</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-04-05 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></span>
+      <p><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>是的我要开始做：根据图片的主色调来改变一下页面背景颜色了🙆</li>
+<li>记录一下，自己碰到的问题以及思考</li>
+<li>时间多的话，会考虑将代码发在github，欢迎大家去star😘</li>
+</ul>
+<hr>
+<h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><ul>
+<li>理一下思路<ol>
+<li>将网络图片绘制进canvas</li>
+<li>通过canvas的getImageData获取图片的像素数据<ul>
+<li><a href="https://blog.csdn.net/Elle_Peng/article/details/105030971" target="_blank" rel="noopener">canvas 2d 与旧版 canvas 将网络图片绘制进canvas的两种方法实践</a></li>
+</ul>
+</li>
+<li>分析目前主要用于获取图片主色调的算法，并实践</li>
+<li>得到主要色调，再将rgb转换成hsb，并对b值，进行修改，制作渐变，左侧35，右侧15</p>
+      <div class="post-button"><a class="btn" href="/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E4%B8%BB%E8%89%B2%E8%B0%83/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
       <h2 class="title"><a href="/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/">微信小程序-fix canvas原生组件最顶层</a></h2>
       <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-04-05 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></span>
       <p><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
@@ -109,7 +131,7 @@
 <li>就像这样<ul>
 <li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png" alt="canvas顶层问题截图"></li>
 <li>柱状图是用canvas画的，它置于了我的tooltip之上。【这看起来真是一个可怕的问题</p>
-      <div class="post-button"><a class="btn" href="/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -123,7 +145,7 @@
 <h2 id="问题截图"><a href="#问题截图" class="headerlink" title="问题截图"></a>问题截图</h2><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png" alt="popover问题截图"></p>
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
 <li>模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？</p>
-      <div class="post-button"><a class="btn" href="/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
 
@@ -165,12 +187,12 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
     
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>Friends</span>
+      <i class="fa fa-link fa-fw"></i>友链</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>
