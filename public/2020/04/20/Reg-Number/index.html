@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>【未完】计算机图形学初探 | Be kind.</title>
+  <title>Reg-Number | Be kind.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="EllePeng">
   <meta name="keywords" content="">
@@ -86,9 +86,9 @@
   <div class="overlay">
   <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
-    <span>2020-04-15</span>
-    <h2>【未完】计算机图形学初探</h2>
-    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/" rel="tag">计算机图形学</a></div>
+    <span>2020-04-20</span>
+    <h2>Reg-Number</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">前端概念 正则表达式</a></div>
     <div class="social-links">
     <a href="https://github.com/Ele-Peng" target="_blank"><i class="fa fa-github fa-fw"></i></a>
     <a href="mailto:EllePeng@aliyun.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
@@ -101,43 +101,128 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li><p>记录 计算机图形学 方面的学习过程🤔</p>
-<a id="more"></a>
-
+        <h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><ul>
+<li>利用正则表达式，匹配所有 Number 字面量</li>
+</ul>
+<h4 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h4><ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/fcc73488cd245a6c48cf067a6dc7641e16278.png" alt="NumbericLiteral 大纲"></p>
+</li>
+<li><p>NumericLiteral :: </p>
+<ul>
+<li><p>DecimalLiteral</p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/94398bab367ca56c0aa2435de753041520532.png" alt="DecimalLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/40d13f93242ff1f9321411cc7886586f52608.png" alt="DecimalLiteral 详情"></p>
+</li>
+<li><p>DecimalIntegerLiteral . DecimalDigits(opt) ExponentPart(opt)</p>
+<ul>
+<li><p>DecimalIntegerLiteral</p>
+<blockquote>
+<p>(0)</p>
+</blockquote>
+<blockquote>
+<p>([1-9][0-9]*)</p>
+</blockquote>
+</li>
+<li><p>.</p>
+<blockquote>
+<p>.</p>
+</blockquote>
+</li>
+<li><p>DecimalDigits</p>
+<blockquote>
+<p>[0-9]*</p>
+</blockquote>
+</li>
+<li><p>ExponentPart</p>
+<blockquote>
+<p>(e|E)(\+|\-)?([0-9])*</p>
+</blockquote>
+</li>
+<li><p>可以推导出</p>
+<blockquote>
+<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
+</blockquote>
 </li>
 </ul>
-<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>前端与图形学<ul>
-<li>shader</li>
+</li>
+<li><p>. DecimalDigits ExponentPart(opt)</p>
+<ul>
+<li><p>可以推导出</p>
+<blockquote>
+<p>/^<strong>((0)|([1-9][0-9]*))?</strong>.?([0-9]*)(((e|E)?(\+|\-)?([0-9])*)*)$/</p>
+</blockquote>
+</li>
 </ul>
 </li>
-<li>图形学应用场景<ul>
-<li>Image<ul>
-<li>pattern（多用于背景）</li>
-<li>photo</li>
-<li>shape</li>
-</ul>
+<li><p>DecimalIntegerLiteral ExponentPart(opt)</p>
+<blockquote>
+<p>/^((0)|([1-9][0-9]*))?<strong>.?</strong>([0-9]<em>)((e|E)?(\+|\-)?([0-9]\</em>))?$/</p>
+</blockquote>
 </li>
-<li>来自数学的图形–分形</li>
-<li>来自物理的图形–光的衍射<ul>
-<li>相变</li>
-<li>绿幕<ul>
-<li>PNG24 –&gt; 2张 jpg</li>
-</ul>
-</li>
-<li>3D效果<ul>
-<li>three.js</li>
-<li>babylon.js</li>
-</ul>
+<li><p>最终</p>
+<blockquote>
+<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
+</blockquote>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
+<li><p>BinaryIntegerLiteral </p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/5a2e4c4c84c80cf794281290420928d78942.png" alt="BinaryIntegerLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/22c6b076cfe8b42d71003893bed4059512350.png" alt="BinaryIntegerLiteral 详情"></p>
+<blockquote>
+<p>/^0(b|B)(0|1)+$/</p>
+</blockquote>
+</li>
 </ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+</li>
+</ul>
+</li>
+<li><p>OctalIntegerLiteral </p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/40145f430e5560e16f117863419eceea12195.png" alt="OctalIntegerLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/3049a1ac2a5071c0bcebae1e31db9a5512369.png" alt="OctalIntegerLiteral 详情"></p>
+<blockquote>
+<p>/^0(O|o)[0-7]+$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>HexIntegerLiteral</p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/cfe61ed151be1f9e1ab58a860cc6c8638397.png" alt="HexIntegerLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/75544696fc619ce55f6555d0fddd5a0617749.png" alt="HexIntegerLiteral 详情"></p>
+<blockquote>
+<p>/^0(x|X)(([0-9])|([a-f])|([A-F]))+$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>简单总结</p>
+<blockquote>
+<p>/^(((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)(([0-9])|([a-f])|([A-F]))+)$/</p>
+</blockquote>
+</li>
+<li><p>简化</p>
+<blockquote>
+<p> /^(((0)|([1-9]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)((\d)|([a-f])|([A-F]))+)$/</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h4><ul>
 <li>祝大家多多发财</li>
 </ul>
 
@@ -148,12 +233,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">
+		<a class="copy" href="#">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>【未完】前端性...</h3>
+						<h3>没有更新的文章</h3>
 					</div>
 				</div>
 			</div>
@@ -161,12 +246,12 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2020/04/13/react-hooks/">
+		<a class="copy" href="/2020/04/20/Javascript-Types/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>【未完】rea...</h3>
+						<h3>Javascr...</h3>
 					</div>
 				</div>
 			</div>
