@@ -1,120 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>【未完】react-hooks</title>
-    <url>/2020/04/13/react-hooks/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>记录学习 react-hooks 过程中的思考🤔<a id="more"></a>
-</li>
-</ul>
-<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>react 16.8 推出</li>
-<li>能够在函数组件内部使用 state 和组件生命周期方法</li>
-<li>定义组件<ul>
-<li>class</li>
-<li>F(x) + react-hooks(灵活、可测试、代码复用)</li>
-</ul>
-</li>
-<li>什么是 hooks ?<ul>
-<li>允许你hook一些业务逻辑到组件内部 state 和 render 函数上</li>
-<li>hooks 允许我们去操作这个内部state了</li>
-<li>更好的去关注分离和代码复用(传统 HOC，函数作为子组件)，将相关代码</li>
-</ul>
-</li>
-<li>Why Hooks?<ul>
-<li>Mixins<ul>
-<li>命名空间耦合</li>
-<li>静态检查</li>
-<li>组件参数不清晰</li>
-</ul>
-</li>
-<li>HOC<ul>
-<li>解决命名空间解耦</li>
-<li>对 Class 进行静态检查</li>
-<li>组件参数不清晰</li>
-<li>组件实例增加</li>
-</ul>
-</li>
-<li>Hooks<ul>
-<li>命名空间解耦</li>
-<li>静态检查</li>
-<li>组件参数清晰</li>
-<li>单组件实例</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>三个基础 hooks<ul>
-<li>useState<ul>
-<li>允许操作组件的内部状态</li>
-<li>如果要根据之前的状态决定下一个状态<ul>
-<li>参数可以写成一个函数，函数接受的参数就是之前的状态，prevState =&gt; nowState</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>useEffect<ul>
-<li>使用副作用</li>
-<li>指定一个函数在每次render完，去执行什么样的逻辑</li>
-<li>第二个参数，传入一个数组，这个数组是当前闭包中的任何变量<ul>
-<li>只有当数组中的发生变化，才会调用回调函数</li>
-<li>函数组件内部，很容易监听props变化</li>
-</ul>
-</li>
-<li>可以在 useEffect 回调函数中，返回一个函数，作为组建销毁时的一个回调，允许执行一些资源回收的逻辑</li>
-<li><strong>useCallback</strong><ul>
-<li>将回调函数进行一个缓存，只有在需要时才会返回一个新的事件处理函数</li>
-<li>useEffect 和 useCallback，现在都有一个约定，回调函数内如果使用了外部闭包中的变量，那么都应该在第二个参数中进行声明<ul>
-<li>eslint-plugin-react-hooks<ul>
-<li>“react-hooks/rules-of-hooks”: “error”<ul>
-<li>确保对hooks的调用，都发生在顶层作用域</li>
-</ul>
-</li>
-<li>“react-hooks/exhaustive-deps”: “warn”<ul>
-<li>必须提供 useEffect 和 useCallback 等hooks 的第二个参数，声明回调函数依赖的变量</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>useContext</li>
-</ul>
-</li>
-<li>自定义 hooks</li>
-<li><p>额外 hooks</p>
-<ul>
-<li><p>useReducer</p>
-<ul>
-<li><p><a href="https://fed.taobao.org/blog/taofed/do71ct/use-the-react-hooks-instead-of-the-redux/?spm=taofed.bloginfo.blog.3.707f5ac8tD5Gxz" target="_blank" rel="noopener">简单项目：使用 Hooks：useReducer 代替 Redux</a></p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> providers <span class="keyword">from</span> <span class="string">'./providers'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数据 Provider 组合器</span></span><br><span class="line"><span class="keyword">const</span> ProvidersComposer = <span class="function">(<span class="params">props</span>) =&gt;</span> (</span><br><span class="line">  props.providers.reduceRight(<span class="function">(<span class="params">children, Parent</span>) =&gt;</span> (</span><br><span class="line">    &lt;Parent&gt;&#123;children&#125;&lt;<span class="regexp">/Parent&gt;</span></span><br><span class="line"><span class="regexp">  ), props.children)</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Provider = (props) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;ProvidersComposer providers=&#123;providers&#125;&gt;</span></span><br><span class="line"><span class="regexp">      &#123;props.children&#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>ProvidersComposer&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Provider;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>useCallback</li>
-<li>useMemo</li>
-<li>useRef</li>
-<li>useImperativeHandle</li>
-<li>useLayoutEffect</li>
-<li>useDebugValue</li>
-</ul>
-</li>
-</ul>
-<h2 id="react-hooks-改写-TO-DO-Lists"><a href="#react-hooks-改写-TO-DO-Lists" class="headerlink" title="react-hooks 改写 TO DO Lists"></a>react-hooks 改写 TO DO Lists</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>react</category>
-      </categories>
-      <tags>
-        <tag>react</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Elle-训练算法计划</title>
     <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
@@ -143,8 +29,8 @@
 </ul>
 </li>
 <li>算法<ul>
-<li>if-else, switch —&gt; branch</li>
-<li>for, while loop —&gt; iteration</li>
+<li>if-else, switch –&gt; branch</li>
+<li>for, while loop –&gt; iteration</li>
 <li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
 <li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
 <li>动态规划 dynamic programing</li>
@@ -164,19 +50,19 @@
 </ul>
 </li>
 <li>刷题第二遍<ul>
-<li>马上自己写 —&gt; LeetCode提交</li>
-<li>多种解法比较、体会 —&gt; 优化</li>
+<li>马上自己写 –&gt; LeetCode提交</li>
+<li>多种解法比较、体会 –&gt; 优化</li>
 <li>多种解法自己写一遍，直到通过</li>
 </ul>
 </li>
 <li>刷题第三遍<ul>
 <li>24h后，再重复做题</li>
-<li>不同解法的熟练程度 —&gt; 专项练习</li>
+<li>不同解法的熟练程度 –&gt; 专项练习</li>
 </ul>
 </li>
 <li>刷题第四遍<ul>
 <li>过了一周后：反复回来练习相同的题目</li>
-<li>不熟练的题目 —&gt; 专项练习</li>
+<li>不熟练的题目 –&gt; 专项练习</li>
 </ul>
 </li>
 <li>刷题第五遍<ul>
@@ -242,12 +128,325 @@
       </tags>
   </entry>
   <entry>
+    <title>【未完】react-hooks</title>
+    <url>/2020/04/13/react-hooks/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>记录学习 react-hooks 过程中的思考🤔<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
+<li><p>react 16.8 推出</p>
+</li>
+<li><p>能够在函数组件内部使用 state 和组件生命周期方法</p>
+</li>
+<li><p>定义组件</p>
+<ul>
+<li>class</li>
+<li>F(x) + react-hooks(灵活、可测试、代码复用)</li>
+</ul>
+</li>
+<li><p>什么是 hooks ?</p>
+<ul>
+<li>允许你hook一些业务逻辑到组件内部 state 和 render 函数上</li>
+<li>hooks 允许我们去操作这个内部state了</li>
+<li>更好的去关注分离和代码复用(传统 HOC，函数作为子组件)，将相关代码</li>
+</ul>
+</li>
+<li><p>Why Hooks?</p>
+<ul>
+<li>Mixins<ul>
+<li>命名空间耦合</li>
+<li>静态检查</li>
+<li>组件参数不清晰</li>
+</ul>
+</li>
+<li>HOC<ul>
+<li>解决命名空间解耦</li>
+<li>对 Class 进行静态检查</li>
+<li>组件参数不清晰</li>
+<li>组件实例增加</li>
+</ul>
+</li>
+<li>Hooks<ul>
+<li>命名空间解耦</li>
+<li>静态检查</li>
+<li>组件参数清晰</li>
+<li>单组件实例</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>三个基础 hooks</p>
+<ul>
+<li>useState<ul>
+<li>允许操作组件的内部状态</li>
+<li>如果要根据之前的状态决定下一个状态<ul>
+<li>参数可以写成一个函数，函数接受的参数就是之前的状态，prevState =&gt; nowState</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>useEffect<ul>
+<li>使用副作用</li>
+<li>指定一个函数在每次render完，去执行什么样的逻辑</li>
+<li>第二个参数，传入一个数组，这个数组是当前闭包中的任何变量<ul>
+<li>只有当数组中的发生变化，才会调用回调函数</li>
+<li>函数组件内部，很容易监听props变化</li>
+</ul>
+</li>
+<li>可以在 useEffect 回调函数中，返回一个函数，作为组建销毁时的一个回调，允许执行一些资源回收的逻辑</li>
+<li><strong>useCallback</strong><ul>
+<li>将回调函数进行一个缓存，只有在需要时才会返回一个新的事件处理函数</li>
+<li>useEffect 和 useCallback，现在都有一个约定，回调函数内如果使用了外部闭包中的变量，那么都应该在第二个参数中进行声明<ul>
+<li>eslint-plugin-react-hooks<ul>
+<li>“react-hooks/rules-of-hooks”: “error”<ul>
+<li>确保对hooks的调用，都发生在顶层作用域</li>
+</ul>
+</li>
+<li>“react-hooks/exhaustive-deps”: “warn”<ul>
+<li>必须提供 useEffect 和 useCallback 等hooks 的第二个参数，声明回调函数依赖的变量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>useContext</li>
+</ul>
+</li>
+<li><p>自定义 hooks</p>
+</li>
+<li><p>额外 hooks</p>
+<ul>
+<li><p>useReducer</p>
+<ul>
+<li><p><a href="https://fed.taobao.org/blog/taofed/do71ct/use-the-react-hooks-instead-of-the-redux/?spm=taofed.bloginfo.blog.3.707f5ac8tD5Gxz" target="_blank" rel="noopener">简单项目：使用 Hooks：useReducer 代替 Redux</a></p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> providers <span class="keyword">from</span> <span class="string">'./providers'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数据 Provider 组合器</span></span><br><span class="line"><span class="keyword">const</span> ProvidersComposer = <span class="function">(<span class="params">props</span>) =&gt;</span> (</span><br><span class="line">  props.providers.reduceRight(<span class="function">(<span class="params">children, Parent</span>) =&gt;</span> (</span><br><span class="line">    &lt;Parent&gt;&#123;children&#125;&lt;<span class="regexp">/Parent&gt;</span></span><br><span class="line"><span class="regexp">  ), props.children)</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Provider = (props) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;ProvidersComposer providers=&#123;providers&#125;&gt;</span></span><br><span class="line"><span class="regexp">      &#123;props.children&#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>ProvidersComposer&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Provider;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>useCallback</p>
+</li>
+<li><p>useMemo</p>
+</li>
+<li><p>useRef</p>
+</li>
+<li><p>useImperativeHandle</p>
+</li>
+<li><p>useLayoutEffect</p>
+</li>
+<li><p>useDebugValue</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="react-hooks-改写-TO-DO-Lists"><a href="#react-hooks-改写-TO-DO-Lists" class="headerlink" title="react-hooks 改写 TO DO Lists"></a>react-hooks 改写 TO DO Lists</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>react</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Javascript Types</title>
+    <url>/2020/04/20/Javascript-Types/</url>
+    <content><![CDATA[<h1 id="Javascript-–-Type"><a href="#Javascript-–-Type" class="headerlink" title="Javascript – Type"></a>Javascript – Type</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
+<li>Unicode Blocks<ul>
+<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
+<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
+</ul>
+</li>
+<li>U+000A LINE FEED 换行<ul>
+<li>Form Feed 翻页</li>
+<li>CJK 中文字符 Chinese Japan Korean</li>
+</ul>
+</li>
+<li>U+0020 SPACE 空格</li>
+<li>BMP 基本字符平面 四位能表示的范围</li>
+<li>超出BMP范围<ul>
+<li>fromCodePoint</li>
+<li>codePointAt</li>
+</ul>
+</li>
+<li>隐性需求需要可以使用\u转义<ul>
+<li>“厉害”.codePointAt(0).toString(16)</li>
+<li>\u5389\u5bb3</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>InputElement<ul>
+<li>WhiteSpace 空格<ul>
+<li>&lt;TAB&gt; Character Tabulation</li>
+<li>&lt;VT&gt; Vertical Line</li>
+<li>&lt;FF&gt; Form Feed </li>
+<li>&lt;SP&gt; </li>
+<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
+<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
+<li>&lt;USP&gt;</li>
+</ul>
+</li>
+<li>LineTerminator 换行符<ul>
+<li>&lt;LF&gt; /n</li>
+<li>&lt;CR&gt; Carriage Return 回车 /r</li>
+<li>&lt;LS&gt; LINE SEPARATOR</li>
+<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
+</ul>
+</li>
+<li>Comment 注释</li>
+<li>Token 与word不同，记号标记，JS中有效的东西<ul>
+<li>自己写的，代码包含的有效信息<ul>
+<li>Identifier 标识符，以英文字母开头<ul>
+<li>用作变量名，不能与关键字重复<ul>
+<li>undefined 全局变量名，修改不了</li>
+<li>离开全局作用域，便可以使用</li>
+</ul>
+</li>
+<li>用作属性的部分，可以与关键字重复</li>
+<li>Future reserved Keywords : enum</li>
+</ul>
+</li>
+<li>Literal 直接量<ul>
+<li>Number    </li>
+<li>String</li>
+<li>Boolean</li>
+<li>Object</li>
+<li>Null</li>
+<li>Undefined</li>
+<li>Symbol</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>帮助程序形成结构<ul>
+<li>Punctuator 符号</li>
+<li>Keywords </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
+<li><p>IEEE 754 Double Float</p>
+<ul>
+<li>Sign(1)</li>
+<li>Exponent(11) 指数，科学计数法</li>
+<li>Fraction(52)</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li>DecimaLiteral<ul>
+<li>0</li>
+<li>0.</li>
+<li>.2</li>
+<li>1e3</li>
+</ul>
+</li>
+<li>BinaryIntegerLiteral<ul>
+<li>0b111</li>
+</ul>
+</li>
+<li>OctalIntegerLiteral<ul>
+<li>0o10</li>
+</ul>
+</li>
+<li>HexIntegerLiteral<ul>
+<li>0xFF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>最佳实践</p>
+<ul>
+<li><p>浮点数比较时，需要加精度</p>
+<blockquote>
+<p>Number.MAX_SAFE_INTEGER</p>
+</blockquote>
+<blockquote>
+<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
+<li><p>Character</p>
+</li>
+<li><p>Code Point</p>
+</li>
+<li><p>Encoding</p>
+<blockquote>
+<p>97 .toString(2)</p>
+</blockquote>
+<blockquote>
+<p>“97.” 是一个合法的Number 01100001</p>
+</blockquote>
+<ul>
+<li>ASCII</li>
+<li>Unicode</li>
+<li>UCS U+0000 - U+FFFF</li>
+<li>GB<ul>
+<li>GB2312</li>
+<li>GBK(GB13000)</li>
+<li>GB18030</li>
+</ul>
+</li>
+<li>ISO-8859</li>
+<li>BIG5</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li><p>“abc”</p>
+<ul>
+<li>“\x10” –&gt; 8</li>
+<li>“\u000a”</li>
+</ul>
+</li>
+<li><p>‘abc’</p>
+</li>
+<li><p>`abc`</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
+<li>true</li>
+<li>false</li>
+</ul>
+<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
+<li>typeof 下为 Object<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4></li>
+</ul>
+<h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【未完】前端性能监控</title>
     <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>记录 性能监控 方面的学习过程🤔</li>
 </ul>
 <a id="more"></a>
+
 <h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
 <li>Gmail SPA</li>
 <li>Angular/React/Vue MVVM/工程化</li>
@@ -291,7 +490,7 @@
 <li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
 <li>什么原因导致猜想不成立？<ul>
 <li>元素是否可见</li>
-<li>每个元素对页面的影响是否等效？ —&gt; 权重</li>
+<li>每个元素对页面的影响是否等效？ –&gt; 权重</li>
 </ul>
 </li>
 </ul>
@@ -325,66 +524,112 @@
       </tags>
   </entry>
   <entry>
-    <title>【未完】计算机图形学初探</title>
-    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
+    <title>OOP-面向对象</title>
+    <url>/2020/04/09/OOP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li><p>记录 计算机图形学 方面的学习过程🤔</p>
-<a id="more"></a>
+<li>昨天 Mentor 说以后要开始用 React Hooks（我还没有涉足 ）写点东西，进而谈论到 React 生态一直想推展开来的的函数式编程思想，我不由得想到一个问题：都说 Javascript 不是典型的面向对象编程语言，它并不具备完整的 OOP 该有的特性，它虽引进了 class 语法糖，但只是让对象原型写法更加像面向对象编程语言的写法，那面向对象到底可以理解为什么 ? 🤔 以及函数式编程思想在推什么？Javascript 定位究竟是什么？</li>
+<li>简单记录一下自己关于这个问题的思考<a id="more"></a>
+
 </li>
 </ul>
-<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>前端与图形学<ul>
-<li>shader</li>
+<h2 id="OOP-Wikipedia"><a href="#OOP-Wikipedia" class="headerlink" title="OOP Wikipedia"></a>OOP Wikipedia</h2><ul>
+<li><p>探讨的是面向对象</p>
+</li>
+<li><p>我们首先可以想想，我们为什么需要封装成对象？</p>
+<ul>
+<li>我的理解是：我们需要减少我们的操作粒度，每个操作都去落实到 bit 数据是非常庞大的，减少问题求解复杂度</li>
+<li>wiki 上关于 object 特性也给到了支持</li>
 </ul>
 </li>
-<li>图形学应用场景<ul>
-<li>Image<ul>
-<li>pattern（多用于背景）</li>
-<li>photo</li>
-<li>shape</li>
+<li><p>A feature of objects is an object’s procedures that can <strong>access</strong> and <strong>often modify the data fields</strong> of the object with which they are associated (objects have a notion of “this” or “self”).</p>
+<ul>
+<li><p>可以和面向过程 (Procedure Oriented) 放在一起说。</p>
+</li>
+<li><p>首先 OOP 是一个很自然的思想，在C语言中也能写出<strong>符合</strong>面向对象思想的代码</p>
+  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C语言例子</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *name;  <span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">int</span> num;  <span class="comment">//学号</span></span><br><span class="line">    <span class="keyword">int</span> age;  <span class="comment">//年龄</span></span><br><span class="line">    <span class="keyword">char</span> group;  <span class="comment">//所在学习小组</span></span><br><span class="line">    <span class="keyword">float</span> score;  <span class="comment">//成绩</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">GetStudentName</span><span class="params">(struct Student* stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetStudentName</span><span class="params">(struct Student* stu, <span class="keyword">char</span>* newName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span> <span class="title">s1</span>, <span class="title">s2</span>, <span class="title">s3</span>, <span class="title">s4</span>;</span> <span class="comment">// 创建了多个学生</span></span><br><span class="line">    SetStudentName(&amp;s1, <span class="string">"小明"</span>);</span><br><span class="line">    SetStudentName(&amp;s2, <span class="string">"小红"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>来自数学的图形—分形</li>
-<li>来自物理的图形—光的衍射<ul>
-<li>相变</li>
-<li>绿幕<ul>
-<li>PNG24 —&gt; 2张 jpg</li>
+<li><p>其次 OOP 面向对象编程，在做一件什么事情？</p>
+<ul>
+<li><p>在面对复杂性业务需求中，面向对象思想可以将业务先进行分析，如果业务需求全新无关联，那我们可以新建一个对象，在里面封装对应的方法；如果业务需求只是一条延展线（比如特定节假日打折），那我们可以继承现有对象，并对现有对象的某些方法（discount），进行特定操作，即多态：用统一的方法对不同的对象进行同样的操作。</p>
+  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">override</span> fun <span class="title">discount</span><span class="params">(price: Double)</span>: Double </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (!isCouple()) <span class="keyword">return</span> price</span><br><span class="line">       <span class="keyword">if</span> (price &gt; <span class="number">99</span>) &#123;</span><br><span class="line">           val lucky = Random().nextInt(gifts.<span class="built_in">size</span>)</span><br><span class="line">           <span class="built_in">println</span>(<span class="string">"Congratulations on getting $&#123;gifts[lucky]&#125;!"</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> price * <span class="number">0.77</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>而面对这种频繁操作数据单元的使用面向过程编程思想，可能会在现有对象加上判断，万一节假日还要做其他的业务，判断只会越来越多。这就与我们 Nicklaus Wirth 提出的：<strong>程序 = 数据结构 + 算法</strong>，越来越割裂。</li>
 </ul>
 </li>
-<li>3D效果<ul>
-<li>three.js</li>
-<li>babylon.js</li>
-</ul>
-</li>
-</ul>
+<li><p>在我现在的浅薄思考看来：面向对象编程思想是想先让不同对象以尽可能的统一特性进行归组，形成“大对象”，然后各个对象变成了这个大对象中衍生出来的基类，并在父类派生出来的对象中，去实现各自解决问题的具体方法。这样当我们在拿到一个问题，我们可以不用去管它的内部实现，我们根据类型就可以知道它能做什么事，这比我们手动去一步一步执行要先进点。<strong>让对象有多态性，把不同对象以同一特性来归组，统一处理。至于所谓继承等概念，是实现的细节</strong>。</p>
 </li>
 </ul>
 </li>
-<li>图形学基础设施<ul>
-<li></li>
+</ul>
+<h2 id="prototype-based-programming"><a href="#prototype-based-programming" class="headerlink" title="prototype-based programming"></a>prototype-based programming</h2><ul>
+<li><p>Languages with abstract data type support which may be used to <strong>resemble OO programming</strong>, but <strong>without all features of object-orientation</strong>. This includes object-based and <strong>prototype-based languages</strong>. Examples: JavaScript, Lua, Modula-2, CLU.</p>
+</li>
+<li><p>The Document Object Model of HTML, XHTML, and XML documents on the Internet has bindings to the popular JavaScript/ECMAScript language. <strong>JavaScript is perhaps the best known prototype-based programming language, which employs cloning from prototypes rather than inheriting from a class (contrast to class-based programming)</strong>. </p>
+</li>
+<li><p>我们在大概了解了 OOP 思想后，我们可以继续看看“类OOP”–基于原型编程 Javascript 实现</p>
+</li>
+<li><p>我们可以先从 ECMA-262 规范中找到关于 Object 的定义</p>
+<ul>
+<li>“Objects are created by using constructors in <strong>new expressions</strong>.”</li>
+<li>“Each constructor is a function that has a property named <strong>‘prototype’ that is used to implement prototype-based inheritance and shared properties</strong>.”</li>
+<li>“Every object created by a constructor has an implicit reference (called the object’s prototype) to the value of its constructor’s ‘prototype’ property. Furthermore, a prototype may have a non-null implicit reference to its prototype, and so on; this is called the prototype chain. When a reference is made to a property in an object, that reference is to the property of that name in the first object in the prototype chain that contains a property of that name. In other words, first the object mentioned directly is examined for such a property; if that object contains the named property, that is the property to which the reference refers; if that object does not contain the named property, the prototype for that object is examined next; and so on.”</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/54f432d1395e59da48e0e7935ffd7665110363.png" alt="ECMA原型链"></li>
 </ul>
 </li>
+<li><p>同时 Douglas Crockford 关于 <a href="https://crockford.com/javascript/prototypal.html" target="_blank" rel="noopener">prototypal inheritance</a></p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">       <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">       F.prototype = o;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>“The object function untangles JavaScript’s constructor pattern, achieving true prototypal inheritance. It takes an old object as a parameter and returns an empty new object that inherits from the old one. If we attempt to obtain a member from the new object, and it lacks that key, then the old object will supply the member. Objects inherit from objects.”</li>
+<li>“What could be more object oriented than that?” 😝</li>
+</ul>
+</li>
+<li><p>也有新的对 Object 的思考</p>
+<ul>
+<li>“In JavaScript, <strong>an object is an associative array</strong>, augmented with a prototype (see below); each string key provides the name for an object property, and there are two syntactical ways to specify such a name: dot notation (obj.x = 10) and bracket notation (obj[‘x’] = 10). A property may be added, rebound, or deleted at run-time. Most properties of an object (and any property that belongs to an object’s prototype inheritance chain) can be enumerated using a for…in loop.”</li>
+</ul>
+</li>
+</ul>
+<h2 id="Functional-programming"><a href="#Functional-programming" class="headerlink" title="Functional programming"></a>Functional programming</h2><ul>
+<li>Functional programming has its origins in lambda calculus.It is a programming paradigm —- a style of building the structure and elements of computer programs – that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.</li>
+<li>One of the key motivations for the development of functional programming is making a program easier to understand by eliminating changes in state that <strong>do not depend on function inputs</strong> which are called side effects.</li>
+<li>side effects include modifying a non-local variable, modifying a static local variable, modifying a mutable argument passed by reference, performing I/O or calling other side-effect functions.</li>
+<li>referential transparency<ul>
+<li>the same language expression can result in different values at different times depending on the state of the executing program.</li>
+<li>Consider C assignment statement x = x * 10, this changes the value assigned to the variable x. Let us say that the initial value of x was 1, then two consecutive evaluations of the variable x yields 10 and 100 respectively. Clearly, replacing x = x * 10 with either 10 or 100 gives a program with different meaning, and so the expression is not referentially transparent. In fact, assignment statements are never referentially transparent.</li>
+<li>Absence of side effects is a necessary, but not sufficient, condition for referential transparency. <strong>Referential transparency means that an expression (such as a function call) can be replaced with its value</strong>. This requires that the expression is pure, that is to say the expression must be deterministic (always give the same value for the same input) and side-effect free.</li>
+</ul>
+</li>
+</ul>
+<h2 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h2><ul>
+<li>Javasript 说它是基于面向对象的编程语言是不严谨的，准确的说他是类面向对象的编程语言，基于原型的编程语言。</li>
+</ul>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects" target="_blank" rel="noopener">引入 Javascript 对象</a></li>
+<li><a href="https://software.intel.com/en-us/blogs/2008/08/22/flaws-of-object-oriented-modeling/" target="_blank" rel="noopener">Flaws of Object Oriented Modeling</a></li>
+<li><a href="https://books.google.com/books?id=xb-sAQAAQBAJ&printsec=frontcover&dq=isbn:9788090466180&hl=zh-CN&sa=X&ved=0ahUKEwiG-8y8qdroAhWmUt8KHey5Dl0Q6AEIKDAA#v=onepage&q&f=false" target="_blank" rel="noopener">learn object oriented thinking &amp; programming</a></li>
+<li><a href="https://books.google.com/books?id=WzsFCAAAQBAJ&printsec=frontcover&dq=isbn:9780735619654&hl=zh-CN&sa=X&ved=0ahUKEwiqzaPSqNroAhVvUd8KHc80CYEQ6AEIKDAA#v=onepage&q&f=false" target="_blank" rel="noopener">Obejct thinking</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener">Javascript Object-orientation (prototype-based)</a></li>
+<li><a href="https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep" target="_blank" rel="noopener">Introduction to Object Oriented Programming Concepts (OOP) and More</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank" rel="noopener">Functional_programming wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)" target="_blank" rel="noopener">Side effect wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">Object-oriented programming wikipedia</a></li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>有对 Object 以及对 reference 产生的 side effects<br>新的认识</li>
+<li>闭包 closure<ul>
+<li>A nested function is a function defined within another function. It is created each time the outer function is invoked. In addition, each nested function forms a lexical closure: The lexical scope of the outer function (including any constant, local variable, or argument value) becomes part of the internal state of each inner function object, even after execution of the outer function concludes.</li>
+</ul>
+</li>
 <li>祝大家多多发财</li>
 </ul>
 ]]></content>
       <categories>
-        <category>计算机图形学</category>
+        <category>前端概念</category>
       </categories>
       <tags>
-        <tag>计算机图形学</tag>
+        <tag>前端概念</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>数组、链表、跳表</title>
-    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
-    <content><![CDATA[<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
-<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
-<li>数学归纳法</li>
-<li>找最近重复问题</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>微信小程序-气泡框</title>
@@ -396,6 +641,7 @@
 <h2 id="问题截图"><a href="#问题截图" class="headerlink" title="问题截图"></a>问题截图</h2><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png" alt="popover问题截图"></p>
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
 <li>模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？<a id="more"></a>
+
 </li>
 </ul>
 <h2 id="问题解决过程记录"><a href="#问题解决过程记录" class="headerlink" title="问题解决过程记录"></a>问题解决过程记录</h2><ul>
@@ -457,7 +703,8 @@
 </li>
 </ul>
 </li>
-<li>官方已给出问题原因<ul>
+<li><p>官方已给出问题原因</p>
+<ul>
 <li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzJkMWVkZmYyNWIwM2YxZDU2ZGVjYjZhM2NkYjAwMGU5NTE5ODQucG5n?x-oss-process=image/format,png" alt="wxml面板"></li>
 </ul>
 </li>
@@ -477,12 +724,317 @@
       </tags>
   </entry>
   <entry>
+    <title>编程语言通识</title>
+    <url>/2020/04/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%80%9A%E8%AF%86/</url>
+    <content><![CDATA[<h2 id="语言按语法分类"><a href="#语言按语法分类" class="headerlink" title="语言按语法分类"></a>语言按语法分类</h2><ul>
+<li>非形式语言<ul>
+<li>中文、英文</li>
+</ul>
+</li>
+<li>形式语言（乔姆斯基谱系）<strong>追溯</strong>19世纪50年代<ul>
+<li>0型 无限制文法</li>
+<li>1型 上下文相关文法</li>
+<li>2型 上下文无关文法<ul>
+<li>大部分计算机语言主体上都是上下文无关文法</li>
+<li>比如Javascript就是上下文无关文法，会在某些点，违反上下文无关文法原则（get）</li>
+</ul>
+</li>
+<li>3型 正则文法<a id="more"></a>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="理解形式语言"><a href="#理解形式语言" class="headerlink" title="理解形式语言"></a>理解形式语言</h2><h3 id="产生式（BNF-–-Backus-Naur-Form）"><a href="#产生式（BNF-–-Backus-Naur-Form）" class="headerlink" title="产生式（BNF – Backus-Naur Form）"></a>产生式（BNF – Backus-Naur Form）</h3><ul>
+<li>用尖括号括起来的名称来表示语法结构名</li>
+<li>语法结构分成基础结构和需要用其他语法结构定义的复合结构<ul>
+<li>基础结构称终结符</li>
+<li>复合结构称非终结符</li>
+</ul>
+</li>
+<li>引号和中间的字符表示终结符</li>
+<li>可以有括号</li>
+<li><ul>
+<li>表示重复多次</li>
+</ul>
+</li>
+<li>| 表示或</li>
+<li><ul>
+<li>表示至少一次</li>
+</ul>
+</li>
+</ul>
+<h4 id="BNF-表示-四则运算"><a href="#BNF-表示-四则运算" class="headerlink" title="BNF 表示 四则运算"></a>BNF 表示 四则运算</h4><ul>
+<li><p>加法，允许连加</p>
+<ul>
+<li>&lt;Number&gt;::= “0” | “1” | “2” | “3” | … | “9”</li>
+<li>&lt;DecimalNumber&gt;::= “0” | ((“1” | “2” | “3” | … “9”) &lt;Number&gt;*)</li>
+<li>&lt;AddtiveExpression&gt;::= &lt;DecimalNumber&gt; “+” &lt;DecimalNumber&gt;</li>
+<li>支持多个连加，采用递归：<ul>
+<li>&lt;AddtiveExpression&gt;::= &lt;AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</li>
+</ul>
+</li>
+<li>最终：<ul>
+<li>&lt;AddtiveExpression&gt;::= &lt;DecimalNumber&gt; | &lt;AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>乘法</p>
+<ul>
+<li><p>&lt;MultiplecativeExpression&gt;::= &lt;DecimalNumber&gt; | &lt; MultiplecativeExpression&gt; “*” &lt;DecimalNumber&gt;</p>
+</li>
+<li><p>1 + 2 * 3</p>
+<ul>
+<li><p>加法表达式，是由两个乘法表达式加起来的</p>
+</li>
+<li><p>1 * 1 + 2 * 3</p>
+</li>
+<li><p>因此<strong>加法表示成</strong></p>
+<blockquote>
+<p>&lt;AddtiveExpression&gt;::= &lt; MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>LogicExpression</p>
+<blockquote>
+<p>&lt;LogicExpression&gt;::= &lt;AddtiveExpression&gt; | </p>
+<pre><code>&amp;lt;LogicExpression&amp;gt; &quot;||&quot; &amp;lt;AddtiveExpression&amp;gt; |
+&amp;lt;LogicExpression&amp;gt; &quot;&amp;&amp;&quot; &amp;lt;AddtiveExpression&amp;gt;</code></pre></blockquote>
+</li>
+<li><p>除法</p>
+<blockquote>
+<p>&lt;MultiplecativeExpression&gt;::= &lt;DecimalNumber&gt; | &lt; MultiplecativeExpression&gt; “/“ &lt;DecimalNumber&gt;</p>
+</blockquote>
+</li>
+<li><p>减法</p>
+<blockquote>
+<p>&lt;AddtiveExpression&gt;::= &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “-“ &lt;MultiplecativeExpression&gt;</p>
+</blockquote>
+</li>
+<li><p>带括号的四则运算</p>
+<ul>
+<li><p>括号</p>
+<blockquote>
+<p>&lt;PrimaryExpression&lt;::= &lt;DecimalNumber&lt; | “(“ | &lt;LogicExpression&lt; | “)”</p>
+</blockquote>
+</li>
+<li><p>乘法表达式便可以变成</p>
+<blockquote>
+<pre><code>&amp;lt;MultiplecativeExpression&amp;gt;::= &amp;lt;PrimaryExpression&amp;gt; | &amp;lt; MultiplecativeExpression&amp;gt; &quot;*&quot; &amp;lt; PrimaryExpression&amp;gt;</code></pre></blockquote>
+</li>
+<li><p>除法，同理乘法，换符号</p>
+<blockquote>
+<p>&lt;MultiplecativeExpression&gt;::= &lt;PrimaryExpression&gt; | &lt; MultiplecativeExpression&gt; “/“ &lt; PrimaryExpression&gt;</p>
+</blockquote>
+</li>
+<li><p>加减</p>
+<blockquote>
+<p>&lt;AddtiveExpression&gt;::= &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “+” &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “-“ &lt;MultiplecativeExpression&gt;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="通过-BNF-理解形式语言（乔姆斯基谱系）"><a href="#通过-BNF-理解形式语言（乔姆斯基谱系）" class="headerlink" title="通过 BNF 理解形式语言（乔姆斯基谱系）"></a>通过 BNF 理解形式语言（乔姆斯基谱系）</h4><ul>
+<li>0型 无限制文法<ul>
+<li>?::=?</li>
+</ul>
+</li>
+<li>1型 上下文相关文法<ul>
+<li><span style="color: red">?</span>&lt;A&gt;<span style="color:blue">?</span>::=<span style="color: red">?</span>&lt;B&gt;<span style="color:blue">?</span></li>
+</ul>
+</li>
+</ul>
+<pre><code>    <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">get</span> a &#123; <span class="keyword">return</span> <span class="number">1</span>&#125;,</span><br><span class="line">  <span class="keyword">get</span>: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+- 1）类似关键字， 2）get: 属性</code></pre><ul>
+<li><p>2型 上下文无关文法</p>
+<ul>
+<li>&lt;A&gt;::=?</li>
+<li>2 ** 1 ** 2</li>
+</ul>
+</li>
+<li><p>3型 正则文法，只允许左递归（Javascript在**出现前，一直遵循着左递归）</p>
+<ul>
+<li><p>&lt;A&gt;::=&lt;A&gt;?</p>
+</li>
+<li><p>&lt;A&gt;::=?&lt;A&gt;<span style="color: red">x</span></p>
+</li>
+<li><p>Javascript 表达式大部分在3型</p>
+</li>
+<li><p>** 右结合</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">2</span> --&gt; <span class="number">4</span></span><br><span class="line"><span class="number">2</span> ** (<span class="number">2</span> ** <span class="number">3</span>) --&gt; <span class="number">256</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>**</p>
+<blockquote>
+<p>&lt;ExpExpression&gt; = &lt;MulticativeExpression&gt; | &lt;MulticativeExpression&gt; “**” &lt;ExpExpression&gt;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="optional-正则表达式-BNF-表示四则运算"><a href="#optional-正则表达式-BNF-表示四则运算" class="headerlink" title="optional 正则表达式+ BNF 表示四则运算"></a>optional 正则表达式+ BNF 表示四则运算</h4><h3 id="其他产生式"><a href="#其他产生式" class="headerlink" title="其他产生式"></a>其他产生式</h3><ul>
+<li>EBNF ABNF Customized<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/1d1c7542767173de3c87f7a9e00a445763429.png" alt="ECMA-Script EBNF"></li>
+</ul>
+</li>
+</ul>
+<h3 id="现代语言语言的特例"><a href="#现代语言语言的特例" class="headerlink" title="现代语言语言的特例"></a>现代语言语言的特例</h3><ul>
+<li>C++，* 可能表示乘号或者指针，具体是哪个，取决于星号前面的标识符是否被声明为类型<ul>
+<li>非形式话语言，语法与语义相关，* 可以在很早之前出现</li>
+</ul>
+</li>
+<li>VB中， &lt; 可能是小于号，也可能是 XML 直接量的开始，取决于当前位置是否可以接受 XML 直接量<ul>
+<li>1型 上下文无关文法</li>
+</ul>
+</li>
+<li>Python，行首的 tab 符和空格会根据上一行的行首空白以一定规则被处理成虚拟终结符 indent 或者 dedent </li>
+<li>Javascript，/ 可能是除号，也可能是正则表达式开头，处理方式类似于VB，字符串模板中也需要特殊处理},还有自动插入分号规则<ul>
+<li>同 VB / JSX</li>
+</ul>
+</li>
+</ul>
+<h2 id="语言的分类"><a href="#语言的分类" class="headerlink" title="语言的分类"></a>语言的分类</h2><h3 id="图灵完备性"><a href="#图灵完备性" class="headerlink" title="图灵完备性"></a>图灵完备性</h3><ul>
+<li>图灵机（凡是可计算的，都能计算出来）</li>
+<li>图灵完备性<ul>
+<li>命令式 – 图灵机<ul>
+<li>goto</li>
+<li>if 和 while</li>
+</ul>
+</li>
+<li>声明式 – lambda<ul>
+<li>递归</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="动态与静态"><a href="#动态与静态" class="headerlink" title="动态与静态"></a>动态与静态</h3><ul>
+<li>动态：<ul>
+<li>在用户的设备/在线服务器上</li>
+<li>产品实际运行时</li>
+<li>Runtime</li>
+</ul>
+</li>
+<li>静态<ul>
+<li>在程序员的设备上</li>
+<li>产品开发时</li>
+<li>Compiletime</li>
+</ul>
+</li>
+</ul>
+<h4 id="类型系统-In-静态语言"><a href="#类型系统-In-静态语言" class="headerlink" title="类型系统 In 静态语言"></a>类型系统 In 静态语言</h4><ul>
+<li>动态类型系统和静态类型系统<ul>
+<li>不是说 Typescript 才有类型系统，而是它才有静态类型系统</li>
+</ul>
+</li>
+<li>强类型和弱类型<ul>
+<li>String + Number<ul>
+<li>产生了隐式的类型转换</li>
+</ul>
+</li>
+<li>String == Boolean</li>
+<li>C++ 有隐式转换，弱类型</li>
+</ul>
+</li>
+<li>复合类型<ul>
+<li>结构体</li>
+<li><strong>函数签名</strong><ul>
+<li>参数列表 + 返回值类型</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>子类型<ul>
+<li>逆变/协变<ul>
+<li>协变 –&gt; 凡是能用到Array&lt;Parent&gt;的地方，都能用Array&lt;Child&gt;</li>
+<li>逆变 –&gt; 凡是能用到Array&lt;Child&gt;的地方，都能用Array&lt;Parent&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="一般命令式编程语言"><a href="#一般命令式编程语言" class="headerlink" title="一般命令式编程语言"></a>一般命令式编程语言</h2><h3 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h3><h3 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h3><h3 id="Statement-语句"><a href="#Statement-语句" class="headerlink" title="Statement 语句"></a>Statement 语句</h3><h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><h3 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h3>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【未完】计算机图形学初探</title>
+    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><p>记录 计算机图形学 方面的学习过程🤔</p>
+<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
+<li>前端与图形学<ul>
+<li>shader</li>
+</ul>
+</li>
+<li>图形学应用场景<ul>
+<li>Image<ul>
+<li>pattern（多用于背景）</li>
+<li>photo</li>
+<li>shape</li>
+</ul>
+</li>
+<li>来自数学的图形–分形</li>
+<li>来自物理的图形–光的衍射<ul>
+<li>相变</li>
+<li>绿幕<ul>
+<li>PNG24 –&gt; 2张 jpg</li>
+</ul>
+</li>
+<li>3D效果<ul>
+<li>three.js</li>
+<li>babylon.js</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机图形学</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组、链表、跳表</title>
+    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
+    <content><![CDATA[<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
+<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
+<li>数学归纳法</li>
+<li>找最近重复问题</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>自己的前端知识体系</title>
     <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>理一下自己的技术体系吧</li>
 </ul>
 <a id="more"></a>
+
 <h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/5947cefee7afec18961dda1194cebf224343214.png" alt="技术体系脑图"></li>
 </ul>
@@ -498,101 +1050,99 @@
       </tags>
   </entry>
   <entry>
-    <title>OOP-面向对象</title>
-    <url>/2020/04/09/OOP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <title>微信小程序-fix canvas原生组件最顶层</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>昨天 Mentor 说以后要开始用 React Hooks（我还没有涉足 ）写点东西，进而谈论到 React 生态一直想推展开来的的函数式编程思想，我不由得想到一个问题：都说 Javascript 不是典型的面向对象编程语言，它并不具备完整的 OOP 该有的特性，它虽引进了 class 语法糖，但只是让对象原型写法更加像面向对象编程语言的写法，那面向对象到底可以理解为什么 ? 🤔 以及函数式编程思想在推什么？Javascript 定位究竟是什么？</li>
-<li>简单记录一下自己关于这个问题的思考<a id="more"></a>
+<li>大家应该都知道过，在微信小程序中，canvas等原生组件的层级是最高的，页面中无论你设置多大的z-index都无法覆盖在其之上，这就可能会产生一些问题</li>
+<li>就像这样<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png" alt="canvas顶层问题截图"></li>
+<li>柱状图是用canvas画的，它置于了我的tooltip之上。【这看起来真是一个可怕的问题<a id="more"></a>
 </li>
 </ul>
-<h2 id="OOP-Wikipedia"><a href="#OOP-Wikipedia" class="headerlink" title="OOP Wikipedia"></a>OOP Wikipedia</h2><ul>
-<li>探讨的是面向对象</li>
-<li>我们首先可以想想，我们为什么需要封装成对象？<ul>
-<li>我的理解是：我们需要减少我们的操作粒度，每个操作都去落实到 bit 数据是非常庞大的，减少问题求解复杂度</li>
-<li>wiki 上关于 object 特性也给到了支持</li>
+</li>
+</ul>
+<hr>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><ul>
+<li>微信官方提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html" target="_blank" rel="noopener">cover-view</a>原生组件，覆盖在原生组件之上的文本视图</li>
+<li>微信官方提供了将canvas转化为图片的方式–<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
+</ul>
+<h3 id="方法一：cover-view"><a href="#方法一：cover-view" class="headerlink" title="方法一：cover-view"></a>方法一：cover-view</h3><ul>
+<li>将tooltip用cover-view改写，效果如下<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2Y0MTZjZjhlMjNiZWEwMjNjYTM1M2JhOGExMDM1MDM2MzYyOTIucG5n?x-oss-process=image/format,png" alt="cover-view version0.1 截图"></li>
+<li>看上去，是解决了我们的问题，且tooltip后的灰色背景不能滑动了，【妈耶，好棒！</li>
+<li>但是，这产生了一个：<strong>当文本超出tooltip宽度时，scroll-y: auto，失效了，溢出部分被直接截取</strong></li>
+<li>罪魁祸首就是它<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2M5ZDljYjZiZTQ0ZGY3YmJmNmRlMjAxNDM1ZmYzOTJjNDMxNDMucG5n?x-oss-process=image/format,png" alt="cover内置样式"></li>
 </ul>
 </li>
-<li><p>A feature of objects is an object’s procedures that can <strong>access</strong> and <strong>often modify the data fields</strong> of the object with which they are associated (objects have a notion of “this” or “self”).</p>
+<li>那我们可以：<ul>
+<li>在tooltip分段内容中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content-rule</span> &#123;</span><br><span class="line">    <span class="attribute">white-space</span>: pre-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在内容wrapper中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>完美解决<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2FhZjRkMDAyODdjZGI4M2Y0NWRhMGVkOTg3Mzc5MGNhNDQxMjkucG5n?x-oss-process=image/format,png" alt="cover-view解决图"><h3 id="方法二：wx-canvasToTempFilePath"><a href="#方法二：wx-canvasToTempFilePath" class="headerlink" title="方法二：wx.canvasToTempFilePath"></a>方法二：wx.canvasToTempFilePath</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>首先我们要做的就是将网络图片绘制进canvas，官方关于canvas类型有两种<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2E4ZjJmNjA5OGYxNmQ4MzY3NWJiN2I3OWY0ZDM1NWM1MTAwMDg3LnBuZw?x-oss-process=image/format,png" alt="两种canvas类型"></li>
+<li>新canvas 2D接口尝试  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzE5ZWE3ZGYxYjg2ODUzOWFhNzVhY2E0OTAxYzI2MzU2OTk4NDYucG5n?x-oss-process=image/format,png" alt="canvas2d 运行截图"></li>
+<li>第二种旧canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line">   wx.getImageInfo(&#123;</span><br><span class="line">       src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">       success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">         <span class="keyword">const</span> poster = res.path                                  </span><br><span class="line">         ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">         ctx.draw()</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">     <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">     wx.canvasGetImageData(&#123;</span><br><span class="line">       canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">       x: <span class="number">0</span>,</span><br><span class="line">       y: <span class="number">0</span>,</span><br><span class="line">       width: <span class="number">150</span>,</span><br><span class="line">       height: <span class="number">100</span>,</span><br><span class="line">       success(res) &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzU4NTg5MzQ4MDc3Njk3OTA0OTRmZmIzOWRiNDdjMWRmNjk4ODQucG5n?x-oss-process=image/format,png" alt="旧canvas"></li>
+<li>虽然两种方法，都能实现将网络图片绘制进canvas，但新版的进行了createImage，将其打印的话，其实就是新建了一个img标签，并将img标签的东西绘制进canvas<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzFjMjE1NzMzZTRkY2UzNGZiNzI4NDFhZWEyMDc0ZWIwMjQ1OTQucG5n?x-oss-process=image/format,png" alt="img console"></li>
+<li>为什么微信官方会仅支持以下方式进行新版canvas2d 图片的绘制，考虑是什么？</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JhYWQ1OWRhNDI4M2FjZmViZTY1NGQ0ZWZiNTAxZDZlMjAxMjE2LnBuZw?x-oss-process=image/format,png" alt="经典报错"></li>
+</ul>
+</li>
+<li>现在我们要将canvas的内容导成图片，同样分成新旧两版</li>
+<li>主要思路都是：在wxml中，如果canvas绘制图片没有完成，则显示canvas内容，绘制完成后，就利用canvasToTempFilePath，将图层内容生成指定大小图片，显示image<ul>
+<li>canvas2d   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">   <span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'img'</span>, img)</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">           wx.canvasToTempFilePath(&#123;</span><br><span class="line">             x: <span class="number">0</span>,</span><br><span class="line">             y: <span class="number">0</span>,</span><br><span class="line">             width: <span class="number">100</span>,</span><br><span class="line">             height: <span class="number">100</span>,</span><br><span class="line">             destWidth: <span class="number">100</span>,</span><br><span class="line">             destHeight: <span class="number">100</span>,</span><br><span class="line">             canvas: canvas,</span><br><span class="line">             success(res) &#123;</span><br><span class="line">               that.setData(&#123;</span><br><span class="line">                 imgPath: res.tempFilePath</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125;,</span><br><span class="line">             fail(err) &#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>可以和面向过程 (Procedure Oriented) 放在一起说。</li>
-<li><p>首先 OOP 是一个很自然的思想，在C语言中也能写出<strong>符合</strong>面向对象思想的代码</p>
-  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C语言例子</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *name;  <span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">int</span> num;  <span class="comment">//学号</span></span><br><span class="line">    <span class="keyword">int</span> age;  <span class="comment">//年龄</span></span><br><span class="line">    <span class="keyword">char</span> group;  <span class="comment">//所在学习小组</span></span><br><span class="line">    <span class="keyword">float</span> score;  <span class="comment">//成绩</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">GetStudentName</span><span class="params">(struct Student* stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetStudentName</span><span class="params">(struct Student* stu, <span class="keyword">char</span>* newName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span> <span class="title">s1</span>, <span class="title">s2</span>, <span class="title">s3</span>, <span class="title">s4</span>;</span> <span class="comment">// 创建了多个学生</span></span><br><span class="line">    SetStudentName(&amp;s1, <span class="string">"小明"</span>);</span><br><span class="line">    SetStudentName(&amp;s2, <span class="string">"小红"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>canvas2d 需要踩得坑是：它的官方文档🙃<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UwM2Q1ZDg0YzYyNmI0NzlmZjBjOTlmNzA1YmRhYjg5NDc5MjcucG5n?x-oss-process=image/format,png" alt="canvas2d 转图片误导"></li>
+<li>尝试下来，会<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxMjRiY2Q3ZmNjYWI5ODBlNDdkMTk2YTMyZGQyODI4NDUzODcucG5n?x-oss-process=image/format,png" alt="ctx.draw报错"></li>
 </ul>
 </li>
-<li><p>其次 OOP 面向对象编程，在做一件什么事情？</p>
+<li>那我们可以继续往下看<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxODk5NWFiNDY4N2IwYmZlYzhjZTZkZWU2ZWQxYmZjMTA1MTY1LnBuZw?x-oss-process=image/format,png" alt="canvas2d tempath正确实力">这才是符合我们需要</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JmMzVlMzY4YzRjMmRhYTgxNTA0NzM0YTIxZGMxM2I2NDYwNzIucG5n?x-oss-process=image/format,png" alt="canvas2d运行截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>旧版canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">wx.getImageInfo(&#123;</span><br><span class="line">  src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">    <span class="keyword">const</span> poster = res.path</span><br><span class="line">    ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">    ctx.draw(<span class="literal">false</span>, () =&gt; &#123;</span><br><span class="line">      wx.canvasToTempFilePath(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        width: <span class="number">100</span>,</span><br><span class="line">        height: <span class="number">100</span>,</span><br><span class="line">        destWidth: <span class="number">100</span>,</span><br><span class="line">        destHeight: <span class="number">100</span>,</span><br><span class="line">        canvasId: <span class="string">"myCanvas"</span>,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          that.setData(&#123;</span><br><span class="line">            imgPath: res.tempFilePath</span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="built_in">console</span>.log(res.tempFilePath)</span><br><span class="line">        &#125;,</span><br><span class="line">        fail(err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">    wx.canvasGetImageData(&#123;</span><br><span class="line">      canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">      x: <span class="number">0</span>,</span><br><span class="line">      y: <span class="number">0</span>,</span><br><span class="line">      width: <span class="number">150</span>,</span><br><span class="line">      height: <span class="number">100</span>,</span><br><span class="line">      success(res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>在面对复杂性业务需求中，面向对象思想可以将业务先进行分析，如果业务需求全新无关联，那我们可以新建一个对象，在里面封装对应的方法；如果业务需求只是一条延展线（比如特定节假日打折），那我们可以继承现有对象，并对现有对象的某些方法（discount），进行特定操作，即多态：用统一的方法对不同的对象进行同样的操作。</p>
-  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">override</span> fun <span class="title">discount</span><span class="params">(price: Double)</span>: Double </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (!isCouple()) <span class="keyword">return</span> price</span><br><span class="line">       <span class="keyword">if</span> (price &gt; <span class="number">99</span>) &#123;</span><br><span class="line">           val lucky = Random().nextInt(gifts.<span class="built_in">size</span>)</span><br><span class="line">           <span class="built_in">println</span>(<span class="string">"Congratulations on getting $&#123;gifts[lucky]&#125;!"</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> price * <span class="number">0.77</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>而面对这种频繁操作数据单元的使用面向过程编程思想，可能会在现有对象加上判断，万一节假日还要做其他的业务，判断只会越来越多。这就与我们 Nicklaus Wirth 提出的：<strong>程序 = 数据结构 + 算法</strong>，越来越割裂。</li>
-</ul>
-</li>
-<li>在我现在的浅薄思考看来：面向对象编程思想是想先让不同对象以尽可能的统一特性进行归组，形成“大对象”，然后各个对象变成了这个大对象中衍生出来的基类，并在父类派生出来的对象中，去实现各自解决问题的具体方法。这样当我们在拿到一个问题，我们可以不用去管它的内部实现，我们根据类型就可以知道它能做什么事，这比我们手动去一步一步执行要先进点。<strong>让对象有多态性，把不同对象以同一特性来归组，统一处理。至于所谓继承等概念，是实现的细节</strong>。</li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2EzZTRiYTBkYzc2NDgzYTM1NTYxZDcwNDUzNzZkNjZmNDU5MTgucG5n?x-oss-process=image/format,png" alt="旧版canvas运行截图"><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
 </ul>
 </li>
 </ul>
-<h2 id="prototype-based-programming"><a href="#prototype-based-programming" class="headerlink" title="prototype-based programming"></a>prototype-based programming</h2><ul>
-<li>Languages with abstract data type support which may be used to <strong>resemble OO programming</strong>, but <strong>without all features of object-orientation</strong>. This includes object-based and <strong>prototype-based languages</strong>. Examples: JavaScript, Lua, Modula-2, CLU.</li>
-<li>The Document Object Model of HTML, XHTML, and XML documents on the Internet has bindings to the popular JavaScript/ECMAScript language. <strong>JavaScript is perhaps the best known prototype-based programming language, which employs cloning from prototypes rather than inheriting from a class (contrast to class-based programming)</strong>. </li>
-<li>我们在大概了解了 OOP 思想后，我们可以继续看看“类OOP”—基于原型编程 Javascript 实现</li>
-<li>我们可以先从 ECMA-262 规范中找到关于 Object 的定义<ul>
-<li>“Objects are created by using constructors in <strong>new expressions</strong>.”</li>
-<li>“Each constructor is a function that has a property named <strong>‘prototype’ that is used to implement prototype-based inheritance and shared properties</strong>.”</li>
-<li>“Every object created by a constructor has an implicit reference (called the object’s prototype) to the value of its constructor’s ‘prototype’ property. Furthermore, a prototype may have a non-null implicit reference to its prototype, and so on; this is called the prototype chain. When a reference is made to a property in an object, that reference is to the property of that name in the first object in the prototype chain that contains a property of that name. In other words, first the object mentioned directly is examined for such a property; if that object contains the named property, that is the property to which the reference refers; if that object does not contain the named property, the prototype for that object is examined next; and so on.”</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/54f432d1395e59da48e0e7935ffd7665110363.png" alt="ECMA原型链"></li>
-</ul>
-</li>
-<li><p>同时 Douglas Crockford 关于 <a href="https://crockford.com/javascript/prototypal.html" target="_blank" rel="noopener">prototypal inheritance</a></p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">       <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">       F.prototype = o;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>“The object function untangles JavaScript’s constructor pattern, achieving true prototypal inheritance. It takes an old object as a parameter and returns an empty new object that inherits from the old one. If we attempt to obtain a member from the new object, and it lacks that key, then the old object will supply the member. Objects inherit from objects.”</li>
-<li>“What could be more object oriented than that?” 😝</li>
-</ul>
-</li>
-<li>也有新的对 Object 的思考<ul>
-<li>“In JavaScript, <strong>an object is an associative array</strong>, augmented with a prototype (see below); each string key provides the name for an object property, and there are two syntactical ways to specify such a name: dot notation (obj.x = 10) and bracket notation (obj[‘x’] = 10). A property may be added, rebound, or deleted at run-time. Most properties of an object (and any property that belongs to an object’s prototype inheritance chain) can be enumerated using a for…in loop.”</li>
-</ul>
 </li>
 </ul>
-<h2 id="Functional-programming"><a href="#Functional-programming" class="headerlink" title="Functional programming"></a>Functional programming</h2><ul>
-<li>Functional programming has its origins in lambda calculus.It is a programming paradigm —- a style of building the structure and elements of computer programs — that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.</li>
-<li>One of the key motivations for the development of functional programming is making a program easier to understand by eliminating changes in state that <strong>do not depend on function inputs</strong> which are called side effects.</li>
-<li>side effects include modifying a non-local variable, modifying a static local variable, modifying a mutable argument passed by reference, performing I/O or calling other side-effect functions.</li>
-<li>referential transparency<ul>
-<li>the same language expression can result in different values at different times depending on the state of the executing program.</li>
-<li>Consider C assignment statement x = x <em> 10, this changes the value assigned to the variable x. Let us say that the initial value of x was 1, then two consecutive evaluations of the variable x yields 10 and 100 respectively. Clearly, replacing x = x </em> 10 with either 10 or 100 gives a program with different meaning, and so the expression is not referentially transparent. In fact, assignment statements are never referentially transparent.</li>
-<li>Absence of side effects is a necessary, but not sufficient, condition for referential transparency. <strong>Referential transparency means that an expression (such as a function call) can be replaced with its value</strong>. This requires that the expression is pure, that is to say the expression must be deterministic (always give the same value for the same input) and side-effect free.</li>
-</ul>
 </li>
-</ul>
-<h2 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h2><ul>
-<li>Javasript 说它是基于面向对象的编程语言是不严谨的，准确的说他是类面向对象的编程语言，基于原型的编程语言。</li>
-</ul>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects" target="_blank" rel="noopener">引入 Javascript 对象</a></li>
-<li><a href="https://software.intel.com/en-us/blogs/2008/08/22/flaws-of-object-oriented-modeling/" target="_blank" rel="noopener">Flaws of Object Oriented Modeling</a></li>
-<li><a href="https://books.google.com/books?id=xb-sAQAAQBAJ&amp;printsec=frontcover&amp;dq=isbn:9788090466180&amp;hl=zh-CN&amp;sa=X&amp;ved=0ahUKEwiG-8y8qdroAhWmUt8KHey5Dl0Q6AEIKDAA#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener">learn object oriented thinking &amp; programming</a></li>
-<li><a href="https://books.google.com/books?id=WzsFCAAAQBAJ&amp;printsec=frontcover&amp;dq=isbn:9780735619654&amp;hl=zh-CN&amp;sa=X&amp;ved=0ahUKEwiqzaPSqNroAhVvUd8KHc80CYEQ6AEIKDAA#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener">Obejct thinking</a></li>
-<li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener">Javascript Object-orientation (prototype-based)</a></li>
-<li><a href="https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep" target="_blank" rel="noopener">Introduction to Object Oriented Programming Concepts (OOP) and More</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank" rel="noopener">Functional_programming wikipedia</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science" target="_blank" rel="noopener">Side effect wikipedia</a>)</li>
-<li><a href="https://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">Object-oriented programming wikipedia</a></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>有对 Object 以及对 reference 产生的 side effects<br>新的认识</li>
-<li>闭包 closure<ul>
-<li>A nested function is a function defined within another function. It is created each time the outer function is invoked. In addition, each nested function forms a lexical closure: The lexical scope of the outer function (including any constant, local variable, or argument value) becomes part of the internal state of each inner function object, even after execution of the outer function concludes.</li>
-</ul>
-</li>
+<li>感谢<a href="https://github.com/skadieyes" target="_blank" rel="noopener">Skady宝贝</a>在探讨问题中给予的帮助，欢迎大家去github找她玩👈</li>
 <li>祝大家多多发财</li>
 </ul>
+<hr>
 ]]></content>
       <categories>
-        <category>前端概念</category>
+        <category>微信小程序</category>
       </categories>
       <tags>
-        <tag>前端概念</tag>
+        <tag>微信小程序</tag>
       </tags>
   </entry>
   <entry>
@@ -693,102 +1243,6 @@
 <li><a href="https://github.com/whoiam2007s/ImgMainColor" target="_blank" rel="noopener">获取图片主色调的插件</a></li>
 <li>其实也可以利用 <a href="https://blog.csdn.net/nanhupatar/article/details/82793637" target="_blank" rel="noopener">CSS新特性去改变背景颜色</a>，比如高斯模糊等来达到业务需求<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
 <li>周六听了一天 John Lennon 歌曲【这也是我拖更的原因😶 羡慕他和 Yoko 那段伊甸园般的爱情，他对 Yoko 的痴爱，他和母亲的两次分别感同身受，Beatles在一起做音乐的欢乐，他对 Sean 的宠溺父爱，但他的人生却在一次枪杀后戛然而止，心痛 心痛 🌧</li>
-<li>祝大家多多发财</li>
-</ul>
-<hr>
-]]></content>
-      <categories>
-        <category>微信小程序</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微信小程序-fix canvas原生组件最顶层</title>
-    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>大家应该都知道过，在微信小程序中，canvas等原生组件的层级是最高的，页面中无论你设置多大的z-index都无法覆盖在其之上，这就可能会产生一些问题</li>
-<li>就像这样<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png" alt="canvas顶层问题截图"></li>
-<li>柱状图是用canvas画的，它置于了我的tooltip之上。【这看起来真是一个可怕的问题<a id="more"></a>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><ul>
-<li>微信官方提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html" target="_blank" rel="noopener">cover-view</a>原生组件，覆盖在原生组件之上的文本视图</li>
-<li>微信官方提供了将canvas转化为图片的方式—<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
-</ul>
-<h3 id="方法一：cover-view"><a href="#方法一：cover-view" class="headerlink" title="方法一：cover-view"></a>方法一：cover-view</h3><ul>
-<li>将tooltip用cover-view改写，效果如下<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2Y0MTZjZjhlMjNiZWEwMjNjYTM1M2JhOGExMDM1MDM2MzYyOTIucG5n?x-oss-process=image/format,png" alt="cover-view version0.1 截图"></li>
-<li>看上去，是解决了我们的问题，且tooltip后的灰色背景不能滑动了，【妈耶，好棒！</li>
-<li>但是，这产生了一个：<strong>当文本超出tooltip宽度时，scroll-y: auto，失效了，溢出部分被直接截取</strong></li>
-<li>罪魁祸首就是它<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2M5ZDljYjZiZTQ0ZGY3YmJmNmRlMjAxNDM1ZmYzOTJjNDMxNDMucG5n?x-oss-process=image/format,png" alt="cover内置样式"></li>
-</ul>
-</li>
-<li>那我们可以：<ul>
-<li>在tooltip分段内容中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content-rule</span> &#123;</span><br><span class="line">    <span class="attribute">white-space</span>: pre-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>在内容wrapper中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>完美解决<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2FhZjRkMDAyODdjZGI4M2Y0NWRhMGVkOTg3Mzc5MGNhNDQxMjkucG5n?x-oss-process=image/format,png" alt="cover-view解决图"><h3 id="方法二：wx-canvasToTempFilePath"><a href="#方法二：wx-canvasToTempFilePath" class="headerlink" title="方法二：wx.canvasToTempFilePath"></a>方法二：wx.canvasToTempFilePath</h3></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>首先我们要做的就是将网络图片绘制进canvas，官方关于canvas类型有两种<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2E4ZjJmNjA5OGYxNmQ4MzY3NWJiN2I3OWY0ZDM1NWM1MTAwMDg3LnBuZw?x-oss-process=image/format,png" alt="两种canvas类型"></li>
-<li>新canvas 2D接口尝试  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzE5ZWE3ZGYxYjg2ODUzOWFhNzVhY2E0OTAxYzI2MzU2OTk4NDYucG5n?x-oss-process=image/format,png" alt="canvas2d 运行截图"></li>
-<li>第二种旧canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line">   wx.getImageInfo(&#123;</span><br><span class="line">       src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">       success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">         <span class="keyword">const</span> poster = res.path                                  </span><br><span class="line">         ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">         ctx.draw()</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">     <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">     wx.canvasGetImageData(&#123;</span><br><span class="line">       canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">       x: <span class="number">0</span>,</span><br><span class="line">       y: <span class="number">0</span>,</span><br><span class="line">       width: <span class="number">150</span>,</span><br><span class="line">       height: <span class="number">100</span>,</span><br><span class="line">       success(res) &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzU4NTg5MzQ4MDc3Njk3OTA0OTRmZmIzOWRiNDdjMWRmNjk4ODQucG5n?x-oss-process=image/format,png" alt="旧canvas"></li>
-<li>虽然两种方法，都能实现将网络图片绘制进canvas，但新版的进行了createImage，将其打印的话，其实就是新建了一个img标签，并将img标签的东西绘制进canvas<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzFjMjE1NzMzZTRkY2UzNGZiNzI4NDFhZWEyMDc0ZWIwMjQ1OTQucG5n?x-oss-process=image/format,png" alt="img console"></li>
-<li>为什么微信官方会仅支持以下方式进行新版canvas2d 图片的绘制，考虑是什么？</li>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JhYWQ1OWRhNDI4M2FjZmViZTY1NGQ0ZWZiNTAxZDZlMjAxMjE2LnBuZw?x-oss-process=image/format,png" alt="经典报错"></li>
-</ul>
-</li>
-<li>现在我们要将canvas的内容导成图片，同样分成新旧两版</li>
-<li>主要思路都是：在wxml中，如果canvas绘制图片没有完成，则显示canvas内容，绘制完成后，就利用canvasToTempFilePath，将图层内容生成指定大小图片，显示image<ul>
-<li>canvas2d   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">   <span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'img'</span>, img)</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">           wx.canvasToTempFilePath(&#123;</span><br><span class="line">             x: <span class="number">0</span>,</span><br><span class="line">             y: <span class="number">0</span>,</span><br><span class="line">             width: <span class="number">100</span>,</span><br><span class="line">             height: <span class="number">100</span>,</span><br><span class="line">             destWidth: <span class="number">100</span>,</span><br><span class="line">             destHeight: <span class="number">100</span>,</span><br><span class="line">             canvas: canvas,</span><br><span class="line">             success(res) &#123;</span><br><span class="line">               that.setData(&#123;</span><br><span class="line">                 imgPath: res.tempFilePath</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125;,</span><br><span class="line">             fail(err) &#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>canvas2d 需要踩得坑是：它的官方文档🙃<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UwM2Q1ZDg0YzYyNmI0NzlmZjBjOTlmNzA1YmRhYjg5NDc5MjcucG5n?x-oss-process=image/format,png" alt="canvas2d 转图片误导"></li>
-<li>尝试下来，会<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxMjRiY2Q3ZmNjYWI5ODBlNDdkMTk2YTMyZGQyODI4NDUzODcucG5n?x-oss-process=image/format,png" alt="ctx.draw报错"></li>
-</ul>
-</li>
-<li>那我们可以继续往下看<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxODk5NWFiNDY4N2IwYmZlYzhjZTZkZWU2ZWQxYmZjMTA1MTY1LnBuZw?x-oss-process=image/format,png" alt="canvas2d tempath正确实力">这才是符合我们需要</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>运行截图<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JmMzVlMzY4YzRjMmRhYTgxNTA0NzM0YTIxZGMxM2I2NDYwNzIucG5n?x-oss-process=image/format,png" alt="canvas2d运行截图"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>旧版canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">wx.getImageInfo(&#123;</span><br><span class="line">  src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">    <span class="keyword">const</span> poster = res.path</span><br><span class="line">    ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">    ctx.draw(<span class="literal">false</span>, () =&gt; &#123;</span><br><span class="line">      wx.canvasToTempFilePath(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        width: <span class="number">100</span>,</span><br><span class="line">        height: <span class="number">100</span>,</span><br><span class="line">        destWidth: <span class="number">100</span>,</span><br><span class="line">        destHeight: <span class="number">100</span>,</span><br><span class="line">        canvasId: <span class="string">"myCanvas"</span>,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          that.setData(&#123;</span><br><span class="line">            imgPath: res.tempFilePath</span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="built_in">console</span>.log(res.tempFilePath)</span><br><span class="line">        &#125;,</span><br><span class="line">        fail(err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">    wx.canvasGetImageData(&#123;</span><br><span class="line">      canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">      x: <span class="number">0</span>,</span><br><span class="line">      y: <span class="number">0</span>,</span><br><span class="line">      width: <span class="number">150</span>,</span><br><span class="line">      height: <span class="number">100</span>,</span><br><span class="line">      success(res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>运行截图<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2EzZTRiYTBkYzc2NDgzYTM1NTYxZDcwNDUzNzZkNjZmNDU5MTgucG5n?x-oss-process=image/format,png" alt="旧版canvas运行截图"><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>感谢<a href="https://github.com/skadieyes" target="_blank" rel="noopener">Skady宝贝</a>在探讨问题中给予的帮助，欢迎大家去github找她玩👈</li>
 <li>祝大家多多发财</li>
 </ul>
 <hr>
