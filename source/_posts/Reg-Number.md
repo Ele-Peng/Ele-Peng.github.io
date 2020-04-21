@@ -10,10 +10,11 @@ description:
 
 ---
 
-#### 写在前面
+## 写在前面
 - 利用正则表达式，匹配所有 Number 字面量
+<!-- more -->
 
-#### 实践过程
+## 实践过程
 
 - ![NumbericLiteral 大纲](http://p1.meituan.net/myvideodistribute/fcc73488cd245a6c48cf067a6dc7641e16278.png)
 - NumericLiteral :: 
@@ -69,5 +70,5 @@ description:
 	>  /^(((0)|([1-9]\d\*))?.?(\d\*)((e|E)?(\\+|\\-)?(\d*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)((\d)|([a-f])|([A-F]))+)$/
 	
 	
-#### 写在后面
+## 写在后面
 - 祝大家多多发财
