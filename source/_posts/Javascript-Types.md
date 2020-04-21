@@ -9,8 +9,6 @@ description:
 - Javascript -- Types
 ---
 
-[TOC]
-
 # Javascript -- Type
 ## Atom
 ### Unicode （字符集）
