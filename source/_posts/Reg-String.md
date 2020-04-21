@@ -45,7 +45,6 @@ description:
 					
 						> '"\\\bfnrtv0-9xu\n\\r\u2028\u2029
 					
-					
 					- ![HexEscapeSequence 详情](http://p1.meituan.net/myvideodistribute/9207083723607a9faa4f0a560599dde17694.png)
 
 					- **HexEscapeSequence**总结为：
@@ -57,17 +56,21 @@ description:
 					- **UnicodeEscapeSequence**总结为：
 
 						>  \\\u[0-9a-fA-F]{4}
+						
 				- **EscapeSequence**总结为：
 
 					> ('"\\\bfnrtv0-9xu\n\\r\u2028\u2029])|(\\\x[0-9a-fA-F]{2})|(\\\u[0-9a-fA-F]{4})
+					
 				- ![LineContinuation 详情](http://p0.meituan.net/myvideodistribute/bd86a4d39c1ae8d719eca6afbd9dcb147948.png)
 					- ![LineTerminatorSequence 详情](http://p0.meituan.net/myvideodistribute/e8b4e35d4653ecb6a0f89d848085f69b14054.png)
 				- **LineContinuation**总结为：
 				
 					> \\\\\n\r\u\2028]2029
+					
 	- **DoubleStringCharacters**总结为：
 
 		> "(?:(\\\\('"\\\bfnrtv0-9xu\n\\r\u2028\u2029])|(\\\x[0-9a-fA-F]{2})|(\\\u[0-9a-fA-F]{4}))|(\\\\\n\r\u\2028]2029))*"
+		
 	- SingleStringCharacters
 		- ![SingleStringCharacters 大纲](http://p0.meituan.net/myvideodistribute/6d2e2b31ed15050de59907d5537b9e9219247.png)
 	- **SingleStringCharacters**总结为：
