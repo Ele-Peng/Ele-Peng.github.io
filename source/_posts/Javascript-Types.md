@@ -9,6 +9,8 @@ description:
 - Javascript -- Types
 ---
 
+[TOC]
+
 # Javascript -- Type
 ## Atom
 ### Unicode （字符集）
@@ -26,6 +28,8 @@ description:
 	- 隐性需求需要可以使用\u转义
 		- "厉害".codePointAt(0).toString(16)
 		- \u5389\u5bb3
+<!-- more -->
+
 - InputElement
 	- WhiteSpace 空格
 		- &lt;TAB&gt; Character Tabulation
@@ -41,15 +45,15 @@ description:
 		- &lt;LS&gt; LINE SEPARATOR
 		- &lt;PS&gt; PARAGRAPH SEPARATOR
 	- Comment 注释
-	- Token 与word不同，记号标记，JS中有效的东西
+	- **Token** 与word不同，记号标记，JS中有效的东西
 		- 自己写的，代码包含的有效信息
-			- Identifier 标识符，以英文字母开头
+			- **Identifier** 标识符，以英文字母开头
 				- 用作变量名，不能与关键字重复
 					- undefined 全局变量名，修改不了
 					- 离开全局作用域，便可以使用
 				- 用作属性的部分，可以与关键字重复
 				- Future reserved Keywords : enum
-			- Literal 直接量
+			- **Literal** 直接量
 				- Number	
 				- String
 				- Boolean
@@ -58,8 +62,8 @@ description:
 				- Undefined
 				- Symbol
 		- 帮助程序形成结构
-			- Punctuator 符号
-			- Keywords 
+			- **Punctuator** 符号
+			- **Keywords** 
 
 			
 ### Types
@@ -83,7 +87,7 @@ description:
 - 最佳实践
 	- 浮点数比较时，需要加精度
 	
-		> Number.MAX_SAFE_INTEGER
+		> Number.MAX\_SAFE\_INTEGER
 		
 		> Math.abs(0.1 + 0.2 - 0.3) <= Number.EPSILON
 	
@@ -127,10 +131,16 @@ description:
 - false
 
 
+
+
 #### Object
+
 #### Null
 - typeof 下为 Object
+
+
 #### Undefined
+
 #### Symbol
 
 ## Expression

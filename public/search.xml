@@ -1,317 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Elle-训练算法计划</title>
-    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
-<li>主要的数据结构和算法会单开文档来写</li>
-</ul>
-<a id="more"></a>
-<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
-<li>数据结构<ul>
-<li>一维数据结构<ul>
-<li>基础：数组 array(string), 链表 linked list</li>
-<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
-</ul>
-</li>
-<li>二维数据结构<ul>
-<li>一维泛化</li>
-<li>基础：树 tree，图 graph</li>
-<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
-</ul>
-</li>
-<li>特殊数据结构<ul>
-<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
-<li>LRU Cache</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>算法<ul>
-<li>if-else, switch –&gt; branch</li>
-<li>for, while loop –&gt; iteration</li>
-<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
-<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
-<li>动态规划 dynamic programing</li>
-<li>二分查找 binary search</li>
-<li>贪心 greedy</li>
-<li>数学 math, 集合 geometry</li>
-</ul>
-</li>
-</ul>
-<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
-<li>刻意练习-过遍数 (五遍刷题法)<ul>
-<li>刷题第一遍<ul>
-<li>5分钟（5~15 mins）：读题+思考</li>
-<li>直接看解法：注意！多解法，比较解乏优劣</li>
-<li>有思路，直接写</li>
-<li>背诵+默写好的解法</li>
-</ul>
-</li>
-<li>刷题第二遍<ul>
-<li>马上自己写 –&gt; LeetCode提交</li>
-<li>多种解法比较、体会 –&gt; 优化</li>
-<li>多种解法自己写一遍，直到通过</li>
-</ul>
-</li>
-<li>刷题第三遍<ul>
-<li>24h后，再重复做题</li>
-<li>不同解法的熟练程度 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第四遍<ul>
-<li>过了一周后：反复回来练习相同的题目</li>
-<li>不熟练的题目 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第五遍<ul>
-<li>面试前二周恢复性训练</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>练习缺陷、弱点地方<ul>
-<li>中文站 leetcode-cn.com 刷题</li>
-<li>国际站 leetcode.com 看discuss-most votes</li>
-</ul>
-</li>
-<li>切题<ul>
-<li><strong>Clarification 审题</strong></li>
-<li><strong>Possible Solutions</strong><ul>
-<li>compare (time/space)</li>
-<li>optimal (加强)</li>
-</ul>
-</li>
-<li><strong>Coding</strong></li>
-<li><strong>Test cases</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
-<li>即时反馈</li>
-<li>主动型反馈</li>
-<li>被动型反馈<ul>
-<li>code review</li>
-</ul>
-</li>
-</ul>
-<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
-<li>top tips for vscode</li>
-</ul>
-<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
-<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
-</ul>
-<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
-<li>O(1): constant Complexity 常数复杂度</li>
-<li>O(log n): Logarithmic Complexity 对数复杂度</li>
-<li>O(n): Linear Complexity 线性时间复杂度</li>
-<li>O(n^2): N square Complexity 平方</li>
-<li>O(n^3): N cube Complexity 立方</li>
-<li>O(2^n): Exponential Growth 指数</li>
-<li>O(n!): Factorial 阶乘</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
-</ul>
-<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
-<li>二分查找</li>
-<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
-<li>二维有序矩阵</li>
-<li>归并排序 O(nlogn)</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Javascript Types</title>
-    <url>/2020/04/20/Javascript-Types/</url>
-    <content><![CDATA[<h1 id="Javascript-–-Type"><a href="#Javascript-–-Type" class="headerlink" title="Javascript – Type"></a>Javascript – Type</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
-<li>Unicode Blocks<ul>
-<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
-<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
-</ul>
-</li>
-<li>U+000A LINE FEED 换行<ul>
-<li>Form Feed 翻页</li>
-<li>CJK 中文字符 Chinese Japan Korean</li>
-</ul>
-</li>
-<li>U+0020 SPACE 空格</li>
-<li>BMP 基本字符平面 四位能表示的范围</li>
-<li>超出BMP范围<ul>
-<li>fromCodePoint</li>
-<li>codePointAt</li>
-</ul>
-</li>
-<li>隐性需求需要可以使用\u转义<ul>
-<li>“厉害”.codePointAt(0).toString(16)</li>
-<li>\u5389\u5bb3</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>InputElement<ul>
-<li>WhiteSpace 空格<ul>
-<li>&lt;TAB&gt; Character Tabulation</li>
-<li>&lt;VT&gt; Vertical Line</li>
-<li>&lt;FF&gt; Form Feed </li>
-<li>&lt;SP&gt; </li>
-<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
-<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
-<li>&lt;USP&gt;</li>
-</ul>
-</li>
-<li>LineTerminator 换行符<ul>
-<li>&lt;LF&gt; /n</li>
-<li>&lt;CR&gt; Carriage Return 回车 /r</li>
-<li>&lt;LS&gt; LINE SEPARATOR</li>
-<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
-</ul>
-</li>
-<li>Comment 注释</li>
-<li>Token 与word不同，记号标记，JS中有效的东西<ul>
-<li>自己写的，代码包含的有效信息<ul>
-<li>Identifier 标识符，以英文字母开头<ul>
-<li>用作变量名，不能与关键字重复<ul>
-<li>undefined 全局变量名，修改不了</li>
-<li>离开全局作用域，便可以使用</li>
-</ul>
-</li>
-<li>用作属性的部分，可以与关键字重复</li>
-<li>Future reserved Keywords : enum</li>
-</ul>
-</li>
-<li>Literal 直接量<ul>
-<li>Number    </li>
-<li>String</li>
-<li>Boolean</li>
-<li>Object</li>
-<li>Null</li>
-<li>Undefined</li>
-<li>Symbol</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>帮助程序形成结构<ul>
-<li>Punctuator 符号</li>
-<li>Keywords </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
-<li><p>IEEE 754 Double Float</p>
-<ul>
-<li>Sign(1)</li>
-<li>Exponent(11) 指数，科学计数法</li>
-<li>Fraction(52)</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li>DecimaLiteral<ul>
-<li>0</li>
-<li>0.</li>
-<li>.2</li>
-<li>1e3</li>
-</ul>
-</li>
-<li>BinaryIntegerLiteral<ul>
-<li>0b111</li>
-</ul>
-</li>
-<li>OctalIntegerLiteral<ul>
-<li>0o10</li>
-</ul>
-</li>
-<li>HexIntegerLiteral<ul>
-<li>0xFF</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>最佳实践</p>
-<ul>
-<li><p>浮点数比较时，需要加精度</p>
-<blockquote>
-<p>Number.MAX_SAFE_INTEGER</p>
-</blockquote>
-<blockquote>
-<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
-<li><p>Character</p>
-</li>
-<li><p>Code Point</p>
-</li>
-<li><p>Encoding</p>
-<blockquote>
-<p>97 .toString(2)</p>
-</blockquote>
-<blockquote>
-<p>“97.” 是一个合法的Number 01100001</p>
-</blockquote>
-<ul>
-<li>ASCII</li>
-<li>Unicode</li>
-<li>UCS U+0000 - U+FFFF</li>
-<li>GB<ul>
-<li>GB2312</li>
-<li>GBK(GB13000)</li>
-<li>GB18030</li>
-</ul>
-</li>
-<li>ISO-8859</li>
-<li>BIG5</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li><p>“abc”</p>
-<ul>
-<li>“\x10” –&gt; 8</li>
-<li>“\u000a”</li>
-</ul>
-</li>
-<li><p>‘abc’</p>
-</li>
-<li><p>`abc`</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
-<li>true</li>
-<li>false</li>
-</ul>
-<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
-<li>typeof 下为 Object<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4></li>
-</ul>
-<h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【未完】react-hooks</title>
     <url>/2020/04/13/react-hooks/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
@@ -556,6 +245,194 @@
       </tags>
   </entry>
   <entry>
+    <title>Javascript Types</title>
+    <url>/2020/04/20/Javascript-Types/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="Javascript-–-Type"><a href="#Javascript-–-Type" class="headerlink" title="Javascript – Type"></a>Javascript – Type</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
+<li><p>Unicode Blocks</p>
+<ul>
+<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
+<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
+</ul>
+</li>
+<li>U+000A LINE FEED 换行<ul>
+<li>Form Feed 翻页</li>
+<li>CJK 中文字符 Chinese Japan Korean</li>
+</ul>
+</li>
+<li>U+0020 SPACE 空格</li>
+<li>BMP 基本字符平面 四位能表示的范围</li>
+<li>超出BMP范围<ul>
+<li>fromCodePoint</li>
+<li>codePointAt</li>
+</ul>
+</li>
+<li>隐性需求需要可以使用\u转义<ul>
+<li>“厉害”.codePointAt(0).toString(16)</li>
+<li>\u5389\u5bb3<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>InputElement</p>
+<ul>
+<li>WhiteSpace 空格<ul>
+<li>&lt;TAB&gt; Character Tabulation</li>
+<li>&lt;VT&gt; Vertical Line</li>
+<li>&lt;FF&gt; Form Feed </li>
+<li>&lt;SP&gt; </li>
+<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
+<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
+<li>&lt;USP&gt;</li>
+</ul>
+</li>
+<li>LineTerminator 换行符<ul>
+<li>&lt;LF&gt; /n</li>
+<li>&lt;CR&gt; Carriage Return 回车 /r</li>
+<li>&lt;LS&gt; LINE SEPARATOR</li>
+<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
+</ul>
+</li>
+<li>Comment 注释</li>
+<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
+<li>自己写的，代码包含的有效信息<ul>
+<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
+<li>用作变量名，不能与关键字重复<ul>
+<li>undefined 全局变量名，修改不了</li>
+<li>离开全局作用域，便可以使用</li>
+</ul>
+</li>
+<li>用作属性的部分，可以与关键字重复</li>
+<li>Future reserved Keywords : enum</li>
+</ul>
+</li>
+<li><strong>Literal</strong> 直接量<ul>
+<li>Number    </li>
+<li>String</li>
+<li>Boolean</li>
+<li>Object</li>
+<li>Null</li>
+<li>Undefined</li>
+<li>Symbol</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>帮助程序形成结构<ul>
+<li><strong>Punctuator</strong> 符号</li>
+<li><strong>Keywords</strong> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
+<li><p>IEEE 754 Double Float</p>
+<ul>
+<li>Sign(1)</li>
+<li>Exponent(11) 指数，科学计数法</li>
+<li>Fraction(52)</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li>DecimaLiteral<ul>
+<li>0</li>
+<li>0.</li>
+<li>.2</li>
+<li>1e3</li>
+</ul>
+</li>
+<li>BinaryIntegerLiteral<ul>
+<li>0b111</li>
+</ul>
+</li>
+<li>OctalIntegerLiteral<ul>
+<li>0o10</li>
+</ul>
+</li>
+<li>HexIntegerLiteral<ul>
+<li>0xFF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>最佳实践</p>
+<ul>
+<li><p>浮点数比较时，需要加精度</p>
+<blockquote>
+<p>Number.MAX_SAFE_INTEGER</p>
+</blockquote>
+<blockquote>
+<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
+<li><p>Character</p>
+</li>
+<li><p>Code Point</p>
+</li>
+<li><p>Encoding</p>
+<blockquote>
+<p>97 .toString(2)</p>
+</blockquote>
+<blockquote>
+<p>“97.” 是一个合法的Number 01100001</p>
+</blockquote>
+<ul>
+<li>ASCII</li>
+<li>Unicode</li>
+<li>UCS U+0000 - U+FFFF</li>
+<li>GB<ul>
+<li>GB2312</li>
+<li>GBK(GB13000)</li>
+<li>GB18030</li>
+</ul>
+</li>
+<li>ISO-8859</li>
+<li>BIG5</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li><p>“abc”</p>
+<ul>
+<li>“\x10” –&gt; 8</li>
+<li>“\u000a”</li>
+</ul>
+</li>
+<li><p>‘abc’</p>
+</li>
+<li><p>`abc`</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
+<li>true</li>
+<li>false</li>
+</ul>
+<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
+<li>typeof 下为 Object</li>
+</ul>
+<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Reg-Number</title>
     <url>/2020/04/20/Reg-Number/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
@@ -777,6 +654,133 @@
       </tags>
   </entry>
   <entry>
+    <title>Elle-训练算法计划</title>
+    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
+<li>主要的数据结构和算法会单开文档来写</li>
+</ul>
+<a id="more"></a>
+<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
+<li>数据结构<ul>
+<li>一维数据结构<ul>
+<li>基础：数组 array(string), 链表 linked list</li>
+<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
+</ul>
+</li>
+<li>二维数据结构<ul>
+<li>一维泛化</li>
+<li>基础：树 tree，图 graph</li>
+<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
+</ul>
+</li>
+<li>特殊数据结构<ul>
+<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
+<li>LRU Cache</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法<ul>
+<li>if-else, switch –&gt; branch</li>
+<li>for, while loop –&gt; iteration</li>
+<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
+<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
+<li>动态规划 dynamic programing</li>
+<li>二分查找 binary search</li>
+<li>贪心 greedy</li>
+<li>数学 math, 集合 geometry</li>
+</ul>
+</li>
+</ul>
+<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
+<li>刻意练习-过遍数 (五遍刷题法)<ul>
+<li>刷题第一遍<ul>
+<li>5分钟（5~15 mins）：读题+思考</li>
+<li>直接看解法：注意！多解法，比较解乏优劣</li>
+<li>有思路，直接写</li>
+<li>背诵+默写好的解法</li>
+</ul>
+</li>
+<li>刷题第二遍<ul>
+<li>马上自己写 –&gt; LeetCode提交</li>
+<li>多种解法比较、体会 –&gt; 优化</li>
+<li>多种解法自己写一遍，直到通过</li>
+</ul>
+</li>
+<li>刷题第三遍<ul>
+<li>24h后，再重复做题</li>
+<li>不同解法的熟练程度 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第四遍<ul>
+<li>过了一周后：反复回来练习相同的题目</li>
+<li>不熟练的题目 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第五遍<ul>
+<li>面试前二周恢复性训练</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>练习缺陷、弱点地方<ul>
+<li>中文站 leetcode-cn.com 刷题</li>
+<li>国际站 leetcode.com 看discuss-most votes</li>
+</ul>
+</li>
+<li>切题<ul>
+<li><strong>Clarification 审题</strong></li>
+<li><strong>Possible Solutions</strong><ul>
+<li>compare (time/space)</li>
+<li>optimal (加强)</li>
+</ul>
+</li>
+<li><strong>Coding</strong></li>
+<li><strong>Test cases</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
+<li>即时反馈</li>
+<li>主动型反馈</li>
+<li>被动型反馈<ul>
+<li>code review</li>
+</ul>
+</li>
+</ul>
+<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
+<li>top tips for vscode</li>
+</ul>
+<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
+<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
+</ul>
+<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
+<li>O(1): constant Complexity 常数复杂度</li>
+<li>O(log n): Logarithmic Complexity 对数复杂度</li>
+<li>O(n): Linear Complexity 线性时间复杂度</li>
+<li>O(n^2): N square Complexity 平方</li>
+<li>O(n^3): N cube Complexity 立方</li>
+<li>O(2^n): Exponential Growth 指数</li>
+<li>O(n!): Factorial 阶乘</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
+</ul>
+<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
+<li>二分查找</li>
+<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
+<li>二维有序矩阵</li>
+<li>归并排序 O(nlogn)</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>微信小程序-气泡框</title>
     <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
@@ -917,6 +921,16 @@
       <tags>
         <tag>计算机图形学</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>数组、链表、跳表</title>
+    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
+    <content><![CDATA[<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
+<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
+<li>数学归纳法</li>
+<li>找最近重复问题</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>编程语言通识</title>
@@ -1162,16 +1176,6 @@
       <tags>
         <tag>前端概念</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>数组、链表、跳表</title>
-    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
-    <content><![CDATA[<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
-<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
-<li>数学归纳法</li>
-<li>找最近重复问题</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>自己的前端知识体系</title>
