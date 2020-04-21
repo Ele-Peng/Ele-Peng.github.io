@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>【未完】计算机图形学初探 | Be kind.</title>
+  <title>UTF8_Encoing | Be kind.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="EllePeng">
   <meta name="keywords" content="">
@@ -86,9 +86,9 @@
   <div class="overlay">
   <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
-    <span>2020-04-15</span>
-    <h2>【未完】计算机图形学初探</h2>
-    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/" rel="tag">计算机图形学</a></div>
+    <span>2020-04-21</span>
+    <h2>UTF8_Encoing</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5-UTF-8/" rel="tag">前端概念 UTF-8</a></div>
     <div class="social-links">
     <a href="https://github.com/Ele-Peng" target="_blank"><i class="fa fa-github fa-fw"></i></a>
     <a href="mailto:EllePeng@aliyun.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
@@ -102,40 +102,26 @@
     <div class="lx-entry padding">
       <div>
         <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li><p>记录 计算机图形学 方面的学习过程🤔</p>
+<li>记录一下将 String 字符串，转成字节流的整个实现过程</li>
+</ul>
 <a id="more"></a>
 
-</li>
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><h4 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h4><ul>
+<li>统计字符串长度</li>
+<li>循环遍历字符串，进行编码</li>
+<li>输出编码后的字节流</li>
 </ul>
-<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>前端与图形学<ul>
-<li>shader</li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UTF8_Encoding</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">let</span> length = str.length,</span><br><span class="line">        strIndex = <span class="number">-1</span>,</span><br><span class="line">        strEnd = length - <span class="number">1</span>,</span><br><span class="line">        bytes = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(length),</span><br><span class="line">        index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (strIndex++ &lt; strEnd) &#123;</span><br><span class="line">        bytes[index] = str.charCodeAt(strIndex) &amp; <span class="number">0xFF</span>;</span><br><span class="line">        index += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> bytes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字节流文件转-String"><a href="#字节流文件转-String" class="headerlink" title="字节流文件转 String"></a>字节流文件转 String</h2><h4 id="总体思路-1"><a href="#总体思路-1" class="headerlink" title="总体思路"></a>总体思路</h4><ul>
+<li>统计字节流长度</li>
+<li>循环遍历字节流，进行解码</li>
+<li>输出解码后的字节流</li>
 </ul>
-</li>
-<li>图形学应用场景<ul>
-<li>Image<ul>
-<li>pattern（多用于背景）</li>
-<li>photo</li>
-<li>shape</li>
-</ul>
-</li>
-<li>来自数学的图形–分形</li>
-<li>来自物理的图形–光的衍射<ul>
-<li>相变</li>
-<li>绿幕<ul>
-<li>PNG24 –&gt; 2张 jpg</li>
-</ul>
-</li>
-<li>3D效果<ul>
-<li>three.js</li>
-<li>babylon.js</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UTF8_Decoding</span>(<span class="params">bytes</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>,</span><br><span class="line">        bytesIndex = <span class="number">-1</span>,</span><br><span class="line">        bytesEnd = bytes.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (bytesIndex ++ &lt; bytesEnd) &#123;</span><br><span class="line">        str += <span class="built_in">String</span>.fromCharCode(bytes[bytesIndex]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="测试截图"><a href="#测试截图" class="headerlink" title="测试截图"></a>测试截图</h4><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/1adbcd8a4c10e2fd308373e0050eafce62354.png" alt="测试截图"></li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
@@ -148,12 +134,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">
+		<a class="copy" href="#">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>【未完】前端性...</h3>
+						<h3>没有更新的文章</h3>
 					</div>
 				</div>
 			</div>
@@ -161,12 +147,12 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2020/04/13/react-hooks/">
+		<a class="copy" href="/2020/04/21/Reg-String/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>【未完】rea...</h3>
+						<h3>Reg -- ...</h3>
 					</div>
 				</div>
 			</div>

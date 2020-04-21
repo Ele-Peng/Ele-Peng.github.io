@@ -103,10 +103,13 @@
       <div>
         <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
+
+
 </li>
 </ul>
 <h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
+</li>
 <li><p>StringLiteral ::</p>
 <ul>
 <li><p>DoubleStringCharacters</p>
@@ -212,9 +215,11 @@
 </li>
 <li><p><strong>StringLiteral</strong>总结为：</p>
 <blockquote>
-<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))<em>“$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))</em>‘$)</p>
+<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
+
+
 </li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
@@ -228,12 +233,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="#">
+		<a class="copy" href="/2020/04/21/UTF8-Encoing/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>没有更新的文章</h3>
+						<h3>UTF8_En...</h3>
 					</div>
 				</div>
 			</div>
