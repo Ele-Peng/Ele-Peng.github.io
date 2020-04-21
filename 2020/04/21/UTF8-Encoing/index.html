@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>Reg -- String | Be kind.</title>
+  <title>UTF8_Encoing | Be kind.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="EllePeng">
   <meta name="keywords" content="">
@@ -87,8 +87,8 @@
   <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
     <span>2020-04-21</span>
-    <h2>Reg -- String</h2>
-    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">前端概念 正则表达式</a></div>
+    <h2>UTF8_Encoing</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5-UTF-8/" rel="tag">前端概念 UTF-8</a></div>
     <div class="social-links">
     <a href="https://github.com/Ele-Peng" target="_blank"><i class="fa fa-github fa-fw"></i></a>
     <a href="mailto:EllePeng@aliyun.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
@@ -102,125 +102,26 @@
     <div class="lx-entry padding">
       <div>
         <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
+<li>记录一下将 String 字符串，转成字节流的整个实现过程</li>
+</ul>
+<a id="more"></a>
 
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><h4 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h4><ul>
+<li>统计字符串长度</li>
+<li>循环遍历字符串，进行编码</li>
+<li>输出编码后的字节流</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UTF8_Encoding</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> length = str.length,</span><br><span class="line">        i = <span class="number">-1</span>,</span><br><span class="line">        il = length - <span class="number">1</span>,</span><br><span class="line">        bytes = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(length),</span><br><span class="line">        index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i++ &lt; il) &#123;</span><br><span class="line">        bytes[index] = str.charCodeAt(i) &amp; <span class="number">0xFF</span>;</span><br><span class="line">        index += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> bytes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
+<h2 id="字节流文件转-String"><a href="#字节流文件转-String" class="headerlink" title="字节流文件转 String"></a>字节流文件转 String</h2><h4 id="总体思路-1"><a href="#总体思路-1" class="headerlink" title="总体思路"></a>总体思路</h4><ul>
+<li>统计字节流长度</li>
+<li>循环遍历字节流，进行解码</li>
+<li>输出解码后的字节流</li>
 </ul>
-<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
-</li>
-<li><p>StringLiteral ::</p>
-<ul>
-<li><p>DoubleStringCharacters</p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/03c05dd8a9fd5b8b621593fe039e4e6c16908.png" alt="DoubleStringCharacters 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/ef23a0f824e9fc948b61da6c4a8d2a4729602.png" alt="DoubleStringCharacter 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/9004c303c8ebdbb8e38c00e7597b2c5b10649.png" alt="SourceCharacter 详情"></p>
-<blockquote>
-<p>\\u[0-9a-fA-F]{4}</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/25a7c00f444aaead5b3a187d09ab280a16997.png" alt="EscapeSequence 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/ef30597fe4124e22ae7fcf243d9712a310845.png" alt="CharacterEscapeSequence 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/b495509fe89ca78a7d2f5f06831d45c79074.png" alt="SingleEscapeCharacter 详情"></p>
-<blockquote>
-<p>‘“\\bfnrtv</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/7ce330d5a54c7c8ac927771ee7a0540814453.png" alt="NonEscapeCharacter 详情"></p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/f3d3a1b2fba86ebd4b8b6ab2959302e610550.png" alt="EscapeCharacter 详情"></p>
-<blockquote>
-<p>‘“\\bfnrtv0-9xu </p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/8c027b4dfef1876ad432fd62b6ecc4a59724.png" alt="LineTerminator 详情"></p>
-<blockquote>
-<p>\n\r\u2028\u2029</p>
-</blockquote>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/02a7f707581cb217ab5025d7a48e67e829247.png" alt="LineTerminator 码点"></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>CharacterEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>‘“\\bfnrtv0-9xu\n\r\u2028\u2029</p>
-</blockquote>
-</li>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/9207083723607a9faa4f0a560599dde17694.png" alt="HexEscapeSequence 详情"></p>
-</li>
-<li><p><strong>HexEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>\\x[0-9a-fA-F]{2}</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/545f52e053421a0e9c5e3b231a96276d10075.png" alt="UnicodeEscapeSequence 详情"></p>
-<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/8bb8c713ee753fd2844aea95e3ecde417620.png" alt="Hex4Digits 详情"></li>
-</ul>
-</li>
-<li><p><strong>UnicodeEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p> \\u[0-9a-fA-F]{4}</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>EscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4})</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/bd86a4d39c1ae8d719eca6afbd9dcb147948.png" alt="LineContinuation 详情"></p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/e8b4e35d4653ecb6a0f89d848085f69b14054.png" alt="LineTerminatorSequence 详情"></li>
-</ul>
-</li>
-<li><p><strong>LineContinuation</strong>总结为：</p>
-<blockquote>
-<p>\\\n\r\u\2028]2029</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>DoubleStringCharacters</strong>总结为：</p>
-<blockquote>
-<p>“(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”</p>
-</blockquote>
-</li>
-<li><p>SingleStringCharacters</p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/6d2e2b31ed15050de59907d5537b9e9219247.png" alt="SingleStringCharacters 大纲"></li>
-</ul>
-</li>
-<li><p><strong>SingleStringCharacters</strong>总结为：</p>
-<blockquote>
-<p>‘(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>StringLiteral</strong>总结为：</p>
-<blockquote>
-<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
-</blockquote>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bytesToString</span>(<span class="params">bytes</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>,</span><br><span class="line">        i = <span class="number">-1</span>,</span><br><span class="line">        il = bytes.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i++ &lt; il) &#123;</span><br><span class="line">        str += <span class="built_in">String</span>.fromCharCode(bytes[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-
-</li>
+<h4 id="测试截图"><a href="#测试截图" class="headerlink" title="测试截图"></a>测试截图</h4><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/1810773f0f2c4c4cc6a75e319edef3da54222.png" alt="测试截图"></li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
@@ -233,12 +134,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2020/04/21/UTF8-Encoing/">
+		<a class="copy" href="#">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>UTF8_En...</h3>
+						<h3>No newer post</h3>
 					</div>
 				</div>
 			</div>
@@ -246,12 +147,12 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2020/04/20/Reg-Number/">
+		<a class="copy" href="/2020/04/21/Reg-String/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>Reg-Num...</h3>
+						<h3>Reg -- ...</h3>
 					</div>
 				</div>
 			</div>
