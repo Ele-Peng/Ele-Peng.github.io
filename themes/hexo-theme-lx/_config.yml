@@ -32,7 +32,7 @@ menu_theme: greenish
 
 # menu content
 menu:
-  category: false #category
+  category: true #category
   pages:  #the page created by yourself
     enable: false
     links:
