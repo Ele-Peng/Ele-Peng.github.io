@@ -128,6 +128,141 @@
       </tags>
   </entry>
   <entry>
+    <title>Reg -- String</title>
+    <url>/2020/04/21/Reg-String/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
+
+
+</li>
+</ul>
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
+</li>
+<li><p>StringLiteral ::</p>
+<ul>
+<li><p>DoubleStringCharacters</p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/03c05dd8a9fd5b8b621593fe039e4e6c16908.png" alt="DoubleStringCharacters 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/ef23a0f824e9fc948b61da6c4a8d2a4729602.png" alt="DoubleStringCharacter 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/9004c303c8ebdbb8e38c00e7597b2c5b10649.png" alt="SourceCharacter 详情"></p>
+<blockquote>
+<p>\\u[0-9a-fA-F]{4}</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/25a7c00f444aaead5b3a187d09ab280a16997.png" alt="EscapeSequence 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/ef30597fe4124e22ae7fcf243d9712a310845.png" alt="CharacterEscapeSequence 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/b495509fe89ca78a7d2f5f06831d45c79074.png" alt="SingleEscapeCharacter 详情"></p>
+<blockquote>
+<p>‘“\\bfnrtv</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/7ce330d5a54c7c8ac927771ee7a0540814453.png" alt="NonEscapeCharacter 详情"></p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/f3d3a1b2fba86ebd4b8b6ab2959302e610550.png" alt="EscapeCharacter 详情"></p>
+<blockquote>
+<p>‘“\\bfnrtv0-9xu </p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/8c027b4dfef1876ad432fd62b6ecc4a59724.png" alt="LineTerminator 详情"></p>
+<blockquote>
+<p>\n\r\u2028\u2029</p>
+</blockquote>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/02a7f707581cb217ab5025d7a48e67e829247.png" alt="LineTerminator 码点"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>CharacterEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>‘“\\bfnrtv0-9xu\n\r\u2028\u2029</p>
+</blockquote>
+</li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/9207083723607a9faa4f0a560599dde17694.png" alt="HexEscapeSequence 详情"></p>
+</li>
+<li><p><strong>HexEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>\\x[0-9a-fA-F]{2}</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/545f52e053421a0e9c5e3b231a96276d10075.png" alt="UnicodeEscapeSequence 详情"></p>
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/8bb8c713ee753fd2844aea95e3ecde417620.png" alt="Hex4Digits 详情"></li>
+</ul>
+</li>
+<li><p><strong>UnicodeEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p> \\u[0-9a-fA-F]{4}</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>EscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4})</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/bd86a4d39c1ae8d719eca6afbd9dcb147948.png" alt="LineContinuation 详情"></p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/e8b4e35d4653ecb6a0f89d848085f69b14054.png" alt="LineTerminatorSequence 详情"></li>
+</ul>
+</li>
+<li><p><strong>LineContinuation</strong>总结为：</p>
+<blockquote>
+<p>\\\n\r\u\2028]2029</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>DoubleStringCharacters</strong>总结为：</p>
+<blockquote>
+<p>“(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”</p>
+</blockquote>
+</li>
+<li><p>SingleStringCharacters</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/6d2e2b31ed15050de59907d5537b9e9219247.png" alt="SingleStringCharacters 大纲"></li>
+</ul>
+</li>
+<li><p><strong>SingleStringCharacters</strong>总结为：</p>
+<blockquote>
+<p>‘(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>StringLiteral</strong>总结为：</p>
+<blockquote>
+<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念 正则表达式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript Types</title>
     <url>/2020/04/20/Javascript-Types/</url>
     <content><![CDATA[<h1 id="Javascript-–-Type"><a href="#Javascript-–-Type" class="headerlink" title="Javascript – Type"></a>Javascript – Type</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
@@ -315,140 +450,87 @@
       </tags>
   </entry>
   <entry>
-    <title>Reg-Number</title>
-    <url>/2020/04/20/Reg-Number/</url>
+    <title>【未完】前端性能监控</title>
+    <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>利用正则表达式，匹配所有 Number 字面量<a id="more"></a>
+<li>记录 性能监控 方面的学习过程🤔</li>
+</ul>
+<a id="more"></a>
 
-</li>
+<h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
+<li>Gmail SPA</li>
+<li>Angular/React/Vue MVVM/工程化</li>
+<li>weex/react native 跨端</li>
+<li>Node 全栈</li>
 </ul>
-<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/fcc73488cd245a6c48cf067a6dc7641e16278.png" alt="NumbericLiteral 大纲"></p>
-</li>
-<li><p>NumericLiteral :: </p>
-<ul>
-<li><p>DecimalLiteral</p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/94398bab367ca56c0aa2435de753041520532.png" alt="DecimalLiteral 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/40d13f93242ff1f9321411cc7886586f52608.png" alt="DecimalLiteral 详情"></p>
-</li>
-<li><p>DecimalIntegerLiteral . DecimalDigits(opt) ExponentPart(opt)</p>
-<ul>
-<li><p>DecimalIntegerLiteral</p>
-<blockquote>
-<p>(0)</p>
-</blockquote>
-<blockquote>
-<p>([1-9][0-9]*)</p>
-</blockquote>
-</li>
-<li><p>.</p>
-<blockquote>
-<p>.</p>
-</blockquote>
-</li>
-<li><p>DecimalDigits</p>
-<blockquote>
-<p>[0-9]*</p>
-</blockquote>
-</li>
-<li><p>ExponentPart</p>
-<blockquote>
-<p>(e|E)(\+|\-)?([0-9])*</p>
-</blockquote>
-</li>
-<li><p>可以推导出</p>
-<blockquote>
-<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
-</blockquote>
-</li>
+<h3 id="前端变化给监控带来了什么样的改变"><a href="#前端变化给监控带来了什么样的改变" class="headerlink" title="前端变化给监控带来了什么样的改变"></a>前端变化给监控带来了什么样的改变</h3><ul>
+<li>传统监控模式能否使用于新的技术？比如 PV 统计<ul>
+<li>导致 PV 下降的原因和解法</li>
+<li>原因<ul>
+<li>业内路由替代了请求新的页面</li>
 </ul>
 </li>
-<li><p>. DecimalDigits ExponentPart(opt)</p>
-<ul>
-<li><p>可以推导出</p>
-<blockquote>
-<p>/^<strong>((0)|([1-9][0-9]*))?</strong>.?([0-9]*)(((e|E)?(\+|\-)?([0-9])*)*)$/</p>
-</blockquote>
-</li>
+<li>解法<ul>
+<li>哈希路由：监听 hash change 变化上报 PV</li>
+<li>非哈希路由(Angular): 轻量 hack pushState 和 replaceState</li>
 </ul>
 </li>
-<li><p>DecimalIntegerLiteral ExponentPart(opt)</p>
-<blockquote>
-<p>/^((0)|([1-9][0-9]*))?<strong>.?</strong>([0-9]<em>)((e|E)?(\+|\-)?([0-9]\</em>))?$/</p>
-</blockquote>
-</li>
-<li><p>最终</p>
-<blockquote>
-<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
-</blockquote>
-</li>
+<li>案例<ul>
+<li>下拉刷新</li>
+<li>滚屏分页</li>
+<li>阿里云邮后台一直开着，每周上百次查看</li>
+<li>未关闭的浏览器 Ta b几小时后再次浏览</li>
+<li>查找信息时，浏览器 Tab 之间快速切换</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>BinaryIntegerLiteral </p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/5a2e4c4c84c80cf794281290420928d78942.png" alt="BinaryIntegerLiteral 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/22c6b076cfe8b42d71003893bed4059512350.png" alt="BinaryIntegerLiteral 详情"></p>
-<blockquote>
-<p>/^0(b|B)(0|1)+$/</p>
-</blockquote>
-</li>
+<li>SPA模式下首屏如何计算？<ul>
+<li>第一阶段：自定义打点时期<ul>
+<li>页头和首屏dom处分别通过 new Date() 打点</li>
 </ul>
 </li>
+<li>第二阶段：W3C标准时期<ul>
+<li>Navigaion Timing API</li>
 </ul>
 </li>
-<li><p>OctalIntegerLiteral </p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/40145f430e5560e16f117863419eceea12195.png" alt="OctalIntegerLiteral 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/3049a1ac2a5071c0bcebae1e31db9a5512369.png" alt="OctalIntegerLiteral 详情"></p>
-<blockquote>
-<p>/^0(O|o)[0-7]+$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>HexIntegerLiteral</p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/cfe61ed151be1f9e1ab58a860cc6c8638397.png" alt="HexIntegerLiteral 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/75544696fc619ce55f6555d0fddd5a0617749.png" alt="HexIntegerLiteral 详情"></p>
-<blockquote>
-<p>/^0(x|X)(([0-9])|([a-f])|([A-F]))+$/</p>
-</blockquote>
-</li>
+<li>第三阶段：SPA盛行导致w3c标准失去原来的意义</li>
+<li>现阶段：用户感官指标FMP<ul>
+<li>FMP：主要内容可见时间</li>
+<li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
+<li>什么原因导致猜想不成立？<ul>
+<li>元素是否可见</li>
+<li>每个元素对页面的影响是否等效？ –&gt; 权重</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>简单总结</p>
-<blockquote>
-<p>/^(((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)(([0-9])|([a-f])|([A-F]))+)$/</p>
-</blockquote>
-</li>
-<li><p>简化</p>
-<blockquote>
-<p> /^(((0)|([1-9]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)((\d)|([a-f])|([A-F]))+)$/</p>
-</blockquote>
-</li>
+<li>下一阶段：W3C/paint-timing 首屏加载时间计算已经在提案中</li>
 </ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+</li>
+<li>跨端开发给监控带来什么挑战？</li>
+<li>前端监控的上报模式在 Node.js 端是否合理？</li>
+</ul>
+<h3 id="前端监控的最佳实践"><a href="#前端监控的最佳实践" class="headerlink" title="前端监控的最佳实践"></a>前端监控的最佳实践</h3><ul>
+<li>主动监控</li>
+<li>性能样本分布 &amp; 慢会话<ul>
+<li>慢会话追踪</li>
+</ul>
+</li>
+<li>搜索报错明细</li>
+<li>出错行为还原</li>
+</ul>
+<h3 id="阿里云ARMS前端监控系统架构"><a href="#阿里云ARMS前端监控系统架构" class="headerlink" title="阿里云ARMS前端监控系统架构"></a>阿里云ARMS前端监控系统架构</h3><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
 ]]></content>
       <categories>
-        <category>前端概念</category>
+        <category>性能监控</category>
       </categories>
       <tags>
-        <tag>前端概念 正则表达式</tag>
+        <tag>性能监控</tag>
       </tags>
   </entry>
   <entry>
@@ -580,211 +662,129 @@
       </tags>
   </entry>
   <entry>
-    <title>【未完】前端性能监控</title>
-    <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
+    <title>Reg-Number</title>
+    <url>/2020/04/20/Reg-Number/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>记录 性能监控 方面的学习过程🤔</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
-<li>Gmail SPA</li>
-<li>Angular/React/Vue MVVM/工程化</li>
-<li>weex/react native 跨端</li>
-<li>Node 全栈</li>
-</ul>
-<h3 id="前端变化给监控带来了什么样的改变"><a href="#前端变化给监控带来了什么样的改变" class="headerlink" title="前端变化给监控带来了什么样的改变"></a>前端变化给监控带来了什么样的改变</h3><ul>
-<li>传统监控模式能否使用于新的技术？比如 PV 统计<ul>
-<li>导致 PV 下降的原因和解法</li>
-<li>原因<ul>
-<li>业内路由替代了请求新的页面</li>
-</ul>
-</li>
-<li>解法<ul>
-<li>哈希路由：监听 hash change 变化上报 PV</li>
-<li>非哈希路由(Angular): 轻量 hack pushState 和 replaceState</li>
-</ul>
-</li>
-<li>案例<ul>
-<li>下拉刷新</li>
-<li>滚屏分页</li>
-<li>阿里云邮后台一直开着，每周上百次查看</li>
-<li>未关闭的浏览器 Ta b几小时后再次浏览</li>
-<li>查找信息时，浏览器 Tab 之间快速切换</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>SPA模式下首屏如何计算？<ul>
-<li>第一阶段：自定义打点时期<ul>
-<li>页头和首屏dom处分别通过 new Date() 打点</li>
-</ul>
-</li>
-<li>第二阶段：W3C标准时期<ul>
-<li>Navigaion Timing API</li>
-</ul>
-</li>
-<li>第三阶段：SPA盛行导致w3c标准失去原来的意义</li>
-<li>现阶段：用户感官指标FMP<ul>
-<li>FMP：主要内容可见时间</li>
-<li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
-<li>什么原因导致猜想不成立？<ul>
-<li>元素是否可见</li>
-<li>每个元素对页面的影响是否等效？ –&gt; 权重</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>下一阶段：W3C/paint-timing 首屏加载时间计算已经在提案中</li>
-</ul>
-</li>
-<li>跨端开发给监控带来什么挑战？</li>
-<li>前端监控的上报模式在 Node.js 端是否合理？</li>
-</ul>
-<h3 id="前端监控的最佳实践"><a href="#前端监控的最佳实践" class="headerlink" title="前端监控的最佳实践"></a>前端监控的最佳实践</h3><ul>
-<li>主动监控</li>
-<li>性能样本分布 &amp; 慢会话<ul>
-<li>慢会话追踪</li>
-</ul>
-</li>
-<li>搜索报错明细</li>
-<li>出错行为还原</li>
-</ul>
-<h3 id="阿里云ARMS前端监控系统架构"><a href="#阿里云ARMS前端监控系统架构" class="headerlink" title="阿里云ARMS前端监控系统架构"></a>阿里云ARMS前端监控系统架构</h3><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>性能监控</category>
-      </categories>
-      <tags>
-        <tag>性能监控</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Reg -- String</title>
-    <url>/2020/04/21/Reg-String/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
-
+<li>利用正则表达式，匹配所有 Number 字面量<a id="more"></a>
 
 </li>
 </ul>
 <h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/fcc73488cd245a6c48cf067a6dc7641e16278.png" alt="NumbericLiteral 大纲"></p>
 </li>
-<li><p>StringLiteral ::</p>
+<li><p>NumericLiteral :: </p>
 <ul>
-<li><p>DoubleStringCharacters</p>
+<li><p>DecimalLiteral</p>
 <ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/03c05dd8a9fd5b8b621593fe039e4e6c16908.png" alt="DoubleStringCharacters 大纲"></p>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/94398bab367ca56c0aa2435de753041520532.png" alt="DecimalLiteral 大纲"></p>
 <ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/ef23a0f824e9fc948b61da6c4a8d2a4729602.png" alt="DoubleStringCharacter 详情"></p>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/40d13f93242ff1f9321411cc7886586f52608.png" alt="DecimalLiteral 详情"></p>
+</li>
+<li><p>DecimalIntegerLiteral . DecimalDigits(opt) ExponentPart(opt)</p>
 <ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/9004c303c8ebdbb8e38c00e7597b2c5b10649.png" alt="SourceCharacter 详情"></p>
+<li><p>DecimalIntegerLiteral</p>
 <blockquote>
-<p>\\u[0-9a-fA-F]{4}</p>
+<p>(0)</p>
+</blockquote>
+<blockquote>
+<p>([1-9][0-9]*)</p>
 </blockquote>
 </li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/25a7c00f444aaead5b3a187d09ab280a16997.png" alt="EscapeSequence 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/ef30597fe4124e22ae7fcf243d9712a310845.png" alt="CharacterEscapeSequence 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/b495509fe89ca78a7d2f5f06831d45c79074.png" alt="SingleEscapeCharacter 详情"></p>
+<li><p>.</p>
 <blockquote>
-<p>‘“\\bfnrtv</p>
+<p>.</p>
 </blockquote>
 </li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/7ce330d5a54c7c8ac927771ee7a0540814453.png" alt="NonEscapeCharacter 详情"></p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/f3d3a1b2fba86ebd4b8b6ab2959302e610550.png" alt="EscapeCharacter 详情"></p>
+<li><p>DecimalDigits</p>
 <blockquote>
-<p>‘“\\bfnrtv0-9xu </p>
+<p>[0-9]*</p>
 </blockquote>
 </li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/8c027b4dfef1876ad432fd62b6ecc4a59724.png" alt="LineTerminator 详情"></p>
+<li><p>ExponentPart</p>
 <blockquote>
-<p>\n\r\u2028\u2029</p>
-</blockquote>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/02a7f707581cb217ab5025d7a48e67e829247.png" alt="LineTerminator 码点"></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>CharacterEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>‘“\\bfnrtv0-9xu\n\r\u2028\u2029</p>
+<p>(e|E)(\+|\-)?([0-9])*</p>
 </blockquote>
 </li>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/9207083723607a9faa4f0a560599dde17694.png" alt="HexEscapeSequence 详情"></p>
-</li>
-<li><p><strong>HexEscapeSequence</strong>总结为：</p>
+<li><p>可以推导出</p>
 <blockquote>
-<p>\\x[0-9a-fA-F]{2}</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/545f52e053421a0e9c5e3b231a96276d10075.png" alt="UnicodeEscapeSequence 详情"></p>
-<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/8bb8c713ee753fd2844aea95e3ecde417620.png" alt="Hex4Digits 详情"></li>
-</ul>
-</li>
-<li><p><strong>UnicodeEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p> \\u[0-9a-fA-F]{4}</p>
+<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
 </blockquote>
 </li>
 </ul>
 </li>
-<li><p><strong>EscapeSequence</strong>总结为：</p>
+<li><p>. DecimalDigits ExponentPart(opt)</p>
+<ul>
+<li><p>可以推导出</p>
 <blockquote>
-<p>(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4})</p>
+<p>/^<strong>((0)|([1-9][0-9]*))?</strong>.?([0-9]*)(((e|E)?(\+|\-)?([0-9])*)*)$/</p>
 </blockquote>
 </li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/bd86a4d39c1ae8d719eca6afbd9dcb147948.png" alt="LineContinuation 详情"></p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/e8b4e35d4653ecb6a0f89d848085f69b14054.png" alt="LineTerminatorSequence 详情"></li>
 </ul>
 </li>
-<li><p><strong>LineContinuation</strong>总结为：</p>
+<li><p>DecimalIntegerLiteral ExponentPart(opt)</p>
 <blockquote>
-<p>\\\n\r\u\2028]2029</p>
+<p>/^((0)|([1-9][0-9]*))?<strong>.?</strong>([0-9]<em>)((e|E)?(\+|\-)?([0-9]\</em>))?$/</p>
+</blockquote>
+</li>
+<li><p>最终</p>
+<blockquote>
+<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
 </blockquote>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p><strong>DoubleStringCharacters</strong>总结为：</p>
-<blockquote>
-<p>“(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”</p>
-</blockquote>
-</li>
-<li><p>SingleStringCharacters</p>
+<li><p>BinaryIntegerLiteral </p>
 <ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/6d2e2b31ed15050de59907d5537b9e9219247.png" alt="SingleStringCharacters 大纲"></li>
-</ul>
-</li>
-<li><p><strong>SingleStringCharacters</strong>总结为：</p>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/5a2e4c4c84c80cf794281290420928d78942.png" alt="BinaryIntegerLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/22c6b076cfe8b42d71003893bed4059512350.png" alt="BinaryIntegerLiteral 详情"></p>
 <blockquote>
-<p>‘(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’</p>
+<p>/^0(b|B)(0|1)+$/</p>
 </blockquote>
 </li>
 </ul>
 </li>
-<li><p><strong>StringLiteral</strong>总结为：</p>
+</ul>
+</li>
+<li><p>OctalIntegerLiteral </p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/40145f430e5560e16f117863419eceea12195.png" alt="OctalIntegerLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/3049a1ac2a5071c0bcebae1e31db9a5512369.png" alt="OctalIntegerLiteral 详情"></p>
 <blockquote>
-<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
+<p>/^0(O|o)[0-7]+$/</p>
 </blockquote>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
-
-
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>HexIntegerLiteral</p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/cfe61ed151be1f9e1ab58a860cc6c8638397.png" alt="HexIntegerLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/75544696fc619ce55f6555d0fddd5a0617749.png" alt="HexIntegerLiteral 详情"></p>
+<blockquote>
+<p>/^0(x|X)(([0-9])|([a-f])|([A-F]))+$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>简单总结</p>
+<blockquote>
+<p>/^(((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)(([0-9])|([a-f])|([A-F]))+)$/</p>
+</blockquote>
+</li>
+<li><p>简化</p>
+<blockquote>
+<p> /^(((0)|([1-9]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)((\d)|([a-f])|([A-F]))+)$/</p>
+</blockquote>
 </li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
