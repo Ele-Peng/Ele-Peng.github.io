@@ -184,7 +184,7 @@ function UTF8_Decoding(bytes) {
 let b = new Float64Array([0.1])
 console.log(b)
 let intArr = new Uint8Array(b.buffer)
-for (let i = 7; i > 0; i --) {
+for (let i = 7; i >= 0; i --) {
     s = intArr[i].toString(2)
     while(s.length < 8) {
         s = '0' + s
@@ -199,7 +199,7 @@ for (let i = 7; i > 0; i --) {
 - ![查看 0.1 表示方式截图](http://p0.meituan.net/myvideodistribute/de79ee3caac77ddad9398cfeaaf3719f227171.png)
 	- 0 --> 标志位
 	- 011111111011 --> 指数位
-	- 1001{11}1010 --> 尾数
+	- 1001{12}1010 --> 尾数
 
 	
 ## 参考文献
