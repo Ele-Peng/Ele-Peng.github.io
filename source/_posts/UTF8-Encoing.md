@@ -196,5 +196,12 @@ for (let i = 7; i > 0; i --) {
 	- 0 --> 标志位
 	- 011111111011 --> 指数位
 	- 1001{11}1010 --> 尾数
+
+	
+## 参考文献
+- 《Javascript 权威指南》22.5章 类型化数组和 ArrayBuffer P678
+- [彻底搞懂Javascript 浮点数](https://cloud.tencent.com/developer/article/1592651)
+- [二进制转换工具](http://www.binaryconvert.com/convert_double.html)
+
 ## 写在后面
 - 祝大家多多发财
