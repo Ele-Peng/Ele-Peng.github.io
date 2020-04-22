@@ -109,29 +109,98 @@
 <li>往下看吧~ 🤓</li>
 </ul>
 <a id="more"></a>
+
 <h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><h4 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h4><ul>
 <li>统计字符串长度</li>
 <li>循环遍历字符串，进行编码</li>
 <li>输出编码后的字节流</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UTF8_Encoding</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">let</span> length = str.length,</span><br><span class="line">        strIndex = <span class="number">-1</span>,</span><br><span class="line">        strEnd = length - <span class="number">1</span>,</span><br><span class="line">        bytes = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(length),</span><br><span class="line">        index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (strIndex++ &lt; strEnd) &#123;</span><br><span class="line">        bytes[index] = str.charCodeAt(strIndex) &amp; <span class="number">0xFF</span>; <span class="comment">// 设置为低8位值</span></span><br><span class="line">        index += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> bytes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="字节流文件转-String"><a href="#字节流文件转-String" class="headerlink" title="字节流文件转 String"></a>字节流文件转 String</h2><h4 id="总体思路-1"><a href="#总体思路-1" class="headerlink" title="总体思路"></a>总体思路</h4><ul>
 <li>统计字节流长度</li>
 <li>循环遍历字节流，进行解码</li>
 <li>输出解码后的字节流</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UTF8_Decoding</span>(<span class="params">bytes</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> str = <span class="string">""</span>,</span><br><span class="line">        bytesIndex = <span class="number">-1</span>,</span><br><span class="line">        bytesEnd = bytes.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (bytesIndex ++ &lt; bytesEnd) &#123;</span><br><span class="line">        str += <span class="built_in">String</span>.fromCharCode(bytes[bytesIndex]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <h4 id="测试截图"><a href="#测试截图" class="headerlink" title="测试截图"></a>测试截图</h4><ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/c1770110908275e40343791324f7dfff154914.png" alt="测试截图"></li>
 </ul>
 <h2 id="类型化数组"><a href="#类型化数组" class="headerlink" title="类型化数组"></a>类型化数组</h2><ul>
-<li>类型化数组中的元素都是数字。使用构造函数在创建类型化数组的时候决定了数组中数字（有符号或者无符号整数或者浮点数）的类型和大小（以位为单位）</li>
-<li>类型化数组有固定的长度。</li>
-<li>在创建类型化数组的时候，数组中的元素总是默认初始化为0.</li>
+<li><p>类型化数组中的元素都是数字。使用构造函数在创建类型化数组的时候决定了数组中数字（有符号或者无符号整数或者浮点数）的类型和大小（以位为单位）</p>
+</li>
+<li><p>类型化数组有固定的长度。</p>
+</li>
+<li><p>在创建类型化数组的时候，数组中的元素总是默认初始化为0.</p>
+</li>
 <li><p><strong>类型化数组</strong></p>
 <ul>
 <li><p><strong>TypedArray</strong> 视图支持的数据类型一共有 9 种（ <strong>DataView</strong> 视图支持除 <strong>Uint8C</strong> 以外的其他 8 种）。</p>
-<p>  | 数据类型 |  字节长度  |  含义  | 对应的 C 语言类型 |<br>  | —- | —- | —- | —- |<br>  | Int8 | 1 | 8 位带符号整数 | signed char |<br>  | Uint8 |    1 |    8 位不带符号整数 |    unsigned char |<br>  | Uint8C | 1 | 8 位不带符号整数（自动过滤溢出）|unsigned char |<br>  | Int16 |    2 |    16 位带符号整数 |    short |<br>  | Uint16 | 2 | 16 位不带符号整数 | unsigned short |<br>  | Int32 |    4 | 32 位带符号整数 | int |<br>  | Uint32 | 4 | 32 位不带符号的整数 | unsigned int |<br>  | Float32 | 4     | 32 位浮点数 | float |<br>  | Float64 | 8 |    64 位浮点数 | double |</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>字节长度</th>
+<th>含义</th>
+<th>对应的 C 语言类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Int8</td>
+<td>1</td>
+<td>8 位带符号整数</td>
+<td>signed char</td>
+</tr>
+<tr>
+<td>Uint8</td>
+<td>1</td>
+<td>8 位不带符号整数</td>
+<td>unsigned char</td>
+</tr>
+<tr>
+<td>Uint8C</td>
+<td>1</td>
+<td>8 位不带符号整数（自动过滤溢出）</td>
+<td>unsigned char</td>
+</tr>
+<tr>
+<td>Int16</td>
+<td>2</td>
+<td>16 位带符号整数</td>
+<td>short</td>
+</tr>
+<tr>
+<td>Uint16</td>
+<td>2</td>
+<td>16 位不带符号整数</td>
+<td>unsigned short</td>
+</tr>
+<tr>
+<td>Int32</td>
+<td>4</td>
+<td>32 位带符号整数</td>
+<td>int</td>
+</tr>
+<tr>
+<td>Uint32</td>
+<td>4</td>
+<td>32 位不带符号的整数</td>
+<td>unsigned int</td>
+</tr>
+<tr>
+<td>Float32</td>
+<td>4</td>
+<td>32 位浮点数</td>
+<td>float</td>
+</tr>
+<tr>
+<td>Float64</td>
+<td>8</td>
+<td>64 位浮点数</td>
+<td>double</td>
+</tr>
+</tbody></table>
 </li>
 </ul>
 </li>
@@ -139,13 +208,17 @@
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bytes = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(<span class="number">1024</span>); <span class="comment">// 1kb字节 </span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; bytes.length; i ++) <span class="comment">// 循环数组的每个元素</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; bytes.length; i ++) <span class="comment">// 循环数组的每个元素</span></span><br><span class="line">	bytes[i] = i &amp; <span class="number">0xFF</span>; <span class="comment">// 设置为索引的低8位值</span></span><br><span class="line"><span class="keyword">var</span> copy = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(bytes); <span class="comment">// 创建数组的副本</span></span><br><span class="line"><span class="keyword">var</span> ints = <span class="keyword">new</span> <span class="built_in">Int32Array</span>([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// 包含这4个int值的类型化数组</span></span><br></pre></td></tr></table></figure></li>
 <li><p>类型化数组：他们都是<strong>基本字节块的视图</strong>，称为一个 ArrayBuffer 。ArrayBuffer 只是不透明的字节块。可以通过类型化数组获取这些字节，但是 ArrayBuffer 自己并不是一个类型化数组。可以像对任意 Javascript 对象那样，使用数字数组索引来操作 ArrayBuffer。但是，这样做并<strong>不能赋予访问缓冲区中字节的权限</strong></p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bytes = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(<span class="number">8</span>); <span class="comment">// 分配8个字节</span></span><br><span class="line">bytes[<span class="number">0</span>] = <span class="number">1</span> <span class="comment">// 把第一个字节设置为1</span></span><br><span class="line">bytes.buffer[<span class="number">0</span>] = <span class="number">255</span> <span class="comment">// 错误获取，缓冲区中没有索引值0</span></span><br><span class="line">bytes.buffer[<span class="number">1</span>] = <span class="number">255</span> <span class="comment">// 错误设置缓冲区字节</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h3 id="“字节顺序”"><a href="#“字节顺序”" class="headerlink" title="“字节顺序”"></a>“字节顺序”</h3><ul>
-<li>字节组织成更长的字的顺序</li>
-<li>为了高效，类型化数组采用底层硬件的原生顺序。在低位优先(little-endian)系统中， ArrayBuffer 中数字的字节是按照从低位到高位的顺序排列的。在高位优先(big-endian)系统中，字节是按照从高位到低位的顺序排列的。</li>
+<li><p>字节组织成更长的字的顺序</p>
+</li>
+<li><p>为了高效，类型化数组采用底层硬件的原生顺序。在低位优先(little-endian)系统中， ArrayBuffer 中数字的字节是按照从低位到高位的顺序排列的。在高位优先(big-endian)系统中，字节是按照从高位到低位的顺序排列的。</p>
+</li>
 <li><p>可以使用如下代码来检测系统的字节顺序：</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果整数 Ox00000001 在内存中表示成： 01 00 00 00</span></span><br><span class="line"><span class="comment">// 则说明当前系统是低位优先系统</span></span><br><span class="line"><span class="comment">// 相反，在高位优先系统中，它会表示成：00 00 00 01</span></span><br><span class="line"><span class="keyword">var</span> little_endian = <span class="keyword">new</span> <span class="built_in">Int8Array</span>(<span class="keyword">new</span> <span class="built_in">Int32Array</span>([<span class="number">1</span>]).buffer)[<span class="number">0</span>] === <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h2 id="思考问题-0-1-0-2-≠-0-3"><a href="#思考问题-0-1-0-2-≠-0-3" class="headerlink" title="思考问题 0.1 + 0.2 ≠ 0.3"></a>思考问题 0.1 + 0.2 ≠ 0.3</h2><ul>
@@ -164,6 +237,7 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0.1 和 0.2 都转化成二进制后再进行运算</span></span><br><span class="line"><span class="number">0.00011001100110011001100110011001100110011001100110011010</span> +</span><br><span class="line"><span class="number">0.0011001100110011001100110011001100110011001100110011010</span> =</span><br><span class="line"><span class="number">0.0100110011001100110011001100110011001100110011001100111</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 转成十进制正好是 0.30000000000000004</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>二进制数转成 IEEE 754 标准</p>
 <ul>
@@ -171,8 +245,10 @@
 </li>
 <li><p>使用 64 位固定长度来表示，也就是标准的double 双精度浮点数。</p>
 </li>
-<li>这样的存储结构优点是可以归一化处理整数和小数，节省存储空间。</li>
-<li>这64个比特又可分为三个部分，即：<ul>
+<li><p>这样的存储结构优点是可以归一化处理整数和小数，节省存储空间。</p>
+</li>
+<li><p>这64个比特又可分为三个部分，即：</p>
+<ul>
 <li>第1位: 是符号的标志位(S), 0代表正数，1代表负数</li>
 <li>第1-11位: 指数位(E), 存储指数（exponent），用来表示次方数</li>
 <li>第12-63位: 尾数(M), 这52 位是尾数，超出的部分自动进一舍零</li>
@@ -201,6 +277,8 @@
 <li><p>相对于，小数点移了4位，指数减4</p>
 <blockquote>
 <p>exponent = -4 + 1023 = 1019</p>
+</blockquote>
+<blockquote>
 <p>01111111011</p>
 </blockquote>
 </li>
@@ -228,25 +306,24 @@
 </ul>
 </li>
 </ul>
-<h3 id="查看-0-1-表示方式"><a href="#查看-0-1-表示方式" class="headerlink" title="查看 0.1 表示方式"></a>查看 0.1 表示方式</h3><pre><code class="lang-javascript">let b = new Float64Array([0.1])
-console.log(b)
-let intArr = new Uint8Array(b.buffer)
-for (let i = 7; i &gt; 0; i --) {
-    s = intArr[i].toString(2)
-    while(s.length &lt; 8) {
-        s = &#39;0&#39; + s
+<h3 id="查看-0-1-表示方式"><a href="#查看-0-1-表示方式" class="headerlink" title="查看 0.1 表示方式"></a>查看 0.1 表示方式</h3><pre><code class="javascript"><span class="keyword">let</span> b = <span class="keyword">new</span> <span class="built_in">Float64Array</span>([<span class="number">0.1</span>])
+<span class="built_in">console</span>.log(b)
+<span class="keyword">let</span> intArr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(b.buffer)
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">7</span>; i &gt; <span class="number">0</span>; i --) {
+    s = intArr[i].toString(<span class="number">2</span>)
+    <span class="keyword">while</span>(s.length &lt; <span class="number">8</span>) {
+        s = <span class="string">'0'</span> + s
     }
-    console.log(s)
+    <span class="built_in">console</span>.log(s)
 
-}
-</code></pre>
+}</code></pre>
 <ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/d996e0a508b796f5a3d4f4866c1bf43064783.png" alt="低位优先系统"></li>
 <li>首先我们的系统是低位优先系统(little_endian)</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/de79ee3caac77ddad9398cfeaaf3719f227171.png" alt="查看 0.1 表示方式截图"><ul>
-<li>0 —&gt; 标志位</li>
-<li>011111111011 —&gt; 指数位</li>
-<li>1001{11}1010 —&gt; 尾数</li>
+<li>0 –&gt; 标志位</li>
+<li>011111111011 –&gt; 指数位</li>
+<li>1001{11}1010 –&gt; 尾数</li>
 </ul>
 </li>
 </ul>
@@ -271,7 +348,7 @@ for (let i = 7; i &gt; 0; i --) {
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>没有更新的文章</h3>
+						<h3>No newer post</h3>
 					</div>
 				</div>
 			</div>
@@ -325,12 +402,12 @@ for (let i = 7; i &gt; 0; i --) {
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
     
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>友链</span>
+      <i class="fa fa-link fa-fw"></i>Friends</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>
