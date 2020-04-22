@@ -891,14 +891,162 @@
       </tags>
   </entry>
   <entry>
-    <title>数组、链表、跳表</title>
-    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
-    <content><![CDATA[<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
-<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
-<li>数学归纳法</li>
-<li>找最近重复问题</li>
+    <title>【未完】计算机图形学初探</title>
+    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><p>记录 计算机图形学 方面的学习过程🤔</p>
+<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
+<li>前端与图形学<ul>
+<li>shader</li>
+</ul>
+</li>
+<li>图形学应用场景<ul>
+<li>Image<ul>
+<li>pattern（多用于背景）</li>
+<li>photo</li>
+<li>shape</li>
+</ul>
+</li>
+<li>来自数学的图形–分形</li>
+<li>来自物理的图形–光的衍射<ul>
+<li>相变</li>
+<li>绿幕<ul>
+<li>PNG24 –&gt; 2张 jpg</li>
+</ul>
+</li>
+<li>3D效果<ul>
+<li>three.js</li>
+<li>babylon.js</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>计算机图形学</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OOP-面向对象</title>
+    <url>/2020/04/09/OOP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>昨天 Mentor 说以后要开始用 React Hooks（我还没有涉足 ）写点东西，进而谈论到 React 生态一直想推展开来的的函数式编程思想，我不由得想到一个问题：都说 Javascript 不是典型的面向对象编程语言，它并不具备完整的 OOP 该有的特性，它虽引进了 class 语法糖，但只是让对象原型写法更加像面向对象编程语言的写法，那面向对象到底可以理解为什么 ? 🤔 以及函数式编程思想在推什么？Javascript 定位究竟是什么？</li>
+<li>简单记录一下自己关于这个问题的思考<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="OOP-Wikipedia"><a href="#OOP-Wikipedia" class="headerlink" title="OOP Wikipedia"></a>OOP Wikipedia</h2><ul>
+<li><p>探讨的是面向对象</p>
+</li>
+<li><p>我们首先可以想想，我们为什么需要封装成对象？</p>
+<ul>
+<li>我的理解是：我们需要减少我们的操作粒度，每个操作都去落实到 bit 数据是非常庞大的，减少问题求解复杂度</li>
+<li>wiki 上关于 object 特性也给到了支持</li>
+</ul>
+</li>
+<li><p>A feature of objects is an object’s procedures that can <strong>access</strong> and <strong>often modify the data fields</strong> of the object with which they are associated (objects have a notion of “this” or “self”).</p>
+<ul>
+<li><p>可以和面向过程 (Procedure Oriented) 放在一起说。</p>
+</li>
+<li><p>首先 OOP 是一个很自然的思想，在C语言中也能写出<strong>符合</strong>面向对象思想的代码</p>
+  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C语言例子</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *name;  <span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">int</span> num;  <span class="comment">//学号</span></span><br><span class="line">    <span class="keyword">int</span> age;  <span class="comment">//年龄</span></span><br><span class="line">    <span class="keyword">char</span> group;  <span class="comment">//所在学习小组</span></span><br><span class="line">    <span class="keyword">float</span> score;  <span class="comment">//成绩</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">GetStudentName</span><span class="params">(struct Student* stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetStudentName</span><span class="params">(struct Student* stu, <span class="keyword">char</span>* newName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span> <span class="title">s1</span>, <span class="title">s2</span>, <span class="title">s3</span>, <span class="title">s4</span>;</span> <span class="comment">// 创建了多个学生</span></span><br><span class="line">    SetStudentName(&amp;s1, <span class="string">"小明"</span>);</span><br><span class="line">    SetStudentName(&amp;s2, <span class="string">"小红"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>其次 OOP 面向对象编程，在做一件什么事情？</p>
+<ul>
+<li><p>在面对复杂性业务需求中，面向对象思想可以将业务先进行分析，如果业务需求全新无关联，那我们可以新建一个对象，在里面封装对应的方法；如果业务需求只是一条延展线（比如特定节假日打折），那我们可以继承现有对象，并对现有对象的某些方法（discount），进行特定操作，即多态：用统一的方法对不同的对象进行同样的操作。</p>
+  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">override</span> fun <span class="title">discount</span><span class="params">(price: Double)</span>: Double </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (!isCouple()) <span class="keyword">return</span> price</span><br><span class="line">       <span class="keyword">if</span> (price &gt; <span class="number">99</span>) &#123;</span><br><span class="line">           val lucky = Random().nextInt(gifts.<span class="built_in">size</span>)</span><br><span class="line">           <span class="built_in">println</span>(<span class="string">"Congratulations on getting $&#123;gifts[lucky]&#125;!"</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> price * <span class="number">0.77</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>而面对这种频繁操作数据单元的使用面向过程编程思想，可能会在现有对象加上判断，万一节假日还要做其他的业务，判断只会越来越多。这就与我们 Nicklaus Wirth 提出的：<strong>程序 = 数据结构 + 算法</strong>，越来越割裂。</li>
+</ul>
+</li>
+<li><p>在我现在的浅薄思考看来：面向对象编程思想是想先让不同对象以尽可能的统一特性进行归组，形成“大对象”，然后各个对象变成了这个大对象中衍生出来的基类，并在父类派生出来的对象中，去实现各自解决问题的具体方法。这样当我们在拿到一个问题，我们可以不用去管它的内部实现，我们根据类型就可以知道它能做什么事，这比我们手动去一步一步执行要先进点。<strong>让对象有多态性，把不同对象以同一特性来归组，统一处理。至于所谓继承等概念，是实现的细节</strong>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="prototype-based-programming"><a href="#prototype-based-programming" class="headerlink" title="prototype-based programming"></a>prototype-based programming</h2><ul>
+<li><p>Languages with abstract data type support which may be used to <strong>resemble OO programming</strong>, but <strong>without all features of object-orientation</strong>. This includes object-based and <strong>prototype-based languages</strong>. Examples: JavaScript, Lua, Modula-2, CLU.</p>
+</li>
+<li><p>The Document Object Model of HTML, XHTML, and XML documents on the Internet has bindings to the popular JavaScript/ECMAScript language. <strong>JavaScript is perhaps the best known prototype-based programming language, which employs cloning from prototypes rather than inheriting from a class (contrast to class-based programming)</strong>. </p>
+</li>
+<li><p>我们在大概了解了 OOP 思想后，我们可以继续看看“类OOP”–基于原型编程 Javascript 实现</p>
+</li>
+<li><p>我们可以先从 ECMA-262 规范中找到关于 Object 的定义</p>
+<ul>
+<li>“Objects are created by using constructors in <strong>new expressions</strong>.”</li>
+<li>“Each constructor is a function that has a property named <strong>‘prototype’ that is used to implement prototype-based inheritance and shared properties</strong>.”</li>
+<li>“Every object created by a constructor has an implicit reference (called the object’s prototype) to the value of its constructor’s ‘prototype’ property. Furthermore, a prototype may have a non-null implicit reference to its prototype, and so on; this is called the prototype chain. When a reference is made to a property in an object, that reference is to the property of that name in the first object in the prototype chain that contains a property of that name. In other words, first the object mentioned directly is examined for such a property; if that object contains the named property, that is the property to which the reference refers; if that object does not contain the named property, the prototype for that object is examined next; and so on.”</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/54f432d1395e59da48e0e7935ffd7665110363.png" alt="ECMA原型链"></li>
+</ul>
+</li>
+<li><p>同时 Douglas Crockford 关于 <a href="https://crockford.com/javascript/prototypal.html" target="_blank" rel="noopener">prototypal inheritance</a></p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">       <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">       F.prototype = o;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>“The object function untangles JavaScript’s constructor pattern, achieving true prototypal inheritance. It takes an old object as a parameter and returns an empty new object that inherits from the old one. If we attempt to obtain a member from the new object, and it lacks that key, then the old object will supply the member. Objects inherit from objects.”</li>
+<li>“What could be more object oriented than that?” 😝</li>
+</ul>
+</li>
+<li><p>也有新的对 Object 的思考</p>
+<ul>
+<li>“In JavaScript, <strong>an object is an associative array</strong>, augmented with a prototype (see below); each string key provides the name for an object property, and there are two syntactical ways to specify such a name: dot notation (obj.x = 10) and bracket notation (obj[‘x’] = 10). A property may be added, rebound, or deleted at run-time. Most properties of an object (and any property that belongs to an object’s prototype inheritance chain) can be enumerated using a for…in loop.”</li>
+</ul>
+</li>
+</ul>
+<h2 id="Functional-programming"><a href="#Functional-programming" class="headerlink" title="Functional programming"></a>Functional programming</h2><ul>
+<li>Functional programming has its origins in lambda calculus.It is a programming paradigm —- a style of building the structure and elements of computer programs – that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.</li>
+<li>One of the key motivations for the development of functional programming is making a program easier to understand by eliminating changes in state that <strong>do not depend on function inputs</strong> which are called side effects.</li>
+<li>side effects include modifying a non-local variable, modifying a static local variable, modifying a mutable argument passed by reference, performing I/O or calling other side-effect functions.</li>
+<li>referential transparency<ul>
+<li>the same language expression can result in different values at different times depending on the state of the executing program.</li>
+<li>Consider C assignment statement x = x * 10, this changes the value assigned to the variable x. Let us say that the initial value of x was 1, then two consecutive evaluations of the variable x yields 10 and 100 respectively. Clearly, replacing x = x * 10 with either 10 or 100 gives a program with different meaning, and so the expression is not referentially transparent. In fact, assignment statements are never referentially transparent.</li>
+<li>Absence of side effects is a necessary, but not sufficient, condition for referential transparency. <strong>Referential transparency means that an expression (such as a function call) can be replaced with its value</strong>. This requires that the expression is pure, that is to say the expression must be deterministic (always give the same value for the same input) and side-effect free.</li>
+</ul>
+</li>
+</ul>
+<h2 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h2><ul>
+<li>Javasript 说它是基于面向对象的编程语言是不严谨的，准确的说他是类面向对象的编程语言，基于原型的编程语言。</li>
+</ul>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects" target="_blank" rel="noopener">引入 Javascript 对象</a></li>
+<li><a href="https://software.intel.com/en-us/blogs/2008/08/22/flaws-of-object-oriented-modeling/" target="_blank" rel="noopener">Flaws of Object Oriented Modeling</a></li>
+<li><a href="https://books.google.com/books?id=xb-sAQAAQBAJ&printsec=frontcover&dq=isbn:9788090466180&hl=zh-CN&sa=X&ved=0ahUKEwiG-8y8qdroAhWmUt8KHey5Dl0Q6AEIKDAA#v=onepage&q&f=false" target="_blank" rel="noopener">learn object oriented thinking &amp; programming</a></li>
+<li><a href="https://books.google.com/books?id=WzsFCAAAQBAJ&printsec=frontcover&dq=isbn:9780735619654&hl=zh-CN&sa=X&ved=0ahUKEwiqzaPSqNroAhVvUd8KHc80CYEQ6AEIKDAA#v=onepage&q&f=false" target="_blank" rel="noopener">Obejct thinking</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener">Javascript Object-orientation (prototype-based)</a></li>
+<li><a href="https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep" target="_blank" rel="noopener">Introduction to Object Oriented Programming Concepts (OOP) and More</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank" rel="noopener">Functional_programming wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)" target="_blank" rel="noopener">Side effect wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">Object-oriented programming wikipedia</a></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>有对 Object 以及对 reference 产生的 side effects<br>新的认识</li>
+<li>闭包 closure<ul>
+<li>A nested function is a function defined within another function. It is created each time the outer function is invoked. In addition, each nested function forms a lexical closure: The lexical scope of the outer function (including any constant, local variable, or argument value) becomes part of the internal state of each inner function object, even after execution of the outer function concludes.</li>
+</ul>
+</li>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
   </entry>
   <entry>
     <title>UTF8_Encoing</title>
@@ -1146,114 +1294,6 @@
       </tags>
   </entry>
   <entry>
-    <title>OOP-面向对象</title>
-    <url>/2020/04/09/OOP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>昨天 Mentor 说以后要开始用 React Hooks（我还没有涉足 ）写点东西，进而谈论到 React 生态一直想推展开来的的函数式编程思想，我不由得想到一个问题：都说 Javascript 不是典型的面向对象编程语言，它并不具备完整的 OOP 该有的特性，它虽引进了 class 语法糖，但只是让对象原型写法更加像面向对象编程语言的写法，那面向对象到底可以理解为什么 ? 🤔 以及函数式编程思想在推什么？Javascript 定位究竟是什么？</li>
-<li>简单记录一下自己关于这个问题的思考<a id="more"></a>
-
-</li>
-</ul>
-<h2 id="OOP-Wikipedia"><a href="#OOP-Wikipedia" class="headerlink" title="OOP Wikipedia"></a>OOP Wikipedia</h2><ul>
-<li><p>探讨的是面向对象</p>
-</li>
-<li><p>我们首先可以想想，我们为什么需要封装成对象？</p>
-<ul>
-<li>我的理解是：我们需要减少我们的操作粒度，每个操作都去落实到 bit 数据是非常庞大的，减少问题求解复杂度</li>
-<li>wiki 上关于 object 特性也给到了支持</li>
-</ul>
-</li>
-<li><p>A feature of objects is an object’s procedures that can <strong>access</strong> and <strong>often modify the data fields</strong> of the object with which they are associated (objects have a notion of “this” or “self”).</p>
-<ul>
-<li><p>可以和面向过程 (Procedure Oriented) 放在一起说。</p>
-</li>
-<li><p>首先 OOP 是一个很自然的思想，在C语言中也能写出<strong>符合</strong>面向对象思想的代码</p>
-  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C语言例子</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *name;  <span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">int</span> num;  <span class="comment">//学号</span></span><br><span class="line">    <span class="keyword">int</span> age;  <span class="comment">//年龄</span></span><br><span class="line">    <span class="keyword">char</span> group;  <span class="comment">//所在学习小组</span></span><br><span class="line">    <span class="keyword">float</span> score;  <span class="comment">//成绩</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">GetStudentName</span><span class="params">(struct Student* stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetStudentName</span><span class="params">(struct Student* stu, <span class="keyword">char</span>* newName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span> <span class="title">s1</span>, <span class="title">s2</span>, <span class="title">s3</span>, <span class="title">s4</span>;</span> <span class="comment">// 创建了多个学生</span></span><br><span class="line">    SetStudentName(&amp;s1, <span class="string">"小明"</span>);</span><br><span class="line">    SetStudentName(&amp;s2, <span class="string">"小红"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>其次 OOP 面向对象编程，在做一件什么事情？</p>
-<ul>
-<li><p>在面对复杂性业务需求中，面向对象思想可以将业务先进行分析，如果业务需求全新无关联，那我们可以新建一个对象，在里面封装对应的方法；如果业务需求只是一条延展线（比如特定节假日打折），那我们可以继承现有对象，并对现有对象的某些方法（discount），进行特定操作，即多态：用统一的方法对不同的对象进行同样的操作。</p>
-  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">override</span> fun <span class="title">discount</span><span class="params">(price: Double)</span>: Double </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (!isCouple()) <span class="keyword">return</span> price</span><br><span class="line">       <span class="keyword">if</span> (price &gt; <span class="number">99</span>) &#123;</span><br><span class="line">           val lucky = Random().nextInt(gifts.<span class="built_in">size</span>)</span><br><span class="line">           <span class="built_in">println</span>(<span class="string">"Congratulations on getting $&#123;gifts[lucky]&#125;!"</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> price * <span class="number">0.77</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>而面对这种频繁操作数据单元的使用面向过程编程思想，可能会在现有对象加上判断，万一节假日还要做其他的业务，判断只会越来越多。这就与我们 Nicklaus Wirth 提出的：<strong>程序 = 数据结构 + 算法</strong>，越来越割裂。</li>
-</ul>
-</li>
-<li><p>在我现在的浅薄思考看来：面向对象编程思想是想先让不同对象以尽可能的统一特性进行归组，形成“大对象”，然后各个对象变成了这个大对象中衍生出来的基类，并在父类派生出来的对象中，去实现各自解决问题的具体方法。这样当我们在拿到一个问题，我们可以不用去管它的内部实现，我们根据类型就可以知道它能做什么事，这比我们手动去一步一步执行要先进点。<strong>让对象有多态性，把不同对象以同一特性来归组，统一处理。至于所谓继承等概念，是实现的细节</strong>。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="prototype-based-programming"><a href="#prototype-based-programming" class="headerlink" title="prototype-based programming"></a>prototype-based programming</h2><ul>
-<li><p>Languages with abstract data type support which may be used to <strong>resemble OO programming</strong>, but <strong>without all features of object-orientation</strong>. This includes object-based and <strong>prototype-based languages</strong>. Examples: JavaScript, Lua, Modula-2, CLU.</p>
-</li>
-<li><p>The Document Object Model of HTML, XHTML, and XML documents on the Internet has bindings to the popular JavaScript/ECMAScript language. <strong>JavaScript is perhaps the best known prototype-based programming language, which employs cloning from prototypes rather than inheriting from a class (contrast to class-based programming)</strong>. </p>
-</li>
-<li><p>我们在大概了解了 OOP 思想后，我们可以继续看看“类OOP”–基于原型编程 Javascript 实现</p>
-</li>
-<li><p>我们可以先从 ECMA-262 规范中找到关于 Object 的定义</p>
-<ul>
-<li>“Objects are created by using constructors in <strong>new expressions</strong>.”</li>
-<li>“Each constructor is a function that has a property named <strong>‘prototype’ that is used to implement prototype-based inheritance and shared properties</strong>.”</li>
-<li>“Every object created by a constructor has an implicit reference (called the object’s prototype) to the value of its constructor’s ‘prototype’ property. Furthermore, a prototype may have a non-null implicit reference to its prototype, and so on; this is called the prototype chain. When a reference is made to a property in an object, that reference is to the property of that name in the first object in the prototype chain that contains a property of that name. In other words, first the object mentioned directly is examined for such a property; if that object contains the named property, that is the property to which the reference refers; if that object does not contain the named property, the prototype for that object is examined next; and so on.”</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/54f432d1395e59da48e0e7935ffd7665110363.png" alt="ECMA原型链"></li>
-</ul>
-</li>
-<li><p>同时 Douglas Crockford 关于 <a href="https://crockford.com/javascript/prototypal.html" target="_blank" rel="noopener">prototypal inheritance</a></p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">       <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">       F.prototype = o;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>“The object function untangles JavaScript’s constructor pattern, achieving true prototypal inheritance. It takes an old object as a parameter and returns an empty new object that inherits from the old one. If we attempt to obtain a member from the new object, and it lacks that key, then the old object will supply the member. Objects inherit from objects.”</li>
-<li>“What could be more object oriented than that?” 😝</li>
-</ul>
-</li>
-<li><p>也有新的对 Object 的思考</p>
-<ul>
-<li>“In JavaScript, <strong>an object is an associative array</strong>, augmented with a prototype (see below); each string key provides the name for an object property, and there are two syntactical ways to specify such a name: dot notation (obj.x = 10) and bracket notation (obj[‘x’] = 10). A property may be added, rebound, or deleted at run-time. Most properties of an object (and any property that belongs to an object’s prototype inheritance chain) can be enumerated using a for…in loop.”</li>
-</ul>
-</li>
-</ul>
-<h2 id="Functional-programming"><a href="#Functional-programming" class="headerlink" title="Functional programming"></a>Functional programming</h2><ul>
-<li>Functional programming has its origins in lambda calculus.It is a programming paradigm —- a style of building the structure and elements of computer programs – that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.</li>
-<li>One of the key motivations for the development of functional programming is making a program easier to understand by eliminating changes in state that <strong>do not depend on function inputs</strong> which are called side effects.</li>
-<li>side effects include modifying a non-local variable, modifying a static local variable, modifying a mutable argument passed by reference, performing I/O or calling other side-effect functions.</li>
-<li>referential transparency<ul>
-<li>the same language expression can result in different values at different times depending on the state of the executing program.</li>
-<li>Consider C assignment statement x = x * 10, this changes the value assigned to the variable x. Let us say that the initial value of x was 1, then two consecutive evaluations of the variable x yields 10 and 100 respectively. Clearly, replacing x = x * 10 with either 10 or 100 gives a program with different meaning, and so the expression is not referentially transparent. In fact, assignment statements are never referentially transparent.</li>
-<li>Absence of side effects is a necessary, but not sufficient, condition for referential transparency. <strong>Referential transparency means that an expression (such as a function call) can be replaced with its value</strong>. This requires that the expression is pure, that is to say the expression must be deterministic (always give the same value for the same input) and side-effect free.</li>
-</ul>
-</li>
-</ul>
-<h2 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h2><ul>
-<li>Javasript 说它是基于面向对象的编程语言是不严谨的，准确的说他是类面向对象的编程语言，基于原型的编程语言。</li>
-</ul>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects" target="_blank" rel="noopener">引入 Javascript 对象</a></li>
-<li><a href="https://software.intel.com/en-us/blogs/2008/08/22/flaws-of-object-oriented-modeling/" target="_blank" rel="noopener">Flaws of Object Oriented Modeling</a></li>
-<li><a href="https://books.google.com/books?id=xb-sAQAAQBAJ&printsec=frontcover&dq=isbn:9788090466180&hl=zh-CN&sa=X&ved=0ahUKEwiG-8y8qdroAhWmUt8KHey5Dl0Q6AEIKDAA#v=onepage&q&f=false" target="_blank" rel="noopener">learn object oriented thinking &amp; programming</a></li>
-<li><a href="https://books.google.com/books?id=WzsFCAAAQBAJ&printsec=frontcover&dq=isbn:9780735619654&hl=zh-CN&sa=X&ved=0ahUKEwiqzaPSqNroAhVvUd8KHc80CYEQ6AEIKDAA#v=onepage&q&f=false" target="_blank" rel="noopener">Obejct thinking</a></li>
-<li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener">Javascript Object-orientation (prototype-based)</a></li>
-<li><a href="https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep" target="_blank" rel="noopener">Introduction to Object Oriented Programming Concepts (OOP) and More</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank" rel="noopener">Functional_programming wikipedia</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)" target="_blank" rel="noopener">Side effect wikipedia</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">Object-oriented programming wikipedia</a></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>有对 Object 以及对 reference 产生的 side effects<br>新的认识</li>
-<li>闭包 closure<ul>
-<li>A nested function is a function defined within another function. It is created each time the outer function is invoked. In addition, each nested function forms a lexical closure: The lexical scope of the outer function (including any constant, local variable, or argument value) becomes part of the internal state of each inner function object, even after execution of the outer function concludes.</li>
-</ul>
-</li>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>微信小程序-fix canvas原生组件最顶层</title>
     <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
@@ -1350,75 +1390,112 @@
       </tags>
   </entry>
   <entry>
-    <title>【未完】计算机图形学初探</title>
-    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
+    <title>微信小程序-获取图片主色调</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E4%B8%BB%E8%89%B2%E8%B0%83/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li><p>记录 计算机图形学 方面的学习过程🤔</p>
-<a id="more"></a>
-
-</li>
+<li>是的我要开始做：根据图片的主色调来改变一下页面背景颜色了🙆</li>
+<li>记录一下，自己碰到的问题以及思考</li>
+<li>时间多的话，会考虑将代码发在github，欢迎大家去star😘</li>
 </ul>
-<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>前端与图形学<ul>
-<li>shader</li>
-</ul>
-</li>
-<li>图形学应用场景<ul>
-<li>Image<ul>
-<li>pattern（多用于背景）</li>
-<li>photo</li>
-<li>shape</li>
+<hr>
+<h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><ul>
+<li>理一下思路<ol>
+<li>将网络图片绘制进canvas</li>
+<li>通过canvas的getImageData获取图片的像素数据<ul>
+<li><a href="https://blog.csdn.net/Elle_Peng/article/details/105030971" target="_blank" rel="noopener">canvas 2d 与旧版 canvas 将网络图片绘制进canvas的两种方法实践</a></li>
 </ul>
 </li>
-<li>来自数学的图形–分形</li>
-<li>来自物理的图形–光的衍射<ul>
-<li>相变</li>
-<li>绿幕<ul>
-<li>PNG24 –&gt; 2张 jpg</li>
+<li>分析目前主要用于获取图片主色调的算法，并实践</li>
+<li>得到主要色调，再将rgb转换成hsb，并对b值，进行修改，制作渐变，左侧35，右侧15<a id="more"></a>
+<ul>
+<li>嗯，祝我成功<h2 id="颜色空间基础知识背景-减色算法"><a href="#颜色空间基础知识背景-减色算法" class="headerlink" title="颜色空间基础知识背景+减色算法"></a>颜色空间基础知识背景+减色算法</h2></li>
+<li><a href="http://www.360doc.com/content/17/0417/19/41797635_646363886.shtml" target="_blank" rel="noopener">颜色空间 RGB CMY HSV HSL LAB</a></li>
+<li>图片颜色量化算法</li>
 </ul>
 </li>
-<li>3D效果<ul>
-<li>three.js</li>
-<li>babylon.js</li>
+</ol>
+<ul>
+<li>比较常见的应用就是用于提取图片的主色调用于上色配色,当然也可以用于图像分割</li>
+<li>主流算法<ul>
+<li>两个大方向</li>
+<li><strong>在颜色空间合理地选取采样点来构造颜色表，使得减色后的图像和原图尽可能地接近</strong><ul>
+<li>直接量化<ul>
+<li>对每个颜色通道单独重新采样，将每个通道的色阶从256减少到某个指定的数字。这样得到一个新的小的多的颜色空间，而原图像中的每一个像素将被用在新的颜色空间中的最近邻取代</li>
+</ul>
+</li>
+<li>统计量化<ul>
+<li>核心：调整直方图使得累积分布曲线呈线性，从而使图像像素点的亮度值尽可能均匀地分布</li>
+<li>利用原图的直方图来引导采样点的选取，使得每个采样点可以大致覆盖相同数量的像素点</li>
+<li>对每个颜色通道建立直方图，然后根据这些直方图对各个颜色通道单独采样，在像素值分布多的区域进行密集采样，别的区域稀疏采样，再利用这些采样点来组合成最终的颜色表，原图中的每个像素点用颜色表中最接近的颜色替换掉</li>
+</ul>
+</li>
+<li>颜色空间分割(Median-Cut)<ul>
+<li>核心：在颜色空间建立一棵二叉树，通过不断地细化这棵树来近似得到一个颜色三维直方图，然后再根据这棵树来分配采样点</li>
+<li>基于图像颜色样本分布的自适应方法，不论图像中颜色样本的分布如何，总是可以生成一个和颜色样本分布匹配良好的颜色表：在颜色样本分布密集的区域内采样点分布也相对密集，其他区域则分配了较少的采样点。且相同数目的颜色样本总是用同样数量的采样点来代表，所以颜色样本分布密集的区域，采样点的数量自然就会多，反之则相应的比较少</li>
+<li>最重要、应用最广泛的减色算法之一</li>
+</ul>
+</li>
+<li>k均值聚类(k-Means clustering)<ul>
+<li>核心：将像素按颜色的相似程度归类</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>从一个初始的颜色表出发，通过不断修改颜色表来改善减色效果</strong><ul>
+<li>神经网络方法(ANN)<ul>
+<li>颜色表通过神经元来编码，通过缓慢的调节神经元的颜色值以保证整个神经网络逐步收敛于最小误差状态（即通过神经网络产生的图像和原图之间误差最小）<h2 id="直接量化实践"><a href="#直接量化实践" class="headerlink" title="直接量化实践"></a>直接量化实践</h2><ul>
+<li>首先我们可以来看一看getImageData后的数据</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
 </ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzljZjVjMjQzMDI0NmE0YjE0YzFlYmMzMjYwZDkwYTgwNTQzMDIucG5n?x-oss-process=image/format,png" alt="getImageData数据"></li>
+<li>可以简单看作是外层循环为rgba的打平了二维数组<ul>
+<li>如果按满足需求做，只要一个主色调的话，可以把整个getImageData获得的数据，进行各个通道的平均值求值，再拼接，像这样<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">getUniqueColor(imageData) &#123;</span><br><span class="line">   <span class="keyword">let</span> res_r = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_g = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_b = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_a = <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imageData.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">0</span>) &#123;</span><br><span class="line">       res_r += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">1</span>) &#123;</span><br><span class="line">       res_g += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">2</span>) &#123;</span><br><span class="line">       res_b += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">3</span>) &#123;</span><br><span class="line">       res_a += imageData[i]</span><br><span class="line">     &#125; </span><br><span class="line">   &#125;</span><br><span class="line">   res_r = <span class="built_in">Math</span>.round(res_r / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_g =  <span class="built_in">Math</span>.round(res_g / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_b =  <span class="built_in">Math</span>.round(res_b / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_a =  <span class="built_in">Math</span>.round(res_a / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_r'</span>, res_r)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_g'</span>, res_g)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_b'</span>, res_b)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_a'</span>, res_a)</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzc4NzFiOTVmYzA4NWQ3NGQwNDc4OWY0ZWI5Yzc0YThmNzQ5OTYucG5n?x-oss-process=image/format,png" alt="暴力法求主色调"></li>
+<li>无相关点越多，误差越大👎<ul>
+<li>我们可以“对每个颜色通道单独重新采样，将每个通道的色阶从256减少到某个指定的数字。这样得到一个新的小的多的颜色空间，而原图像中的每一个像素将被用在新的颜色空间中的最近邻取代”<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> COLOR_SIZE = <span class="number">40</span> <span class="comment">// 单位色块的大小（像素个数，默认40）。以单位色块的平均像素值为作为统计单位</span></span><br><span class="line"><span class="keyword">const</span> LEVEL = <span class="number">32</span> <span class="comment">// 色深，颜色分区参数（0-255），总256，2^8，即8bit，4个通道（rgba），即默认色深4*8bit，32bit</span></span><br><span class="line"><span class="comment">// 分区块，可以拓展性的求主要色板，用来做palette</span></span><br><span class="line">   <span class="keyword">const</span> mapData = that.getLevelData(imageData);</span><br><span class="line">   <span class="keyword">const</span> colors = that.getMostColor(mapData);</span><br><span class="line">   <span class="keyword">if</span> (!colors) &#123;</span><br><span class="line">     <span class="keyword">return</span></span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">const</span> color = that.getAverageColor(colors)</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'color'</span>, color)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>将getImageData数据分成特定大小的区块，分别算出各个区块的averageColor，再利用map特性，将averageColor作key，count各个averageColor个数  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取每段的颜色数据</span></span><br><span class="line"><span class="comment">// 根据像素数据，按单位色块进行切割</span></span><br><span class="line">getLevelData(imageData) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = imageData.length;</span><br><span class="line">  <span class="keyword">const</span> mapData = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i += COLOR_SIZE * <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> blockColor = <span class="keyword">this</span>.getBlockColor(imageData, i); <span class="comment">// 该区块平均rgba [&#123;r,g,b,a&#125;]数据</span></span><br><span class="line">    <span class="comment">// 获取各个区块的平均rgba数据，将各个通道的颜色进行LEVEL色深降级</span></span><br><span class="line">    <span class="comment">// 根据r_g_b_a 建立map索引</span></span><br><span class="line">    <span class="keyword">const</span> key = <span class="keyword">this</span>.getColorLevel(blockColor);</span><br><span class="line">    !mapData[key] &amp;&amp; (mapData[key] = []);</span><br><span class="line">    mapData[key].push(blockColor);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> mapData;</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 获取单位块的全部色值</span></span><br><span class="line"><span class="comment">// 并根据全部色值，计算平均色值</span></span><br><span class="line"><span class="comment">// 处理最后边界值，小于COLOR_SIZE</span></span><br><span class="line">getBlockColor(imageData, start) &#123;</span><br><span class="line">  <span class="keyword">let</span> data = [],</span><br><span class="line">    count = COLOR_SIZE,</span><br><span class="line">    len = COLOR_SIZE * <span class="number">4</span>;</span><br><span class="line">  imageData.length &lt;= start + len &amp;&amp; (count = <span class="built_in">Math</span>.floor((imageData.length - start - <span class="number">1</span>) / <span class="number">4</span>));</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; count; i += <span class="number">4</span>) &#123;</span><br><span class="line">    data.push(&#123;</span><br><span class="line">      r: imageData[start + i + <span class="number">0</span>],</span><br><span class="line">      g: imageData[start + i + <span class="number">1</span>],</span><br><span class="line">      b: imageData[start + i + <span class="number">2</span>],</span><br><span class="line">      a: imageData[start + i + <span class="number">3</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getAverageColor(data);</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 取出各个通道的平均值，即为改色块的平均色值</span></span><br><span class="line">getAverageColor(colorArr) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = colorArr.length;</span><br><span class="line">  <span class="keyword">let</span> sr = <span class="number">0</span>, sg = <span class="number">0</span>, sb = <span class="number">0</span>, sa = <span class="number">0</span>;</span><br><span class="line">  colorArr.map(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">    sr += item.r;</span><br><span class="line">    sg += item.g;</span><br><span class="line">    sb += item.b;</span><br><span class="line">    sa += item.a;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    r: <span class="built_in">Math</span>.round(sr / len),</span><br><span class="line">    g: <span class="built_in">Math</span>.round(sg / len),</span><br><span class="line">    b: <span class="built_in">Math</span>.round(sb / len),</span><br><span class="line">    a: <span class="built_in">Math</span>.round(sa / len)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line">getColorLevel(color) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getLevel(color.r) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.g) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.b) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.a)</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 色深降级</span></span><br><span class="line">getLevel(value) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.round(value / LEVEL)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>把出现次数最多的averageColor区块，作为采样区块，再获取一遍averageColor，即是最终主色调  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 根据色块颜色，获取</span></span><br><span class="line">getMostColor(colorData) &#123;</span><br><span class="line">  <span class="keyword">let</span> rst = <span class="literal">null</span>, len = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> colorData) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, colorData[key].length)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, colorData[key])</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, key)</span><br><span class="line">    colorData[key].length &gt; len &amp;&amp; (</span><br><span class="line">      rst = colorData[key],</span><br><span class="line">      len = colorData[key].length</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> rst;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2ViYzI3MmNkNzU2NjNhODUxYmM2MWQ0MDE4OWJjZGI3NzQ5NDUucG5n?x-oss-process=image/format,png" alt="区块获取主色调"></li>
+<li>颜色可信度提高了很多<h2 id="拓展实践-医学灰色影像"><a href="#拓展实践-医学灰色影像" class="headerlink" title="拓展实践-医学灰色影像"></a>拓展实践-医学灰色影像</h2><ul>
+<li>核心：将<strong>三通道转成单通道</strong>即可<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> greyImageData = that.greyTheImage(imageData)</span><br><span class="line">   wx.canvasPutImageData(&#123;</span><br><span class="line">     canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">     x: <span class="number">150</span>,</span><br><span class="line">     y: <span class="number">0</span>,</span><br><span class="line">     width: <span class="number">150</span>,</span><br><span class="line">     height: <span class="number">100</span>,</span><br><span class="line">     data: greyImageData,</span><br><span class="line">     success (res) &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'canvasPutImageData it worked!'</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line"> greyTheImage(imageData) &#123;</span><br><span class="line">     <span class="comment">// imageData有4个通道rgba</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imageData.length; i += <span class="number">4</span>) &#123;</span><br><span class="line">       <span class="keyword">let</span> sum_rgb = <span class="number">0</span></span><br><span class="line">       <span class="comment">// 但我们只需要rgb三通道，a-alpha通道无用</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j += <span class="number">1</span>) &#123;</span><br><span class="line">         sum_rgb = sum_rgb + imageData[i + j]</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">let</span> grey = <span class="built_in">Math</span>.round(sum_rgb / <span class="number">3</span>)</span><br><span class="line">       imageData[i] = grey</span><br><span class="line">       imageData[i + <span class="number">1</span>] = grey</span><br><span class="line">       imageData[i + <span class="number">2</span>] = grey</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> imageData</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></li>
+<li>运行截图<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmNWJhNzk2OTJjOWEwOTA2MDNlMzkxMzBlMDRiZTY4MTAwNzcwLnBuZw?x-oss-process=image/format,png" alt="医学灰色影像"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="格式化rgba输出"><a href="#格式化rgba输出" class="headerlink" title="格式化rgba输出"></a>格式化rgba输出</h2><ul>
+<li>像这样<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxNDVhYzM4YzQ1MjFkNDgzNGNkZGQ5NTNmNjQ1MWQ3NTI0NTkucG5n?x-oss-process=image/format,png" alt="格式化rgba输出">  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对最终颜色的字符串格式化</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * result:&#123;</span></span><br><span class="line"><span class="comment"> *   hex:'#ffffff',            十六位值</span></span><br><span class="line"><span class="comment"> *   hexa:'#ffffff00',         十六位值带alpha值</span></span><br><span class="line"><span class="comment"> *   rgb:'rgb(0,0,0)',         RGB值</span></span><br><span class="line"><span class="comment"> *   rgba:'rgba(0,0,0,0)'      RGB值带alpha值</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">	</span><br><span class="line">colorStrFormat(color) &#123;</span><br><span class="line">  <span class="keyword">const</span> rgba = <span class="string">'rgba('</span> + color.r + <span class="string">','</span> + color.g + <span class="string">','</span> + color.b + <span class="string">','</span> + (color.a / <span class="number">255</span>).toFixed(<span class="number">4</span>).replace(<span class="regexp">/\.*0+$/</span>, <span class="string">''</span>) + <span class="string">')'</span>;</span><br><span class="line">  <span class="keyword">const</span> rgb = <span class="string">'rgb('</span> + color.r + <span class="string">','</span> + color.g + <span class="string">','</span> + color.b + <span class="string">')'</span>;</span><br><span class="line">  <span class="keyword">const</span> hex = <span class="string">'#'</span> + <span class="keyword">this</span>.Num2Hex(color.r) + <span class="keyword">this</span>.Num2Hex(color.g) + <span class="keyword">this</span>.Num2Hex(color.b);</span><br><span class="line">  <span class="keyword">const</span> hexa = hex + <span class="keyword">this</span>.Num2Hex(color.a);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    rgba: rgba,</span><br><span class="line">    rgb: rgb,</span><br><span class="line">    hex: hex,</span><br><span class="line">    hexa: hexa</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">	</span><br><span class="line">Num2Hex(num) &#123;</span><br><span class="line">  <span class="keyword">const</span> hex = num.toString(<span class="number">16</span>) + <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">if</span> (hex.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'0'</span> + hex;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> hex;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2></li>
+<li><a href="https://blog.csdn.net/u012843346/article/details/16839649" target="_blank" rel="noopener">phg1024 JavaScript图像处理(6) - 减色算法(Color Reduction)</a></li>
+<li><a href="https://github.com/whoiam2007s/ImgMainColor" target="_blank" rel="noopener">获取图片主色调的插件</a></li>
+<li>其实也可以利用 <a href="https://blog.csdn.net/nanhupatar/article/details/82793637" target="_blank" rel="noopener">CSS新特性去改变背景颜色</a>，比如高斯模糊等来达到业务需求<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
+<li>周六听了一天 John Lennon 歌曲【这也是我拖更的原因😶 羡慕他和 Yoko 那段伊甸园般的爱情，他对 Yoko 的痴爱，他和母亲的两次分别感同身受，Beatles在一起做音乐的欢乐，他对 Sean 的宠溺父爱，但他的人生却在一次枪杀后戛然而止，心痛 心痛 🌧</li>
 <li>祝大家多多发财</li>
 </ul>
+<hr>
 ]]></content>
       <categories>
-        <category>计算机图形学</category>
+        <category>微信小程序</category>
       </categories>
       <tags>
-        <tag>计算机图形学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自己的前端知识体系</title>
-    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>理一下自己的技术体系吧</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/5947cefee7afec18961dda1194cebf224343214.png" alt="技术体系脑图"></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
+        <tag>微信小程序</tag>
       </tags>
   </entry>
   <entry>
@@ -1667,112 +1744,35 @@
       </tags>
   </entry>
   <entry>
-    <title>微信小程序-获取图片主色调</title>
-    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E4%B8%BB%E8%89%B2%E8%B0%83/</url>
+    <title>数组、链表、跳表</title>
+    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
+    <content><![CDATA[<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
+<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
+<li>数学归纳法</li>
+<li>找最近重复问题</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>自己的前端知识体系</title>
+    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>是的我要开始做：根据图片的主色调来改变一下页面背景颜色了🙆</li>
-<li>记录一下，自己碰到的问题以及思考</li>
-<li>时间多的话，会考虑将代码发在github，欢迎大家去star😘</li>
+<li>理一下自己的技术体系吧</li>
 </ul>
-<hr>
-<h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><ul>
-<li>理一下思路<ol>
-<li>将网络图片绘制进canvas</li>
-<li>通过canvas的getImageData获取图片的像素数据<ul>
-<li><a href="https://blog.csdn.net/Elle_Peng/article/details/105030971" target="_blank" rel="noopener">canvas 2d 与旧版 canvas 将网络图片绘制进canvas的两种方法实践</a></li>
+<a id="more"></a>
+
+<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/5947cefee7afec18961dda1194cebf224343214.png" alt="技术体系脑图"></li>
 </ul>
-</li>
-<li>分析目前主要用于获取图片主色调的算法，并实践</li>
-<li>得到主要色调，再将rgb转换成hsb，并对b值，进行修改，制作渐变，左侧35，右侧15<a id="more"></a>
-<ul>
-<li>嗯，祝我成功<h2 id="颜色空间基础知识背景-减色算法"><a href="#颜色空间基础知识背景-减色算法" class="headerlink" title="颜色空间基础知识背景+减色算法"></a>颜色空间基础知识背景+减色算法</h2></li>
-<li><a href="http://www.360doc.com/content/17/0417/19/41797635_646363886.shtml" target="_blank" rel="noopener">颜色空间 RGB CMY HSV HSL LAB</a></li>
-<li>图片颜色量化算法</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>比较常见的应用就是用于提取图片的主色调用于上色配色,当然也可以用于图像分割</li>
-<li>主流算法<ul>
-<li>两个大方向</li>
-<li><strong>在颜色空间合理地选取采样点来构造颜色表，使得减色后的图像和原图尽可能地接近</strong><ul>
-<li>直接量化<ul>
-<li>对每个颜色通道单独重新采样，将每个通道的色阶从256减少到某个指定的数字。这样得到一个新的小的多的颜色空间，而原图像中的每一个像素将被用在新的颜色空间中的最近邻取代</li>
-</ul>
-</li>
-<li>统计量化<ul>
-<li>核心：调整直方图使得累积分布曲线呈线性，从而使图像像素点的亮度值尽可能均匀地分布</li>
-<li>利用原图的直方图来引导采样点的选取，使得每个采样点可以大致覆盖相同数量的像素点</li>
-<li>对每个颜色通道建立直方图，然后根据这些直方图对各个颜色通道单独采样，在像素值分布多的区域进行密集采样，别的区域稀疏采样，再利用这些采样点来组合成最终的颜色表，原图中的每个像素点用颜色表中最接近的颜色替换掉</li>
-</ul>
-</li>
-<li>颜色空间分割(Median-Cut)<ul>
-<li>核心：在颜色空间建立一棵二叉树，通过不断地细化这棵树来近似得到一个颜色三维直方图，然后再根据这棵树来分配采样点</li>
-<li>基于图像颜色样本分布的自适应方法，不论图像中颜色样本的分布如何，总是可以生成一个和颜色样本分布匹配良好的颜色表：在颜色样本分布密集的区域内采样点分布也相对密集，其他区域则分配了较少的采样点。且相同数目的颜色样本总是用同样数量的采样点来代表，所以颜色样本分布密集的区域，采样点的数量自然就会多，反之则相应的比较少</li>
-<li>最重要、应用最广泛的减色算法之一</li>
-</ul>
-</li>
-<li>k均值聚类(k-Means clustering)<ul>
-<li>核心：将像素按颜色的相似程度归类</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>从一个初始的颜色表出发，通过不断修改颜色表来改善减色效果</strong><ul>
-<li>神经网络方法(ANN)<ul>
-<li>颜色表通过神经元来编码，通过缓慢的调节神经元的颜色值以保证整个神经网络逐步收敛于最小误差状态（即通过神经网络产生的图像和原图之间误差最小）<h2 id="直接量化实践"><a href="#直接量化实践" class="headerlink" title="直接量化实践"></a>直接量化实践</h2><ul>
-<li>首先我们可以来看一看getImageData后的数据</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzljZjVjMjQzMDI0NmE0YjE0YzFlYmMzMjYwZDkwYTgwNTQzMDIucG5n?x-oss-process=image/format,png" alt="getImageData数据"></li>
-<li>可以简单看作是外层循环为rgba的打平了二维数组<ul>
-<li>如果按满足需求做，只要一个主色调的话，可以把整个getImageData获得的数据，进行各个通道的平均值求值，再拼接，像这样<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">getUniqueColor(imageData) &#123;</span><br><span class="line">   <span class="keyword">let</span> res_r = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_g = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_b = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_a = <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imageData.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">0</span>) &#123;</span><br><span class="line">       res_r += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">1</span>) &#123;</span><br><span class="line">       res_g += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">2</span>) &#123;</span><br><span class="line">       res_b += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">3</span>) &#123;</span><br><span class="line">       res_a += imageData[i]</span><br><span class="line">     &#125; </span><br><span class="line">   &#125;</span><br><span class="line">   res_r = <span class="built_in">Math</span>.round(res_r / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_g =  <span class="built_in">Math</span>.round(res_g / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_b =  <span class="built_in">Math</span>.round(res_b / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_a =  <span class="built_in">Math</span>.round(res_a / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_r'</span>, res_r)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_g'</span>, res_g)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_b'</span>, res_b)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_a'</span>, res_a)</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>运行截图<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzc4NzFiOTVmYzA4NWQ3NGQwNDc4OWY0ZWI5Yzc0YThmNzQ5OTYucG5n?x-oss-process=image/format,png" alt="暴力法求主色调"></li>
-<li>无相关点越多，误差越大👎<ul>
-<li>我们可以“对每个颜色通道单独重新采样，将每个通道的色阶从256减少到某个指定的数字。这样得到一个新的小的多的颜色空间，而原图像中的每一个像素将被用在新的颜色空间中的最近邻取代”<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> COLOR_SIZE = <span class="number">40</span> <span class="comment">// 单位色块的大小（像素个数，默认40）。以单位色块的平均像素值为作为统计单位</span></span><br><span class="line"><span class="keyword">const</span> LEVEL = <span class="number">32</span> <span class="comment">// 色深，颜色分区参数（0-255），总256，2^8，即8bit，4个通道（rgba），即默认色深4*8bit，32bit</span></span><br><span class="line"><span class="comment">// 分区块，可以拓展性的求主要色板，用来做palette</span></span><br><span class="line">   <span class="keyword">const</span> mapData = that.getLevelData(imageData);</span><br><span class="line">   <span class="keyword">const</span> colors = that.getMostColor(mapData);</span><br><span class="line">   <span class="keyword">if</span> (!colors) &#123;</span><br><span class="line">     <span class="keyword">return</span></span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">const</span> color = that.getAverageColor(colors)</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'color'</span>, color)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>将getImageData数据分成特定大小的区块，分别算出各个区块的averageColor，再利用map特性，将averageColor作key，count各个averageColor个数  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取每段的颜色数据</span></span><br><span class="line"><span class="comment">// 根据像素数据，按单位色块进行切割</span></span><br><span class="line">getLevelData(imageData) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = imageData.length;</span><br><span class="line">  <span class="keyword">const</span> mapData = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i += COLOR_SIZE * <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> blockColor = <span class="keyword">this</span>.getBlockColor(imageData, i); <span class="comment">// 该区块平均rgba [&#123;r,g,b,a&#125;]数据</span></span><br><span class="line">    <span class="comment">// 获取各个区块的平均rgba数据，将各个通道的颜色进行LEVEL色深降级</span></span><br><span class="line">    <span class="comment">// 根据r_g_b_a 建立map索引</span></span><br><span class="line">    <span class="keyword">const</span> key = <span class="keyword">this</span>.getColorLevel(blockColor);</span><br><span class="line">    !mapData[key] &amp;&amp; (mapData[key] = []);</span><br><span class="line">    mapData[key].push(blockColor);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> mapData;</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 获取单位块的全部色值</span></span><br><span class="line"><span class="comment">// 并根据全部色值，计算平均色值</span></span><br><span class="line"><span class="comment">// 处理最后边界值，小于COLOR_SIZE</span></span><br><span class="line">getBlockColor(imageData, start) &#123;</span><br><span class="line">  <span class="keyword">let</span> data = [],</span><br><span class="line">    count = COLOR_SIZE,</span><br><span class="line">    len = COLOR_SIZE * <span class="number">4</span>;</span><br><span class="line">  imageData.length &lt;= start + len &amp;&amp; (count = <span class="built_in">Math</span>.floor((imageData.length - start - <span class="number">1</span>) / <span class="number">4</span>));</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; count; i += <span class="number">4</span>) &#123;</span><br><span class="line">    data.push(&#123;</span><br><span class="line">      r: imageData[start + i + <span class="number">0</span>],</span><br><span class="line">      g: imageData[start + i + <span class="number">1</span>],</span><br><span class="line">      b: imageData[start + i + <span class="number">2</span>],</span><br><span class="line">      a: imageData[start + i + <span class="number">3</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getAverageColor(data);</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 取出各个通道的平均值，即为改色块的平均色值</span></span><br><span class="line">getAverageColor(colorArr) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = colorArr.length;</span><br><span class="line">  <span class="keyword">let</span> sr = <span class="number">0</span>, sg = <span class="number">0</span>, sb = <span class="number">0</span>, sa = <span class="number">0</span>;</span><br><span class="line">  colorArr.map(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">    sr += item.r;</span><br><span class="line">    sg += item.g;</span><br><span class="line">    sb += item.b;</span><br><span class="line">    sa += item.a;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    r: <span class="built_in">Math</span>.round(sr / len),</span><br><span class="line">    g: <span class="built_in">Math</span>.round(sg / len),</span><br><span class="line">    b: <span class="built_in">Math</span>.round(sb / len),</span><br><span class="line">    a: <span class="built_in">Math</span>.round(sa / len)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line">getColorLevel(color) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getLevel(color.r) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.g) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.b) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.a)</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 色深降级</span></span><br><span class="line">getLevel(value) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.round(value / LEVEL)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
-<li>把出现次数最多的averageColor区块，作为采样区块，再获取一遍averageColor，即是最终主色调  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 根据色块颜色，获取</span></span><br><span class="line">getMostColor(colorData) &#123;</span><br><span class="line">  <span class="keyword">let</span> rst = <span class="literal">null</span>, len = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> colorData) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, colorData[key].length)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, colorData[key])</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, key)</span><br><span class="line">    colorData[key].length &gt; len &amp;&amp; (</span><br><span class="line">      rst = colorData[key],</span><br><span class="line">      len = colorData[key].length</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> rst;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
-<li>运行截图<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2ViYzI3MmNkNzU2NjNhODUxYmM2MWQ0MDE4OWJjZGI3NzQ5NDUucG5n?x-oss-process=image/format,png" alt="区块获取主色调"></li>
-<li>颜色可信度提高了很多<h2 id="拓展实践-医学灰色影像"><a href="#拓展实践-医学灰色影像" class="headerlink" title="拓展实践-医学灰色影像"></a>拓展实践-医学灰色影像</h2><ul>
-<li>核心：将<strong>三通道转成单通道</strong>即可<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> greyImageData = that.greyTheImage(imageData)</span><br><span class="line">   wx.canvasPutImageData(&#123;</span><br><span class="line">     canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">     x: <span class="number">150</span>,</span><br><span class="line">     y: <span class="number">0</span>,</span><br><span class="line">     width: <span class="number">150</span>,</span><br><span class="line">     height: <span class="number">100</span>,</span><br><span class="line">     data: greyImageData,</span><br><span class="line">     success (res) &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'canvasPutImageData it worked!'</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line"> greyTheImage(imageData) &#123;</span><br><span class="line">     <span class="comment">// imageData有4个通道rgba</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imageData.length; i += <span class="number">4</span>) &#123;</span><br><span class="line">       <span class="keyword">let</span> sum_rgb = <span class="number">0</span></span><br><span class="line">       <span class="comment">// 但我们只需要rgb三通道，a-alpha通道无用</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j += <span class="number">1</span>) &#123;</span><br><span class="line">         sum_rgb = sum_rgb + imageData[i + j]</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">let</span> grey = <span class="built_in">Math</span>.round(sum_rgb / <span class="number">3</span>)</span><br><span class="line">       imageData[i] = grey</span><br><span class="line">       imageData[i + <span class="number">1</span>] = grey</span><br><span class="line">       imageData[i + <span class="number">2</span>] = grey</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> imageData</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></li>
-<li>运行截图<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmNWJhNzk2OTJjOWEwOTA2MDNlMzkxMzBlMDRiZTY4MTAwNzcwLnBuZw?x-oss-process=image/format,png" alt="医学灰色影像"></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="格式化rgba输出"><a href="#格式化rgba输出" class="headerlink" title="格式化rgba输出"></a>格式化rgba输出</h2><ul>
-<li>像这样<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxNDVhYzM4YzQ1MjFkNDgzNGNkZGQ5NTNmNjQ1MWQ3NTI0NTkucG5n?x-oss-process=image/format,png" alt="格式化rgba输出">  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对最终颜色的字符串格式化</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * result:&#123;</span></span><br><span class="line"><span class="comment"> *   hex:'#ffffff',            十六位值</span></span><br><span class="line"><span class="comment"> *   hexa:'#ffffff00',         十六位值带alpha值</span></span><br><span class="line"><span class="comment"> *   rgb:'rgb(0,0,0)',         RGB值</span></span><br><span class="line"><span class="comment"> *   rgba:'rgba(0,0,0,0)'      RGB值带alpha值</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">	</span><br><span class="line">colorStrFormat(color) &#123;</span><br><span class="line">  <span class="keyword">const</span> rgba = <span class="string">'rgba('</span> + color.r + <span class="string">','</span> + color.g + <span class="string">','</span> + color.b + <span class="string">','</span> + (color.a / <span class="number">255</span>).toFixed(<span class="number">4</span>).replace(<span class="regexp">/\.*0+$/</span>, <span class="string">''</span>) + <span class="string">')'</span>;</span><br><span class="line">  <span class="keyword">const</span> rgb = <span class="string">'rgb('</span> + color.r + <span class="string">','</span> + color.g + <span class="string">','</span> + color.b + <span class="string">')'</span>;</span><br><span class="line">  <span class="keyword">const</span> hex = <span class="string">'#'</span> + <span class="keyword">this</span>.Num2Hex(color.r) + <span class="keyword">this</span>.Num2Hex(color.g) + <span class="keyword">this</span>.Num2Hex(color.b);</span><br><span class="line">  <span class="keyword">const</span> hexa = hex + <span class="keyword">this</span>.Num2Hex(color.a);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    rgba: rgba,</span><br><span class="line">    rgb: rgb,</span><br><span class="line">    hex: hex,</span><br><span class="line">    hexa: hexa</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">	</span><br><span class="line">Num2Hex(num) &#123;</span><br><span class="line">  <span class="keyword">const</span> hex = num.toString(<span class="number">16</span>) + <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">if</span> (hex.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'0'</span> + hex;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> hex;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2></li>
-<li><a href="https://blog.csdn.net/u012843346/article/details/16839649" target="_blank" rel="noopener">phg1024 JavaScript图像处理(6) - 减色算法(Color Reduction)</a></li>
-<li><a href="https://github.com/whoiam2007s/ImgMainColor" target="_blank" rel="noopener">获取图片主色调的插件</a></li>
-<li>其实也可以利用 <a href="https://blog.csdn.net/nanhupatar/article/details/82793637" target="_blank" rel="noopener">CSS新特性去改变背景颜色</a>，比如高斯模糊等来达到业务需求<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
-<li>周六听了一天 John Lennon 歌曲【这也是我拖更的原因😶 羡慕他和 Yoko 那段伊甸园般的爱情，他对 Yoko 的痴爱，他和母亲的两次分别感同身受，Beatles在一起做音乐的欢乐，他对 Sean 的宠溺父爱，但他的人生却在一次枪杀后戛然而止，心痛 心痛 🌧</li>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
-<hr>
 ]]></content>
       <categories>
-        <category>微信小程序</category>
+        <category>前端概念</category>
       </categories>
       <tags>
-        <tag>微信小程序</tag>
+        <tag>前端概念</tag>
       </tags>
   </entry>
 </search>
