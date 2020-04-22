@@ -118,10 +118,10 @@
 <li>循环遍历字节流，进行解码</li>
 <li>输出解码后的字节流</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UTF8_Decoding</span>(<span class="params">bytes</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>,</span><br><span class="line">        bytesIndex = <span class="number">-1</span>,</span><br><span class="line">        bytesEnd = bytes.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (bytesIndex ++ &lt; bytesEnd) &#123;</span><br><span class="line">        str += <span class="built_in">String</span>.fromCharCode(bytes[bytesIndex]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UTF8_Decoding</span>(<span class="params">bytes</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> str = <span class="string">""</span>,</span><br><span class="line">        bytesIndex = <span class="number">-1</span>,</span><br><span class="line">        bytesEnd = bytes.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (bytesIndex ++ &lt; bytesEnd) &#123;</span><br><span class="line">        str += <span class="built_in">String</span>.fromCharCode(bytes[bytesIndex]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h4 id="测试截图"><a href="#测试截图" class="headerlink" title="测试截图"></a>测试截图</h4><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/1adbcd8a4c10e2fd308373e0050eafce62354.png" alt="测试截图"></li>
+<li><img src="http://p0.meituan.net/myvideodistribute/c1770110908275e40343791324f7dfff154914.png" alt="测试截图"></li>
 </ul>
 <h2 id="类型化数组"><a href="#类型化数组" class="headerlink" title="类型化数组"></a>类型化数组</h2><ul>
 <li><p>类型化数组中的元素都是数字。使用构造函数在创建类型化数组的时候决定了数组中数字（有符号或者无符号整数或者浮点数）的类型和大小（以位为单位）</p>
@@ -235,49 +235,74 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0.1 和 0.2 都转化成二进制后再进行运算</span></span><br><span class="line"><span class="number">0.00011001100110011001100110011001100110011001100110011010</span> +</span><br><span class="line"><span class="number">0.0011001100110011001100110011001100110011001100110011010</span> =</span><br><span class="line"><span class="number">0.0100110011001100110011001100110011001100110011001100111</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 转成十进制正好是 0.30000000000000004</span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>二进制数转成 IEEE 754 标准</li>
+<li><p>二进制数转成 IEEE 754 标准</p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/eefbaacb81e66deb742370e27d9e3bb876872.png" alt="IEEE 754 标准"></p>
+</li>
+<li><p>使用 64 位固定长度来表示，也就是标准的double 双精度浮点数。</p>
+</li>
+<li><p>这样的存储结构优点是可以归一化处理整数和小数，节省存储空间。</p>
+</li>
+<li><p>这64个比特又可分为三个部分，即：</p>
+<ul>
+<li>第1位: 是符号的标志位(S), 0代表正数，1代表负数</li>
+<li>第1-11位: 指数位(E), 存储指数（exponent），用来表示次方数</li>
+<li>第12-63位: 尾数(M), 这52 位是尾数，超出的部分自动进一舍零</li>
 </ul>
-<pre><code>- ![IEEE 754 标准](http://p0.meituan.net/myvideodistribute/eefbaacb81e66deb742370e27d9e3bb876872.png)
-
-- 使用 64 位固定长度来表示，也就是标准的double 双精度浮点数。
-- 这样的存储结构优点是可以归一化处理整数和小数，节省存储空间。
-- 这64个比特又可分为三个部分，即：
-    - 第1位: 是符号的标志位(S), 0代表正数，1代表负数
-    - 第1-11位: 指数位(E), 存储指数（exponent），用来表示次方数
-    - 第12-63位: 尾数(M), 这52 位是尾数，超出的部分自动进一舍零
-- 实际数字就可以用以下公式来计算：
-
-    - ![IEEE 754数学公式](http://p0.meituan.net/myvideodistribute/7b2c9fce00cfe3bf57fcede347257af276632.png)
-
-- 因此 0.1 的二进制表示：    
-
-    &gt; 0.00011001100110011001100110011001100110011001100110011001100...
-
-    - 首先 0.1 是正数，标志位 
-
-        &gt; Sign = 0
-
-    - 其次, 将小数转化为科学计数法
-
-        &gt; 1.100110011001100110011001100110011001100110011001100... * 2^-4
-
-        - 相对于，小数点移了4位，指数减4
-
-            &gt; exponent = -4 + 1023 = 1019
-
-            &gt; 01111111011
-
-    - 由于科学计数法, 第一个数始终是1, 所以可以忽略存储, 只要存后面的52位就可以了
-    - **如果超过了52位, 就是对第53位舍0进1**（精度误差）, 结果也就是
-
-        &gt; 1001100110011001100110011001100110011001100110011010
-
-- 因此 0.1 的 IEEE 754 的表示：
-
-    - ![0.1 的IEEE 754](http://p0.meituan.net/myvideodistribute/1ae3cf9f7bda61d8d0849ce05f7657f997288.png)
-- 同理 0.2 的 IEEE 754 的表示：
-
-    - ![0.2 的 IEEE 754](http://p0.meituan.net/myvideodistribute/0c5d93145800b45b59a3ef23dc2abe4a97936.png)</code></pre><h3 id="查看-0-1-表示方式"><a href="#查看-0-1-表示方式" class="headerlink" title="查看 0.1 表示方式"></a>查看 0.1 表示方式</h3><pre><code class="javascript"><span class="keyword">let</span> b = <span class="keyword">new</span> <span class="built_in">Float64Array</span>([<span class="number">0.1</span>])
+</li>
+<li><p>实际数字就可以用以下公式来计算：</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/7b2c9fce00cfe3bf57fcede347257af276632.png" alt="IEEE 754数学公式"></li>
+</ul>
+</li>
+<li><p>因此 0.1 的二进制表示：    </p>
+<blockquote>
+<p>0.00011001100110011001100110011001100110011001100110011001100…</p>
+</blockquote>
+<ul>
+<li><p>首先 0.1 是正数，标志位 </p>
+<blockquote>
+<p>Sign = 0</p>
+</blockquote>
+</li>
+<li><p>其次, 将小数转化为科学计数法</p>
+<blockquote>
+<p>1.100110011001100110011001100110011001100110011001100… * 2^-4</p>
+</blockquote>
+<ul>
+<li><p>相对于，小数点移了4位，指数减4</p>
+<blockquote>
+<p>exponent = -4 + 1023 = 1019</p>
+</blockquote>
+<blockquote>
+<p>01111111011</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>由于科学计数法, 第一个数始终是1, 所以可以忽略存储, 只要存后面的52位就可以了</p>
+</li>
+<li><p><strong>如果超过了52位, 就是对第53位舍0进1</strong>（精度误差）, 结果也就是</p>
+<blockquote>
+<p>1001100110011001100110011001100110011001100110011010</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>因此 0.1 的 IEEE 754 的表示：</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/1ae3cf9f7bda61d8d0849ce05f7657f997288.png" alt="0.1 的IEEE 754"></li>
+</ul>
+</li>
+<li><p>同理 0.2 的 IEEE 754 的表示：</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/0c5d93145800b45b59a3ef23dc2abe4a97936.png" alt="0.2 的 IEEE 754"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="查看-0-1-表示方式"><a href="#查看-0-1-表示方式" class="headerlink" title="查看 0.1 表示方式"></a>查看 0.1 表示方式</h3><pre><code class="javascript"><span class="keyword">let</span> b = <span class="keyword">new</span> <span class="built_in">Float64Array</span>([<span class="number">0.1</span>])
 <span class="built_in">console</span>.log(b)
 <span class="keyword">let</span> intArr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(b.buffer)
 <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">7</span>; i &gt; <span class="number">0</span>; i --) {
