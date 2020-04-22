@@ -3,11 +3,11 @@
   <entry>
     <title>Javascript Types</title>
     <url>/2020/04/20/Javascript-Types/</url>
-    <content><![CDATA[<h1 id="Javascript-–-Type"><a href="#Javascript-–-Type" class="headerlink" title="Javascript – Type"></a>Javascript – Type</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
+    <content><![CDATA[<h1 id="Javascript-—-Type"><a href="#Javascript-—-Type" class="headerlink" title="Javascript — Type"></a>Javascript — Type</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
 <li><p>Unicode Blocks</p>
 <ul>
 <li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
-<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
+<li>a 码点 —&gt; 97, A 码点 —&gt; 65</li>
 </ul>
 </li>
 <li>U+000A LINE FEED 换行<ul>
@@ -38,7 +38,7 @@
 <li>&lt;FF&gt; Form Feed </li>
 <li>&lt;SP&gt; </li>
 <li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
-<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
+<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM —&gt; Bit Order Mask</li>
 <li>&lt;USP&gt;</li>
 </ul>
 </li>
@@ -85,15 +85,13 @@
 </li>
 </ul>
 <h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
-<li><p>IEEE 754 Double Float</p>
-<ul>
+<li>IEEE 754 Double Float<ul>
 <li>Sign(1)</li>
 <li>Exponent(11) 指数，科学计数法</li>
 <li>Fraction(52)</li>
 </ul>
 </li>
-<li><p>Grammar</p>
-<ul>
+<li>Grammar<ul>
 <li>DecimaLiteral<ul>
 <li>0</li>
 <li>0.</li>
@@ -120,8 +118,6 @@
 <li><p>浮点数比较时，需要加精度</p>
 <blockquote>
 <p>Number.MAX_SAFE_INTEGER</p>
-</blockquote>
-<blockquote>
 <p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
 </blockquote>
 </li>
@@ -129,15 +125,11 @@
 </li>
 </ul>
 <h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
-<li><p>Character</p>
-</li>
-<li><p>Code Point</p>
-</li>
+<li>Character</li>
+<li>Code Point</li>
 <li><p>Encoding</p>
 <blockquote>
 <p>97 .toString(2)</p>
-</blockquote>
-<blockquote>
 <p>“97.” 是一个合法的Number 01100001</p>
 </blockquote>
 <ul>
@@ -156,18 +148,14 @@
 </li>
 <li><p>Grammar</p>
 <ul>
-<li><p>“abc”</p>
-<ul>
-<li>“\x10” –&gt; 8</li>
+<li>“abc”<ul>
+<li>“\x10” —&gt; 8</li>
 <li>“\u000a”</li>
 </ul>
 </li>
-<li><p>‘abc’</p>
-</li>
+<li>‘abc’</li>
 <li><p>`abc`</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
-
-
 </li>
 </ul>
 </li>
@@ -216,8 +204,8 @@
 </ul>
 </li>
 <li>算法<ul>
-<li>if-else, switch –&gt; branch</li>
-<li>for, while loop –&gt; iteration</li>
+<li>if-else, switch —&gt; branch</li>
+<li>for, while loop —&gt; iteration</li>
 <li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
 <li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
 <li>动态规划 dynamic programing</li>
@@ -237,19 +225,19 @@
 </ul>
 </li>
 <li>刷题第二遍<ul>
-<li>马上自己写 –&gt; LeetCode提交</li>
-<li>多种解法比较、体会 –&gt; 优化</li>
+<li>马上自己写 —&gt; LeetCode提交</li>
+<li>多种解法比较、体会 —&gt; 优化</li>
 <li>多种解法自己写一遍，直到通过</li>
 </ul>
 </li>
 <li>刷题第三遍<ul>
 <li>24h后，再重复做题</li>
-<li>不同解法的熟练程度 –&gt; 专项练习</li>
+<li>不同解法的熟练程度 —&gt; 专项练习</li>
 </ul>
 </li>
 <li>刷题第四遍<ul>
 <li>过了一周后：反复回来练习相同的题目</li>
-<li>不熟练的题目 –&gt; 专项练习</li>
+<li>不熟练的题目 —&gt; 专项练习</li>
 </ul>
 </li>
 <li>刷题第五遍<ul>
@@ -321,98 +309,29 @@
 <li>记录一下将 String 字符串，转成字节流的整个实现过程</li>
 </ul>
 <a id="more"></a>
-
 <h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><h4 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h4><ul>
 <li>统计字符串长度</li>
 <li>循环遍历字符串，进行编码</li>
 <li>输出编码后的字节流</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UTF8_Encoding</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">let</span> length = str.length,</span><br><span class="line">        strIndex = <span class="number">-1</span>,</span><br><span class="line">        strEnd = length - <span class="number">1</span>,</span><br><span class="line">        bytes = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(length),</span><br><span class="line">        index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (strIndex++ &lt; strEnd) &#123;</span><br><span class="line">        bytes[index] = str.charCodeAt(strIndex) &amp; <span class="number">0xFF</span>; <span class="comment">// 设置为低8位值</span></span><br><span class="line">        index += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> bytes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="字节流文件转-String"><a href="#字节流文件转-String" class="headerlink" title="字节流文件转 String"></a>字节流文件转 String</h2><h4 id="总体思路-1"><a href="#总体思路-1" class="headerlink" title="总体思路"></a>总体思路</h4><ul>
 <li>统计字节流长度</li>
 <li>循环遍历字节流，进行解码</li>
 <li>输出解码后的字节流</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UTF8_Decoding</span>(<span class="params">bytes</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> str = <span class="string">""</span>,</span><br><span class="line">        bytesIndex = <span class="number">-1</span>,</span><br><span class="line">        bytesEnd = bytes.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (bytesIndex ++ &lt; bytesEnd) &#123;</span><br><span class="line">        str += <span class="built_in">String</span>.fromCharCode(bytes[bytesIndex]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <h4 id="测试截图"><a href="#测试截图" class="headerlink" title="测试截图"></a>测试截图</h4><ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/c1770110908275e40343791324f7dfff154914.png" alt="测试截图"></li>
 </ul>
 <h2 id="类型化数组"><a href="#类型化数组" class="headerlink" title="类型化数组"></a>类型化数组</h2><ul>
-<li><p>类型化数组中的元素都是数字。使用构造函数在创建类型化数组的时候决定了数组中数字（有符号或者无符号整数或者浮点数）的类型和大小（以位为单位）</p>
-</li>
-<li><p>类型化数组有固定的长度。</p>
-</li>
-<li><p>在创建类型化数组的时候，数组中的元素总是默认初始化为0.</p>
-</li>
+<li>类型化数组中的元素都是数字。使用构造函数在创建类型化数组的时候决定了数组中数字（有符号或者无符号整数或者浮点数）的类型和大小（以位为单位）</li>
+<li>类型化数组有固定的长度。</li>
+<li>在创建类型化数组的时候，数组中的元素总是默认初始化为0.</li>
 <li><p><strong>类型化数组</strong></p>
 <ul>
 <li><p><strong>TypedArray</strong> 视图支持的数据类型一共有 9 种（ <strong>DataView</strong> 视图支持除 <strong>Uint8C</strong> 以外的其他 8 种）。</p>
-<table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>字节长度</th>
-<th>含义</th>
-<th>对应的 C 语言类型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Int8</td>
-<td>1</td>
-<td>8 位带符号整数</td>
-<td>signed char</td>
-</tr>
-<tr>
-<td>Uint8</td>
-<td>1</td>
-<td>8 位不带符号整数</td>
-<td>unsigned char</td>
-</tr>
-<tr>
-<td>Uint8C</td>
-<td>1</td>
-<td>8 位不带符号整数（自动过滤溢出）</td>
-<td>unsigned char</td>
-</tr>
-<tr>
-<td>Int16</td>
-<td>2</td>
-<td>16 位带符号整数</td>
-<td>short</td>
-</tr>
-<tr>
-<td>Uint16</td>
-<td>2</td>
-<td>16 位不带符号整数</td>
-<td>unsigned short</td>
-</tr>
-<tr>
-<td>Int32</td>
-<td>4</td>
-<td>32 位带符号整数</td>
-<td>int</td>
-</tr>
-<tr>
-<td>Uint32</td>
-<td>4</td>
-<td>32 位不带符号的整数</td>
-<td>unsigned int</td>
-</tr>
-<tr>
-<td>Float32</td>
-<td>4</td>
-<td>32 位浮点数</td>
-<td>float</td>
-</tr>
-<tr>
-<td>Float64</td>
-<td>8</td>
-<td>64 位浮点数</td>
-<td>double</td>
-</tr>
-</tbody></table>
+<p>  | 数据类型 |  字节长度  |  含义  | 对应的 C 语言类型 |<br>  | —- | —- | —- | —- |<br>  | Int8 | 1 | 8 位带符号整数 | signed char |<br>  | Uint8 |    1 |    8 位不带符号整数 |    unsigned char |<br>  | Uint8C | 1 | 8 位不带符号整数（自动过滤溢出）|unsigned char |<br>  | Int16 |    2 |    16 位带符号整数 |    short |<br>  | Uint16 | 2 | 16 位不带符号整数 | unsigned short |<br>  | Int32 |    4 | 32 位带符号整数 | int |<br>  | Uint32 | 4 | 32 位不带符号的整数 | unsigned int |<br>  | Float32 | 4     | 32 位浮点数 | float |<br>  | Float64 | 8 |    64 位浮点数 | double |</p>
 </li>
 </ul>
 </li>
@@ -420,17 +339,13 @@
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> bytes = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(<span class="number">1024</span>); <span class="comment">// 1kb字节 </span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; bytes.length; i ++) <span class="comment">// 循环数组的每个元素</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; bytes.length; i ++) <span class="comment">// 循环数组的每个元素</span></span><br><span class="line">	bytes[i] = i &amp; <span class="number">0xFF</span>; <span class="comment">// 设置为索引的低8位值</span></span><br><span class="line"><span class="keyword">var</span> copy = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(bytes); <span class="comment">// 创建数组的副本</span></span><br><span class="line"><span class="keyword">var</span> ints = <span class="keyword">new</span> <span class="built_in">Int32Array</span>([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// 包含这4个int值的类型化数组</span></span><br></pre></td></tr></table></figure></li>
 <li><p>类型化数组：他们都是<strong>基本字节块的视图</strong>，称为一个 ArrayBuffer 。ArrayBuffer 只是不透明的字节块。可以通过类型化数组获取这些字节，但是 ArrayBuffer 自己并不是一个类型化数组。可以像对任意 Javascript 对象那样，使用数字数组索引来操作 ArrayBuffer。但是，这样做并<strong>不能赋予访问缓冲区中字节的权限</strong></p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> bytes = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(<span class="number">8</span>); <span class="comment">// 分配8个字节</span></span><br><span class="line">bytes[<span class="number">0</span>] = <span class="number">1</span> <span class="comment">// 把第一个字节设置为1</span></span><br><span class="line">bytes.buffer[<span class="number">0</span>] = <span class="number">255</span> <span class="comment">// 错误获取，缓冲区中没有索引值0</span></span><br><span class="line">bytes.buffer[<span class="number">1</span>] = <span class="number">255</span> <span class="comment">// 错误设置缓冲区字节</span></span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <h3 id="“字节顺序”"><a href="#“字节顺序”" class="headerlink" title="“字节顺序”"></a>“字节顺序”</h3><ul>
-<li><p>字节组织成更长的字的顺序</p>
-</li>
-<li><p>为了高效，类型化数组采用底层硬件的原生顺序。在低位优先(little-endian)系统中， ArrayBuffer 中数字的字节是按照从低位到高位的顺序排列的。在高位优先(big-endian)系统中，字节是按照从高位到低位的顺序排列的。</p>
-</li>
+<li>字节组织成更长的字的顺序</li>
+<li>为了高效，类型化数组采用底层硬件的原生顺序。在低位优先(little-endian)系统中， ArrayBuffer 中数字的字节是按照从低位到高位的顺序排列的。在高位优先(big-endian)系统中，字节是按照从高位到低位的顺序排列的。</li>
 <li><p>可以使用如下代码来检测系统的字节顺序：</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 如果整数 Ox00000001 在内存中表示成： 01 00 00 00</span></span><br><span class="line"><span class="comment">// 则说明当前系统是低位优先系统</span></span><br><span class="line"><span class="comment">// 相反，在高位优先系统中，它会表示成：00 00 00 01</span></span><br><span class="line"><span class="keyword">var</span> little_endian = <span class="keyword">new</span> <span class="built_in">Int8Array</span>(<span class="keyword">new</span> <span class="built_in">Int32Array</span>([<span class="number">1</span>]).buffer)[<span class="number">0</span>] === <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <h2 id="思考问题-0-1-0-2-≠-0-3"><a href="#思考问题-0-1-0-2-≠-0-3" class="headerlink" title="思考问题 0.1 + 0.2 ≠ 0.3"></a>思考问题 0.1 + 0.2 ≠ 0.3</h2><ul>
@@ -449,7 +364,6 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 0.1 和 0.2 都转化成二进制后再进行运算</span></span><br><span class="line"><span class="number">0.00011001100110011001100110011001100110011001100110011010</span> +</span><br><span class="line"><span class="number">0.0011001100110011001100110011001100110011001100110011010</span> =</span><br><span class="line"><span class="number">0.0100110011001100110011001100110011001100110011001100111</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 转成十进制正好是 0.30000000000000004</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p>二进制数转成 IEEE 754 标准</p>
 <ul>
@@ -457,10 +371,8 @@
 </li>
 <li><p>使用 64 位固定长度来表示，也就是标准的double 双精度浮点数。</p>
 </li>
-<li><p>这样的存储结构优点是可以归一化处理整数和小数，节省存储空间。</p>
-</li>
-<li><p>这64个比特又可分为三个部分，即：</p>
-<ul>
+<li>这样的存储结构优点是可以归一化处理整数和小数，节省存储空间。</li>
+<li>这64个比特又可分为三个部分，即：<ul>
 <li>第1位: 是符号的标志位(S), 0代表正数，1代表负数</li>
 <li>第1-11位: 指数位(E), 存储指数（exponent），用来表示次方数</li>
 <li>第12-63位: 尾数(M), 这52 位是尾数，超出的部分自动进一舍零</li>
@@ -489,8 +401,6 @@
 <li><p>相对于，小数点移了4位，指数减4</p>
 <blockquote>
 <p>exponent = -4 + 1023 = 1019</p>
-</blockquote>
-<blockquote>
 <p>01111111011</p>
 </blockquote>
 </li>
@@ -518,26 +428,34 @@
 </ul>
 </li>
 </ul>
-<h3 id="查看-0-1-表示方式"><a href="#查看-0-1-表示方式" class="headerlink" title="查看 0.1 表示方式"></a>查看 0.1 表示方式</h3><pre><code class="javascript"><span class="keyword">let</span> b = <span class="keyword">new</span> <span class="built_in">Float64Array</span>([<span class="number">0.1</span>])
-<span class="built_in">console</span>.log(b)
-<span class="keyword">let</span> intArr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(b.buffer)
-<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">7</span>; i &gt; <span class="number">0</span>; i --) {
-    s = intArr[i].toString(<span class="number">2</span>)
-    <span class="keyword">while</span>(s.length &lt; <span class="number">8</span>) {
-        s = <span class="string">'0'</span> + s
+<h3 id="查看-0-1-表示方式"><a href="#查看-0-1-表示方式" class="headerlink" title="查看 0.1 表示方式"></a>查看 0.1 表示方式</h3><pre><code class="lang-javascript">let b = new Float64Array([0.1])
+console.log(b)
+let intArr = new Uint8Array(b.buffer)
+for (let i = 7; i &gt; 0; i --) {
+    s = intArr[i].toString(2)
+    while(s.length &lt; 8) {
+        s = &#39;0&#39; + s
     }
-    <span class="built_in">console</span>.log(s)
+    console.log(s)
 
-}</code></pre>
+}
+</code></pre>
 <ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/d996e0a508b796f5a3d4f4866c1bf43064783.png" alt="低位优先系统"></li>
 <li>首先我们的系统是低位优先系统(little_endian)</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/de79ee3caac77ddad9398cfeaaf3719f227171.png" alt="查看 0.1 表示方式截图"><ul>
-<li>0 –&gt; 标志位</li>
-<li>011111111011 –&gt; 指数位</li>
-<li>1001{11}1010 –&gt; 尾数<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
+<li>0 —&gt; 标志位</li>
+<li>011111111011 —&gt; 指数位</li>
+<li>1001{11}1010 —&gt; 尾数</li>
 </ul>
 </li>
+</ul>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li>《Javascript 权威指南》22.5章 类型化数组和 ArrayBuffer P678</li>
+<li><a href="https://cloud.tencent.com/developer/article/1592651" target="_blank" rel="noopener">彻底搞懂Javascript 浮点数</a></li>
+<li><a href="http://www.binaryconvert.com/convert_double.html" target="_blank" rel="noopener">二进制转换工具</a></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
 ]]></content>
@@ -553,29 +471,23 @@
     <url>/2020/04/13/react-hooks/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>记录学习 react-hooks 过程中的思考🤔<a id="more"></a>
-
 </li>
 </ul>
 <h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li><p>react 16.8 推出</p>
-</li>
-<li><p>能够在函数组件内部使用 state 和组件生命周期方法</p>
-</li>
-<li><p>定义组件</p>
-<ul>
+<li>react 16.8 推出</li>
+<li>能够在函数组件内部使用 state 和组件生命周期方法</li>
+<li>定义组件<ul>
 <li>class</li>
 <li>F(x) + react-hooks(灵活、可测试、代码复用)</li>
 </ul>
 </li>
-<li><p>什么是 hooks ?</p>
-<ul>
+<li>什么是 hooks ?<ul>
 <li>允许你hook一些业务逻辑到组件内部 state 和 render 函数上</li>
 <li>hooks 允许我们去操作这个内部state了</li>
 <li>更好的去关注分离和代码复用(传统 HOC，函数作为子组件)，将相关代码</li>
 </ul>
 </li>
-<li><p>Why Hooks?</p>
-<ul>
+<li>Why Hooks?<ul>
 <li>Mixins<ul>
 <li>命名空间耦合</li>
 <li>静态检查</li>
@@ -598,8 +510,7 @@
 </li>
 </ul>
 </li>
-<li><p>三个基础 hooks</p>
-<ul>
+<li>三个基础 hooks<ul>
 <li>useState<ul>
 <li>允许操作组件的内部状态</li>
 <li>如果要根据之前的状态决定下一个状态<ul>
@@ -640,8 +551,7 @@
 <li>useContext</li>
 </ul>
 </li>
-<li><p>自定义 hooks</p>
-</li>
+<li>自定义 hooks</li>
 <li><p>额外 hooks</p>
 <ul>
 <li><p>useReducer</p>
@@ -650,18 +560,12 @@
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> providers <span class="keyword">from</span> <span class="string">'./providers'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数据 Provider 组合器</span></span><br><span class="line"><span class="keyword">const</span> ProvidersComposer = <span class="function">(<span class="params">props</span>) =&gt;</span> (</span><br><span class="line">  props.providers.reduceRight(<span class="function">(<span class="params">children, Parent</span>) =&gt;</span> (</span><br><span class="line">    &lt;Parent&gt;&#123;children&#125;&lt;<span class="regexp">/Parent&gt;</span></span><br><span class="line"><span class="regexp">  ), props.children)</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Provider = (props) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;ProvidersComposer providers=&#123;providers&#125;&gt;</span></span><br><span class="line"><span class="regexp">      &#123;props.children&#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>ProvidersComposer&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Provider;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><p>useCallback</p>
-</li>
-<li><p>useMemo</p>
-</li>
-<li><p>useRef</p>
-</li>
-<li><p>useImperativeHandle</p>
-</li>
-<li><p>useLayoutEffect</p>
-</li>
-<li><p>useDebugValue</p>
-</li>
+<li>useCallback</li>
+<li>useMemo</li>
+<li>useRef</li>
+<li>useImperativeHandle</li>
+<li>useLayoutEffect</li>
+<li>useDebugValue</li>
 </ul>
 </li>
 </ul>
@@ -681,47 +585,38 @@
     <url>/2020/04/20/Reg-Number/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>利用正则表达式，匹配所有 Number 字面量<a id="more"></a>
-
 </li>
 </ul>
 <h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/fcc73488cd245a6c48cf067a6dc7641e16278.png" alt="NumbericLiteral 大纲"></p>
-</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/fcc73488cd245a6c48cf067a6dc7641e16278.png" alt="NumbericLiteral 大纲"></li>
 <li><p>NumericLiteral :: </p>
 <ul>
 <li><p>DecimalLiteral</p>
 <ul>
 <li><p><img src="http://p0.meituan.net/myvideodistribute/94398bab367ca56c0aa2435de753041520532.png" alt="DecimalLiteral 大纲"></p>
 <ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/40d13f93242ff1f9321411cc7886586f52608.png" alt="DecimalLiteral 详情"></p>
-</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/40d13f93242ff1f9321411cc7886586f52608.png" alt="DecimalLiteral 详情"></li>
 <li><p>DecimalIntegerLiteral . DecimalDigits(opt) ExponentPart(opt)</p>
 <ul>
 <li><p>DecimalIntegerLiteral</p>
 <blockquote>
 <p>(0)</p>
-</blockquote>
-<blockquote>
 <p>([1-9][0-9]*)</p>
 </blockquote>
 </li>
-<li><p>.</p>
-<blockquote>
+<li>.<blockquote>
 <p>.</p>
 </blockquote>
 </li>
-<li><p>DecimalDigits</p>
-<blockquote>
+<li>DecimalDigits<blockquote>
 <p>[0-9]*</p>
 </blockquote>
 </li>
-<li><p>ExponentPart</p>
-<blockquote>
+<li>ExponentPart<blockquote>
 <p>(e|E)(\+|\-)?([0-9])*</p>
 </blockquote>
 </li>
-<li><p>可以推导出</p>
-<blockquote>
+<li>可以推导出<blockquote>
 <p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
 </blockquote>
 </li>
@@ -814,17 +709,104 @@
       </tags>
   </entry>
   <entry>
+    <title>微信小程序-气泡框</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>记录基于<a href="https://developers.weixin.qq.com/community/develop/doc/000e4e7103c3c090e517e0cdb5b806" target="_blank" rel="noopener">微信小程序-气泡框</a>实现中产生的问题及思考</li>
+</ul>
+<hr>
+<h2 id="问题截图"><a href="#问题截图" class="headerlink" title="问题截图"></a>问题截图</h2><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png" alt="popover问题截图"></p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
+<li>模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？<a id="more"></a>
+</li>
+</ul>
+<h2 id="问题解决过程记录"><a href="#问题解决过程记录" class="headerlink" title="问题解决过程记录"></a>问题解决过程记录</h2><ul>
+<li><p>定位问题发生的原因范围</p>
+<ul>
+<li>样式<ul>
+<li>样式在判断显示条件(wx:if=”“)生效后，仍然渲染</li>
+<li>否定原因<ul>
+<li>查询代码发现，整个样式背景的设定是在::before伪元素选择器中</li>
+<li>且显示条件生效，在调试器中已没有该元素，但仍显示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>逻辑<ul>
+<li>会不会是组件在渲染时，多渲染一份，我们使用判断条件进行开关时，只是对其中一个进行了操作</li>
+<li>怀疑依据<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzk5ZjcwMDAwZmViM2IwYzc0MWJmNjFiYzE5YTUwMDIxMjYyMTI3LnBuZw?x-oss-process=image/format,png" alt="popover问题依据截图"></li>
+<li>上图可见：在popover组件下，有2个通过&lt;slot&gt;插入的相同内容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开始解决问题</p>
+<ul>
+<li>查询官方关于<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html" target="_blank" rel="noopener">slot</a>方面的介绍<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JjMTE0ZmI0YTdhOWZkY2ZlYzU3ZDE5ZWQyYWY0YzI3MzE1NTU4LnBuZw?x-oss-process=image/format,png" alt="官方slot基础例子"></li>
+</ul>
+</li>
+<li>基于官方基础代码，复现问题<ul>
+<li>产生一个child-tag组件，并在其中编写  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/child-tag.js.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./component-tag-name'</span>: &#123;</span><br><span class="line">      type: <span class="string">'parent'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>与component-tag-name绑定形成父子组件  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/component-tag-name.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./child-tag'</span>: &#123;</span><br><span class="line">      type: <span class="string">'child'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    visible: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>并将index.html中进行调用  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引用组件的页面模版 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">bindtap</span>=<span class="string">"onTap"</span>&gt;</span>222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">my-component</span> <span class="attr">id</span>=<span class="string">"component"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">			这里是插入到组件slot name="content"中的内容</span><br><span class="line">			<span class="tag">&lt;<span class="name">child-component</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"child"</span>&gt;</span>这里是插入到组件slot name="child"中的内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>但是其结构树仍然非常正常，并没有出现那个所谓的”拷贝”组件<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzcwNTRhNjJkYmM2MGEyNmU5ZGI1ODYzNzNjOGY2OTgyMzg3NTI0LnBuZw?x-oss-process=image/format,png" alt="改写v1.1后的结构树截图"></li>
+<li>仔细复现了几次，发现：多出来的那个组件会有所延迟。抓住这个问题，想到我们在onReady中，注册了该组件，于是，继续模拟</li>
+</ul>
+</li>
+<li>修改index.js代码，并在component-tag-name组件注册onTap方法，控制显隐  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">onReady() &#123;</span><br><span class="line">  <span class="keyword">this</span>.component = <span class="keyword">this</span>.selectComponent(<span class="string">'#component'</span>)</span><br><span class="line">&#125;,</span><br><span class="line">onTap() &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'onTap'</span>)</span><br><span class="line">  wx.createSelectorQuery().select(<span class="string">'#component'</span>).boundingClientRect(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 调用自定义组件 popover 中的 onDisplay 方法</span></span><br><span class="line">      <span class="keyword">this</span>.component.onTap();</span><br><span class="line">  &#125;).exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>最终复现<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmZjQ3OTNhMjUwYTNjMzlhYjBlOGQxMGJhYTllZmI2NDc1NjIyLnBuZw?x-oss-process=image/format,png" alt="官方模拟最终运行截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>得出问题来源：<ul>
+<li>在组件中进行了一次setData</li>
+</ul>
+</li>
+<li>思考背后问题<ul>
+<li>在组件中setData为什么会”拷贝“一份相同的在页面级wxml中？</li>
+<li>猜想一：从<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/interactive-animation.html#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WXS响应事件</a>中，我隐隐得到了答案</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzZlYWJjYjdjOTliMzAxNWMwOGQwZmM2YWM3ZmMxMGMzNDU5NDAxLnBuZw?x-oss-process=image/format,png" alt="wxs相应事件"></li>
+<li>我们在页面级通过selectComponent实例化组件，对选中的组件进行操作，官方可以通过拷贝一份相同的组件，使我们便捷的将事件的处理从2次的逻辑层和渲染层通信以及一次渲染，减少到直接对页面上元素进行操作，即一次逻辑层和渲染层通信以及一次渲染。</li>
+<li>猜想二：问题层面是在微信开发者工具中的wxml，渲染方式对于这种情况就是这样处理的。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>官方已给出问题原因<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzJkMWVkZmYyNWIwM2YxZDU2ZGVjYjZhM2NkYjAwMGU5NTE5ODQucG5n?x-oss-process=image/format,png" alt="wxml面板"></li>
+</ul>
+</li>
+</ul>
+<h2 id="如何解决问题"><a href="#如何解决问题" class="headerlink" title="如何解决问题"></a>如何解决问题</h2><ul>
+<li>在popover以及popover-item加入  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">options: &#123;</span><br><span class="line">		    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">		  &#125;,</span><br></pre></td></tr></table></figure></li>
+<li>就可以解决了。最后建议slot中可以写上name这样代码可能会更易读。<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Reg -- String</title>
     <url>/2020/04/21/Reg-String/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
-
-
 </li>
 </ul>
 <h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
-</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></li>
 <li><p>StringLiteral ::</p>
 <ul>
 <li><p>DoubleStringCharacters</p>
@@ -930,11 +912,9 @@
 </li>
 <li><p><strong>StringLiteral</strong>总结为：</p>
 <blockquote>
-<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
+<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))<em>“$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))</em>‘$)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
-
-
 </li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
@@ -955,7 +935,6 @@
 <li>记录 性能监控 方面的学习过程🤔</li>
 </ul>
 <a id="more"></a>
-
 <h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
 <li>Gmail SPA</li>
 <li>Angular/React/Vue MVVM/工程化</li>
@@ -999,7 +978,7 @@
 <li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
 <li>什么原因导致猜想不成立？<ul>
 <li>元素是否可见</li>
-<li>每个元素对页面的影响是否等效？ –&gt; 权重</li>
+<li>每个元素对页面的影响是否等效？ —&gt; 权重</li>
 </ul>
 </li>
 </ul>
@@ -1033,104 +1012,11 @@
       </tags>
   </entry>
   <entry>
-    <title>微信小程序-气泡框</title>
-    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>记录基于<a href="https://developers.weixin.qq.com/community/develop/doc/000e4e7103c3c090e517e0cdb5b806" target="_blank" rel="noopener">微信小程序-气泡框</a>实现中产生的问题及思考</li>
-</ul>
-<hr>
-<h2 id="问题截图"><a href="#问题截图" class="headerlink" title="问题截图"></a>问题截图</h2><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png" alt="popover问题截图"></p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
-<li>模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？<a id="more"></a>
-
-</li>
-</ul>
-<h2 id="问题解决过程记录"><a href="#问题解决过程记录" class="headerlink" title="问题解决过程记录"></a>问题解决过程记录</h2><ul>
-<li><p>定位问题发生的原因范围</p>
-<ul>
-<li>样式<ul>
-<li>样式在判断显示条件(wx:if=”“)生效后，仍然渲染</li>
-<li>否定原因<ul>
-<li>查询代码发现，整个样式背景的设定是在::before伪元素选择器中</li>
-<li>且显示条件生效，在调试器中已没有该元素，但仍显示</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>逻辑<ul>
-<li>会不会是组件在渲染时，多渲染一份，我们使用判断条件进行开关时，只是对其中一个进行了操作</li>
-<li>怀疑依据<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzk5ZjcwMDAwZmViM2IwYzc0MWJmNjFiYzE5YTUwMDIxMjYyMTI3LnBuZw?x-oss-process=image/format,png" alt="popover问题依据截图"></li>
-<li>上图可见：在popover组件下，有2个通过&lt;slot&gt;插入的相同内容</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>开始解决问题</p>
-<ul>
-<li>查询官方关于<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html" target="_blank" rel="noopener">slot</a>方面的介绍<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JjMTE0ZmI0YTdhOWZkY2ZlYzU3ZDE5ZWQyYWY0YzI3MzE1NTU4LnBuZw?x-oss-process=image/format,png" alt="官方slot基础例子"></li>
-</ul>
-</li>
-<li>基于官方基础代码，复现问题<ul>
-<li>产生一个child-tag组件，并在其中编写  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/child-tag.js.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./component-tag-name'</span>: &#123;</span><br><span class="line">      type: <span class="string">'parent'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>与component-tag-name绑定形成父子组件  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/component-tag-name.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./child-tag'</span>: &#123;</span><br><span class="line">      type: <span class="string">'child'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    visible: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>并将index.html中进行调用  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引用组件的页面模版 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">bindtap</span>=<span class="string">"onTap"</span>&gt;</span>222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">my-component</span> <span class="attr">id</span>=<span class="string">"component"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">			这里是插入到组件slot name="content"中的内容</span><br><span class="line">			<span class="tag">&lt;<span class="name">child-component</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"child"</span>&gt;</span>这里是插入到组件slot name="child"中的内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>但是其结构树仍然非常正常，并没有出现那个所谓的”拷贝”组件<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzcwNTRhNjJkYmM2MGEyNmU5ZGI1ODYzNzNjOGY2OTgyMzg3NTI0LnBuZw?x-oss-process=image/format,png" alt="改写v1.1后的结构树截图"></li>
-<li>仔细复现了几次，发现：多出来的那个组件会有所延迟。抓住这个问题，想到我们在onReady中，注册了该组件，于是，继续模拟</li>
-</ul>
-</li>
-<li>修改index.js代码，并在component-tag-name组件注册onTap方法，控制显隐  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">onReady() &#123;</span><br><span class="line">  <span class="keyword">this</span>.component = <span class="keyword">this</span>.selectComponent(<span class="string">'#component'</span>)</span><br><span class="line">&#125;,</span><br><span class="line">onTap() &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'onTap'</span>)</span><br><span class="line">  wx.createSelectorQuery().select(<span class="string">'#component'</span>).boundingClientRect(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 调用自定义组件 popover 中的 onDisplay 方法</span></span><br><span class="line">      <span class="keyword">this</span>.component.onTap();</span><br><span class="line">  &#125;).exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>最终复现<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmZjQ3OTNhMjUwYTNjMzlhYjBlOGQxMGJhYTllZmI2NDc1NjIyLnBuZw?x-oss-process=image/format,png" alt="官方模拟最终运行截图"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>得出问题来源：<ul>
-<li>在组件中进行了一次setData</li>
-</ul>
-</li>
-<li>思考背后问题<ul>
-<li>在组件中setData为什么会”拷贝“一份相同的在页面级wxml中？</li>
-<li>猜想一：从<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/interactive-animation.html#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WXS响应事件</a>中，我隐隐得到了答案</li>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzZlYWJjYjdjOTliMzAxNWMwOGQwZmM2YWM3ZmMxMGMzNDU5NDAxLnBuZw?x-oss-process=image/format,png" alt="wxs相应事件"></li>
-<li>我们在页面级通过selectComponent实例化组件，对选中的组件进行操作，官方可以通过拷贝一份相同的组件，使我们便捷的将事件的处理从2次的逻辑层和渲染层通信以及一次渲染，减少到直接对页面上元素进行操作，即一次逻辑层和渲染层通信以及一次渲染。</li>
-<li>猜想二：问题层面是在微信开发者工具中的wxml，渲染方式对于这种情况就是这样处理的。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>官方已给出问题原因</p>
-<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzJkMWVkZmYyNWIwM2YxZDU2ZGVjYjZhM2NkYjAwMGU5NTE5ODQucG5n?x-oss-process=image/format,png" alt="wxml面板"></li>
-</ul>
-</li>
-</ul>
-<h2 id="如何解决问题"><a href="#如何解决问题" class="headerlink" title="如何解决问题"></a>如何解决问题</h2><ul>
-<li>在popover以及popover-item加入  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">options: &#123;</span><br><span class="line">		    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">		  &#125;,</span><br></pre></td></tr></table></figure></li>
-<li>就可以解决了。最后建议slot中可以写上name这样代码可能会更易读。<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
-<li>祝大家多多发财</li>
-</ul>
-<hr>
-]]></content>
-      <categories>
-        <category>微信小程序</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【未完】计算机图形学初探</title>
     <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li><p>记录 计算机图形学 方面的学习过程🤔</p>
 <a id="more"></a>
-
 </li>
 </ul>
 <h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
@@ -1145,11 +1031,11 @@
 <li>shape</li>
 </ul>
 </li>
-<li>来自数学的图形–分形</li>
-<li>来自物理的图形–光的衍射<ul>
+<li>来自数学的图形—分形</li>
+<li>来自物理的图形—光的衍射<ul>
 <li>相变</li>
 <li>绿幕<ul>
-<li>PNG24 –&gt; 2张 jpg</li>
+<li>PNG24 —&gt; 2张 jpg</li>
 </ul>
 </li>
 <li>3D效果<ul>
@@ -1161,7 +1047,10 @@
 </li>
 </ul>
 </li>
-<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
+<li>图形学基础设施<ul>
+<li></li>
+</ul>
+</li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
@@ -1175,304 +1064,23 @@
       </tags>
   </entry>
   <entry>
-    <title>数组、链表、跳表</title>
-    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
-    <content><![CDATA[<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
-<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
-<li>数学归纳法</li>
-<li>找最近重复问题</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>编程语言通识</title>
-    <url>/2020/04/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%80%9A%E8%AF%86/</url>
-    <content><![CDATA[<h2 id="语言按语法分类"><a href="#语言按语法分类" class="headerlink" title="语言按语法分类"></a>语言按语法分类</h2><ul>
-<li>非形式语言<ul>
-<li>中文、英文</li>
-</ul>
-</li>
-<li>形式语言（乔姆斯基谱系）<strong>追溯</strong>19世纪50年代<ul>
-<li>0型 无限制文法</li>
-<li>1型 上下文相关文法</li>
-<li>2型 上下文无关文法<ul>
-<li>大部分计算机语言主体上都是上下文无关文法</li>
-<li>比如Javascript就是上下文无关文法，会在某些点，违反上下文无关文法原则（get）</li>
-</ul>
-</li>
-<li>3型 正则文法<a id="more"></a>
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="理解形式语言"><a href="#理解形式语言" class="headerlink" title="理解形式语言"></a>理解形式语言</h2><h3 id="产生式（BNF-–-Backus-Naur-Form）"><a href="#产生式（BNF-–-Backus-Naur-Form）" class="headerlink" title="产生式（BNF – Backus-Naur Form）"></a>产生式（BNF – Backus-Naur Form）</h3><ul>
-<li>用尖括号括起来的名称来表示语法结构名</li>
-<li>语法结构分成基础结构和需要用其他语法结构定义的复合结构<ul>
-<li>基础结构称终结符</li>
-<li>复合结构称非终结符</li>
-</ul>
-</li>
-<li>引号和中间的字符表示终结符</li>
-<li>可以有括号</li>
-<li><ul>
-<li>表示重复多次</li>
-</ul>
-</li>
-<li>| 表示或</li>
-<li><ul>
-<li>表示至少一次</li>
-</ul>
-</li>
-</ul>
-<h4 id="BNF-表示-四则运算"><a href="#BNF-表示-四则运算" class="headerlink" title="BNF 表示 四则运算"></a>BNF 表示 四则运算</h4><ul>
-<li><p>加法，允许连加</p>
-<ul>
-<li>&lt;Number&gt;::= “0” | “1” | “2” | “3” | … | “9”</li>
-<li>&lt;DecimalNumber&gt;::= “0” | ((“1” | “2” | “3” | … “9”) &lt;Number&gt;*)</li>
-<li>&lt;AddtiveExpression&gt;::= &lt;DecimalNumber&gt; “+” &lt;DecimalNumber&gt;</li>
-<li>支持多个连加，采用递归：<ul>
-<li>&lt;AddtiveExpression&gt;::= &lt;AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</li>
-</ul>
-</li>
-<li>最终：<ul>
-<li>&lt;AddtiveExpression&gt;::= &lt;DecimalNumber&gt; | &lt;AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>乘法</p>
-<ul>
-<li><p>&lt;MultiplecativeExpression&gt;::= &lt;DecimalNumber&gt; | &lt; MultiplecativeExpression&gt; “*” &lt;DecimalNumber&gt;</p>
-</li>
-<li><p>1 + 2 * 3</p>
-<ul>
-<li><p>加法表达式，是由两个乘法表达式加起来的</p>
-</li>
-<li><p>1 * 1 + 2 * 3</p>
-</li>
-<li><p>因此<strong>加法表示成</strong></p>
-<blockquote>
-<p>&lt;AddtiveExpression&gt;::= &lt; MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>LogicExpression</p>
-<blockquote>
-<p>&lt;LogicExpression&gt;::= &lt;AddtiveExpression&gt; | </p>
-<pre><code>&amp;lt;LogicExpression&amp;gt; &quot;||&quot; &amp;lt;AddtiveExpression&amp;gt; |
-&amp;lt;LogicExpression&amp;gt; &quot;&amp;&amp;&quot; &amp;lt;AddtiveExpression&amp;gt;</code></pre></blockquote>
-</li>
-<li><p>除法</p>
-<blockquote>
-<p>&lt;MultiplecativeExpression&gt;::= &lt;DecimalNumber&gt; | &lt; MultiplecativeExpression&gt; “/“ &lt;DecimalNumber&gt;</p>
-</blockquote>
-</li>
-<li><p>减法</p>
-<blockquote>
-<p>&lt;AddtiveExpression&gt;::= &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “-“ &lt;MultiplecativeExpression&gt;</p>
-</blockquote>
-</li>
-<li><p>带括号的四则运算</p>
-<ul>
-<li><p>括号</p>
-<blockquote>
-<p>&lt;PrimaryExpression&lt;::= &lt;DecimalNumber&lt; | “(“ | &lt;LogicExpression&lt; | “)”</p>
-</blockquote>
-</li>
-<li><p>乘法表达式便可以变成</p>
-<blockquote>
-<p>&lt;MultiplecativeExpression&gt;::= &lt;PrimaryExpression&gt; | &lt; MultiplecativeExpression&gt; “*” &lt; PrimaryExpression&gt;</p>
-</blockquote>
-</li>
-<li><p>除法，同理乘法，换符号</p>
-<blockquote>
-<p>&lt;MultiplecativeExpression&gt;::= &lt;PrimaryExpression&gt; | &lt; MultiplecativeExpression&gt; “/“ &lt; PrimaryExpression&gt;</p>
-</blockquote>
-</li>
-<li><p>加减</p>
-<blockquote>
-<p>&lt;AddtiveExpression&gt;::= &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “+” &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “-“ &lt;MultiplecativeExpression&gt;</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="通过-BNF-理解形式语言（乔姆斯基谱系）"><a href="#通过-BNF-理解形式语言（乔姆斯基谱系）" class="headerlink" title="通过 BNF 理解形式语言（乔姆斯基谱系）"></a>通过 BNF 理解形式语言（乔姆斯基谱系）</h4><ul>
-<li>0型 无限制文法<ul>
-<li>?::=?</li>
-</ul>
-</li>
-<li>1型 上下文相关文法<ul>
-<li><span style="color: red">?</span>&lt;A&gt;<span style="color:blue">?</span>::=<span style="color: red">?</span>&lt;B&gt;<span style="color:blue">?</span></li>
-</ul>
-</li>
-</ul>
-<pre><code>    <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">get</span> a &#123; <span class="keyword">return</span> <span class="number">1</span>&#125;,</span><br><span class="line">  <span class="keyword">get</span>: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-- 1）类似关键字， 2）get: 属性</code></pre><ul>
-<li><p>2型 上下文无关文法</p>
-<ul>
-<li>&lt;A&gt;::=?</li>
-<li>2 ** 1 ** 2</li>
-</ul>
-</li>
-<li><p>3型 正则文法，只允许左递归（Javascript在**出现前，一直遵循着左递归）</p>
-<ul>
-<li><p>&lt;A&gt;::=&lt;A&gt;?</p>
-</li>
-<li><p>&lt;A&gt;::=?&lt;A&gt;<span style="color: red">x</span></p>
-</li>
-<li><p>Javascript 表达式大部分在3型</p>
-</li>
-<li><p>** 右结合</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">2</span> --&gt; <span class="number">4</span></span><br><span class="line"><span class="number">2</span> ** (<span class="number">2</span> ** <span class="number">3</span>) --&gt; <span class="number">256</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>**</p>
-<blockquote>
-<p>&lt;ExpExpression&gt; = &lt;MulticativeExpression&gt; | &lt;MulticativeExpression&gt; “**” &lt;ExpExpression&gt;</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="optional-正则表达式-BNF-表示四则运算"><a href="#optional-正则表达式-BNF-表示四则运算" class="headerlink" title="optional 正则表达式+ BNF 表示四则运算"></a>optional 正则表达式+ BNF 表示四则运算</h4><h3 id="其他产生式"><a href="#其他产生式" class="headerlink" title="其他产生式"></a>其他产生式</h3><ul>
-<li>EBNF ABNF Customized<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/1d1c7542767173de3c87f7a9e00a445763429.png" alt="ECMA-Script EBNF"></li>
-</ul>
-</li>
-</ul>
-<h3 id="现代语言语言的特例"><a href="#现代语言语言的特例" class="headerlink" title="现代语言语言的特例"></a>现代语言语言的特例</h3><ul>
-<li>C++，* 可能表示乘号或者指针，具体是哪个，取决于星号前面的标识符是否被声明为类型<ul>
-<li>非形式话语言，语法与语义相关，* 可以在很早之前出现</li>
-</ul>
-</li>
-<li>VB中， &lt; 可能是小于号，也可能是 XML 直接量的开始，取决于当前位置是否可以接受 XML 直接量<ul>
-<li>1型 上下文无关文法</li>
-</ul>
-</li>
-<li>Python，行首的 tab 符和空格会根据上一行的行首空白以一定规则被处理成虚拟终结符 indent 或者 dedent </li>
-<li>Javascript，/ 可能是除号，也可能是正则表达式开头，处理方式类似于VB，字符串模板中也需要特殊处理},还有自动插入分号规则<ul>
-<li>同 VB / JSX</li>
-</ul>
-</li>
-</ul>
-<h2 id="语言的分类"><a href="#语言的分类" class="headerlink" title="语言的分类"></a>语言的分类</h2><h3 id="图灵完备性"><a href="#图灵完备性" class="headerlink" title="图灵完备性"></a>图灵完备性</h3><ul>
-<li>图灵机（凡是可计算的，都能计算出来）</li>
-<li>图灵完备性<ul>
-<li>命令式 – 图灵机<ul>
-<li>goto</li>
-<li>if 和 while</li>
-</ul>
-</li>
-<li>声明式 – lambda<ul>
-<li>递归</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="动态与静态"><a href="#动态与静态" class="headerlink" title="动态与静态"></a>动态与静态</h3><ul>
-<li>动态：<ul>
-<li>在用户的设备/在线服务器上</li>
-<li>产品实际运行时</li>
-<li>Runtime</li>
-</ul>
-</li>
-<li>静态<ul>
-<li>在程序员的设备上</li>
-<li>产品开发时</li>
-<li>Compiletime</li>
-</ul>
-</li>
-</ul>
-<h4 id="类型系统-In-静态语言"><a href="#类型系统-In-静态语言" class="headerlink" title="类型系统 In 静态语言"></a>类型系统 In 静态语言</h4><ul>
-<li>动态类型系统和静态类型系统<ul>
-<li>不是说 Typescript 才有类型系统，而是它才有静态类型系统</li>
-</ul>
-</li>
-<li>强类型和弱类型<ul>
-<li>String + Number<ul>
-<li>产生了隐式的类型转换</li>
-</ul>
-</li>
-<li>String == Boolean</li>
-<li>C++ 有隐式转换，弱类型</li>
-</ul>
-</li>
-<li>复合类型<ul>
-<li>结构体</li>
-<li><strong>函数签名</strong><ul>
-<li>参数列表 + 返回值类型</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>子类型<ul>
-<li>逆变/协变<ul>
-<li>协变 –&gt; 凡是能用到Array&lt;Parent&gt;的地方，都能用Array&lt;Child&gt;</li>
-<li>逆变 –&gt; 凡是能用到Array&lt;Child&gt;的地方，都能用Array&lt;Parent&gt;</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="一般命令式编程语言"><a href="#一般命令式编程语言" class="headerlink" title="一般命令式编程语言"></a>一般命令式编程语言</h2><h3 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h3><h3 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h3><h3 id="Statement-语句"><a href="#Statement-语句" class="headerlink" title="Statement 语句"></a>Statement 语句</h3><h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><h3 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h3>]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自己的前端知识体系</title>
-    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>理一下自己的技术体系吧</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/5947cefee7afec18961dda1194cebf224343214.png" alt="技术体系脑图"></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>OOP-面向对象</title>
     <url>/2020/04/09/OOP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>昨天 Mentor 说以后要开始用 React Hooks（我还没有涉足 ）写点东西，进而谈论到 React 生态一直想推展开来的的函数式编程思想，我不由得想到一个问题：都说 Javascript 不是典型的面向对象编程语言，它并不具备完整的 OOP 该有的特性，它虽引进了 class 语法糖，但只是让对象原型写法更加像面向对象编程语言的写法，那面向对象到底可以理解为什么 ? 🤔 以及函数式编程思想在推什么？Javascript 定位究竟是什么？</li>
 <li>简单记录一下自己关于这个问题的思考<a id="more"></a>
-
 </li>
 </ul>
 <h2 id="OOP-Wikipedia"><a href="#OOP-Wikipedia" class="headerlink" title="OOP Wikipedia"></a>OOP Wikipedia</h2><ul>
-<li><p>探讨的是面向对象</p>
-</li>
-<li><p>我们首先可以想想，我们为什么需要封装成对象？</p>
-<ul>
+<li>探讨的是面向对象</li>
+<li>我们首先可以想想，我们为什么需要封装成对象？<ul>
 <li>我的理解是：我们需要减少我们的操作粒度，每个操作都去落实到 bit 数据是非常庞大的，减少问题求解复杂度</li>
 <li>wiki 上关于 object 特性也给到了支持</li>
 </ul>
 </li>
 <li><p>A feature of objects is an object’s procedures that can <strong>access</strong> and <strong>often modify the data fields</strong> of the object with which they are associated (objects have a notion of “this” or “self”).</p>
 <ul>
-<li><p>可以和面向过程 (Procedure Oriented) 放在一起说。</p>
-</li>
+<li>可以和面向过程 (Procedure Oriented) 放在一起说。</li>
 <li><p>首先 OOP 是一个很自然的思想，在C语言中也能写出<strong>符合</strong>面向对象思想的代码</p>
   <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C语言例子</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *name;  <span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">int</span> num;  <span class="comment">//学号</span></span><br><span class="line">    <span class="keyword">int</span> age;  <span class="comment">//年龄</span></span><br><span class="line">    <span class="keyword">char</span> group;  <span class="comment">//所在学习小组</span></span><br><span class="line">    <span class="keyword">float</span> score;  <span class="comment">//成绩</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">GetStudentName</span><span class="params">(struct Student* stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetStudentName</span><span class="params">(struct Student* stu, <span class="keyword">char</span>* newName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span> <span class="title">s1</span>, <span class="title">s2</span>, <span class="title">s3</span>, <span class="title">s4</span>;</span> <span class="comment">// 创建了多个学生</span></span><br><span class="line">    SetStudentName(&amp;s1, <span class="string">"小明"</span>);</span><br><span class="line">    SetStudentName(&amp;s2, <span class="string">"小红"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -1485,20 +1093,15 @@
 <li>而面对这种频繁操作数据单元的使用面向过程编程思想，可能会在现有对象加上判断，万一节假日还要做其他的业务，判断只会越来越多。这就与我们 Nicklaus Wirth 提出的：<strong>程序 = 数据结构 + 算法</strong>，越来越割裂。</li>
 </ul>
 </li>
-<li><p>在我现在的浅薄思考看来：面向对象编程思想是想先让不同对象以尽可能的统一特性进行归组，形成“大对象”，然后各个对象变成了这个大对象中衍生出来的基类，并在父类派生出来的对象中，去实现各自解决问题的具体方法。这样当我们在拿到一个问题，我们可以不用去管它的内部实现，我们根据类型就可以知道它能做什么事，这比我们手动去一步一步执行要先进点。<strong>让对象有多态性，把不同对象以同一特性来归组，统一处理。至于所谓继承等概念，是实现的细节</strong>。</p>
-</li>
+<li>在我现在的浅薄思考看来：面向对象编程思想是想先让不同对象以尽可能的统一特性进行归组，形成“大对象”，然后各个对象变成了这个大对象中衍生出来的基类，并在父类派生出来的对象中，去实现各自解决问题的具体方法。这样当我们在拿到一个问题，我们可以不用去管它的内部实现，我们根据类型就可以知道它能做什么事，这比我们手动去一步一步执行要先进点。<strong>让对象有多态性，把不同对象以同一特性来归组，统一处理。至于所谓继承等概念，是实现的细节</strong>。</li>
 </ul>
 </li>
 </ul>
 <h2 id="prototype-based-programming"><a href="#prototype-based-programming" class="headerlink" title="prototype-based programming"></a>prototype-based programming</h2><ul>
-<li><p>Languages with abstract data type support which may be used to <strong>resemble OO programming</strong>, but <strong>without all features of object-orientation</strong>. This includes object-based and <strong>prototype-based languages</strong>. Examples: JavaScript, Lua, Modula-2, CLU.</p>
-</li>
-<li><p>The Document Object Model of HTML, XHTML, and XML documents on the Internet has bindings to the popular JavaScript/ECMAScript language. <strong>JavaScript is perhaps the best known prototype-based programming language, which employs cloning from prototypes rather than inheriting from a class (contrast to class-based programming)</strong>. </p>
-</li>
-<li><p>我们在大概了解了 OOP 思想后，我们可以继续看看“类OOP”–基于原型编程 Javascript 实现</p>
-</li>
-<li><p>我们可以先从 ECMA-262 规范中找到关于 Object 的定义</p>
-<ul>
+<li>Languages with abstract data type support which may be used to <strong>resemble OO programming</strong>, but <strong>without all features of object-orientation</strong>. This includes object-based and <strong>prototype-based languages</strong>. Examples: JavaScript, Lua, Modula-2, CLU.</li>
+<li>The Document Object Model of HTML, XHTML, and XML documents on the Internet has bindings to the popular JavaScript/ECMAScript language. <strong>JavaScript is perhaps the best known prototype-based programming language, which employs cloning from prototypes rather than inheriting from a class (contrast to class-based programming)</strong>. </li>
+<li>我们在大概了解了 OOP 思想后，我们可以继续看看“类OOP”—基于原型编程 Javascript 实现</li>
+<li>我们可以先从 ECMA-262 规范中找到关于 Object 的定义<ul>
 <li>“Objects are created by using constructors in <strong>new expressions</strong>.”</li>
 <li>“Each constructor is a function that has a property named <strong>‘prototype’ that is used to implement prototype-based inheritance and shared properties</strong>.”</li>
 <li>“Every object created by a constructor has an implicit reference (called the object’s prototype) to the value of its constructor’s ‘prototype’ property. Furthermore, a prototype may have a non-null implicit reference to its prototype, and so on; this is called the prototype chain. When a reference is made to a property in an object, that reference is to the property of that name in the first object in the prototype chain that contains a property of that name. In other words, first the object mentioned directly is examined for such a property; if that object contains the named property, that is the property to which the reference refers; if that object does not contain the named property, the prototype for that object is examined next; and so on.”</li>
@@ -1512,19 +1115,18 @@
 <li>“What could be more object oriented than that?” 😝</li>
 </ul>
 </li>
-<li><p>也有新的对 Object 的思考</p>
-<ul>
+<li>也有新的对 Object 的思考<ul>
 <li>“In JavaScript, <strong>an object is an associative array</strong>, augmented with a prototype (see below); each string key provides the name for an object property, and there are two syntactical ways to specify such a name: dot notation (obj.x = 10) and bracket notation (obj[‘x’] = 10). A property may be added, rebound, or deleted at run-time. Most properties of an object (and any property that belongs to an object’s prototype inheritance chain) can be enumerated using a for…in loop.”</li>
 </ul>
 </li>
 </ul>
 <h2 id="Functional-programming"><a href="#Functional-programming" class="headerlink" title="Functional programming"></a>Functional programming</h2><ul>
-<li>Functional programming has its origins in lambda calculus.It is a programming paradigm —- a style of building the structure and elements of computer programs – that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.</li>
+<li>Functional programming has its origins in lambda calculus.It is a programming paradigm —- a style of building the structure and elements of computer programs — that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.</li>
 <li>One of the key motivations for the development of functional programming is making a program easier to understand by eliminating changes in state that <strong>do not depend on function inputs</strong> which are called side effects.</li>
 <li>side effects include modifying a non-local variable, modifying a static local variable, modifying a mutable argument passed by reference, performing I/O or calling other side-effect functions.</li>
 <li>referential transparency<ul>
 <li>the same language expression can result in different values at different times depending on the state of the executing program.</li>
-<li>Consider C assignment statement x = x * 10, this changes the value assigned to the variable x. Let us say that the initial value of x was 1, then two consecutive evaluations of the variable x yields 10 and 100 respectively. Clearly, replacing x = x * 10 with either 10 or 100 gives a program with different meaning, and so the expression is not referentially transparent. In fact, assignment statements are never referentially transparent.</li>
+<li>Consider C assignment statement x = x <em> 10, this changes the value assigned to the variable x. Let us say that the initial value of x was 1, then two consecutive evaluations of the variable x yields 10 and 100 respectively. Clearly, replacing x = x </em> 10 with either 10 or 100 gives a program with different meaning, and so the expression is not referentially transparent. In fact, assignment statements are never referentially transparent.</li>
 <li>Absence of side effects is a necessary, but not sufficient, condition for referential transparency. <strong>Referential transparency means that an expression (such as a function call) can be replaced with its value</strong>. This requires that the expression is pure, that is to say the expression must be deterministic (always give the same value for the same input) and side-effect free.</li>
 </ul>
 </li>
@@ -1535,12 +1137,12 @@
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects" target="_blank" rel="noopener">引入 Javascript 对象</a></li>
 <li><a href="https://software.intel.com/en-us/blogs/2008/08/22/flaws-of-object-oriented-modeling/" target="_blank" rel="noopener">Flaws of Object Oriented Modeling</a></li>
-<li><a href="https://books.google.com/books?id=xb-sAQAAQBAJ&printsec=frontcover&dq=isbn:9788090466180&hl=zh-CN&sa=X&ved=0ahUKEwiG-8y8qdroAhWmUt8KHey5Dl0Q6AEIKDAA#v=onepage&q&f=false" target="_blank" rel="noopener">learn object oriented thinking &amp; programming</a></li>
-<li><a href="https://books.google.com/books?id=WzsFCAAAQBAJ&printsec=frontcover&dq=isbn:9780735619654&hl=zh-CN&sa=X&ved=0ahUKEwiqzaPSqNroAhVvUd8KHc80CYEQ6AEIKDAA#v=onepage&q&f=false" target="_blank" rel="noopener">Obejct thinking</a></li>
+<li><a href="https://books.google.com/books?id=xb-sAQAAQBAJ&amp;printsec=frontcover&amp;dq=isbn:9788090466180&amp;hl=zh-CN&amp;sa=X&amp;ved=0ahUKEwiG-8y8qdroAhWmUt8KHey5Dl0Q6AEIKDAA#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener">learn object oriented thinking &amp; programming</a></li>
+<li><a href="https://books.google.com/books?id=WzsFCAAAQBAJ&amp;printsec=frontcover&amp;dq=isbn:9780735619654&amp;hl=zh-CN&amp;sa=X&amp;ved=0ahUKEwiqzaPSqNroAhVvUd8KHc80CYEQ6AEIKDAA#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener">Obejct thinking</a></li>
 <li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener">Javascript Object-orientation (prototype-based)</a></li>
 <li><a href="https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep" target="_blank" rel="noopener">Introduction to Object Oriented Programming Concepts (OOP) and More</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank" rel="noopener">Functional_programming wikipedia</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)" target="_blank" rel="noopener">Side effect wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science" target="_blank" rel="noopener">Side effect wikipedia</a>)</li>
 <li><a href="https://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">Object-oriented programming wikipedia</a></li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
@@ -1574,7 +1176,7 @@
 <hr>
 <h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><ul>
 <li>微信官方提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html" target="_blank" rel="noopener">cover-view</a>原生组件，覆盖在原生组件之上的文本视图</li>
-<li>微信官方提供了将canvas转化为图片的方式–<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
+<li>微信官方提供了将canvas转化为图片的方式—<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
 </ul>
 <h3 id="方法一：cover-view"><a href="#方法一：cover-view" class="headerlink" title="方法一：cover-view"></a>方法一：cover-view</h3><ul>
 <li>将tooltip用cover-view改写，效果如下<ul>
@@ -1762,6 +1364,270 @@
       </categories>
       <tags>
         <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>编程语言通识</title>
+    <url>/2020/04/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%80%9A%E8%AF%86/</url>
+    <content><![CDATA[<h2 id="语言按语法分类"><a href="#语言按语法分类" class="headerlink" title="语言按语法分类"></a>语言按语法分类</h2><ul>
+<li>非形式语言<ul>
+<li>中文、英文</li>
+</ul>
+</li>
+<li>形式语言（乔姆斯基谱系）<strong>追溯</strong>19世纪50年代<ul>
+<li>0型 无限制文法</li>
+<li>1型 上下文相关文法</li>
+<li>2型 上下文无关文法<ul>
+<li>大部分计算机语言主体上都是上下文无关文法</li>
+<li>比如Javascript就是上下文无关文法，会在某些点，违反上下文无关文法原则（get）</li>
+</ul>
+</li>
+<li>3型 正则文法<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="理解形式语言"><a href="#理解形式语言" class="headerlink" title="理解形式语言"></a>理解形式语言</h2><h3 id="产生式（BNF-—-Backus-Naur-Form）"><a href="#产生式（BNF-—-Backus-Naur-Form）" class="headerlink" title="产生式（BNF — Backus-Naur Form）"></a>产生式（BNF — Backus-Naur Form）</h3><ul>
+<li>用尖括号括起来的名称来表示语法结构名</li>
+<li>语法结构分成基础结构和需要用其他语法结构定义的复合结构<ul>
+<li>基础结构称终结符</li>
+<li>复合结构称非终结符</li>
+</ul>
+</li>
+<li>引号和中间的字符表示终结符</li>
+<li>可以有括号</li>
+<li><ul>
+<li>表示重复多次</li>
+</ul>
+</li>
+<li>| 表示或</li>
+<li><ul>
+<li>表示至少一次</li>
+</ul>
+</li>
+</ul>
+<h4 id="BNF-表示-四则运算"><a href="#BNF-表示-四则运算" class="headerlink" title="BNF 表示 四则运算"></a>BNF 表示 四则运算</h4><ul>
+<li>加法，允许连加<ul>
+<li>&lt;Number&gt;::= “0” | “1” | “2” | “3” | … | “9”</li>
+<li>&lt;DecimalNumber&gt;::= “0” | ((“1” | “2” | “3” | … “9”) &lt;Number&gt;*)</li>
+<li>&lt;AddtiveExpression&gt;::= &lt;DecimalNumber&gt; “+” &lt;DecimalNumber&gt;</li>
+<li>支持多个连加，采用递归：<ul>
+<li>&lt;AddtiveExpression&gt;::= &lt;AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</li>
+</ul>
+</li>
+<li>最终：<ul>
+<li>&lt;AddtiveExpression&gt;::= &lt;DecimalNumber&gt; | &lt;AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>乘法</p>
+<ul>
+<li>&lt;MultiplecativeExpression&gt;::= &lt;DecimalNumber&gt; | &lt; MultiplecativeExpression&gt; “*” &lt;DecimalNumber&gt;</li>
+<li><p>1 + 2 * 3</p>
+<ul>
+<li>加法表达式，是由两个乘法表达式加起来的</li>
+<li>1 <em> 1 + 2 </em> 3</li>
+<li><p>因此<strong>加法表示成</strong></p>
+<blockquote>
+<p>&lt;AddtiveExpression&gt;::= &lt; MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>LogicExpression</p>
+<blockquote>
+<p>&lt;LogicExpression&gt;::= &lt;AddtiveExpression&gt; | </p>
+<pre><code>  &amp;lt;LogicExpression&amp;gt; &quot;||&quot; &amp;lt;AddtiveExpression&amp;gt; |
+  &amp;lt;LogicExpression&amp;gt; &quot;&amp;&amp;&quot; &amp;lt;AddtiveExpression&amp;gt;
+</code></pre></blockquote>
+</li>
+<li><p>除法</p>
+<blockquote>
+<p>&lt;MultiplecativeExpression&gt;::= &lt;DecimalNumber&gt; | &lt; MultiplecativeExpression&gt; “/“ &lt;DecimalNumber&gt;</p>
+</blockquote>
+</li>
+<li><p>减法</p>
+<blockquote>
+<p>&lt;AddtiveExpression&gt;::= &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “-“ &lt;MultiplecativeExpression&gt;</p>
+</blockquote>
+</li>
+<li><p>带括号的四则运算</p>
+<ul>
+<li><p>括号</p>
+<blockquote>
+<p>&lt;PrimaryExpression&lt;::= &lt;DecimalNumber&lt; | “(“ | &lt;LogicExpression&lt; | “)”</p>
+</blockquote>
+</li>
+<li><p>乘法表达式便可以变成</p>
+<blockquote>
+<p>&lt;MultiplecativeExpression&gt;::= &lt;PrimaryExpression&gt; | &lt; MultiplecativeExpression&gt; “*” &lt; PrimaryExpression&gt;</p>
+</blockquote>
+</li>
+<li><p>除法，同理乘法，换符号</p>
+<blockquote>
+<p>&lt;MultiplecativeExpression&gt;::= &lt;PrimaryExpression&gt; | &lt; MultiplecativeExpression&gt; “/“ &lt; PrimaryExpression&gt;</p>
+</blockquote>
+</li>
+<li><p>加减</p>
+<blockquote>
+<p>&lt;AddtiveExpression&gt;::= &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “+” &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “-“ &lt;MultiplecativeExpression&gt;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="通过-BNF-理解形式语言（乔姆斯基谱系）"><a href="#通过-BNF-理解形式语言（乔姆斯基谱系）" class="headerlink" title="通过 BNF 理解形式语言（乔姆斯基谱系）"></a>通过 BNF 理解形式语言（乔姆斯基谱系）</h4><ul>
+<li>0型 无限制文法<ul>
+<li>?::=?</li>
+</ul>
+</li>
+<li>1型 上下文相关文法<ul>
+<li><span style="color: red">?</span>&lt;A&gt;<span style="color:blue">?</span>::=<span style="color: red">?</span>&lt;B&gt;<span style="color:blue">?</span></li>
+</ul>
+</li>
+</ul>
+<pre><code>    <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">get</span> a &#123; <span class="keyword">return</span> <span class="number">1</span>&#125;,</span><br><span class="line">  <span class="keyword">get</span>: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+- 1）类似关键字， 2）get: 属性
+</code></pre><ul>
+<li>2型 上下文无关文法<ul>
+<li>&lt;A&gt;::=?</li>
+<li>2 <strong> 1 </strong> 2</li>
+</ul>
+</li>
+<li><p>3型 正则文法，只允许左递归（Javascript在**出现前，一直遵循着左递归）</p>
+<ul>
+<li>&lt;A&gt;::=&lt;A&gt;?</li>
+<li>&lt;A&gt;::=?&lt;A&gt;<span style="color: red">x</span></li>
+<li>Javascript 表达式大部分在3型</li>
+<li><p>** 右结合</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">2</span> --&gt; <span class="number">4</span></span><br><span class="line"><span class="number">2</span> ** (<span class="number">2</span> ** <span class="number">3</span>) --&gt; <span class="number">256</span></span><br></pre></td></tr></table></figure>
+<hr>
+<pre><code>  &gt; &amp;lt;ExpExpression&amp;gt; = &amp;lt;MulticativeExpression&amp;gt; | &amp;lt;MulticativeExpression&amp;gt; &quot;**&quot; &amp;lt;ExpExpression&amp;gt;
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h4 id="optional-正则表达式-BNF-表示四则运算"><a href="#optional-正则表达式-BNF-表示四则运算" class="headerlink" title="optional 正则表达式+ BNF 表示四则运算"></a>optional 正则表达式+ BNF 表示四则运算</h4><h3 id="其他产生式"><a href="#其他产生式" class="headerlink" title="其他产生式"></a>其他产生式</h3><ul>
+<li>EBNF ABNF Customized<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/1d1c7542767173de3c87f7a9e00a445763429.png" alt="ECMA-Script EBNF"></li>
+</ul>
+</li>
+</ul>
+<h3 id="现代语言语言的特例"><a href="#现代语言语言的特例" class="headerlink" title="现代语言语言的特例"></a>现代语言语言的特例</h3><ul>
+<li>C++，* 可能表示乘号或者指针，具体是哪个，取决于星号前面的标识符是否被声明为类型<ul>
+<li>非形式话语言，语法与语义相关，* 可以在很早之前出现</li>
+</ul>
+</li>
+<li>VB中， &lt; 可能是小于号，也可能是 XML 直接量的开始，取决于当前位置是否可以接受 XML 直接量<ul>
+<li>1型 上下文无关文法</li>
+</ul>
+</li>
+<li>Python，行首的 tab 符和空格会根据上一行的行首空白以一定规则被处理成虚拟终结符 indent 或者 dedent </li>
+<li>Javascript，/ 可能是除号，也可能是正则表达式开头，处理方式类似于VB，字符串模板中也需要特殊处理},还有自动插入分号规则<ul>
+<li>同 VB / JSX</li>
+</ul>
+</li>
+</ul>
+<h2 id="语言的分类"><a href="#语言的分类" class="headerlink" title="语言的分类"></a>语言的分类</h2><h3 id="图灵完备性"><a href="#图灵完备性" class="headerlink" title="图灵完备性"></a>图灵完备性</h3><ul>
+<li>图灵机（凡是可计算的，都能计算出来）</li>
+<li>图灵完备性<ul>
+<li>命令式 — 图灵机<ul>
+<li>goto</li>
+<li>if 和 while</li>
+</ul>
+</li>
+<li>声明式 — lambda<ul>
+<li>递归</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="动态与静态"><a href="#动态与静态" class="headerlink" title="动态与静态"></a>动态与静态</h3><ul>
+<li>动态：<ul>
+<li>在用户的设备/在线服务器上</li>
+<li>产品实际运行时</li>
+<li>Runtime</li>
+</ul>
+</li>
+<li>静态<ul>
+<li>在程序员的设备上</li>
+<li>产品开发时</li>
+<li>Compiletime</li>
+</ul>
+</li>
+</ul>
+<h4 id="类型系统-In-静态语言"><a href="#类型系统-In-静态语言" class="headerlink" title="类型系统 In 静态语言"></a>类型系统 In 静态语言</h4><ul>
+<li>动态类型系统和静态类型系统<ul>
+<li>不是说 Typescript 才有类型系统，而是它才有静态类型系统</li>
+</ul>
+</li>
+<li>强类型和弱类型<ul>
+<li>String + Number<ul>
+<li>产生了隐式的类型转换</li>
+</ul>
+</li>
+<li>String == Boolean</li>
+<li>C++ 有隐式转换，弱类型</li>
+</ul>
+</li>
+<li>复合类型<ul>
+<li>结构体</li>
+<li><strong>函数签名</strong><ul>
+<li>参数列表 + 返回值类型</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>子类型<ul>
+<li>逆变/协变<ul>
+<li>协变 —&gt; 凡是能用到Array&lt;Parent&gt;的地方，都能用Array&lt;Child&gt;</li>
+<li>逆变 —&gt; 凡是能用到Array&lt;Child&gt;的地方，都能用Array&lt;Parent&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="一般命令式编程语言"><a href="#一般命令式编程语言" class="headerlink" title="一般命令式编程语言"></a>一般命令式编程语言</h2><h3 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h3><h3 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h3><h3 id="Statement-语句"><a href="#Statement-语句" class="headerlink" title="Statement 语句"></a>Statement 语句</h3><h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><h3 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h3>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组、链表、跳表</title>
+    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
+    <content><![CDATA[<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
+<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
+<li>数学归纳法</li>
+<li>找最近重复问题</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>自己的前端知识体系</title>
+    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>理一下自己的技术体系吧</li>
+</ul>
+<a id="more"></a>
+<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/5947cefee7afec18961dda1194cebf224343214.png" alt="技术体系脑图"></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
       </tags>
   </entry>
 </search>
