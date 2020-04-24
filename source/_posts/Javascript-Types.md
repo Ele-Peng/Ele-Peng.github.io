@@ -6,10 +6,10 @@ tags:
 categories:
 - 前端概念
 description:
-- Javascript -- Types
+- Javascript -- Atom - Types
 ---
 
-# Javascript -- Type
+# Javascript -- Atom - Types
 ## Atom
 ### Unicode （字符集）
 - Unicode Blocks
