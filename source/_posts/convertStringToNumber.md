@@ -161,7 +161,7 @@ function convertStringToNumber(str, radix) {
 		  let tempStrArr = str.split('')
 		  let res = 0
 		  for (let i = tempStrArr.length - 1; i > 0; i --) {
-		    res += tempStrArr[i] * Math.pow(radix, tempStrArr.length - i - 1)
+		    res += (tempStrArr[i].codePointAt(0) - '0'.codePointAt(0)) * Math.pow(radix, tempStrArr.length - i - 1)
 		  }
 		  return res
 		}
@@ -171,9 +171,293 @@ function convertStringToNumber(str, radix) {
 		- 单元测试
 			- ![单元测试截图](http://p0.meituan.net/myvideodistribute/5f3f3d1a2d0851eddaa1e258a182831864745.png)
 	- 八进制
-	- 十六进制
+		- 同上
 
+			```javascript
+			// 将 str 转成八进制
+			function converStringToBinaryInteger(str, radix) {
+			  return strMultipleRadix(str, radix)
+			}
+			
+			/*
+			* @params: { str } 输入需要替换的字符串, { radix } 转换的指定基数
+			* return: resStr 乘以指定基数转换过得字符串
+			*/
+			function strMultipleRadix(str, radix) {
+			  let tempStrArr = str.split('')
+			  let res = 0
+			  for (let i = tempStrArr.length - 1; i > 0; i --) {
+			    res += (tempStrArr[i].codePointAt(0) - '0'.codePointAt(0)) * Math.pow(radix, tempStrArr.length - i - 1)
+			  }
+			  return res
+			}
+			converStringToBinaryInteger('001010101', 2)
+			```
+		- 单元测试
+			- ![单元测试截图](http://p1.meituan.net/myvideodistribute/e9db13d824513d4e72509cd571f90dc069034.png)
+	- 十六进制
+		- 需要对 a-f A-F 进行判断，别忘了+10
+
+			```javascript
+			  // 将 str 转成十六进制
+			  function converStringToBinaryInteger(str, radix) {
+			    return strMultipleRadix(str, radix)
+			  }
+			
+			  /*
+			  * @params: { str } 输入需要替换的字符串, { radix } 转换的指定基数
+			  * return: resStr 乘以指定基数转换过得字符串
+			  */
+			  function strMultipleRadix(str, radix) {
+			    let tempStrArr = str.split('')
+			    let res = 0
+			    for (let i = tempStrArr.length - 1; i > 0; i--) {
+			      if (radix === 16) {
+			        if ((tempStrArr[i].codePointAt(0) - '0'.codePointAt(0) >= 0) && (tempStrArr[i].codePointAt(0) - '0'.codePointAt(0) < 10)) {
+			          res += (tempStrArr[i].codePointAt(0) - '0'.codePointAt(0)) * Math.pow(radix, tempStrArr.length - i - 1)
+			        } else if ((tempStrArr[i].codePointAt(0) - 'a'.codePointAt(0) >= 0) && (tempStrArr[i].codePointAt(0) - 'a'.codePointAt(0) < 6)) {
+			          console.log('(tempStrArr[i].codePointAt(0)a', tempStrArr[i].codePointAt(0) - 'a'.codePointAt(0))
+			          res += (tempStrArr[i].codePointAt(0) - 'a'.codePointAt(0) + 10) * Math.pow(radix, tempStrArr.length - i - 1)
+			        } else if ((tempStrArr[i].codePointAt(0) - 'A'.codePointAt(0) >= 0) && (tempStrArr[i].codePointAt(0) - 'A'.codePointAt(0) < 6)) {
+			          console.log('(tempStrArr[i].codePointAt(0)A', tempStrArr[i].codePointAt(0) - 'A'.codePointAt(0))
+			          res += (tempStrArr[i].codePointAt(0) - 'A'.codePointAt(0) + 10) * Math.pow(radix, tempStrArr.length - i - 1)
+			        }
+			      } else {
+			        res += (tempStrArr[i].codePointAt(0) - '0'.codePointAt(0)) * Math.pow(radix, tempStrArr.length - i - 1)
+			      }
+			    }
+			    return res
+			  }
+			  console.log(converStringToBinaryInteger('001010101', 16))
+			  console.log(converStringToBinaryInteger('00101acfAFF', 16))
+			```
+		- 单元测试
+			- ![单元测试截图](http://p0.meituan.net/myvideodistribute/e2e319f170fe2334f7b589cfc0f77b06205824.png)
+- 最终二/八/十六进制根据指定基数进行相应算法转换方法为：
+	
+	```javascript
+		/*
+	  * @params: { str } 输入需要替换的字符串, { radix } 转换的指定基数
+	  * return: resStr 乘以指定基数转换过得字符串
+	  */
+	  function strMultipleRadix(str, radix) {
+	    let tempStrArr = str.split('')
+	    let res = 0
+	    for (let i = tempStrArr.length - 1; i > 0; i--) {
+	      if (radix === 16) {
+	        if ((tempStrArr[i].codePointAt(0) - '0'.codePointAt(0) >= 0) && (tempStrArr[i].codePointAt(0) - '0'.codePointAt(0) < 10)) {
+	          res += (tempStrArr[i].codePointAt(0) - '0'.codePointAt(0)) * Math.pow(radix, tempStrArr.length - i - 1)
+	        } else if ((tempStrArr[i].codePointAt(0) - 'a'.codePointAt(0) >= 0) && (tempStrArr[i].codePointAt(0) - 'a'.codePointAt(0) < 6)) {
+	          res += (tempStrArr[i].codePointAt(0) - 'a'.codePointAt(0) + 10) * Math.pow(radix, tempStrArr.length - i - 1)
+	        } else if ((tempStrArr[i].codePointAt(0) - 'A'.codePointAt(0) >= 0) && (tempStrArr[i].codePointAt(0) - 'A'.codePointAt(0) < 6)) {
+	          res += (tempStrArr[i].codePointAt(0) - 'A'.codePointAt(0) + 10) * Math.pow(radix, tempStrArr.length - i - 1)
+	        }
+	      } else {
+	        res += (tempStrArr[i].codePointAt(0) - '0'.codePointAt(0)) * Math.pow(radix, tempStrArr.length - i - 1)
+	      }
+	    }
+	    return res
+	  }
+	```
+### 转换成十进制
+- 实践思路
+	1. 判断正负符号位
+	2. 判断是否为 Infinity
+	3. 判断是否为 整数
+		1. 整数
+			1. 是否为科学计数法表示
+				- 是，通过指数位置分成两部分：整数部分+指数部分
+				- 否，只需处理整数部分
+		2. 小数
+			1. 是否为科学计数法表示
+				1. 是，通过分割成小数点到指数，分成三部分：整数部分+小数部分+指数部分
+				2. 否，通过小数点位置，分成两部分：整数部分+小数部分
+	
+- 代码大致为：
+
+
+```javascript 
+  function converStringToDeciaml(str) {
+    // console.log('str-=-=--=-==-=', str)
+    const sign = getSign(str)
+    const strFormatBySign = formatStrBySign(str)
+    if (isInfinity(strFormatBySign)) return (1 / 0) * sign // 如果为 Inifity,乘以符号位输出Infinity
+    const numberObject = splitStr(strFormatBySign)
+    const {int, float, exponentSign, exponent} = numberObject
+    // console.log('numberObject', numberObject)
+    const resInt = calculateInt(int) // 计算整数部分
+    // console.log('resInt', resInt)
+    const resFloat = calculateFloat(float) // 计算小数部分
+    // console.log('resFloat', resFloat)
+    const resExponent = calculateExponent(resInt, resFloat, exponentSign, exponent) // 计算（整数+小数）*  指数部分
+    const res = sign * resExponent // 最后乘以符号位
+    return res
+  }
+```
+	
+#### 判断正负，并根据符号位格式化字符串
+
+```javascript
+
+  // 获取符号位
+  function getSign(str) {
+    // 如果S的首字符为'-'
+    if(str.indexOf('-') == 0) { 
+      return -1
+    }
+    return 1
+  }
+```
+#### 根据符号位格式化字符串（移除字符号位）
+
+```javascript
+  // 根据符号位格式化字符串
+  function formatStrBySign(str) {
+    // 如果 str 的首字符为‘+’或'-'，则移除首字符
+    if (str.indexOf('-') == 0 || str.indexOf('+') == 0) {
+      str = str.substring(1, str.length)
+    }
+    return str
+  }
+```
+
+#### 判断是否为Infinity
+
+```javascript
+  // 是否为 Infinity
+  function isInfinity(str) {
+    const testReg = /^Infinity/
+    let resReg = testReg.exec(str)
+    return resReg && resReg[0]
+  }
+```
+
+#### 切割字符串，分成整数+小数+指数位符号+指数部分
+
+```javascript
+  // 切割字符串
+  /*
+  * @params: { str } 输入需要切割的字符串
+  * return: res: Object {
+  *   int: 整数位,
+  *   float: 小数位,
+  *   exponentSign: 指数位符号,
+  *   exponent: 指数位
+  * }
+  */
+  function splitStr(str) {
+    const testReg = /^((0)|([1-9][0-9]*))?.?([0-9]*)(e|E)?((\+|\-)?([0-9]*))?/
+    let resReg = testReg.exec(str)
+    let res = {
+      int: resReg['1'] || 0,
+      float: resReg['4'] || 0,
+      exponentSign: resReg['7'] || '+',
+      exponent: resReg['8'] || 0
+    }
+    return res
+  }
+```
+
+#### 整数部分运算
+
+```javascript
+
+  // 整数部分运算
+  function calculateInt(str) {
+    let res = 0
+    const radix = 10
+    for (let i = str.length - 1; i >= 0; i--) {
+      res += (str[i].codePointAt(0) - '0'.codePointAt(0)) * Math.pow(radix, str.length - i - 1)
+    }
+    return res
+  }
+```
+
+
+#### 小数部分运算
+
+```javascript
+
+  // 小数部分运算
+  function calculateFloat(str) {
+    let res = 0
+    const radix = 10
+    for (let i = 0; i < str.length; i++) {
+      res += (str[i].codePointAt(0) - '0'.codePointAt(0)) * Math.pow(radix, i * -1)
+    }
+    return res
+  }
+```
+
+
+#### 指数部分运算
+
+```javascript
+
+  // 指数部分运算
+  function calculateExponent(int, float, exponentSign, exponent) {
+    // if (float)
+    let str = int + 0.1 * float
+    const radix = 10
+    const exponentInt = calculateInt(exponent)
+    if (exponentSign === '+') {
+      str = str * Math.pow(radix, exponentInt)
+    } else {
+      str = str * Math.pow(radix, exponentInt * -1)
+    }
+    // console.log('Math.abs(str)', Math.abs(str) -  Math.floor(str))
+    // // console.log('Number.EPSILON', Number.EPSILON)
+    // if (Math.abs(str) -  Math.floor(str)) {
+    //   return str.toFixed(1)
+    // }
+    return str
+  }
+```
+
+#### 单元测试
+- 测试用例
+
+```javascript
+  console.log(converStringToDeciaml('1.0e+10'))
+  console.log('parseFloat 结果', parseFloat('1.0e+10', 10))
+  console.log(converStringToDeciaml('-1.0e+10'))
+  console.log('parseFloat 结果', parseFloat('-1.0e+10', 10))
+  console.log(converStringToDeciaml('1.012e+10'))
+  console.log('parseFloat 结果', parseFloat('1.012e+10', 10))
+  console.log(converStringToDeciaml('-1.012e+10'))
+  console.log('parseFloat 结果', parseFloat('-1.012e+10', 10))
+  console.log(converStringToDeciaml('.012e+10'))
+  console.log('parseFloat 结果', parseFloat('.012e+10', 10))
+  console.log(converStringToDeciaml('-.012e+10'))
+  console.log('parseFloat 结果', parseFloat('-.012e+10', 10))
+  console.log(converStringToDeciaml('0.12e+10'))
+  console.log('parseFloat 结果', parseFloat('0.12e+10', 10))
+  console.log(converStringToDeciaml('-0.12e+10'))
+  console.log('parseFloat 结果', parseFloat('-0.12e+10', 10))
+  console.log(converStringToDeciaml('1.2e-10'))
+  console.log('parseFloat 结果', parseFloat('1.2e-10', 10))
+  console.log(converStringToDeciaml('-1.2e-10'))
+  console.log('parseFloat 结果', parseFloat('-1.2e-10', 10))
+  console.log(converStringToDeciaml('-1.22'))
+  console.log('parseFloat 结果', parseFloat('-1.22', 10))
+  console.log(converStringToDeciaml('Infinity'))
+  console.log('parseFloat 结果', parseFloat('Infinity', 10))
+  console.log(converStringToDeciaml('Infinity2222'))
+  console.log('parseFloat 结果', parseFloat('Infinity2222', 10))
+  console.log(converStringToDeciaml('22Infinity2222'))
+  console.log('parseFloat 结果', parseFloat('22Infinity2222', 10))
+```
+
+- 测试截图
+- ![第一部分测试截图](http://p1.meituan.net/myvideodistribute/f3bc45ab42eea92318ad58711d21a666220332.png)
+- ![第二部分测试截图](http://p1.meituan.net/myvideodistribute/2cf7b8c0ae63f2009cbd77d83dec1e2c176792.png)
+
+## 待解决问题
+- 是的 😭 它的浮点数的舍入，我没有想到好的方法，哭唧唧
+- [代码地址](https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week03/convertStringToNumber.html)
 
 
 ## 写在后面
+- 等我有空把博客评论搞一下，欢迎大家来告诉我的遗留问题该怎么解决，以及你们在参考我的实现时，有测试用例过不去的地方，也可以评论告诉我，我优化代码。
+- 大家等不及的话，可以去我的 [csdn](https://blog.csdn.net/Elle_Peng/article/details/105748022) 评论告诉我，卑微小彭，在线求解
 - 祝大家多多发财
