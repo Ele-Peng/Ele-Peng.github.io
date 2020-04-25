@@ -6,13 +6,15 @@ tags:
 categories:
 - 前端概念 算法
 description:
-- 是的我要折腾一下 Javascript parseInt 内部实现，convertStringToNumber 了🙆
+- 是的我要折腾一下 Javascript parseInt+parseFloat 内部实现，convertStringToNumber 了🙆
 
 
 ---
 
 ## 写在前面
-- 简单记录一下，Javascript parseInt 内部实现，并实现 convertStringToNumber
+- 简单记录一下，Javascript parseInt+parseFloat 内部实现，并实现 convertStringToNumber
+
+<!-- more -->
 
 ## 实践准备
 - 首先我们需要简单梳理一下我们的实现过程，再根据 [ECMAScript-262](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 标准完善实现
