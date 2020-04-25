@@ -93,6 +93,7 @@ function convertStringToNumber(str, radix) {
 	- 单元测试
 		- ![单元测试截图](http://p0.meituan.net/myvideodistribute/a70fa86dd4d8261537f8cbf5c0e5bc2c71147.png)
 - 将 str 根据指定基数进行转换
+	- [正则表达式匹配 Number 字面量](https://ele-peng.github.io/2020/04/20/Reg-Number/)
 	
 	```javascript
 	/*
