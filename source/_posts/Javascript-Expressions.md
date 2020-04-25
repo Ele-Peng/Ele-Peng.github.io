@@ -11,7 +11,7 @@ description:
 
 ---
 
-# 【未完】Javascript -- Expression
+# 【未完】Javascript -- Expressions
 <!-- more -->
 
 # Atom
@@ -20,8 +20,8 @@ description:
 # Expressions 表达式
 ## Grammar
 ### Grammar Tree vs Priority
-- + -
-- * /
+- \+ -
+- \* /
 - ()
 
 ### Member
@@ -195,17 +195,17 @@ description:
 			})()
 		}
 		// 如果前面不加分号，在一些写法中，会发生粘起来错误
-			(function(i) {
-				button.onClick = function (i) {
-					console.log(i)
-				}
-			})()
-			
-			(function(i) {
-				button.onClick = function (i) {
-					console.log(i)
-				}
-			})()
+    (function(i) {
+      button.onClick = function (i) {
+        console.log(i)
+      }
+    })()
+    
+    (function(i) {
+      button.onClick = function (i) {
+        console.log(i)
+      }
+    })()
 		// 最稳妥的就是，在前面加上void
 		for (var i = 0; i < 10; i ++) {
 			var button  = document.createElement('button');
@@ -225,8 +225,8 @@ description:
 	typeof null
 	typeof function() {}
 	```
-- + a
-- - a
+- \+ a
+- \- a
 - ~ a 按位取反
 - ! a 取非
 	- !!1
@@ -323,8 +323,7 @@ new String(1)
 
 - toPremitive()
 - toString vs valueOf
-
-- 【未完】 117:01
+  - 【未完】toString vs valueOf
 
 
 
