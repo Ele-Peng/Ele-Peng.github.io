@@ -1,133 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Elle-训练算法计划</title>
-    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
-<li>主要的数据结构和算法会单开文档来写</li>
-</ul>
-<a id="more"></a>
-<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
-<li>数据结构<ul>
-<li>一维数据结构<ul>
-<li>基础：数组 array(string), 链表 linked list</li>
-<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
-</ul>
-</li>
-<li>二维数据结构<ul>
-<li>一维泛化</li>
-<li>基础：树 tree，图 graph</li>
-<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
-</ul>
-</li>
-<li>特殊数据结构<ul>
-<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
-<li>LRU Cache</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>算法<ul>
-<li>if-else, switch –&gt; branch</li>
-<li>for, while loop –&gt; iteration</li>
-<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
-<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
-<li>动态规划 dynamic programing</li>
-<li>二分查找 binary search</li>
-<li>贪心 greedy</li>
-<li>数学 math, 集合 geometry</li>
-</ul>
-</li>
-</ul>
-<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
-<li>刻意练习-过遍数 (五遍刷题法)<ul>
-<li>刷题第一遍<ul>
-<li>5分钟（5~15 mins）：读题+思考</li>
-<li>直接看解法：注意！多解法，比较解乏优劣</li>
-<li>有思路，直接写</li>
-<li>背诵+默写好的解法</li>
-</ul>
-</li>
-<li>刷题第二遍<ul>
-<li>马上自己写 –&gt; LeetCode提交</li>
-<li>多种解法比较、体会 –&gt; 优化</li>
-<li>多种解法自己写一遍，直到通过</li>
-</ul>
-</li>
-<li>刷题第三遍<ul>
-<li>24h后，再重复做题</li>
-<li>不同解法的熟练程度 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第四遍<ul>
-<li>过了一周后：反复回来练习相同的题目</li>
-<li>不熟练的题目 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第五遍<ul>
-<li>面试前二周恢复性训练</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>练习缺陷、弱点地方<ul>
-<li>中文站 leetcode-cn.com 刷题</li>
-<li>国际站 leetcode.com 看discuss-most votes</li>
-</ul>
-</li>
-<li>切题<ul>
-<li><strong>Clarification 审题</strong></li>
-<li><strong>Possible Solutions</strong><ul>
-<li>compare (time/space)</li>
-<li>optimal (加强)</li>
-</ul>
-</li>
-<li><strong>Coding</strong></li>
-<li><strong>Test cases</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
-<li>即时反馈</li>
-<li>主动型反馈</li>
-<li>被动型反馈<ul>
-<li>code review</li>
-</ul>
-</li>
-</ul>
-<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
-<li>top tips for vscode</li>
-</ul>
-<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
-<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
-</ul>
-<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
-<li>O(1): constant Complexity 常数复杂度</li>
-<li>O(log n): Logarithmic Complexity 对数复杂度</li>
-<li>O(n): Linear Complexity 线性时间复杂度</li>
-<li>O(n^2): N square Complexity 平方</li>
-<li>O(n^3): N cube Complexity 立方</li>
-<li>O(2^n): Exponential Growth 指数</li>
-<li>O(n!): Factorial 阶乘</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
-</ul>
-<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
-<li>二分查找</li>
-<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
-<li>二维有序矩阵</li>
-<li>归并排序 O(nlogn)</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Reg-Number</title>
     <url>/2020/04/20/Reg-Number/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
@@ -290,6 +163,133 @@
       </categories>
       <tags>
         <tag>前端概念 正则表达式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Elle-训练算法计划</title>
+    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
+<li>主要的数据结构和算法会单开文档来写</li>
+</ul>
+<a id="more"></a>
+<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
+<li>数据结构<ul>
+<li>一维数据结构<ul>
+<li>基础：数组 array(string), 链表 linked list</li>
+<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
+</ul>
+</li>
+<li>二维数据结构<ul>
+<li>一维泛化</li>
+<li>基础：树 tree，图 graph</li>
+<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
+</ul>
+</li>
+<li>特殊数据结构<ul>
+<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
+<li>LRU Cache</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法<ul>
+<li>if-else, switch –&gt; branch</li>
+<li>for, while loop –&gt; iteration</li>
+<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
+<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
+<li>动态规划 dynamic programing</li>
+<li>二分查找 binary search</li>
+<li>贪心 greedy</li>
+<li>数学 math, 集合 geometry</li>
+</ul>
+</li>
+</ul>
+<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
+<li>刻意练习-过遍数 (五遍刷题法)<ul>
+<li>刷题第一遍<ul>
+<li>5分钟（5~15 mins）：读题+思考</li>
+<li>直接看解法：注意！多解法，比较解乏优劣</li>
+<li>有思路，直接写</li>
+<li>背诵+默写好的解法</li>
+</ul>
+</li>
+<li>刷题第二遍<ul>
+<li>马上自己写 –&gt; LeetCode提交</li>
+<li>多种解法比较、体会 –&gt; 优化</li>
+<li>多种解法自己写一遍，直到通过</li>
+</ul>
+</li>
+<li>刷题第三遍<ul>
+<li>24h后，再重复做题</li>
+<li>不同解法的熟练程度 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第四遍<ul>
+<li>过了一周后：反复回来练习相同的题目</li>
+<li>不熟练的题目 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第五遍<ul>
+<li>面试前二周恢复性训练</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>练习缺陷、弱点地方<ul>
+<li>中文站 leetcode-cn.com 刷题</li>
+<li>国际站 leetcode.com 看discuss-most votes</li>
+</ul>
+</li>
+<li>切题<ul>
+<li><strong>Clarification 审题</strong></li>
+<li><strong>Possible Solutions</strong><ul>
+<li>compare (time/space)</li>
+<li>optimal (加强)</li>
+</ul>
+</li>
+<li><strong>Coding</strong></li>
+<li><strong>Test cases</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
+<li>即时反馈</li>
+<li>主动型反馈</li>
+<li>被动型反馈<ul>
+<li>code review</li>
+</ul>
+</li>
+</ul>
+<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
+<li>top tips for vscode</li>
+</ul>
+<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
+<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
+</ul>
+<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
+<li>O(1): constant Complexity 常数复杂度</li>
+<li>O(log n): Logarithmic Complexity 对数复杂度</li>
+<li>O(n): Linear Complexity 线性时间复杂度</li>
+<li>O(n^2): N square Complexity 平方</li>
+<li>O(n^3): N cube Complexity 立方</li>
+<li>O(2^n): Exponential Growth 指数</li>
+<li>O(n!): Factorial 阶乘</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
+</ul>
+<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
+<li>二分查找</li>
+<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
+<li>二维有序矩阵</li>
+<li>归并排序 O(nlogn)</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -477,6 +477,141 @@
       </categories>
       <tags>
         <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reg -- String</title>
+    <url>/2020/04/21/Reg-String/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
+
+
+</li>
+</ul>
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
+</li>
+<li><p>StringLiteral ::</p>
+<ul>
+<li><p>DoubleStringCharacters</p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/03c05dd8a9fd5b8b621593fe039e4e6c16908.png" alt="DoubleStringCharacters 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/ef23a0f824e9fc948b61da6c4a8d2a4729602.png" alt="DoubleStringCharacter 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/9004c303c8ebdbb8e38c00e7597b2c5b10649.png" alt="SourceCharacter 详情"></p>
+<blockquote>
+<p>\\u[0-9a-fA-F]{4}</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/25a7c00f444aaead5b3a187d09ab280a16997.png" alt="EscapeSequence 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/ef30597fe4124e22ae7fcf243d9712a310845.png" alt="CharacterEscapeSequence 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/b495509fe89ca78a7d2f5f06831d45c79074.png" alt="SingleEscapeCharacter 详情"></p>
+<blockquote>
+<p>‘“\\bfnrtv</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/7ce330d5a54c7c8ac927771ee7a0540814453.png" alt="NonEscapeCharacter 详情"></p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/f3d3a1b2fba86ebd4b8b6ab2959302e610550.png" alt="EscapeCharacter 详情"></p>
+<blockquote>
+<p>‘“\\bfnrtv0-9xu </p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/8c027b4dfef1876ad432fd62b6ecc4a59724.png" alt="LineTerminator 详情"></p>
+<blockquote>
+<p>\n\r\u2028\u2029</p>
+</blockquote>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/02a7f707581cb217ab5025d7a48e67e829247.png" alt="LineTerminator 码点"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>CharacterEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>‘“\\bfnrtv0-9xu\n\r\u2028\u2029</p>
+</blockquote>
+</li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/9207083723607a9faa4f0a560599dde17694.png" alt="HexEscapeSequence 详情"></p>
+</li>
+<li><p><strong>HexEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>\\x[0-9a-fA-F]{2}</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/545f52e053421a0e9c5e3b231a96276d10075.png" alt="UnicodeEscapeSequence 详情"></p>
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/8bb8c713ee753fd2844aea95e3ecde417620.png" alt="Hex4Digits 详情"></li>
+</ul>
+</li>
+<li><p><strong>UnicodeEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p> \\u[0-9a-fA-F]{4}</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>EscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4})</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/bd86a4d39c1ae8d719eca6afbd9dcb147948.png" alt="LineContinuation 详情"></p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/e8b4e35d4653ecb6a0f89d848085f69b14054.png" alt="LineTerminatorSequence 详情"></li>
+</ul>
+</li>
+<li><p><strong>LineContinuation</strong>总结为：</p>
+<blockquote>
+<p>\\\n\r\u\2028]2029</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>DoubleStringCharacters</strong>总结为：</p>
+<blockquote>
+<p>“(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”</p>
+</blockquote>
+</li>
+<li><p>SingleStringCharacters</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/6d2e2b31ed15050de59907d5537b9e9219247.png" alt="SingleStringCharacters 大纲"></li>
+</ul>
+</li>
+<li><p><strong>SingleStringCharacters</strong>总结为：</p>
+<blockquote>
+<p>‘(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>StringLiteral</strong>总结为：</p>
+<blockquote>
+<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念 正则表达式</tag>
       </tags>
   </entry>
   <entry>
@@ -692,11 +827,10 @@
 <h4 id="Boxing-amp-Unboxing"><a href="#Boxing-amp-Unboxing" class="headerlink" title="Boxing &amp; Unboxing"></a>Boxing &amp; Unboxing</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Number</span> <span class="built_in">String</span> <span class="built_in">Boolean</span> <span class="built_in">Symbol</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>).length</span><br><span class="line"><span class="string">"hello"</span>.length</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"hello"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line">!<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">''</span>)</span><br><span class="line">!<span class="string">""</span></span><br><span class="line"><span class="built_in">Number</span> <span class="built_in">String</span> <span class="built_in">Boolean</span> 不作为 <span class="keyword">new</span> 调用，就是转换成普通类型</span><br><span class="line"><span class="built_in">String</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>toPremitive()</p>
-</li>
-<li><p>toString vs valueOf</p>
-</li>
-<li><p>【未完】 117:01</p>
+<li>toPremitive()</li>
+<li>toString vs valueOf<ul>
+<li>【未完】toString vs valueOf</li>
+</ul>
 </li>
 </ul>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><h3 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h3><h3 id="支持写"><a href="#支持写" class="headerlink" title="支持写"></a>支持写</h3><ul>
@@ -929,141 +1063,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Reg -- String</title>
-    <url>/2020/04/21/Reg-String/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
-
-
-</li>
-</ul>
-<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
-</li>
-<li><p>StringLiteral ::</p>
-<ul>
-<li><p>DoubleStringCharacters</p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/03c05dd8a9fd5b8b621593fe039e4e6c16908.png" alt="DoubleStringCharacters 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/ef23a0f824e9fc948b61da6c4a8d2a4729602.png" alt="DoubleStringCharacter 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/9004c303c8ebdbb8e38c00e7597b2c5b10649.png" alt="SourceCharacter 详情"></p>
-<blockquote>
-<p>\\u[0-9a-fA-F]{4}</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/25a7c00f444aaead5b3a187d09ab280a16997.png" alt="EscapeSequence 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/ef30597fe4124e22ae7fcf243d9712a310845.png" alt="CharacterEscapeSequence 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/b495509fe89ca78a7d2f5f06831d45c79074.png" alt="SingleEscapeCharacter 详情"></p>
-<blockquote>
-<p>‘“\\bfnrtv</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/7ce330d5a54c7c8ac927771ee7a0540814453.png" alt="NonEscapeCharacter 详情"></p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/f3d3a1b2fba86ebd4b8b6ab2959302e610550.png" alt="EscapeCharacter 详情"></p>
-<blockquote>
-<p>‘“\\bfnrtv0-9xu </p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/8c027b4dfef1876ad432fd62b6ecc4a59724.png" alt="LineTerminator 详情"></p>
-<blockquote>
-<p>\n\r\u2028\u2029</p>
-</blockquote>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/02a7f707581cb217ab5025d7a48e67e829247.png" alt="LineTerminator 码点"></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>CharacterEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>‘“\\bfnrtv0-9xu\n\r\u2028\u2029</p>
-</blockquote>
-</li>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/9207083723607a9faa4f0a560599dde17694.png" alt="HexEscapeSequence 详情"></p>
-</li>
-<li><p><strong>HexEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>\\x[0-9a-fA-F]{2}</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/545f52e053421a0e9c5e3b231a96276d10075.png" alt="UnicodeEscapeSequence 详情"></p>
-<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/8bb8c713ee753fd2844aea95e3ecde417620.png" alt="Hex4Digits 详情"></li>
-</ul>
-</li>
-<li><p><strong>UnicodeEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p> \\u[0-9a-fA-F]{4}</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>EscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4})</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/bd86a4d39c1ae8d719eca6afbd9dcb147948.png" alt="LineContinuation 详情"></p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/e8b4e35d4653ecb6a0f89d848085f69b14054.png" alt="LineTerminatorSequence 详情"></li>
-</ul>
-</li>
-<li><p><strong>LineContinuation</strong>总结为：</p>
-<blockquote>
-<p>\\\n\r\u\2028]2029</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>DoubleStringCharacters</strong>总结为：</p>
-<blockquote>
-<p>“(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”</p>
-</blockquote>
-</li>
-<li><p>SingleStringCharacters</p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/6d2e2b31ed15050de59907d5537b9e9219247.png" alt="SingleStringCharacters 大纲"></li>
-</ul>
-</li>
-<li><p><strong>SingleStringCharacters</strong>总结为：</p>
-<blockquote>
-<p>‘(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>StringLiteral</strong>总结为：</p>
-<blockquote>
-<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
-</blockquote>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念 正则表达式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【未完】前端性能监控</title>
     <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
@@ -1146,16 +1145,6 @@
       <tags>
         <tag>性能监控</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>数组、链表、跳表</title>
-    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
-    <content><![CDATA[<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
-<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
-<li>数学归纳法</li>
-<li>找最近重复问题</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>微信小程序-气泡框</title>
@@ -1247,28 +1236,6 @@
       </categories>
       <tags>
         <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自己的前端知识体系</title>
-    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>理一下自己的技术体系吧</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/5947cefee7afec18961dda1194cebf224343214.png" alt="技术体系脑图"></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
       </tags>
   </entry>
   <entry>
@@ -1565,6 +1532,38 @@
       <tags>
         <tag>前端概念</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>自己的前端知识体系</title>
+    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>理一下自己的技术体系吧</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/5947cefee7afec18961dda1194cebf224343214.png" alt="技术体系脑图"></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组、链表、跳表</title>
+    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
+    <content><![CDATA[<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
+<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
+<li>数学归纳法</li>
+<li>找最近重复问题</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>OOP-面向对象</title>
