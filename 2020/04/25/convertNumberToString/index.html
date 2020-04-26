@@ -107,9 +107,12 @@
 </ul>
 <a id="more"></a>
 <h2 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h2><ul>
-<li>首先我们依旧需要简单梳理一下我们的实践过程，再根据 <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMAScript-262</a> 标准P61完善实践</li>
-<li>input: @params: { num } 输入需要转换的number, { radix } 转换的指定基数</li>
-<li>对 input-num 的特殊处理<ul>
+<li><p>首先我们依旧需要简单梳理一下我们的实践过程，再根据 <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMAScript-262</a> 标准P61完善实践</p>
+</li>
+<li><p>input: @params: { num } 输入需要转换的number, { radix } 转换的指定基数</p>
+</li>
+<li><p>对 input-num 的特殊处理</p>
+<ul>
 <li><img src="http://p1.meituan.net/myvideodistribute/e0405830e24314df04f89a21078cc64198443.png" alt="input-num 的特殊处理"></li>
 </ul>
 </li>
@@ -153,6 +156,7 @@
 </li>
 <li><p>常规 Decimal Number 处理</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertDecimalNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> radix = <span class="number">10</span></span><br><span class="line">  <span class="keyword">let</span> int = <span class="built_in">Math</span>.floor(num)</span><br><span class="line">  <span class="keyword">let</span> float = (num - int) * <span class="number">100</span> / <span class="number">100</span></span><br><span class="line">  <span class="keyword">let</span> resInt = <span class="string">''</span></span><br><span class="line">  <span class="keyword">let</span> resFloat = <span class="string">''</span></span><br><span class="line">  <span class="comment">// 整数部分 取余，除以基数</span></span><br><span class="line">  <span class="keyword">while</span> (int &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    resInt = <span class="built_in">String</span>(int % radix) + resInt</span><br><span class="line">    int = <span class="built_in">Math</span>.floor(int / radix)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (float) &#123;</span><br><span class="line">    resFloat = <span class="string">'.'</span></span><br><span class="line">    <span class="comment">// 小数部分，乘以基数，取整</span></span><br><span class="line">    <span class="keyword">while</span> (float &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      resFloat = resFloat + <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">      float -= <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resInt + resFloat</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(convertNumberToString(-<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, -<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(+<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, +<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120.11112</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, <span class="number">120.11112</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, (<span class="number">120</span>).toString())</span><br></pre></td></tr></table></figure>
@@ -235,15 +239,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>分类</span>
+      <i class="fa fa-th-list fa-fw"></i>Categories</span>
         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5-%E7%AE%97%E6%B3%95/">前端概念 算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>友链</span>
+      <i class="fa fa-link fa-fw"></i>Friends</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>
