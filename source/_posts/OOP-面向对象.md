@@ -12,6 +12,33 @@ description:
 
 ---
 
+
+
+<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
 ## 写在前面
 - 昨天 Mentor 说以后要开始用 React Hooks（我还没有涉足 ）写点东西，进而谈论到 React 生态一直想推展开来的的函数式编程思想，我不由得想到一个问题：都说 Javascript 不是典型的面向对象编程语言，它并不具备完整的 OOP 该有的特性，它虽引进了 class 语法糖，但只是让对象原型写法更加像面向对象编程语言的写法，那面向对象到底可以理解为什么 ? 🤔 以及函数式编程思想在推什么？Javascript 定位究竟是什么？
 - 简单记录一下自己关于这个问题的思考

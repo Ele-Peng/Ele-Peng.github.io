@@ -9,6 +9,33 @@ description:
 - 记录一下将 String 字符串，转成字节流的整个实现过程
 ---
 
+
+
+<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
 ## 写在前面
 - 周一和小姐妹 Skady 宝贝练完舞后，交流了一个小时技术，是的🙆我们没有扯皮，难得交流技术。🤣她在玩“在C语言中编写JS代码，然后再编译成wasm，可以在浏览器里跑”，我们简单地交流了一下底层实现.<span style="color: #bfbfbf">应该是基于 ArrayBuffer 的</span>
 - 然后不知怎么就想到了 0.1 + 0.2 ≠ 0.3，这个经典问题
