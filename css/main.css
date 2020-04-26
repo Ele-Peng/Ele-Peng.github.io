@@ -33,6 +33,8 @@ a:focus {
   color: #f11111;
   outline: none;
   text-decoration: none;
+  background-image: linear-gradient(transparent 0%, transparent calc(50% - 9px), #ffdb00 calc(50% - 9px), #ffdb00 100%);
+  background-position: 0 100%;
 }
 #lx-main-content a {
   color: #191919;
@@ -43,12 +45,6 @@ a:focus {
   background-size: 100% 200%;
   background-position: 0 0;
   word-break: break-word;
-}
-#lx-main-content a:hover,
-a:active,
-a:focus {
-  background-image: linear-gradient(transparent 0%, transparent calc(50% - 9px), #ffdb00 calc(50% - 9px), #ffdb00 100%);
-  background-position: 0 100%;
 }
 p {
   font-size: 15px;
