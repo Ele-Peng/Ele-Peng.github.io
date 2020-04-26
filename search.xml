@@ -1637,7 +1637,7 @@
 }
 
 .lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% );
   background-position: 0 100%;
 }
 
@@ -1661,12 +1661,11 @@
 </ul>
 </li>
 <li>3型 正则文法<a id="more"></a>
-
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="理解形式语言"><a href="#理解形式语言" class="headerlink" title="理解形式语言"></a>理解形式语言</h2><h3 id="产生式（BNF-–-Backus-Naur-Form）"><a href="#产生式（BNF-–-Backus-Naur-Form）" class="headerlink" title="产生式（BNF – Backus-Naur Form）"></a>产生式（BNF – Backus-Naur Form）</h3><ul>
+<h2 id="理解形式语言"><a href="#理解形式语言" class="headerlink" title="理解形式语言"></a>理解形式语言</h2><h3 id="产生式（BNF-—-Backus-Naur-Form）"><a href="#产生式（BNF-—-Backus-Naur-Form）" class="headerlink" title="产生式（BNF — Backus-Naur Form）"></a>产生式（BNF — Backus-Naur Form）</h3><ul>
 <li>用尖括号括起来的名称来表示语法结构名</li>
 <li>语法结构分成基础结构和需要用其他语法结构定义的复合结构<ul>
 <li>基础结构称终结符</li>
@@ -1686,8 +1685,7 @@
 </li>
 </ul>
 <h4 id="BNF-表示-四则运算"><a href="#BNF-表示-四则运算" class="headerlink" title="BNF 表示 四则运算"></a>BNF 表示 四则运算</h4><ul>
-<li><p>加法，允许连加</p>
-<ul>
+<li>加法，允许连加<ul>
 <li>&lt;Number&gt;::= “0” | “1” | “2” | “3” | … | “9”</li>
 <li>&lt;DecimalNumber&gt;::= “0” | ((“1” | “2” | “3” | … “9”) &lt;Number&gt;*)</li>
 <li>&lt;AddtiveExpression&gt;::= &lt;DecimalNumber&gt; “+” &lt;DecimalNumber&gt;</li>
@@ -1703,14 +1701,11 @@
 </li>
 <li><p>乘法</p>
 <ul>
-<li><p>&lt;MultiplecativeExpression&gt;::= &lt;DecimalNumber&gt; | &lt; MultiplecativeExpression&gt; “*” &lt;DecimalNumber&gt;</p>
-</li>
+<li>&lt;MultiplecativeExpression&gt;::= &lt;DecimalNumber&gt; | &lt; MultiplecativeExpression&gt; “*” &lt;DecimalNumber&gt;</li>
 <li><p>1 + 2 * 3</p>
 <ul>
-<li><p>加法表达式，是由两个乘法表达式加起来的</p>
-</li>
-<li><p>1 * 1 + 2 * 3</p>
-</li>
+<li>加法表达式，是由两个乘法表达式加起来的</li>
+<li>1 <em> 1 + 2 </em> 3</li>
 <li><p>因此<strong>加法表示成</strong></p>
 <blockquote>
 <p>&lt;AddtiveExpression&gt;::= &lt; MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</p>
@@ -1723,8 +1718,9 @@
 <li><p>LogicExpression</p>
 <blockquote>
 <p>&lt;LogicExpression&gt;::= &lt;AddtiveExpression&gt; | </p>
-<pre><code>&amp;lt;LogicExpression&amp;gt; &quot;||&quot; &amp;lt;AddtiveExpression&amp;gt; |
-&amp;lt;LogicExpression&amp;gt; &quot;&amp;&amp;&quot; &amp;lt;AddtiveExpression&amp;gt;</code></pre></blockquote>
+<pre><code>  &amp;lt;LogicExpression&amp;gt; &quot;||&quot; &amp;lt;AddtiveExpression&amp;gt; |
+  &amp;lt;LogicExpression&amp;gt; &quot;&amp;&amp;&quot; &amp;lt;AddtiveExpression&amp;gt;
+</code></pre></blockquote>
 </li>
 <li><p>除法</p>
 <blockquote>
@@ -1772,31 +1768,23 @@
 </li>
 </ul>
 <pre><code>    <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">get</span> a &#123; <span class="keyword">return</span> <span class="number">1</span>&#125;,</span><br><span class="line">  <span class="keyword">get</span>: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-- 1）类似关键字， 2）get: 属性</code></pre><ul>
-<li><p>2型 上下文无关文法</p>
-<ul>
+- 1）类似关键字， 2）get: 属性
+</code></pre><ul>
+<li>2型 上下文无关文法<ul>
 <li>&lt;A&gt;::=?</li>
-<li>2 ** 1 ** 2</li>
+<li>2 <strong> 1 </strong> 2</li>
 </ul>
 </li>
 <li><p>3型 正则文法，只允许左递归（Javascript在**出现前，一直遵循着左递归）</p>
 <ul>
-<li><p>&lt;A&gt;::=&lt;A&gt;?</p>
-</li>
-<li><p>&lt;A&gt;::=?&lt;A&gt;<span style="color: red">x</span></p>
-</li>
-<li><p>Javascript 表达式大部分在3型</p>
-</li>
+<li>&lt;A&gt;::=&lt;A&gt;?</li>
+<li>&lt;A&gt;::=?&lt;A&gt;<span style="color: red">x</span></li>
+<li>Javascript 表达式大部分在3型</li>
 <li><p>** 右结合</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">2</span> --&gt; <span class="number">4</span></span><br><span class="line"><span class="number">2</span> ** (<span class="number">2</span> ** <span class="number">3</span>) --&gt; <span class="number">256</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>**</p>
-<blockquote>
-<p>&lt;ExpExpression&gt; = &lt;MulticativeExpression&gt; | &lt;MulticativeExpression&gt; “**” &lt;ExpExpression&gt;</p>
-</blockquote>
-</li>
-</ul>
-</li>
+<hr>
+<pre><code>  &gt; &amp;lt;ExpExpression&amp;gt; = &amp;lt;MulticativeExpression&amp;gt; | &amp;lt;MulticativeExpression&amp;gt; &quot;**&quot; &amp;lt;ExpExpression&amp;gt;
+</code></pre></li>
 </ul>
 </li>
 </ul>
@@ -1824,12 +1812,12 @@
 <h2 id="语言的分类"><a href="#语言的分类" class="headerlink" title="语言的分类"></a>语言的分类</h2><h3 id="图灵完备性"><a href="#图灵完备性" class="headerlink" title="图灵完备性"></a>图灵完备性</h3><ul>
 <li>图灵机（凡是可计算的，都能计算出来）</li>
 <li>图灵完备性<ul>
-<li>命令式 – 图灵机<ul>
+<li>命令式 — 图灵机<ul>
 <li>goto</li>
 <li>if 和 while</li>
 </ul>
 </li>
-<li>声明式 – lambda<ul>
+<li>声明式 — lambda<ul>
 <li>递归</li>
 </ul>
 </li>
@@ -1874,8 +1862,8 @@
 </li>
 <li>子类型<ul>
 <li>逆变/协变<ul>
-<li>协变 –&gt; 凡是能用到Array&lt;Parent&gt;的地方，都能用Array&lt;Child&gt;</li>
-<li>逆变 –&gt; 凡是能用到Array&lt;Child&gt;的地方，都能用Array&lt;Parent&gt;</li>
+<li>协变 —&gt; 凡是能用到Array&lt;Parent&gt;的地方，都能用Array&lt;Child&gt;</li>
+<li>逆变 —&gt; 凡是能用到Array&lt;Child&gt;的地方，都能用Array&lt;Parent&gt;</li>
 </ul>
 </li>
 </ul>
