@@ -107,12 +107,9 @@
 </ul>
 <a id="more"></a>
 <h2 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h2><ul>
-<li><p>首先我们依旧需要简单梳理一下我们的实践过程，再根据 <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMAScript-262</a> 标准P61完善实践</p>
-</li>
-<li><p>input: @params: { num } 输入需要转换的number, { radix } 转换的指定基数</p>
-</li>
-<li><p>对 input-num 的特殊处理</p>
-<ul>
+<li>首先我们依旧需要简单梳理一下我们的实践过程，再根据 <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMAScript-262</a> 标准P61完善实践</li>
+<li>input: @params: { num } 输入需要转换的number, { radix } 转换的指定基数</li>
+<li>对 input-num 的特殊处理<ul>
 <li><img src="http://p1.meituan.net/myvideodistribute/e0405830e24314df04f89a21078cc64198443.png" alt="input-num 的特殊处理"></li>
 </ul>
 </li>
@@ -156,7 +153,6 @@
 </li>
 <li><p>常规 Decimal Number 处理</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertDecimalNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> radix = <span class="number">10</span></span><br><span class="line">  <span class="keyword">let</span> int = <span class="built_in">Math</span>.floor(num)</span><br><span class="line">  <span class="keyword">let</span> float = (num - int) * <span class="number">100</span> / <span class="number">100</span></span><br><span class="line">  <span class="keyword">let</span> resInt = <span class="string">''</span></span><br><span class="line">  <span class="keyword">let</span> resFloat = <span class="string">''</span></span><br><span class="line">  <span class="comment">// 整数部分 取余，除以基数</span></span><br><span class="line">  <span class="keyword">while</span> (int &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    resInt = <span class="built_in">String</span>(int % radix) + resInt</span><br><span class="line">    int = <span class="built_in">Math</span>.floor(int / radix)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (float) &#123;</span><br><span class="line">    resFloat = <span class="string">'.'</span></span><br><span class="line">    <span class="comment">// 小数部分，乘以基数，取整</span></span><br><span class="line">    <span class="keyword">while</span> (float &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      resFloat = resFloat + <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">      float -= <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resInt + resFloat</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(convertNumberToString(-<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, -<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(+<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, +<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120.11112</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, <span class="number">120.11112</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, (<span class="number">120</span>).toString())</span><br></pre></td></tr></table></figure>
@@ -180,12 +176,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="#">
+		<a class="copy" href="/2020/04/26/Javascript-Statement/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>No newer post</h3>
+						<h3>Javascr...</h3>
 					</div>
 				</div>
 			</div>
