@@ -2117,10 +2117,10 @@ for (let i = 7; i &gt;= 0; i --) {
       </tags>
   </entry>
   <entry>
-    <title>convertStringToNumber</title>
+    <title>Javascript-convertStringToNumber</title>
     <url>/2020/04/24/convertStringToNumber/</url>
     <content><![CDATA[<style  type="text/css">
-a {
+#lx-main-content a {
     color: #191919;
     padding: 2px 0 1px 0;
     text-decoration: none;
@@ -2131,7 +2131,6 @@ a {
     word-break: break-word;
 }
 </style>
-
 
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>简单记录一下，Javascript parseInt+parseFloat 内部实现，并实现 convertStringToNumber</li>
@@ -2316,5 +2315,11 @@ a {
 <li>祝大家多多发财</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>前端概念 算法</category>
+      </categories>
+      <tags>
+        <tag>前端概念 算法</tag>
+      </tags>
   </entry>
 </search>
