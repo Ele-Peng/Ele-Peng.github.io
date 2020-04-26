@@ -128,6 +128,193 @@
       </tags>
   </entry>
   <entry>
+    <title>Javascript Types</title>
+    <url>/2020/04/20/Javascript-Types/</url>
+    <content><![CDATA[<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
+<li><p>Unicode Blocks</p>
+<ul>
+<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
+<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
+</ul>
+</li>
+<li>U+000A LINE FEED 换行<ul>
+<li>Form Feed 翻页</li>
+<li>CJK 中文字符 Chinese Japan Korean</li>
+</ul>
+</li>
+<li>U+0020 SPACE 空格</li>
+<li>BMP 基本字符平面 四位能表示的范围</li>
+<li>超出BMP范围<ul>
+<li>fromCodePoint</li>
+<li>codePointAt</li>
+</ul>
+</li>
+<li>隐性需求需要可以使用\u转义<ul>
+<li>“厉害”.codePointAt(0).toString(16)</li>
+<li>\u5389\u5bb3<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>InputElement</p>
+<ul>
+<li>WhiteSpace 空格<ul>
+<li>&lt;TAB&gt; Character Tabulation</li>
+<li>&lt;VT&gt; Vertical Line</li>
+<li>&lt;FF&gt; Form Feed </li>
+<li>&lt;SP&gt; </li>
+<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
+<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
+<li>&lt;USP&gt;</li>
+</ul>
+</li>
+<li>LineTerminator 换行符<ul>
+<li>&lt;LF&gt; /n</li>
+<li>&lt;CR&gt; Carriage Return 回车 /r</li>
+<li>&lt;LS&gt; LINE SEPARATOR</li>
+<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
+</ul>
+</li>
+<li>Comment 注释</li>
+<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
+<li>自己写的，代码包含的有效信息<ul>
+<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
+<li>用作变量名，不能与关键字重复<ul>
+<li>undefined 全局变量名，修改不了</li>
+<li>离开全局作用域，便可以使用</li>
+</ul>
+</li>
+<li>用作属性的部分，可以与关键字重复</li>
+<li>Future reserved Keywords : enum</li>
+</ul>
+</li>
+<li><strong>Literal</strong> 直接量<ul>
+<li>Number    </li>
+<li>String</li>
+<li>Boolean</li>
+<li>Object</li>
+<li>Null</li>
+<li>Undefined</li>
+<li>Symbol</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>帮助程序形成结构<ul>
+<li><strong>Punctuator</strong> 符号</li>
+<li><strong>Keywords</strong> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
+<li><p>IEEE 754 Double Float</p>
+<ul>
+<li>Sign(1)</li>
+<li>Exponent(11) 指数，科学计数法</li>
+<li>Fraction(52)</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li>DecimaLiteral<ul>
+<li>0</li>
+<li>0.</li>
+<li>.2</li>
+<li>1e3</li>
+</ul>
+</li>
+<li>BinaryIntegerLiteral<ul>
+<li>0b111</li>
+</ul>
+</li>
+<li>OctalIntegerLiteral<ul>
+<li>0o10</li>
+</ul>
+</li>
+<li>HexIntegerLiteral<ul>
+<li>0xFF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>最佳实践</p>
+<ul>
+<li><p>浮点数比较时，需要加精度</p>
+<blockquote>
+<p>Number.MAX_SAFE_INTEGER</p>
+</blockquote>
+<blockquote>
+<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
+<li><p>Character</p>
+</li>
+<li><p>Code Point</p>
+</li>
+<li><p>Encoding</p>
+<blockquote>
+<p>97 .toString(2)</p>
+</blockquote>
+<blockquote>
+<p>“97.” 是一个合法的Number 01100001</p>
+</blockquote>
+<ul>
+<li>ASCII</li>
+<li>Unicode</li>
+<li>UCS U+0000 - U+FFFF</li>
+<li>GB<ul>
+<li>GB2312</li>
+<li>GBK(GB13000)</li>
+<li>GB18030</li>
+</ul>
+</li>
+<li>ISO-8859</li>
+<li>BIG5</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li><p>“abc”</p>
+<ul>
+<li>“\x10” –&gt; 8</li>
+<li>“\u000a”</li>
+</ul>
+</li>
+<li><p>‘abc’</p>
+</li>
+<li><p>`abc`</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
+<li>true</li>
+<li>false</li>
+</ul>
+<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
+<li>typeof 下为 Object</li>
+</ul>
+<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript-Expressions</title>
     <url>/2020/04/23/Javascript-Expressions/</url>
     <content><![CDATA[<h1 id="【未完】Javascript-–-Expressions"><a href="#【未完】Javascript-–-Expressions" class="headerlink" title="【未完】Javascript – Expressions"></a>【未完】Javascript – Expressions</h1><a id="more"></a>
@@ -366,6 +553,171 @@
       </tags>
   </entry>
   <entry>
+    <title>Reg-Number</title>
+    <url>/2020/04/20/Reg-Number/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>利用正则表达式，匹配所有 Number 字面量<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/fcc73488cd245a6c48cf067a6dc7641e16278.png" alt="NumbericLiteral 大纲"></p>
+</li>
+<li><p>NumericLiteral :: </p>
+<ul>
+<li><p>DecimalLiteral</p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/94398bab367ca56c0aa2435de753041520532.png" alt="DecimalLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/40d13f93242ff1f9321411cc7886586f52608.png" alt="DecimalLiteral 详情"></p>
+</li>
+<li><p>DecimalIntegerLiteral . DecimalDigits(opt) ExponentPart(opt)</p>
+<ul>
+<li><p>DecimalIntegerLiteral</p>
+<blockquote>
+<p>(0)</p>
+</blockquote>
+<blockquote>
+<p>([1-9][0-9]*)</p>
+</blockquote>
+</li>
+<li><p>.</p>
+<blockquote>
+<p>.</p>
+</blockquote>
+</li>
+<li><p>DecimalDigits</p>
+<blockquote>
+<p>[0-9]*</p>
+</blockquote>
+</li>
+<li><p>ExponentPart</p>
+<blockquote>
+<p>(e|E)(\+|\-)?([0-9])*</p>
+</blockquote>
+</li>
+<li><p>可以推导出</p>
+<blockquote>
+<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>. DecimalDigits ExponentPart(opt)</p>
+<ul>
+<li><p>可以推导出</p>
+<blockquote>
+<p>/^<strong>((0)|([1-9][0-9]*))?</strong>.?([0-9]*)(((e|E)?(\+|\-)?([0-9])*)*)$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>DecimalIntegerLiteral ExponentPart(opt)</p>
+<blockquote>
+<p>/^((0)|([1-9][0-9]*))?<strong>.?</strong>([0-9]<em>)((e|E)?(\+|\-)?([0-9]\</em>))?$/</p>
+</blockquote>
+</li>
+<li><p>最终</p>
+<blockquote>
+<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>BinaryIntegerLiteral </p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/5a2e4c4c84c80cf794281290420928d78942.png" alt="BinaryIntegerLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/22c6b076cfe8b42d71003893bed4059512350.png" alt="BinaryIntegerLiteral 详情"></p>
+<blockquote>
+<p>/^0(b|B)(0|1)+$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>OctalIntegerLiteral </p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/40145f430e5560e16f117863419eceea12195.png" alt="OctalIntegerLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/3049a1ac2a5071c0bcebae1e31db9a5512369.png" alt="OctalIntegerLiteral 详情"></p>
+<blockquote>
+<p>/^0(O|o)[0-7]+$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>HexIntegerLiteral</p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/cfe61ed151be1f9e1ab58a860cc6c8638397.png" alt="HexIntegerLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/75544696fc619ce55f6555d0fddd5a0617749.png" alt="HexIntegerLiteral 详情"></p>
+<blockquote>
+<p>/^0(x|X)([0-9a-fA-F])+$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>简单总结</p>
+<blockquote>
+<p>/^(((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)([0-9a-fA-F])+)$/</p>
+</blockquote>
+</li>
+<li><p>简化</p>
+<blockquote>
+<p> /^((((0)|([1-9]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)([0-9a-fA-F])+))$/</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/^((((<span class="number">0</span>)|([<span class="number">1</span><span class="number">-9</span>]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(<span class="number">0</span>(b|B)(<span class="number">0</span>|<span class="number">1</span>)+)|(<span class="number">0</span>(O|o)[<span class="number">0</span><span class="number">-7</span>]+)|(<span class="number">0</span>(x|X)([<span class="number">0</span><span class="number">-9</span>a-fA-F])+))$/</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="结果测试"><a href="#结果测试" class="headerlink" title="结果测试"></a>结果测试</h2><ul>
+<li>十六进制数： 0x0233acdfACDF<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/6b7064f71909191efad66a7a6899e17551930.png" alt="十六进制数"></li>
+</ul>
+</li>
+<li>八进制数：0o023657<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/a65a14040f2a483733b92a78ca7cb76956176.png" alt="八进制数"></li>
+</ul>
+</li>
+<li>二进制数： 0b01010111<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/33e2f75a6f02ec627a4aa16f56c9d59251733.png" alt="二进制数"></li>
+</ul>
+</li>
+<li>浮点数：.2373736<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/facf9ed43fe79a6e05525c9597f1014054052.png" alt="浮点数"></li>
+</ul>
+</li>
+<li>IEEE 754：1.2e+32<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/28058fac862347153c3d605fbb37272952996.png" alt="IEEE 754"></li>
+</ul>
+</li>
+<li>特殊情况 .0<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/5d38329b0247e224ac893957ae24e9a150951.png" alt="特殊情况"></li>
+</ul>
+</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念 正则表达式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript-Statement</title>
     <url>/2020/04/26/Javascript-Statement/</url>
     <content><![CDATA[<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h1><h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="简单语句"><a href="#简单语句" class="headerlink" title="简单语句"></a>简单语句</h3><ul>
@@ -563,358 +915,6 @@
       </categories>
       <tags>
         <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Javascript Types</title>
-    <url>/2020/04/20/Javascript-Types/</url>
-    <content><![CDATA[<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
-<li><p>Unicode Blocks</p>
-<ul>
-<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
-<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
-</ul>
-</li>
-<li>U+000A LINE FEED 换行<ul>
-<li>Form Feed 翻页</li>
-<li>CJK 中文字符 Chinese Japan Korean</li>
-</ul>
-</li>
-<li>U+0020 SPACE 空格</li>
-<li>BMP 基本字符平面 四位能表示的范围</li>
-<li>超出BMP范围<ul>
-<li>fromCodePoint</li>
-<li>codePointAt</li>
-</ul>
-</li>
-<li>隐性需求需要可以使用\u转义<ul>
-<li>“厉害”.codePointAt(0).toString(16)</li>
-<li>\u5389\u5bb3<a id="more"></a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>InputElement</p>
-<ul>
-<li>WhiteSpace 空格<ul>
-<li>&lt;TAB&gt; Character Tabulation</li>
-<li>&lt;VT&gt; Vertical Line</li>
-<li>&lt;FF&gt; Form Feed </li>
-<li>&lt;SP&gt; </li>
-<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
-<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
-<li>&lt;USP&gt;</li>
-</ul>
-</li>
-<li>LineTerminator 换行符<ul>
-<li>&lt;LF&gt; /n</li>
-<li>&lt;CR&gt; Carriage Return 回车 /r</li>
-<li>&lt;LS&gt; LINE SEPARATOR</li>
-<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
-</ul>
-</li>
-<li>Comment 注释</li>
-<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
-<li>自己写的，代码包含的有效信息<ul>
-<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
-<li>用作变量名，不能与关键字重复<ul>
-<li>undefined 全局变量名，修改不了</li>
-<li>离开全局作用域，便可以使用</li>
-</ul>
-</li>
-<li>用作属性的部分，可以与关键字重复</li>
-<li>Future reserved Keywords : enum</li>
-</ul>
-</li>
-<li><strong>Literal</strong> 直接量<ul>
-<li>Number    </li>
-<li>String</li>
-<li>Boolean</li>
-<li>Object</li>
-<li>Null</li>
-<li>Undefined</li>
-<li>Symbol</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>帮助程序形成结构<ul>
-<li><strong>Punctuator</strong> 符号</li>
-<li><strong>Keywords</strong> </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
-<li><p>IEEE 754 Double Float</p>
-<ul>
-<li>Sign(1)</li>
-<li>Exponent(11) 指数，科学计数法</li>
-<li>Fraction(52)</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li>DecimaLiteral<ul>
-<li>0</li>
-<li>0.</li>
-<li>.2</li>
-<li>1e3</li>
-</ul>
-</li>
-<li>BinaryIntegerLiteral<ul>
-<li>0b111</li>
-</ul>
-</li>
-<li>OctalIntegerLiteral<ul>
-<li>0o10</li>
-</ul>
-</li>
-<li>HexIntegerLiteral<ul>
-<li>0xFF</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>最佳实践</p>
-<ul>
-<li><p>浮点数比较时，需要加精度</p>
-<blockquote>
-<p>Number.MAX_SAFE_INTEGER</p>
-</blockquote>
-<blockquote>
-<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
-<li><p>Character</p>
-</li>
-<li><p>Code Point</p>
-</li>
-<li><p>Encoding</p>
-<blockquote>
-<p>97 .toString(2)</p>
-</blockquote>
-<blockquote>
-<p>“97.” 是一个合法的Number 01100001</p>
-</blockquote>
-<ul>
-<li>ASCII</li>
-<li>Unicode</li>
-<li>UCS U+0000 - U+FFFF</li>
-<li>GB<ul>
-<li>GB2312</li>
-<li>GBK(GB13000)</li>
-<li>GB18030</li>
-</ul>
-</li>
-<li>ISO-8859</li>
-<li>BIG5</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li><p>“abc”</p>
-<ul>
-<li>“\x10” –&gt; 8</li>
-<li>“\u000a”</li>
-</ul>
-</li>
-<li><p>‘abc’</p>
-</li>
-<li><p>`abc`</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
-<li>true</li>
-<li>false</li>
-</ul>
-<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
-<li>typeof 下为 Object</li>
-</ul>
-<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Reg-Number</title>
-    <url>/2020/04/20/Reg-Number/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>利用正则表达式，匹配所有 Number 字面量<a id="more"></a>
-
-</li>
-</ul>
-<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/fcc73488cd245a6c48cf067a6dc7641e16278.png" alt="NumbericLiteral 大纲"></p>
-</li>
-<li><p>NumericLiteral :: </p>
-<ul>
-<li><p>DecimalLiteral</p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/94398bab367ca56c0aa2435de753041520532.png" alt="DecimalLiteral 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/40d13f93242ff1f9321411cc7886586f52608.png" alt="DecimalLiteral 详情"></p>
-</li>
-<li><p>DecimalIntegerLiteral . DecimalDigits(opt) ExponentPart(opt)</p>
-<ul>
-<li><p>DecimalIntegerLiteral</p>
-<blockquote>
-<p>(0)</p>
-</blockquote>
-<blockquote>
-<p>([1-9][0-9]*)</p>
-</blockquote>
-</li>
-<li><p>.</p>
-<blockquote>
-<p>.</p>
-</blockquote>
-</li>
-<li><p>DecimalDigits</p>
-<blockquote>
-<p>[0-9]*</p>
-</blockquote>
-</li>
-<li><p>ExponentPart</p>
-<blockquote>
-<p>(e|E)(\+|\-)?([0-9])*</p>
-</blockquote>
-</li>
-<li><p>可以推导出</p>
-<blockquote>
-<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>. DecimalDigits ExponentPart(opt)</p>
-<ul>
-<li><p>可以推导出</p>
-<blockquote>
-<p>/^<strong>((0)|([1-9][0-9]*))?</strong>.?([0-9]*)(((e|E)?(\+|\-)?([0-9])*)*)$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>DecimalIntegerLiteral ExponentPart(opt)</p>
-<blockquote>
-<p>/^((0)|([1-9][0-9]*))?<strong>.?</strong>([0-9]<em>)((e|E)?(\+|\-)?([0-9]\</em>))?$/</p>
-</blockquote>
-</li>
-<li><p>最终</p>
-<blockquote>
-<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>BinaryIntegerLiteral </p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/5a2e4c4c84c80cf794281290420928d78942.png" alt="BinaryIntegerLiteral 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/22c6b076cfe8b42d71003893bed4059512350.png" alt="BinaryIntegerLiteral 详情"></p>
-<blockquote>
-<p>/^0(b|B)(0|1)+$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>OctalIntegerLiteral </p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/40145f430e5560e16f117863419eceea12195.png" alt="OctalIntegerLiteral 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/3049a1ac2a5071c0bcebae1e31db9a5512369.png" alt="OctalIntegerLiteral 详情"></p>
-<blockquote>
-<p>/^0(O|o)[0-7]+$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>HexIntegerLiteral</p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/cfe61ed151be1f9e1ab58a860cc6c8638397.png" alt="HexIntegerLiteral 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/75544696fc619ce55f6555d0fddd5a0617749.png" alt="HexIntegerLiteral 详情"></p>
-<blockquote>
-<p>/^0(x|X)([0-9a-fA-F])+$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>简单总结</p>
-<blockquote>
-<p>/^(((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)([0-9a-fA-F])+)$/</p>
-</blockquote>
-</li>
-<li><p>简化</p>
-<blockquote>
-<p> /^((((0)|([1-9]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)([0-9a-fA-F])+))$/</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/^((((<span class="number">0</span>)|([<span class="number">1</span><span class="number">-9</span>]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(<span class="number">0</span>(b|B)(<span class="number">0</span>|<span class="number">1</span>)+)|(<span class="number">0</span>(O|o)[<span class="number">0</span><span class="number">-7</span>]+)|(<span class="number">0</span>(x|X)([<span class="number">0</span><span class="number">-9</span>a-fA-F])+))$/</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="结果测试"><a href="#结果测试" class="headerlink" title="结果测试"></a>结果测试</h2><ul>
-<li>十六进制数： 0x0233acdfACDF<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/6b7064f71909191efad66a7a6899e17551930.png" alt="十六进制数"></li>
-</ul>
-</li>
-<li>八进制数：0o023657<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/a65a14040f2a483733b92a78ca7cb76956176.png" alt="八进制数"></li>
-</ul>
-</li>
-<li>二进制数： 0b01010111<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/33e2f75a6f02ec627a4aa16f56c9d59251733.png" alt="二进制数"></li>
-</ul>
-</li>
-<li>浮点数：.2373736<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/facf9ed43fe79a6e05525c9597f1014054052.png" alt="浮点数"></li>
-</ul>
-</li>
-<li>IEEE 754：1.2e+32<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/28058fac862347153c3d605fbb37272952996.png" alt="IEEE 754"></li>
-</ul>
-</li>
-<li>特殊情况 .0<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/5d38329b0247e224ac893957ae24e9a150951.png" alt="特殊情况"></li>
-</ul>
-</li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念 正则表达式</tag>
       </tags>
   </entry>
   <entry>
@@ -1684,6 +1684,28 @@
       </tags>
   </entry>
   <entry>
+    <title>自己的前端知识体系</title>
+    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>理一下自己的技术体系吧</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/5947cefee7afec18961dda1194cebf224343214.png" alt="技术体系脑图"></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【未完】计算机图形学初探</title>
     <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
@@ -1731,28 +1753,6 @@
       </categories>
       <tags>
         <tag>计算机图形学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自己的前端知识体系</title>
-    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>理一下自己的技术体系吧</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/5947cefee7afec18961dda1194cebf224343214.png" alt="技术体系脑图"></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
       </tags>
   </entry>
   <entry>
