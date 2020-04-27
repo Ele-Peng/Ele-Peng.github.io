@@ -154,6 +154,207 @@
       </tags>
   </entry>
   <entry>
+    <title>Javascript-Statement</title>
+    <url>/2020/04/26/Javascript-Statement/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h1><h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="简单语句"><a href="#简单语句" class="headerlink" title="简单语句"></a>简单语句</h3><ul>
+<li>ExpressionStatement<ul>
+<li>a = 1 + 2;</li>
+</ul>
+</li>
+<li>EmptyStatement<ul>
+<li>;</li>
+</ul>
+</li>
+<li>DebuggerStatement<ul>
+<li>debugger</li>
+</ul>
+</li>
+<li>ThrowStatement<ul>
+<li>throw a;</li>
+</ul>
+</li>
+<li>ContinueStatement<ul>
+<li>continue ;</li>
+<li>continue label;</li>
+</ul>
+</li>
+<li>BreakStatement<ul>
+<li>break ;</li>
+<li>break label;</li>
+</ul>
+</li>
+<li>ReturnStatement<ul>
+<li>return ;</li>
+<li>return expression;</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="组合语句"><a href="#组合语句" class="headerlink" title="组合语句"></a>组合语句</h3><ul>
+<li><p>BlockStatement</p>
+<ul>
+<li><p>把多条语句从语法上括起来，让它像一条语句一样</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br><span class="line">&#96;&#96;&#96;		</span><br><span class="line">&#96;&#96;&#96;javascript</span><br><span class="line">&#123;</span><br><span class="line">  a: 1 &#x2F;&#x2F; a 被理解为 label</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>BlockStatement 中有非 normal ，就会中断</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">  b = foo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>为 const / let 提供作用域</li>
+<li>Completion Record<ul>
+<li>[[type]]: normal</li>
+<li>[[value]]: —</li>
+<li>[[target]]: —</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IfStatement</p>
+</li>
+<li>SwitchStatement</li>
+<li><p>IterationStatement</p>
+<ul>
+<li>while(Expression…) Statement…</li>
+<li>do Statement… while(Expression…);</li>
+<li><p>for(Definition…; Expression…; Expression…) Statement…</p>
+<ul>
+<li>Definition<ul>
+<li>var</li>
+<li>const / let</li>
+</ul>
+</li>
+<li><p>for 会独立产生一个作用域，在 blockStatement 之外</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>for(Definition… in Expression…) Statement….</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>for(Definition…of Expression…) Statement…</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">g</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> p  <span class="keyword">of</span> g())&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>for of —&gt; Iterator —&gt; Generator/Array</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- &lt;s&gt;for await(... of ...)&lt;/s&gt;
+</code></pre><ul>
+<li>WithStatement</li>
+<li>LabelledStatement</li>
+<li><p>TryStatement</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">catch</span>(definition...) &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="keyword">let</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> e = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>catch 中的声明，只在 {} 这一个作用域中，与 for 不一样。</li>
+<li><p>运行时产生错误的时候，都有可能产生 throw</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> = a;</span><br><span class="line"><span class="literal">null</span>.a;</span><br></pre></td></tr></table></figure></li>
+<li>Completion Record<ul>
+<li>[[type]]: return</li>
+<li>[[value]]: —</li>
+<li>[[target]]: label</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="标签、循环、break、continue"><a href="#标签、循环、break、continue" class="headerlink" title="标签、循环、break、continue"></a>标签、循环、break、continue</h3><ul>
+<li>LabelledStatement</li>
+<li>IterationStatement</li>
+<li>ContinueStatement</li>
+<li>BreakStatement</li>
+<li>SwitchStatement</li>
+<li>Completion Record<ul>
+<li>[[type]]: break continue</li>
+<li>[[value]]: —</li>
+<li>[[target]]: label</li>
+</ul>
+</li>
+</ul>
+<h3 id="声明机制"><a href="#声明机制" class="headerlink" title="声明机制"></a>声明机制</h3><ul>
+<li>FunctionDeclaration</li>
+<li>GeneratorDeclaration</li>
+<li><p>AsyncFunctionDeclaration</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i ++);</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
+<li><p>AsyncGeneratorDeclaration</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span> i ++;</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">&#125;()</span><br><span class="line"><span class="comment">// 想无限循环输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span>(<span class="keyword">let</span> e <span class="keyword">of</span> g) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
+<li>VariableStatement</li>
+<li>ClassDeclaration</li>
+<li>LexicalDeclaration</li>
+<li><p>声明</p>
+<ul>
+<li>function</li>
+<li>function *</li>
+<li>async function</li>
+<li>async function*</li>
+<li><p>var</p>
+<ul>
+<li><p>有 var 不建议写在任何语句子结构里，建议写在 function 的范围内</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>class</p>
+</li>
+<li>const</li>
+<li>let</li>
+</ul>
+</li>
+</ul>
+<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Completion-Record"><a href="#Completion-Record" class="headerlink" title="Completion Record"></a>Completion Record</h3><ul>
+<li>[[type]]: normal, break, continue, return, throw</li>
+<li>[[value]]: Types</li>
+<li>[[target]]: label</li>
+</ul>
+<h3 id="Lexical-Environment"><a href="#Lexical-Environment" class="headerlink" title="Lexical Environment"></a>Lexical Environment</h3><h2 id="预处理（pre-process）BoundNames"><a href="#预处理（pre-process）BoundNames" class="headerlink" title="预处理（pre-process）BoundNames"></a>预处理（pre-process）BoundNames</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a) </span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p><img src="http://p0.meituan.net/myvideodistribute/21745b775ee2bfb77aa1efdff233619737142.png" alt="var 预处理"></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">const</span> a;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p><img src="http://p1.meituan.net/myvideodistribute/172ab6a2ba78132f1dd33f2f5b64e11044523.png" alt="const 无预处理"></p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p><img src="http://p0.meituan.net/myvideodistribute/8b9ac53e3ae6dfca675786084237d0d971523.png" alt="作用域"></p>
+<ul>
+<li>作用域与上下文的区别<ul>
+<li>作用域可以简单理解为源代码文本的作用区域</li>
+<li>执行上下文可以理解为，在用户的电脑上，内存里的，存变量的地方，JavaScript 引擎在执行过程中需要的变量，引擎里的那块内存。</li>
+</ul>
+</li>
+</ul>
+<h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript-Expressions</title>
     <url>/2020/04/23/Javascript-Expressions/</url>
     <content><![CDATA[<style  type="text/css">
@@ -381,186 +582,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Reg-Number</title>
-    <url>/2020/04/20/Reg-Number/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>利用正则表达式，匹配所有 Number 字面量<a id="more"></a>
-</li>
-</ul>
-<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/fcc73488cd245a6c48cf067a6dc7641e16278.png" alt="NumbericLiteral 大纲"></li>
-<li><p>NumericLiteral :: </p>
-<ul>
-<li><p>DecimalLiteral</p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/94398bab367ca56c0aa2435de753041520532.png" alt="DecimalLiteral 大纲"></p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/40d13f93242ff1f9321411cc7886586f52608.png" alt="DecimalLiteral 详情"></li>
-<li><p>DecimalIntegerLiteral . DecimalDigits(opt) ExponentPart(opt)</p>
-<ul>
-<li><p>DecimalIntegerLiteral</p>
-<blockquote>
-<p>(0)</p>
-<p>([1-9][0-9]*)</p>
-</blockquote>
-</li>
-<li>.<blockquote>
-<p>.</p>
-</blockquote>
-</li>
-<li>DecimalDigits<blockquote>
-<p>[0-9]*</p>
-</blockquote>
-</li>
-<li>ExponentPart<blockquote>
-<p>(e|E)(\+|\-)?([0-9])*</p>
-</blockquote>
-</li>
-<li>可以推导出<blockquote>
-<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>. DecimalDigits ExponentPart(opt)</p>
-<ul>
-<li><p>可以推导出</p>
-<blockquote>
-<p>/^<strong>((0)|([1-9][0-9]*))?</strong>.?([0-9]*)(((e|E)?(\+|\-)?([0-9])*)*)$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>DecimalIntegerLiteral ExponentPart(opt)</p>
-<blockquote>
-<p>/^((0)|([1-9][0-9]*))?<strong>.?</strong>([0-9]<em>)((e|E)?(\+|\-)?([0-9]\</em>))?$/</p>
-</blockquote>
-</li>
-<li><p>最终</p>
-<blockquote>
-<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>BinaryIntegerLiteral </p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/5a2e4c4c84c80cf794281290420928d78942.png" alt="BinaryIntegerLiteral 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/22c6b076cfe8b42d71003893bed4059512350.png" alt="BinaryIntegerLiteral 详情"></p>
-<blockquote>
-<p>/^0(b|B)(0|1)+$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>OctalIntegerLiteral </p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/40145f430e5560e16f117863419eceea12195.png" alt="OctalIntegerLiteral 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/3049a1ac2a5071c0bcebae1e31db9a5512369.png" alt="OctalIntegerLiteral 详情"></p>
-<blockquote>
-<p>/^0(O|o)[0-7]+$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>HexIntegerLiteral</p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/cfe61ed151be1f9e1ab58a860cc6c8638397.png" alt="HexIntegerLiteral 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/75544696fc619ce55f6555d0fddd5a0617749.png" alt="HexIntegerLiteral 详情"></p>
-<blockquote>
-<p>/^0(x|X)([0-9a-fA-F])+$/</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>简单总结</p>
-<blockquote>
-<p>/^(((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)([0-9a-fA-F])+)$/</p>
-</blockquote>
-</li>
-<li><p>简化</p>
-<blockquote>
-<p> /^((((0)|([1-9]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)([0-9a-fA-F])+))$/</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/^((((<span class="number">0</span>)|([<span class="number">1</span><span class="number">-9</span>]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(<span class="number">0</span>(b|B)(<span class="number">0</span>|<span class="number">1</span>)+)|(<span class="number">0</span>(O|o)[<span class="number">0</span><span class="number">-7</span>]+)|(<span class="number">0</span>(x|X)([<span class="number">0</span><span class="number">-9</span>a-fA-F])+))$/</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="结果测试"><a href="#结果测试" class="headerlink" title="结果测试"></a>结果测试</h2><ul>
-<li>十六进制数： 0x0233acdfACDF<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/6b7064f71909191efad66a7a6899e17551930.png" alt="十六进制数"></li>
-</ul>
-</li>
-<li>八进制数：0o023657<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/a65a14040f2a483733b92a78ca7cb76956176.png" alt="八进制数"></li>
-</ul>
-</li>
-<li>二进制数： 0b01010111<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/33e2f75a6f02ec627a4aa16f56c9d59251733.png" alt="二进制数"></li>
-</ul>
-</li>
-<li>浮点数：.2373736<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/facf9ed43fe79a6e05525c9597f1014054052.png" alt="浮点数"></li>
-</ul>
-</li>
-<li>IEEE 754：1.2e+32<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/28058fac862347153c3d605fbb37272952996.png" alt="IEEE 754"></li>
-</ul>
-</li>
-<li>特殊情况 .0<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/5d38329b0247e224ac893957ae24e9a150951.png" alt="特殊情况"></li>
-</ul>
-</li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念 正则表达式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Javascript Types</title>
     <url>/2020/04/20/Javascript-Types/</url>
     <content><![CDATA[<style  type="text/css">
@@ -761,207 +782,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Javascript-Statement</title>
-    <url>/2020/04/26/Javascript-Statement/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h1><h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="简单语句"><a href="#简单语句" class="headerlink" title="简单语句"></a>简单语句</h3><ul>
-<li>ExpressionStatement<ul>
-<li>a = 1 + 2;</li>
-</ul>
-</li>
-<li>EmptyStatement<ul>
-<li>;</li>
-</ul>
-</li>
-<li>DebuggerStatement<ul>
-<li>debugger</li>
-</ul>
-</li>
-<li>ThrowStatement<ul>
-<li>throw a;</li>
-</ul>
-</li>
-<li>ContinueStatement<ul>
-<li>continue ;</li>
-<li>continue label;</li>
-</ul>
-</li>
-<li>BreakStatement<ul>
-<li>break ;</li>
-<li>break label;</li>
-</ul>
-</li>
-<li>ReturnStatement<ul>
-<li>return ;</li>
-<li>return expression;</li>
-</ul>
-</li>
-</ul>
-<a id="more"></a>
-<h3 id="组合语句"><a href="#组合语句" class="headerlink" title="组合语句"></a>组合语句</h3><ul>
-<li><p>BlockStatement</p>
-<ul>
-<li><p>把多条语句从语法上括起来，让它像一条语句一样</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br><span class="line">&#96;&#96;&#96;		</span><br><span class="line">&#96;&#96;&#96;javascript</span><br><span class="line">&#123;</span><br><span class="line">  a: 1 &#x2F;&#x2F; a 被理解为 label</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>BlockStatement 中有非 normal ，就会中断</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">  b = foo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>为 const / let 提供作用域</li>
-<li>Completion Record<ul>
-<li>[[type]]: normal</li>
-<li>[[value]]: —</li>
-<li>[[target]]: —</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>IfStatement</p>
-</li>
-<li>SwitchStatement</li>
-<li><p>IterationStatement</p>
-<ul>
-<li>while(Expression…) Statement…</li>
-<li>do Statement… while(Expression…);</li>
-<li><p>for(Definition…; Expression…; Expression…) Statement…</p>
-<ul>
-<li>Definition<ul>
-<li>var</li>
-<li>const / let</li>
-</ul>
-</li>
-<li><p>for 会独立产生一个作用域，在 blockStatement 之外</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>for(Definition… in Expression…) Statement….</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>for(Definition…of Expression…) Statement…</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">g</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> p  <span class="keyword">of</span> g())&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>for of —&gt; Iterator —&gt; Generator/Array</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>- &lt;s&gt;for await(... of ...)&lt;/s&gt;
-</code></pre><ul>
-<li>WithStatement</li>
-<li>LabelledStatement</li>
-<li><p>TryStatement</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">catch</span>(definition...) &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="keyword">let</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> e = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>catch 中的声明，只在 {} 这一个作用域中，与 for 不一样。</li>
-<li><p>运行时产生错误的时候，都有可能产生 throw</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> = a;</span><br><span class="line"><span class="literal">null</span>.a;</span><br></pre></td></tr></table></figure></li>
-<li>Completion Record<ul>
-<li>[[type]]: return</li>
-<li>[[value]]: —</li>
-<li>[[target]]: label</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="标签、循环、break、continue"><a href="#标签、循环、break、continue" class="headerlink" title="标签、循环、break、continue"></a>标签、循环、break、continue</h3><ul>
-<li>LabelledStatement</li>
-<li>IterationStatement</li>
-<li>ContinueStatement</li>
-<li>BreakStatement</li>
-<li>SwitchStatement</li>
-<li>Completion Record<ul>
-<li>[[type]]: break continue</li>
-<li>[[value]]: —</li>
-<li>[[target]]: label</li>
-</ul>
-</li>
-</ul>
-<h3 id="声明机制"><a href="#声明机制" class="headerlink" title="声明机制"></a>声明机制</h3><ul>
-<li>FunctionDeclaration</li>
-<li>GeneratorDeclaration</li>
-<li><p>AsyncFunctionDeclaration</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i ++);</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
-<li><p>AsyncGeneratorDeclaration</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span> i ++;</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">&#125;()</span><br><span class="line"><span class="comment">// 想无限循环输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span>(<span class="keyword">let</span> e <span class="keyword">of</span> g) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
-<li>VariableStatement</li>
-<li>ClassDeclaration</li>
-<li>LexicalDeclaration</li>
-<li><p>声明</p>
-<ul>
-<li>function</li>
-<li>function *</li>
-<li>async function</li>
-<li>async function*</li>
-<li><p>var</p>
-<ul>
-<li><p>有 var 不建议写在任何语句子结构里，建议写在 function 的范围内</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 0</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>class</p>
-</li>
-<li>const</li>
-<li>let</li>
-</ul>
-</li>
-</ul>
-<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Completion-Record"><a href="#Completion-Record" class="headerlink" title="Completion Record"></a>Completion Record</h3><ul>
-<li>[[type]]: normal, break, continue, return, throw</li>
-<li>[[value]]: Types</li>
-<li>[[target]]: label</li>
-</ul>
-<h3 id="Lexical-Environment"><a href="#Lexical-Environment" class="headerlink" title="Lexical Environment"></a>Lexical Environment</h3><h2 id="预处理（pre-process）BoundNames"><a href="#预处理（pre-process）BoundNames" class="headerlink" title="预处理（pre-process）BoundNames"></a>预处理（pre-process）BoundNames</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a) </span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-<p><img src="http://p0.meituan.net/myvideodistribute/21745b775ee2bfb77aa1efdff233619737142.png" alt="var 预处理"></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">const</span> a;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-<p><img src="http://p1.meituan.net/myvideodistribute/172ab6a2ba78132f1dd33f2f5b64e11044523.png" alt="const 无预处理"></p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-<p><img src="http://p0.meituan.net/myvideodistribute/8b9ac53e3ae6dfca675786084237d0d971523.png" alt="作用域"></p>
-<ul>
-<li>作用域与上下文的区别<ul>
-<li>作用域可以简单理解为源代码文本的作用区域</li>
-<li>执行上下文可以理解为，在用户的电脑上，内存里的，存变量的地方，JavaScript 引擎在执行过程中需要的变量，引擎里的那块内存。</li>
-</ul>
-</li>
-</ul>
-<h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1>]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Reg -- String</title>
     <url>/2020/04/21/Reg-String/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1118,6 +938,186 @@
       </tags>
   </entry>
   <entry>
+    <title>Reg-Number</title>
+    <url>/2020/04/20/Reg-Number/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>利用正则表达式，匹配所有 Number 字面量<a id="more"></a>
+</li>
+</ul>
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/fcc73488cd245a6c48cf067a6dc7641e16278.png" alt="NumbericLiteral 大纲"></li>
+<li><p>NumericLiteral :: </p>
+<ul>
+<li><p>DecimalLiteral</p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/94398bab367ca56c0aa2435de753041520532.png" alt="DecimalLiteral 大纲"></p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/40d13f93242ff1f9321411cc7886586f52608.png" alt="DecimalLiteral 详情"></li>
+<li><p>DecimalIntegerLiteral . DecimalDigits(opt) ExponentPart(opt)</p>
+<ul>
+<li><p>DecimalIntegerLiteral</p>
+<blockquote>
+<p>(0)</p>
+<p>([1-9][0-9]*)</p>
+</blockquote>
+</li>
+<li>.<blockquote>
+<p>.</p>
+</blockquote>
+</li>
+<li>DecimalDigits<blockquote>
+<p>[0-9]*</p>
+</blockquote>
+</li>
+<li>ExponentPart<blockquote>
+<p>(e|E)(\+|\-)?([0-9])*</p>
+</blockquote>
+</li>
+<li>可以推导出<blockquote>
+<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>. DecimalDigits ExponentPart(opt)</p>
+<ul>
+<li><p>可以推导出</p>
+<blockquote>
+<p>/^<strong>((0)|([1-9][0-9]*))?</strong>.?([0-9]*)(((e|E)?(\+|\-)?([0-9])*)*)$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>DecimalIntegerLiteral ExponentPart(opt)</p>
+<blockquote>
+<p>/^((0)|([1-9][0-9]*))?<strong>.?</strong>([0-9]<em>)((e|E)?(\+|\-)?([0-9]\</em>))?$/</p>
+</blockquote>
+</li>
+<li><p>最终</p>
+<blockquote>
+<p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>BinaryIntegerLiteral </p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/5a2e4c4c84c80cf794281290420928d78942.png" alt="BinaryIntegerLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/22c6b076cfe8b42d71003893bed4059512350.png" alt="BinaryIntegerLiteral 详情"></p>
+<blockquote>
+<p>/^0(b|B)(0|1)+$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>OctalIntegerLiteral </p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/40145f430e5560e16f117863419eceea12195.png" alt="OctalIntegerLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/3049a1ac2a5071c0bcebae1e31db9a5512369.png" alt="OctalIntegerLiteral 详情"></p>
+<blockquote>
+<p>/^0(O|o)[0-7]+$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>HexIntegerLiteral</p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/cfe61ed151be1f9e1ab58a860cc6c8638397.png" alt="HexIntegerLiteral 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/75544696fc619ce55f6555d0fddd5a0617749.png" alt="HexIntegerLiteral 详情"></p>
+<blockquote>
+<p>/^0(x|X)([0-9a-fA-F])+$/</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>简单总结</p>
+<blockquote>
+<p>/^(((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)([0-9a-fA-F])+)$/</p>
+</blockquote>
+</li>
+<li><p>简化</p>
+<blockquote>
+<p> /^((((0)|([1-9]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)([0-9a-fA-F])+))$/</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/^((((<span class="number">0</span>)|([<span class="number">1</span><span class="number">-9</span>]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(<span class="number">0</span>(b|B)(<span class="number">0</span>|<span class="number">1</span>)+)|(<span class="number">0</span>(O|o)[<span class="number">0</span><span class="number">-7</span>]+)|(<span class="number">0</span>(x|X)([<span class="number">0</span><span class="number">-9</span>a-fA-F])+))$/</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="结果测试"><a href="#结果测试" class="headerlink" title="结果测试"></a>结果测试</h2><ul>
+<li>十六进制数： 0x0233acdfACDF<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/6b7064f71909191efad66a7a6899e17551930.png" alt="十六进制数"></li>
+</ul>
+</li>
+<li>八进制数：0o023657<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/a65a14040f2a483733b92a78ca7cb76956176.png" alt="八进制数"></li>
+</ul>
+</li>
+<li>二进制数： 0b01010111<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/33e2f75a6f02ec627a4aa16f56c9d59251733.png" alt="二进制数"></li>
+</ul>
+</li>
+<li>浮点数：.2373736<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/facf9ed43fe79a6e05525c9597f1014054052.png" alt="浮点数"></li>
+</ul>
+</li>
+<li>IEEE 754：1.2e+32<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/28058fac862347153c3d605fbb37272952996.png" alt="IEEE 754"></li>
+</ul>
+</li>
+<li>特殊情况 .0<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/5d38329b0247e224ac893957ae24e9a150951.png" alt="特殊情况"></li>
+</ul>
+</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念 正则表达式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【未完】react-hooks</title>
     <url>/2020/04/13/react-hooks/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1254,6 +1254,225 @@
       </categories>
       <tags>
         <tag>react</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>convertNumberToString</title>
+    <url>/2020/04/25/convertNumberToString/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>是的我要折腾一下 Javascript convertNumberToString 了🙆</li>
+<li><a href="https://ele-peng.github.io/2020/04/24/convertStringToNumber/" target="_blank" rel="noopener">convertStringToNumber 实现</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h2><ul>
+<li>首先我们依旧需要简单梳理一下我们的实践过程，再根据 <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMAScript-262</a> 标准P61完善实践</li>
+<li>input: @params: { num } 输入需要转换的number, { radix } 转换的指定基数</li>
+<li>对 input-num 的特殊处理<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/e0405830e24314df04f89a21078cc64198443.png" alt="input-num 的特殊处理"></li>
+</ul>
+</li>
+<li><p>简单算法处理</p>
+<ul>
+<li>获取符号位<ul>
+<li>- 负 显示</li>
+<li>+ 正 不显示</li>
+</ul>
+</li>
+<li>十进制</li>
+<li>二进制</li>
+<li>八进制</li>
+<li>十六进制</li>
+</ul>
+</li>
+<li><p>output: return resStr</p>
+</li>
+</ul>
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
+<li><p>经过上面的分析，我们代码可以先写成</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> formatNum = <span class="built_in">Number</span>(num) <span class="comment">// 处理Number为十进制</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(formatNum)) <span class="keyword">return</span> <span class="string">'NaN'</span></span><br><span class="line">    <span class="keyword">if</span> (isZero(formatNum)) <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line">    <span class="keyword">const</span> sign = getSign(formatNum)</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">isFinite</span>(formatNum)) <span class="keyword">return</span> sign + <span class="string">'Infinity'</span></span><br><span class="line">    <span class="keyword">return</span> convertDecimalNumberToString(formatNum)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(err)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>input number 的特殊处理</p>
+<ul>
+<li><p>If m is NaN, return the String “NaN”.</p>
+<blockquote>
+<p>if (isNaN(formatNum)) return ‘NaN’</p>
+</blockquote>
+</li>
+<li><p>If m is +0 or -0, return the String “0”.</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (isZero(formatNum)) <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isZero</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="number">1</span> / num === <span class="literal">Infinity</span> || <span class="number">1</span> / num === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>If m is less than zero, return the string-concatenation of “-“ and ! NumberToString(-m).</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sign = getSign(formatNum)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSign</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (num === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"-"</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num === <span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">  &#125; <span class="comment">// 特殊情况 0 前面已经处理</span></span><br><span class="line">  <span class="keyword">return</span> num / <span class="built_in">Math</span>.abs(num) === <span class="number">1</span> ? <span class="string">""</span> : <span class="string">"-"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If m is +∞, return the String “Infinity”.</p>
+<blockquote>
+<p>if (!isFinite(formatNum)) return sign + ‘Infinity’</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>常规 Decimal Number 处理</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertDecimalNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> radix = <span class="number">10</span></span><br><span class="line">  <span class="keyword">let</span> int = <span class="built_in">Math</span>.floor(num)</span><br><span class="line">  <span class="keyword">let</span> float = (num - int) * <span class="number">100</span> / <span class="number">100</span></span><br><span class="line">  <span class="keyword">let</span> resInt = <span class="string">''</span></span><br><span class="line">  <span class="keyword">let</span> resFloat = <span class="string">''</span></span><br><span class="line">  <span class="comment">// 整数部分 取余，除以基数</span></span><br><span class="line">  <span class="keyword">while</span> (int &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    resInt = <span class="built_in">String</span>(int % radix) + resInt</span><br><span class="line">    int = <span class="built_in">Math</span>.floor(int / radix)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (float) &#123;</span><br><span class="line">    resFloat = <span class="string">'.'</span></span><br><span class="line">    <span class="comment">// 小数部分，乘以基数，取整</span></span><br><span class="line">    <span class="keyword">while</span> (float &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      resFloat = resFloat + <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">      float -= <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resInt + resFloat</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(convertNumberToString(-<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, -<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(+<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, +<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120.11112</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, <span class="number">120.11112</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, (<span class="number">120</span>).toString())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试截图<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/b741d6a87bab9c52f01871781745689124911.png" alt="测试截图"></li>
+</ul>
+</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>可以看出，我们写的 converNumbertoString 遇到浮点数，就失灵了，有想到说 用 toString，然后正则匹配出小数点后面的浮点数，舍入相应位数，但是这样，就用到了 toString 方法，似乎与我的最初想法实现 convertNumbertToString 死锁了 🙃</li>
+<li>大家有其他的不用 toString 实践，欢迎评论告诉我呀~</li>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week03/convertNumberToString.html" target="_blank" rel="noopener">代码地址</a></li>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信小程序-气泡框</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>记录基于<a href="https://developers.weixin.qq.com/community/develop/doc/000e4e7103c3c090e517e0cdb5b806" target="_blank" rel="noopener">微信小程序-气泡框</a>实现中产生的问题及思考</li>
+</ul>
+<hr>
+<h2 id="问题截图"><a href="#问题截图" class="headerlink" title="问题截图"></a>问题截图</h2><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png" alt="popover问题截图"></p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
+<li>模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？<a id="more"></a>
+</li>
+</ul>
+<h2 id="问题解决过程记录"><a href="#问题解决过程记录" class="headerlink" title="问题解决过程记录"></a>问题解决过程记录</h2><ul>
+<li><p>定位问题发生的原因范围</p>
+<ul>
+<li>样式<ul>
+<li>样式在判断显示条件(wx:if=”“)生效后，仍然渲染</li>
+<li>否定原因<ul>
+<li>查询代码发现，整个样式背景的设定是在::before伪元素选择器中</li>
+<li>且显示条件生效，在调试器中已没有该元素，但仍显示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>逻辑<ul>
+<li>会不会是组件在渲染时，多渲染一份，我们使用判断条件进行开关时，只是对其中一个进行了操作</li>
+<li>怀疑依据<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzk5ZjcwMDAwZmViM2IwYzc0MWJmNjFiYzE5YTUwMDIxMjYyMTI3LnBuZw?x-oss-process=image/format,png" alt="popover问题依据截图"></li>
+<li>上图可见：在popover组件下，有2个通过&lt;slot&gt;插入的相同内容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开始解决问题</p>
+<ul>
+<li>查询官方关于<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html" target="_blank" rel="noopener">slot</a>方面的介绍<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JjMTE0ZmI0YTdhOWZkY2ZlYzU3ZDE5ZWQyYWY0YzI3MzE1NTU4LnBuZw?x-oss-process=image/format,png" alt="官方slot基础例子"></li>
+</ul>
+</li>
+<li>基于官方基础代码，复现问题<ul>
+<li>产生一个child-tag组件，并在其中编写  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/child-tag.js.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./component-tag-name'</span>: &#123;</span><br><span class="line">      type: <span class="string">'parent'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>与component-tag-name绑定形成父子组件  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/component-tag-name.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./child-tag'</span>: &#123;</span><br><span class="line">      type: <span class="string">'child'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    visible: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>并将index.html中进行调用  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引用组件的页面模版 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">bindtap</span>=<span class="string">"onTap"</span>&gt;</span>222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">my-component</span> <span class="attr">id</span>=<span class="string">"component"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">			这里是插入到组件slot name="content"中的内容</span><br><span class="line">			<span class="tag">&lt;<span class="name">child-component</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"child"</span>&gt;</span>这里是插入到组件slot name="child"中的内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>但是其结构树仍然非常正常，并没有出现那个所谓的”拷贝”组件<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzcwNTRhNjJkYmM2MGEyNmU5ZGI1ODYzNzNjOGY2OTgyMzg3NTI0LnBuZw?x-oss-process=image/format,png" alt="改写v1.1后的结构树截图"></li>
+<li>仔细复现了几次，发现：多出来的那个组件会有所延迟。抓住这个问题，想到我们在onReady中，注册了该组件，于是，继续模拟</li>
+</ul>
+</li>
+<li>修改index.js代码，并在component-tag-name组件注册onTap方法，控制显隐  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">onReady() &#123;</span><br><span class="line">  <span class="keyword">this</span>.component = <span class="keyword">this</span>.selectComponent(<span class="string">'#component'</span>)</span><br><span class="line">&#125;,</span><br><span class="line">onTap() &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'onTap'</span>)</span><br><span class="line">  wx.createSelectorQuery().select(<span class="string">'#component'</span>).boundingClientRect(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 调用自定义组件 popover 中的 onDisplay 方法</span></span><br><span class="line">      <span class="keyword">this</span>.component.onTap();</span><br><span class="line">  &#125;).exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>最终复现<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmZjQ3OTNhMjUwYTNjMzlhYjBlOGQxMGJhYTllZmI2NDc1NjIyLnBuZw?x-oss-process=image/format,png" alt="官方模拟最终运行截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>得出问题来源：<ul>
+<li>在组件中进行了一次setData</li>
+</ul>
+</li>
+<li>思考背后问题<ul>
+<li>在组件中setData为什么会”拷贝“一份相同的在页面级wxml中？</li>
+<li>猜想一：从<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/interactive-animation.html#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WXS响应事件</a>中，我隐隐得到了答案</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzZlYWJjYjdjOTliMzAxNWMwOGQwZmM2YWM3ZmMxMGMzNDU5NDAxLnBuZw?x-oss-process=image/format,png" alt="wxs相应事件"></li>
+<li>我们在页面级通过selectComponent实例化组件，对选中的组件进行操作，官方可以通过拷贝一份相同的组件，使我们便捷的将事件的处理从2次的逻辑层和渲染层通信以及一次渲染，减少到直接对页面上元素进行操作，即一次逻辑层和渲染层通信以及一次渲染。</li>
+<li>猜想二：问题层面是在微信开发者工具中的wxml，渲染方式对于这种情况就是这样处理的。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>官方已给出问题原因<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzJkMWVkZmYyNWIwM2YxZDU2ZGVjYjZhM2NkYjAwMGU5NTE5ODQucG5n?x-oss-process=image/format,png" alt="wxml面板"></li>
+</ul>
+</li>
+</ul>
+<h2 id="如何解决问题"><a href="#如何解决问题" class="headerlink" title="如何解决问题"></a>如何解决问题</h2><ul>
+<li>在popover以及popover-item加入  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">options: &#123;</span><br><span class="line">		    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">		  &#125;,</span><br></pre></td></tr></table></figure></li>
+<li>就可以解决了。最后建议slot中可以写上name这样代码可能会更易读。<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
       </tags>
   </entry>
   <entry>
@@ -1411,109 +1630,6 @@
       </tags>
   </entry>
   <entry>
-    <title>convertNumberToString</title>
-    <url>/2020/04/25/convertNumberToString/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>是的我要折腾一下 Javascript convertNumberToString 了🙆</li>
-<li><a href="https://ele-peng.github.io/2020/04/24/convertStringToNumber/" target="_blank" rel="noopener">convertStringToNumber 实现</a></li>
-</ul>
-<a id="more"></a>
-<h2 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h2><ul>
-<li>首先我们依旧需要简单梳理一下我们的实践过程，再根据 <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMAScript-262</a> 标准P61完善实践</li>
-<li>input: @params: { num } 输入需要转换的number, { radix } 转换的指定基数</li>
-<li>对 input-num 的特殊处理<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/e0405830e24314df04f89a21078cc64198443.png" alt="input-num 的特殊处理"></li>
-</ul>
-</li>
-<li><p>简单算法处理</p>
-<ul>
-<li>获取符号位<ul>
-<li>- 负 显示</li>
-<li>+ 正 不显示</li>
-</ul>
-</li>
-<li>十进制</li>
-<li>二进制</li>
-<li>八进制</li>
-<li>十六进制</li>
-</ul>
-</li>
-<li><p>output: return resStr</p>
-</li>
-</ul>
-<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p>经过上面的分析，我们代码可以先写成</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> formatNum = <span class="built_in">Number</span>(num) <span class="comment">// 处理Number为十进制</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(formatNum)) <span class="keyword">return</span> <span class="string">'NaN'</span></span><br><span class="line">    <span class="keyword">if</span> (isZero(formatNum)) <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line">    <span class="keyword">const</span> sign = getSign(formatNum)</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">isFinite</span>(formatNum)) <span class="keyword">return</span> sign + <span class="string">'Infinity'</span></span><br><span class="line">    <span class="keyword">return</span> convertDecimalNumberToString(formatNum)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(err)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>input number 的特殊处理</p>
-<ul>
-<li><p>If m is NaN, return the String “NaN”.</p>
-<blockquote>
-<p>if (isNaN(formatNum)) return ‘NaN’</p>
-</blockquote>
-</li>
-<li><p>If m is +0 or -0, return the String “0”.</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (isZero(formatNum)) <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isZero</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="number">1</span> / num === <span class="literal">Infinity</span> || <span class="number">1</span> / num === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>If m is less than zero, return the string-concatenation of “-“ and ! NumberToString(-m).</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sign = getSign(formatNum)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSign</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (num === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"-"</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num === <span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">  &#125; <span class="comment">// 特殊情况 0 前面已经处理</span></span><br><span class="line">  <span class="keyword">return</span> num / <span class="built_in">Math</span>.abs(num) === <span class="number">1</span> ? <span class="string">""</span> : <span class="string">"-"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>If m is +∞, return the String “Infinity”.</p>
-<blockquote>
-<p>if (!isFinite(formatNum)) return sign + ‘Infinity’</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>常规 Decimal Number 处理</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertDecimalNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> radix = <span class="number">10</span></span><br><span class="line">  <span class="keyword">let</span> int = <span class="built_in">Math</span>.floor(num)</span><br><span class="line">  <span class="keyword">let</span> float = (num - int) * <span class="number">100</span> / <span class="number">100</span></span><br><span class="line">  <span class="keyword">let</span> resInt = <span class="string">''</span></span><br><span class="line">  <span class="keyword">let</span> resFloat = <span class="string">''</span></span><br><span class="line">  <span class="comment">// 整数部分 取余，除以基数</span></span><br><span class="line">  <span class="keyword">while</span> (int &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    resInt = <span class="built_in">String</span>(int % radix) + resInt</span><br><span class="line">    int = <span class="built_in">Math</span>.floor(int / radix)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (float) &#123;</span><br><span class="line">    resFloat = <span class="string">'.'</span></span><br><span class="line">    <span class="comment">// 小数部分，乘以基数，取整</span></span><br><span class="line">    <span class="keyword">while</span> (float &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      resFloat = resFloat + <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">      float -= <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resInt + resFloat</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(convertNumberToString(-<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, -<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(+<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, +<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120.11112</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, <span class="number">120.11112</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, (<span class="number">120</span>).toString())</span><br></pre></td></tr></table></figure>
-<ul>
-<li>测试截图<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/b741d6a87bab9c52f01871781745689124911.png" alt="测试截图"></li>
-</ul>
-</li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>可以看出，我们写的 converNumbertoString 遇到浮点数，就失灵了，有想到说 用 toString，然后正则匹配出小数点后面的浮点数，舍入相应位数，但是这样，就用到了 toString 方法，似乎与我的最初想法实现 convertNumbertToString 死锁了 🙃</li>
-<li>大家有其他的不用 toString 实践，欢迎评论告诉我呀~</li>
-<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week03/convertNumberToString.html" target="_blank" rel="noopener">代码地址</a></li>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念 算法</category>
-      </categories>
-      <tags>
-        <tag>前端概念 算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数组、链表、跳表</title>
     <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1547,198 +1663,6 @@
 <li>找最近重复问题</li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>微信小程序-气泡框</title>
-    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>记录基于<a href="https://developers.weixin.qq.com/community/develop/doc/000e4e7103c3c090e517e0cdb5b806" target="_blank" rel="noopener">微信小程序-气泡框</a>实现中产生的问题及思考</li>
-</ul>
-<hr>
-<h2 id="问题截图"><a href="#问题截图" class="headerlink" title="问题截图"></a>问题截图</h2><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png" alt="popover问题截图"></p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
-<li>模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？<a id="more"></a>
-</li>
-</ul>
-<h2 id="问题解决过程记录"><a href="#问题解决过程记录" class="headerlink" title="问题解决过程记录"></a>问题解决过程记录</h2><ul>
-<li><p>定位问题发生的原因范围</p>
-<ul>
-<li>样式<ul>
-<li>样式在判断显示条件(wx:if=”“)生效后，仍然渲染</li>
-<li>否定原因<ul>
-<li>查询代码发现，整个样式背景的设定是在::before伪元素选择器中</li>
-<li>且显示条件生效，在调试器中已没有该元素，但仍显示</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>逻辑<ul>
-<li>会不会是组件在渲染时，多渲染一份，我们使用判断条件进行开关时，只是对其中一个进行了操作</li>
-<li>怀疑依据<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzk5ZjcwMDAwZmViM2IwYzc0MWJmNjFiYzE5YTUwMDIxMjYyMTI3LnBuZw?x-oss-process=image/format,png" alt="popover问题依据截图"></li>
-<li>上图可见：在popover组件下，有2个通过&lt;slot&gt;插入的相同内容</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>开始解决问题</p>
-<ul>
-<li>查询官方关于<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html" target="_blank" rel="noopener">slot</a>方面的介绍<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JjMTE0ZmI0YTdhOWZkY2ZlYzU3ZDE5ZWQyYWY0YzI3MzE1NTU4LnBuZw?x-oss-process=image/format,png" alt="官方slot基础例子"></li>
-</ul>
-</li>
-<li>基于官方基础代码，复现问题<ul>
-<li>产生一个child-tag组件，并在其中编写  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/child-tag.js.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./component-tag-name'</span>: &#123;</span><br><span class="line">      type: <span class="string">'parent'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>与component-tag-name绑定形成父子组件  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/component-tag-name.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./child-tag'</span>: &#123;</span><br><span class="line">      type: <span class="string">'child'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    visible: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>并将index.html中进行调用  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引用组件的页面模版 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">bindtap</span>=<span class="string">"onTap"</span>&gt;</span>222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">my-component</span> <span class="attr">id</span>=<span class="string">"component"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">			这里是插入到组件slot name="content"中的内容</span><br><span class="line">			<span class="tag">&lt;<span class="name">child-component</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"child"</span>&gt;</span>这里是插入到组件slot name="child"中的内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>但是其结构树仍然非常正常，并没有出现那个所谓的”拷贝”组件<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzcwNTRhNjJkYmM2MGEyNmU5ZGI1ODYzNzNjOGY2OTgyMzg3NTI0LnBuZw?x-oss-process=image/format,png" alt="改写v1.1后的结构树截图"></li>
-<li>仔细复现了几次，发现：多出来的那个组件会有所延迟。抓住这个问题，想到我们在onReady中，注册了该组件，于是，继续模拟</li>
-</ul>
-</li>
-<li>修改index.js代码，并在component-tag-name组件注册onTap方法，控制显隐  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">onReady() &#123;</span><br><span class="line">  <span class="keyword">this</span>.component = <span class="keyword">this</span>.selectComponent(<span class="string">'#component'</span>)</span><br><span class="line">&#125;,</span><br><span class="line">onTap() &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'onTap'</span>)</span><br><span class="line">  wx.createSelectorQuery().select(<span class="string">'#component'</span>).boundingClientRect(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 调用自定义组件 popover 中的 onDisplay 方法</span></span><br><span class="line">      <span class="keyword">this</span>.component.onTap();</span><br><span class="line">  &#125;).exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>最终复现<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmZjQ3OTNhMjUwYTNjMzlhYjBlOGQxMGJhYTllZmI2NDc1NjIyLnBuZw?x-oss-process=image/format,png" alt="官方模拟最终运行截图"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>得出问题来源：<ul>
-<li>在组件中进行了一次setData</li>
-</ul>
-</li>
-<li>思考背后问题<ul>
-<li>在组件中setData为什么会”拷贝“一份相同的在页面级wxml中？</li>
-<li>猜想一：从<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/interactive-animation.html#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WXS响应事件</a>中，我隐隐得到了答案</li>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzZlYWJjYjdjOTliMzAxNWMwOGQwZmM2YWM3ZmMxMGMzNDU5NDAxLnBuZw?x-oss-process=image/format,png" alt="wxs相应事件"></li>
-<li>我们在页面级通过selectComponent实例化组件，对选中的组件进行操作，官方可以通过拷贝一份相同的组件，使我们便捷的将事件的处理从2次的逻辑层和渲染层通信以及一次渲染，减少到直接对页面上元素进行操作，即一次逻辑层和渲染层通信以及一次渲染。</li>
-<li>猜想二：问题层面是在微信开发者工具中的wxml，渲染方式对于这种情况就是这样处理的。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>官方已给出问题原因<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzJkMWVkZmYyNWIwM2YxZDU2ZGVjYjZhM2NkYjAwMGU5NTE5ODQucG5n?x-oss-process=image/format,png" alt="wxml面板"></li>
-</ul>
-</li>
-</ul>
-<h2 id="如何解决问题"><a href="#如何解决问题" class="headerlink" title="如何解决问题"></a>如何解决问题</h2><ul>
-<li>在popover以及popover-item加入  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">options: &#123;</span><br><span class="line">		    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">		  &#125;,</span><br></pre></td></tr></table></figure></li>
-<li>就可以解决了。最后建议slot中可以写上name这样代码可能会更易读。<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
-<li>祝大家多多发财</li>
-</ul>
-<hr>
-]]></content>
-      <categories>
-        <category>微信小程序</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【未完】计算机图形学初探</title>
-    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li><p>记录 计算机图形学 方面的学习过程🤔</p>
-<a id="more"></a>
-</li>
-</ul>
-<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>前端与图形学<ul>
-<li>shader</li>
-</ul>
-</li>
-<li>图形学应用场景<ul>
-<li>Image<ul>
-<li>pattern（多用于背景）</li>
-<li>photo</li>
-<li>shape</li>
-</ul>
-</li>
-<li>来自数学的图形—分形</li>
-<li>来自物理的图形—光的衍射<ul>
-<li>相变</li>
-<li>绿幕<ul>
-<li>PNG24 —&gt; 2张 jpg</li>
-</ul>
-</li>
-<li>3D效果<ul>
-<li>three.js</li>
-<li>babylon.js</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>图形学基础设施<ul>
-<li></li>
-</ul>
-</li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机图形学</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
-      </tags>
   </entry>
   <entry>
     <title>编程语言通识</title>
@@ -1999,6 +1923,129 @@
       </tags>
   </entry>
   <entry>
+    <title>OOP-面向对象</title>
+    <url>/2020/04/09/OOP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>昨天 Mentor 说以后要开始用 React Hooks（我还没有涉足 ）写点东西，进而谈论到 React 生态一直想推展开来的的函数式编程思想，我不由得想到一个问题：都说 Javascript 不是典型的面向对象编程语言，它并不具备完整的 OOP 该有的特性，它虽引进了 class 语法糖，但只是让对象原型写法更加像面向对象编程语言的写法，那面向对象到底可以理解为什么 ? 🤔 以及函数式编程思想在推什么？Javascript 定位究竟是什么？</li>
+<li>简单记录一下自己关于这个问题的思考<a id="more"></a>
+</li>
+</ul>
+<h2 id="OOP-Wikipedia"><a href="#OOP-Wikipedia" class="headerlink" title="OOP Wikipedia"></a>OOP Wikipedia</h2><ul>
+<li>探讨的是面向对象</li>
+<li>我们首先可以想想，我们为什么需要封装成对象？<ul>
+<li>我的理解是：我们需要减少我们的操作粒度，每个操作都去落实到 bit 数据是非常庞大的，减少问题求解复杂度</li>
+<li>wiki 上关于 object 特性也给到了支持</li>
+</ul>
+</li>
+<li><p>A feature of objects is an object’s procedures that can <strong>access</strong> and <strong>often modify the data fields</strong> of the object with which they are associated (objects have a notion of “this” or “self”).</p>
+<ul>
+<li>可以和面向过程 (Procedure Oriented) 放在一起说。</li>
+<li><p>首先 OOP 是一个很自然的思想，在C语言中也能写出<strong>符合</strong>面向对象思想的代码</p>
+  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C语言例子</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *name;  <span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">int</span> num;  <span class="comment">//学号</span></span><br><span class="line">    <span class="keyword">int</span> age;  <span class="comment">//年龄</span></span><br><span class="line">    <span class="keyword">char</span> group;  <span class="comment">//所在学习小组</span></span><br><span class="line">    <span class="keyword">float</span> score;  <span class="comment">//成绩</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">GetStudentName</span><span class="params">(struct Student* stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetStudentName</span><span class="params">(struct Student* stu, <span class="keyword">char</span>* newName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span> <span class="title">s1</span>, <span class="title">s2</span>, <span class="title">s3</span>, <span class="title">s4</span>;</span> <span class="comment">// 创建了多个学生</span></span><br><span class="line">    SetStudentName(&amp;s1, <span class="string">"小明"</span>);</span><br><span class="line">    SetStudentName(&amp;s2, <span class="string">"小红"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>其次 OOP 面向对象编程，在做一件什么事情？</p>
+<ul>
+<li><p>在面对复杂性业务需求中，面向对象思想可以将业务先进行分析，如果业务需求全新无关联，那我们可以新建一个对象，在里面封装对应的方法；如果业务需求只是一条延展线（比如特定节假日打折），那我们可以继承现有对象，并对现有对象的某些方法（discount），进行特定操作，即多态：用统一的方法对不同的对象进行同样的操作。</p>
+  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">override</span> fun <span class="title">discount</span><span class="params">(price: Double)</span>: Double </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (!isCouple()) <span class="keyword">return</span> price</span><br><span class="line">       <span class="keyword">if</span> (price &gt; <span class="number">99</span>) &#123;</span><br><span class="line">           val lucky = Random().nextInt(gifts.<span class="built_in">size</span>)</span><br><span class="line">           <span class="built_in">println</span>(<span class="string">"Congratulations on getting $&#123;gifts[lucky]&#125;!"</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> price * <span class="number">0.77</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>而面对这种频繁操作数据单元的使用面向过程编程思想，可能会在现有对象加上判断，万一节假日还要做其他的业务，判断只会越来越多。这就与我们 Nicklaus Wirth 提出的：<strong>程序 = 数据结构 + 算法</strong>，越来越割裂。</li>
+</ul>
+</li>
+<li>在我现在的浅薄思考看来：面向对象编程思想是想先让不同对象以尽可能的统一特性进行归组，形成“大对象”，然后各个对象变成了这个大对象中衍生出来的基类，并在父类派生出来的对象中，去实现各自解决问题的具体方法。这样当我们在拿到一个问题，我们可以不用去管它的内部实现，我们根据类型就可以知道它能做什么事，这比我们手动去一步一步执行要先进点。<strong>让对象有多态性，把不同对象以同一特性来归组，统一处理。至于所谓继承等概念，是实现的细节</strong>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="prototype-based-programming"><a href="#prototype-based-programming" class="headerlink" title="prototype-based programming"></a>prototype-based programming</h2><ul>
+<li>Languages with abstract data type support which may be used to <strong>resemble OO programming</strong>, but <strong>without all features of object-orientation</strong>. This includes object-based and <strong>prototype-based languages</strong>. Examples: JavaScript, Lua, Modula-2, CLU.</li>
+<li>The Document Object Model of HTML, XHTML, and XML documents on the Internet has bindings to the popular JavaScript/ECMAScript language. <strong>JavaScript is perhaps the best known prototype-based programming language, which employs cloning from prototypes rather than inheriting from a class (contrast to class-based programming)</strong>. </li>
+<li>我们在大概了解了 OOP 思想后，我们可以继续看看“类OOP”—基于原型编程 Javascript 实现</li>
+<li>我们可以先从 ECMA-262 规范中找到关于 Object 的定义<ul>
+<li>“Objects are created by using constructors in <strong>new expressions</strong>.”</li>
+<li>“Each constructor is a function that has a property named <strong>‘prototype’ that is used to implement prototype-based inheritance and shared properties</strong>.”</li>
+<li>“Every object created by a constructor has an implicit reference (called the object’s prototype) to the value of its constructor’s ‘prototype’ property. Furthermore, a prototype may have a non-null implicit reference to its prototype, and so on; this is called the prototype chain. When a reference is made to a property in an object, that reference is to the property of that name in the first object in the prototype chain that contains a property of that name. In other words, first the object mentioned directly is examined for such a property; if that object contains the named property, that is the property to which the reference refers; if that object does not contain the named property, the prototype for that object is examined next; and so on.”</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/54f432d1395e59da48e0e7935ffd7665110363.png" alt="ECMA原型链"></li>
+</ul>
+</li>
+<li><p>同时 Douglas Crockford 关于 <a href="https://crockford.com/javascript/prototypal.html" target="_blank" rel="noopener">prototypal inheritance</a></p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">       <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">       F.prototype = o;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>“The object function untangles JavaScript’s constructor pattern, achieving true prototypal inheritance. It takes an old object as a parameter and returns an empty new object that inherits from the old one. If we attempt to obtain a member from the new object, and it lacks that key, then the old object will supply the member. Objects inherit from objects.”</li>
+<li>“What could be more object oriented than that?” 😝</li>
+</ul>
+</li>
+<li>也有新的对 Object 的思考<ul>
+<li>“In JavaScript, <strong>an object is an associative array</strong>, augmented with a prototype (see below); each string key provides the name for an object property, and there are two syntactical ways to specify such a name: dot notation (obj.x = 10) and bracket notation (obj[‘x’] = 10). A property may be added, rebound, or deleted at run-time. Most properties of an object (and any property that belongs to an object’s prototype inheritance chain) can be enumerated using a for…in loop.”</li>
+</ul>
+</li>
+</ul>
+<h2 id="Functional-programming"><a href="#Functional-programming" class="headerlink" title="Functional programming"></a>Functional programming</h2><ul>
+<li>Functional programming has its origins in lambda calculus.It is a programming paradigm —- a style of building the structure and elements of computer programs — that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.</li>
+<li>One of the key motivations for the development of functional programming is making a program easier to understand by eliminating changes in state that <strong>do not depend on function inputs</strong> which are called side effects.</li>
+<li>side effects include modifying a non-local variable, modifying a static local variable, modifying a mutable argument passed by reference, performing I/O or calling other side-effect functions.</li>
+<li>referential transparency<ul>
+<li>the same language expression can result in different values at different times depending on the state of the executing program.</li>
+<li>Consider C assignment statement x = x <em> 10, this changes the value assigned to the variable x. Let us say that the initial value of x was 1, then two consecutive evaluations of the variable x yields 10 and 100 respectively. Clearly, replacing x = x </em> 10 with either 10 or 100 gives a program with different meaning, and so the expression is not referentially transparent. In fact, assignment statements are never referentially transparent.</li>
+<li>Absence of side effects is a necessary, but not sufficient, condition for referential transparency. <strong>Referential transparency means that an expression (such as a function call) can be replaced with its value</strong>. This requires that the expression is pure, that is to say the expression must be deterministic (always give the same value for the same input) and side-effect free.</li>
+</ul>
+</li>
+</ul>
+<h2 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h2><ul>
+<li>Javasript 说它是基于面向对象的编程语言是不严谨的，准确的说他是类面向对象的编程语言，基于原型的编程语言。</li>
+</ul>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects" target="_blank" rel="noopener">引入 Javascript 对象</a></li>
+<li><a href="https://software.intel.com/en-us/blogs/2008/08/22/flaws-of-object-oriented-modeling/" target="_blank" rel="noopener">Flaws of Object Oriented Modeling</a></li>
+<li><a href="https://books.google.com/books?id=xb-sAQAAQBAJ&amp;printsec=frontcover&amp;dq=isbn:9788090466180&amp;hl=zh-CN&amp;sa=X&amp;ved=0ahUKEwiG-8y8qdroAhWmUt8KHey5Dl0Q6AEIKDAA#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener">learn object oriented thinking &amp; programming</a></li>
+<li><a href="https://books.google.com/books?id=WzsFCAAAQBAJ&amp;printsec=frontcover&amp;dq=isbn:9780735619654&amp;hl=zh-CN&amp;sa=X&amp;ved=0ahUKEwiqzaPSqNroAhVvUd8KHc80CYEQ6AEIKDAA#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener">Obejct thinking</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener">Javascript Object-orientation (prototype-based)</a></li>
+<li><a href="https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep" target="_blank" rel="noopener">Introduction to Object Oriented Programming Concepts (OOP) and More</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank" rel="noopener">Functional_programming wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science" target="_blank" rel="noopener">Side effect wikipedia</a>)</li>
+<li><a href="https://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">Object-oriented programming wikipedia</a></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>有对 Object 以及对 reference 产生的 side effects<br>新的认识</li>
+<li>闭包 closure<ul>
+<li>A nested function is a function defined within another function. It is created each time the outer function is invoked. In addition, each nested function forms a lexical closure: The lexical scope of the outer function (including any constant, local variable, or argument value) becomes part of the internal state of each inner function object, even after execution of the outer function concludes.</li>
+</ul>
+</li>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>UTF8_Encoing</title>
     <url>/2020/04/21/UTF8-Encoing/</url>
     <content><![CDATA[<style  type="text/css">
@@ -2188,130 +2235,8 @@ for (let i = 7; i &gt;= 0; i --) {
         <category>前端概念</category>
       </categories>
       <tags>
-        <tag>前端概念 UTF-8</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OOP-面向对象</title>
-    <url>/2020/04/09/OOP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>昨天 Mentor 说以后要开始用 React Hooks（我还没有涉足 ）写点东西，进而谈论到 React 生态一直想推展开来的的函数式编程思想，我不由得想到一个问题：都说 Javascript 不是典型的面向对象编程语言，它并不具备完整的 OOP 该有的特性，它虽引进了 class 语法糖，但只是让对象原型写法更加像面向对象编程语言的写法，那面向对象到底可以理解为什么 ? 🤔 以及函数式编程思想在推什么？Javascript 定位究竟是什么？</li>
-<li>简单记录一下自己关于这个问题的思考<a id="more"></a>
-</li>
-</ul>
-<h2 id="OOP-Wikipedia"><a href="#OOP-Wikipedia" class="headerlink" title="OOP Wikipedia"></a>OOP Wikipedia</h2><ul>
-<li>探讨的是面向对象</li>
-<li>我们首先可以想想，我们为什么需要封装成对象？<ul>
-<li>我的理解是：我们需要减少我们的操作粒度，每个操作都去落实到 bit 数据是非常庞大的，减少问题求解复杂度</li>
-<li>wiki 上关于 object 特性也给到了支持</li>
-</ul>
-</li>
-<li><p>A feature of objects is an object’s procedures that can <strong>access</strong> and <strong>often modify the data fields</strong> of the object with which they are associated (objects have a notion of “this” or “self”).</p>
-<ul>
-<li>可以和面向过程 (Procedure Oriented) 放在一起说。</li>
-<li><p>首先 OOP 是一个很自然的思想，在C语言中也能写出<strong>符合</strong>面向对象思想的代码</p>
-  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C语言例子</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *name;  <span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">int</span> num;  <span class="comment">//学号</span></span><br><span class="line">    <span class="keyword">int</span> age;  <span class="comment">//年龄</span></span><br><span class="line">    <span class="keyword">char</span> group;  <span class="comment">//所在学习小组</span></span><br><span class="line">    <span class="keyword">float</span> score;  <span class="comment">//成绩</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">GetStudentName</span><span class="params">(struct Student* stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetStudentName</span><span class="params">(struct Student* stu, <span class="keyword">char</span>* newName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span> <span class="title">s1</span>, <span class="title">s2</span>, <span class="title">s3</span>, <span class="title">s4</span>;</span> <span class="comment">// 创建了多个学生</span></span><br><span class="line">    SetStudentName(&amp;s1, <span class="string">"小明"</span>);</span><br><span class="line">    SetStudentName(&amp;s2, <span class="string">"小红"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>其次 OOP 面向对象编程，在做一件什么事情？</p>
-<ul>
-<li><p>在面对复杂性业务需求中，面向对象思想可以将业务先进行分析，如果业务需求全新无关联，那我们可以新建一个对象，在里面封装对应的方法；如果业务需求只是一条延展线（比如特定节假日打折），那我们可以继承现有对象，并对现有对象的某些方法（discount），进行特定操作，即多态：用统一的方法对不同的对象进行同样的操作。</p>
-  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">override</span> fun <span class="title">discount</span><span class="params">(price: Double)</span>: Double </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (!isCouple()) <span class="keyword">return</span> price</span><br><span class="line">       <span class="keyword">if</span> (price &gt; <span class="number">99</span>) &#123;</span><br><span class="line">           val lucky = Random().nextInt(gifts.<span class="built_in">size</span>)</span><br><span class="line">           <span class="built_in">println</span>(<span class="string">"Congratulations on getting $&#123;gifts[lucky]&#125;!"</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> price * <span class="number">0.77</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>而面对这种频繁操作数据单元的使用面向过程编程思想，可能会在现有对象加上判断，万一节假日还要做其他的业务，判断只会越来越多。这就与我们 Nicklaus Wirth 提出的：<strong>程序 = 数据结构 + 算法</strong>，越来越割裂。</li>
-</ul>
-</li>
-<li>在我现在的浅薄思考看来：面向对象编程思想是想先让不同对象以尽可能的统一特性进行归组，形成“大对象”，然后各个对象变成了这个大对象中衍生出来的基类，并在父类派生出来的对象中，去实现各自解决问题的具体方法。这样当我们在拿到一个问题，我们可以不用去管它的内部实现，我们根据类型就可以知道它能做什么事，这比我们手动去一步一步执行要先进点。<strong>让对象有多态性，把不同对象以同一特性来归组，统一处理。至于所谓继承等概念，是实现的细节</strong>。</li>
-</ul>
-</li>
-</ul>
-<h2 id="prototype-based-programming"><a href="#prototype-based-programming" class="headerlink" title="prototype-based programming"></a>prototype-based programming</h2><ul>
-<li>Languages with abstract data type support which may be used to <strong>resemble OO programming</strong>, but <strong>without all features of object-orientation</strong>. This includes object-based and <strong>prototype-based languages</strong>. Examples: JavaScript, Lua, Modula-2, CLU.</li>
-<li>The Document Object Model of HTML, XHTML, and XML documents on the Internet has bindings to the popular JavaScript/ECMAScript language. <strong>JavaScript is perhaps the best known prototype-based programming language, which employs cloning from prototypes rather than inheriting from a class (contrast to class-based programming)</strong>. </li>
-<li>我们在大概了解了 OOP 思想后，我们可以继续看看“类OOP”—基于原型编程 Javascript 实现</li>
-<li>我们可以先从 ECMA-262 规范中找到关于 Object 的定义<ul>
-<li>“Objects are created by using constructors in <strong>new expressions</strong>.”</li>
-<li>“Each constructor is a function that has a property named <strong>‘prototype’ that is used to implement prototype-based inheritance and shared properties</strong>.”</li>
-<li>“Every object created by a constructor has an implicit reference (called the object’s prototype) to the value of its constructor’s ‘prototype’ property. Furthermore, a prototype may have a non-null implicit reference to its prototype, and so on; this is called the prototype chain. When a reference is made to a property in an object, that reference is to the property of that name in the first object in the prototype chain that contains a property of that name. In other words, first the object mentioned directly is examined for such a property; if that object contains the named property, that is the property to which the reference refers; if that object does not contain the named property, the prototype for that object is examined next; and so on.”</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/54f432d1395e59da48e0e7935ffd7665110363.png" alt="ECMA原型链"></li>
-</ul>
-</li>
-<li><p>同时 Douglas Crockford 关于 <a href="https://crockford.com/javascript/prototypal.html" target="_blank" rel="noopener">prototypal inheritance</a></p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">       <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">       F.prototype = o;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>“The object function untangles JavaScript’s constructor pattern, achieving true prototypal inheritance. It takes an old object as a parameter and returns an empty new object that inherits from the old one. If we attempt to obtain a member from the new object, and it lacks that key, then the old object will supply the member. Objects inherit from objects.”</li>
-<li>“What could be more object oriented than that?” 😝</li>
-</ul>
-</li>
-<li>也有新的对 Object 的思考<ul>
-<li>“In JavaScript, <strong>an object is an associative array</strong>, augmented with a prototype (see below); each string key provides the name for an object property, and there are two syntactical ways to specify such a name: dot notation (obj.x = 10) and bracket notation (obj[‘x’] = 10). A property may be added, rebound, or deleted at run-time. Most properties of an object (and any property that belongs to an object’s prototype inheritance chain) can be enumerated using a for…in loop.”</li>
-</ul>
-</li>
-</ul>
-<h2 id="Functional-programming"><a href="#Functional-programming" class="headerlink" title="Functional programming"></a>Functional programming</h2><ul>
-<li>Functional programming has its origins in lambda calculus.It is a programming paradigm —- a style of building the structure and elements of computer programs — that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.</li>
-<li>One of the key motivations for the development of functional programming is making a program easier to understand by eliminating changes in state that <strong>do not depend on function inputs</strong> which are called side effects.</li>
-<li>side effects include modifying a non-local variable, modifying a static local variable, modifying a mutable argument passed by reference, performing I/O or calling other side-effect functions.</li>
-<li>referential transparency<ul>
-<li>the same language expression can result in different values at different times depending on the state of the executing program.</li>
-<li>Consider C assignment statement x = x <em> 10, this changes the value assigned to the variable x. Let us say that the initial value of x was 1, then two consecutive evaluations of the variable x yields 10 and 100 respectively. Clearly, replacing x = x </em> 10 with either 10 or 100 gives a program with different meaning, and so the expression is not referentially transparent. In fact, assignment statements are never referentially transparent.</li>
-<li>Absence of side effects is a necessary, but not sufficient, condition for referential transparency. <strong>Referential transparency means that an expression (such as a function call) can be replaced with its value</strong>. This requires that the expression is pure, that is to say the expression must be deterministic (always give the same value for the same input) and side-effect free.</li>
-</ul>
-</li>
-</ul>
-<h2 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h2><ul>
-<li>Javasript 说它是基于面向对象的编程语言是不严谨的，准确的说他是类面向对象的编程语言，基于原型的编程语言。</li>
-</ul>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects" target="_blank" rel="noopener">引入 Javascript 对象</a></li>
-<li><a href="https://software.intel.com/en-us/blogs/2008/08/22/flaws-of-object-oriented-modeling/" target="_blank" rel="noopener">Flaws of Object Oriented Modeling</a></li>
-<li><a href="https://books.google.com/books?id=xb-sAQAAQBAJ&amp;printsec=frontcover&amp;dq=isbn:9788090466180&amp;hl=zh-CN&amp;sa=X&amp;ved=0ahUKEwiG-8y8qdroAhWmUt8KHey5Dl0Q6AEIKDAA#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener">learn object oriented thinking &amp; programming</a></li>
-<li><a href="https://books.google.com/books?id=WzsFCAAAQBAJ&amp;printsec=frontcover&amp;dq=isbn:9780735619654&amp;hl=zh-CN&amp;sa=X&amp;ved=0ahUKEwiqzaPSqNroAhVvUd8KHc80CYEQ6AEIKDAA#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener">Obejct thinking</a></li>
-<li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener">Javascript Object-orientation (prototype-based)</a></li>
-<li><a href="https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep" target="_blank" rel="noopener">Introduction to Object Oriented Programming Concepts (OOP) and More</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank" rel="noopener">Functional_programming wikipedia</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science" target="_blank" rel="noopener">Side effect wikipedia</a>)</li>
-<li><a href="https://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">Object-oriented programming wikipedia</a></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>有对 Object 以及对 reference 产生的 side effects<br>新的认识</li>
-<li>闭包 closure<ul>
-<li>A nested function is a function defined within another function. It is created each time the outer function is invoked. In addition, each nested function forms a lexical closure: The lexical scope of the outer function (including any constant, local variable, or argument value) becomes part of the internal state of each inner function object, even after execution of the outer function concludes.</li>
-</ul>
-</li>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
         <tag>前端概念</tag>
+        <tag>UTF-8</tag>
       </tags>
   </entry>
   <entry>
@@ -2570,6 +2495,83 @@ for (let i = 7; i &gt;= 0; i --) {
       </tags>
   </entry>
   <entry>
+    <title>【未完】计算机图形学初探</title>
+    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><p>记录 计算机图形学 方面的学习过程🤔</p>
+<a id="more"></a>
+</li>
+</ul>
+<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
+<li>前端与图形学<ul>
+<li>shader</li>
+</ul>
+</li>
+<li>图形学应用场景<ul>
+<li>Image<ul>
+<li>pattern（多用于背景）</li>
+<li>photo</li>
+<li>shape</li>
+</ul>
+</li>
+<li>来自数学的图形—分形</li>
+<li>来自物理的图形—光的衍射<ul>
+<li>相变</li>
+<li>绿幕<ul>
+<li>PNG24 —&gt; 2张 jpg</li>
+</ul>
+</li>
+<li>3D效果<ul>
+<li>three.js</li>
+<li>babylon.js</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>图形学基础设施<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机图形学</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript-convertStringToNumber</title>
     <url>/2020/04/24/convertStringToNumber/</url>
     <content><![CDATA[<style  type="text/css">
@@ -2766,10 +2768,11 @@ for (let i = 7; i &gt;= 0; i --) {
 </ul>
 ]]></content>
       <categories>
-        <category>前端概念 算法</category>
+        <category>前端概念</category>
       </categories>
       <tags>
-        <tag>前端概念 算法</tag>
+        <tag>算法</tag>
+        <tag>前端概念</tag>
       </tags>
   </entry>
 </search>
