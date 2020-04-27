@@ -2,9 +2,10 @@
 title: Reg-Number
 date: 2020-04-20 22:27:51
 tags:
-- 前端概念 正则表达式
-categories:
 - 前端概念
+- 正则表达式
+categories:
+- [前端概念]
 description:
 - 正则表达式，匹配所有 Number 字面量
 
