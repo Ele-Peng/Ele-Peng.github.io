@@ -1,6 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Javascript-Statement</title>
+    <url>/2020/04/26/Javascript-Statement/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h1><h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="简单语句"><a href="#简单语句" class="headerlink" title="简单语句"></a>简单语句</h3><ul>
+<li>ExpressionStatement<ul>
+<li>a = 1 + 2;</li>
+</ul>
+</li>
+<li>EmptyStatement<ul>
+<li>;</li>
+</ul>
+</li>
+<li>DebuggerStatement<ul>
+<li>debugger</li>
+</ul>
+</li>
+<li>ThrowStatement<ul>
+<li>throw a;</li>
+</ul>
+</li>
+<li>ContinueStatement<ul>
+<li>continue ;</li>
+<li>continue label;</li>
+</ul>
+</li>
+<li>BreakStatement<ul>
+<li>break ;</li>
+<li>break label;</li>
+</ul>
+</li>
+<li>ReturnStatement<ul>
+<li>return ;</li>
+<li>return expression;</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="组合语句"><a href="#组合语句" class="headerlink" title="组合语句"></a>组合语句</h3><ul>
+<li><p>BlockStatement</p>
+<ul>
+<li><p>把多条语句从语法上括起来，让它像一条语句一样</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  a: <span class="number">1</span> <span class="comment">// a 被理解为 label</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>BlockStatement 中有非 normal ，就会中断</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">  b = foo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>为 const / let 提供作用域</p>
+</li>
+<li><p>Completion Record</p>
+<ul>
+<li>[[type]]: normal</li>
+<li>[[value]]: –</li>
+<li>[[target]]: –</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IfStatement</p>
+</li>
+<li><p>SwitchStatement</p>
+</li>
+<li><p>IterationStatement</p>
+<ul>
+<li><p><s>for await(… of …)</s></p>
+</li>
+<li><p>while(Expression…) Statement…</p>
+</li>
+<li><p>do Statement… while(Expression…);</p>
+</li>
+<li><p>for(Definition…; Expression…; Expression…) Statement…</p>
+<ul>
+<li><p>Definition</p>
+<ul>
+<li>var</li>
+<li>const / let</li>
+</ul>
+</li>
+<li><p>for 会独立产生一个作用域，在 blockStatement 之外</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>for(Definition… in Expression…) Statement….</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>for(Definition…of Expression…) Statement…</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">g</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> p  <span class="keyword">of</span> g())&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>for of –&gt; Iterator –&gt; Generator/Array</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>WithStatement</p>
+</li>
+<li><p>LabelledStatement</p>
+</li>
+<li><p>TryStatement</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">catch</span>(definition...) &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="keyword">let</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> e = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>catch 中的声明，只在 {} 这一个作用域中，与 for 不一样。</p>
+</li>
+<li><p>运行时产生错误的时候，都有可能产生 throw</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> = a;</span><br><span class="line"><span class="literal">null</span>.a;</span><br></pre></td></tr></table></figure></li>
+<li><p>Completion Record</p>
+<ul>
+<li>[[type]]: return</li>
+<li>[[value]]: –</li>
+<li>[[target]]: label</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="标签、循环、break、continue"><a href="#标签、循环、break、continue" class="headerlink" title="标签、循环、break、continue"></a>标签、循环、break、continue</h3><ul>
+<li>LabelledStatement</li>
+<li>IterationStatement</li>
+<li>ContinueStatement</li>
+<li>BreakStatement</li>
+<li>SwitchStatement</li>
+<li>Completion Record<ul>
+<li>[[type]]: break continue</li>
+<li>[[value]]: –</li>
+<li>[[target]]: label</li>
+</ul>
+</li>
+</ul>
+<h3 id="声明机制"><a href="#声明机制" class="headerlink" title="声明机制"></a>声明机制</h3><ul>
+<li><p>FunctionDeclaration</p>
+</li>
+<li><p>GeneratorDeclaration</p>
+</li>
+<li><p>AsyncFunctionDeclaration</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i ++);</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
+<li><p>AsyncGeneratorDeclaration</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span> i ++;</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">&#125;()</span><br><span class="line"><span class="comment">// 想无限循环输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span>(<span class="keyword">let</span> e <span class="keyword">of</span> g) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
+<li><p>VariableStatement</p>
+</li>
+<li><p>ClassDeclaration</p>
+</li>
+<li><p>LexicalDeclaration</p>
+</li>
+<li><p>声明</p>
+<ul>
+<li><p>function</p>
+</li>
+<li><p>function *</p>
+</li>
+<li><p>async function</p>
+</li>
+<li><p>async function*</p>
+</li>
+<li><p>var</p>
+<ul>
+<li><p>有 var 不建议写在任何语句子结构里，建议写在 function 的范围内</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 0</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>class</p>
+</li>
+<li><p>const</p>
+</li>
+<li><p>let</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Completion-Record"><a href="#Completion-Record" class="headerlink" title="Completion Record"></a>Completion Record</h3><ul>
+<li>[[type]]: normal, break, continue, return, throw</li>
+<li>[[value]]: Types</li>
+<li>[[target]]: label</li>
+</ul>
+<h3 id="Lexical-Environment"><a href="#Lexical-Environment" class="headerlink" title="Lexical Environment"></a>Lexical Environment</h3><h2 id="预处理（pre-process）BoundNames"><a href="#预处理（pre-process）BoundNames" class="headerlink" title="预处理（pre-process）BoundNames"></a>预处理（pre-process）BoundNames</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a) </span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p><img src="http://p0.meituan.net/myvideodistribute/21745b775ee2bfb77aa1efdff233619737142.png" alt="var 预处理"></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">const</span> a;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p><img src="http://p1.meituan.net/myvideodistribute/172ab6a2ba78132f1dd33f2f5b64e11044523.png" alt="const 无预处理"></p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://p0.meituan.net/myvideodistribute/8b9ac53e3ae6dfca675786084237d0d971523.png" alt="作用域"></p>
+<ul>
+<li>作用域与上下文的区别<ul>
+<li>作用域可以简单理解为源代码文本的作用区域</li>
+<li>执行上下文可以理解为，在用户的电脑上，内存里的，存变量的地方，JavaScript 引擎在执行过程中需要的变量，引擎里的那块内存。</li>
+</ul>
+</li>
+</ul>
+<h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Elle-训练算法计划</title>
     <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
     <content><![CDATA[<style  type="text/css">
@@ -151,6 +379,218 @@
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Javascript Types</title>
+    <url>/2020/04/20/Javascript-Types/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
+<li><p>Unicode Blocks</p>
+<ul>
+<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
+<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
+</ul>
+</li>
+<li>U+000A LINE FEED 换行<ul>
+<li>Form Feed 翻页</li>
+<li>CJK 中文字符 Chinese Japan Korean</li>
+</ul>
+</li>
+<li>U+0020 SPACE 空格</li>
+<li>BMP 基本字符平面 四位能表示的范围</li>
+<li>超出BMP范围<ul>
+<li>fromCodePoint</li>
+<li>codePointAt</li>
+</ul>
+</li>
+<li>隐性需求需要可以使用\u转义<ul>
+<li>“厉害”.codePointAt(0).toString(16)</li>
+<li>\u5389\u5bb3<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>InputElement</p>
+<ul>
+<li>WhiteSpace 空格<ul>
+<li>&lt;TAB&gt; Character Tabulation</li>
+<li>&lt;VT&gt; Vertical Line</li>
+<li>&lt;FF&gt; Form Feed </li>
+<li>&lt;SP&gt; </li>
+<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
+<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
+<li>&lt;USP&gt;</li>
+</ul>
+</li>
+<li>LineTerminator 换行符<ul>
+<li>&lt;LF&gt; /n</li>
+<li>&lt;CR&gt; Carriage Return 回车 /r</li>
+<li>&lt;LS&gt; LINE SEPARATOR</li>
+<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
+</ul>
+</li>
+<li>Comment 注释</li>
+<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
+<li>自己写的，代码包含的有效信息<ul>
+<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
+<li>用作变量名，不能与关键字重复<ul>
+<li>undefined 全局变量名，修改不了</li>
+<li>离开全局作用域，便可以使用</li>
+</ul>
+</li>
+<li>用作属性的部分，可以与关键字重复</li>
+<li>Future reserved Keywords : enum</li>
+</ul>
+</li>
+<li><strong>Literal</strong> 直接量<ul>
+<li>Number    </li>
+<li>String</li>
+<li>Boolean</li>
+<li>Object</li>
+<li>Null</li>
+<li>Undefined</li>
+<li>Symbol</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>帮助程序形成结构<ul>
+<li><strong>Punctuator</strong> 符号</li>
+<li><strong>Keywords</strong> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
+<li><p>IEEE 754 Double Float</p>
+<ul>
+<li>Sign(1)</li>
+<li>Exponent(11) 指数，科学计数法</li>
+<li>Fraction(52)</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li>DecimaLiteral<ul>
+<li>0</li>
+<li>0.</li>
+<li>.2</li>
+<li>1e3</li>
+</ul>
+</li>
+<li>BinaryIntegerLiteral<ul>
+<li>0b111</li>
+</ul>
+</li>
+<li>OctalIntegerLiteral<ul>
+<li>0o10</li>
+</ul>
+</li>
+<li>HexIntegerLiteral<ul>
+<li>0xFF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>最佳实践</p>
+<ul>
+<li><p>浮点数比较时，需要加精度</p>
+<blockquote>
+<p>Number.MAX_SAFE_INTEGER</p>
+</blockquote>
+<blockquote>
+<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
+<li><p>Character</p>
+</li>
+<li><p>Code Point</p>
+</li>
+<li><p>Encoding</p>
+<blockquote>
+<p>97 .toString(2)</p>
+</blockquote>
+<blockquote>
+<p>“97.” 是一个合法的Number 01100001</p>
+</blockquote>
+<ul>
+<li>ASCII</li>
+<li>Unicode</li>
+<li>UCS U+0000 - U+FFFF</li>
+<li>GB<ul>
+<li>GB2312</li>
+<li>GBK(GB13000)</li>
+<li>GB18030</li>
+</ul>
+</li>
+<li>ISO-8859</li>
+<li>BIG5</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li><p>“abc”</p>
+<ul>
+<li>“\x10” –&gt; 8</li>
+<li>“\u000a”</li>
+</ul>
+</li>
+<li><p>‘abc’</p>
+</li>
+<li><p>`abc`</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
+<li>true</li>
+<li>false</li>
+</ul>
+<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
+<li>typeof 下为 Object</li>
+</ul>
+<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
       </tags>
   </entry>
   <entry>
@@ -417,8 +857,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Javascript-Statement</title>
-    <url>/2020/04/26/Javascript-Statement/</url>
+    <title>Reg -- String</title>
+    <url>/2020/04/21/Reg-String/</url>
     <content><![CDATA[<style  type="text/css">
 .lx-entry a {
     color: #191919;
@@ -445,413 +885,137 @@
 </style>
 
 
-<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h1><h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="简单语句"><a href="#简单语句" class="headerlink" title="简单语句"></a>简单语句</h3><ul>
-<li>ExpressionStatement<ul>
-<li>a = 1 + 2;</li>
-</ul>
-</li>
-<li>EmptyStatement<ul>
-<li>;</li>
-</ul>
-</li>
-<li>DebuggerStatement<ul>
-<li>debugger</li>
-</ul>
-</li>
-<li>ThrowStatement<ul>
-<li>throw a;</li>
-</ul>
-</li>
-<li>ContinueStatement<ul>
-<li>continue ;</li>
-<li>continue label;</li>
-</ul>
-</li>
-<li>BreakStatement<ul>
-<li>break ;</li>
-<li>break label;</li>
-</ul>
-</li>
-<li>ReturnStatement<ul>
-<li>return ;</li>
-<li>return expression;</li>
-</ul>
-</li>
-</ul>
-<a id="more"></a>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
 
-<h3 id="组合语句"><a href="#组合语句" class="headerlink" title="组合语句"></a>组合语句</h3><ul>
-<li><p>BlockStatement</p>
-<ul>
-<li><p>把多条语句从语法上括起来，让它像一条语句一样</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br><span class="line">&#96;&#96;&#96;		</span><br><span class="line">&#96;&#96;&#96;javascript</span><br><span class="line">&#123;</span><br><span class="line">  a: 1 &#x2F;&#x2F; a 被理解为 label</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>BlockStatement 中有非 normal ，就会中断</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">  b = foo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>为 const / let 提供作用域</p>
-</li>
-<li><p>Completion Record</p>
-<ul>
-<li>[[type]]: normal</li>
-<li>[[value]]: –</li>
-<li>[[target]]: –</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>IfStatement</p>
-</li>
-<li><p>SwitchStatement</p>
-</li>
-<li><p>IterationStatement</p>
-<ul>
-<li><p>while(Expression…) Statement…</p>
-</li>
-<li><p>do Statement… while(Expression…);</p>
-</li>
-<li><p>for(Definition…; Expression…; Expression…) Statement…</p>
-<ul>
-<li><p>Definition</p>
-<ul>
-<li>var</li>
-<li>const / let</li>
-</ul>
-</li>
-<li><p>for 会独立产生一个作用域，在 blockStatement 之外</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>for(Definition… in Expression…) Statement….</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>for(Definition…of Expression…) Statement…</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">g</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> p  <span class="keyword">of</span> g())&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
+</li>
+<li><p>StringLiteral ::</p>
+<ul>
+<li><p>DoubleStringCharacters</p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/03c05dd8a9fd5b8b621593fe039e4e6c16908.png" alt="DoubleStringCharacters 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/ef23a0f824e9fc948b61da6c4a8d2a4729602.png" alt="DoubleStringCharacter 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/9004c303c8ebdbb8e38c00e7597b2c5b10649.png" alt="SourceCharacter 详情"></p>
 <blockquote>
-<p>for of –&gt; Iterator –&gt; Generator/Array</p>
+<p>\\u[0-9a-fA-F]{4}</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/25a7c00f444aaead5b3a187d09ab280a16997.png" alt="EscapeSequence 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/ef30597fe4124e22ae7fcf243d9712a310845.png" alt="CharacterEscapeSequence 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/b495509fe89ca78a7d2f5f06831d45c79074.png" alt="SingleEscapeCharacter 详情"></p>
+<blockquote>
+<p>‘“\\bfnrtv</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/7ce330d5a54c7c8ac927771ee7a0540814453.png" alt="NonEscapeCharacter 详情"></p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/f3d3a1b2fba86ebd4b8b6ab2959302e610550.png" alt="EscapeCharacter 详情"></p>
+<blockquote>
+<p>‘“\\bfnrtv0-9xu </p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/8c027b4dfef1876ad432fd62b6ecc4a59724.png" alt="LineTerminator 详情"></p>
+<blockquote>
+<p>\n\r\u2028\u2029</p>
+</blockquote>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/02a7f707581cb217ab5025d7a48e67e829247.png" alt="LineTerminator 码点"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>CharacterEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>‘“\\bfnrtv0-9xu\n\r\u2028\u2029</p>
+</blockquote>
+</li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/9207083723607a9faa4f0a560599dde17694.png" alt="HexEscapeSequence 详情"></p>
+</li>
+<li><p><strong>HexEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>\\x[0-9a-fA-F]{2}</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/545f52e053421a0e9c5e3b231a96276d10075.png" alt="UnicodeEscapeSequence 详情"></p>
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/8bb8c713ee753fd2844aea95e3ecde417620.png" alt="Hex4Digits 详情"></li>
+</ul>
+</li>
+<li><p><strong>UnicodeEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p> \\u[0-9a-fA-F]{4}</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>EscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4})</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/bd86a4d39c1ae8d719eca6afbd9dcb147948.png" alt="LineContinuation 详情"></p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/e8b4e35d4653ecb6a0f89d848085f69b14054.png" alt="LineTerminatorSequence 详情"></li>
+</ul>
+</li>
+<li><p><strong>LineContinuation</strong>总结为：</p>
+<blockquote>
+<p>\\\n\r\u\2028]2029</p>
 </blockquote>
 </li>
 </ul>
 </li>
 </ul>
-<pre><code>- &lt;s&gt;for await(... of ...)&lt;/s&gt;</code></pre><ul>
-<li><p>WithStatement</p>
 </li>
-<li><p>LabelledStatement</p>
+</ul>
 </li>
-<li><p>TryStatement</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">catch</span>(definition...) &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="keyword">let</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> e = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p><strong>DoubleStringCharacters</strong>总结为：</p>
+<blockquote>
+<p>“(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”</p>
+</blockquote>
+</li>
+<li><p>SingleStringCharacters</p>
 <ul>
-<li><p>catch 中的声明，只在 {} 这一个作用域中，与 for 不一样。</p>
-</li>
-<li><p>运行时产生错误的时候，都有可能产生 throw</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> = a;</span><br><span class="line"><span class="literal">null</span>.a;</span><br></pre></td></tr></table></figure></li>
-<li><p>Completion Record</p>
-<ul>
-<li>[[type]]: return</li>
-<li>[[value]]: –</li>
-<li>[[target]]: label</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/6d2e2b31ed15050de59907d5537b9e9219247.png" alt="SingleStringCharacters 大纲"></li>
 </ul>
+</li>
+<li><p><strong>SingleStringCharacters</strong>总结为：</p>
+<blockquote>
+<p>‘(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’</p>
+</blockquote>
 </li>
 </ul>
 </li>
-</ul>
-<h3 id="标签、循环、break、continue"><a href="#标签、循环、break、continue" class="headerlink" title="标签、循环、break、continue"></a>标签、循环、break、continue</h3><ul>
-<li>LabelledStatement</li>
-<li>IterationStatement</li>
-<li>ContinueStatement</li>
-<li>BreakStatement</li>
-<li>SwitchStatement</li>
-<li>Completion Record<ul>
-<li>[[type]]: break continue</li>
-<li>[[value]]: –</li>
-<li>[[target]]: label</li>
-</ul>
-</li>
-</ul>
-<h3 id="声明机制"><a href="#声明机制" class="headerlink" title="声明机制"></a>声明机制</h3><ul>
-<li><p>FunctionDeclaration</p>
-</li>
-<li><p>GeneratorDeclaration</p>
-</li>
-<li><p>AsyncFunctionDeclaration</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i ++);</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
-<li><p>AsyncGeneratorDeclaration</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span> i ++;</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">&#125;()</span><br><span class="line"><span class="comment">// 想无限循环输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span>(<span class="keyword">let</span> e <span class="keyword">of</span> g) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
-<li><p>VariableStatement</p>
-</li>
-<li><p>ClassDeclaration</p>
-</li>
-<li><p>LexicalDeclaration</p>
-</li>
-<li><p>声明</p>
-<ul>
-<li><p>function</p>
-</li>
-<li><p>function *</p>
-</li>
-<li><p>async function</p>
-</li>
-<li><p>async function*</p>
-</li>
-<li><p>var</p>
-<ul>
-<li><p>有 var 不建议写在任何语句子结构里，建议写在 function 的范围内</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 0</span></span><br></pre></td></tr></table></figure>
+<li><p><strong>StringLiteral</strong>总结为：</p>
+<blockquote>
+<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>class</p>
-</li>
-<li><p>const</p>
-</li>
-<li><p>let</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Completion-Record"><a href="#Completion-Record" class="headerlink" title="Completion Record"></a>Completion Record</h3><ul>
-<li>[[type]]: normal, break, continue, return, throw</li>
-<li>[[value]]: Types</li>
-<li>[[target]]: label</li>
-</ul>
-<h3 id="Lexical-Environment"><a href="#Lexical-Environment" class="headerlink" title="Lexical Environment"></a>Lexical Environment</h3><h2 id="预处理（pre-process）BoundNames"><a href="#预处理（pre-process）BoundNames" class="headerlink" title="预处理（pre-process）BoundNames"></a>预处理（pre-process）BoundNames</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a) </span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-<p><img src="http://p0.meituan.net/myvideodistribute/21745b775ee2bfb77aa1efdff233619737142.png" alt="var 预处理"></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">const</span> a;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-<p><img src="http://p1.meituan.net/myvideodistribute/172ab6a2ba78132f1dd33f2f5b64e11044523.png" alt="const 无预处理"></p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://p0.meituan.net/myvideodistribute/8b9ac53e3ae6dfca675786084237d0d971523.png" alt="作用域"></p>
-<ul>
-<li>作用域与上下文的区别<ul>
-<li>作用域可以简单理解为源代码文本的作用区域</li>
-<li>执行上下文可以理解为，在用户的电脑上，内存里的，存变量的地方，JavaScript 引擎在执行过程中需要的变量，引擎里的那块内存。</li>
-</ul>
 </li>
 </ul>
-<h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1>]]></content>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
       <categories>
         <category>前端概念</category>
       </categories>
       <tags>
         <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Javascript Types</title>
-    <url>/2020/04/20/Javascript-Types/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
-<li><p>Unicode Blocks</p>
-<ul>
-<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
-<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
-</ul>
-</li>
-<li>U+000A LINE FEED 换行<ul>
-<li>Form Feed 翻页</li>
-<li>CJK 中文字符 Chinese Japan Korean</li>
-</ul>
-</li>
-<li>U+0020 SPACE 空格</li>
-<li>BMP 基本字符平面 四位能表示的范围</li>
-<li>超出BMP范围<ul>
-<li>fromCodePoint</li>
-<li>codePointAt</li>
-</ul>
-</li>
-<li>隐性需求需要可以使用\u转义<ul>
-<li>“厉害”.codePointAt(0).toString(16)</li>
-<li>\u5389\u5bb3<a id="more"></a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>InputElement</p>
-<ul>
-<li>WhiteSpace 空格<ul>
-<li>&lt;TAB&gt; Character Tabulation</li>
-<li>&lt;VT&gt; Vertical Line</li>
-<li>&lt;FF&gt; Form Feed </li>
-<li>&lt;SP&gt; </li>
-<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
-<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
-<li>&lt;USP&gt;</li>
-</ul>
-</li>
-<li>LineTerminator 换行符<ul>
-<li>&lt;LF&gt; /n</li>
-<li>&lt;CR&gt; Carriage Return 回车 /r</li>
-<li>&lt;LS&gt; LINE SEPARATOR</li>
-<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
-</ul>
-</li>
-<li>Comment 注释</li>
-<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
-<li>自己写的，代码包含的有效信息<ul>
-<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
-<li>用作变量名，不能与关键字重复<ul>
-<li>undefined 全局变量名，修改不了</li>
-<li>离开全局作用域，便可以使用</li>
-</ul>
-</li>
-<li>用作属性的部分，可以与关键字重复</li>
-<li>Future reserved Keywords : enum</li>
-</ul>
-</li>
-<li><strong>Literal</strong> 直接量<ul>
-<li>Number    </li>
-<li>String</li>
-<li>Boolean</li>
-<li>Object</li>
-<li>Null</li>
-<li>Undefined</li>
-<li>Symbol</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>帮助程序形成结构<ul>
-<li><strong>Punctuator</strong> 符号</li>
-<li><strong>Keywords</strong> </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
-<li><p>IEEE 754 Double Float</p>
-<ul>
-<li>Sign(1)</li>
-<li>Exponent(11) 指数，科学计数法</li>
-<li>Fraction(52)</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li>DecimaLiteral<ul>
-<li>0</li>
-<li>0.</li>
-<li>.2</li>
-<li>1e3</li>
-</ul>
-</li>
-<li>BinaryIntegerLiteral<ul>
-<li>0b111</li>
-</ul>
-</li>
-<li>OctalIntegerLiteral<ul>
-<li>0o10</li>
-</ul>
-</li>
-<li>HexIntegerLiteral<ul>
-<li>0xFF</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>最佳实践</p>
-<ul>
-<li><p>浮点数比较时，需要加精度</p>
-<blockquote>
-<p>Number.MAX_SAFE_INTEGER</p>
-</blockquote>
-<blockquote>
-<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
-<li><p>Character</p>
-</li>
-<li><p>Code Point</p>
-</li>
-<li><p>Encoding</p>
-<blockquote>
-<p>97 .toString(2)</p>
-</blockquote>
-<blockquote>
-<p>“97.” 是一个合法的Number 01100001</p>
-</blockquote>
-<ul>
-<li>ASCII</li>
-<li>Unicode</li>
-<li>UCS U+0000 - U+FFFF</li>
-<li>GB<ul>
-<li>GB2312</li>
-<li>GBK(GB13000)</li>
-<li>GB18030</li>
-</ul>
-</li>
-<li>ISO-8859</li>
-<li>BIG5</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li><p>“abc”</p>
-<ul>
-<li>“\x10” –&gt; 8</li>
-<li>“\u000a”</li>
-</ul>
-</li>
-<li><p>‘abc’</p>
-</li>
-<li><p>`abc`</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
-<li>true</li>
-<li>false</li>
-</ul>
-<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
-<li>typeof 下为 Object</li>
-</ul>
-<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
+        <tag>正则表达式</tag>
       </tags>
   </entry>
   <entry>
@@ -1046,168 +1210,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Reg -- String</title>
-    <url>/2020/04/21/Reg-String/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
-
-
-</li>
-</ul>
-<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
-</li>
-<li><p>StringLiteral ::</p>
-<ul>
-<li><p>DoubleStringCharacters</p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/03c05dd8a9fd5b8b621593fe039e4e6c16908.png" alt="DoubleStringCharacters 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/ef23a0f824e9fc948b61da6c4a8d2a4729602.png" alt="DoubleStringCharacter 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/9004c303c8ebdbb8e38c00e7597b2c5b10649.png" alt="SourceCharacter 详情"></p>
-<blockquote>
-<p>\\u[0-9a-fA-F]{4}</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/25a7c00f444aaead5b3a187d09ab280a16997.png" alt="EscapeSequence 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/ef30597fe4124e22ae7fcf243d9712a310845.png" alt="CharacterEscapeSequence 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/b495509fe89ca78a7d2f5f06831d45c79074.png" alt="SingleEscapeCharacter 详情"></p>
-<blockquote>
-<p>‘“\\bfnrtv</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/7ce330d5a54c7c8ac927771ee7a0540814453.png" alt="NonEscapeCharacter 详情"></p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/f3d3a1b2fba86ebd4b8b6ab2959302e610550.png" alt="EscapeCharacter 详情"></p>
-<blockquote>
-<p>‘“\\bfnrtv0-9xu </p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/8c027b4dfef1876ad432fd62b6ecc4a59724.png" alt="LineTerminator 详情"></p>
-<blockquote>
-<p>\n\r\u2028\u2029</p>
-</blockquote>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/02a7f707581cb217ab5025d7a48e67e829247.png" alt="LineTerminator 码点"></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>CharacterEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>‘“\\bfnrtv0-9xu\n\r\u2028\u2029</p>
-</blockquote>
-</li>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/9207083723607a9faa4f0a560599dde17694.png" alt="HexEscapeSequence 详情"></p>
-</li>
-<li><p><strong>HexEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>\\x[0-9a-fA-F]{2}</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/545f52e053421a0e9c5e3b231a96276d10075.png" alt="UnicodeEscapeSequence 详情"></p>
-<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/8bb8c713ee753fd2844aea95e3ecde417620.png" alt="Hex4Digits 详情"></li>
-</ul>
-</li>
-<li><p><strong>UnicodeEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p> \\u[0-9a-fA-F]{4}</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>EscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4})</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/bd86a4d39c1ae8d719eca6afbd9dcb147948.png" alt="LineContinuation 详情"></p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/e8b4e35d4653ecb6a0f89d848085f69b14054.png" alt="LineTerminatorSequence 详情"></li>
-</ul>
-</li>
-<li><p><strong>LineContinuation</strong>总结为：</p>
-<blockquote>
-<p>\\\n\r\u\2028]2029</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>DoubleStringCharacters</strong>总结为：</p>
-<blockquote>
-<p>“(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”</p>
-</blockquote>
-</li>
-<li><p>SingleStringCharacters</p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/6d2e2b31ed15050de59907d5537b9e9219247.png" alt="SingleStringCharacters 大纲"></li>
-</ul>
-</li>
-<li><p><strong>SingleStringCharacters</strong>总结为：</p>
-<blockquote>
-<p>‘(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>StringLiteral</strong>总结为：</p>
-<blockquote>
-<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
-</blockquote>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-        <tag>正则表达式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>convertNumberToString</title>
     <url>/2020/04/25/convertNumberToString/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1311,8 +1313,8 @@
         <category>前端概念</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>前端概念</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1695,6 +1697,41 @@
       </tags>
   </entry>
   <entry>
+    <title>数组、链表、跳表</title>
+    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
+<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
+<li>数学归纳法</li>
+<li>找最近重复问题</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>自己的前端知识体系</title>
     <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1739,81 +1776,6 @@
       </categories>
       <tags>
         <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【未完】计算机图形学初探</title>
-    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li><p>记录 计算机图形学 方面的学习过程🤔</p>
-<a id="more"></a>
-
-</li>
-</ul>
-<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>前端与图形学<ul>
-<li>shader</li>
-</ul>
-</li>
-<li>图形学应用场景<ul>
-<li>Image<ul>
-<li>pattern（多用于背景）</li>
-<li>photo</li>
-<li>shape</li>
-</ul>
-</li>
-<li>来自数学的图形–分形</li>
-<li>来自物理的图形–光的衍射<ul>
-<li>相变</li>
-<li>绿幕<ul>
-<li>PNG24 –&gt; 2张 jpg</li>
-</ul>
-</li>
-<li>3D效果<ul>
-<li>three.js</li>
-<li>babylon.js</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机图形学</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
       </tags>
   </entry>
   <entry>
@@ -2087,8 +2049,8 @@
       </tags>
   </entry>
   <entry>
-    <title>数组、链表、跳表</title>
-    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
+    <title>【未完】计算机图形学初探</title>
+    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
     <content><![CDATA[<style  type="text/css">
 .lx-entry a {
     color: #191919;
@@ -2114,12 +2076,52 @@
 }
 </style>
 
-<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
-<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
-<li>数学归纳法</li>
-<li>找最近重复问题</li>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><p>记录 计算机图形学 方面的学习过程🤔</p>
+<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
+<li>前端与图形学<ul>
+<li>shader</li>
+</ul>
+</li>
+<li>图形学应用场景<ul>
+<li>Image<ul>
+<li>pattern（多用于背景）</li>
+<li>photo</li>
+<li>shape</li>
+</ul>
+</li>
+<li>来自数学的图形–分形</li>
+<li>来自物理的图形–光的衍射<ul>
+<li>相变</li>
+<li>绿幕<ul>
+<li>PNG24 –&gt; 2张 jpg</li>
+</ul>
+</li>
+<li>3D效果<ul>
+<li>three.js</li>
+<li>babylon.js</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>计算机图形学</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+      </tags>
   </entry>
   <entry>
     <title>OOP-面向对象</title>
@@ -3087,8 +3089,8 @@
         <category>前端概念</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>前端概念</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
 </search>

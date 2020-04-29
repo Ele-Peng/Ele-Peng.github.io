@@ -74,17 +74,16 @@ description:
 - BlockStatement
 	- 把多条语句从语法上括起来，让它像一条语句一样
 	
-		```javascritp
-		{
-		  Statement...
-		  Statement...
-		  Statement...
-		}
-		```		
 		```javascript
 		{
-		  a: 1 // a 被理解为 label
+		  Statement...
+		  Statement...
+		  Statement...
 		}
+
+  {
+    a: 1 // a 被理解为 label
+  }
 		```
 	- BlockStatement 中有非 normal ，就会中断
 		
@@ -105,6 +104,7 @@ description:
 - IfStatement
 - SwitchStatement
 - IterationStatement
+    - <s>for await(... of ...)</s>
 	- while(Expression...) Statement...
 	- do Statement... while(Expression...);
 	- for(Definition...; Expression...; Expression...) Statement...
@@ -151,7 +151,6 @@ description:
 		> for of --> Iterator --> Generator/Array
 		
 		
-	- <s>for await(... of ...)</s>
 
 - WithStatement
 - LabelledStatement
