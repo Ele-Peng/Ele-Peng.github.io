@@ -95,12 +95,12 @@ description:
 	    }
 		```
 		- 而面对这种频繁操作数据单元的使用面向过程编程思想，可能会在现有对象加上判断，万一节假日还要做其他的业务，判断只会越来越多。这就与我们 Nicklaus Wirth 提出的：**程序 = 数据结构 + 算法**，越来越割裂。
-	- 在我现在的浅薄思考看来：面向对象编程思想是想先让不同对象以尽可能的统一特性进行归组，形成“大对象”，然后各个对象变成了这个大对象中衍生出来的基类，并在父类派生出来的对象中，去实现各自解决问题的具体方法。这样当我们在拿到一个问题，我们可以不用去管它的内部实现，我们根据类型就可以知道它能做什么事，这比我们手动去一步一步执行要先进点。**让对象有多态性，把不同对象以同一特性来归组，统一处理。至于所谓继承等概念，是实现的细节**。
+	- 在我现在的浅薄思考看来：面向对象编程思想比较广泛的 Object-based 实现是想先让不同对象以尽可能的统一特性进行归组，形成“大对象”，然后各个对象变成了这个大对象中衍生出来的基类，并在父类派生出来的对象中，去实现各自解决问题的具体方法。这样当我们在拿到一个问题，我们可以不用去管它的内部实现，我们根据类型就可以知道它能做什么事，这比我们手动去一步一步执行要先进点。**让对象有多态性，把不同对象以同一特性来归组，统一处理。至于所谓继承等概念，是实现的细节**。
 
 ## prototype-based programming
 - Languages with abstract data type support which may be used to **resemble OO programming**, but **without all features of object-orientation**. This includes object-based and **prototype-based languages**. Examples: JavaScript, Lua, Modula-2, CLU.
 - The Document Object Model of HTML, XHTML, and XML documents on the Internet has bindings to the popular JavaScript/ECMAScript language. **JavaScript is perhaps the best known prototype-based programming language, which employs cloning from prototypes rather than inheriting from a class (contrast to class-based programming)**. 
-- 我们在大概了解了 OOP 思想后，我们可以继续看看“类OOP”--基于原型编程 Javascript 实现
+- 我们在大概了解了 OOP 思想后，我们可以继续看看 OOP编程思想的另一种实现“类OOP”--基于原型编程 Javascript 实现
 - 我们可以先从 ECMA-262 规范中找到关于 Object 的定义
 	- "Objects are created by using constructors in **new expressions**."
 	- "Each constructor is a function that has a property named **'prototype' that is used to implement prototype-based inheritance and shared properties**."
@@ -130,7 +130,27 @@ description:
 	- Absence of side effects is a necessary, but not sufficient, condition for referential transparency. **Referential transparency means that an expression (such as a function call) can be replaced with its value**. This requires that the expression is pure, that is to say the expression must be deterministic (always give the same value for the same input) and side-effect free.
 
 ## 个人总结
-- Javasript 说它是基于面向对象的编程语言是不严谨的，准确的说他是类面向对象的编程语言，基于原型的编程语言。
+- Javasript 说它是基于面向对象的编程语言是不严谨的，准确的说他是面向对象的编程语言，的基于原型实现的编程语言。
+
+## All Objects in Javascript
+- 可参考[ECMA-Script 262 Chapter18.3 Constructor Properties of the Global Object P399](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 
+
+	| 基本类型|  Error  | 数据结构 & 内置对象  | TypedArray |
+	| --- | --- | --- | --- |
+	| Boolean | Error | Array | Float32Array |
+	| Number | EvalError |	ArrayBuffer |	 Float64Array |
+	| Object | RangeError | DataView | Int8Array |
+	| String | ReferenceError | Date | Int16Array |
+	| Symbol | SyntaxError | Function | Int32Array |
+	|  | TypeError | Map | Uint8Array |
+	|  | URIError | Promise | Uint8ClampedArray |
+	|  |  | Proxy | Uint16Array |
+	|  |  | RegExp | Uint32Array |
+	|  |  |Set |  |
+	|  |  | SharedArrayBuffer |  |
+	|  |  | WeakMap |  |
+	|  |  | WeakSet |  |
+
 
 ## 参考文献
 - [引入 Javascript 对象](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects)
