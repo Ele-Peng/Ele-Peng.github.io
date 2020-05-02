@@ -131,7 +131,9 @@
 <li>五一倒计时 3 天</li>
 </ul>
 <a id="more"></a>
+
 <h2 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line">#import &lt;JavaScriptCore&#x2F;JavaScriptCore.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argx, const char * argv[]) &#123;</span><br><span class="line">  @autoreleasepool &#123;</span><br><span class="line">    &#x2F;&#x2F; var context &#x3D; new JSContext</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; define a javascript context</span><br><span class="line">    JSContext* context &#x3D; [[JSContext alloc] init];</span><br><span class="line">    &#x2F;&#x2F; like:var result &#x3D; null;</span><br><span class="line">    JSValue* result;</span><br><span class="line">    </span><br><span class="line">    while(true) &#123;</span><br><span class="line">      char sourcecode[1024];</span><br><span class="line">      </span><br><span class="line">      scanf(&#39;%s&#39;, &amp;sourcecode);</span><br><span class="line">      NSString* code &#x3D; [NSString stringWithUTF8String: sourcecode];</span><br><span class="line">      </span><br><span class="line">      result &#x3D; [context evaluateScript:code];</span><br><span class="line">      </span><br><span class="line">      NSLog(@&quot;%@&quot;, [result toString]);</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>如上实现一个简单的事件循环，用来输出 console</li>
 <li><img src="http://p1.meituan.net/myvideodistribute/a99619da1cded49f443ded2fc219b27432778.png" alt="OC 方法"></li>
@@ -144,10 +146,12 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line">#import &lt;JavaScriptCore&#x2F;JavaScriptCore.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argx, const char * argv[]) &#123;</span><br><span class="line">  @autoreleasepool &#123;</span><br><span class="line">    &#x2F;&#x2F; var context &#x3D; new JSContext</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; define a javascript context</span><br><span class="line">    JSContext* context &#x3D; [[JSContext alloc] init];</span><br><span class="line">    &#x2F;&#x2F; like:var result &#x3D; null;</span><br><span class="line">    JSValue* result;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; TODO: calculate the square of arg x</span><br><span class="line">    NSString* code &#x3D; @&quot;(function(x)&#123; return x * x; &#125;)&quot;;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; like: result &#x3D; (function(x)&#123; return x * x; &#125;)</span><br><span class="line">    result &#x3D; [context evaluateScript:code];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; passing the number 4 into the function</span><br><span class="line">    JSValue* arg1 &#x3D; [JSValue valueWithInt32:4 inContext:context];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; execute the function with arg of 4</span><br><span class="line">    NSLog(@&quot;%@&quot;, [[result callWithArguments:@[arg1]] toString]);</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>上面的 Object-C 代码，可以看出来，我们是将一段一段的代码，传入 evaluateScript 中执行。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line">#import &lt;JavaScriptCore&#x2F;JavaScriptCore.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argx, const char * argv[]) &#123;</span><br><span class="line">  @autoreleasepool &#123;</span><br><span class="line">    &#x2F;&#x2F; var context &#x3D; new JSContext</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; define a javascript context</span><br><span class="line">    JSContext* context &#x3D; [[JSContext alloc] init];</span><br><span class="line">    &#x2F;&#x2F; like:var result &#x3D; null;</span><br><span class="line">    JSValue* result;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; TODO: calculate the square of arg x</span><br><span class="line">    NSString* code &#x3D; @&quot;new Promise(resolve &#x3D;&gt; resolve()).then(() &#x3D;&gt; this.a &#x3D; 3), function()&#123;return this.a&#125;;&quot;;</span><br><span class="line">        </span><br><span class="line">    result &#x3D; [context evaluateScript:code];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; like: result();</span><br><span class="line">    NSLog(@&quot;%@&quot;, [[result callWithArguments:@[]] toString]);</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>evaluateScript 实际上执行两步：</p>
 <ol>
@@ -159,7 +163,8 @@
 <li>逗号表达式，永远返回后面的值，如果被调用，前面的会被执行</li>
 </ul>
 </li>
-<li>执行 Promise 中 then 后面的语句</li>
+<li><p>执行 Promise 中 then 后面的语句</p>
+</li>
 </ol>
 <ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/81d945c99778450fd86a710f20355cbc269796.png" alt="evaluateScript"></li>
@@ -168,13 +173,18 @@
 <li>而 Promise 是 JS 本身自带的 API，这种就是微任务。</li>
 </ul>
 </li>
-<li>总结：<strong>宿主提供的方法是宏任务，JS 自带的是微任务</strong></li>
-<li><strong>任务列表列里面有很多宏任务，然后每个宏任务里面有一个微任务列表，每个宏任务执行下一个宏任务之前会把自己内部的微任务执行完</strong></li>
-<li><strong>宏任务</strong>包括：script 、setTimeout、setInterval 、setImmediate 、I/O 、UI rendering。</li>
-<li><strong>微任务</strong>包括：MutationObserver、Promise.then()或catch()、Promise为基础开发的其它技术，比如fetch API、V8的垃圾回收过程、Node独有的process.nextTick。</li>
+<li><p>总结：<strong>宿主提供的方法是宏任务，JS 自带的是微任务</strong></p>
+</li>
+<li><p><strong>任务列表列里面有很多宏任务，然后每个宏任务里面有一个微任务列表，每个宏任务执行下一个宏任务之前会把自己内部的微任务执行完</strong></p>
+</li>
+<li><p><strong>宏任务</strong>包括：script 、setTimeout、setInterval 、setImmediate 、I/O 、UI rendering。</p>
+</li>
+<li><p><strong>微任务</strong>包括：MutationObserver、Promise.then()或catch()、Promise为基础开发的其它技术，比如fetch API、V8的垃圾回收过程、Node独有的process.nextTick。</p>
+</li>
 </ul>
 <h2 id="实践记录"><a href="#实践记录" class="headerlink" title="实践记录"></a>实践记录</h2><h3 id="基础题"><a href="#基础题" class="headerlink" title="基础题"></a>基础题</h3><p>1.1 题目一</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'1'</span>, promise1);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析：</p>
 <ul>
@@ -185,7 +195,8 @@
 </li>
 <li><p>再执行同步代码</p>
 </li>
-<li>执行完后， promise1 中并没有 resolved, rejected， 一直处在 pending 的状态</li>
+<li><p>执行完后， promise1 中并没有 resolved, rejected， 一直处在 pending 的状态</p>
+</li>
 </ul>
 </li>
 <li><p>运行结果</p>
@@ -196,6 +207,7 @@
 </ul>
 <p>1.2 题目二</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  resolve(<span class="string">'success'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -224,6 +236,7 @@
 </ul>
 <p>1.3 题目三</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -249,6 +262,7 @@
 </ul>
 <p>1.4 题目四</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</span><br><span class="line">  resolve(<span class="string">'resolve1'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> promise2 = promise1.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'1'</span>, promise1);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'2'</span>, promise2);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -287,6 +301,7 @@
 </ul>
 <p>1.5 题目五</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="function"><span class="params">()</span> =&gt;</span> <span class="function">(<span class="params"><span class="keyword">new</span> <span class="built_in">Promise</span>((resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  resolve(<span class="string">'success'</span>)</span><br><span class="line">&#125;))</span><br><span class="line">fn().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -315,6 +330,7 @@
 </ul>
 <p>1.6 题目六</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="function"><span class="params">()</span> =&gt;</span></span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    resolve(<span class="string">"success"</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"start"</span>);</span><br><span class="line">fn().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -343,6 +359,7 @@
 </ul>
 <h3 id="Promise-结合-setTimeout"><a href="#Promise-结合-setTimeout" class="headerlink" title="Promise 结合 setTimeout"></a>Promise 结合 setTimeout</h3><p>2.1 题目一</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>)</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'time'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'resolve'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'end'</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -374,6 +391,7 @@
 </ul>
 <p>2.2 题目二</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"timerStart"</span>);</span><br><span class="line">    resolve(<span class="string">"success"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"timerEnd"</span>);</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -407,6 +425,7 @@
 </ul>
 <p>2.3 题目三</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timer1'</span>);</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timer3'</span>)</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timer2'</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -442,6 +461,7 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timer1'</span>);</span><br><span class="line">  <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timer2'</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -477,6 +497,7 @@
 </ul>
 <p>2.4 题目四</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>);</span><br><span class="line">  <span class="keyword">const</span> timer2 = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timer2'</span>)</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> timer1 = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timer1'</span>)</span><br><span class="line">  <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -509,6 +530,7 @@
 </ul>
 <p>2.5 题目五 ** 存在和之前一样的，promise resolved 后，状态上抛至上一个 宏任务队列的问题</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="string">'success'</span>)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> promise2 = promise1.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error!!!'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'promise1'</span>, promise1)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'promise2'</span>, promise2)</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>, promise1)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise2'</span>, promise2)</span><br><span class="line">&#125;, <span class="number">2000</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -519,12 +541,12 @@
 <li>执行同步代码<ul>
 <li>console.log(‘promise1’, promise1)<ul>
 <li>其中 promise1 没有 resolved、rejected,一直处在 pending 状态</li>
-<li>promise1 Promise {\<pending\>}</li>
+<li>promise1 Promise {&lt;pending&gt;}</li>
 </ul>
 </li>
 <li>console.log(‘promise2’, promise2)<ul>
 <li>其中 promise1 一直处在 pending 状态，直接影响到 promise2 也一直处在 pending 状态</li>
-<li>promise2 Promise {\<pending\>}</li>
+<li>promise2 Promise {&lt;pending&gt;}</li>
 </ul>
 </li>
 </ul>
@@ -540,11 +562,11 @@
 <li>执行同步代码<ul>
 <li>console.log(‘promise1’, promise1)<ul>
 <li>其中 promise1 处在 resolved 状态</li>
-<li>promise1 Promise {\<resolved\>: “success”}</li>
+<li>promise1 Promise {&lt;resolved&gt;: “success”}</li>
 </ul>
 </li>
 <li>console.log(‘promise2’, promise2)<ul>
-<li>promise2 Promise {\<rejected\>: Error: error!!! at \<anonymous\>:8:9}</li>
+<li>promise2 Promise {&lt;rejected&gt;: Error: error!!! at &lt;anonymous&gt;:8:9}</li>
 </ul>
 </li>
 </ul>
@@ -559,6 +581,7 @@
 </ul>
 <p>2.6 题目六</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="string">"success"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"timer1"</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"promise1里的内容"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> promise2 = promise1.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"error!!!"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"promise1"</span>, promise1);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"promise2"</span>, promise2);</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"timer2"</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"promise1"</span>, promise1);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"promise2"</span>, promise2);</span><br><span class="line">&#125;, <span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -572,14 +595,14 @@
 <li>执行同步代码<ul>
 <li>console.log(“promise1”, promise1);<ul>
 <li>其中 promise1 没有 resolved、rejected 掉，一直处在 pending 状态<ul>
-<li>promise1 Promise {\<pending\>}</li>
+<li>promise1 Promise {&lt;pending&gt;}</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>console.log(“promise2”, promise2);<ul>
 <li>primise1 的 pending 状态，直接影响 promise2 也处在 pending 状态<ul>
-<li>promise2 Promise {\<pending\>}</li>
+<li>promise2 Promise {&lt;pending&gt;}</li>
 </ul>
 </li>
 </ul>
@@ -606,11 +629,11 @@
 <li>console.log(“timer2”);</li>
 <li>console.log(“promise1”, promise1);<ul>
 <li>其中 promise1 的状态已经 resloved</li>
-<li>promise1 Promise {\<resolved\>: “success”}</li>
+<li>promise1 Promise {&lt;resolved&gt;: “success”}</li>
 </ul>
 </li>
 <li>console.log(“promise2”, promise2);<ul>
-<li>promise2 Promise {\<rejected\>: Error: error!!! at \<anonymous\>:8:9}</li>
+<li>promise2 Promise {&lt;rejected&gt;: Error: error!!! at &lt;anonymous&gt;:8:9}</li>
 </ul>
 </li>
 </ul>
@@ -627,6 +650,7 @@
 </ul>
 <h3 id="Promise-中的-then、catch、finally"><a href="#Promise-中的-then、catch、finally" class="headerlink" title="Promise 中的 then、catch、finally"></a>Promise 中的 then、catch、finally</h3><p>3.1 题目一</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve(<span class="string">"success1"</span>);</span><br><span class="line">  reject(<span class="string">"error"</span>);</span><br><span class="line">  resolve(<span class="string">"success2"</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise</span><br><span class="line">.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"then: "</span>, res);</span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"catch: "</span>, err);</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -646,7 +670,8 @@
 <li><img src="http://p0.meituan.net/myvideodistribute/448d9fb1db29ba7e76762f97a9508d1e35386.png" alt="题目一运行结果"></li>
 </ul>
 </li>
-<li>结论<ul>
+<li><p>结论</p>
+<ul>
 <li><strong>Promise的状态一经改变就不能再改变</strong></li>
 <li><strong>构造函数中的 resolve 或 reject 只有第一次执行有效，多次调用没有任何作用</strong>。</li>
 </ul>
@@ -654,6 +679,7 @@
 </ul>
 <p>3.2 题目二</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  reject(<span class="string">"error"</span>);</span><br><span class="line">  resolve(<span class="string">"success2"</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise</span><br><span class="line">.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"then1: "</span>, res);</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"then2: "</span>, res);</span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"catch: "</span>, err);</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"then3: "</span>, res);</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -673,7 +699,7 @@
 <li><p>结论</p>
 <ul>
 <li><strong>catch不管被连接到哪里，都能捕获上层未捕捉过的错误</strong></li>
-<li>至于 then3 也会被执行，那是因为<strong>catch()也会返回一个 Promise </strong>，且由于这个 Promise 没有返回值，所以打印出来的是 undefined 。</li>
+<li>至于 then3 也会被执行，那是因为*<em>catch()也会返回一个 Promise *</em>，且由于这个 Promise 没有返回值，所以打印出来的是 undefined 。</li>
 </ul>
 </li>
 <li><p>运行结果</p>
@@ -684,12 +710,13 @@
 </ul>
 <p>3.3 题目三</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
 <li>代码从上至下开始执行</li>
 <li>promise 状态为 resolved, 因此触发 then<ul>
-<li>console.log(res); res —&gt; 1</li>
+<li>console.log(res); res –&gt; 1</li>
 </ul>
 </li>
 <li>没有报错，略过 catch</li>
@@ -712,12 +739,13 @@
 </ul>
 <p>3.4 题目四</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.reject(<span class="number">1</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
 <li>代码从上至下开始执行</li>
 <li>promise 状态为 rejected，因此触发 catch<ul>
-<li>console.log(err); err —&gt; 1</li>
+<li>console.log(err); err –&gt; 1</li>
 <li>return resolve(3)</li>
 </ul>
 </li>
@@ -735,6 +763,7 @@
 </ul>
 <p>3.5 题目五</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timer'</span>)</span><br><span class="line">    resolve(<span class="string">'success'</span>)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line">promise.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res, <span class="built_in">Date</span>.now() - start)</span><br><span class="line">&#125;)</span><br><span class="line">promise.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res, <span class="built_in">Date</span>.now() - start)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -763,13 +792,15 @@
 <li><strong>Promise 的 .then 或者 .catch 可以被调用多次，但这里 Promise 构造函数只执行一次。或者说 promise 内部状态一经改变，并且有了一个值，那么后续每次调用 .then 或者 .catch 都会直接拿到该值。</strong></li>
 </ul>
 </li>
-<li>运行结果<ul>
+<li><p>运行结果</p>
+<ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/9ee74ca562f7c913d51c9fd5fe60680543896.png" alt="题目五运行结果"></li>
 </ul>
 </li>
 </ul>
 <p>3.6 题目六</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error!!!'</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"then: "</span>, res)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"catch: "</span>, err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -781,7 +812,7 @@
 </ul>
 </li>
 <li>被 catch 捕捉<ul>
-<li>console.log(“catch: “, err) err —&gt; error</li>
+<li>console.log(“catch: “, err) err –&gt; error</li>
 </ul>
 </li>
 </ul>
@@ -794,6 +825,7 @@
 </ul>
 <p>3.7 题目七</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> promise;</span><br><span class="line">&#125;)</span><br><span class="line">promise.catch(<span class="built_in">console</span>.err)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -818,6 +850,7 @@
 </ul>
 <p>3.8 题目八</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line">  .then(<span class="number">2</span>)</span><br><span class="line">  .then(<span class="built_in">Promise</span>.resolve(<span class="number">3</span>))</span><br><span class="line">  .then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -840,18 +873,24 @@
 </ul>
 <p>3.9 题目九</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.reject(<span class="string">'err!!!'</span>)</span><br><span class="line">  .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'success'</span>, res)</span><br><span class="line">  &#125;, (err) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'error'</span>, err)</span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'catch'</span>, err)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>我们可以先来看看，如果 catch 住了错误，err 会一直链式传递下去被 catch嘛</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/f9859062c1341e2e575f952e320aba4222620.png" alt="是否会被一直catch"><ul>
+<li><p>我们可以先来看看，如果 catch 住了错误，err 会一直链式传递下去被 catch嘛</p>
+</li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/f9859062c1341e2e575f952e320aba4222620.png" alt="是否会被一直catch"></p>
+<ul>
 <li>一旦 catch 住当前报错，当前报错并不会再往下传递</li>
 </ul>
 </li>
-<li><img src="http://p1.meituan.net/myvideodistribute/9846287852a98f322045973bf302c58f24992.png" alt="逐行调用catch是会一直传递下去的"><ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/9846287852a98f322045973bf302c58f24992.png" alt="逐行调用catch是会一直传递下去的"></p>
+<ul>
 <li>逐行调用 then 是会一直传递下去的</li>
 </ul>
 </li>
-<li>那我还可以看看，如果没有错误，res 会一直链式传递 then 执行嘛</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/e2e72158c05ceee7da7528ff9a20348426425.png" alt="是否会被一直then"><ul>
+<li><p>那我还可以看看，如果没有错误，res 会一直链式传递 then 执行嘛</p>
+</li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/e2e72158c05ceee7da7528ff9a20348426425.png" alt="是否会被一直then"></p>
+<ul>
 <li>可以看出 then 是会一直往下传递的</li>
 </ul>
 </li>
@@ -866,7 +905,7 @@
 <li>promise 状态改变为 rejected，return ‘err!!!’</li>
 <li>执行 then，then 中第二个函数，相当于 catch</li>
 <li>因此执行</li>
-<li>console.log(‘error’, err) err —&gt; err!!!</li>
+<li>console.log(‘error’, err) err –&gt; err!!!</li>
 </ul>
 </li>
 <li><p>运行结果</p>
@@ -876,6 +915,7 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> <span class="title">success</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error!!!'</span>)</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> <span class="title">fail1</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'fail1'</span>, err)</span><br><span class="line">  &#125;).catch(<span class="function"><span class="keyword">function</span> <span class="title">fail2</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'fail2'</span>, err)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -886,7 +926,7 @@
 </ul>
 </li>
 <li>被 catch <ul>
-<li>console.log(‘fail2’, err) err —&gt; error!!!</li>
+<li>console.log(‘fail2’, err) err –&gt; error!!!</li>
 </ul>
 </li>
 </ul>
@@ -899,13 +939,14 @@
 </ul>
 <p>3.10 题目十</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve(<span class="string">'1'</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res)</span><br><span class="line">  &#125;)</span><br><span class="line">  .finally(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'finally'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="built_in">Promise</span>.resolve(<span class="string">'2'</span>)</span><br><span class="line">  .finally(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'finally2'</span>)</span><br><span class="line">  	<span class="keyword">return</span> <span class="string">'我是finally2返回的值'</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'finally2后面的then函数'</span>, res)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
 <li>代码从上至下开始执行</li>
 <li>promise 状态变为 resolve，return 1</li>
 <li>执行 then<ul>
-<li>console.log(res) res —&gt; return new Promise， resolve(1) 加入微任务队列</li>
+<li>console.log(res) res –&gt; return new Promise， resolve(1) 加入微任务队列</li>
 </ul>
 </li>
 <li>promise 状态变为 resolve, return 2<ul>
@@ -918,7 +959,7 @@
 </li>
 <li>当前同步代码执行完成，开始还行微任务队列<ul>
 <li>console.log(‘finally’)</li>
-<li>console.log(‘finally2后面的then函数’, res) res —&gt; 2</li>
+<li>console.log(‘finally2后面的then函数’, res) res –&gt; 2</li>
 </ul>
 </li>
 </ul>
@@ -944,8 +985,10 @@
 </ul>
 <p>4.1 题目一</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runAsync</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">r</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> r(x, <span class="built_in">console</span>.log(x)), <span class="number">1000</span>))</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.all([runAsync(<span class="number">1</span>), runAsync(<span class="number">2</span>), runAsync(<span class="number">3</span>)])</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>分析<ul>
+<li><p>分析</p>
+<ul>
 <li>代码从上至下开始执行</li>
 <li>Promise.all 入队微任务队列</li>
 <li>当前同步代码执行完成，开始执行微任务队列<ul>
@@ -969,6 +1012,7 @@
 </ul>
 <p>4.2 题目二</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runAsync</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">r</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> r(x, <span class="built_in">console</span>.log(x)), <span class="number">1000</span>))</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runReject</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res, rej</span>) =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> rej(<span class="string">`Error: <span class="subst">$&#123;x&#125;</span>`</span>, <span class="built_in">console</span>.log(x)), <span class="number">1000</span> * x))</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.all([runAsync(<span class="number">1</span>), runReject(<span class="number">4</span>), runAsync(<span class="number">3</span>), runReject(<span class="number">2</span>)])</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err))</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -980,12 +1024,12 @@
 </li>
 <li>由于 runReject(4) 比 runReject(2) 晚入微任务队列，且 catch 只执行一次<ul>
 <li>再间隔一秒后<ul>
-<li>console.log(x) x —&gt; 2</li>
+<li>console.log(x) x –&gt; 2</li>
 <li>console.log(‘Error: 2’)</li>
 </ul>
 </li>
 <li>再间隔2秒后<ul>
-<li>console.log(x) x —&gt; 4</li>
+<li>console.log(x) x –&gt; 4</li>
 <li>不会再执行 catch</li>
 </ul>
 </li>
@@ -1000,13 +1044,15 @@
 </li>
 <li><p>等同于</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runAsync</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">r</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> r(x, <span class="built_in">console</span>.log(x)), <span class="number">1000</span>))</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runReject</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res, rej</span>) =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> rej(<span class="string">`Error: <span class="subst">$&#123;x&#125;</span>`</span>, <span class="built_in">console</span>.log(x)), <span class="number">1000</span> * x))</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.all([runAsync(<span class="number">1</span>), runReject(<span class="number">4</span>), runAsync(<span class="number">3</span>), runReject(<span class="number">2</span>)])</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res), </span><br><span class="line">  err =&gt; <span class="built_in">console</span>.log(err);</span><br></pre></td></tr></table></figure></li>
-<li>结论<ul>
+<li><p>结论</p>
+<ul>
 <li>all 和 race传入的数组中如果有会抛出异常的异步任务，那么只有最先抛出的错误会被捕获，并且是被 then 的第二个参数或者后面的 catch 捕获；但并不会影响数组中其它的异步任务的执行。</li>
 </ul>
 </li>
 </ul>
 <p>4.3 题目三</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runAsync</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">r</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> r(x, <span class="built_in">console</span>.log(x)), <span class="number">1000</span>))</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.race([runAsync(<span class="number">1</span>), runAsync(<span class="number">2</span>), runAsync(<span class="number">3</span>)])</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'result: '</span>, res))</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err))</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -1015,16 +1061,16 @@
 <li>当前宏任务中同步任务执行完成，开始执行微任务</li>
 <li>在间隔时间都一样的情况下，runAsync1 最先加入队列</li>
 <li>因此<ul>
-<li>console.log(x) x —&gt; 1</li>
+<li>console.log(x) x –&gt; 1</li>
 </ul>
 </li>
 <li>由于 race 的特殊性，只捕捉最先执行完成的那个结果<ul>
-<li>console.log(‘result: ‘, res) res —&gt; 1</li>
+<li>console.log(‘result: ‘, res) res –&gt; 1</li>
 </ul>
 </li>
 <li>再<ul>
-<li>console.log(x) x —&gt; 2</li>
-<li>console.log(x) x —&gt; 3</li>
+<li>console.log(x) x –&gt; 2</li>
+<li>console.log(x) x –&gt; 3</li>
 </ul>
 </li>
 <li>没有报错，不会被 catch</li>
@@ -1038,6 +1084,7 @@
 </ul>
 <p>4.4 题目四</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runAsync</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">r</span> =&gt;</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> r(x, <span class="built_in">console</span>.log(x)), <span class="number">1000</span>)</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runReject</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res, rej</span>) =&gt;</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> rej(<span class="string">`Error: <span class="subst">$&#123;x&#125;</span>`</span>, <span class="built_in">console</span>.log(x)), <span class="number">1000</span> * x)</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.race([runReject(<span class="number">0</span>), runAsync(<span class="number">1</span>), runAsync(<span class="number">2</span>), runAsync(<span class="number">3</span>)])</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"result: "</span>, res))</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err));</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -1046,16 +1093,16 @@
 <li>当前宏任务中同步任务执行完成，开始执行微任务</li>
 <li>runReject(0) 最先传入</li>
 <li>因此<ul>
-<li>console.log(x) x —&gt; 0</li>
-<li>console.log(err) err —&gt; Error: 0</li>
+<li>console.log(x) x –&gt; 0</li>
+<li>console.log(err) err –&gt; Error: 0</li>
 </ul>
 </li>
 <li>间隔小于1秒后</li>
 <li>runAsync(1), runAsync(2), runAsync(3)<ul>
 <li>依次为</li>
-<li>console.log(x) x —&gt; 1</li>
-<li>console.log(x) x —&gt; 2</li>
-<li>console.log(x) x —&gt; 3</li>
+<li>console.log(x) x –&gt; 1</li>
+<li>console.log(x) x –&gt; 2</li>
+<li>console.log(x) x –&gt; 3</li>
 </ul>
 </li>
 </ul>
@@ -1080,12 +1127,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="#">
+		<a class="copy" href="/2020/05/02/Javascrtip-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%88%E4%BA%8C%EF%BC%89/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>No newer post</h3>
+						<h3>Javascr...</h3>
 					</div>
 				</div>
 			</div>
