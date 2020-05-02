@@ -154,269 +154,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Javascript-Expressions</title>
-    <url>/2020/04/23/Javascript-Expressions/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h1 id="【未完】Javascript-–-Expressions"><a href="#【未完】Javascript-–-Expressions" class="headerlink" title="【未完】Javascript – Expressions"></a>【未完】Javascript – Expressions</h1><a id="more"></a>
-
-<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expressions-表达式"><a href="#Expressions-表达式" class="headerlink" title="Expressions 表达式"></a>Expressions 表达式</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="Grammar-Tree-vs-Priority"><a href="#Grammar-Tree-vs-Priority" class="headerlink" title="Grammar Tree vs Priority"></a>Grammar Tree vs Priority</h3><ul>
-<li>+ -</li>
-<li>* /</li>
-<li>()</li>
-</ul>
-<h3 id="Member"><a href="#Member" class="headerlink" title="Member"></a>Member</h3><ul>
-<li><p>a.b</p>
-</li>
-<li><p>a[b]</p>
-</li>
-<li><p>foo`string`</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"Elle"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>!`</span></span><br></pre></td></tr></table></figure></li>
-<li><p>super.b</p>
-<ul>
-<li>只能在 constructor 里使用</li>
-</ul>
-</li>
-<li><p>super[‘b’]</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">this</span>.a = <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span>() </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">super</span>()</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>new.target</p>
-<ul>
-<li><p>函数外面不能使用，只能在函数里使用</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 存在一个伪造对象的可能，无法知道对象是否是被 new 调起</span></span><br><span class="line"><span class="keyword">var</span> fakeObj = &#123;&#125;</span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(fakeObj, foo.prototype)</span><br><span class="line">fakeObj.constructor = foo</span><br><span class="line">foo.apply(fakeObj)</span><br><span class="line">fakeObj <span class="keyword">instanceof</span> foo</span><br></pre></td></tr></table></figure>
-
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">new</span>.target)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> foo()</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>new Foo()</p>
-<ul>
-<li>high priority</li>
-</ul>
-</li>
-<li><p>Member Expressions 返回的是一个 Reference 类型</p>
-<ul>
-<li><p>Reference</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">x</span>: <span class="number">1</span> &#125;</span><br><span class="line">o.x + <span class="number">2</span></span><br><span class="line"><span class="number">1</span> + <span class="number">2</span></span><br><span class="line"><span class="keyword">delete</span> o.x</span><br><span class="line"><span class="keyword">delete</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="New"><a href="#New" class="headerlink" title="New"></a>New</h3><ul>
-<li><p>new Foo </p>
-</li>
-<li><p><strong>Example</strong></p>
-<ul>
-<li><p>new a()()</p>
-</li>
-<li><p>new new a()</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls1</span>(<span class="params">s</span>) </span>&#123; <span class="built_in">console</span>.log(s)&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls2</span>(<span class="params">s</span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">"2"</span>, s)<span class="keyword">return</span> cls1; &#125;</span><br><span class="line"><span class="keyword">new</span> cls2</span><br><span class="line">cls2()</span><br><span class="line"><span class="keyword">new</span> cls2() <span class="comment">// 返回回来 cls2 实例，cls1对象</span></span><br><span class="line"><span class="keyword">new</span> (cls2())</span><br><span class="line"><span class="keyword">new</span> (<span class="keyword">new</span> cls)</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> cls2()</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Call"><a href="#Call" class="headerlink" title="Call"></a>Call</h3><ul>
-<li><p>foo()</p>
-</li>
-<li><p>super()</p>
-</li>
-<li><p>foo()[‘b’]</p>
-</li>
-<li><p>foo().b</p>
-</li>
-<li><p>foo()`abc`</p>
-</li>
-<li><p><strong>Example</strong></p>
-<ul>
-<li><p>new a()[‘b’]</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo</span>() </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">this</span>.b = <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> foo()[<span class="string">'b'</span>]</span><br><span class="line"><span class="keyword">new</span> (foo()[<span class="string">'b'</span>])</span><br><span class="line">foo[<span class="string">"b"</span>] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="keyword">new</span> foo(<span class="string">'b'</span>)</span><br><span class="line"><span class="keyword">new</span> (foo(<span class="string">'b'</span>))</span><br><span class="line"><span class="comment">// 二者等效</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Left-Handside-amp-Right-Handside"><a href="#Left-Handside-amp-Right-Handside" class="headerlink" title="Left Handside &amp; Right Handside"></a>Left Handside &amp; Right Handside</h2><h2 id="Left-Handside"><a href="#Left-Handside" class="headerlink" title="Left Handside"></a>Left Handside</h2><ul>
-<li>极限是 call</li>
-</ul>
-<h2 id="Right-Handside"><a href="#Right-Handside" class="headerlink" title="Right Handside"></a>Right Handside</h2><h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><ul>
-<li><p>【未完】 UpdateExpression</p>
-<ul>
-<li><p>no LineTerminator here</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">1</span>, c = <span class="number">1</span>;</span><br><span class="line">a</span><br><span class="line">++</span><br><span class="line">b</span><br><span class="line">++</span><br><span class="line">c</span><br><span class="line"><span class="built_in">console</span>.log([a, b, c])</span><br><span class="line">a<span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span>++</span><br><span class="line">b<span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span>++</span><br><span class="line">c</span><br><span class="line"><span class="built_in">console</span>.log([a, b, c])</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>a ++</p>
-</li>
-<li><p>a –</p>
-</li>
-<li><p>– a</p>
-</li>
-<li><p>++ a</p>
-</li>
-</ul>
-<h3 id="Unary-单目运算符"><a href="#Unary-单目运算符" class="headerlink" title="Unary 单目运算符"></a>Unary 单目运算符</h3><ul>
-<li><p>delete a.b</p>
-</li>
-<li><p>void foo() </p>
-<ul>
-<li><p>void 不是返回值，是运算符在 JS 中</p>
-</li>
-<li><p>不管后面是什么，都返回undefined</p>
-</li>
-<li><p>IIFE 立即执行函数</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 不敢点那个按钮，都是10，为解决这个问题，我们可以使用IIFE</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">		button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果前面不加分号，在一些写法中，会发生粘起来错误</span></span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(i)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)()</span><br><span class="line">  </span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(i)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)()</span><br><span class="line"><span class="comment">// 最稳妥的就是，在前面加上void</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">void</span> <span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">		button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 并且语义正确，我们并不需要IIFE的返回值</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>typeof a</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>+ a</p>
-</li>
-<li><p>- a</p>
-</li>
-<li><p>~ a 按位取反</p>
-</li>
-<li><p>! a 取非</p>
-<ul>
-<li>!!1</li>
-</ul>
-</li>
-<li><p>await a</p>
-</li>
-</ul>
-<h3 id="Exponental"><a href="#Exponental" class="headerlink" title="Exponental"></a>Exponental</h3><ul>
-<li>**<ul>
-<li>3 ** 2 ** 3</li>
-<li>3 ** (2 ** 3)</li>
-</ul>
-</li>
-</ul>
-<h3 id="Multiplicative"><a href="#Multiplicative" class="headerlink" title="Multiplicative"></a>Multiplicative</h3><ul>
-<li><ul>
-<li>/ %<ul>
-<li>JS 中有1种乘法运算符<ul>
-<li>运行时<ul>
-<li>number</li>
-<li>string</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Additive"><a href="#Additive" class="headerlink" title="Additive"></a>Additive</h3><ul>
-<li><ul>
-<li>-<ul>
-<li>JS 中有2种加法运算符<ul>
-<li>运行时<ul>
-<li>number</li>
-<li>string</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Shift-左右移位"><a href="#Shift-左右移位" class="headerlink" title="Shift 左右移位"></a>Shift 左右移位</h3><ul>
-<li>&lt;&lt; &gt;&gt; &gt;&gt;&gt;</li>
-</ul>
-<h3 id="Relationship-比较"><a href="#Relationship-比较" class="headerlink" title="Relationship 比较"></a>Relationship 比较</h3><ul>
-<li>&lt; &gt; &lt;= &gt;= instanceof in</li>
-</ul>
-<h3 id="Equality"><a href="#Equality" class="headerlink" title="Equality"></a>Equality</h3><ul>
-<li>==</li>
-<li>!=</li>
-<li>===</li>
-<li>!==</li>
-</ul>
-<h3 id="Bitwise"><a href="#Bitwise" class="headerlink" title="Bitwise"></a>Bitwise</h3><ul>
-<li>&amp; ^ |</li>
-</ul>
-<h3 id="Logical"><a href="#Logical" class="headerlink" title="Logical"></a>Logical</h3><ul>
-<li><p>没有任何 boolean 转换</p>
-</li>
-<li><p>&amp;&amp;</p>
-<ul>
-<li><p>有短路逻辑</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo1() &amp;&amp; foo2()</span><br><span class="line"></span><br><span class="line">foo1() || foo2()</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>||</p>
-</li>
-</ul>
-<h3 id="Conditional"><a href="#Conditional" class="headerlink" title="Conditional"></a>Conditional</h3><ul>
-<li><p>? :</p>
-<ul>
-<li><p>同样有短路逻辑</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="literal">false</span> ? foo1() : foo2()</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h3 id=""><a href="#" class="headerlink" title=","></a>,</h3><h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Type-Convertion"><a href="#Type-Convertion" class="headerlink" title="Type Convertion"></a>Type Convertion</h3><ul>
-<li>【未完】转换图</li>
-<li>undefined –&gt; number NAN</li>
-</ul>
-<h4 id="Boxing-amp-Unboxing"><a href="#Boxing-amp-Unboxing" class="headerlink" title="Boxing &amp; Unboxing"></a>Boxing &amp; Unboxing</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Number</span> <span class="built_in">String</span> <span class="built_in">Boolean</span> <span class="built_in">Symbol</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>).length</span><br><span class="line"><span class="string">"hello"</span>.length</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"hello"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line">!<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">''</span>)</span><br><span class="line">!<span class="string">""</span></span><br><span class="line"><span class="built_in">Number</span> <span class="built_in">String</span> <span class="built_in">Boolean</span> 不作为 <span class="keyword">new</span> 调用，就是转换成普通类型</span><br><span class="line"><span class="built_in">String</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>toPremitive()</li>
-<li>toString vs valueOf<ul>
-<li>【未完】toString vs valueOf</li>
-</ul>
-</li>
-</ul>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><h3 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h3><h3 id="支持写"><a href="#支持写" class="headerlink" title="支持写"></a>支持写</h3><ul>
-<li>delete</li>
-<li>assign</li>
-</ul>
-<h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1><h4 id="ps-checkSign"><a href="#ps-checkSign" class="headerlink" title="ps. checkSign"></a>ps. checkSign</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params">number</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1</span> / number === <span class="literal">Infinity</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1</span> / number === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> number / <span class="built_in">Math</span>.abs(number)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>【未完】Infinity 判断</p>
-</li>
-<li><p>【未完】直接用流取出符号位</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Javascript-Statement</title>
     <url>/2020/04/26/Javascript-Statement/</url>
     <content><![CDATA[<style  type="text/css">
@@ -857,6 +594,269 @@
       </tags>
   </entry>
   <entry>
+    <title>Javascript-Expressions</title>
+    <url>/2020/04/23/Javascript-Expressions/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h1 id="【未完】Javascript-–-Expressions"><a href="#【未完】Javascript-–-Expressions" class="headerlink" title="【未完】Javascript – Expressions"></a>【未完】Javascript – Expressions</h1><a id="more"></a>
+
+<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expressions-表达式"><a href="#Expressions-表达式" class="headerlink" title="Expressions 表达式"></a>Expressions 表达式</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="Grammar-Tree-vs-Priority"><a href="#Grammar-Tree-vs-Priority" class="headerlink" title="Grammar Tree vs Priority"></a>Grammar Tree vs Priority</h3><ul>
+<li>+ -</li>
+<li>* /</li>
+<li>()</li>
+</ul>
+<h3 id="Member"><a href="#Member" class="headerlink" title="Member"></a>Member</h3><ul>
+<li><p>a.b</p>
+</li>
+<li><p>a[b]</p>
+</li>
+<li><p>foo`string`</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"Elle"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>!`</span></span><br></pre></td></tr></table></figure></li>
+<li><p>super.b</p>
+<ul>
+<li>只能在 constructor 里使用</li>
+</ul>
+</li>
+<li><p>super[‘b’]</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">this</span>.a = <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span>() </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">super</span>()</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>new.target</p>
+<ul>
+<li><p>函数外面不能使用，只能在函数里使用</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 存在一个伪造对象的可能，无法知道对象是否是被 new 调起</span></span><br><span class="line"><span class="keyword">var</span> fakeObj = &#123;&#125;</span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(fakeObj, foo.prototype)</span><br><span class="line">fakeObj.constructor = foo</span><br><span class="line">foo.apply(fakeObj)</span><br><span class="line">fakeObj <span class="keyword">instanceof</span> foo</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">new</span>.target)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> foo()</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>new Foo()</p>
+<ul>
+<li>high priority</li>
+</ul>
+</li>
+<li><p>Member Expressions 返回的是一个 Reference 类型</p>
+<ul>
+<li><p>Reference</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">x</span>: <span class="number">1</span> &#125;</span><br><span class="line">o.x + <span class="number">2</span></span><br><span class="line"><span class="number">1</span> + <span class="number">2</span></span><br><span class="line"><span class="keyword">delete</span> o.x</span><br><span class="line"><span class="keyword">delete</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="New"><a href="#New" class="headerlink" title="New"></a>New</h3><ul>
+<li><p>new Foo </p>
+</li>
+<li><p><strong>Example</strong></p>
+<ul>
+<li><p>new a()()</p>
+</li>
+<li><p>new new a()</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls1</span>(<span class="params">s</span>) </span>&#123; <span class="built_in">console</span>.log(s)&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls2</span>(<span class="params">s</span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">"2"</span>, s)<span class="keyword">return</span> cls1; &#125;</span><br><span class="line"><span class="keyword">new</span> cls2</span><br><span class="line">cls2()</span><br><span class="line"><span class="keyword">new</span> cls2() <span class="comment">// 返回回来 cls2 实例，cls1对象</span></span><br><span class="line"><span class="keyword">new</span> (cls2())</span><br><span class="line"><span class="keyword">new</span> (<span class="keyword">new</span> cls)</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> cls2()</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Call"><a href="#Call" class="headerlink" title="Call"></a>Call</h3><ul>
+<li><p>foo()</p>
+</li>
+<li><p>super()</p>
+</li>
+<li><p>foo()[‘b’]</p>
+</li>
+<li><p>foo().b</p>
+</li>
+<li><p>foo()`abc`</p>
+</li>
+<li><p><strong>Example</strong></p>
+<ul>
+<li><p>new a()[‘b’]</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo</span>() </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">this</span>.b = <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> foo()[<span class="string">'b'</span>]</span><br><span class="line"><span class="keyword">new</span> (foo()[<span class="string">'b'</span>])</span><br><span class="line">foo[<span class="string">"b"</span>] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="keyword">new</span> foo(<span class="string">'b'</span>)</span><br><span class="line"><span class="keyword">new</span> (foo(<span class="string">'b'</span>))</span><br><span class="line"><span class="comment">// 二者等效</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Left-Handside-amp-Right-Handside"><a href="#Left-Handside-amp-Right-Handside" class="headerlink" title="Left Handside &amp; Right Handside"></a>Left Handside &amp; Right Handside</h2><h2 id="Left-Handside"><a href="#Left-Handside" class="headerlink" title="Left Handside"></a>Left Handside</h2><ul>
+<li>极限是 call</li>
+</ul>
+<h2 id="Right-Handside"><a href="#Right-Handside" class="headerlink" title="Right Handside"></a>Right Handside</h2><h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><ul>
+<li><p>【未完】 UpdateExpression</p>
+<ul>
+<li><p>no LineTerminator here</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">1</span>, c = <span class="number">1</span>;</span><br><span class="line">a</span><br><span class="line">++</span><br><span class="line">b</span><br><span class="line">++</span><br><span class="line">c</span><br><span class="line"><span class="built_in">console</span>.log([a, b, c])</span><br><span class="line">a<span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span>++</span><br><span class="line">b<span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span>++</span><br><span class="line">c</span><br><span class="line"><span class="built_in">console</span>.log([a, b, c])</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>a ++</p>
+</li>
+<li><p>a –</p>
+</li>
+<li><p>– a</p>
+</li>
+<li><p>++ a</p>
+</li>
+</ul>
+<h3 id="Unary-单目运算符"><a href="#Unary-单目运算符" class="headerlink" title="Unary 单目运算符"></a>Unary 单目运算符</h3><ul>
+<li><p>delete a.b</p>
+</li>
+<li><p>void foo() </p>
+<ul>
+<li><p>void 不是返回值，是运算符在 JS 中</p>
+</li>
+<li><p>不管后面是什么，都返回undefined</p>
+</li>
+<li><p>IIFE 立即执行函数</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 不敢点那个按钮，都是10，为解决这个问题，我们可以使用IIFE</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">		button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果前面不加分号，在一些写法中，会发生粘起来错误</span></span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(i)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)()</span><br><span class="line">  </span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(i)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)()</span><br><span class="line"><span class="comment">// 最稳妥的就是，在前面加上void</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">void</span> <span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">		button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 并且语义正确，我们并不需要IIFE的返回值</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>typeof a</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>+ a</p>
+</li>
+<li><p>- a</p>
+</li>
+<li><p>~ a 按位取反</p>
+</li>
+<li><p>! a 取非</p>
+<ul>
+<li>!!1</li>
+</ul>
+</li>
+<li><p>await a</p>
+</li>
+</ul>
+<h3 id="Exponental"><a href="#Exponental" class="headerlink" title="Exponental"></a>Exponental</h3><ul>
+<li>**<ul>
+<li>3 ** 2 ** 3</li>
+<li>3 ** (2 ** 3)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Multiplicative"><a href="#Multiplicative" class="headerlink" title="Multiplicative"></a>Multiplicative</h3><ul>
+<li><ul>
+<li>/ %<ul>
+<li>JS 中有1种乘法运算符<ul>
+<li>运行时<ul>
+<li>number</li>
+<li>string</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Additive"><a href="#Additive" class="headerlink" title="Additive"></a>Additive</h3><ul>
+<li><ul>
+<li>-<ul>
+<li>JS 中有2种加法运算符<ul>
+<li>运行时<ul>
+<li>number</li>
+<li>string</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Shift-左右移位"><a href="#Shift-左右移位" class="headerlink" title="Shift 左右移位"></a>Shift 左右移位</h3><ul>
+<li>&lt;&lt; &gt;&gt; &gt;&gt;&gt;</li>
+</ul>
+<h3 id="Relationship-比较"><a href="#Relationship-比较" class="headerlink" title="Relationship 比较"></a>Relationship 比较</h3><ul>
+<li>&lt; &gt; &lt;= &gt;= instanceof in</li>
+</ul>
+<h3 id="Equality"><a href="#Equality" class="headerlink" title="Equality"></a>Equality</h3><ul>
+<li>==</li>
+<li>!=</li>
+<li>===</li>
+<li>!==</li>
+</ul>
+<h3 id="Bitwise"><a href="#Bitwise" class="headerlink" title="Bitwise"></a>Bitwise</h3><ul>
+<li>&amp; ^ |</li>
+</ul>
+<h3 id="Logical"><a href="#Logical" class="headerlink" title="Logical"></a>Logical</h3><ul>
+<li><p>没有任何 boolean 转换</p>
+</li>
+<li><p>&amp;&amp;</p>
+<ul>
+<li><p>有短路逻辑</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo1() &amp;&amp; foo2()</span><br><span class="line"></span><br><span class="line">foo1() || foo2()</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>||</p>
+</li>
+</ul>
+<h3 id="Conditional"><a href="#Conditional" class="headerlink" title="Conditional"></a>Conditional</h3><ul>
+<li><p>? :</p>
+<ul>
+<li><p>同样有短路逻辑</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="literal">false</span> ? foo1() : foo2()</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=","></a>,</h3><h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Type-Convertion"><a href="#Type-Convertion" class="headerlink" title="Type Convertion"></a>Type Convertion</h3><ul>
+<li>【未完】转换图</li>
+<li>undefined –&gt; number NAN</li>
+</ul>
+<h4 id="Boxing-amp-Unboxing"><a href="#Boxing-amp-Unboxing" class="headerlink" title="Boxing &amp; Unboxing"></a>Boxing &amp; Unboxing</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Number</span> <span class="built_in">String</span> <span class="built_in">Boolean</span> <span class="built_in">Symbol</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>).length</span><br><span class="line"><span class="string">"hello"</span>.length</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"hello"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line">!<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">''</span>)</span><br><span class="line">!<span class="string">""</span></span><br><span class="line"><span class="built_in">Number</span> <span class="built_in">String</span> <span class="built_in">Boolean</span> 不作为 <span class="keyword">new</span> 调用，就是转换成普通类型</span><br><span class="line"><span class="built_in">String</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>toPremitive()</li>
+<li>toString vs valueOf<ul>
+<li>【未完】toString vs valueOf</li>
+</ul>
+</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><h3 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h3><h3 id="支持写"><a href="#支持写" class="headerlink" title="支持写"></a>支持写</h3><ul>
+<li>delete</li>
+<li>assign</li>
+</ul>
+<h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1><h4 id="ps-checkSign"><a href="#ps-checkSign" class="headerlink" title="ps. checkSign"></a>ps. checkSign</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params">number</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1</span> / number === <span class="literal">Infinity</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1</span> / number === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> number / <span class="built_in">Math</span>.abs(number)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>【未完】Infinity 判断</p>
+</li>
+<li><p>【未完】直接用流取出符号位</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Reg-Number</title>
     <url>/2020/04/20/Reg-Number/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1210,114 +1210,6 @@
       </tags>
   </entry>
   <entry>
-    <title>convertNumberToString</title>
-    <url>/2020/04/25/convertNumberToString/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>是的我要折腾一下 Javascript convertNumberToString 了🙆</li>
-<li><a href="https://ele-peng.github.io/2020/04/24/convertStringToNumber/" target="_blank" rel="noopener">convertStringToNumber 实现</a></li>
-</ul>
-<a id="more"></a>
-<h2 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h2><ul>
-<li><p>首先我们依旧需要简单梳理一下我们的实践过程，再根据 <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMAScript-262</a> 标准P61完善实践</p>
-</li>
-<li><p>input: @params: { num } 输入需要转换的number, { radix } 转换的指定基数</p>
-</li>
-<li><p>对 input-num 的特殊处理</p>
-<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/e0405830e24314df04f89a21078cc64198443.png" alt="input-num 的特殊处理"></li>
-</ul>
-</li>
-<li><p>简单算法处理</p>
-<ul>
-<li>获取符号位<ul>
-<li>- 负 显示</li>
-<li>+ 正 不显示</li>
-</ul>
-</li>
-<li>十进制</li>
-<li>二进制</li>
-<li>八进制</li>
-<li>十六进制</li>
-</ul>
-</li>
-<li><p>output: return resStr</p>
-</li>
-</ul>
-<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p>经过上面的分析，我们代码可以先写成</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> formatNum = <span class="built_in">Number</span>(num) <span class="comment">// 处理Number为十进制</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(formatNum)) <span class="keyword">return</span> <span class="string">'NaN'</span></span><br><span class="line">    <span class="keyword">if</span> (isZero(formatNum)) <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line">    <span class="keyword">const</span> sign = getSign(formatNum)</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">isFinite</span>(formatNum)) <span class="keyword">return</span> sign + <span class="string">'Infinity'</span></span><br><span class="line">    <span class="keyword">return</span> convertDecimalNumberToString(formatNum)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(err)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>input number 的特殊处理</p>
-<ul>
-<li><p>If m is NaN, return the String “NaN”.</p>
-<blockquote>
-<p>if (isNaN(formatNum)) return ‘NaN’</p>
-</blockquote>
-</li>
-<li><p>If m is +0 or -0, return the String “0”.</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (isZero(formatNum)) <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isZero</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="number">1</span> / num === <span class="literal">Infinity</span> || <span class="number">1</span> / num === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>If m is less than zero, return the string-concatenation of “-“ and ! NumberToString(-m).</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sign = getSign(formatNum)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSign</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (num === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"-"</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num === <span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">  &#125; <span class="comment">// 特殊情况 0 前面已经处理</span></span><br><span class="line">  <span class="keyword">return</span> num / <span class="built_in">Math</span>.abs(num) === <span class="number">1</span> ? <span class="string">""</span> : <span class="string">"-"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>If m is +∞, return the String “Infinity”.</p>
-<blockquote>
-<p>if (!isFinite(formatNum)) return sign + ‘Infinity’</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>常规 Decimal Number 处理</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertDecimalNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> radix = <span class="number">10</span></span><br><span class="line">  <span class="keyword">let</span> int = <span class="built_in">Math</span>.floor(num)</span><br><span class="line">  <span class="keyword">let</span> float = (num - int) * <span class="number">100</span> / <span class="number">100</span></span><br><span class="line">  <span class="keyword">let</span> resInt = <span class="string">''</span></span><br><span class="line">  <span class="keyword">let</span> resFloat = <span class="string">''</span></span><br><span class="line">  <span class="comment">// 整数部分 取余，除以基数</span></span><br><span class="line">  <span class="keyword">while</span> (int &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    resInt = <span class="built_in">String</span>(int % radix) + resInt</span><br><span class="line">    int = <span class="built_in">Math</span>.floor(int / radix)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (float) &#123;</span><br><span class="line">    resFloat = <span class="string">'.'</span></span><br><span class="line">    <span class="comment">// 小数部分，乘以基数，取整</span></span><br><span class="line">    <span class="keyword">while</span> (float &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      resFloat = resFloat + <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">      float -= <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resInt + resFloat</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(convertNumberToString(-<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, -<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(+<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, +<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120.11112</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, <span class="number">120.11112</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, (<span class="number">120</span>).toString())</span><br></pre></td></tr></table></figure>
-<ul>
-<li>测试截图<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/b741d6a87bab9c52f01871781745689124911.png" alt="测试截图"></li>
-</ul>
-</li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>可以看出，我们写的 converNumbertoString 遇到浮点数，就失灵了，有想到说 用 toString，然后正则匹配出小数点后面的浮点数，舍入相应位数，但是这样，就用到了 toString 方法，似乎与我的最初想法实现 convertNumbertToString 死锁了 🙃</li>
-<li>大家有其他的不用 toString 实践，欢迎评论告诉我呀~</li>
-<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week03/convertNumberToString.html" target="_blank" rel="noopener">代码地址</a></li>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【未完】react-hooks</title>
     <url>/2020/04/13/react-hooks/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1471,6 +1363,223 @@
       </tags>
   </entry>
   <entry>
+    <title>【未完】前端性能监控</title>
+    <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>记录 性能监控 方面的学习过程🤔</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
+<li>Gmail SPA</li>
+<li>Angular/React/Vue MVVM/工程化</li>
+<li>weex/react native 跨端</li>
+<li>Node 全栈</li>
+</ul>
+<h3 id="前端变化给监控带来了什么样的改变"><a href="#前端变化给监控带来了什么样的改变" class="headerlink" title="前端变化给监控带来了什么样的改变"></a>前端变化给监控带来了什么样的改变</h3><ul>
+<li>传统监控模式能否使用于新的技术？比如 PV 统计<ul>
+<li>导致 PV 下降的原因和解法</li>
+<li>原因<ul>
+<li>业内路由替代了请求新的页面</li>
+</ul>
+</li>
+<li>解法<ul>
+<li>哈希路由：监听 hash change 变化上报 PV</li>
+<li>非哈希路由(Angular): 轻量 hack pushState 和 replaceState</li>
+</ul>
+</li>
+<li>案例<ul>
+<li>下拉刷新</li>
+<li>滚屏分页</li>
+<li>阿里云邮后台一直开着，每周上百次查看</li>
+<li>未关闭的浏览器 Ta b几小时后再次浏览</li>
+<li>查找信息时，浏览器 Tab 之间快速切换</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SPA模式下首屏如何计算？<ul>
+<li>第一阶段：自定义打点时期<ul>
+<li>页头和首屏dom处分别通过 new Date() 打点</li>
+</ul>
+</li>
+<li>第二阶段：W3C标准时期<ul>
+<li>Navigaion Timing API</li>
+</ul>
+</li>
+<li>第三阶段：SPA盛行导致w3c标准失去原来的意义</li>
+<li>现阶段：用户感官指标FMP<ul>
+<li>FMP：主要内容可见时间</li>
+<li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
+<li>什么原因导致猜想不成立？<ul>
+<li>元素是否可见</li>
+<li>每个元素对页面的影响是否等效？ –&gt; 权重</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>下一阶段：W3C/paint-timing 首屏加载时间计算已经在提案中</li>
+</ul>
+</li>
+<li>跨端开发给监控带来什么挑战？</li>
+<li>前端监控的上报模式在 Node.js 端是否合理？</li>
+</ul>
+<h3 id="前端监控的最佳实践"><a href="#前端监控的最佳实践" class="headerlink" title="前端监控的最佳实践"></a>前端监控的最佳实践</h3><ul>
+<li>主动监控</li>
+<li>性能样本分布 &amp; 慢会话<ul>
+<li>慢会话追踪</li>
+</ul>
+</li>
+<li>搜索报错明细</li>
+<li>出错行为还原</li>
+</ul>
+<h3 id="阿里云ARMS前端监控系统架构"><a href="#阿里云ARMS前端监控系统架构" class="headerlink" title="阿里云ARMS前端监控系统架构"></a>阿里云ARMS前端监控系统架构</h3><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>性能监控</category>
+      </categories>
+      <tags>
+        <tag>性能监控</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>convertNumberToString</title>
+    <url>/2020/04/25/convertNumberToString/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>是的我要折腾一下 Javascript convertNumberToString 了🙆</li>
+<li><a href="https://ele-peng.github.io/2020/04/24/convertStringToNumber/" target="_blank" rel="noopener">convertStringToNumber 实现</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h2><ul>
+<li><p>首先我们依旧需要简单梳理一下我们的实践过程，再根据 <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMAScript-262</a> 标准P61完善实践</p>
+</li>
+<li><p>input: @params: { num } 输入需要转换的number, { radix } 转换的指定基数</p>
+</li>
+<li><p>对 input-num 的特殊处理</p>
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/e0405830e24314df04f89a21078cc64198443.png" alt="input-num 的特殊处理"></li>
+</ul>
+</li>
+<li><p>简单算法处理</p>
+<ul>
+<li>获取符号位<ul>
+<li>- 负 显示</li>
+<li>+ 正 不显示</li>
+</ul>
+</li>
+<li>十进制</li>
+<li>二进制</li>
+<li>八进制</li>
+<li>十六进制</li>
+</ul>
+</li>
+<li><p>output: return resStr</p>
+</li>
+</ul>
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
+<li><p>经过上面的分析，我们代码可以先写成</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> formatNum = <span class="built_in">Number</span>(num) <span class="comment">// 处理Number为十进制</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(formatNum)) <span class="keyword">return</span> <span class="string">'NaN'</span></span><br><span class="line">    <span class="keyword">if</span> (isZero(formatNum)) <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line">    <span class="keyword">const</span> sign = getSign(formatNum)</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">isFinite</span>(formatNum)) <span class="keyword">return</span> sign + <span class="string">'Infinity'</span></span><br><span class="line">    <span class="keyword">return</span> convertDecimalNumberToString(formatNum)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(err)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>input number 的特殊处理</p>
+<ul>
+<li><p>If m is NaN, return the String “NaN”.</p>
+<blockquote>
+<p>if (isNaN(formatNum)) return ‘NaN’</p>
+</blockquote>
+</li>
+<li><p>If m is +0 or -0, return the String “0”.</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (isZero(formatNum)) <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isZero</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="number">1</span> / num === <span class="literal">Infinity</span> || <span class="number">1</span> / num === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>If m is less than zero, return the string-concatenation of “-“ and ! NumberToString(-m).</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sign = getSign(formatNum)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSign</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (num === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"-"</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num === <span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">  &#125; <span class="comment">// 特殊情况 0 前面已经处理</span></span><br><span class="line">  <span class="keyword">return</span> num / <span class="built_in">Math</span>.abs(num) === <span class="number">1</span> ? <span class="string">""</span> : <span class="string">"-"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If m is +∞, return the String “Infinity”.</p>
+<blockquote>
+<p>if (!isFinite(formatNum)) return sign + ‘Infinity’</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>常规 Decimal Number 处理</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertDecimalNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> radix = <span class="number">10</span></span><br><span class="line">  <span class="keyword">let</span> int = <span class="built_in">Math</span>.floor(num)</span><br><span class="line">  <span class="keyword">let</span> float = (num - int) * <span class="number">100</span> / <span class="number">100</span></span><br><span class="line">  <span class="keyword">let</span> resInt = <span class="string">''</span></span><br><span class="line">  <span class="keyword">let</span> resFloat = <span class="string">''</span></span><br><span class="line">  <span class="comment">// 整数部分 取余，除以基数</span></span><br><span class="line">  <span class="keyword">while</span> (int &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    resInt = <span class="built_in">String</span>(int % radix) + resInt</span><br><span class="line">    int = <span class="built_in">Math</span>.floor(int / radix)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (float) &#123;</span><br><span class="line">    resFloat = <span class="string">'.'</span></span><br><span class="line">    <span class="comment">// 小数部分，乘以基数，取整</span></span><br><span class="line">    <span class="keyword">while</span> (float &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      resFloat = resFloat + <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">      float -= <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resInt + resFloat</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(convertNumberToString(-<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, -<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(+<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, +<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120.11112</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, <span class="number">120.11112</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, (<span class="number">120</span>).toString())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试截图<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/b741d6a87bab9c52f01871781745689124911.png" alt="测试截图"></li>
+</ul>
+</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>可以看出，我们写的 converNumbertoString 遇到浮点数，就失灵了，有想到说 用 toString，然后正则匹配出小数点后面的浮点数，舍入相应位数，但是这样，就用到了 toString 方法，似乎与我的最初想法实现 convertNumbertToString 死锁了 🙃</li>
+<li>大家有其他的不用 toString 实践，欢迎评论告诉我呀~</li>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week03/convertNumberToString.html" target="_blank" rel="noopener">代码地址</a></li>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>微信小程序-气泡框</title>
     <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1588,115 +1697,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【未完】前端性能监控</title>
-    <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>记录 性能监控 方面的学习过程🤔</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
-<li>Gmail SPA</li>
-<li>Angular/React/Vue MVVM/工程化</li>
-<li>weex/react native 跨端</li>
-<li>Node 全栈</li>
-</ul>
-<h3 id="前端变化给监控带来了什么样的改变"><a href="#前端变化给监控带来了什么样的改变" class="headerlink" title="前端变化给监控带来了什么样的改变"></a>前端变化给监控带来了什么样的改变</h3><ul>
-<li>传统监控模式能否使用于新的技术？比如 PV 统计<ul>
-<li>导致 PV 下降的原因和解法</li>
-<li>原因<ul>
-<li>业内路由替代了请求新的页面</li>
-</ul>
-</li>
-<li>解法<ul>
-<li>哈希路由：监听 hash change 变化上报 PV</li>
-<li>非哈希路由(Angular): 轻量 hack pushState 和 replaceState</li>
-</ul>
-</li>
-<li>案例<ul>
-<li>下拉刷新</li>
-<li>滚屏分页</li>
-<li>阿里云邮后台一直开着，每周上百次查看</li>
-<li>未关闭的浏览器 Ta b几小时后再次浏览</li>
-<li>查找信息时，浏览器 Tab 之间快速切换</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>SPA模式下首屏如何计算？<ul>
-<li>第一阶段：自定义打点时期<ul>
-<li>页头和首屏dom处分别通过 new Date() 打点</li>
-</ul>
-</li>
-<li>第二阶段：W3C标准时期<ul>
-<li>Navigaion Timing API</li>
-</ul>
-</li>
-<li>第三阶段：SPA盛行导致w3c标准失去原来的意义</li>
-<li>现阶段：用户感官指标FMP<ul>
-<li>FMP：主要内容可见时间</li>
-<li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
-<li>什么原因导致猜想不成立？<ul>
-<li>元素是否可见</li>
-<li>每个元素对页面的影响是否等效？ –&gt; 权重</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>下一阶段：W3C/paint-timing 首屏加载时间计算已经在提案中</li>
-</ul>
-</li>
-<li>跨端开发给监控带来什么挑战？</li>
-<li>前端监控的上报模式在 Node.js 端是否合理？</li>
-</ul>
-<h3 id="前端监控的最佳实践"><a href="#前端监控的最佳实践" class="headerlink" title="前端监控的最佳实践"></a>前端监控的最佳实践</h3><ul>
-<li>主动监控</li>
-<li>性能样本分布 &amp; 慢会话<ul>
-<li>慢会话追踪</li>
-</ul>
-</li>
-<li>搜索报错明细</li>
-<li>出错行为还原</li>
-</ul>
-<h3 id="阿里云ARMS前端监控系统架构"><a href="#阿里云ARMS前端监控系统架构" class="headerlink" title="阿里云ARMS前端监控系统架构"></a>阿里云ARMS前端监控系统架构</h3><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>性能监控</category>
-      </categories>
-      <tags>
-        <tag>性能监控</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数组、链表、跳表</title>
     <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1730,6 +1730,53 @@
 <li>找最近重复问题</li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>自己的前端知识体系</title>
+    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>理一下自己的技术体系吧</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/5947cefee7afec18961dda1194cebf224343214.png" alt="技术体系脑图"></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
   </entry>
   <entry>
     <title>编程语言通识</title>
@@ -2002,53 +2049,6 @@
       </tags>
   </entry>
   <entry>
-    <title>自己的前端知识体系</title>
-    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>理一下自己的技术体系吧</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/5947cefee7afec18961dda1194cebf224343214.png" alt="技术体系脑图"></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【未完】计算机图形学初探</title>
     <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
     <content><![CDATA[<style  type="text/css">
@@ -2152,10 +2152,13 @@
 </style>
 
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>嗯，发现 Promise 的面试题是真的多。。😓</li>
+<li>嗯，发现 运行机制 的面试题是真的多。。😓</li>
 <li>那这就是，最末篇吧</li>
 <li>加油 Elle 🤦‍♀️</li>
+<li>五一倒计时 2 天</li>
 </ul>
+<a id="more"></a>
+
 <h2 id="实践记录"><a href="#实践记录" class="headerlink" title="实践记录"></a>实践记录</h2><h3 id="async-await"><a href="#async-await" class="headerlink" title="async / await"></a>async / await</h3><p>5.1 题目一</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"async1 start"</span>);</span><br><span class="line">  <span class="keyword">await</span> async2();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"async1 end"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"async2"</span>);</span><br><span class="line">&#125;</span><br><span class="line">async1();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>)</span><br></pre></td></tr></table></figure>
 
