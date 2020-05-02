@@ -987,7 +987,7 @@ Promise.all([runAsync(1), runAsync(2), runAsync(3)])
 	- 而且这个结果中数组的顺序和Promise.all()接收到的数组顺序一致
 
 - 运行结果
-	- ![题目一运行结果](http://p0.meituan.net/myvideodistribute/99d8936b8c5029a6786b464868666f7d47917.png)
+	- ![题目一运行结果](http://p0.meituan.net/myvideodistribute/d3a6d5f4f158de806b690af124fcec9431029.png)
 
 	
 4.2 题目二
@@ -1020,7 +1020,7 @@ Promise.all([runAsync(1), runReject(4), runAsync(3), runReject(2)])
 			- 不会再执行 catch
 
 - 运行结果
-	- ![题目二运行结果](http://p0.meituan.net/myvideodistribute/99d8936b8c5029a6786b464868666f7d47917.png)
+	- ![题目二运行结果](http://p1.meituan.net/myvideodistribute/e0e25426dc0d49c3af9acee68744760d51135.png)
 
 - 等同于
 	
@@ -1067,7 +1067,7 @@ Promise.race([runAsync(1), runAsync(2), runAsync(3)])
 	- 没有报错，不会被 catch
 
 - 运行结果
-	- ![题目三运行结果](http://p0.meituan.net/myvideodistribute/99d8936b8c5029a6786b464868666f7d47917.png)
+	- ![题目三运行结果](http://p0.meituan.net/myvideodistribute/2eda438cd745e39ba934af362a80521038770.png)
 
 4.4 题目四
 
@@ -1105,7 +1105,7 @@ Promise.race([runReject(0), runAsync(1), runAsync(2), runAsync(3)])
 		- console.log(x) x --> 3
 
 - 运行结果
-	- ![题目四](http://p0.meituan.net/myvideodistribute/99d8936b8c5029a6786b464868666f7d47917.png)
+	- ![题目四](http://p1.meituan.net/myvideodistribute/89acbf32e7218b90c050526171bd1b3d53719.png)
 
 
 
