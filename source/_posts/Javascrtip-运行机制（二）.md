@@ -450,8 +450,242 @@ console.log("test end...");
 			- console.log(v1, v2);
 				- console.log("执行testAsync", "hello async");
 
+
+
 - 运行结果
 	- ![题目九运行结果](http://p0.meituan.net/myvideodistribute/09e8b0ae4cadad1f803049e6545d73f091754.png)
+
+	
+
+### async 处理错误
+6.1 **题目一**
+
+```javascript
+async function async1 () {
+  await async2();
+  console.log('async1');
+  return 'async1 success'
+}
+async function async2 () {
+  return new Promise((resolve, reject) => {
+    console.log('async2')
+    reject('error')
+  })
+}
+async1().then(res => console.log(res))
+```
+
+- 分析
+	- 代码从上至下开始执行
+	- async1()
+		- await async2();
+			- new Promise，执行该构造函数
+				- console.log('async2')
+				- reject('error') promise 状态变为 reject,将其保存起来，并向上抛
+				- Promise {<rejected>: "error"}
+
+- 运行结果
+	- ![题目一运行结果](http://p1.meituan.net/myvideodistribute/b3955dc674cf405c9a60de9062b525c736256.png)
+
+	
+6.2 题目二
+
+```javascript
+async function async1 () {
+  try {
+    await Promise.reject('error!!!')
+  } catch(e) {
+    console.log(e)
+  }
+  console.log('async1');
+  return Promise.resolve('async1 success')
+}
+async1().then(res => console.log(res))
+console.log('script start')
+```
+
+- 分析
+	- 代码从上至下开始执行
+	- async1()
+		- Promise.reject('error!!!')
+			- promise 状态变为 reject，将其状态保存起来，向上抛错
+		- catch 错误 入队微任务队列
+		- console.log('async1'); 入队微任务队列
+		- return Promise.resolve('async1 success')
+	- async1().then ... 入队微任务队列
+	- console.log('script start')
+	- 当前宏任务中的同步代码执行完成，开始执行微任务
+	- console.log(e) e --> 'error!!!'
+	- console.log('async1');
+	- console.log(res) res --> 'async1 success'
+
+- 运行结果
+	- ![题目二运行结果](http://p0.meituan.net/myvideodistribute/fc960e772e0fbca1fdf8640c8774999640316.png)
+
+
+### 综合题
+
+7.1 题目一
+
+```javascript
+const first = () => (new Promise((resolve, reject) => {
+    console.log(3);
+    let p = new Promise((resolve, reject) => {
+        console.log(7);
+        setTimeout(() => {
+            console.log(5);
+            resolve(6);
+            console.log(p)
+        }, 0)
+        resolve(1);
+    });
+    resolve(2);
+    p.then((arg) => {
+        console.log(arg);
+    });
+}));
+first().then((arg) => {
+    console.log(arg);
+});
+console.log(4);
+```
+
+- 分析
+	- 代码从上至下开始执行
+	- first()
+		- return 一个 promise 对象。先执行 new Promise，该构造函数代码
+		- console.log(3);
+		- resolve(2)
+			- 该 promise 状态变为 resolved，保存起来
+		- p new Promise, 执行该构造函数代码
+			-  console.log(7);
+			-  setTimeout ... 入队宏任务队列
+			-  resolve(1);
+			-  该 promise 状态变为 resolve ,保存起来
+		- p.then ... 入队微任务队列
+	- first().then ... 入队微任务队列
+	- 执行同步代码
+		- console.log(4);
+	- 该宏任务中的同步代码都执行完成，开始执行微任务队列
+	- p.then
+	- console.log(arg) arg --> 1
+	- p.then 入队微任务队列
+	- console.log(arg) arg --> 2
+	- 当前宏任务中的代码都执行完成，开始执行下一个宏任务
+	- setTimeout ...
+		- console.log(5);
+		- resolve(6); promise p 的状态已经改变，无法再进行更改，所以该行代码，无效
+		- console.log(p) p --> 1
+
+- 运行结果
+	- ![题目一运行结果](http://p0.meituan.net/myvideodistribute/de321f1169135bf57ef98b6dd3346ada56428.png)
+
+
+7.2 题目二
+
+```javascript
+const async1 = async () => {
+  console.log('async1');
+  setTimeout(() => {
+    console.log('timer1')
+  }, 2000)
+  await new Promise(resolve => {
+    console.log('promise1')
+  })
+  console.log('async1 end')
+  return 'async1 success'
+} 
+console.log('script start');
+async1().then(res => console.log(res));
+console.log('script end');
+Promise.resolve(1)
+  .then(2)
+  .then(Promise.resolve(3))
+  .catch(4)
+  .then(res => console.log(res))
+setTimeout(() => {
+  console.log('timer2')
+}, 1000)
+```
+
+- 分析
+	- 代码从上至下开始执行
+	- console.log('script start');
+	- async1()
+		- console.log('async1');
+		- setTimeout ... 2000入队宏任务队列
+		- await new Promise
+			- 执行该构造函数代码
+				- console.log('promise1')
+		- 由于该 promise 没有被 resolve、reject，一直处在 pending，因此 后面的
+			- console.log('async1 end') 入队微任务队列
+			- return 'async1 success'
+			- 均不执行
+	- async1().then ... 入队微任务队列
+	- console.log('script end');
+	- Promise.resolve(1)
+		- 该 promie 状态变为1，保存起来
+	- Promise.resolve(1).then ... 入队微任务队列
+	- setTimeout ... 1000入队宏任务队列
+	- 当前宏任务中的同步代码执行完成，开始执行微任务
+	- Promise.resolve(1).then ... 
+		- 由于 .then(2) .then(Promise.resolve(3)) .catch(4) 一个是数字，一个是对象，会发生值透传现象
+		- console.log(res) res --> 1
+	- 当前宏任务执行完成，开始执行下一个宏任务
+	- setTimeout ... 1000
+		- console.log('timer2')
+	- setTimeout ... 2000
+		- - console.log('timer1')
+
+- 运行结果
+	- ![题目二运行结果](http://p0.meituan.net/myvideodistribute/18d87ace8b51f98e4e30f55c17d0c4ff93076.png)
+
+7.3 题目三
+
+```javascript
+const p1 = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve('resolve3');
+    console.log('timer1')
+  }, 0)
+  resolve('resovle1');
+  resolve('resolve2');
+}).then(res => {
+  console.log(res)
+  setTimeout(() => {
+    console.log(p1)
+  }, 1000)
+}).finally(res => {
+  console.log('finally', res)
+})
+```
+
+- 分析
+	- 代码从上至下开始执行
+	- new Promise，执行该构造函数代码
+		- setTimeout ... 入队宏任务队列
+		- resolve('resovle1');
+		- promise 状态变为 resolve1，并保存起来
+	- Promise.then ...
+		- console.log(res) res --> 'resovle1'
+		- setTimeout ... 入队宏任务队列
+	- Promise.finally ...
+		- console.log('finally', res) res --> undefined
+	- 当前宏任务中的代码全部执行完成，开始执行下一个宏任务
+	- resolve('resolve3'); promise 状态一旦改变，无法更改
+	- console.log('timer1')
+	- 当前宏任务中的代码全部执行完成，开始执行下一个宏任务
+	- console.log(p1) p1 --> .finally的返回值 --> undefined
+
+- 结论
+	- **finally 不管 Promise 的状态是 resolved 还是 rejected 都会执行，且它的回调函数是接收不到 Promise 的结果的**，所以 finally() 中的 res 是一个迷惑项
+	
+- 运行结果
+	- ![题目三运行结果](http://p0.meituan.net/myvideodistribute/7be692142d758f1d65ad549a1b106f4146102.png)
+
+	
+## 参考文献
+- [题目来源](https://juejin.im/post/5e58c618e51d4526ed66b5cf)
 				
 				
 ## 写在后面
