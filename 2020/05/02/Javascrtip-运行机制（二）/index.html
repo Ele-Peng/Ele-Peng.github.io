@@ -413,8 +413,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">testSometing</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"执行testSometing"</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"testSometing"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">testAsync</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"执行testAsync"</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(<span class="string">"hello async"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"test start..."</span>);</span><br><span class="line">  <span class="keyword">const</span> v1 = <span class="keyword">await</span> testSometing();</span><br><span class="line">  <span class="built_in">console</span>.log(v1);</span><br><span class="line">  <span class="keyword">const</span> v2 = <span class="keyword">await</span> testAsync();</span><br><span class="line">  <span class="built_in">console</span>.log(v2);</span><br><span class="line">  <span class="built_in">console</span>.log(v1, v2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"promise start..."</span>);</span><br><span class="line">  resolve(<span class="string">"promise"</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise.then(<span class="function"><span class="params">val</span> =&gt;</span> <span class="built_in">console</span>.log(val));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"test end..."</span>);</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>分析</p>
-<ul>
+<li>分析<ul>
 <li>代码从上至下开始执行</li>
 <li>test()<ul>
 <li>console.log(“test start…”);</li>
@@ -463,11 +462,222 @@
 </li>
 </ul>
 </li>
-<li><p>运行结果</p>
+</ul>
 <ul>
+<li>运行结果<ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/09e8b0ae4cadad1f803049e6545d73f091754.png" alt="题目九运行结果"></li>
 </ul>
 </li>
+</ul>
+<h3 id="async-处理错误"><a href="#async-处理错误" class="headerlink" title="async 处理错误"></a>async 处理错误</h3><p>6.1 <strong>题目一</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async1</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">await</span> async2();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'async1'</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'async1 success'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async2</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'async2'</span>)</span><br><span class="line">    reject(<span class="string">'error'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">async1().then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>分析</p>
+<ul>
+<li>代码从上至下开始执行</li>
+<li>async1()<ul>
+<li>await async2();<ul>
+<li>new Promise，执行该构造函数<ul>
+<li>console.log(‘async2’)</li>
+<li>reject(‘error’) promise 状态变为 reject,将其保存起来，并向上抛</li>
+<li>Promise {<rejected>: “error”}</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/b3955dc674cf405c9a60de9062b525c736256.png" alt="题目一运行结果"></li>
+</ul>
+</li>
+</ul>
+<p>6.2 题目二</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async1</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="built_in">Promise</span>.reject(<span class="string">'error!!!'</span>)</span><br><span class="line">  &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'async1'</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(<span class="string">'async1 success'</span>)</span><br><span class="line">&#125;</span><br><span class="line">async1().then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>分析</p>
+<ul>
+<li>代码从上至下开始执行</li>
+<li>async1()<ul>
+<li>Promise.reject(‘error!!!’)<ul>
+<li>promise 状态变为 reject，将其状态保存起来，向上抛错</li>
+</ul>
+</li>
+<li>catch 错误 入队微任务队列</li>
+<li>console.log(‘async1’); 入队微任务队列</li>
+<li>return Promise.resolve(‘async1 success’)</li>
+</ul>
+</li>
+<li>async1().then … 入队微任务队列</li>
+<li>console.log(‘script start’)</li>
+<li>当前宏任务中的同步代码执行完成，开始执行微任务</li>
+<li>console.log(e) e –&gt; ‘error!!!’</li>
+<li>console.log(‘async1’);</li>
+<li>console.log(res) res –&gt; ‘async1 success’</li>
+</ul>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/fc960e772e0fbca1fdf8640c8774999640316.png" alt="题目二运行结果"></li>
+</ul>
+</li>
+</ul>
+<h3 id="综合题"><a href="#综合题" class="headerlink" title="综合题"></a>综合题</h3><p>7.1 题目一</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> first = <span class="function"><span class="params">()</span> =&gt;</span> <span class="function">(<span class="params"><span class="keyword">new</span> <span class="built_in">Promise</span>((resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">let</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">7</span>);</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="number">5</span>);</span><br><span class="line">            resolve(<span class="number">6</span>);</span><br><span class="line">            <span class="built_in">console</span>.log(p)</span><br><span class="line">        &#125;, <span class="number">0</span>)</span><br><span class="line">        resolve(<span class="number">1</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    resolve(<span class="number">2</span>);</span><br><span class="line">    p.then(<span class="function">(<span class="params">arg</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(arg);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;));</span><br><span class="line">first().then(<span class="function">(<span class="params">arg</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arg);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>分析</p>
+<ul>
+<li>代码从上至下开始执行</li>
+<li>first()<ul>
+<li>return 一个 promise 对象。先执行 new Promise，该构造函数代码</li>
+<li>console.log(3);</li>
+<li>resolve(2)<ul>
+<li>该 promise 状态变为 resolved，保存起来</li>
+</ul>
+</li>
+<li>p new Promise, 执行该构造函数代码<ul>
+<li>console.log(7);</li>
+<li>setTimeout … 入队宏任务队列</li>
+<li>resolve(1);</li>
+<li>该 promise 状态变为 resolve ,保存起来</li>
+</ul>
+</li>
+<li>p.then … 入队微任务队列</li>
+</ul>
+</li>
+<li>first().then … 入队微任务队列</li>
+<li>执行同步代码<ul>
+<li>console.log(4);</li>
+</ul>
+</li>
+<li>该宏任务中的同步代码都执行完成，开始执行微任务队列</li>
+<li>p.then</li>
+<li>console.log(arg) arg –&gt; 1</li>
+<li>p.then 入队微任务队列</li>
+<li>console.log(arg) arg –&gt; 2</li>
+<li>当前宏任务中的代码都执行完成，开始执行下一个宏任务</li>
+<li>setTimeout …<ul>
+<li>console.log(5);</li>
+<li>resolve(6); promise p 的状态已经改变，无法再进行更改，所以该行代码，无效</li>
+<li>console.log(p) p –&gt; 1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/de321f1169135bf57ef98b6dd3346ada56428.png" alt="题目一运行结果"></li>
+</ul>
+</li>
+</ul>
+<p>7.2 题目二</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> async1 = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'async1'</span>);</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timer1'</span>)</span><br><span class="line">  &#125;, <span class="number">2000</span>)</span><br><span class="line">  <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'async1 end'</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'async1 success'</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>);</span><br><span class="line">async1().then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script end'</span>);</span><br><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line">  .then(<span class="number">2</span>)</span><br><span class="line">  .then(<span class="built_in">Promise</span>.resolve(<span class="number">3</span>))</span><br><span class="line">  .catch(<span class="number">4</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timer2'</span>)</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>分析</p>
+<ul>
+<li>代码从上至下开始执行</li>
+<li>console.log(‘script start’);</li>
+<li>async1()<ul>
+<li>console.log(‘async1’);</li>
+<li>setTimeout … 2000入队宏任务队列</li>
+<li>await new Promise<ul>
+<li>执行该构造函数代码<ul>
+<li>console.log(‘promise1’)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>由于该 promise 没有被 resolve、reject，一直处在 pending，因此 后面的<ul>
+<li>console.log(‘async1 end’) 入队微任务队列</li>
+<li>return ‘async1 success’</li>
+<li>均不执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>async1().then … 入队微任务队列</li>
+<li>console.log(‘script end’);</li>
+<li>Promise.resolve(1)<ul>
+<li>该 promie 状态变为1，保存起来</li>
+</ul>
+</li>
+<li>Promise.resolve(1).then … 入队微任务队列</li>
+<li>setTimeout … 1000入队宏任务队列</li>
+<li>当前宏任务中的同步代码执行完成，开始执行微任务</li>
+<li>Promise.resolve(1).then … <ul>
+<li>由于 .then(2) .then(Promise.resolve(3)) .catch(4) 一个是数字，一个是对象，会发生值透传现象</li>
+<li>console.log(res) res –&gt; 1</li>
+</ul>
+</li>
+<li>当前宏任务执行完成，开始执行下一个宏任务</li>
+<li>setTimeout … 1000<ul>
+<li>console.log(‘timer2’)</li>
+</ul>
+</li>
+<li>setTimeout … 2000<ul>
+<li><ul>
+<li>console.log(‘timer1’)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/18d87ace8b51f98e4e30f55c17d0c4ff93076.png" alt="题目二运行结果"></li>
+</ul>
+</li>
+</ul>
+<p>7.3 题目三</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="string">'resolve3'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timer1'</span>)</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">  resolve(<span class="string">'resovle1'</span>);</span><br><span class="line">  resolve(<span class="string">'resolve2'</span>);</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(p1)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;).finally(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'finally'</span>, res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>分析</p>
+<ul>
+<li>代码从上至下开始执行</li>
+<li>new Promise，执行该构造函数代码<ul>
+<li>setTimeout … 入队宏任务队列</li>
+<li>resolve(‘resovle1’);</li>
+<li>promise 状态变为 resolve1，并保存起来</li>
+</ul>
+</li>
+<li>Promise.then …<ul>
+<li>console.log(res) res –&gt; ‘resovle1’</li>
+<li>setTimeout … 入队宏任务队列</li>
+</ul>
+</li>
+<li>Promise.finally …<ul>
+<li>console.log(‘finally’, res) res –&gt; undefined</li>
+</ul>
+</li>
+<li>当前宏任务中的代码全部执行完成，开始执行下一个宏任务</li>
+<li>resolve(‘resolve3’); promise 状态一旦改变，无法更改</li>
+<li>console.log(‘timer1’)</li>
+<li>当前宏任务中的代码全部执行完成，开始执行下一个宏任务</li>
+<li>console.log(p1) p1 –&gt; .finally的返回值 –&gt; undefined</li>
+</ul>
+</li>
+<li><p>结论</p>
+<ul>
+<li><strong>finally 不管 Promise 的状态是 resolved 还是 rejected 都会执行，且它的回调函数是接收不到 Promise 的结果的</strong>，所以 finally() 中的 res 是一个迷惑项</li>
+</ul>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/7be692142d758f1d65ad549a1b106f4146102.png" alt="题目三运行结果"></li>
+</ul>
+</li>
+</ul>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://juejin.im/post/5e58c618e51d4526ed66b5cf" target="_blank" rel="noopener">题目来源</a></li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
