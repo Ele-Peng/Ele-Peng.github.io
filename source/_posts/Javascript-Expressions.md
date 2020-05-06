@@ -84,13 +84,18 @@ description:
 			this.a = 1
 		}
 	}
-	class Child() {
+	class Child extends Parent {
 		constructor() {
 			super()
 			console.log(this.a)
 		}
 	}
+	Parent.a = 1;
+	new Child
 	```
+	
+	- ![super 截图](http://p0.meituan.net/myvideodistribute/c869fe9598febb5fbbdab3bb66c0940859515.png)
+	
 - new.target
 	- 函数外面不能使用，只能在函数里使用
 
@@ -119,6 +124,19 @@ description:
 		```
 - new Foo()
 	- high priority
+	
+	```javascript
+	function cls1(s) {
+	    console.log(s)
+	}
+	function cls2(s) {
+	    console.log("2", s)
+	    return cls1
+	}
+	
+	new new cls2("goog")
+	```
+
 - Member Expressions 返回的是一个 Reference 类型
 	- Reference
 
@@ -132,21 +150,34 @@ description:
 
 ### New
 - new Foo 
+- new Foo() 优先级高
 	
 - **Example**
 	- new a()()
 	- new new a()
 
 		```javascript
-		function cls1(s) { console.log(s)}
-		function cls2(s) { console.log("2", s)return cls1; }
+		function cls1(s) {
+		    console.log(s)
+		}
+		function cls2(s) {
+		    console.log("2", s)
+		    return cls1
+		}
+		console.log('-=-=-=-new cls2-=-=-=-=')
 		new cls2
-		cls2()
-		new cls2() // 返回回来 cls2 实例，cls1对象
-		new (cls2())
-		new (new cls)
-		new new cls2()
+		console.log('-=-=-=-cls2("good")-=-=-=-=')
+		cls2("good")
+		console.log('-=-=-=-new cls2("good")-=-=-=-=')
+		new cls2("good") // 返回回来 cls2 实例，cls1对象
+		console.log('-=-=-=-new (cls2("good"))-=-=-=-=')
+		new (cls2("good"))
+		console.log('-=-=-=-new (new cls2)-=-=-=-=')
+		new (new cls2)
+		console.log('-=-=-=-new new cls2("good")-=-=-=-=')
+		new new cls2("good")
 		```
+	- ![new Foo  优先级](http://p0.meituan.net/myvideodistribute/0ea9dc132069ffab80fc3260feef10d8228161.png)
 
 ### Call
 - foo()
@@ -155,29 +186,13 @@ description:
 - foo().b
 - foo()\`abc\`
 
-- **Example**
-	- new a()['b']
-		
-		```javascript
-		class foo() {
-			constructor() {
-				this.b = 1
-			}
-		}
-		new foo()['b']
-		new (foo()['b'])
-		foo["b"] = function(){}
-		new foo('b')
-		new (foo('b'))
-		// 二者等效
-		```
-
 
 
 ## Right Handside
 ### Update
-- 【未完】 UpdateExpression
+- UpdateExpression
 	- no LineTerminator here
+	- ![no LineTerminator here](http://p0.meituan.net/myvideodistribute/c0869aae45e6bd6e9e6cc8261ed8888664190.png)
 
 		```javascript
 		var a = 1, b = 1, c = 1;
@@ -205,7 +220,7 @@ description:
 - delete a.b
 - void foo() 
 	- void 不是返回值，是运算符在 JS 中
-	- 不管后面是什么，都返回undefined
+	- 不管后面是什么，都返回 undefined
 	- IIFE 立即执行函数
 		
 		```javascript
@@ -217,7 +232,7 @@ description:
 				console.log(i)
 			}
 		}
-		// 不敢点那个按钮，都是10，为解决这个问题，我们可以使用IIFE
+		// 点那个按钮，都是10，为解决这个问题，我们可以使用IIFE
 		for (var i = 0; i < 10; i ++) {
 			var button  = document.createElement('button');
 			documents.body.append(button);
@@ -229,17 +244,17 @@ description:
 			})()
 		}
 		// 如果前面不加分号，在一些写法中，会发生粘起来错误
-    (function(i) {
-      button.onClick = function (i) {
-        console.log(i)
-      }
-    })()
-    
-    (function(i) {
-      button.onClick = function (i) {
-        console.log(i)
-      }
-    })()
+	    (function(i) {
+	      button.onClick = function (i) {
+	        console.log(i)
+	      }
+	    })()
+	    
+	    (function(i) {
+	      button.onClick = function (i) {
+	        console.log(i)
+	      }
+	    })()
 		// 最稳妥的就是，在前面加上void
 		for (var i = 0; i < 10; i ++) {
 			var button  = document.createElement('button');
@@ -259,6 +274,8 @@ description:
 	typeof null
 	typeof function() {}
 	```
+	
+	- ![typeof](http://p0.meituan.net/myvideodistribute/c45593f796e09721d1b10701e366669620756.png)
 - \+ a
 - \- a
 - ~ a 按位取反
@@ -270,17 +287,18 @@ description:
 - **
 	- 3 ** 2 ** 3
 	- 3 ** (2 ** 3)
+	- ![Exponental](http://p0.meituan.net/myvideodistribute/c45593f796e09721d1b10701e366669620756.png)
 
 
 ### Multiplicative
-- * / %
+- \* / %
 	- JS 中有1种乘法运算符
 		- 运行时
 			- number
 			- string
 
 ### Additive
-- + -
+- \+ -
 	- JS 中有2种加法运算符
 		- 运行时
 			- number
@@ -318,6 +336,8 @@ description:
 		
 		foo1() || foo2()
 		```
+		
+	- ![&& 短路逻辑运行截图](http://p1.meituan.net/myvideodistribute/76bacd40d3b17ddaca8fa40b7df168cc49722.png)
 - ||
 
 
@@ -329,6 +349,7 @@ description:
 		```javascript
 		false ? foo1() : foo2()
 		```
+	- ![三目运算符短路逻辑](http://p0.meituan.net/myvideodistribute/bcb065e3ae7986b5c15333ea32404e5360600.png)
 		
 ### ,
 
@@ -341,7 +362,7 @@ description:
 #### Boxing & Unboxing
 
 ```javascript
-Number String Boolean Symbol
+// Number String Boolean Symbol
 new Number(1)
 new String('hello')
 new String('hello').length
@@ -350,14 +371,28 @@ typeof "hello"
 typeof new String('hello')
 !new String('')
 !""
-Number String Boolean 不作为 new 调用，就是转换成普通类型
+// Number String Boolean 不作为 new 调用，就是转换成普通类型
 String(1)
 new String(1)
 ```
 
+- ![Boxing & Unboxing](http://p0.meituan.net/myvideodistribute/3f64818a6b39695d9dbc489cb8bc3f6281607.png)
+
 - toPremitive()
 - toString vs valueOf
-  - 【未完】toString vs valueOf
+  - toString vs valueOf
+
+	 	```javascript
+	 	1 + {}
+	 	1 + {valueOf(){return 2}}
+	 	1 + {toString(){return 2}}
+	 	1 + {toString(){return 4}}
+	 	1 + {toString(){return "4"}}
+	 	1 + {valueOf(){return 1}, toString(){return "2"}}
+	 	"1" + {valueOf(){return 1}, toString(){return "2"}}
+	 	```
+ 	
+ 	- ![toString vs valueOf](http://p1.meituan.net/myvideodistribute/78cc58a640f02d8de18f21eec0c80e2f71205.png)
 
 
 
