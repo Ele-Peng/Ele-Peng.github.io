@@ -38,7 +38,7 @@ description:
 }
 </style>
 
-# 【未完】Javascript -- Expressions
+# Javascript -- Expressions
 <!-- more -->
 
 # Atom
@@ -46,10 +46,21 @@ description:
 
 # Expressions 表达式
 ## Grammar
-### Grammar Tree vs Priority
+
+
+
+
+### 引导：Grammar Tree vs Priority
 - \+ -
 - \* /
 - ()
+
+
+
+## Left Handside & Right Handside
+## Left Handside
+- ![Left Handside](http://p0.meituan.net/myvideodistribute/4fa36955e4edcb6c2ae15f638759b365164257.png)
+- 极限是 call
 
 ### Member
 - a.b
@@ -162,10 +173,6 @@ description:
 		```
 
 
-
-## Left Handside & Right Handside
-## Left Handside
-- 极限是 call
 
 ## Right Handside
 ### Update
