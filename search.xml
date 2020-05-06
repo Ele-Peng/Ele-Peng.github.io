@@ -1,6 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Elle-训练算法计划</title>
+    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
+<li>主要的数据结构和算法会单开文档来写</li>
+</ul>
+<a id="more"></a>
+<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
+<li>数据结构<ul>
+<li>一维数据结构<ul>
+<li>基础：数组 array(string), 链表 linked list</li>
+<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
+</ul>
+</li>
+<li>二维数据结构<ul>
+<li>一维泛化</li>
+<li>基础：树 tree，图 graph</li>
+<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
+</ul>
+</li>
+<li>特殊数据结构<ul>
+<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
+<li>LRU Cache</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法<ul>
+<li>if-else, switch –&gt; branch</li>
+<li>for, while loop –&gt; iteration</li>
+<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
+<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
+<li>动态规划 dynamic programing</li>
+<li>二分查找 binary search</li>
+<li>贪心 greedy</li>
+<li>数学 math, 集合 geometry</li>
+</ul>
+</li>
+</ul>
+<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
+<li>刻意练习-过遍数 (五遍刷题法)<ul>
+<li>刷题第一遍<ul>
+<li>5分钟（5~15 mins）：读题+思考</li>
+<li>直接看解法：注意！多解法，比较解乏优劣</li>
+<li>有思路，直接写</li>
+<li>背诵+默写好的解法</li>
+</ul>
+</li>
+<li>刷题第二遍<ul>
+<li>马上自己写 –&gt; LeetCode提交</li>
+<li>多种解法比较、体会 –&gt; 优化</li>
+<li>多种解法自己写一遍，直到通过</li>
+</ul>
+</li>
+<li>刷题第三遍<ul>
+<li>24h后，再重复做题</li>
+<li>不同解法的熟练程度 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第四遍<ul>
+<li>过了一周后：反复回来练习相同的题目</li>
+<li>不熟练的题目 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第五遍<ul>
+<li>面试前二周恢复性训练</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>练习缺陷、弱点地方<ul>
+<li>中文站 leetcode-cn.com 刷题</li>
+<li>国际站 leetcode.com 看discuss-most votes</li>
+</ul>
+</li>
+<li>切题<ul>
+<li><strong>Clarification 审题</strong></li>
+<li><strong>Possible Solutions</strong><ul>
+<li>compare (time/space)</li>
+<li>optimal (加强)</li>
+</ul>
+</li>
+<li><strong>Coding</strong></li>
+<li><strong>Test cases</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
+<li>即时反馈</li>
+<li>主动型反馈</li>
+<li>被动型反馈<ul>
+<li>code review</li>
+</ul>
+</li>
+</ul>
+<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
+<li>top tips for vscode</li>
+</ul>
+<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
+<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
+</ul>
+<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
+<li>O(1): constant Complexity 常数复杂度</li>
+<li>O(log n): Logarithmic Complexity 对数复杂度</li>
+<li>O(n): Linear Complexity 线性时间复杂度</li>
+<li>O(n^2): N square Complexity 平方</li>
+<li>O(n^3): N cube Complexity 立方</li>
+<li>O(2^n): Exponential Growth 指数</li>
+<li>O(n!): Factorial 阶乘</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
+</ul>
+<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
+<li>二分查找</li>
+<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
+<li>二维有序矩阵</li>
+<li>归并排序 O(nlogn)</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript-Expressions</title>
     <url>/2020/04/23/Javascript-Expressions/</url>
     <content><![CDATA[<style  type="text/css">
@@ -28,7 +181,8 @@
 }
 </style>
 
-<h1 id="Javascript-—-Expressions"><a href="#Javascript-—-Expressions" class="headerlink" title="Javascript — Expressions"></a>Javascript — Expressions</h1><a id="more"></a>
+<h1 id="Javascript-–-Expressions"><a href="#Javascript-–-Expressions" class="headerlink" title="Javascript – Expressions"></a>Javascript – Expressions</h1><a id="more"></a>
+
 <h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expressions-表达式"><a href="#Expressions-表达式" class="headerlink" title="Expressions 表达式"></a>Expressions 表达式</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="引导：Grammar-Tree-vs-Priority"><a href="#引导：Grammar-Tree-vs-Priority" class="headerlink" title="引导：Grammar Tree vs Priority"></a>引导：Grammar Tree vs Priority</h3><ul>
 <li>+ -</li>
 <li>* /</li>
@@ -39,16 +193,20 @@
 <li>极限是 call</li>
 </ul>
 <h3 id="Member"><a href="#Member" class="headerlink" title="Member"></a>Member</h3><ul>
-<li>a.b</li>
-<li>a[b]</li>
+<li><p>a.b</p>
+</li>
+<li><p>a[b]</p>
+</li>
 <li><p>foo`string`</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"Elle"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>!`</span></span><br></pre></td></tr></table></figure></li>
-<li>super.b<ul>
+<li><p>super.b</p>
+<ul>
 <li>只能在 constructor 里使用</li>
 </ul>
 </li>
 <li><p>super[‘b’]</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">this</span>.a = <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">super</span>()</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Parent.a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">new</span> Child</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/c869fe9598febb5fbbdab3bb66c0940859515.png" alt="super 截图"></li>
 </ul>
@@ -57,6 +215,7 @@
 <ul>
 <li><p>函数外面不能使用，只能在函数里使用</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 存在一个伪造对象的可能，无法知道对象是否是被 new 调起</span></span><br><span class="line"><span class="keyword">var</span> fakeObj = &#123;&#125;</span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(fakeObj, foo.prototype)</span><br><span class="line">fakeObj.constructor = foo</span><br><span class="line">foo.apply(fakeObj)</span><br><span class="line">fakeObj <span class="keyword">instanceof</span> foo</span><br></pre></td></tr></table></figure>
+
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">new</span>.target)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> foo()</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
@@ -71,20 +230,24 @@
 <ul>
 <li><p>Reference</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">x</span>: <span class="number">1</span> &#125;</span><br><span class="line">o.x + <span class="number">2</span></span><br><span class="line"><span class="number">1</span> + <span class="number">2</span></span><br><span class="line"><span class="keyword">delete</span> o.x</span><br><span class="line"><span class="keyword">delete</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 </li>
 </ul>
 <h3 id="New"><a href="#New" class="headerlink" title="New"></a>New</h3><ul>
-<li>new Foo </li>
+<li><p>new Foo </p>
+</li>
 <li><p>new Foo() 优先级高</p>
 </li>
 <li><p><strong>Example</strong></p>
 <ul>
-<li>new a()()</li>
+<li><p>new a()()</p>
+</li>
 <li><p>new new a()</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls1</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(s)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls2</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"2"</span>, s)</span><br><span class="line">    <span class="keyword">return</span> cls1</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new cls2-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> cls2</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-cls2("good")-=-=-=-='</span>)</span><br><span class="line">cls2(<span class="string">"good"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new cls2("good")-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> cls2(<span class="string">"good"</span>) <span class="comment">// 返回回来 cls2 实例，cls1对象</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new (cls2("good"))-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> (cls2(<span class="string">"good"</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new (new cls2)-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> (<span class="keyword">new</span> cls2)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new new cls2("good")-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> cls2(<span class="string">"good"</span>)</span><br></pre></td></tr></table></figure></li>
-<li><img src="http://p0.meituan.net/myvideodistribute/0ea9dc132069ffab80fc3260feef10d8228161.png" alt="new Foo  优先级"></li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/0ea9dc132069ffab80fc3260feef10d8228161.png" alt="new Foo  优先级"></p>
+</li>
 </ul>
 </li>
 </ul>
@@ -98,46 +261,64 @@
 <h2 id="Right-Handside"><a href="#Right-Handside" class="headerlink" title="Right Handside"></a>Right Handside</h2><h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><ul>
 <li><p>UpdateExpression</p>
 <ul>
-<li>no LineTerminator here</li>
+<li><p>no LineTerminator here</p>
+</li>
 <li><p><img src="http://p0.meituan.net/myvideodistribute/c0869aae45e6bd6e9e6cc8261ed8888664190.png" alt="no LineTerminator here"></p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">1</span>, c = <span class="number">1</span>;</span><br><span class="line">a</span><br><span class="line">++</span><br><span class="line">b</span><br><span class="line">++</span><br><span class="line">c</span><br><span class="line"><span class="built_in">console</span>.log([a, b, c])</span><br><span class="line">a<span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span>++</span><br><span class="line">b<span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span>++</span><br><span class="line">c</span><br><span class="line"><span class="built_in">console</span>.log([a, b, c])</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>a ++</li>
-<li>a —</li>
-<li>— a</li>
-<li>++ a</li>
+<li><p>a ++</p>
+</li>
+<li><p>a –</p>
+</li>
+<li><p>– a</p>
+</li>
+<li><p>++ a</p>
+</li>
 </ul>
 <h3 id="Unary-单目运算符"><a href="#Unary-单目运算符" class="headerlink" title="Unary 单目运算符"></a>Unary 单目运算符</h3><ul>
-<li>delete a.b</li>
+<li><p>delete a.b</p>
+</li>
 <li><p>void foo() </p>
 <ul>
-<li>void 不是返回值，是运算符在 JS 中</li>
-<li>不管后面是什么，都返回 undefined</li>
+<li><p>void 不是返回值，是运算符在 JS 中</p>
+</li>
+<li><p>不管后面是什么，都返回 undefined</p>
+</li>
 <li><p>IIFE 立即执行函数</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 点那个按钮，都是10，为解决这个问题，我们可以使用IIFE</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">		button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果前面不加分号，在一些写法中，会发生粘起来错误</span></span><br><span class="line">   (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">     button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(i)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)()</span><br><span class="line">   </span><br><span class="line">   (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">     button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(i)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)()</span><br><span class="line"><span class="comment">// 最稳妥的就是，在前面加上void</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">void</span> <span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">		button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 并且语义正确，我们并不需要IIFE的返回值</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>typeof a</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/c45593f796e09721d1b10701e366669620756.png" alt="typeof"></li>
 </ul>
 </li>
-<li>+ a</li>
-<li>- a</li>
-<li>~ a 按位取反</li>
-<li>! a 取非<ul>
+<li><p>+ a</p>
+</li>
+<li><p>- a</p>
+</li>
+<li><p>~ a 按位取反</p>
+</li>
+<li><p>! a 取非</p>
+<ul>
 <li>!!1</li>
 </ul>
 </li>
-<li>await a</li>
+<li><p>await a</p>
+</li>
 </ul>
-<h3 id="Exponental"><a href="#Exponental" class="headerlink" title="Exponental"></a>Exponental</h3><hr>
-<pre><code>- 3 ** 2 ** 3
-- 3 ** (2 ** 3)
-- ![Exponental](http://p0.meituan.net/myvideodistribute/c45593f796e09721d1b10701e366669620756.png)
-</code></pre><h3 id="Multiplicative"><a href="#Multiplicative" class="headerlink" title="Multiplicative"></a>Multiplicative</h3><ul>
+<h3 id="Exponental"><a href="#Exponental" class="headerlink" title="Exponental"></a>Exponental</h3><ul>
+<li>**<ul>
+<li>3 ** 2 ** 3</li>
+<li>3 ** (2 ** 3)</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/c45593f796e09721d1b10701e366669620756.png" alt="Exponental"></li>
+</ul>
+</li>
+</ul>
+<h3 id="Multiplicative"><a href="#Multiplicative" class="headerlink" title="Multiplicative"></a>Multiplicative</h3><ul>
 <li>* / %<ul>
 <li>JS 中有1种乘法运算符<ul>
 <li>运行时<ul>
@@ -179,7 +360,8 @@
 <li>&amp; ^ |</li>
 </ul>
 <h3 id="Logical"><a href="#Logical" class="headerlink" title="Logical"></a>Logical</h3><ul>
-<li>没有任何 boolean 转换</li>
+<li><p>没有任何 boolean 转换</p>
+</li>
 <li><p>&amp;&amp;</p>
 <ul>
 <li><p>有短路逻辑</p>
@@ -189,22 +371,25 @@
 </li>
 </ul>
 </li>
-<li>||</li>
+<li><p>||</p>
+</li>
 </ul>
 <h3 id="Conditional"><a href="#Conditional" class="headerlink" title="Conditional"></a>Conditional</h3><ul>
 <li><p>? :</p>
 <ul>
 <li><p>同样有短路逻辑</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="literal">false</span> ? foo1() : foo2()</span><br></pre></td></tr></table></figure></li>
-<li><img src="http://p0.meituan.net/myvideodistribute/bcb065e3ae7986b5c15333ea32404e5360600.png" alt="三目运算符短路逻辑"></li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/bcb065e3ae7986b5c15333ea32404e5360600.png" alt="三目运算符短路逻辑"></p>
+</li>
 </ul>
 </li>
 </ul>
 <h3 id=""><a href="#" class="headerlink" title=","></a>,</h3><h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Type-Convertion"><a href="#Type-Convertion" class="headerlink" title="Type Convertion"></a>Type Convertion</h3><ul>
 <li>【未完】转换图</li>
-<li>undefined —&gt; number NAN</li>
+<li>undefined –&gt; number NAN</li>
 </ul>
 <h4 id="Boxing-amp-Unboxing"><a href="#Boxing-amp-Unboxing" class="headerlink" title="Boxing &amp; Unboxing"></a>Boxing &amp; Unboxing</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Number String Boolean Symbol</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>).length</span><br><span class="line"><span class="string">"hello"</span>.length</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"hello"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line">!<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">''</span>)</span><br><span class="line">!<span class="string">""</span></span><br><span class="line"><span class="comment">// Number String Boolean 不作为 new 调用，就是转换成普通类型</span></span><br><span class="line"><span class="built_in">String</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p><img src="http://p0.meituan.net/myvideodistribute/3f64818a6b39695d9dbc489cb8bc3f6281607.png" alt="Boxing &amp; Unboxing"></p>
 </li>
@@ -213,8 +398,7 @@
 <li><p>toString vs valueOf</p>
 <ul>
 <li><p>toString vs valueOf</p>
-<pre><code> <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> + &#123;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="number">4</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="string">"4"</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;, toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;&#125;</span><br><span class="line"><span class="string">"1"</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;, toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><ul>
+<pre><code><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> + &#123;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="number">4</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="string">"4"</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;, toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;&#125;</span><br><span class="line"><span class="string">"1"</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;, toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;&#125;</span><br></pre></td></tr></table></figure></code></pre><ul>
 <li><img src="http://p1.meituan.net/myvideodistribute/78cc58a640f02d8de18f21eec0c80e2f71205.png" alt="toString vs valueOf"></li>
 </ul>
 </li>
@@ -466,159 +650,6 @@
       </categories>
       <tags>
         <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Elle-训练算法计划</title>
-    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
-<li>主要的数据结构和算法会单开文档来写</li>
-</ul>
-<a id="more"></a>
-<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
-<li>数据结构<ul>
-<li>一维数据结构<ul>
-<li>基础：数组 array(string), 链表 linked list</li>
-<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
-</ul>
-</li>
-<li>二维数据结构<ul>
-<li>一维泛化</li>
-<li>基础：树 tree，图 graph</li>
-<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
-</ul>
-</li>
-<li>特殊数据结构<ul>
-<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
-<li>LRU Cache</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>算法<ul>
-<li>if-else, switch –&gt; branch</li>
-<li>for, while loop –&gt; iteration</li>
-<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
-<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
-<li>动态规划 dynamic programing</li>
-<li>二分查找 binary search</li>
-<li>贪心 greedy</li>
-<li>数学 math, 集合 geometry</li>
-</ul>
-</li>
-</ul>
-<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
-<li>刻意练习-过遍数 (五遍刷题法)<ul>
-<li>刷题第一遍<ul>
-<li>5分钟（5~15 mins）：读题+思考</li>
-<li>直接看解法：注意！多解法，比较解乏优劣</li>
-<li>有思路，直接写</li>
-<li>背诵+默写好的解法</li>
-</ul>
-</li>
-<li>刷题第二遍<ul>
-<li>马上自己写 –&gt; LeetCode提交</li>
-<li>多种解法比较、体会 –&gt; 优化</li>
-<li>多种解法自己写一遍，直到通过</li>
-</ul>
-</li>
-<li>刷题第三遍<ul>
-<li>24h后，再重复做题</li>
-<li>不同解法的熟练程度 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第四遍<ul>
-<li>过了一周后：反复回来练习相同的题目</li>
-<li>不熟练的题目 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第五遍<ul>
-<li>面试前二周恢复性训练</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>练习缺陷、弱点地方<ul>
-<li>中文站 leetcode-cn.com 刷题</li>
-<li>国际站 leetcode.com 看discuss-most votes</li>
-</ul>
-</li>
-<li>切题<ul>
-<li><strong>Clarification 审题</strong></li>
-<li><strong>Possible Solutions</strong><ul>
-<li>compare (time/space)</li>
-<li>optimal (加强)</li>
-</ul>
-</li>
-<li><strong>Coding</strong></li>
-<li><strong>Test cases</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
-<li>即时反馈</li>
-<li>主动型反馈</li>
-<li>被动型反馈<ul>
-<li>code review</li>
-</ul>
-</li>
-</ul>
-<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
-<li>top tips for vscode</li>
-</ul>
-<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
-<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
-</ul>
-<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
-<li>O(1): constant Complexity 常数复杂度</li>
-<li>O(log n): Logarithmic Complexity 对数复杂度</li>
-<li>O(n): Linear Complexity 线性时间复杂度</li>
-<li>O(n^2): N square Complexity 平方</li>
-<li>O(n^3): N cube Complexity 立方</li>
-<li>O(2^n): Exponential Growth 指数</li>
-<li>O(n!): Factorial 阶乘</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
-</ul>
-<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
-<li>二分查找</li>
-<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
-<li>二维有序矩阵</li>
-<li>归并排序 O(nlogn)</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1290,13 +1321,13 @@
         <category>前端概念</category>
       </categories>
       <tags>
-        <tag>前端概念</tag>
         <tag>算法</tag>
+        <tag>前端概念</tag>
       </tags>
   </entry>
   <entry>
-    <title>微信小程序-气泡框</title>
-    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
+    <title>【未完】前端性能监控</title>
+    <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
     <content><![CDATA[<style  type="text/css">
 .lx-entry a {
     color: #191919;
@@ -1323,92 +1354,84 @@
 </style>
 
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>记录基于<a href="https://developers.weixin.qq.com/community/develop/doc/000e4e7103c3c090e517e0cdb5b806" target="_blank" rel="noopener">微信小程序-气泡框</a>实现中产生的问题及思考</li>
+<li>记录 性能监控 方面的学习过程🤔</li>
 </ul>
-<hr>
-<h2 id="问题截图"><a href="#问题截图" class="headerlink" title="问题截图"></a>问题截图</h2><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png" alt="popover问题截图"></p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
-<li>模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？<a id="more"></a>
+<a id="more"></a>
 
-</li>
+<h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
+<li>Gmail SPA</li>
+<li>Angular/React/Vue MVVM/工程化</li>
+<li>weex/react native 跨端</li>
+<li>Node 全栈</li>
 </ul>
-<h2 id="问题解决过程记录"><a href="#问题解决过程记录" class="headerlink" title="问题解决过程记录"></a>问题解决过程记录</h2><ul>
-<li><p>定位问题发生的原因范围</p>
-<ul>
-<li>样式<ul>
-<li>样式在判断显示条件(wx:if=”“)生效后，仍然渲染</li>
-<li>否定原因<ul>
-<li>查询代码发现，整个样式背景的设定是在::before伪元素选择器中</li>
-<li>且显示条件生效，在调试器中已没有该元素，但仍显示</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>逻辑<ul>
-<li>会不会是组件在渲染时，多渲染一份，我们使用判断条件进行开关时，只是对其中一个进行了操作</li>
-<li>怀疑依据<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzk5ZjcwMDAwZmViM2IwYzc0MWJmNjFiYzE5YTUwMDIxMjYyMTI3LnBuZw?x-oss-process=image/format,png" alt="popover问题依据截图"></li>
-<li>上图可见：在popover组件下，有2个通过&lt;slot&gt;插入的相同内容</li>
+<h3 id="前端变化给监控带来了什么样的改变"><a href="#前端变化给监控带来了什么样的改变" class="headerlink" title="前端变化给监控带来了什么样的改变"></a>前端变化给监控带来了什么样的改变</h3><ul>
+<li>传统监控模式能否使用于新的技术？比如 PV 统计<ul>
+<li>导致 PV 下降的原因和解法</li>
+<li>原因<ul>
+<li>业内路由替代了请求新的页面</li>
 </ul>
 </li>
+<li>解法<ul>
+<li>哈希路由：监听 hash change 变化上报 PV</li>
+<li>非哈希路由(Angular): 轻量 hack pushState 和 replaceState</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>开始解决问题</p>
-<ul>
-<li>查询官方关于<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html" target="_blank" rel="noopener">slot</a>方面的介绍<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JjMTE0ZmI0YTdhOWZkY2ZlYzU3ZDE5ZWQyYWY0YzI3MzE1NTU4LnBuZw?x-oss-process=image/format,png" alt="官方slot基础例子"></li>
-</ul>
-</li>
-<li>基于官方基础代码，复现问题<ul>
-<li>产生一个child-tag组件，并在其中编写  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/child-tag.js.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./component-tag-name'</span>: &#123;</span><br><span class="line">      type: <span class="string">'parent'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>与component-tag-name绑定形成父子组件  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/component-tag-name.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./child-tag'</span>: &#123;</span><br><span class="line">      type: <span class="string">'child'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    visible: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>并将index.html中进行调用  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引用组件的页面模版 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">bindtap</span>=<span class="string">"onTap"</span>&gt;</span>222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">my-component</span> <span class="attr">id</span>=<span class="string">"component"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">			这里是插入到组件slot name="content"中的内容</span><br><span class="line">			<span class="tag">&lt;<span class="name">child-component</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"child"</span>&gt;</span>这里是插入到组件slot name="child"中的内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>但是其结构树仍然非常正常，并没有出现那个所谓的”拷贝”组件<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzcwNTRhNjJkYmM2MGEyNmU5ZGI1ODYzNzNjOGY2OTgyMzg3NTI0LnBuZw?x-oss-process=image/format,png" alt="改写v1.1后的结构树截图"></li>
-<li>仔细复现了几次，发现：多出来的那个组件会有所延迟。抓住这个问题，想到我们在onReady中，注册了该组件，于是，继续模拟</li>
-</ul>
-</li>
-<li>修改index.js代码，并在component-tag-name组件注册onTap方法，控制显隐  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">onReady() &#123;</span><br><span class="line">  <span class="keyword">this</span>.component = <span class="keyword">this</span>.selectComponent(<span class="string">'#component'</span>)</span><br><span class="line">&#125;,</span><br><span class="line">onTap() &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'onTap'</span>)</span><br><span class="line">  wx.createSelectorQuery().select(<span class="string">'#component'</span>).boundingClientRect(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 调用自定义组件 popover 中的 onDisplay 方法</span></span><br><span class="line">      <span class="keyword">this</span>.component.onTap();</span><br><span class="line">  &#125;).exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>最终复现<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmZjQ3OTNhMjUwYTNjMzlhYjBlOGQxMGJhYTllZmI2NDc1NjIyLnBuZw?x-oss-process=image/format,png" alt="官方模拟最终运行截图"></li>
+<li>案例<ul>
+<li>下拉刷新</li>
+<li>滚屏分页</li>
+<li>阿里云邮后台一直开着，每周上百次查看</li>
+<li>未关闭的浏览器 Ta b几小时后再次浏览</li>
+<li>查找信息时，浏览器 Tab 之间快速切换</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>得出问题来源：<ul>
-<li>在组件中进行了一次setData</li>
+<li>SPA模式下首屏如何计算？<ul>
+<li>第一阶段：自定义打点时期<ul>
+<li>页头和首屏dom处分别通过 new Date() 打点</li>
 </ul>
 </li>
-<li>思考背后问题<ul>
-<li>在组件中setData为什么会”拷贝“一份相同的在页面级wxml中？</li>
-<li>猜想一：从<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/interactive-animation.html#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WXS响应事件</a>中，我隐隐得到了答案</li>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzZlYWJjYjdjOTliMzAxNWMwOGQwZmM2YWM3ZmMxMGMzNDU5NDAxLnBuZw?x-oss-process=image/format,png" alt="wxs相应事件"></li>
-<li>我们在页面级通过selectComponent实例化组件，对选中的组件进行操作，官方可以通过拷贝一份相同的组件，使我们便捷的将事件的处理从2次的逻辑层和渲染层通信以及一次渲染，减少到直接对页面上元素进行操作，即一次逻辑层和渲染层通信以及一次渲染。</li>
-<li>猜想二：问题层面是在微信开发者工具中的wxml，渲染方式对于这种情况就是这样处理的。</li>
+<li>第二阶段：W3C标准时期<ul>
+<li>Navigaion Timing API</li>
+</ul>
+</li>
+<li>第三阶段：SPA盛行导致w3c标准失去原来的意义</li>
+<li>现阶段：用户感官指标FMP<ul>
+<li>FMP：主要内容可见时间</li>
+<li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
+<li>什么原因导致猜想不成立？<ul>
+<li>元素是否可见</li>
+<li>每个元素对页面的影响是否等效？ –&gt; 权重</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>官方已给出问题原因</p>
-<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzJkMWVkZmYyNWIwM2YxZDU2ZGVjYjZhM2NkYjAwMGU5NTE5ODQucG5n?x-oss-process=image/format,png" alt="wxml面板"></li>
 </ul>
 </li>
+<li>下一阶段：W3C/paint-timing 首屏加载时间计算已经在提案中</li>
 </ul>
-<h2 id="如何解决问题"><a href="#如何解决问题" class="headerlink" title="如何解决问题"></a>如何解决问题</h2><ul>
-<li>在popover以及popover-item加入  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">options: &#123;</span><br><span class="line">		    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">		  &#125;,</span><br></pre></td></tr></table></figure></li>
-<li>就可以解决了。最后建议slot中可以写上name这样代码可能会更易读。<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
+</li>
+<li>跨端开发给监控带来什么挑战？</li>
+<li>前端监控的上报模式在 Node.js 端是否合理？</li>
+</ul>
+<h3 id="前端监控的最佳实践"><a href="#前端监控的最佳实践" class="headerlink" title="前端监控的最佳实践"></a>前端监控的最佳实践</h3><ul>
+<li>主动监控</li>
+<li>性能样本分布 &amp; 慢会话<ul>
+<li>慢会话追踪</li>
+</ul>
+</li>
+<li>搜索报错明细</li>
+<li>出错行为还原</li>
+</ul>
+<h3 id="阿里云ARMS前端监控系统架构"><a href="#阿里云ARMS前端监控系统架构" class="headerlink" title="阿里云ARMS前端监控系统架构"></a>阿里云ARMS前端监控系统架构</h3><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
-<hr>
 ]]></content>
       <categories>
-        <category>微信小程序</category>
+        <category>性能监控</category>
       </categories>
       <tags>
-        <tag>微信小程序</tag>
+        <tag>性能监控</tag>
       </tags>
   </entry>
   <entry>
@@ -1565,8 +1588,43 @@
       </tags>
   </entry>
   <entry>
-    <title>【未完】前端性能监控</title>
-    <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
+    <title>数组、链表、跳表</title>
+    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
+<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
+<li>数学归纳法</li>
+<li>找最近重复问题</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>微信小程序-气泡框</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
     <content><![CDATA[<style  type="text/css">
 .lx-entry a {
     color: #191919;
@@ -1593,84 +1651,139 @@
 </style>
 
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>记录 性能监控 方面的学习过程🤔</li>
+<li>记录基于<a href="https://developers.weixin.qq.com/community/develop/doc/000e4e7103c3c090e517e0cdb5b806" target="_blank" rel="noopener">微信小程序-气泡框</a>实现中产生的问题及思考</li>
+</ul>
+<hr>
+<h2 id="问题截图"><a href="#问题截图" class="headerlink" title="问题截图"></a>问题截图</h2><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzlkMGY1NmUxOTVkNzFjMjAyYzVkYzI0OGMxMzg0NmUxMTQ3MTQucG5n?x-oss-process=image/format,png" alt="popover问题截图"></p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
+<li>模拟器显示正常，但在真机上点击后，气泡框的箭头并没有消失，且点击同一级别区域，能利用覆盖消除箭头。【是不是一个很可爱的bug？<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="问题解决过程记录"><a href="#问题解决过程记录" class="headerlink" title="问题解决过程记录"></a>问题解决过程记录</h2><ul>
+<li><p>定位问题发生的原因范围</p>
+<ul>
+<li>样式<ul>
+<li>样式在判断显示条件(wx:if=”“)生效后，仍然渲染</li>
+<li>否定原因<ul>
+<li>查询代码发现，整个样式背景的设定是在::before伪元素选择器中</li>
+<li>且显示条件生效，在调试器中已没有该元素，但仍显示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>逻辑<ul>
+<li>会不会是组件在渲染时，多渲染一份，我们使用判断条件进行开关时，只是对其中一个进行了操作</li>
+<li>怀疑依据<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzk5ZjcwMDAwZmViM2IwYzc0MWJmNjFiYzE5YTUwMDIxMjYyMTI3LnBuZw?x-oss-process=image/format,png" alt="popover问题依据截图"></li>
+<li>上图可见：在popover组件下，有2个通过&lt;slot&gt;插入的相同内容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开始解决问题</p>
+<ul>
+<li>查询官方关于<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html" target="_blank" rel="noopener">slot</a>方面的介绍<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JjMTE0ZmI0YTdhOWZkY2ZlYzU3ZDE5ZWQyYWY0YzI3MzE1NTU4LnBuZw?x-oss-process=image/format,png" alt="官方slot基础例子"></li>
+</ul>
+</li>
+<li>基于官方基础代码，复现问题<ul>
+<li>产生一个child-tag组件，并在其中编写  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/child-tag.js.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./component-tag-name'</span>: &#123;</span><br><span class="line">      type: <span class="string">'parent'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>与component-tag-name绑定形成父子组件  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/component-tag-name.js</span></span><br><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">  &#125;,</span><br><span class="line">  relations: &#123;</span><br><span class="line">    <span class="string">'./child-tag'</span>: &#123;</span><br><span class="line">      type: <span class="string">'child'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的属性列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  properties: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的初始数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    visible: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 组件的方法列表</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>并将index.html中进行调用  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引用组件的页面模版 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">bindtap</span>=<span class="string">"onTap"</span>&gt;</span>222<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">my-component</span> <span class="attr">id</span>=<span class="string">"component"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">			这里是插入到组件slot name="content"中的内容</span><br><span class="line">			<span class="tag">&lt;<span class="name">child-component</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"child"</span>&gt;</span>这里是插入到组件slot name="child"中的内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>但是其结构树仍然非常正常，并没有出现那个所谓的”拷贝”组件<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzcwNTRhNjJkYmM2MGEyNmU5ZGI1ODYzNzNjOGY2OTgyMzg3NTI0LnBuZw?x-oss-process=image/format,png" alt="改写v1.1后的结构树截图"></li>
+<li>仔细复现了几次，发现：多出来的那个组件会有所延迟。抓住这个问题，想到我们在onReady中，注册了该组件，于是，继续模拟</li>
+</ul>
+</li>
+<li>修改index.js代码，并在component-tag-name组件注册onTap方法，控制显隐  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">onReady() &#123;</span><br><span class="line">  <span class="keyword">this</span>.component = <span class="keyword">this</span>.selectComponent(<span class="string">'#component'</span>)</span><br><span class="line">&#125;,</span><br><span class="line">onTap() &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'onTap'</span>)</span><br><span class="line">  wx.createSelectorQuery().select(<span class="string">'#component'</span>).boundingClientRect(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 调用自定义组件 popover 中的 onDisplay 方法</span></span><br><span class="line">      <span class="keyword">this</span>.component.onTap();</span><br><span class="line">  &#125;).exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>最终复现<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmZjQ3OTNhMjUwYTNjMzlhYjBlOGQxMGJhYTllZmI2NDc1NjIyLnBuZw?x-oss-process=image/format,png" alt="官方模拟最终运行截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>得出问题来源：<ul>
+<li>在组件中进行了一次setData</li>
+</ul>
+</li>
+<li>思考背后问题<ul>
+<li>在组件中setData为什么会”拷贝“一份相同的在页面级wxml中？</li>
+<li>猜想一：从<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/interactive-animation.html#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WXS响应事件</a>中，我隐隐得到了答案</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzZlYWJjYjdjOTliMzAxNWMwOGQwZmM2YWM3ZmMxMGMzNDU5NDAxLnBuZw?x-oss-process=image/format,png" alt="wxs相应事件"></li>
+<li>我们在页面级通过selectComponent实例化组件，对选中的组件进行操作，官方可以通过拷贝一份相同的组件，使我们便捷的将事件的处理从2次的逻辑层和渲染层通信以及一次渲染，减少到直接对页面上元素进行操作，即一次逻辑层和渲染层通信以及一次渲染。</li>
+<li>猜想二：问题层面是在微信开发者工具中的wxml，渲染方式对于这种情况就是这样处理的。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>官方已给出问题原因</p>
+<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzJkMWVkZmYyNWIwM2YxZDU2ZGVjYjZhM2NkYjAwMGU5NTE5ODQucG5n?x-oss-process=image/format,png" alt="wxml面板"></li>
+</ul>
+</li>
+</ul>
+<h2 id="如何解决问题"><a href="#如何解决问题" class="headerlink" title="如何解决问题"></a>如何解决问题</h2><ul>
+<li>在popover以及popover-item加入  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">options: &#123;</span><br><span class="line">		    multipleSlots: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></span><br><span class="line">		  &#125;,</span><br></pre></td></tr></table></figure></li>
+<li>就可以解决了。最后建议slot中可以写上name这样代码可能会更易读。<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自己的前端知识体系</title>
+    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>理一下自己的技术体系吧</li>
 </ul>
 <a id="more"></a>
 
-<h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
-<li>Gmail SPA</li>
-<li>Angular/React/Vue MVVM/工程化</li>
-<li>weex/react native 跨端</li>
-<li>Node 全栈</li>
+<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/49daa01a2bbdab251434a26a618376c53934435.png" alt="技术体系脑图"></li>
 </ul>
-<h3 id="前端变化给监控带来了什么样的改变"><a href="#前端变化给监控带来了什么样的改变" class="headerlink" title="前端变化给监控带来了什么样的改变"></a>前端变化给监控带来了什么样的改变</h3><ul>
-<li>传统监控模式能否使用于新的技术？比如 PV 统计<ul>
-<li>导致 PV 下降的原因和解法</li>
-<li>原因<ul>
-<li>业内路由替代了请求新的页面</li>
-</ul>
-</li>
-<li>解法<ul>
-<li>哈希路由：监听 hash change 变化上报 PV</li>
-<li>非哈希路由(Angular): 轻量 hack pushState 和 replaceState</li>
-</ul>
-</li>
-<li>案例<ul>
-<li>下拉刷新</li>
-<li>滚屏分页</li>
-<li>阿里云邮后台一直开着，每周上百次查看</li>
-<li>未关闭的浏览器 Ta b几小时后再次浏览</li>
-<li>查找信息时，浏览器 Tab 之间快速切换</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>SPA模式下首屏如何计算？<ul>
-<li>第一阶段：自定义打点时期<ul>
-<li>页头和首屏dom处分别通过 new Date() 打点</li>
-</ul>
-</li>
-<li>第二阶段：W3C标准时期<ul>
-<li>Navigaion Timing API</li>
-</ul>
-</li>
-<li>第三阶段：SPA盛行导致w3c标准失去原来的意义</li>
-<li>现阶段：用户感官指标FMP<ul>
-<li>FMP：主要内容可见时间</li>
-<li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
-<li>什么原因导致猜想不成立？<ul>
-<li>元素是否可见</li>
-<li>每个元素对页面的影响是否等效？ –&gt; 权重</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>下一阶段：W3C/paint-timing 首屏加载时间计算已经在提案中</li>
-</ul>
-</li>
-<li>跨端开发给监控带来什么挑战？</li>
-<li>前端监控的上报模式在 Node.js 端是否合理？</li>
-</ul>
-<h3 id="前端监控的最佳实践"><a href="#前端监控的最佳实践" class="headerlink" title="前端监控的最佳实践"></a>前端监控的最佳实践</h3><ul>
-<li>主动监控</li>
-<li>性能样本分布 &amp; 慢会话<ul>
-<li>慢会话追踪</li>
-</ul>
-</li>
-<li>搜索报错明细</li>
-<li>出错行为还原</li>
-</ul>
-<h3 id="阿里云ARMS前端监控系统架构"><a href="#阿里云ARMS前端监控系统架构" class="headerlink" title="阿里云ARMS前端监控系统架构"></a>阿里云ARMS前端监控系统架构</h3><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
 ]]></content>
       <categories>
-        <category>性能监控</category>
+        <category>前端概念</category>
       </categories>
       <tags>
-        <tag>性能监控</tag>
+        <tag>前端概念</tag>
       </tags>
   </entry>
   <entry>
@@ -1944,41 +2057,6 @@
       </tags>
   </entry>
   <entry>
-    <title>数组、链表、跳表</title>
-    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
-<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
-<li>数学归纳法</li>
-<li>找最近重复问题</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>【未完】计算机图形学初探</title>
     <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
     <content><![CDATA[<style  type="text/css">
@@ -2051,53 +2129,6 @@
       </categories>
       <tags>
         <tag>计算机图形学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自己的前端知识体系</title>
-    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>理一下自己的技术体系吧</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/49daa01a2bbdab251434a26a618376c53934435.png" alt="技术体系脑图"></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
       </tags>
   </entry>
   <entry>
@@ -3658,8 +3689,8 @@
         <category>前端概念</category>
       </categories>
       <tags>
-        <tag>前端概念</tag>
         <tag>算法</tag>
+        <tag>前端概念</tag>
       </tags>
   </entry>
   <entry>
