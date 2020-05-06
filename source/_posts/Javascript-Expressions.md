@@ -355,7 +355,7 @@ description:
 
 ## Runtime
 ### Type Convertion
-- 【未完】转换图
+- ![Type Convertion](http://p1.meituan.net/myvideodistribute/92ac57b25bd03ca675ef9b0d694e4415353216.png)
 - undefined --> number NAN
 
 
