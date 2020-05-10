@@ -126,8 +126,7 @@
 }
 </style>
 
-<h1 id="Javascript-–-Expressions"><a href="#Javascript-–-Expressions" class="headerlink" title="Javascript – Expressions"></a>Javascript – Expressions</h1><a id="more"></a>
-
+<h1 id="Javascript-—-Expressions"><a href="#Javascript-—-Expressions" class="headerlink" title="Javascript — Expressions"></a>Javascript — Expressions</h1><a id="more"></a>
 <h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expressions-表达式"><a href="#Expressions-表达式" class="headerlink" title="Expressions 表达式"></a>Expressions 表达式</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="引导：Grammar-Tree-vs-Priority"><a href="#引导：Grammar-Tree-vs-Priority" class="headerlink" title="引导：Grammar Tree vs Priority"></a>引导：Grammar Tree vs Priority</h3><ul>
 <li>+ -</li>
 <li>* /</li>
@@ -138,20 +137,16 @@
 <li>极限是 call</li>
 </ul>
 <h3 id="Member"><a href="#Member" class="headerlink" title="Member"></a>Member</h3><ul>
-<li><p>a.b</p>
-</li>
-<li><p>a[b]</p>
-</li>
+<li>a.b</li>
+<li>a[b]</li>
 <li><p>foo`string`</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"Elle"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>!`</span></span><br></pre></td></tr></table></figure></li>
-<li><p>super.b</p>
-<ul>
+<li>super.b<ul>
 <li>只能在 constructor 里使用</li>
 </ul>
 </li>
 <li><p>super[‘b’]</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">this</span>.a = <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">super</span>()</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Parent.a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">new</span> Child</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/c869fe9598febb5fbbdab3bb66c0940859515.png" alt="super 截图"></li>
 </ul>
@@ -160,7 +155,6 @@
 <ul>
 <li><p>函数外面不能使用，只能在函数里使用</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 存在一个伪造对象的可能，无法知道对象是否是被 new 调起</span></span><br><span class="line"><span class="keyword">var</span> fakeObj = &#123;&#125;</span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(fakeObj, foo.prototype)</span><br><span class="line">fakeObj.constructor = foo</span><br><span class="line">foo.apply(fakeObj)</span><br><span class="line">fakeObj <span class="keyword">instanceof</span> foo</span><br></pre></td></tr></table></figure>
-
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">new</span>.target)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> foo()</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
@@ -175,24 +169,20 @@
 <ul>
 <li><p>Reference</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">x</span>: <span class="number">1</span> &#125;</span><br><span class="line">o.x + <span class="number">2</span></span><br><span class="line"><span class="number">1</span> + <span class="number">2</span></span><br><span class="line"><span class="keyword">delete</span> o.x</span><br><span class="line"><span class="keyword">delete</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 </li>
 </ul>
 <h3 id="New"><a href="#New" class="headerlink" title="New"></a>New</h3><ul>
-<li><p>new Foo </p>
-</li>
+<li>new Foo </li>
 <li><p>new Foo() 优先级高</p>
 </li>
 <li><p><strong>Example</strong></p>
 <ul>
-<li><p>new a()()</p>
-</li>
+<li>new a()()</li>
 <li><p>new new a()</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls1</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(s)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls2</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"2"</span>, s)</span><br><span class="line">    <span class="keyword">return</span> cls1</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new cls2-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> cls2</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-cls2("good")-=-=-=-='</span>)</span><br><span class="line">cls2(<span class="string">"good"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new cls2("good")-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> cls2(<span class="string">"good"</span>) <span class="comment">// 返回回来 cls2 实例，cls1对象</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new (cls2("good"))-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> (cls2(<span class="string">"good"</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new (new cls2)-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> (<span class="keyword">new</span> cls2)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new new cls2("good")-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> cls2(<span class="string">"good"</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/0ea9dc132069ffab80fc3260feef10d8228161.png" alt="new Foo  优先级"></p>
-</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/0ea9dc132069ffab80fc3260feef10d8228161.png" alt="new Foo  优先级"></li>
 </ul>
 </li>
 </ul>
@@ -206,64 +196,46 @@
 <h2 id="Right-Handside"><a href="#Right-Handside" class="headerlink" title="Right Handside"></a>Right Handside</h2><h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><ul>
 <li><p>UpdateExpression</p>
 <ul>
-<li><p>no LineTerminator here</p>
-</li>
+<li>no LineTerminator here</li>
 <li><p><img src="http://p0.meituan.net/myvideodistribute/c0869aae45e6bd6e9e6cc8261ed8888664190.png" alt="no LineTerminator here"></p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">1</span>, c = <span class="number">1</span>;</span><br><span class="line">a</span><br><span class="line">++</span><br><span class="line">b</span><br><span class="line">++</span><br><span class="line">c</span><br><span class="line"><span class="built_in">console</span>.log([a, b, c])</span><br><span class="line">a<span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span>++</span><br><span class="line">b<span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span>++</span><br><span class="line">c</span><br><span class="line"><span class="built_in">console</span>.log([a, b, c])</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><p>a ++</p>
-</li>
-<li><p>a –</p>
-</li>
-<li><p>– a</p>
-</li>
-<li><p>++ a</p>
-</li>
+<li>a ++</li>
+<li>a —</li>
+<li>— a</li>
+<li>++ a</li>
 </ul>
 <h3 id="Unary-单目运算符"><a href="#Unary-单目运算符" class="headerlink" title="Unary 单目运算符"></a>Unary 单目运算符</h3><ul>
-<li><p>delete a.b</p>
-</li>
+<li>delete a.b</li>
 <li><p>void foo() </p>
 <ul>
-<li><p>void 不是返回值，是运算符在 JS 中</p>
-</li>
-<li><p>不管后面是什么，都返回 undefined</p>
-</li>
+<li>void 不是返回值，是运算符在 JS 中</li>
+<li>不管后面是什么，都返回 undefined</li>
 <li><p>IIFE 立即执行函数</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 点那个按钮，都是10，为解决这个问题，我们可以使用IIFE</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">		button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果前面不加分号，在一些写法中，会发生粘起来错误</span></span><br><span class="line">   (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">     button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(i)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)()</span><br><span class="line">   </span><br><span class="line">   (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">     button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(i)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)()</span><br><span class="line"><span class="comment">// 最稳妥的就是，在前面加上void</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">void</span> <span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">		button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 并且语义正确，我们并不需要IIFE的返回值</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>typeof a</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/c45593f796e09721d1b10701e366669620756.png" alt="typeof"></li>
 </ul>
 </li>
-<li><p>+ a</p>
-</li>
-<li><p>- a</p>
-</li>
-<li><p>~ a 按位取反</p>
-</li>
-<li><p>! a 取非</p>
-<ul>
+<li>+ a</li>
+<li>- a</li>
+<li>~ a 按位取反</li>
+<li>! a 取非<ul>
 <li>!!1</li>
 </ul>
 </li>
-<li><p>await a</p>
-</li>
+<li>await a</li>
 </ul>
-<h3 id="Exponental"><a href="#Exponental" class="headerlink" title="Exponental"></a>Exponental</h3><ul>
-<li>**<ul>
-<li>3 ** 2 ** 3</li>
-<li>3 ** (2 ** 3)</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/c45593f796e09721d1b10701e366669620756.png" alt="Exponental"></li>
-</ul>
-</li>
-</ul>
-<h3 id="Multiplicative"><a href="#Multiplicative" class="headerlink" title="Multiplicative"></a>Multiplicative</h3><ul>
+<h3 id="Exponental"><a href="#Exponental" class="headerlink" title="Exponental"></a>Exponental</h3><hr>
+<pre><code>- 3 ** 2 ** 3
+- 3 ** (2 ** 3)
+- ![Exponental](http://p0.meituan.net/myvideodistribute/c45593f796e09721d1b10701e366669620756.png)
+</code></pre><h3 id="Multiplicative"><a href="#Multiplicative" class="headerlink" title="Multiplicative"></a>Multiplicative</h3><ul>
 <li>* / %<ul>
 <li>JS 中有1种乘法运算符<ul>
 <li>运行时<ul>
@@ -305,8 +277,7 @@
 <li>&amp; ^ |</li>
 </ul>
 <h3 id="Logical"><a href="#Logical" class="headerlink" title="Logical"></a>Logical</h3><ul>
-<li><p>没有任何 boolean 转换</p>
-</li>
+<li>没有任何 boolean 转换</li>
 <li><p>&amp;&amp;</p>
 <ul>
 <li><p>有短路逻辑</p>
@@ -316,25 +287,22 @@
 </li>
 </ul>
 </li>
-<li><p>||</p>
-</li>
+<li>||</li>
 </ul>
 <h3 id="Conditional"><a href="#Conditional" class="headerlink" title="Conditional"></a>Conditional</h3><ul>
 <li><p>? :</p>
 <ul>
 <li><p>同样有短路逻辑</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">false</span> ? foo1() : foo2()</span><br></pre></td></tr></table></figure></li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/bcb065e3ae7986b5c15333ea32404e5360600.png" alt="三目运算符短路逻辑"></p>
-</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/bcb065e3ae7986b5c15333ea32404e5360600.png" alt="三目运算符短路逻辑"></li>
 </ul>
 </li>
 </ul>
 <h3 id=""><a href="#" class="headerlink" title=","></a>,</h3><h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Type-Convertion"><a href="#Type-Convertion" class="headerlink" title="Type Convertion"></a>Type Convertion</h3><ul>
 <li><img src="http://p1.meituan.net/myvideodistribute/92ac57b25bd03ca675ef9b0d694e4415353216.png" alt="Type Convertion"></li>
-<li>undefined –&gt; number NAN</li>
+<li>undefined —&gt; number NAN</li>
 </ul>
 <h4 id="Boxing-amp-Unboxing"><a href="#Boxing-amp-Unboxing" class="headerlink" title="Boxing &amp; Unboxing"></a>Boxing &amp; Unboxing</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Number String Boolean Symbol</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>).length</span><br><span class="line"><span class="string">"hello"</span>.length</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"hello"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line">!<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">''</span>)</span><br><span class="line">!<span class="string">""</span></span><br><span class="line"><span class="comment">// Number String Boolean 不作为 new 调用，就是转换成普通类型</span></span><br><span class="line"><span class="built_in">String</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p><img src="http://p0.meituan.net/myvideodistribute/3f64818a6b39695d9dbc489cb8bc3f6281607.png" alt="Boxing &amp; Unboxing"></p>
 </li>
@@ -343,7 +311,8 @@
 <li><p>toString vs valueOf</p>
 <ul>
 <li><p>toString vs valueOf</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> + &#123;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="number">4</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="string">"4"</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;, toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;&#125;</span><br><span class="line"><span class="string">"1"</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;, toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;&#125;</span><br></pre></td></tr></table></figure></code></pre><ul>
+<pre><code> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> + &#123;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="number">4</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="string">"4"</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;, toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;&#125;</span><br><span class="line"><span class="string">"1"</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;, toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><ul>
 <li><img src="http://p1.meituan.net/myvideodistribute/78cc58a640f02d8de18f21eec0c80e2f71205.png" alt="toString vs valueOf"></li>
 </ul>
 </li>
@@ -428,15 +397,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>Categories</span>
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>Friends</span>
+      <i class="fa fa-link fa-fw"></i>友链</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>
