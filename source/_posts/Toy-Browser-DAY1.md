@@ -2,11 +2,11 @@
 title: Toy Browser DAY1
 date: 2020-05-10 14:05:34
 tags:
-- 前端概念
+- 浏览器
 categories:
-- 前端概念
+- 浏览器
 description:
-- Javascript -- Realm
+- 浏览器 -- toy-browser
 ---
 
 
@@ -40,6 +40,8 @@ description:
 
 ## 写在前面
 - implementation of a toy-browser 🙆
+
+<!-- more -->
 
 
 ## 实践过程
@@ -93,15 +95,16 @@ client.on('end', () => {
   console.log('disconnected from server');
 });
 ```
+
 - 我们开启服务端
-
-
 	> node server.js
 	
+	
+	
 - 再开启客户端
-
-
 	> node client.js
+	
+	
 
 - 运行截图
 	- ![client](http://p0.meituan.net/myvideodistribute/5a4f9f936d87d43335d08670a03205a448885.png)
@@ -126,10 +129,10 @@ client.on('end', () => {
 	      // Content-Length
 	    // body: k-v
 		```
+		
 - 我们可以简单写出封装后的 reqeust
 
 	```javascript
-	
 	class Request {
 	    // request line
 	      // method, url = host + port + path
@@ -209,36 +212,39 @@ client.on('end', () => {
 	  console.log(err);
 	  client.end();
 	});
-	``` 
+	```
 	
 - 运行结果
 	- ![封装后的request](http://p0.meituan.net/myvideodistribute/19807e0f02f52d93b9391645a286cfdf48815.png)
 
 	
-### 第三版：对 responseParse 进行封装
+#### 第三版：对 responseParse 进行封装
+
 - 简单分析 response 内容框架
-	- ![response](http://p0.meituan.net/myvideodistribute/9c17bab40bf615430215e496d9bdfeb5147249.png)
+	- ![response内容框架](http://p0.meituan.net/myvideodistribute/9c17bab40bf615430215e496d9bdfeb5147249.png)
+
 	- 开始我们的状态机 constructor 简单编写
 	
 		```javascript
 		constructor() {
-		    this.WAITING_STATUS_LINE = 0;
-		    this.WAITING_STATUS_LINE_END = 1;
-		    this.WAITING_HEADER_NAME = 2;
-		    this.WAITING_HEADER_SPACE = 3;
-		    this.WAITING_HEADER_VALUE = 4;
-		    this.WAITING_HEADER_LINE_END = 5;
-		    this.WAITING_HEADER_BLOCK_END = 6;
-		    this.WAITING_BODY = 7;
+		  this.WAITING_STATUS_LINE = 0;
+		  this.WAITING_STATUS_LINE_END = 1;
+		  this.WAITING_HEADER_NAME = 2;
+		  this.WAITING_HEADER_SPACE = 3;
+		  this.WAITING_HEADER_VALUE = 4;
+		  this.WAITING_HEADER_LINE_END = 5;
+		  this.WAITING_HEADER_BLOCK_END = 6;
+		  this.WAITING_BODY = 7;
 		
-		    this.current = this.WAITING_STATUS_LINE;
-		    this.statusLine = "";
-		    this.headers = {};
-		    this.headerName = "";
-		    this.headerValue = "";
-		    this.bodyParse = null;
+		  this.current = this.WAITING_STATUS_LINE;
+		  this.statusLine = "";
+		  this.headers = {};
+		  this.headerName = "";
+		  this.headerValue = "";
+		  this.bodyParse = null;
 		}
 		```
+		
 	- 对 response 字符流进行处理。循环读取流中数据
 		
 		```javascript
@@ -250,7 +256,7 @@ client.on('end', () => {
 		}		
   		```
   		
-  	- 对流中单个字符进行扫描
+	 - 对流中单个字符进行扫描
   		
   		```javascript
 		  receiveChar(char) {
@@ -314,34 +320,35 @@ client.on('end', () => {
 		    }
 		  }  		
   		```
-		- 简单分析 server 端的 TrunkBody 
+  			
+   - 简单分析 server 端的 TrunkBody 
 			
+		```javascript
+		2 // 下一行 trunk 长度
+		ok // trunk 内容
+		0 // trunk 终止，再没有内容
+		```
+		
+		- 开始我们的 TrunkedBodyParser 状态机 constructor 简单编写
+	
 			```javascript
-			2 // 下一行 trunk 长度
-			ok // trunk 内容
-			0 // trunk 终止，再没有内容
+			  constructor() {
+			    this.WAITING_LENGTH = 0;
+			    this.WAITING_LENGTH_LINE_END = 1;
+			    this.READING_TRUNK = 2;
+			    this.WAITING_NEW_LINE = 3;
+			    this.WAITING_NEW_LINE_END = 4;
+			    this.FINISHED_NEW_LINE = 5;
+			    this.FINISHED_NEW_LINE_END = 6;
+			    this.isFinished = false;
+			    this.length = 0;
+			    this.content = [];
+			    this.current = this.WAITING_LENGTH;
+			  }
 			```
 			
-			- 开始我们的 TrunkedBodyParser 状态机 constructor 简单编写
-	
-				```javascript
-				  constructor() {
-				    this.WAITING_LENGTH = 0;
-				    this.WAITING_LENGTH_LINE_END = 1;
-				    this.READING_TRUNK = 2;
-				    this.WAITING_NEW_LINE = 3;
-				    this.WAITING_NEW_LINE_END = 4;
-				    this.FINISHED_NEW_LINE = 5;
-				    this.FINISHED_NEW_LINE_END = 6;
-				    this.isFinished = false;
-				    this.length = 0;
-				    this.content = [];
-				    this.current = this.WAITING_LENGTH;
-				  }
-				```
-			
 			- TrunkBody 字符处理
-				
+						
 				```javascript
 				  // 字符流处理
 				  receiveChar(char) {
@@ -396,8 +403,7 @@ client.on('end', () => {
 				      }
 				    }
 		  		  }
-				```
-				
+				```				
 - 运行结果
 	- ![client](http://p0.meituan.net/myvideodistribute/50256a14d9171b06c374dc7e6894efcf61275.png)
 	- ![server](http://p0.meituan.net/myvideodistribute/23ed78fb0b5598952897249eb5ae2fbb29575.png)
