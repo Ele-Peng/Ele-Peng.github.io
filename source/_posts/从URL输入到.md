@@ -15,6 +15,8 @@ description:
 - 别想歪，今天我们要做的是从经典面试题入手，简单了解一下计算机网络相关知识。是的，Elle 很惨😭 计算机网络学得稀烂
 	- 从 URL 输入到页面展现到底发生了什么？
 
+<!-- more -->
+
 ## HTTP - HyperText Transfer Protocol
 - ![HTTP概览图](http://p0.meituan.net/myvideodistribute/0eac1c72dc8c7c0ac87363d73f51b19b30633.png)
 - Protocol
