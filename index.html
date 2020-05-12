@@ -104,7 +104,64 @@
     <div>
       <h2 class="title"><a href="/2020/05/12/%E4%BB%8EURL%E8%BE%93%E5%85%A5%E5%88%B0/">从URL输入到...</a></h2>
       <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-12 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span>
-      <p><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+      <p><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>嘿嘿嘿 😱</li>
+<li>别想歪，今天我们要做的是从经典面试题入手，简单了解一下计算机网络相关知识。是的，Elle 很惨😭 计算机网络学得稀烂<ul>
+<li>从 URL 输入到页面展现到底发生了什么？</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTTP-HyperText-Transfer-Protocol"><a href="#HTTP-HyperText-Transfer-Protocol" class="headerlink" title="HTTP - HyperText Transfer Protocol"></a>HTTP - HyperText Transfer Protocol</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/0eac1c72dc8c7c0ac87363d73f51b19b30633.png" alt="HTTP概览图"></li>
+<li>Protocol<ul>
+<li>协议必须要有两个或多个参与者，也就是“协”</li>
+<li>协议是对参与者的一种行为约定和规范，也就是“议”，包括语法、语义、同步规则和错误处理</li>
+<li><strong>HTTP 是一个用在计算机世界里的协议。它使用计算机能够理解的语言确立了一种计算机之间交流通信的规范，以及相关的各种控制和错误处理方式。</strong></li>
+</ul>
+</li>
+<li>Transfer<ul>
+<li>HTTP 协议是一个“双向协议”</li>
+<li>数据虽然是在 A 和 B 之间传输，但并没有限制只有 A 和 B 这两个角色，允许中间有“中转”或者“接力”<ul>
+<li>传输方式从“A&lt;===&gt;B” 可以变成了 “A&lt;=&gt;X&lt;=&gt;Y&lt;=&gt;Z&lt;=&gt;B”</li>
+<li>A 到 B 的传输过程中可以存在任意多个“中间人”，而这些中间人也都遵从 HTTP 协议，只要不打扰基本的数据传输，就可以添加任意的额外功能，例如安全认证、数据压缩、编码转换等等，优化整个传输过程。</li>
+</ul>
+</li>
+<li><strong>HTTP 是一个在计算机世界里专门用来在两点之间传输数据的约定和规范。</strong></li>
+</ul>
+</li>
+<li>HyperText<ul>
+<li>Text<ul>
+<li>表示 HTTP 传输的不是 TCP/UDP 这些底层协议里被切分的杂乱无章的二进制包（datagram），而是完整的、有意义的数据，可以被浏览器、服务器这样的上层应用程序处理。</li>
+</ul>
+</li>
+<li>超文本：文字、图片、音频和视频等的混合体，最关键的是含有“超链接”，能够从一个“超文本”跳跃到另一个“超文本”，形成复杂的非线性、网状的结构关系。</li>
+</ul>
+</li>
+<li>总结：<strong>HTTP 是一个在计算机世界里专门在两点之间传输文字、图片、音频、视频等超文本数据的约定和规范</strong></li>
+</ul>
+<h3 id="HTTP不是？"><a href="#HTTP不是？" class="headerlink" title="HTTP不是？"></a>HTTP不是？</h3><ul>
+<li><strong>不存在“单独的实体”</strong>，但 HTTP 又与应用程序、操作系统、Web 服务器密切相关，在它们之间的通信过程中存在，而且是一种“动态的存在”，是发生在网络连接、传输超文本数据时的一个“动态过程”。</li>
+<li><strong>HTTP 不是互联网</strong><ul>
+<li>互联网（Internet）是遍布于全球的许多网络互相连接而形成的一个巨大的国际网络，在它上面存放着各式各样的资源，也对应着各式各样的协议，例如超文本资源使用 HTTP，普通文件使用 FTP，电子邮件使用 SMTP 和 POP3 等。</li>
+</ul>
+</li>
+<li><strong>HTTP 不是编程语言</strong><ul>
+<li>编程语言是人与计算机沟通交流所使用的语言，而 HTTP 是计算机与计算机沟通交流的语言</li>
+<li>无法使用 HTTP 来编程，但可以反过来，用编程语言去实现 HTTP，告诉计算机如何用 HTTP 来与外界通信</li>
+</ul>
+</li>
+<li><strong>HTTP 不是用于从互联网服务器传输超文本到本地浏览器的协议</strong><ul>
+<li>过于片面，HTTP 发生在两点之间，即服务端与客户端，客户端不是只包括本地浏览器，服务器也可以作为客户端，客户端也不仅仅只有浏览器，还可以有 App、小程序，浏览器只能作为客户端</li>
+</ul>
+</li>
+<li><strong>HTTP 不是一个孤立的协议</strong><ul>
+<li>HTTP 通常跑在 TCP/IP 协议栈之上，依靠 IP 协议实现寻址和路由、TCP 协议实现可靠数据传输、DNS 协议实现域名查找、SSL/TLS 协议实现安全通信</li>
+<li>还有一些协议依赖于 HTTP，例如 WebSocket、HTTPDNS 等</li>
+</ul>
+</li>
+<li>总结：<strong>HTTP 是构建互联网的重要基础技术，它没有实体，依赖许多其他的技术来实现，但同时许多技术也都依赖于它。</strong></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>学而不思则罔 互勉</li>
 <li>祝大家多多发财</li>
 </ul>
@@ -225,7 +282,7 @@
   </div>
   <div class="lx-entry padding">
     <div>
-      <h2 class="title"><a href="/2020/04/30/Javascript-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">Javascript-运行机制（一）</a></h2>
+      <h2 class="title"><a href="/2020/04/30/Javascript-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">【未完】Javascript-运行机制（一）</a></h2>
       <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-04-30 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></span>
       <p><style  type="text/css">
 .lx-entry a {
