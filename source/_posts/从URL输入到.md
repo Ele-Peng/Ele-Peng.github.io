@@ -25,7 +25,7 @@ description:
 - **transport layer 传输层**：TCP/UDP 协议工作的层次
 	- TCP 是一个有状态的协议，需要先与对方建立连接然后才能发送数据，而且保证数据不丢失不重复。而 UDP 则比较简单，它无状态，不用事先建立连接就可以任意发送数据，但不保证数据一定会发到对方。两个协议的另一个重要区别在于数据的形式。TCP 的数据是连续的“字节流”，有先后顺序，而 UDP 则是分散的小数据包，是顺序发，乱序收。
 	- TCP 层的传输单位是段（segment）
-- **application layer 应用层**：各种面向具体应用的协议，例如 HTTP、Telnet、SSH、FTP、SMTP 等等。
+- **application layer 应用层**：各种面向具体应用的协议，例如 DHCP、HTTP、HTTPS、RTMP、DNS、P2P、Telnet、SSH、FTP、SMTP 等等。
 	- HTTP 的传输单位则是消息或报文（message）
 
 ### OSI (Open System Interconnection Reference Model) 开放式系统互联通信参考模型
