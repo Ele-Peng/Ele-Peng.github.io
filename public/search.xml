@@ -425,6 +425,218 @@
       </tags>
   </entry>
   <entry>
+    <title>Javascript Types</title>
+    <url>/2020/04/20/Javascript-Types/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
+<li><p>Unicode Blocks</p>
+<ul>
+<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
+<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
+</ul>
+</li>
+<li>U+000A LINE FEED 换行<ul>
+<li>Form Feed 翻页</li>
+<li>CJK 中文字符 Chinese Japan Korean</li>
+</ul>
+</li>
+<li>U+0020 SPACE 空格</li>
+<li>BMP 基本字符平面 四位能表示的范围</li>
+<li>超出BMP范围<ul>
+<li>fromCodePoint</li>
+<li>codePointAt</li>
+</ul>
+</li>
+<li>隐性需求需要可以使用\u转义<ul>
+<li>“厉害”.codePointAt(0).toString(16)</li>
+<li>\u5389\u5bb3<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>InputElement</p>
+<ul>
+<li>WhiteSpace 空格<ul>
+<li>&lt;TAB&gt; Character Tabulation</li>
+<li>&lt;VT&gt; Vertical Line</li>
+<li>&lt;FF&gt; Form Feed </li>
+<li>&lt;SP&gt; </li>
+<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
+<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
+<li>&lt;USP&gt;</li>
+</ul>
+</li>
+<li>LineTerminator 换行符<ul>
+<li>&lt;LF&gt; /n</li>
+<li>&lt;CR&gt; Carriage Return 回车 /r</li>
+<li>&lt;LS&gt; LINE SEPARATOR</li>
+<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
+</ul>
+</li>
+<li>Comment 注释</li>
+<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
+<li>自己写的，代码包含的有效信息<ul>
+<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
+<li>用作变量名，不能与关键字重复<ul>
+<li>undefined 全局变量名，修改不了</li>
+<li>离开全局作用域，便可以使用</li>
+</ul>
+</li>
+<li>用作属性的部分，可以与关键字重复</li>
+<li>Future reserved Keywords : enum</li>
+</ul>
+</li>
+<li><strong>Literal</strong> 直接量<ul>
+<li>Number    </li>
+<li>String</li>
+<li>Boolean</li>
+<li>Object</li>
+<li>Null</li>
+<li>Undefined</li>
+<li>Symbol</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>帮助程序形成结构<ul>
+<li><strong>Punctuator</strong> 符号</li>
+<li><strong>Keywords</strong> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
+<li><p>IEEE 754 Double Float</p>
+<ul>
+<li>Sign(1)</li>
+<li>Exponent(11) 指数，科学计数法</li>
+<li>Fraction(52)</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li>DecimaLiteral<ul>
+<li>0</li>
+<li>0.</li>
+<li>.2</li>
+<li>1e3</li>
+</ul>
+</li>
+<li>BinaryIntegerLiteral<ul>
+<li>0b111</li>
+</ul>
+</li>
+<li>OctalIntegerLiteral<ul>
+<li>0o10</li>
+</ul>
+</li>
+<li>HexIntegerLiteral<ul>
+<li>0xFF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>最佳实践</p>
+<ul>
+<li><p>浮点数比较时，需要加精度</p>
+<blockquote>
+<p>Number.MAX_SAFE_INTEGER</p>
+</blockquote>
+<blockquote>
+<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
+<li><p>Character</p>
+</li>
+<li><p>Code Point</p>
+</li>
+<li><p>Encoding</p>
+<blockquote>
+<p>97 .toString(2)</p>
+</blockquote>
+<blockquote>
+<p>“97.” 是一个合法的Number 01100001</p>
+</blockquote>
+<ul>
+<li>ASCII</li>
+<li>Unicode</li>
+<li>UCS U+0000 - U+FFFF</li>
+<li>GB<ul>
+<li>GB2312</li>
+<li>GBK(GB13000)</li>
+<li>GB18030</li>
+</ul>
+</li>
+<li>ISO-8859</li>
+<li>BIG5</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li><p>“abc”</p>
+<ul>
+<li>“\x10” –&gt; 8</li>
+<li>“\u000a”</li>
+</ul>
+</li>
+<li><p>‘abc’</p>
+</li>
+<li><p>`abc`</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
+<li>true</li>
+<li>false</li>
+</ul>
+<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
+<li>typeof 下为 Object</li>
+</ul>
+<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript-Statement</title>
     <url>/2020/04/26/Javascript-Statement/</url>
     <content><![CDATA[<style  type="text/css">
@@ -653,8 +865,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Javascript Types</title>
-    <url>/2020/04/20/Javascript-Types/</url>
+    <title>Reg -- String</title>
+    <url>/2020/04/21/Reg-String/</url>
     <content><![CDATA[<style  type="text/css">
 .lx-entry a {
     color: #191919;
@@ -680,188 +892,138 @@
 }
 </style>
 
-<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
-<li><p>Unicode Blocks</p>
-<ul>
-<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
-<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
-</ul>
-</li>
-<li>U+000A LINE FEED 换行<ul>
-<li>Form Feed 翻页</li>
-<li>CJK 中文字符 Chinese Japan Korean</li>
-</ul>
-</li>
-<li>U+0020 SPACE 空格</li>
-<li>BMP 基本字符平面 四位能表示的范围</li>
-<li>超出BMP范围<ul>
-<li>fromCodePoint</li>
-<li>codePointAt</li>
-</ul>
-</li>
-<li>隐性需求需要可以使用\u转义<ul>
-<li>“厉害”.codePointAt(0).toString(16)</li>
-<li>\u5389\u5bb3<a id="more"></a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>InputElement</p>
-<ul>
-<li>WhiteSpace 空格<ul>
-<li>&lt;TAB&gt; Character Tabulation</li>
-<li>&lt;VT&gt; Vertical Line</li>
-<li>&lt;FF&gt; Form Feed </li>
-<li>&lt;SP&gt; </li>
-<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
-<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
-<li>&lt;USP&gt;</li>
-</ul>
-</li>
-<li>LineTerminator 换行符<ul>
-<li>&lt;LF&gt; /n</li>
-<li>&lt;CR&gt; Carriage Return 回车 /r</li>
-<li>&lt;LS&gt; LINE SEPARATOR</li>
-<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
-</ul>
-</li>
-<li>Comment 注释</li>
-<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
-<li>自己写的，代码包含的有效信息<ul>
-<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
-<li>用作变量名，不能与关键字重复<ul>
-<li>undefined 全局变量名，修改不了</li>
-<li>离开全局作用域，便可以使用</li>
-</ul>
-</li>
-<li>用作属性的部分，可以与关键字重复</li>
-<li>Future reserved Keywords : enum</li>
-</ul>
-</li>
-<li><strong>Literal</strong> 直接量<ul>
-<li>Number    </li>
-<li>String</li>
-<li>Boolean</li>
-<li>Object</li>
-<li>Null</li>
-<li>Undefined</li>
-<li>Symbol</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>帮助程序形成结构<ul>
-<li><strong>Punctuator</strong> 符号</li>
-<li><strong>Keywords</strong> </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
-<li><p>IEEE 754 Double Float</p>
-<ul>
-<li>Sign(1)</li>
-<li>Exponent(11) 指数，科学计数法</li>
-<li>Fraction(52)</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li>DecimaLiteral<ul>
-<li>0</li>
-<li>0.</li>
-<li>.2</li>
-<li>1e3</li>
-</ul>
-</li>
-<li>BinaryIntegerLiteral<ul>
-<li>0b111</li>
-</ul>
-</li>
-<li>OctalIntegerLiteral<ul>
-<li>0o10</li>
-</ul>
-</li>
-<li>HexIntegerLiteral<ul>
-<li>0xFF</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>最佳实践</p>
-<ul>
-<li><p>浮点数比较时，需要加精度</p>
-<blockquote>
-<p>Number.MAX_SAFE_INTEGER</p>
-</blockquote>
-<blockquote>
-<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
-<li><p>Character</p>
-</li>
-<li><p>Code Point</p>
-</li>
-<li><p>Encoding</p>
-<blockquote>
-<p>97 .toString(2)</p>
-</blockquote>
-<blockquote>
-<p>“97.” 是一个合法的Number 01100001</p>
-</blockquote>
-<ul>
-<li>ASCII</li>
-<li>Unicode</li>
-<li>UCS U+0000 - U+FFFF</li>
-<li>GB<ul>
-<li>GB2312</li>
-<li>GBK(GB13000)</li>
-<li>GB18030</li>
-</ul>
-</li>
-<li>ISO-8859</li>
-<li>BIG5</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li><p>“abc”</p>
-<ul>
-<li>“\x10” –&gt; 8</li>
-<li>“\u000a”</li>
-</ul>
-</li>
-<li><p>‘abc’</p>
-</li>
-<li><p>`abc`</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
 
 
 </li>
 </ul>
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
+</li>
+<li><p>StringLiteral ::</p>
+<ul>
+<li><p>DoubleStringCharacters</p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/03c05dd8a9fd5b8b621593fe039e4e6c16908.png" alt="DoubleStringCharacters 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/ef23a0f824e9fc948b61da6c4a8d2a4729602.png" alt="DoubleStringCharacter 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/9004c303c8ebdbb8e38c00e7597b2c5b10649.png" alt="SourceCharacter 详情"></p>
+<blockquote>
+<p>\\u[0-9a-fA-F]{4}</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/25a7c00f444aaead5b3a187d09ab280a16997.png" alt="EscapeSequence 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/ef30597fe4124e22ae7fcf243d9712a310845.png" alt="CharacterEscapeSequence 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/b495509fe89ca78a7d2f5f06831d45c79074.png" alt="SingleEscapeCharacter 详情"></p>
+<blockquote>
+<p>‘“\\bfnrtv</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/7ce330d5a54c7c8ac927771ee7a0540814453.png" alt="NonEscapeCharacter 详情"></p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/f3d3a1b2fba86ebd4b8b6ab2959302e610550.png" alt="EscapeCharacter 详情"></p>
+<blockquote>
+<p>‘“\\bfnrtv0-9xu </p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/8c027b4dfef1876ad432fd62b6ecc4a59724.png" alt="LineTerminator 详情"></p>
+<blockquote>
+<p>\n\r\u2028\u2029</p>
+</blockquote>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/02a7f707581cb217ab5025d7a48e67e829247.png" alt="LineTerminator 码点"></li>
+</ul>
 </li>
 </ul>
-<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
-<li>true</li>
-<li>false</li>
+</li>
 </ul>
-<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
-<li>typeof 下为 Object</li>
+</li>
+<li><p><strong>CharacterEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>‘“\\bfnrtv0-9xu\n\r\u2028\u2029</p>
+</blockquote>
+</li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/9207083723607a9faa4f0a560599dde17694.png" alt="HexEscapeSequence 详情"></p>
+</li>
+<li><p><strong>HexEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>\\x[0-9a-fA-F]{2}</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/545f52e053421a0e9c5e3b231a96276d10075.png" alt="UnicodeEscapeSequence 详情"></p>
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/8bb8c713ee753fd2844aea95e3ecde417620.png" alt="Hex4Digits 详情"></li>
 </ul>
-<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
+</li>
+<li><p><strong>UnicodeEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p> \\u[0-9a-fA-F]{4}</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>EscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4})</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/bd86a4d39c1ae8d719eca6afbd9dcb147948.png" alt="LineContinuation 详情"></p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/e8b4e35d4653ecb6a0f89d848085f69b14054.png" alt="LineTerminatorSequence 详情"></li>
+</ul>
+</li>
+<li><p><strong>LineContinuation</strong>总结为：</p>
+<blockquote>
+<p>\\\n\r\u\2028]2029</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>DoubleStringCharacters</strong>总结为：</p>
+<blockquote>
+<p>“(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”</p>
+</blockquote>
+</li>
+<li><p>SingleStringCharacters</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/6d2e2b31ed15050de59907d5537b9e9219247.png" alt="SingleStringCharacters 大纲"></li>
+</ul>
+</li>
+<li><p><strong>SingleStringCharacters</strong>总结为：</p>
+<blockquote>
+<p>‘(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>StringLiteral</strong>总结为：</p>
+<blockquote>
+<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
       <categories>
         <category>前端概念</category>
       </categories>
       <tags>
         <tag>前端概念</tag>
+        <tag>正则表达式</tag>
       </tags>
   </entry>
   <entry>
@@ -1056,8 +1218,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Reg -- String</title>
-    <url>/2020/04/21/Reg-String/</url>
+    <title>convertNumberToString</title>
+    <url>/2020/04/25/convertNumberToString/</url>
     <content><![CDATA[<style  type="text/css">
 .lx-entry a {
     color: #191919;
@@ -1083,129 +1245,75 @@
 }
 </style>
 
-
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
-
-
+<li>是的我要折腾一下 Javascript convertNumberToString 了🙆</li>
+<li><a href="https://ele-peng.github.io/2020/04/24/convertStringToNumber/" target="_blank" rel="noopener">convertStringToNumber 实现</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h2><ul>
+<li><p>首先我们依旧需要简单梳理一下我们的实践过程，再根据 <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMAScript-262</a> 标准P61完善实践</p>
+</li>
+<li><p>input: @params: { num } 输入需要转换的number, { radix } 转换的指定基数</p>
+</li>
+<li><p>对 input-num 的特殊处理</p>
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/e0405830e24314df04f89a21078cc64198443.png" alt="input-num 的特殊处理"></li>
+</ul>
+</li>
+<li><p>简单算法处理</p>
+<ul>
+<li>获取符号位<ul>
+<li>- 负 显示</li>
+<li>+ 正 不显示</li>
+</ul>
+</li>
+<li>十进制</li>
+<li>二进制</li>
+<li>八进制</li>
+<li>十六进制</li>
+</ul>
+</li>
+<li><p>output: return resStr</p>
 </li>
 </ul>
 <h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
-</li>
-<li><p>StringLiteral ::</p>
+<li><p>经过上面的分析，我们代码可以先写成</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> formatNum = <span class="built_in">Number</span>(num) <span class="comment">// 处理Number为十进制</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(formatNum)) <span class="keyword">return</span> <span class="string">'NaN'</span></span><br><span class="line">    <span class="keyword">if</span> (isZero(formatNum)) <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line">    <span class="keyword">const</span> sign = getSign(formatNum)</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">isFinite</span>(formatNum)) <span class="keyword">return</span> sign + <span class="string">'Infinity'</span></span><br><span class="line">    <span class="keyword">return</span> convertDecimalNumberToString(formatNum)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(err)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>input number 的特殊处理</p>
 <ul>
-<li><p>DoubleStringCharacters</p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/03c05dd8a9fd5b8b621593fe039e4e6c16908.png" alt="DoubleStringCharacters 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/ef23a0f824e9fc948b61da6c4a8d2a4729602.png" alt="DoubleStringCharacter 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/9004c303c8ebdbb8e38c00e7597b2c5b10649.png" alt="SourceCharacter 详情"></p>
+<li><p>If m is NaN, return the String “NaN”.</p>
 <blockquote>
-<p>\\u[0-9a-fA-F]{4}</p>
+<p>if (isNaN(formatNum)) return ‘NaN’</p>
 </blockquote>
 </li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/25a7c00f444aaead5b3a187d09ab280a16997.png" alt="EscapeSequence 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/ef30597fe4124e22ae7fcf243d9712a310845.png" alt="CharacterEscapeSequence 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/b495509fe89ca78a7d2f5f06831d45c79074.png" alt="SingleEscapeCharacter 详情"></p>
+<li><p>If m is +0 or -0, return the String “0”.</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (isZero(formatNum)) <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isZero</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="number">1</span> / num === <span class="literal">Infinity</span> || <span class="number">1</span> / num === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>If m is less than zero, return the string-concatenation of “-“ and ! NumberToString(-m).</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sign = getSign(formatNum)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSign</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (num === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"-"</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num === <span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">  &#125; <span class="comment">// 特殊情况 0 前面已经处理</span></span><br><span class="line">  <span class="keyword">return</span> num / <span class="built_in">Math</span>.abs(num) === <span class="number">1</span> ? <span class="string">""</span> : <span class="string">"-"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If m is +∞, return the String “Infinity”.</p>
 <blockquote>
-<p>‘“\\bfnrtv</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/7ce330d5a54c7c8ac927771ee7a0540814453.png" alt="NonEscapeCharacter 详情"></p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/f3d3a1b2fba86ebd4b8b6ab2959302e610550.png" alt="EscapeCharacter 详情"></p>
-<blockquote>
-<p>‘“\\bfnrtv0-9xu </p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/8c027b4dfef1876ad432fd62b6ecc4a59724.png" alt="LineTerminator 详情"></p>
-<blockquote>
-<p>\n\r\u2028\u2029</p>
-</blockquote>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/02a7f707581cb217ab5025d7a48e67e829247.png" alt="LineTerminator 码点"></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>CharacterEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>‘“\\bfnrtv0-9xu\n\r\u2028\u2029</p>
-</blockquote>
-</li>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/9207083723607a9faa4f0a560599dde17694.png" alt="HexEscapeSequence 详情"></p>
-</li>
-<li><p><strong>HexEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>\\x[0-9a-fA-F]{2}</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/545f52e053421a0e9c5e3b231a96276d10075.png" alt="UnicodeEscapeSequence 详情"></p>
-<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/8bb8c713ee753fd2844aea95e3ecde417620.png" alt="Hex4Digits 详情"></li>
-</ul>
-</li>
-<li><p><strong>UnicodeEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p> \\u[0-9a-fA-F]{4}</p>
+<p>if (!isFinite(formatNum)) return sign + ‘Infinity’</p>
 </blockquote>
 </li>
 </ul>
 </li>
-<li><p><strong>EscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4})</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/bd86a4d39c1ae8d719eca6afbd9dcb147948.png" alt="LineContinuation 详情"></p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/e8b4e35d4653ecb6a0f89d848085f69b14054.png" alt="LineTerminatorSequence 详情"></li>
-</ul>
-</li>
-<li><p><strong>LineContinuation</strong>总结为：</p>
-<blockquote>
-<p>\\\n\r\u\2028]2029</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>DoubleStringCharacters</strong>总结为：</p>
-<blockquote>
-<p>“(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”</p>
-</blockquote>
-</li>
-<li><p>SingleStringCharacters</p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/6d2e2b31ed15050de59907d5537b9e9219247.png" alt="SingleStringCharacters 大纲"></li>
-</ul>
-</li>
-<li><p><strong>SingleStringCharacters</strong>总结为：</p>
-<blockquote>
-<p>‘(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>StringLiteral</strong>总结为：</p>
-<blockquote>
-<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
-</blockquote>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
+<li><p>常规 Decimal Number 处理</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertDecimalNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> radix = <span class="number">10</span></span><br><span class="line">  <span class="keyword">let</span> int = <span class="built_in">Math</span>.floor(num)</span><br><span class="line">  <span class="keyword">let</span> float = (num - int) * <span class="number">100</span> / <span class="number">100</span></span><br><span class="line">  <span class="keyword">let</span> resInt = <span class="string">''</span></span><br><span class="line">  <span class="keyword">let</span> resFloat = <span class="string">''</span></span><br><span class="line">  <span class="comment">// 整数部分 取余，除以基数</span></span><br><span class="line">  <span class="keyword">while</span> (int &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    resInt = <span class="built_in">String</span>(int % radix) + resInt</span><br><span class="line">    int = <span class="built_in">Math</span>.floor(int / radix)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (float) &#123;</span><br><span class="line">    resFloat = <span class="string">'.'</span></span><br><span class="line">    <span class="comment">// 小数部分，乘以基数，取整</span></span><br><span class="line">    <span class="keyword">while</span> (float &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      resFloat = resFloat + <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">      float -= <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resInt + resFloat</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
+</li>
+</ul>
+<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(convertNumberToString(-<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, -<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(+<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, +<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120.11112</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, <span class="number">120.11112</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, (<span class="number">120</span>).toString())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试截图<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/b741d6a87bab9c52f01871781745689124911.png" alt="测试截图"></li>
+</ul>
 </li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>可以看出，我们写的 converNumbertoString 遇到浮点数，就失灵了，有想到说 用 toString，然后正则匹配出小数点后面的浮点数，舍入相应位数，但是这样，就用到了 toString 方法，似乎与我的最初想法实现 convertNumbertToString 死锁了 🙃</li>
+<li>大家有其他的不用 toString 实践，欢迎评论告诉我呀~</li>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week03/convertNumberToString.html" target="_blank" rel="noopener">代码地址</a></li>
 <li>祝大家多多发财</li>
 </ul>
 ]]></content>
@@ -1213,8 +1321,8 @@
         <category>前端概念</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>前端概念</tag>
-        <tag>正则表达式</tag>
       </tags>
   </entry>
   <entry>
@@ -1371,114 +1479,6 @@
       </tags>
   </entry>
   <entry>
-    <title>convertNumberToString</title>
-    <url>/2020/04/25/convertNumberToString/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>是的我要折腾一下 Javascript convertNumberToString 了🙆</li>
-<li><a href="https://ele-peng.github.io/2020/04/24/convertStringToNumber/" target="_blank" rel="noopener">convertStringToNumber 实现</a></li>
-</ul>
-<a id="more"></a>
-<h2 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h2><ul>
-<li><p>首先我们依旧需要简单梳理一下我们的实践过程，再根据 <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMAScript-262</a> 标准P61完善实践</p>
-</li>
-<li><p>input: @params: { num } 输入需要转换的number, { radix } 转换的指定基数</p>
-</li>
-<li><p>对 input-num 的特殊处理</p>
-<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/e0405830e24314df04f89a21078cc64198443.png" alt="input-num 的特殊处理"></li>
-</ul>
-</li>
-<li><p>简单算法处理</p>
-<ul>
-<li>获取符号位<ul>
-<li>- 负 显示</li>
-<li>+ 正 不显示</li>
-</ul>
-</li>
-<li>十进制</li>
-<li>二进制</li>
-<li>八进制</li>
-<li>十六进制</li>
-</ul>
-</li>
-<li><p>output: return resStr</p>
-</li>
-</ul>
-<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p>经过上面的分析，我们代码可以先写成</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> formatNum = <span class="built_in">Number</span>(num) <span class="comment">// 处理Number为十进制</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(formatNum)) <span class="keyword">return</span> <span class="string">'NaN'</span></span><br><span class="line">    <span class="keyword">if</span> (isZero(formatNum)) <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line">    <span class="keyword">const</span> sign = getSign(formatNum)</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">isFinite</span>(formatNum)) <span class="keyword">return</span> sign + <span class="string">'Infinity'</span></span><br><span class="line">    <span class="keyword">return</span> convertDecimalNumberToString(formatNum)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(err)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>input number 的特殊处理</p>
-<ul>
-<li><p>If m is NaN, return the String “NaN”.</p>
-<blockquote>
-<p>if (isNaN(formatNum)) return ‘NaN’</p>
-</blockquote>
-</li>
-<li><p>If m is +0 or -0, return the String “0”.</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (isZero(formatNum)) <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isZero</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="number">1</span> / num === <span class="literal">Infinity</span> || <span class="number">1</span> / num === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>If m is less than zero, return the string-concatenation of “-“ and ! NumberToString(-m).</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> sign = getSign(formatNum)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSign</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (num === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"-"</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num === <span class="literal">Infinity</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">  &#125; <span class="comment">// 特殊情况 0 前面已经处理</span></span><br><span class="line">  <span class="keyword">return</span> num / <span class="built_in">Math</span>.abs(num) === <span class="number">1</span> ? <span class="string">""</span> : <span class="string">"-"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>If m is +∞, return the String “Infinity”.</p>
-<blockquote>
-<p>if (!isFinite(formatNum)) return sign + ‘Infinity’</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>常规 Decimal Number 处理</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertDecimalNumberToString</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> radix = <span class="number">10</span></span><br><span class="line">  <span class="keyword">let</span> int = <span class="built_in">Math</span>.floor(num)</span><br><span class="line">  <span class="keyword">let</span> float = (num - int) * <span class="number">100</span> / <span class="number">100</span></span><br><span class="line">  <span class="keyword">let</span> resInt = <span class="string">''</span></span><br><span class="line">  <span class="keyword">let</span> resFloat = <span class="string">''</span></span><br><span class="line">  <span class="comment">// 整数部分 取余，除以基数</span></span><br><span class="line">  <span class="keyword">while</span> (int &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    resInt = <span class="built_in">String</span>(int % radix) + resInt</span><br><span class="line">    int = <span class="built_in">Math</span>.floor(int / radix)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (float) &#123;</span><br><span class="line">    resFloat = <span class="string">'.'</span></span><br><span class="line">    <span class="comment">// 小数部分，乘以基数，取整</span></span><br><span class="line">    <span class="keyword">while</span> (float &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      resFloat = resFloat + <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">      float -= <span class="built_in">Math</span>.floor(float * radix)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resInt + resFloat</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(convertNumberToString(-<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, -<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(+<span class="literal">Infinity</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, +<span class="literal">Infinity</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120.11112</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, <span class="number">120.11112</span>.toString())</span><br><span class="line"><span class="built_in">console</span>.log(convertNumberToString(<span class="number">120</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'toString'</span>, (<span class="number">120</span>).toString())</span><br></pre></td></tr></table></figure>
-<ul>
-<li>测试截图<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/b741d6a87bab9c52f01871781745689124911.png" alt="测试截图"></li>
-</ul>
-</li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>可以看出，我们写的 converNumbertoString 遇到浮点数，就失灵了，有想到说 用 toString，然后正则匹配出小数点后面的浮点数，舍入相应位数，但是这样，就用到了 toString 方法，似乎与我的最初想法实现 convertNumbertToString 死锁了 🙃</li>
-<li>大家有其他的不用 toString 实践，欢迎评论告诉我呀~</li>
-<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week03/convertNumberToString.html" target="_blank" rel="noopener">代码地址</a></li>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【未完】前端性能监控</title>
     <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1586,6 +1586,41 @@
       <tags>
         <tag>性能监控</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>数组、链表、跳表</title>
+    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
+<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
+<li>数学归纳法</li>
+<li>找最近重复问题</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>微信小程序-气泡框</title>
@@ -1702,6 +1737,128 @@
       </categories>
       <tags>
         <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自己的前端知识体系</title>
+    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>理一下自己的技术体系吧</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/49daa01a2bbdab251434a26a618376c53934435.png" alt="技术体系脑图"></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【未完】计算机图形学初探</title>
+    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><p>记录 计算机图形学 方面的学习过程🤔</p>
+<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
+<li>前端与图形学<ul>
+<li>shader</li>
+</ul>
+</li>
+<li>图形学应用场景<ul>
+<li>Image<ul>
+<li>pattern（多用于背景）</li>
+<li>photo</li>
+<li>shape</li>
+</ul>
+</li>
+<li>来自数学的图形–分形</li>
+<li>来自物理的图形–光的衍射<ul>
+<li>相变</li>
+<li>绿幕<ul>
+<li>PNG24 –&gt; 2张 jpg</li>
+</ul>
+</li>
+<li>3D效果<ul>
+<li>three.js</li>
+<li>babylon.js</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机图形学</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
       </tags>
   </entry>
   <entry>
@@ -1972,163 +2129,6 @@
       </categories>
       <tags>
         <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数组、链表、跳表</title>
-    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
-<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
-<li>数学归纳法</li>
-<li>找最近重复问题</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>自己的前端知识体系</title>
-    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>理一下自己的技术体系吧</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/49daa01a2bbdab251434a26a618376c53934435.png" alt="技术体系脑图"></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【未完】计算机图形学初探</title>
-    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li><p>记录 计算机图形学 方面的学习过程🤔</p>
-<a id="more"></a>
-
-</li>
-</ul>
-<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>前端与图形学<ul>
-<li>shader</li>
-</ul>
-</li>
-<li>图形学应用场景<ul>
-<li>Image<ul>
-<li>pattern（多用于背景）</li>
-<li>photo</li>
-<li>shape</li>
-</ul>
-</li>
-<li>来自数学的图形–分形</li>
-<li>来自物理的图形–光的衍射<ul>
-<li>相变</li>
-<li>绿幕<ul>
-<li>PNG24 –&gt; 2张 jpg</li>
-</ul>
-</li>
-<li>3D效果<ul>
-<li>three.js</li>
-<li>babylon.js</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机图形学</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
       </tags>
   </entry>
   <entry>
@@ -4079,6 +4079,166 @@
       <tags>
         <tag>算法</tag>
         <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Toy-Browser-DAY2</title>
+    <url>/2020/05/15/Toy-Browser-DAY2/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>implementation of a toy-browser 🙆</li>
+<li>DAY1，我们已经完成 HTTP相关解析，现在我们可以写 HTML 的解析啦，开不开心！😝</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/6e1d35dcd8c01b557925f8d799583cb1130452.png" alt="HTML 的解析"></li>
+</ul>
+<a id="more"></a>
+
+
+
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><h3 id="第一步：拆分文件"><a href="#第一步：拆分文件" class="headerlink" title="第一步：拆分文件"></a>第一步：拆分文件</h3><ul>
+<li>为了方便文件管理，我们把parse单独拆到文件中</li>
+<li>parser 接受 HTML 文本作为参数，返回一颗 DOM 树</li>
+</ul>
+<ul>
+<li><p>server.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">  ... some code </span><br><span class="line">  </span><br><span class="line">  res.end(</span><br><span class="line">    <span class="string">`&lt;html maaa=a &gt;</span></span><br><span class="line"><span class="string">    &lt;head&gt;</span></span><br><span class="line"><span class="string">        &lt;style&gt;</span></span><br><span class="line"><span class="string">    body div #myid&#123;</span></span><br><span class="line"><span class="string">        width:100px;</span></span><br><span class="line"><span class="string">        background-color: #ff5000;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    body div img&#123;</span></span><br><span class="line"><span class="string">        width:30px;</span></span><br><span class="line"><span class="string">        background-color: #ff1111;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">        &lt;/style&gt;</span></span><br><span class="line"><span class="string">    &lt;/head&gt;</span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string">        &lt;div&gt;</span></span><br><span class="line"><span class="string">            &lt;img id="myid"/&gt;</span></span><br><span class="line"><span class="string">            &lt;img /&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">    &lt;/html&gt;`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">8088</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>client.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">... some code</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  ... some code</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> dom = parser.parseHTML(response.body)</span><br><span class="line">  </span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>parseHTML1.js</p>
+</li>
+</ul>
+<pre><code><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 拆分文件</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.parseHTML = <span class="function"><span class="keyword">function</span> <span class="title">parseHTML</span>(<span class="params">html</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(html)</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><ul>
+<li>运行结果<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/98a64e9c9eb9f97c01b0bb4ccb0141f976175.png" alt="运行结果"></li>
+</ul>
+</li>
+</ul>
+<h3 id="第二步：创建状态机"><a href="#第二步：创建状态机" class="headerlink" title="第二步：创建状态机"></a>第二步：创建状态机</h3><ul>
+<li>我们用 FSM 来实现 HTML 的分析</li>
+<li>在 HTML 标准中，已经规定了 HTML 的状态</li>
+<li>Toy-Browser 只挑选其中的一部分状态，完成一个最简版本</li>
+</ul>
+<ul>
+<li><p>parseHTML2.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 初始化 FSM - Finite State Machine</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> EOF = <span class="built_in">Symbol</span>(<span class="string">"EOF"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">data</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.parseHTML = <span class="function"><span class="keyword">function</span> <span class="title">parseHTML</span>(<span class="params">html</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> state = data</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> html) &#123;</span><br><span class="line">    state = state(c)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  state = state(EOF)</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="第三步：解析标签"><a href="#第三步：解析标签" class="headerlink" title="第三步：解析标签"></a>第三步：解析标签</h3><ul>
+<li><p>主要的标签有：开始标签，结束标签和自封闭标签</p>
+</li>
+<li><p>在这一步我们暂时忽略属性</p>
+</li>
+<li><p>【未完：状态图分析】</p>
+</li>
+<li><p>parseHTML3.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 解析标签</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> EOF = <span class="built_in">Symbol</span>(<span class="string">"EOF"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">data</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"&lt;"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> tagOpen</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 开始标签</span></span><br><span class="line"><span class="comment">// 2. 结束标签</span></span><br><span class="line"><span class="comment">// 3. 自封闭标签</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tagOpen</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123; <span class="comment">// 结束标签</span></span><br><span class="line">    <span class="keyword">return</span> endTagOpen</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123; <span class="comment">// 开始标签</span></span><br><span class="line">    <span class="keyword">return</span> tagName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">endTagOpen</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> tagName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(char == EOF) &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tagName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> tagName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> tagName</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">beforeAttributeName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"="</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selfClosingStartTag</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"EOF"</span>) &#123;</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.parseHTML = <span class="function"><span class="keyword">function</span> <span class="title">parseHTML</span>(<span class="params">html</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> state = data</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> html) &#123;</span><br><span class="line">    state = state(char)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  state = state(EOF)</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="第四步：创建元素"><a href="#第四步：创建元素" class="headerlink" title="第四步：创建元素"></a>第四步：创建元素</h3><ul>
+<li><p>在状态中，除了状态迁移，我们还会要加入业务逻辑</p>
+</li>
+<li><p>我们在标签结束状态提交标签 token</p>
+</li>
+<li><p>parseHTML4.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// emitToken 创建元素</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> currentToken = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emit</span>(<span class="params">token</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (token.type != <span class="string">"text"</span>) </span><br><span class="line">    <span class="built_in">console</span>.log(token)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> EOF = <span class="built_in">Symbol</span>(<span class="string">"EOF"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">data</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"&lt;"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> tagOpen</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    emit(&#123;</span><br><span class="line">      type: <span class="string">"EOF"</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 开始标签</span></span><br><span class="line"><span class="comment">// 2. 结束标签</span></span><br><span class="line"><span class="comment">// 3. 自封闭标签</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tagOpen</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123; <span class="comment">// 结束标签</span></span><br><span class="line">    <span class="keyword">return</span> endTagOpen</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123; <span class="comment">// 开始标签</span></span><br><span class="line">    currentToken = &#123;</span><br><span class="line">      type: <span class="string">"startTag"</span>,</span><br><span class="line">      tagName: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tagName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">endTagOpen</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123;</span><br><span class="line">    currentToken = &#123;</span><br><span class="line">      type: <span class="string">"endTag"</span>,</span><br><span class="line">      tagName: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tagName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(char == EOF) &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tagName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123;</span><br><span class="line">    currentToken.tagName += char.toLowerCase()</span><br><span class="line">    <span class="keyword">return</span> tagName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> tagName</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">beforeAttributeName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"="</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selfClosingStartTag</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"&gt;"</span> || char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    currentToken.isSelfClosing = <span class="literal">true</span></span><br><span class="line">    currentToken.type = <span class="string">"selfClosingTag"</span></span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"EOF"</span>) &#123;</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.parseHTML = <span class="function"><span class="keyword">function</span> <span class="title">parseHTML</span>(<span class="params">html</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> state = data</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> html) &#123;</span><br><span class="line">    state = state(char)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  state = state(EOF)</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/5c4078e02702211bbe87ca75d2044cdb106832.png" alt="第四步运行结果"></li>
+</ul>
+</li>
+</ul>
+<h3 id="第五步：处理属性"><a href="#第五步：处理属性" class="headerlink" title="第五步：处理属性"></a>第五步：处理属性</h3><ul>
+<li><p>属性分为单引号、双引号、无引号三种写法，因此需要较多状态处理</p>
+</li>
+<li><p>处理属性的方式跟标签类似</p>
+</li>
+<li><p>属性结束时，我们把属性加到标签 token 上</p>
+</li>
+<li><p>parseHTML5.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 处理属性 attribute</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> currentToken = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> currentAttribute = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emit</span>(<span class="params">token</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (token.type != <span class="string">"text"</span>) </span><br><span class="line">    <span class="built_in">console</span>.log(token)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> EOF = <span class="built_in">Symbol</span>(<span class="string">"EOF"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">data</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"&lt;"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> tagOpen</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    emit(&#123;</span><br><span class="line">      type: <span class="string">"EOF"</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    emit(&#123;</span><br><span class="line">      type: <span class="string">"text"</span>,</span><br><span class="line">      content: char</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 开始标签</span></span><br><span class="line"><span class="comment">// 2. 结束标签</span></span><br><span class="line"><span class="comment">// 3. 自封闭标签</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tagOpen</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123; <span class="comment">// 结束标签</span></span><br><span class="line">    <span class="keyword">return</span> endTagOpen</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123; <span class="comment">// 开始标签</span></span><br><span class="line">    currentToken = &#123;</span><br><span class="line">      type: <span class="string">"startTag"</span>,</span><br><span class="line">      tagName: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tagName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">endTagOpen</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123;</span><br><span class="line">    currentToken = &#123;</span><br><span class="line">      type: <span class="string">"endTag"</span>,</span><br><span class="line">      tagName: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tagName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tagName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123;</span><br><span class="line">    currentToken.tagName += char.toLowerCase()</span><br><span class="line">    <span class="keyword">return</span> tagName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> tagName</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">beforeAttributeName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span> || char == <span class="string">"/"</span> || char == EOF) &#123;</span><br><span class="line">    <span class="keyword">return</span> afterAttributeName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"="</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute = &#123;</span><br><span class="line">      name: <span class="string">""</span>,</span><br><span class="line">      value: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> attributeName(char)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">afterAttributeName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">attributeName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>) || char == <span class="string">"/"</span> || char == <span class="string">"&gt;"</span> || char == EOF) &#123; </span><br><span class="line">    <span class="keyword">return</span> afterAttributeName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"="</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\u0000"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\""</span> || char == <span class="string">"\'"</span> || char == <span class="string">"&lt;"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> attributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute.name += char</span><br><span class="line">    <span class="keyword">return</span> attributeName</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">beforeAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>) || char == <span class="string">"/"</span> || char == <span class="string">"&gt;"</span> || char == EOF) &#123; </span><br><span class="line">    <span class="keyword">return</span> beforeAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\""</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> doubleQuotedAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\'"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> singleQuotedAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> UnquotedAttributeValue(char)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doubleQuotedAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"\""</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    <span class="keyword">return</span> afterQuotedAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\u0000"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute.value += char</span><br><span class="line">    <span class="keyword">return</span> doubleQuotedAttributeValue</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">singleQuotedAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"\'"</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    <span class="keyword">return</span> afterQuotedAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\u0000"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute.value += char</span><br><span class="line">    <span class="keyword">return</span> singleQuotedAttributeValue</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">afterQuotedAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char ==<span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UnquotedAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    <span class="comment">// emit(currentToken)</span></span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    <span class="comment">// emit(currentToken)</span></span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\u0000"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\""</span> || char == <span class="string">"\'"</span> || char == <span class="string">"&lt;"</span> || char == <span class="string">"="</span> || char == <span class="string">"`"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute.value += char</span><br><span class="line">    <span class="keyword">return</span> UnquotedAttributeValue</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selfClosingStartTag</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"&gt;"</span> || char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    currentToken.isSelfClosing = <span class="literal">true</span></span><br><span class="line">    currentToken.type = <span class="string">"selfClosingTag"</span></span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"EOF"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.parseHTML = <span class="function"><span class="keyword">function</span> <span class="title">parseHTML</span>(<span class="params">html</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> state = data</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> html) &#123;</span><br><span class="line">    state = state(char)</span><br><span class="line">    <span class="comment">// console.log(state)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  state = state(EOF)</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/3b45aac402868fe1c62c7d7debbcfd24114412.png" alt="第五步运行结果"></li>
+</ul>
+</li>
+</ul>
+<h3 id="第六步："><a href="#第六步：" class="headerlink" title="第六步："></a>第六步：</h3><ul>
+<li><p>从标签创建 DOM 树的基本技巧是使用栈</p>
+</li>
+<li><p>遇到开始标签时创建元素并入栈，遇到结束标签时出栈</p>
+</li>
+<li><p>自封闭节点可视为入栈后立刻出栈</p>
+</li>
+<li><p>任何元素的父元素是它入栈前的栈顶</p>
+</li>
+<li><p>parseHTML6.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 处理属性 constructTree</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> currentToken = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> currentAttribute = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> stack = [&#123;<span class="attr">type</span>: <span class="string">"document"</span>, <span class="attr">children</span>: []&#125;]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emit</span>(<span class="params">token</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (token.type == <span class="string">"text"</span>) </span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> top = stack[stack.length - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (token.type == <span class="string">"startTag"</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> element = &#123;</span><br><span class="line">      type: <span class="string">"element"</span>,</span><br><span class="line">      children: [],</span><br><span class="line">      attributes: []</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    element.tagName = token.tagName</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> p <span class="keyword">in</span> token) &#123;</span><br><span class="line">      <span class="keyword">if</span> (p != <span class="string">"type"</span> &amp;&amp; p != <span class="string">"tagName"</span>) &#123;</span><br><span class="line">        element.attributes.push(&#123;</span><br><span class="line">          name: p,</span><br><span class="line">          value: token[p]</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    top.children.push(element)</span><br><span class="line">    element.parent = top</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!token.isSelfClosing)</span><br><span class="line">      stack.push(element)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'push'</span>, element)</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (token.type == <span class="string">"endTag"</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (top.tagName != token.tagName) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Tag start end doesn't match"</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'pop'</span>, stack.pop())</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> EOF = <span class="built_in">Symbol</span>(<span class="string">"EOF"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">data</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"&lt;"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> tagOpen</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    emit(&#123;</span><br><span class="line">      type: <span class="string">"EOF"</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    emit(&#123;</span><br><span class="line">      type: <span class="string">"text"</span>,</span><br><span class="line">      content: char</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 开始标签</span></span><br><span class="line"><span class="comment">// 2. 结束标签</span></span><br><span class="line"><span class="comment">// 3. 自封闭标签</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tagOpen</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123; <span class="comment">// 结束标签</span></span><br><span class="line">    <span class="keyword">return</span> endTagOpen</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123; <span class="comment">// 开始标签</span></span><br><span class="line">    currentToken = &#123;</span><br><span class="line">      type: <span class="string">"startTag"</span>,</span><br><span class="line">      tagName: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tagName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">endTagOpen</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123;</span><br><span class="line">    currentToken = &#123;</span><br><span class="line">      type: <span class="string">"endTag"</span>,</span><br><span class="line">      tagName: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tagName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tagName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123;</span><br><span class="line">    currentToken.tagName += char.toLowerCase()</span><br><span class="line">    <span class="keyword">return</span> tagName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> tagName</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">beforeAttributeName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span> || char == <span class="string">"/"</span> || char == EOF) &#123;</span><br><span class="line">    <span class="keyword">return</span> afterAttributeName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"="</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute = &#123;</span><br><span class="line">      name: <span class="string">""</span>,</span><br><span class="line">      value: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> attributeName(char)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">afterAttributeName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">attributeName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>) || char == <span class="string">"/"</span> || char == <span class="string">"&gt;"</span> || char == EOF) &#123; </span><br><span class="line">    <span class="keyword">return</span> afterAttributeName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"="</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\u0000"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\""</span> || char == <span class="string">"\'"</span> || char == <span class="string">"&lt;"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> attributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute.name += char</span><br><span class="line">    <span class="keyword">return</span> attributeName</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">beforeAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>) || char == <span class="string">"/"</span> || char == <span class="string">"&gt;"</span> || char == EOF) &#123; </span><br><span class="line">    <span class="keyword">return</span> beforeAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\""</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> doubleQuotedAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\'"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> singleQuotedAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> UnquotedAttributeValue(char)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doubleQuotedAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"\""</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    <span class="keyword">return</span> afterQuotedAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\u0000"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute.value += char</span><br><span class="line">    <span class="keyword">return</span> doubleQuotedAttributeValue</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">singleQuotedAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"\'"</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    <span class="keyword">return</span> afterQuotedAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\u0000"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute.value += char</span><br><span class="line">    <span class="keyword">return</span> singleQuotedAttributeValue</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">afterQuotedAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char ==<span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UnquotedAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    <span class="comment">// emit(currentToken)</span></span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    <span class="comment">// emit(currentToken)</span></span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\u0000"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\""</span> || char == <span class="string">"\'"</span> || char == <span class="string">"&lt;"</span> || char == <span class="string">"="</span> || char == <span class="string">"`"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute.value += char</span><br><span class="line">    <span class="keyword">return</span> UnquotedAttributeValue</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selfClosingStartTag</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"&gt;"</span> || char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    currentToken.isSelfClosing = <span class="literal">true</span></span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"EOF"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.parseHTML = <span class="function"><span class="keyword">function</span> <span class="title">parseHTML</span>(<span class="params">html</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> state = data</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> html) &#123;</span><br><span class="line">    state = state(char)</span><br><span class="line">    <span class="comment">// console.log(state)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  state = state(EOF)</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">console</span>.log(stack)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行结果：这边我在每次对栈操作时(push/pop)时，添加了 console</p>
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/f83a95f5afec8c5ad34c8df0a34a6ff8116344.png" alt="第六步运行结果"></li>
+</ul>
+</li>
+<li><p>这边推荐使用 <a href="https://code.visualstudio.com/docs/editor/debugging" target="_blank" rel="noopener">vs-code debugger 使用方法</a></p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/7a4cb0d87ac89cb3a5ae4252c3a5d6a7321211.png" alt="第六步运行结果 vscode debugger"></li>
+</ul>
+</li>
+</ul>
+<h3 id="第七步："><a href="#第七步：" class="headerlink" title="第七步："></a>第七步：</h3><ul>
+<li><p>parseHTML7.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 处理文本节点 combineText</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> currentToken = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> currentAttribute = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> currentTextNode = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> stack = [&#123;<span class="attr">type</span>: <span class="string">"document"</span>, <span class="attr">children</span>: []&#125;]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emit</span>(<span class="params">token</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> top = stack[stack.length - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (token.type == <span class="string">"startTag"</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> element = &#123;</span><br><span class="line">      type: <span class="string">"element"</span>,</span><br><span class="line">      children: [],</span><br><span class="line">      attributes: []</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    element.tagName = token.tagName</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> p <span class="keyword">in</span> token) &#123;</span><br><span class="line">      <span class="keyword">if</span> (p != <span class="string">"type"</span> &amp;&amp; p != <span class="string">"tagName"</span>) &#123;</span><br><span class="line">        element.attributes.push(&#123;</span><br><span class="line">          name: p,</span><br><span class="line">          value: token[p]</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    top.children.push(element)</span><br><span class="line">    element.parent = top</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!token.isSelfClosing)</span><br><span class="line">      stack.push(element)</span><br><span class="line">    </span><br><span class="line">    currentTextNode = <span class="literal">null</span></span><br><span class="line">    <span class="comment">// console.log('push', element)</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (token.type == <span class="string">"endTag"</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (top.tagName != token.tagName) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Tag start end doesn't match"</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// console.log('pop', stack.pop())</span></span><br><span class="line">      stack.pop()</span><br><span class="line">    &#125;</span><br><span class="line">    currentTextNode = <span class="literal">null</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (token.type == <span class="string">"text"</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (currentTextNode == <span class="literal">null</span>) &#123;</span><br><span class="line">      currentTextNode = &#123;</span><br><span class="line">        type: <span class="string">"text"</span>,</span><br><span class="line">        content: <span class="string">""</span></span><br><span class="line">      &#125;</span><br><span class="line">      top.children.push(currentTextNode)</span><br><span class="line">    &#125;</span><br><span class="line">    currentTextNode.content += token.content</span><br><span class="line">    <span class="comment">// console.log(top.children)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> EOF = <span class="built_in">Symbol</span>(<span class="string">"EOF"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">data</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"&lt;"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> tagOpen</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    emit(&#123;</span><br><span class="line">      type: <span class="string">"EOF"</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    emit(&#123;</span><br><span class="line">      type: <span class="string">"text"</span>,</span><br><span class="line">      content: char</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 开始标签</span></span><br><span class="line"><span class="comment">// 2. 结束标签</span></span><br><span class="line"><span class="comment">// 3. 自封闭标签</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tagOpen</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123; <span class="comment">// 结束标签</span></span><br><span class="line">    <span class="keyword">return</span> endTagOpen</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123; <span class="comment">// 开始标签</span></span><br><span class="line">    currentToken = &#123;</span><br><span class="line">      type: <span class="string">"startTag"</span>,</span><br><span class="line">      tagName: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tagName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">endTagOpen</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123;</span><br><span class="line">    currentToken = &#123;</span><br><span class="line">      type: <span class="string">"endTag"</span>,</span><br><span class="line">      tagName: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tagName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tagName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char.match(<span class="regexp">/^[a-zA-Z]$/</span>)) &#123;</span><br><span class="line">    currentToken.tagName += char.toLowerCase()</span><br><span class="line">    <span class="keyword">return</span> tagName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> tagName</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">beforeAttributeName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span> || char == <span class="string">"/"</span> || char == EOF) &#123;</span><br><span class="line">    <span class="keyword">return</span> afterAttributeName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"="</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute = &#123;</span><br><span class="line">      name: <span class="string">""</span>,</span><br><span class="line">      value: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> attributeName(char)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">afterAttributeName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">attributeName</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>) || char == <span class="string">"/"</span> || char == <span class="string">"&gt;"</span> || char == EOF) &#123; </span><br><span class="line">    <span class="keyword">return</span> afterAttributeName(char)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"="</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\u0000"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\""</span> || char == <span class="string">"\'"</span> || char == <span class="string">"&lt;"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> attributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute.name += char</span><br><span class="line">    <span class="keyword">return</span> attributeName</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">beforeAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>) || char == <span class="string">"/"</span> || char == <span class="string">"&gt;"</span> || char == EOF) &#123; </span><br><span class="line">    <span class="keyword">return</span> beforeAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\""</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> doubleQuotedAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\'"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> singleQuotedAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> UnquotedAttributeValue(char)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doubleQuotedAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"\""</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    <span class="keyword">return</span> afterQuotedAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\u0000"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute.value += char</span><br><span class="line">    <span class="keyword">return</span> doubleQuotedAttributeValue</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">singleQuotedAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"\'"</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    <span class="keyword">return</span> afterQuotedAttributeValue</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\u0000"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute.value += char</span><br><span class="line">    <span class="keyword">return</span> singleQuotedAttributeValue</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">afterQuotedAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char ==<span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UnquotedAttributeValue</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char.match(<span class="regexp">/^[\t\n\f ]$/</span>)) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    <span class="comment">// emit(currentToken)</span></span><br><span class="line">    <span class="keyword">return</span> beforeAttributeName</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    <span class="comment">// emit(currentToken)</span></span><br><span class="line">    <span class="keyword">return</span> selfClosingStartTag</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"&gt;"</span>) &#123;</span><br><span class="line">    currentToken[currentAttribute.name] = currentAttribute.value</span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\u0000"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"\""</span> || char == <span class="string">"\'"</span> || char == <span class="string">"&lt;"</span> || char == <span class="string">"="</span> || char == <span class="string">"`"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == EOF) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    currentAttribute.value += char</span><br><span class="line">    <span class="keyword">return</span> UnquotedAttributeValue</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selfClosingStartTag</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char == <span class="string">"&gt;"</span> || char == <span class="string">"/"</span>) &#123;</span><br><span class="line">    currentToken.isSelfClosing = <span class="literal">true</span></span><br><span class="line">    emit(currentToken)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char == <span class="string">"EOF"</span>) &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// return data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.parseHTML = <span class="function"><span class="keyword">function</span> <span class="title">parseHTML</span>(<span class="params">html</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> state = data</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> html) &#123;</span><br><span class="line">    state = state(char)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  state = state(EOF)</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/1d00a3a9aa02bd2ff5eb52805c38768b345257.png" alt="第六步运行结果 vscode debugger"></li>
+</ul>
+</li>
+</ul>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://html.spec.whatwg.org/multipage/" target="_blank" rel="noopener">HTML standard docs</a></li>
+<li><a href="https://code.visualstudio.com/docs/editor/debugging" target="_blank" rel="noopener">VSCODE debugger</a></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li><a href="https://github.com/Ele-Peng/toy-browser" target="_blank" rel="noopener">完整代码地址-戳我戳我戳我</a></li>
+<li>学而不思则罔 互勉</li>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>浏览器</category>
+      </categories>
+      <tags>
+        <tag>浏览器</tag>
       </tags>
   </entry>
   <entry>
