@@ -623,7 +623,7 @@ description:
 	- ![第五步运行结果](http://p0.meituan.net/myvideodistribute/3b45aac402868fe1c62c7d7debbcfd24114412.png)
 
 	
-### 第六步：
+### 第六步：构建 DOM 树
 - 从标签创建 DOM 树的基本技巧是使用栈
 - 遇到开始标签时创建元素并入栈，遇到结束标签时出栈
 - 自封闭节点可视为入栈后立刻出栈
@@ -910,7 +910,9 @@ description:
 	- ![第六步运行结果 vscode debugger](http://p0.meituan.net/myvideodistribute/7a4cb0d87ac89cb3a5ae4252c3a5d6a7321211.png)
 
 
-### 第七步：
+### 第七步：文本节点
+- 文本节点与自封闭标签处理类似
+- 多个文本节点需要合并
 
 - parseHTML7.js
 
