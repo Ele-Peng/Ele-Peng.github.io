@@ -396,7 +396,7 @@ function compare(sp1, sp2) {
 	      return true
 	  } else if (selector.charAt(0) == ".") {
 	    const attr = element.attributes.filter(attr => attr.name === "class")[0]
-	    if (attr && attr.value === selector.replace("#", ''))
+	    if (attr && attr.value === selector.replace(".", ''))
 	      return true
 	  } else {
 	    if (element.tagName === selector) {
@@ -412,6 +412,81 @@ function compare(sp1, sp2) {
 	
 - 运行结果
 	- ![第五步运行结果](http://p0.meituan.net/myvideodistribute/e23fb1db77239166c990b52468b24451353540.png)
+
+#### 第五步优化：实现支持空格的 Class 选择器
+- 假如我们的 html 改成这样：
+
+	```html
+	<html maaa=a >
+		<head>
+		    <style>
+		body div #myid{
+		    width:100px;
+		    background-color: #ff5000;
+		}
+		body div img{
+		    width:30px;
+		    background-color: #ff1111;
+		}
+		
+		body div .cls1 {
+		  background-color: #ff9906;
+		}
+		    </style>
+		</head>
+		<body>
+		    <div>
+		        <img id="myid"/>
+		        <img class="cls1 cls2"/>
+		    </div>
+		</body>
+	</html>
+	```
+- 在 <img> 增加多个 class 选择器，那我们的选择器 match 可以改成
+
+	```javascript
+	
+	...some code
+	
+	
+	function match(element, selector) {
+	  if (!selector || !element.attributes) 
+	    return false
+	  
+	  if (selector.charAt(0) == "#") {
+		    
+		...some code
+		
+		
+	  } else if (selector.charAt(0) == ".") {
+	    const attr = element.attributes.filter(attr => attr.name === "class")[0]
+	    if (attr) {
+	      const attrClassArray = attr.value.split(' ')
+	      for (let attrClass of attrClassArray) {
+	        if (attrClass === selector.replace(".", '')) {
+	          return true
+	        }
+	      }
+	    }
+	  } else {
+			    
+		...some code
+		
+		
+	  }
+		...some code
+		
+	}
+	
+	...some code
+	
+	```
+- 思路：
+	- 我们可以看到
+		- ![多 class 选择器](http://p0.meituan.net/myvideodistribute/a8b9d9396713239928cd8b0af216535e40897.png)
+	- 我们可以将 元素 attr 根据空格分隔，再利用循环匹配
+- 运行结果
+	- ![第五步优化运行结果](http://p1.meituan.net/myvideodistribute/1d5533479cdb7d6c1a0af20acdfc4e71146017.png)
 
 ### 第六步：生成 computed 属性
 - 一旦选择匹配，就应用选择器到元素上，形成 computedStyle
@@ -534,5 +609,6 @@ function compare(sp1, sp2) {
 
 
 ## 写在后面
+- [完整代码地址-戳我戳我戳我](https://github.com/Ele-Peng/toy-browser)
 - 学而不思则罔
 - 祝大家多多发财
