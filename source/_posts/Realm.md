@@ -371,8 +371,8 @@ description:
 		
 		```javascript
 		graph.data(data);
-	    graph.render();
-	    graph.fitView();
+	  graph.render();
+	  graph.fitView();
 		```
 		
 - 运行截图
