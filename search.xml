@@ -272,6 +272,371 @@
       </tags>
   </entry>
   <entry>
+    <title>Javascript Types</title>
+    <url>/2020/04/20/Javascript-Types/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
+<li><p>Unicode Blocks</p>
+<ul>
+<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
+<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
+</ul>
+</li>
+<li>U+000A LINE FEED 换行<ul>
+<li>Form Feed 翻页</li>
+<li>CJK 中文字符 Chinese Japan Korean</li>
+</ul>
+</li>
+<li>U+0020 SPACE 空格</li>
+<li>BMP 基本字符平面 四位能表示的范围</li>
+<li>超出BMP范围<ul>
+<li>fromCodePoint</li>
+<li>codePointAt</li>
+</ul>
+</li>
+<li>隐性需求需要可以使用\u转义<ul>
+<li>“厉害”.codePointAt(0).toString(16)</li>
+<li>\u5389\u5bb3<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>InputElement</p>
+<ul>
+<li>WhiteSpace 空格<ul>
+<li>&lt;TAB&gt; Character Tabulation</li>
+<li>&lt;VT&gt; Vertical Line</li>
+<li>&lt;FF&gt; Form Feed </li>
+<li>&lt;SP&gt; </li>
+<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
+<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
+<li>&lt;USP&gt;</li>
+</ul>
+</li>
+<li>LineTerminator 换行符<ul>
+<li>&lt;LF&gt; /n</li>
+<li>&lt;CR&gt; Carriage Return 回车 /r</li>
+<li>&lt;LS&gt; LINE SEPARATOR</li>
+<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
+</ul>
+</li>
+<li>Comment 注释</li>
+<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
+<li>自己写的，代码包含的有效信息<ul>
+<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
+<li>用作变量名，不能与关键字重复<ul>
+<li>undefined 全局变量名，修改不了</li>
+<li>离开全局作用域，便可以使用</li>
+</ul>
+</li>
+<li>用作属性的部分，可以与关键字重复</li>
+<li>Future reserved Keywords : enum</li>
+</ul>
+</li>
+<li><strong>Literal</strong> 直接量<ul>
+<li>Number    </li>
+<li>String</li>
+<li>Boolean</li>
+<li>Object</li>
+<li>Null</li>
+<li>Undefined</li>
+<li>Symbol</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>帮助程序形成结构<ul>
+<li><strong>Punctuator</strong> 符号</li>
+<li><strong>Keywords</strong> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
+<li><p>IEEE 754 Double Float</p>
+<ul>
+<li>Sign(1)</li>
+<li>Exponent(11) 指数，科学计数法</li>
+<li>Fraction(52)</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li>DecimaLiteral<ul>
+<li>0</li>
+<li>0.</li>
+<li>.2</li>
+<li>1e3</li>
+</ul>
+</li>
+<li>BinaryIntegerLiteral<ul>
+<li>0b111</li>
+</ul>
+</li>
+<li>OctalIntegerLiteral<ul>
+<li>0o10</li>
+</ul>
+</li>
+<li>HexIntegerLiteral<ul>
+<li>0xFF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>最佳实践</p>
+<ul>
+<li><p>浮点数比较时，需要加精度</p>
+<blockquote>
+<p>Number.MAX_SAFE_INTEGER</p>
+</blockquote>
+<blockquote>
+<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
+<li><p>Character</p>
+</li>
+<li><p>Code Point</p>
+</li>
+<li><p>Encoding</p>
+<blockquote>
+<p>97 .toString(2)</p>
+</blockquote>
+<blockquote>
+<p>“97.” 是一个合法的Number 01100001</p>
+</blockquote>
+<ul>
+<li>ASCII</li>
+<li>Unicode</li>
+<li>UCS U+0000 - U+FFFF</li>
+<li>GB<ul>
+<li>GB2312</li>
+<li>GBK(GB13000)</li>
+<li>GB18030</li>
+</ul>
+</li>
+<li>ISO-8859</li>
+<li>BIG5</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li><p>“abc”</p>
+<ul>
+<li>“\x10” –&gt; 8</li>
+<li>“\u000a”</li>
+</ul>
+</li>
+<li><p>‘abc’</p>
+</li>
+<li><p>`abc`</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
+<li>true</li>
+<li>false</li>
+</ul>
+<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
+<li>typeof 下为 Object</li>
+</ul>
+<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Elle-训练算法计划</title>
+    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
+<li>主要的数据结构和算法会单开文档来写</li>
+</ul>
+<a id="more"></a>
+<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
+<li>数据结构<ul>
+<li>一维数据结构<ul>
+<li>基础：数组 array(string), 链表 linked list</li>
+<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
+</ul>
+</li>
+<li>二维数据结构<ul>
+<li>一维泛化</li>
+<li>基础：树 tree，图 graph</li>
+<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
+</ul>
+</li>
+<li>特殊数据结构<ul>
+<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
+<li>LRU Cache</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法<ul>
+<li>if-else, switch –&gt; branch</li>
+<li>for, while loop –&gt; iteration</li>
+<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
+<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
+<li>动态规划 dynamic programing</li>
+<li>二分查找 binary search</li>
+<li>贪心 greedy</li>
+<li>数学 math, 集合 geometry</li>
+</ul>
+</li>
+</ul>
+<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
+<li>刻意练习-过遍数 (五遍刷题法)<ul>
+<li>刷题第一遍<ul>
+<li>5分钟（5~15 mins）：读题+思考</li>
+<li>直接看解法：注意！多解法，比较解乏优劣</li>
+<li>有思路，直接写</li>
+<li>背诵+默写好的解法</li>
+</ul>
+</li>
+<li>刷题第二遍<ul>
+<li>马上自己写 –&gt; LeetCode提交</li>
+<li>多种解法比较、体会 –&gt; 优化</li>
+<li>多种解法自己写一遍，直到通过</li>
+</ul>
+</li>
+<li>刷题第三遍<ul>
+<li>24h后，再重复做题</li>
+<li>不同解法的熟练程度 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第四遍<ul>
+<li>过了一周后：反复回来练习相同的题目</li>
+<li>不熟练的题目 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第五遍<ul>
+<li>面试前二周恢复性训练</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>练习缺陷、弱点地方<ul>
+<li>中文站 leetcode-cn.com 刷题</li>
+<li>国际站 leetcode.com 看discuss-most votes</li>
+</ul>
+</li>
+<li>切题<ul>
+<li><strong>Clarification 审题</strong></li>
+<li><strong>Possible Solutions</strong><ul>
+<li>compare (time/space)</li>
+<li>optimal (加强)</li>
+</ul>
+</li>
+<li><strong>Coding</strong></li>
+<li><strong>Test cases</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
+<li>即时反馈</li>
+<li>主动型反馈</li>
+<li>被动型反馈<ul>
+<li>code review</li>
+</ul>
+</li>
+</ul>
+<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
+<li>top tips for vscode</li>
+</ul>
+<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
+<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
+</ul>
+<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
+<li>O(1): constant Complexity 常数复杂度</li>
+<li>O(log n): Logarithmic Complexity 对数复杂度</li>
+<li>O(n): Linear Complexity 线性时间复杂度</li>
+<li>O(n^2): N square Complexity 平方</li>
+<li>O(n^3): N cube Complexity 立方</li>
+<li>O(2^n): Exponential Growth 指数</li>
+<li>O(n!): Factorial 阶乘</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
+</ul>
+<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
+<li>二分查找</li>
+<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
+<li>二维有序矩阵</li>
+<li>归并排序 O(nlogn)</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript-Statement</title>
     <url>/2020/04/26/Javascript-Statement/</url>
     <content><![CDATA[<style  type="text/css">
@@ -492,371 +857,6 @@
 </li>
 </ul>
 <h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1>]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Elle-训练算法计划</title>
-    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
-<li>主要的数据结构和算法会单开文档来写</li>
-</ul>
-<a id="more"></a>
-<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
-<li>数据结构<ul>
-<li>一维数据结构<ul>
-<li>基础：数组 array(string), 链表 linked list</li>
-<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
-</ul>
-</li>
-<li>二维数据结构<ul>
-<li>一维泛化</li>
-<li>基础：树 tree，图 graph</li>
-<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
-</ul>
-</li>
-<li>特殊数据结构<ul>
-<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
-<li>LRU Cache</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>算法<ul>
-<li>if-else, switch –&gt; branch</li>
-<li>for, while loop –&gt; iteration</li>
-<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
-<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
-<li>动态规划 dynamic programing</li>
-<li>二分查找 binary search</li>
-<li>贪心 greedy</li>
-<li>数学 math, 集合 geometry</li>
-</ul>
-</li>
-</ul>
-<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
-<li>刻意练习-过遍数 (五遍刷题法)<ul>
-<li>刷题第一遍<ul>
-<li>5分钟（5~15 mins）：读题+思考</li>
-<li>直接看解法：注意！多解法，比较解乏优劣</li>
-<li>有思路，直接写</li>
-<li>背诵+默写好的解法</li>
-</ul>
-</li>
-<li>刷题第二遍<ul>
-<li>马上自己写 –&gt; LeetCode提交</li>
-<li>多种解法比较、体会 –&gt; 优化</li>
-<li>多种解法自己写一遍，直到通过</li>
-</ul>
-</li>
-<li>刷题第三遍<ul>
-<li>24h后，再重复做题</li>
-<li>不同解法的熟练程度 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第四遍<ul>
-<li>过了一周后：反复回来练习相同的题目</li>
-<li>不熟练的题目 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第五遍<ul>
-<li>面试前二周恢复性训练</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>练习缺陷、弱点地方<ul>
-<li>中文站 leetcode-cn.com 刷题</li>
-<li>国际站 leetcode.com 看discuss-most votes</li>
-</ul>
-</li>
-<li>切题<ul>
-<li><strong>Clarification 审题</strong></li>
-<li><strong>Possible Solutions</strong><ul>
-<li>compare (time/space)</li>
-<li>optimal (加强)</li>
-</ul>
-</li>
-<li><strong>Coding</strong></li>
-<li><strong>Test cases</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
-<li>即时反馈</li>
-<li>主动型反馈</li>
-<li>被动型反馈<ul>
-<li>code review</li>
-</ul>
-</li>
-</ul>
-<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
-<li>top tips for vscode</li>
-</ul>
-<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
-<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
-</ul>
-<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
-<li>O(1): constant Complexity 常数复杂度</li>
-<li>O(log n): Logarithmic Complexity 对数复杂度</li>
-<li>O(n): Linear Complexity 线性时间复杂度</li>
-<li>O(n^2): N square Complexity 平方</li>
-<li>O(n^3): N cube Complexity 立方</li>
-<li>O(2^n): Exponential Growth 指数</li>
-<li>O(n!): Factorial 阶乘</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
-</ul>
-<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
-<li>二分查找</li>
-<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
-<li>二维有序矩阵</li>
-<li>归并排序 O(nlogn)</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Javascript Types</title>
-    <url>/2020/04/20/Javascript-Types/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
-<li><p>Unicode Blocks</p>
-<ul>
-<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
-<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
-</ul>
-</li>
-<li>U+000A LINE FEED 换行<ul>
-<li>Form Feed 翻页</li>
-<li>CJK 中文字符 Chinese Japan Korean</li>
-</ul>
-</li>
-<li>U+0020 SPACE 空格</li>
-<li>BMP 基本字符平面 四位能表示的范围</li>
-<li>超出BMP范围<ul>
-<li>fromCodePoint</li>
-<li>codePointAt</li>
-</ul>
-</li>
-<li>隐性需求需要可以使用\u转义<ul>
-<li>“厉害”.codePointAt(0).toString(16)</li>
-<li>\u5389\u5bb3<a id="more"></a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>InputElement</p>
-<ul>
-<li>WhiteSpace 空格<ul>
-<li>&lt;TAB&gt; Character Tabulation</li>
-<li>&lt;VT&gt; Vertical Line</li>
-<li>&lt;FF&gt; Form Feed </li>
-<li>&lt;SP&gt; </li>
-<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
-<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
-<li>&lt;USP&gt;</li>
-</ul>
-</li>
-<li>LineTerminator 换行符<ul>
-<li>&lt;LF&gt; /n</li>
-<li>&lt;CR&gt; Carriage Return 回车 /r</li>
-<li>&lt;LS&gt; LINE SEPARATOR</li>
-<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
-</ul>
-</li>
-<li>Comment 注释</li>
-<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
-<li>自己写的，代码包含的有效信息<ul>
-<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
-<li>用作变量名，不能与关键字重复<ul>
-<li>undefined 全局变量名，修改不了</li>
-<li>离开全局作用域，便可以使用</li>
-</ul>
-</li>
-<li>用作属性的部分，可以与关键字重复</li>
-<li>Future reserved Keywords : enum</li>
-</ul>
-</li>
-<li><strong>Literal</strong> 直接量<ul>
-<li>Number    </li>
-<li>String</li>
-<li>Boolean</li>
-<li>Object</li>
-<li>Null</li>
-<li>Undefined</li>
-<li>Symbol</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>帮助程序形成结构<ul>
-<li><strong>Punctuator</strong> 符号</li>
-<li><strong>Keywords</strong> </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
-<li><p>IEEE 754 Double Float</p>
-<ul>
-<li>Sign(1)</li>
-<li>Exponent(11) 指数，科学计数法</li>
-<li>Fraction(52)</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li>DecimaLiteral<ul>
-<li>0</li>
-<li>0.</li>
-<li>.2</li>
-<li>1e3</li>
-</ul>
-</li>
-<li>BinaryIntegerLiteral<ul>
-<li>0b111</li>
-</ul>
-</li>
-<li>OctalIntegerLiteral<ul>
-<li>0o10</li>
-</ul>
-</li>
-<li>HexIntegerLiteral<ul>
-<li>0xFF</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>最佳实践</p>
-<ul>
-<li><p>浮点数比较时，需要加精度</p>
-<blockquote>
-<p>Number.MAX_SAFE_INTEGER</p>
-</blockquote>
-<blockquote>
-<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
-<li><p>Character</p>
-</li>
-<li><p>Code Point</p>
-</li>
-<li><p>Encoding</p>
-<blockquote>
-<p>97 .toString(2)</p>
-</blockquote>
-<blockquote>
-<p>“97.” 是一个合法的Number 01100001</p>
-</blockquote>
-<ul>
-<li>ASCII</li>
-<li>Unicode</li>
-<li>UCS U+0000 - U+FFFF</li>
-<li>GB<ul>
-<li>GB2312</li>
-<li>GBK(GB13000)</li>
-<li>GB18030</li>
-</ul>
-</li>
-<li>ISO-8859</li>
-<li>BIG5</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li><p>“abc”</p>
-<ul>
-<li>“\x10” –&gt; 8</li>
-<li>“\u000a”</li>
-</ul>
-</li>
-<li><p>‘abc’</p>
-</li>
-<li><p>`abc`</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
-<li>true</li>
-<li>false</li>
-</ul>
-<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
-<li>typeof 下为 Object</li>
-</ul>
-<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
       <categories>
         <category>前端概念</category>
       </categories>
@@ -2132,155 +2132,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Toy Browser DAY1</title>
-    <url>/2020/05/10/Toy-Browser-DAY1/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>implementation of a toy-browser 🙆</li>
-</ul>
-<a id="more"></a>
-
-
-<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><h3 id="Server-端实现"><a href="#Server-端实现" class="headerlink" title="Server 端实现"></a>Server 端实现</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; Returns content-type &#x3D; text&#x2F;plain</span><br><span class="line">const server &#x3D; http.createServer((req, res) &#x3D;&gt; &#123;</span><br><span class="line">  res.setHeader(&#39;Content-Type&#39;, &#39;text&#x2F;html&#39;);</span><br><span class="line">  res.setHeader(&#39;X-Foo&#39;, &#39;bar&#39;);</span><br><span class="line">  res.writeHead(200, &#123; &#39;Content-Type&#39;: &#39;text&#x2F;plain&#39; &#125;);</span><br><span class="line">  res.end(&#39;ok&#39;);</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(8088);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>When headers have been set with response.setHeader(), they will be merged with any headers passed to response.writeHead(), with the headers passed to <strong>response.writeHead() given precedence</strong>.</p>
-</blockquote>
-<ul>
-<li>writeHead 与 setHeader 相比，具有更高的优先级</li>
-<li>所以最终的请求体头 ‘Content-Type’: ‘text/plain’</li>
-<li>这里我们让它监听 8088 端口，因为默认的 80端口，可能会存在占用</li>
-<li>我们可以在浏览器中，对 <a href="http://127.0.0.1:8088/" target="_blank" rel="noopener">http://127.0.0.1:8088/</a> 访问，最后我们要利用 toy-browser 简单模拟<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/aa69465245fc64274c75ac4e5aab244691470.png" alt="浏览器行为"></li>
-</ul>
-</li>
-</ul>
-<h3 id="Client-端实现"><a href="#Client-端实现" class="headerlink" title="Client 端实现"></a>Client 端实现</h3><h4 id="第一版：简单实现"><a href="#第一版：简单实现" class="headerlink" title="第一版：简单实现"></a>第一版：简单实现</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const net &#x3D; require(&#39;net&#39;);</span><br><span class="line">const client &#x3D; net.createConnection(&#123; port: 8088 &#125;, () &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; &#39;connect&#39; listener.</span><br><span class="line">  console.log(&#39;connected to server!&#39;);</span><br><span class="line">  client.write(&#39;POST &#x2F; HTTP&#x2F;1.1\r\n&#39;);</span><br><span class="line">  client.write(&#39;HOST: 127.0.0.1\r\n&#39;);</span><br><span class="line">  client.write(&#39;Content-Length: 9\r\n&#39;);</span><br><span class="line">  client.write(&#39;Content-Type: application&#x2F;x-www-form-urlencoded\r\n&#39;);</span><br><span class="line">  client.write(&#39;\r\n&#39;);</span><br><span class="line">  client.write(&#39;name&#x3D;elle&#39;);</span><br><span class="line">  client.write(&#39;\r\n&#39;);</span><br><span class="line">&#125;);</span><br><span class="line">client.on(&#39;data&#39;, (data) &#x3D;&gt; &#123;</span><br><span class="line">  console.log(data.toString());</span><br><span class="line">  client.end();</span><br><span class="line">&#125;);</span><br><span class="line">client.on(&#39;end&#39;, () &#x3D;&gt; &#123;</span><br><span class="line">  console.log(&#39;disconnected from server&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>我们开启服务端<blockquote>
-<p>node server.js</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>再开启客户端<blockquote>
-<p>node client.js</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>运行截图</p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/5a4f9f936d87d43335d08670a03205a448885.png" alt="client"></li>
-<li><img src="http://p1.meituan.net/myvideodistribute/115d90c1e9de7f974d7749988e01c87332973.png" alt="server"></li>
-</ul>
-</li>
-<li><p>我们可以看到请求成功的发出，并且服务端也进行了正确的反馈。</p>
-<ul>
-<li>请求体：name=elle，’content-length’: ‘9’</li>
-</ul>
-</li>
-</ul>
-<h4 id="第二版：对-request-进行简单封装"><a href="#第二版：对-request-进行简单封装" class="headerlink" title="第二版：对 request 进行简单封装"></a>第二版：对 request 进行简单封装</h4><ul>
-<li><p>简单分析 request 构造器所需内容</p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/7663a0cff7c034fbeadce907b2e445b588991.png" alt="request"></p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// request line</span></span><br><span class="line">  <span class="comment">// method, url = host + port + path</span></span><br><span class="line"><span class="comment">// headers</span></span><br><span class="line">  <span class="comment">// Content-Type</span></span><br><span class="line">    <span class="comment">// Content-Type: application/x-www-form-urlencoded</span></span><br><span class="line">    <span class="comment">// Content-Type: application/json</span></span><br><span class="line">    <span class="comment">// Content-Type: multipart/form-data</span></span><br><span class="line">    <span class="comment">// Content-Type: text/xml</span></span><br><span class="line">  <span class="comment">// Content-Length</span></span><br><span class="line"><span class="comment">// body: k-v</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>我们可以简单写出封装后的 reqeust</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Request</span> </span>&#123;</span><br><span class="line">    <span class="comment">// request line</span></span><br><span class="line">      <span class="comment">// method, url = host + port + path</span></span><br><span class="line">    <span class="comment">// headers</span></span><br><span class="line">      <span class="comment">// Content-Type</span></span><br><span class="line">        <span class="comment">// Content-Type: application/x-www-form-urlencoded</span></span><br><span class="line">        <span class="comment">// Content-Type: application/json</span></span><br><span class="line">        <span class="comment">// Content-Type: multipart/form-data</span></span><br><span class="line">        <span class="comment">// Content-Type: text/xml</span></span><br><span class="line">      <span class="comment">// Content-Length</span></span><br><span class="line">    <span class="comment">// body: k-v</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(options) &#123;</span><br><span class="line">    <span class="keyword">this</span>.method = options.method || <span class="string">"GET"</span></span><br><span class="line">    <span class="keyword">this</span>.host = options.host</span><br><span class="line">    <span class="keyword">this</span>.port = options.port || <span class="number">80</span></span><br><span class="line">    <span class="keyword">this</span>.path = options.path || <span class="string">"/"</span></span><br><span class="line">    <span class="keyword">this</span>.body = options.body || &#123;&#125;</span><br><span class="line">    <span class="keyword">this</span>.headers = options.headers || &#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.headers[<span class="string">"Content-Type"</span>]) &#123;</span><br><span class="line">      <span class="keyword">this</span>.headers[<span class="string">"Content-Type"</span>] = <span class="string">"application/x-www-form-urlencoded"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.headers[<span class="string">"Content-Type"</span>] === <span class="string">"application/json"</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.bodyText = <span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.body)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.headers[<span class="string">"Content-Type"</span>] === <span class="string">"application/x-www-form-urlencoded"</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.bodyText = <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.body).map(<span class="function"><span class="params">key</span> =&gt;</span> <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(<span class="keyword">this</span>.body[key])&#125;</span>`</span>).join(<span class="string">'&amp;'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// calculate Content-Length</span></span><br><span class="line">    <span class="keyword">this</span>.headers[<span class="string">"Content-Length"</span>] = <span class="keyword">this</span>.bodyText.length</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  toString() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.method&#125;</span> <span class="subst">$&#123;<span class="keyword">this</span>.path&#125;</span> HTTP/1.1\r\nHOST: <span class="subst">$&#123;<span class="keyword">this</span>.host&#125;</span>\r\n<span class="subst">$&#123;<span class="built_in">Object</span>.keys(<span class="keyword">this</span>.headers).map(key =&gt; <span class="string">`<span class="subst">$&#123;key&#125;</span>: <span class="subst">$&#123;<span class="keyword">this</span>.headers[key]&#125;</span>`</span>).join(<span class="string">'\r\n'</span>)&#125;</span>\r\n\r\n<span class="subst">$&#123;<span class="keyword">this</span>.bodyText&#125;</span>\r\n`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>再利用封装后的 request 进行 client 访问</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">"net"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> client = net.createConnection(&#123;</span><br><span class="line">  host: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">  port: <span class="number">8088</span></span><br><span class="line">&#125;, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// 'connect' listener.</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'connected to server!'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> options = &#123;</span><br><span class="line">    method: <span class="string">"POST"</span>,</span><br><span class="line">    path: <span class="string">"/"</span>,</span><br><span class="line">    host: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">    port: <span class="number">8088</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">      [<span class="string">"X-Foo2"</span>]: <span class="string">"customed"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    body: &#123;</span><br><span class="line">      name: <span class="string">"elle"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> request = <span class="keyword">new</span> Request(options)</span><br><span class="line">  client.write(request.toString());</span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">'data'</span>, (data) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data.toString());</span><br><span class="line">  client.end();</span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'disconnected from server'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">'error'</span>, (err) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err);</span><br><span class="line">  client.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行结果</p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/19807e0f02f52d93b9391645a286cfdf48815.png" alt="封装后的request"></li>
-</ul>
-</li>
-</ul>
-<h4 id="第三版：对-responseParse-进行封装"><a href="#第三版：对-responseParse-进行封装" class="headerlink" title="第三版：对 responseParse 进行封装"></a>第三版：对 responseParse 进行封装</h4><ul>
-<li><p>简单分析 response 内容框架</p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/9c17bab40bf615430215e496d9bdfeb5147249.png" alt="response内容框架"></p>
-</li>
-<li><p>开始我们的状态机 constructor 简单编写</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">constructor</span>() &#123;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_STATUS_LINE = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_STATUS_LINE_END = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_HEADER_NAME = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_HEADER_SPACE = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_HEADER_VALUE = <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_HEADER_LINE_END = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_HEADER_BLOCK_END = <span class="number">6</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_BODY = <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_STATUS_LINE;</span><br><span class="line">  <span class="keyword">this</span>.statusLine = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">this</span>.headers = &#123;&#125;;</span><br><span class="line">  <span class="keyword">this</span>.headerName = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">this</span>.headerValue = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">this</span>.bodyParse = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对 response 字符流进行处理。循环读取流中数据</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 字符流处理</span></span><br><span class="line">receive(string) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; string.length; i++) &#123;</span><br><span class="line">      <span class="keyword">this</span>.receiveChar(string.charAt(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>对流中单个字符进行扫描</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">receiveChar(char) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_STATUS_LINE) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_STATUS_LINE_END</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.statusLine += char</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_STATUS_LINE_END) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">'\n'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_HEADER_NAME</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_HEADER_NAME) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">':'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_HEADER_SPACE</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_HEADER_BLOCK_END</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.headers[<span class="string">'Transfer-Encoding'</span>] === <span class="string">'chunked'</span>)</span><br><span class="line">        <span class="keyword">this</span>.bodyParse = <span class="keyword">new</span> TrunkedBodyParser();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.headerName += char</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_HEADER_SPACE) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">' '</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_HEADER_VALUE</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_HEADER_VALUE) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_HEADER_LINE_END</span><br><span class="line">      <span class="keyword">this</span>.headers[<span class="keyword">this</span>.headerName] = <span class="keyword">this</span>.headerValue</span><br><span class="line">      <span class="keyword">this</span>.headerName = <span class="string">""</span></span><br><span class="line">      <span class="keyword">this</span>.headerValue = <span class="string">""</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.headerValue += char</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_HEADER_LINE_END) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">'\n'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_HEADER_NAME</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_HEADER_BLOCK_END) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">'\n'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_BODY</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_BODY) &#123;</span><br><span class="line">    <span class="keyword">this</span>.bodyParse.receiveChar(char)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>简单分析 server 端的 TrunkBody </p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span> <span class="comment">// 下一行 trunk 长度</span></span><br><span class="line">ok <span class="comment">// trunk 内容</span></span><br><span class="line"><span class="number">0</span> <span class="comment">// trunk 终止，再没有内容</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>开始我们的 TrunkedBodyParser 状态机 constructor 简单编写</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">constructor</span>() &#123;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_LENGTH = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_LENGTH_LINE_END = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">this</span>.READING_TRUNK = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_NEW_LINE = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_NEW_LINE_END = <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">this</span>.FINISHED_NEW_LINE = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">this</span>.FINISHED_NEW_LINE_END = <span class="number">6</span>;</span><br><span class="line">  <span class="keyword">this</span>.isFinished = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">this</span>.length = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.content = [];</span><br><span class="line">  <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_LENGTH;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>TrunkBody 字符处理</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">				  <span class="comment">// 字符流处理</span></span><br><span class="line">				  receiveChar(char) &#123;</span><br><span class="line">				    <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_LENGTH) &#123;</span><br><span class="line">				      <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">				        <span class="keyword">if</span> (<span class="keyword">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">				          <span class="keyword">this</span>.current = <span class="keyword">this</span>.FINISHED_NEW_LINE</span><br><span class="line">				        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				          <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_LENGTH_LINE_END</span><br><span class="line">				        &#125;</span><br><span class="line">				      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				        <span class="keyword">this</span>.length *= <span class="number">10</span></span><br><span class="line">				        <span class="keyword">this</span>.length += char.charCodeAt(<span class="number">0</span>) - <span class="string">'0'</span>.charCodeAt(<span class="number">0</span>)</span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">				</span><br><span class="line">				    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_LENGTH_LINE_END) &#123;</span><br><span class="line">				      <span class="keyword">if</span> (char === <span class="string">'\n'</span>) &#123;</span><br><span class="line">				        <span class="keyword">this</span>.current = <span class="keyword">this</span>.READING_TRUNK</span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">				</span><br><span class="line">				    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.READING_TRUNK) &#123;</span><br><span class="line">				      <span class="keyword">this</span>.content.push(char)</span><br><span class="line">				      <span class="keyword">this</span>.length --</span><br><span class="line">				      <span class="keyword">if</span> (<span class="keyword">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">				        <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_NEW_LINE</span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">				</span><br><span class="line">				    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_NEW_LINE) &#123;</span><br><span class="line">				      <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">				        <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_NEW_LINE_END</span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">				</span><br><span class="line">				    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_NEW_LINE_END) &#123;</span><br><span class="line">				      <span class="keyword">if</span> (char === <span class="string">'\n'</span>) &#123;</span><br><span class="line">				        <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_LENGTH</span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">				</span><br><span class="line">				    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.FINISHED_NEW_LINE) &#123;</span><br><span class="line">				      <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">				        <span class="keyword">this</span>.current = <span class="keyword">this</span>.FINISHED_NEW_LINE_END</span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">				</span><br><span class="line">				    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.FINISHED_NEW_LINE_END) &#123;</span><br><span class="line">				      <span class="keyword">if</span> (char === <span class="string">'\n'</span>) &#123;</span><br><span class="line">				        <span class="keyword">this</span>.isFinished = <span class="literal">true</span></span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">		  		  &#125;</span><br><span class="line">				<span class="string">``</span><span class="string">`				</span></span><br><span class="line"><span class="string">- 运行结果</span></span><br><span class="line"><span class="string">	- ![client](http://p0.meituan.net/myvideodistribute/50256a14d9171b06c374dc7e6894efcf61275.png)</span></span><br><span class="line"><span class="string">	- ![server](http://p0.meituan.net/myvideodistribute/23ed78fb0b5598952897249eb5ae2fbb29575.png)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 错误修改</span></span><br><span class="line"><span class="string">- ![错误修改](http://p0.meituan.net/myvideodistribute/fd4b58c42c99e0f2754c025b6682307650941.png)</span></span><br><span class="line"><span class="string">- server 端长度计算不是十进制，是十六进制</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  `</span><span class="string">``</span>javascript</span><br><span class="line">  </span><br><span class="line">      <span class="comment">// 字符流处理</span></span><br><span class="line">      receiveChar(char) &#123;</span><br><span class="line">	    <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_LENGTH) &#123;</span><br><span class="line">	      <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">	        <span class="keyword">if</span> (<span class="keyword">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">	          <span class="keyword">this</span>.current = <span class="keyword">this</span>.FINISHED_NEW_LINE</span><br><span class="line">	        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	          <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_LENGTH_LINE_END</span><br><span class="line">	        &#125;</span><br><span class="line">	      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	        <span class="keyword">this</span>.length *= <span class="number">16</span></span><br><span class="line">	        <span class="keyword">this</span>.length += <span class="built_in">parseInt</span>(char, <span class="number">16</span>)</span><br><span class="line">	      &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    ...</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="https://nodejs.org/dist/latest-v12.x/docs/api/http.html" target="_blank" rel="noopener">Node.js v12.16.3 Documentation</a></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li><a href="https://github.com/Ele-Peng/toy-browser" target="_blank" rel="noopener">完整代码地址-戳我戳我戳我</a></li>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>浏览器</category>
-      </categories>
-      <tags>
-        <tag>浏览器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>OOP-面向对象</title>
     <url>/2020/04/09/OOP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<style  type="text/css">
@@ -2980,6 +2831,155 @@
       </tags>
   </entry>
   <entry>
+    <title>Toy Browser DAY1</title>
+    <url>/2020/05/10/Toy-Browser-DAY1/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>implementation of a toy-browser 🙆</li>
+</ul>
+<a id="more"></a>
+
+
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><h3 id="Server-端实现"><a href="#Server-端实现" class="headerlink" title="Server 端实现"></a>Server 端实现</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; Returns content-type &#x3D; text&#x2F;plain</span><br><span class="line">const server &#x3D; http.createServer((req, res) &#x3D;&gt; &#123;</span><br><span class="line">  res.setHeader(&#39;Content-Type&#39;, &#39;text&#x2F;html&#39;);</span><br><span class="line">  res.setHeader(&#39;X-Foo&#39;, &#39;bar&#39;);</span><br><span class="line">  res.writeHead(200, &#123; &#39;Content-Type&#39;: &#39;text&#x2F;plain&#39; &#125;);</span><br><span class="line">  res.end(&#39;ok&#39;);</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(8088);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>When headers have been set with response.setHeader(), they will be merged with any headers passed to response.writeHead(), with the headers passed to <strong>response.writeHead() given precedence</strong>.</p>
+</blockquote>
+<ul>
+<li>writeHead 与 setHeader 相比，具有更高的优先级</li>
+<li>所以最终的请求体头 ‘Content-Type’: ‘text/plain’</li>
+<li>这里我们让它监听 8088 端口，因为默认的 80端口，可能会存在占用</li>
+<li>我们可以在浏览器中，对 <a href="http://127.0.0.1:8088/" target="_blank" rel="noopener">http://127.0.0.1:8088/</a> 访问，最后我们要利用 toy-browser 简单模拟<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/aa69465245fc64274c75ac4e5aab244691470.png" alt="浏览器行为"></li>
+</ul>
+</li>
+</ul>
+<h3 id="Client-端实现"><a href="#Client-端实现" class="headerlink" title="Client 端实现"></a>Client 端实现</h3><h4 id="第一版：简单实现"><a href="#第一版：简单实现" class="headerlink" title="第一版：简单实现"></a>第一版：简单实现</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const net &#x3D; require(&#39;net&#39;);</span><br><span class="line">const client &#x3D; net.createConnection(&#123; port: 8088 &#125;, () &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; &#39;connect&#39; listener.</span><br><span class="line">  console.log(&#39;connected to server!&#39;);</span><br><span class="line">  client.write(&#39;POST &#x2F; HTTP&#x2F;1.1\r\n&#39;);</span><br><span class="line">  client.write(&#39;HOST: 127.0.0.1\r\n&#39;);</span><br><span class="line">  client.write(&#39;Content-Length: 9\r\n&#39;);</span><br><span class="line">  client.write(&#39;Content-Type: application&#x2F;x-www-form-urlencoded\r\n&#39;);</span><br><span class="line">  client.write(&#39;\r\n&#39;);</span><br><span class="line">  client.write(&#39;name&#x3D;elle&#39;);</span><br><span class="line">  client.write(&#39;\r\n&#39;);</span><br><span class="line">&#125;);</span><br><span class="line">client.on(&#39;data&#39;, (data) &#x3D;&gt; &#123;</span><br><span class="line">  console.log(data.toString());</span><br><span class="line">  client.end();</span><br><span class="line">&#125;);</span><br><span class="line">client.on(&#39;end&#39;, () &#x3D;&gt; &#123;</span><br><span class="line">  console.log(&#39;disconnected from server&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>我们开启服务端<blockquote>
+<p>node server.js</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>再开启客户端<blockquote>
+<p>node client.js</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>运行截图</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/5a4f9f936d87d43335d08670a03205a448885.png" alt="client"></li>
+<li><img src="http://p1.meituan.net/myvideodistribute/115d90c1e9de7f974d7749988e01c87332973.png" alt="server"></li>
+</ul>
+</li>
+<li><p>我们可以看到请求成功的发出，并且服务端也进行了正确的反馈。</p>
+<ul>
+<li>请求体：name=elle，’content-length’: ‘9’</li>
+</ul>
+</li>
+</ul>
+<h4 id="第二版：对-request-进行简单封装"><a href="#第二版：对-request-进行简单封装" class="headerlink" title="第二版：对 request 进行简单封装"></a>第二版：对 request 进行简单封装</h4><ul>
+<li><p>简单分析 request 构造器所需内容</p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/7663a0cff7c034fbeadce907b2e445b588991.png" alt="request"></p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// request line</span></span><br><span class="line">  <span class="comment">// method, url = host + port + path</span></span><br><span class="line"><span class="comment">// headers</span></span><br><span class="line">  <span class="comment">// Content-Type</span></span><br><span class="line">    <span class="comment">// Content-Type: application/x-www-form-urlencoded</span></span><br><span class="line">    <span class="comment">// Content-Type: application/json</span></span><br><span class="line">    <span class="comment">// Content-Type: multipart/form-data</span></span><br><span class="line">    <span class="comment">// Content-Type: text/xml</span></span><br><span class="line">  <span class="comment">// Content-Length</span></span><br><span class="line"><span class="comment">// body: k-v</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>我们可以简单写出封装后的 reqeust</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Request</span> </span>&#123;</span><br><span class="line">    <span class="comment">// request line</span></span><br><span class="line">      <span class="comment">// method, url = host + port + path</span></span><br><span class="line">    <span class="comment">// headers</span></span><br><span class="line">      <span class="comment">// Content-Type</span></span><br><span class="line">        <span class="comment">// Content-Type: application/x-www-form-urlencoded</span></span><br><span class="line">        <span class="comment">// Content-Type: application/json</span></span><br><span class="line">        <span class="comment">// Content-Type: multipart/form-data</span></span><br><span class="line">        <span class="comment">// Content-Type: text/xml</span></span><br><span class="line">      <span class="comment">// Content-Length</span></span><br><span class="line">    <span class="comment">// body: k-v</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(options) &#123;</span><br><span class="line">    <span class="keyword">this</span>.method = options.method || <span class="string">"GET"</span></span><br><span class="line">    <span class="keyword">this</span>.host = options.host</span><br><span class="line">    <span class="keyword">this</span>.port = options.port || <span class="number">80</span></span><br><span class="line">    <span class="keyword">this</span>.path = options.path || <span class="string">"/"</span></span><br><span class="line">    <span class="keyword">this</span>.body = options.body || &#123;&#125;</span><br><span class="line">    <span class="keyword">this</span>.headers = options.headers || &#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.headers[<span class="string">"Content-Type"</span>]) &#123;</span><br><span class="line">      <span class="keyword">this</span>.headers[<span class="string">"Content-Type"</span>] = <span class="string">"application/x-www-form-urlencoded"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.headers[<span class="string">"Content-Type"</span>] === <span class="string">"application/json"</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.bodyText = <span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.body)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.headers[<span class="string">"Content-Type"</span>] === <span class="string">"application/x-www-form-urlencoded"</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.bodyText = <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.body).map(<span class="function"><span class="params">key</span> =&gt;</span> <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(<span class="keyword">this</span>.body[key])&#125;</span>`</span>).join(<span class="string">'&amp;'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// calculate Content-Length</span></span><br><span class="line">    <span class="keyword">this</span>.headers[<span class="string">"Content-Length"</span>] = <span class="keyword">this</span>.bodyText.length</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  toString() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.method&#125;</span> <span class="subst">$&#123;<span class="keyword">this</span>.path&#125;</span> HTTP/1.1\r\nHOST: <span class="subst">$&#123;<span class="keyword">this</span>.host&#125;</span>\r\n<span class="subst">$&#123;<span class="built_in">Object</span>.keys(<span class="keyword">this</span>.headers).map(key =&gt; <span class="string">`<span class="subst">$&#123;key&#125;</span>: <span class="subst">$&#123;<span class="keyword">this</span>.headers[key]&#125;</span>`</span>).join(<span class="string">'\r\n'</span>)&#125;</span>\r\n\r\n<span class="subst">$&#123;<span class="keyword">this</span>.bodyText&#125;</span>\r\n`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再利用封装后的 request 进行 client 访问</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">"net"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> client = net.createConnection(&#123;</span><br><span class="line">  host: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">  port: <span class="number">8088</span></span><br><span class="line">&#125;, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// 'connect' listener.</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'connected to server!'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> options = &#123;</span><br><span class="line">    method: <span class="string">"POST"</span>,</span><br><span class="line">    path: <span class="string">"/"</span>,</span><br><span class="line">    host: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">    port: <span class="number">8088</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">      [<span class="string">"X-Foo2"</span>]: <span class="string">"customed"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    body: &#123;</span><br><span class="line">      name: <span class="string">"elle"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> request = <span class="keyword">new</span> Request(options)</span><br><span class="line">  client.write(request.toString());</span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">'data'</span>, (data) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data.toString());</span><br><span class="line">  client.end();</span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'disconnected from server'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">'error'</span>, (err) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err);</span><br><span class="line">  client.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/19807e0f02f52d93b9391645a286cfdf48815.png" alt="封装后的request"></li>
+</ul>
+</li>
+</ul>
+<h4 id="第三版：对-responseParse-进行封装"><a href="#第三版：对-responseParse-进行封装" class="headerlink" title="第三版：对 responseParse 进行封装"></a>第三版：对 responseParse 进行封装</h4><ul>
+<li><p>简单分析 response 内容框架</p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/9c17bab40bf615430215e496d9bdfeb5147249.png" alt="response内容框架"></p>
+</li>
+<li><p>开始我们的状态机 constructor 简单编写</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">constructor</span>() &#123;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_STATUS_LINE = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_STATUS_LINE_END = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_HEADER_NAME = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_HEADER_SPACE = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_HEADER_VALUE = <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_HEADER_LINE_END = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_HEADER_BLOCK_END = <span class="number">6</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_BODY = <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_STATUS_LINE;</span><br><span class="line">  <span class="keyword">this</span>.statusLine = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">this</span>.headers = &#123;&#125;;</span><br><span class="line">  <span class="keyword">this</span>.headerName = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">this</span>.headerValue = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">this</span>.bodyParse = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对 response 字符流进行处理。循环读取流中数据</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 字符流处理</span></span><br><span class="line">receive(string) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; string.length; i++) &#123;</span><br><span class="line">      <span class="keyword">this</span>.receiveChar(string.charAt(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>对流中单个字符进行扫描</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">receiveChar(char) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_STATUS_LINE) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_STATUS_LINE_END</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.statusLine += char</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_STATUS_LINE_END) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">'\n'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_HEADER_NAME</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_HEADER_NAME) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">':'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_HEADER_SPACE</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_HEADER_BLOCK_END</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.headers[<span class="string">'Transfer-Encoding'</span>] === <span class="string">'chunked'</span>)</span><br><span class="line">        <span class="keyword">this</span>.bodyParse = <span class="keyword">new</span> TrunkedBodyParser();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.headerName += char</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_HEADER_SPACE) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">' '</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_HEADER_VALUE</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_HEADER_VALUE) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_HEADER_LINE_END</span><br><span class="line">      <span class="keyword">this</span>.headers[<span class="keyword">this</span>.headerName] = <span class="keyword">this</span>.headerValue</span><br><span class="line">      <span class="keyword">this</span>.headerName = <span class="string">""</span></span><br><span class="line">      <span class="keyword">this</span>.headerValue = <span class="string">""</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.headerValue += char</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_HEADER_LINE_END) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">'\n'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_HEADER_NAME</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_HEADER_BLOCK_END) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">'\n'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_BODY</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">		</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_BODY) &#123;</span><br><span class="line">    <span class="keyword">this</span>.bodyParse.receiveChar(char)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>简单分析 server 端的 TrunkBody </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span> <span class="comment">// 下一行 trunk 长度</span></span><br><span class="line">ok <span class="comment">// trunk 内容</span></span><br><span class="line"><span class="number">0</span> <span class="comment">// trunk 终止，再没有内容</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>开始我们的 TrunkedBodyParser 状态机 constructor 简单编写</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">constructor</span>() &#123;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_LENGTH = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_LENGTH_LINE_END = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">this</span>.READING_TRUNK = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_NEW_LINE = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">this</span>.WAITING_NEW_LINE_END = <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">this</span>.FINISHED_NEW_LINE = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">this</span>.FINISHED_NEW_LINE_END = <span class="number">6</span>;</span><br><span class="line">  <span class="keyword">this</span>.isFinished = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">this</span>.length = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.content = [];</span><br><span class="line">  <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_LENGTH;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>TrunkBody 字符处理</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">				  <span class="comment">// 字符流处理</span></span><br><span class="line">				  receiveChar(char) &#123;</span><br><span class="line">				    <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_LENGTH) &#123;</span><br><span class="line">				      <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">				        <span class="keyword">if</span> (<span class="keyword">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">				          <span class="keyword">this</span>.current = <span class="keyword">this</span>.FINISHED_NEW_LINE</span><br><span class="line">				        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				          <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_LENGTH_LINE_END</span><br><span class="line">				        &#125;</span><br><span class="line">				      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				        <span class="keyword">this</span>.length *= <span class="number">10</span></span><br><span class="line">				        <span class="keyword">this</span>.length += char.charCodeAt(<span class="number">0</span>) - <span class="string">'0'</span>.charCodeAt(<span class="number">0</span>)</span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">				</span><br><span class="line">				    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_LENGTH_LINE_END) &#123;</span><br><span class="line">				      <span class="keyword">if</span> (char === <span class="string">'\n'</span>) &#123;</span><br><span class="line">				        <span class="keyword">this</span>.current = <span class="keyword">this</span>.READING_TRUNK</span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">				</span><br><span class="line">				    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.READING_TRUNK) &#123;</span><br><span class="line">				      <span class="keyword">this</span>.content.push(char)</span><br><span class="line">				      <span class="keyword">this</span>.length --</span><br><span class="line">				      <span class="keyword">if</span> (<span class="keyword">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">				        <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_NEW_LINE</span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">				</span><br><span class="line">				    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_NEW_LINE) &#123;</span><br><span class="line">				      <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">				        <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_NEW_LINE_END</span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">				</span><br><span class="line">				    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_NEW_LINE_END) &#123;</span><br><span class="line">				      <span class="keyword">if</span> (char === <span class="string">'\n'</span>) &#123;</span><br><span class="line">				        <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_LENGTH</span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">				</span><br><span class="line">				    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.FINISHED_NEW_LINE) &#123;</span><br><span class="line">				      <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">				        <span class="keyword">this</span>.current = <span class="keyword">this</span>.FINISHED_NEW_LINE_END</span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">				</span><br><span class="line">				    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.FINISHED_NEW_LINE_END) &#123;</span><br><span class="line">				      <span class="keyword">if</span> (char === <span class="string">'\n'</span>) &#123;</span><br><span class="line">				        <span class="keyword">this</span>.isFinished = <span class="literal">true</span></span><br><span class="line">				      &#125;</span><br><span class="line">				    &#125;</span><br><span class="line">		  		  &#125;</span><br><span class="line">				<span class="string">``</span><span class="string">`				</span></span><br><span class="line"><span class="string">- 运行结果</span></span><br><span class="line"><span class="string">	- ![client](http://p0.meituan.net/myvideodistribute/50256a14d9171b06c374dc7e6894efcf61275.png)</span></span><br><span class="line"><span class="string">	- ![server](http://p0.meituan.net/myvideodistribute/23ed78fb0b5598952897249eb5ae2fbb29575.png)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 错误修改</span></span><br><span class="line"><span class="string">- ![错误修改](http://p0.meituan.net/myvideodistribute/fd4b58c42c99e0f2754c025b6682307650941.png)</span></span><br><span class="line"><span class="string">- server 端长度计算不是十进制，是十六进制</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  `</span><span class="string">``</span>javascript</span><br><span class="line">  </span><br><span class="line">      <span class="comment">// 字符流处理</span></span><br><span class="line">      receiveChar(char) &#123;</span><br><span class="line">	    <span class="keyword">if</span> (<span class="keyword">this</span>.current === <span class="keyword">this</span>.WAITING_LENGTH) &#123;</span><br><span class="line">	      <span class="keyword">if</span> (char === <span class="string">'\r'</span>) &#123;</span><br><span class="line">	        <span class="keyword">if</span> (<span class="keyword">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">	          <span class="keyword">this</span>.current = <span class="keyword">this</span>.FINISHED_NEW_LINE</span><br><span class="line">	        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	          <span class="keyword">this</span>.current = <span class="keyword">this</span>.WAITING_LENGTH_LINE_END</span><br><span class="line">	        &#125;</span><br><span class="line">	      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	        <span class="keyword">this</span>.length *= <span class="number">16</span></span><br><span class="line">	        <span class="keyword">this</span>.length += <span class="built_in">parseInt</span>(char, <span class="number">16</span>)</span><br><span class="line">	      &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    ...</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://nodejs.org/dist/latest-v12.x/docs/api/http.html" target="_blank" rel="noopener">Node.js v12.16.3 Documentation</a></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li><a href="https://github.com/Ele-Peng/toy-browser" target="_blank" rel="noopener">完整代码地址-戳我戳我戳我</a></li>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>浏览器</category>
+      </categories>
+      <tags>
+        <tag>浏览器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【未完】从URL输入到...</title>
     <url>/2020/05/12/%E4%BB%8EURL%E8%BE%93%E5%85%A5%E5%88%B0/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
@@ -3128,6 +3128,127 @@
       </categories>
       <tags>
         <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信小程序-fix canvas原生组件最顶层</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>大家应该都知道过，在微信小程序中，canvas等原生组件的层级是最高的，页面中无论你设置多大的z-index都无法覆盖在其之上，这就可能会产生一些问题</li>
+<li>就像这样<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png" alt="canvas顶层问题截图"></li>
+<li>柱状图是用canvas画的，它置于了我的tooltip之上。【这看起来真是一个可怕的问题<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><ul>
+<li>微信官方提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html" target="_blank" rel="noopener">cover-view</a>原生组件，覆盖在原生组件之上的文本视图</li>
+<li>微信官方提供了将canvas转化为图片的方式–<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
+</ul>
+<h3 id="方法一：cover-view"><a href="#方法一：cover-view" class="headerlink" title="方法一：cover-view"></a>方法一：cover-view</h3><ul>
+<li>将tooltip用cover-view改写，效果如下<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2Y0MTZjZjhlMjNiZWEwMjNjYTM1M2JhOGExMDM1MDM2MzYyOTIucG5n?x-oss-process=image/format,png" alt="cover-view version0.1 截图"></li>
+<li>看上去，是解决了我们的问题，且tooltip后的灰色背景不能滑动了，【妈耶，好棒！</li>
+<li>但是，这产生了一个：<strong>当文本超出tooltip宽度时，scroll-y: auto，失效了，溢出部分被直接截取</strong></li>
+<li>罪魁祸首就是它<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2M5ZDljYjZiZTQ0ZGY3YmJmNmRlMjAxNDM1ZmYzOTJjNDMxNDMucG5n?x-oss-process=image/format,png" alt="cover内置样式"></li>
+</ul>
+</li>
+<li>那我们可以：<ul>
+<li>在tooltip分段内容中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content-rule</span> &#123;</span><br><span class="line">    <span class="attribute">white-space</span>: pre-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在内容wrapper中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>完美解决<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2FhZjRkMDAyODdjZGI4M2Y0NWRhMGVkOTg3Mzc5MGNhNDQxMjkucG5n?x-oss-process=image/format,png" alt="cover-view解决图"><h3 id="方法二：wx-canvasToTempFilePath"><a href="#方法二：wx-canvasToTempFilePath" class="headerlink" title="方法二：wx.canvasToTempFilePath"></a>方法二：wx.canvasToTempFilePath</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>首先我们要做的就是将网络图片绘制进canvas，官方关于canvas类型有两种<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2E4ZjJmNjA5OGYxNmQ4MzY3NWJiN2I3OWY0ZDM1NWM1MTAwMDg3LnBuZw?x-oss-process=image/format,png" alt="两种canvas类型"></li>
+<li>新canvas 2D接口尝试  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzE5ZWE3ZGYxYjg2ODUzOWFhNzVhY2E0OTAxYzI2MzU2OTk4NDYucG5n?x-oss-process=image/format,png" alt="canvas2d 运行截图"></li>
+<li>第二种旧canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line">   wx.getImageInfo(&#123;</span><br><span class="line">       src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">       success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">         <span class="keyword">const</span> poster = res.path                                  </span><br><span class="line">         ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">         ctx.draw()</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">     <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">     wx.canvasGetImageData(&#123;</span><br><span class="line">       canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">       x: <span class="number">0</span>,</span><br><span class="line">       y: <span class="number">0</span>,</span><br><span class="line">       width: <span class="number">150</span>,</span><br><span class="line">       height: <span class="number">100</span>,</span><br><span class="line">       success(res) &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzU4NTg5MzQ4MDc3Njk3OTA0OTRmZmIzOWRiNDdjMWRmNjk4ODQucG5n?x-oss-process=image/format,png" alt="旧canvas"></li>
+<li>虽然两种方法，都能实现将网络图片绘制进canvas，但新版的进行了createImage，将其打印的话，其实就是新建了一个img标签，并将img标签的东西绘制进canvas<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzFjMjE1NzMzZTRkY2UzNGZiNzI4NDFhZWEyMDc0ZWIwMjQ1OTQucG5n?x-oss-process=image/format,png" alt="img console"></li>
+<li>为什么微信官方会仅支持以下方式进行新版canvas2d 图片的绘制，考虑是什么？</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JhYWQ1OWRhNDI4M2FjZmViZTY1NGQ0ZWZiNTAxZDZlMjAxMjE2LnBuZw?x-oss-process=image/format,png" alt="经典报错"></li>
+</ul>
+</li>
+<li>现在我们要将canvas的内容导成图片，同样分成新旧两版</li>
+<li>主要思路都是：在wxml中，如果canvas绘制图片没有完成，则显示canvas内容，绘制完成后，就利用canvasToTempFilePath，将图层内容生成指定大小图片，显示image<ul>
+<li>canvas2d   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">   <span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'img'</span>, img)</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">           wx.canvasToTempFilePath(&#123;</span><br><span class="line">             x: <span class="number">0</span>,</span><br><span class="line">             y: <span class="number">0</span>,</span><br><span class="line">             width: <span class="number">100</span>,</span><br><span class="line">             height: <span class="number">100</span>,</span><br><span class="line">             destWidth: <span class="number">100</span>,</span><br><span class="line">             destHeight: <span class="number">100</span>,</span><br><span class="line">             canvas: canvas,</span><br><span class="line">             success(res) &#123;</span><br><span class="line">               that.setData(&#123;</span><br><span class="line">                 imgPath: res.tempFilePath</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125;,</span><br><span class="line">             fail(err) &#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>canvas2d 需要踩得坑是：它的官方文档🙃<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UwM2Q1ZDg0YzYyNmI0NzlmZjBjOTlmNzA1YmRhYjg5NDc5MjcucG5n?x-oss-process=image/format,png" alt="canvas2d 转图片误导"></li>
+<li>尝试下来，会<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxMjRiY2Q3ZmNjYWI5ODBlNDdkMTk2YTMyZGQyODI4NDUzODcucG5n?x-oss-process=image/format,png" alt="ctx.draw报错"></li>
+</ul>
+</li>
+<li>那我们可以继续往下看<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxODk5NWFiNDY4N2IwYmZlYzhjZTZkZWU2ZWQxYmZjMTA1MTY1LnBuZw?x-oss-process=image/format,png" alt="canvas2d tempath正确实力">这才是符合我们需要</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JmMzVlMzY4YzRjMmRhYTgxNTA0NzM0YTIxZGMxM2I2NDYwNzIucG5n?x-oss-process=image/format,png" alt="canvas2d运行截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>旧版canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">wx.getImageInfo(&#123;</span><br><span class="line">  src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">    <span class="keyword">const</span> poster = res.path</span><br><span class="line">    ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">    ctx.draw(<span class="literal">false</span>, () =&gt; &#123;</span><br><span class="line">      wx.canvasToTempFilePath(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        width: <span class="number">100</span>,</span><br><span class="line">        height: <span class="number">100</span>,</span><br><span class="line">        destWidth: <span class="number">100</span>,</span><br><span class="line">        destHeight: <span class="number">100</span>,</span><br><span class="line">        canvasId: <span class="string">"myCanvas"</span>,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          that.setData(&#123;</span><br><span class="line">            imgPath: res.tempFilePath</span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="built_in">console</span>.log(res.tempFilePath)</span><br><span class="line">        &#125;,</span><br><span class="line">        fail(err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">    wx.canvasGetImageData(&#123;</span><br><span class="line">      canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">      x: <span class="number">0</span>,</span><br><span class="line">      y: <span class="number">0</span>,</span><br><span class="line">      width: <span class="number">150</span>,</span><br><span class="line">      height: <span class="number">100</span>,</span><br><span class="line">      success(res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2EzZTRiYTBkYzc2NDgzYTM1NTYxZDcwNDUzNzZkNjZmNDU5MTgucG5n?x-oss-process=image/format,png" alt="旧版canvas运行截图"><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>感谢<a href="https://github.com/skadieyes" target="_blank" rel="noopener">Skady宝贝</a>在探讨问题中给予的帮助，欢迎大家去github找她玩👈</li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
       </tags>
   </entry>
   <entry>
@@ -3324,7 +3445,7 @@
 <li>[0, 1, 2, 3, 4, 5, 6, 7, 8] 字符串数组下标索引</li>
 <li>[A, B, A, B, C, A, B, A, A] 字符串数组</li>
 <li>[0, 0, 1, 2, 0, 1, 2, 3, ?] prefixTable<ul>
-<li>我们可以发现，前一个字符 A 对应的 prefix 为 3（len - 1 === 3），对应的pattern[3]为 B（prefix[len - 1] === B），B的前一个字符 A 对应的 prefix 为 1（len = prefix[len - 1] –&gt; 0），pattern[1] 为 A，再执行上层代码 prefix[8] === len[0]</li>
+<li>我们可以发现，前一个字符 A 对应的 prefix 为 3，对应的pattern[3]为 B（prefix[len - 1] === B），B的前一个字符 A 对应的 prefix 为 1（len = prefix[len - 1] –&gt; 0），pattern[1] 为 A，再执行上层代码 prefix[8] === len[0]</li>
 </ul>
 </li>
 </ul>
@@ -3372,127 +3493,6 @@
       </categories>
       <tags>
         <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微信小程序-fix canvas原生组件最顶层</title>
-    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>大家应该都知道过，在微信小程序中，canvas等原生组件的层级是最高的，页面中无论你设置多大的z-index都无法覆盖在其之上，这就可能会产生一些问题</li>
-<li>就像这样<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png" alt="canvas顶层问题截图"></li>
-<li>柱状图是用canvas画的，它置于了我的tooltip之上。【这看起来真是一个可怕的问题<a id="more"></a>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><ul>
-<li>微信官方提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html" target="_blank" rel="noopener">cover-view</a>原生组件，覆盖在原生组件之上的文本视图</li>
-<li>微信官方提供了将canvas转化为图片的方式–<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
-</ul>
-<h3 id="方法一：cover-view"><a href="#方法一：cover-view" class="headerlink" title="方法一：cover-view"></a>方法一：cover-view</h3><ul>
-<li>将tooltip用cover-view改写，效果如下<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2Y0MTZjZjhlMjNiZWEwMjNjYTM1M2JhOGExMDM1MDM2MzYyOTIucG5n?x-oss-process=image/format,png" alt="cover-view version0.1 截图"></li>
-<li>看上去，是解决了我们的问题，且tooltip后的灰色背景不能滑动了，【妈耶，好棒！</li>
-<li>但是，这产生了一个：<strong>当文本超出tooltip宽度时，scroll-y: auto，失效了，溢出部分被直接截取</strong></li>
-<li>罪魁祸首就是它<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2M5ZDljYjZiZTQ0ZGY3YmJmNmRlMjAxNDM1ZmYzOTJjNDMxNDMucG5n?x-oss-process=image/format,png" alt="cover内置样式"></li>
-</ul>
-</li>
-<li>那我们可以：<ul>
-<li>在tooltip分段内容中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content-rule</span> &#123;</span><br><span class="line">    <span class="attribute">white-space</span>: pre-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>在内容wrapper中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>完美解决<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2FhZjRkMDAyODdjZGI4M2Y0NWRhMGVkOTg3Mzc5MGNhNDQxMjkucG5n?x-oss-process=image/format,png" alt="cover-view解决图"><h3 id="方法二：wx-canvasToTempFilePath"><a href="#方法二：wx-canvasToTempFilePath" class="headerlink" title="方法二：wx.canvasToTempFilePath"></a>方法二：wx.canvasToTempFilePath</h3></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>首先我们要做的就是将网络图片绘制进canvas，官方关于canvas类型有两种<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2E4ZjJmNjA5OGYxNmQ4MzY3NWJiN2I3OWY0ZDM1NWM1MTAwMDg3LnBuZw?x-oss-process=image/format,png" alt="两种canvas类型"></li>
-<li>新canvas 2D接口尝试  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzE5ZWE3ZGYxYjg2ODUzOWFhNzVhY2E0OTAxYzI2MzU2OTk4NDYucG5n?x-oss-process=image/format,png" alt="canvas2d 运行截图"></li>
-<li>第二种旧canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line">   wx.getImageInfo(&#123;</span><br><span class="line">       src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">       success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">         <span class="keyword">const</span> poster = res.path                                  </span><br><span class="line">         ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">         ctx.draw()</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">     <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">     wx.canvasGetImageData(&#123;</span><br><span class="line">       canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">       x: <span class="number">0</span>,</span><br><span class="line">       y: <span class="number">0</span>,</span><br><span class="line">       width: <span class="number">150</span>,</span><br><span class="line">       height: <span class="number">100</span>,</span><br><span class="line">       success(res) &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzU4NTg5MzQ4MDc3Njk3OTA0OTRmZmIzOWRiNDdjMWRmNjk4ODQucG5n?x-oss-process=image/format,png" alt="旧canvas"></li>
-<li>虽然两种方法，都能实现将网络图片绘制进canvas，但新版的进行了createImage，将其打印的话，其实就是新建了一个img标签，并将img标签的东西绘制进canvas<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzFjMjE1NzMzZTRkY2UzNGZiNzI4NDFhZWEyMDc0ZWIwMjQ1OTQucG5n?x-oss-process=image/format,png" alt="img console"></li>
-<li>为什么微信官方会仅支持以下方式进行新版canvas2d 图片的绘制，考虑是什么？</li>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JhYWQ1OWRhNDI4M2FjZmViZTY1NGQ0ZWZiNTAxZDZlMjAxMjE2LnBuZw?x-oss-process=image/format,png" alt="经典报错"></li>
-</ul>
-</li>
-<li>现在我们要将canvas的内容导成图片，同样分成新旧两版</li>
-<li>主要思路都是：在wxml中，如果canvas绘制图片没有完成，则显示canvas内容，绘制完成后，就利用canvasToTempFilePath，将图层内容生成指定大小图片，显示image<ul>
-<li>canvas2d   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">   <span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'img'</span>, img)</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">           wx.canvasToTempFilePath(&#123;</span><br><span class="line">             x: <span class="number">0</span>,</span><br><span class="line">             y: <span class="number">0</span>,</span><br><span class="line">             width: <span class="number">100</span>,</span><br><span class="line">             height: <span class="number">100</span>,</span><br><span class="line">             destWidth: <span class="number">100</span>,</span><br><span class="line">             destHeight: <span class="number">100</span>,</span><br><span class="line">             canvas: canvas,</span><br><span class="line">             success(res) &#123;</span><br><span class="line">               that.setData(&#123;</span><br><span class="line">                 imgPath: res.tempFilePath</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125;,</span><br><span class="line">             fail(err) &#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>canvas2d 需要踩得坑是：它的官方文档🙃<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UwM2Q1ZDg0YzYyNmI0NzlmZjBjOTlmNzA1YmRhYjg5NDc5MjcucG5n?x-oss-process=image/format,png" alt="canvas2d 转图片误导"></li>
-<li>尝试下来，会<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxMjRiY2Q3ZmNjYWI5ODBlNDdkMTk2YTMyZGQyODI4NDUzODcucG5n?x-oss-process=image/format,png" alt="ctx.draw报错"></li>
-</ul>
-</li>
-<li>那我们可以继续往下看<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxODk5NWFiNDY4N2IwYmZlYzhjZTZkZWU2ZWQxYmZjMTA1MTY1LnBuZw?x-oss-process=image/format,png" alt="canvas2d tempath正确实力">这才是符合我们需要</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>运行截图<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JmMzVlMzY4YzRjMmRhYTgxNTA0NzM0YTIxZGMxM2I2NDYwNzIucG5n?x-oss-process=image/format,png" alt="canvas2d运行截图"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>旧版canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">wx.getImageInfo(&#123;</span><br><span class="line">  src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">    <span class="keyword">const</span> poster = res.path</span><br><span class="line">    ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">    ctx.draw(<span class="literal">false</span>, () =&gt; &#123;</span><br><span class="line">      wx.canvasToTempFilePath(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        width: <span class="number">100</span>,</span><br><span class="line">        height: <span class="number">100</span>,</span><br><span class="line">        destWidth: <span class="number">100</span>,</span><br><span class="line">        destHeight: <span class="number">100</span>,</span><br><span class="line">        canvasId: <span class="string">"myCanvas"</span>,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          that.setData(&#123;</span><br><span class="line">            imgPath: res.tempFilePath</span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="built_in">console</span>.log(res.tempFilePath)</span><br><span class="line">        &#125;,</span><br><span class="line">        fail(err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">    wx.canvasGetImageData(&#123;</span><br><span class="line">      canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">      x: <span class="number">0</span>,</span><br><span class="line">      y: <span class="number">0</span>,</span><br><span class="line">      width: <span class="number">150</span>,</span><br><span class="line">      height: <span class="number">100</span>,</span><br><span class="line">      success(res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>运行截图<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2EzZTRiYTBkYzc2NDgzYTM1NTYxZDcwNDUzNzZkNjZmNDU5MTgucG5n?x-oss-process=image/format,png" alt="旧版canvas运行截图"><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>感谢<a href="https://github.com/skadieyes" target="_blank" rel="noopener">Skady宝贝</a>在探讨问题中给予的帮助，欢迎大家去github找她玩👈</li>
-<li>祝大家多多发财</li>
-</ul>
-<hr>
-]]></content>
-      <categories>
-        <category>微信小程序</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
       </tags>
   </entry>
   <entry>
