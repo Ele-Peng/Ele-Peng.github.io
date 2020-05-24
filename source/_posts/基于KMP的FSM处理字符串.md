@@ -308,7 +308,8 @@ while(input) {
 		- 后缀 B
 		- 最长公共前后缀：""，len = 0
 	- ABA --> 1
-		- 后缀 B BA 
+		- 前缀 A AB
+		- 后缀 A BA 
 		- 最长公共前后缀：A，len = 1
 	- ABAB --> 2
 		- 前缀 A AB ABA
