@@ -439,5 +439,5 @@ client.on('end', () => {
 
 
 ## 写在后面
-- [完整代码地址-戳我戳我戳我](https://github.com/Ele-Peng/toy-browser)
+- [完整代码地址-点击一下](https://github.com/Ele-Peng/toy-browser)
 - 祝大家多多发财
