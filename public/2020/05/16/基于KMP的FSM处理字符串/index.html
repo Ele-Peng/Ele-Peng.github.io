@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>基于KMP的FSM处理未知 pattern | Be kind.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="EllePeng">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'hexo-theme-lx',
+    version: '0.3.9',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/css/main.min.css">
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "greenish",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+<div class="single">
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Search..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
+    <span>2020-05-16</span>
+    <h2>基于KMP的FSM处理未...</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></div>
+    <div class="social-links">
+    <a href="https://github.com/Ele-Peng" target="_blank"><i class="fa fa-github fa-fw"></i></a>
+    <a href="mailto:EllePeng@aliyun.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+    <a href="https://weibo.com/3199262327/profile?topnav=1&amp;wvr=6" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>准备整一下 “基于KMP的FSM处理 pattern” 啦，祝我成功 🙋</li>
+<li>这里呢~ 准备分为三步去实现<ul>
+<li>FSM 处理字符串</li>
+<li>KMP 算法概述</li>
+<li>基于 KMP 的 FSM 处理 pattern 的实现</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="实践记录"><a href="#实践记录" class="headerlink" title="实践记录"></a>实践记录</h2><h3 id="FSM-处理字符串"><a href="#FSM-处理字符串" class="headerlink" title="FSM 处理字符串"></a>FSM 处理字符串</h3><h4 id="FSM-概念"><a href="#FSM-概念" class="headerlink" title="FSM 概念"></a>FSM 概念</h4><ul>
+<li>每一个状态都是一个机器<ul>
+<li>在每一个机器里，我们可以做计算、存储、输出</li>
+<li>所有的这些机器接受的输入是一致的</li>
+<li>状态机的每一个机器本身没有状态，如果我们用函数来表示的话，它应该是纯函数（无副作用）</li>
+</ul>
+</li>
+<li>每一个机器知道下一个状态<ul>
+<li>每个机器都有确定的下一个状态（Moore）</li>
+<li>每个机器根据输入决定下一个状态（Mealy）</li>
+</ul>
+</li>
+</ul>
+<h4 id="在一个字符串中，找到字符串-abcdef"><a href="#在一个字符串中，找到字符串-abcdef" class="headerlink" title="在一个字符串中，找到字符串 abcdef"></a>在一个字符串中，找到字符串 abcdef</h4><ul>
+<li><p>不使用 FSM ，在一个字符串中，找到字符串 abcdef找到字符串 abcdef</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">match</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> foundA = <span class="literal">false</span></span><br><span class="line">  <span class="keyword">let</span> foundB = <span class="literal">false</span></span><br><span class="line">  <span class="keyword">let</span> foundC = <span class="literal">false</span></span><br><span class="line">  <span class="keyword">let</span> foundD = <span class="literal">false</span></span><br><span class="line">  <span class="keyword">let</span> foundE = <span class="literal">false</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> string) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char == <span class="string">'a'</span>)</span><br><span class="line">      foundA = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (foundA &amp;&amp; char == <span class="string">'b'</span>)</span><br><span class="line">      foundB = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (foundB &amp;&amp; char == <span class="string">'c'</span>)</span><br><span class="line">      foundC = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (foundC &amp;&amp; char == <span class="string">'d'</span>)</span><br><span class="line">      foundD = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (foundD &amp;&amp; char == <span class="string">'e'</span>)</span><br><span class="line">      foundE = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (foundD &amp;&amp; char == <span class="string">'f'</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> foundA = <span class="literal">false</span></span><br><span class="line">      <span class="keyword">let</span> foundB = <span class="literal">false</span></span><br><span class="line">      <span class="keyword">let</span> foundC = <span class="literal">false</span></span><br><span class="line">      <span class="keyword">let</span> foundD = <span class="literal">false</span></span><br><span class="line">      <span class="keyword">let</span> foundE = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(match(<span class="string">"I aabcdefghm grood."</span>))</span><br><span class="line"><span class="built_in">console</span>.log(match(<span class="string">"I aacdefghm grood."</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行结果<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/40a9e9395d783093ae5e9af1bc2d081c58822.png" alt="第一版运行结果"></li>
+</ul>
+</li>
+<li>缺点：<ol>
+<li>不可扩展代码较多</li>
+<li>if else 多次判断</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>使用 FSM ，在一个字符串中，找到字符串 abcdef </p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">match</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> state = start</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> string) &#123;</span><br><span class="line">    state = state(char)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> state === end</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'a'</span>)</span><br><span class="line">    <span class="keyword">return</span> findA</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">end</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> end</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findA</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'b'</span>)</span><br><span class="line">    <span class="keyword">return</span> findB</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findB</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'c'</span>)</span><br><span class="line">    <span class="keyword">return</span> findC</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findC</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'d'</span>)</span><br><span class="line">    <span class="keyword">return</span> findD</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findD</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'e'</span>)</span><br><span class="line">    <span class="keyword">return</span> findE</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findE</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'f'</span>)</span><br><span class="line">    <span class="keyword">return</span> end</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(match(<span class="string">"I aabcdefghm grood."</span>))</span><br><span class="line"><span class="built_in">console</span>.log(match(<span class="string">"I aacdefghm grood."</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行结果<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/74431b7630e0a9f8b3aeb65907987b9a80908.png" alt="FSM 处理字符串 abcdef"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="JS-中的有限状态机"><a href="#JS-中的有限状态机" class="headerlink" title="JS 中的有限状态机"></a>JS 中的有限状态机</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 每个函数是一个状态</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">state</span>(<span class="params">input</span>) </span>&#123; <span class="comment">// 函数参数就是输入</span></span><br><span class="line">  <span class="comment">// 在函数中，可以自由地编写代码，处理每个状态的逻辑</span></span><br><span class="line">  <span class="keyword">return</span> next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 以下是调用 **/</span></span><br><span class="line"><span class="keyword">while</span>(input) &#123;</span><br><span class="line">  <span class="comment">// 获取输入</span></span><br><span class="line">  state = state(input) <span class="comment">// 把状态机的返回值作为下一个状态</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用-FSM-，在一个字符串中，找到字符串-abcabx"><a href="#使用-FSM-，在一个字符串中，找到字符串-abcabx" class="headerlink" title="使用 FSM ，在一个字符串中，找到字符串 abcabx"></a>使用 FSM ，在一个字符串中，找到字符串 abcabx</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">match</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> state = start</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> string) &#123;</span><br><span class="line">    state = state(char)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> state === end</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'a'</span>)</span><br><span class="line">    <span class="keyword">return</span> findA</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">end</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> end</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findA</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'b'</span>)</span><br><span class="line">    <span class="keyword">return</span> findB</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findB</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'c'</span>)</span><br><span class="line">    <span class="keyword">return</span> findC</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findC</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'a'</span>)</span><br><span class="line">    <span class="keyword">return</span> findA2</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findA2</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'b'</span>)</span><br><span class="line">    <span class="keyword">return</span> findB2</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findB2</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'x'</span>)</span><br><span class="line">    <span class="keyword">return</span> end</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> findB(char)</span><br><span class="line">&#125;</span><br><span class="line">match(<span class="string">"I aabcabcabx grood."</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行结果<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/c09493a569d2d4e21d1600ebd9fcb84589625.png" alt="FSM 找到 abcabx"></li>
+</ul>
+</li>
+</ul>
+<h4 id="使用-FSM-，在一个字符串中，找到字符串-ababx"><a href="#使用-FSM-，在一个字符串中，找到字符串-ababx" class="headerlink" title="使用 FSM ，在一个字符串中，找到字符串 ababx"></a>使用 FSM ，在一个字符串中，找到字符串 ababx</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">match</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> state = start</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> string) &#123;</span><br><span class="line">    state = state(char)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> state === end</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'a'</span>)</span><br><span class="line">    <span class="keyword">return</span> findA1</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">end</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> end</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findA1</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'b'</span>)</span><br><span class="line">    <span class="keyword">return</span> findB1</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findB1</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'a'</span>)</span><br><span class="line">    <span class="keyword">return</span> findA2</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findA2</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'b'</span>)</span><br><span class="line">    <span class="keyword">return</span> findB2</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findB2</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'a'</span>)</span><br><span class="line">    <span class="keyword">return</span> findA3</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findA3</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'b'</span>)</span><br><span class="line">    <span class="keyword">return</span> findB3</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> start(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findB3</span>(<span class="params">char</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (char === <span class="string">'x'</span>)</span><br><span class="line">    <span class="keyword">return</span> end</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> findB2(char)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(match(<span class="string">"I aababababx grood."</span>))</span><br><span class="line"><span class="built_in">console</span>.log(match(<span class="string">"I aabababababx grood."</span>))</span><br><span class="line"><span class="built_in">console</span>.log(match(<span class="string">"I aababaeababx grood."</span>))</span><br><span class="line"><span class="built_in">console</span>.log(match(<span class="string">"I aabababaabx grood."</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行结果<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/6c000a617a3f594e24bf99c52d4d0848101059.png" alt="abababx"></li>
+</ul>
+</li>
+</ul>
+<p>【那我们该如何利用 FSM 处理未知 pattern 呢？🤔</p>
+<p>【字符串匹配问题就是在一个文本字符串T中搜索某个模式字符串P的所有出现位置。</p>
+<h3 id="KMP-算法概述"><a href="#KMP-算法概述" class="headerlink" title="KMP 算法概述"></a>KMP 算法概述</h3><h4 id="KMP-最长公共前后缀长度"><a href="#KMP-最长公共前后缀长度" class="headerlink" title="KMP 最长公共前后缀长度"></a>KMP 最长公共前后缀长度</h4><ul>
+<li><p>假如 pattern 为 ABABCABAA</p>
+<ul>
+<li>前缀依次为 A AB ABA ABAB ABABC ABABCA ABABCAB ABABCABA</li>
+<li>后缀依次为 A AA BAA ABAA CABAA BCABAA ABCABAA BABCABAA</li>
+</ul>
+</li>
+<li><p>那么它的最长公共前后缀长度为多少呢？</p>
+<ul>
+<li>A –&gt; 0<ul>
+<li>无前缀</li>
+<li>无后缀</li>
+<li>最长公共前后缀：””，len = 0</li>
+</ul>
+</li>
+<li>AB –&gt; 0<ul>
+<li>前缀 A</li>
+<li>后缀 B</li>
+<li>最长公共前后缀：””，len = 0</li>
+</ul>
+</li>
+<li>ABA –&gt; 1<ul>
+<li>前缀 A AB</li>
+<li>后缀 A BA </li>
+<li>最长公共前后缀：A，len = 1</li>
+</ul>
+</li>
+<li>ABAB –&gt; 2<ul>
+<li>前缀 A AB ABA</li>
+<li>后缀 B AB BAB </li>
+<li>最长公共前后缀：AB，len = 2</li>
+</ul>
+</li>
+<li>ABABC –&gt; 0<ul>
+<li>前缀 A AB ABA ABAB</li>
+<li>后缀 C BC ABC BABC</li>
+<li>最长公共前后缀：””，len = 0</li>
+</ul>
+</li>
+<li>ABABCA –&gt; 1<ul>
+<li>前缀 A AB ABA ABAB ABABC</li>
+<li>后缀 A CA BCA ABCA BABCA</li>
+<li>最长公共前后缀：A，len = 1</li>
+</ul>
+</li>
+<li>ABABCAB –&gt; 2<ul>
+<li>前缀 A AB ABA ABAB ABABC ABABCA</li>
+<li>后缀 B AB CAB BCAB ABCAB BACAB</li>
+<li>最长公共前后缀：AB，len = 2</li>
+</ul>
+</li>
+<li>ABABCABA –&gt; 3<ul>
+<li>前缀 A AB ABA ABAB ABABC ABABCA ABABCAB</li>
+<li>后缀 A BA ABA CABA BCABA ABCABA BABCABA</li>
+<li>最长公共前后缀：ABA，len = 3</li>
+</ul>
+</li>
+<li>ABABCABAA –&gt; 1<ul>
+<li>前缀 A AB ABA ABAB ABABC ABABCA ABABCAB ABABCABA</li>
+<li>后缀 A AA BAA ABAA CABAA BCABAA ABCABAA BABCABAA</li>
+<li>最长公共前后缀：A，len = 1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>因此我们可以构建出，最长公共前后缀长度为</p>
+<ul>
+<li>[0, 0, 1, 2, 0, 1, 2, 3, 1] 对应 pattern 字符串数组</li>
+<li>[A, B, A, B, C, A, B, A, A]</li>
+<li>[0, 1, 2, 3, 4, 5, 6, 7, 8]</li>
+</ul>
+</li>
+<li><p>那么根据</p>
+<ul>
+<li><p>A –&gt; len = 0, i = 0</p>
+</li>
+<li><p>AB –&gt; len = 0, i = 1</p>
+</li>
+<li><p><u>A</u>B<u>A</u> –&gt; len = 1, i = 2, pattern[i] = A, pattern[上一个len] = A</p>
+</li>
+<li><p><u>AB</u><u>AB</u> –&gt; len = 2, i = 3, pattern[i] = B, pattern[上一个len] = B</p>
+</li>
+<li><p>ABABC –&gt; len = 0, i = 4</p>
+</li>
+<li><p><u>A</u>BABC<u>A</u> –&gt; len = 1, i = 5, pattern[i] = A, pattern[上一个len] = A</p>
+</li>
+<li><p><u>AB</u>ABC<u>AB</u> –&gt; len = 2, i = 6, pattern[i] = B, pattern[上一个len] = B</p>
+</li>
+<li><p><u>ABA</u>BC<u>ABA</u> –&gt; len = 3, i = 7, pattern[i] = A, pattern[上一个len] = A</p>
+</li>
+<li><p>ABABCABAA –&gt; len = 1, i = 8</p>
+</li>
+<li><p>我们可以观察得到</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (pattern[i] === pattern[len]) &#123;</span><br><span class="line">       len ++;</span><br><span class="line">       prefix[i] = len;</span><br><span class="line">       i ++;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>除此之外的情况呢？比如最后的 ABABCABAA –&gt; len = 1, i = 8</p>
+<ul>
+<li>[0, 1, 2, 3, 4, 5, 6, 7, 8] 字符串数组下标索引</li>
+<li>[A, B, A, B, C, A, B, A, A] 字符串数组</li>
+<li>[0, 0, 1, 2, 0, 1, 2, 3, ?] prefixTable<ul>
+<li>我们可以发现，前一个字符 A 对应的 prefix 为 3，对应的pattern[3]为 B（prefix[len - 1] === B），B的前一个字符 A 对应的 prefix 为 1（len = prefix[len - 1] –&gt; 0），pattern[1] 为 A，再执行上层代码 prefix[8] === len[0]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>KMP 最长公共前后缀长度实现</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">prefixTable</span>(<span class="params">pattern, prefix, n</span>) </span>&#123;</span><br><span class="line">    prefix[<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">// prefix 初始</span></span><br><span class="line">    <span class="keyword">let</span> len = <span class="number">0</span>; <span class="comment">// 最长公共前后缀长度</span></span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; n) &#123;</span><br><span class="line">      <span class="keyword">if</span> (pattern[i] === pattern[len]) &#123;</span><br><span class="line">        len ++;</span><br><span class="line">        prefix[i] = len;</span><br><span class="line">        i ++;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (len &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          len = prefix[len - <span class="number">1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">          prefix[i] = len</span><br><span class="line">          i ++</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">console</span>.log(prefix)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/354d6d33c10aa23f150c26a68a09f19084870.png" alt="运行结果"></li>
+</ul>
+</li>
+<li><p>再添一层处理，因为前缀是不不会包括自己本身的，所以我们需要整体后移一位，并且，空出来的第一项置为 -1</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">movePrefixTable</span>(<span class="params">prefix, n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = n - <span class="number">1</span>; i &gt; <span class="number">0</span>; i --) &#123;</span><br><span class="line">      prefix[i] = prefix[i - <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    prefix[<span class="number">0</span>] = <span class="number">-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="KMP-处理-pattern"><a href="#KMP-处理-pattern" class="headerlink" title="KMP 处理 pattern"></a>KMP 处理 pattern</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">prefixTable</span>(<span class="params">pattern, prefix, n</span>) </span>&#123;</span><br><span class="line">  prefix[<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">// prefix 初始</span></span><br><span class="line">  <span class="keyword">let</span> len = <span class="number">0</span>; <span class="comment">// 最长公共前后缀长度</span></span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(i &lt; n) &#123;</span><br><span class="line">    <span class="keyword">if</span> (pattern[i] === pattern[len]) &#123;</span><br><span class="line">      len ++;</span><br><span class="line">      prefix[i] = len;</span><br><span class="line">      i ++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (len &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        len = prefix[len - <span class="number">1</span>]</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">        prefix[i] = len</span><br><span class="line">        i ++</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(prefix)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">movePrefixTable</span>(<span class="params">prefix, n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = n - <span class="number">1</span>; i &gt; <span class="number">0</span>; i --) &#123;</span><br><span class="line">    prefix[i] = prefix[i - <span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  prefix[<span class="number">0</span>] = <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">kmpSearch</span>(<span class="params">text, pattern</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> patternArray = pattern.split(<span class="string">""</span>)</span><br><span class="line">  <span class="keyword">let</span> patternLen = patternArray.length</span><br><span class="line">  <span class="keyword">const</span> textArray = text.split(<span class="string">""</span>)</span><br><span class="line">  <span class="keyword">let</span> textLen = textArray.length</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> prefixArray = <span class="keyword">new</span> <span class="built_in">Array</span>(patternLen)</span><br><span class="line">  prefixTable(patternArray, prefixArray, patternLen)</span><br><span class="line">  movePrefixTable(prefixArray, patternLen)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// console.log('prefixTemp', prefixTemp)</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'prefixArray'</span>, prefixArray)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// textArray len m</span></span><br><span class="line">  <span class="comment">// pattern len n</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(i &lt; textLen) &#123;</span><br><span class="line">    <span class="keyword">if</span> (j === patternLen - <span class="number">1</span> &amp;&amp; textArray[i] === patternArray[j]) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"Found pattern at "</span>, i - j)</span><br><span class="line">      j = prefixArray[j]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (textArray[i] === patternArray[j]) &#123;</span><br><span class="line">      i ++;</span><br><span class="line">      j ++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      j = prefixArray[j]</span><br><span class="line">      <span class="keyword">if</span> (j === <span class="number">-1</span>) &#123;</span><br><span class="line">        i ++;</span><br><span class="line">        j ++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">kmpSearch(<span class="string">"ABABABABCABAAB"</span>, <span class="string">"ABABCABAA"</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行结果<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/f4273ce6b530673651ce3a9f513c730760549.png" alt="运行结果"></li>
+<li><img src="http://p0.meituan.net/myvideodistribute/214a8fcf81cda92716e44270f816392663018.png" alt="运行结果"></li>
+</ul>
+</li>
+</ul>
+<h3 id="基于-KMP-的-FSM-处理-pattern"><a href="#基于-KMP-的-FSM-处理-pattern" class="headerlink" title="基于 KMP 的 FSM 处理 pattern"></a>基于 KMP 的 FSM 处理 pattern</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> textArray = [] <span class="comment">// 未知字符串</span></span><br><span class="line"><span class="keyword">let</span> text = <span class="string">""</span></span><br><span class="line"><span class="keyword">let</span> textLen = <span class="number">0</span> <span class="comment">// 未知字符串长度</span></span><br><span class="line"><span class="keyword">let</span> patternArray = [] <span class="comment">// pattern 字符串</span></span><br><span class="line"><span class="keyword">let</span> pattern = <span class="string">""</span></span><br><span class="line"><span class="keyword">let</span> patternLen <span class="comment">// 未知 pattern 长度</span></span><br><span class="line"><span class="keyword">let</span> prefixArray = <span class="literal">null</span> <span class="comment">// KMP prefix table</span></span><br><span class="line"><span class="keyword">let</span> len = <span class="number">0</span> <span class="comment">// 最长公共前后缀长度</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initState</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  patternArray = pattern.split(<span class="string">""</span>)</span><br><span class="line">  patternLen = patternArray.length</span><br><span class="line">  textArray = text.split(<span class="string">""</span>)</span><br><span class="line">  textLen = textArray.length</span><br><span class="line">  prefixArray = <span class="keyword">new</span> <span class="built_in">Array</span>(patternLen)</span><br><span class="line">  prefixArray[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> len = <span class="number">0</span></span><br><span class="line">  <span class="keyword">return</span> patteranStart</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">patteranStart</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (patternArray[i] === patternArray[len]) &#123;</span><br><span class="line">    len++;</span><br><span class="line">    prefixArray[i] = len;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">needAdd</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (len &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      len = prefixArray[len - <span class="number">1</span>]</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">needAdd</span>: <span class="literal">false</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      prefixArray[i] = len</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">needAdd</span>: <span class="literal">true</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (i ===  patternLen) &#123;</span><br><span class="line">    <span class="keyword">return</span> movePrefixTable</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">movePrefixTable</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = patternLen - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">    prefixArray[i] = prefixArray[i - <span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  prefixArray[<span class="number">0</span>] = <span class="number">-1</span></span><br><span class="line">  <span class="keyword">return</span> KMPSearch</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">KMPSearch</span>(<span class="params">i, j</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (j === patternLen - <span class="number">1</span> &amp;&amp; textArray[i] === patternArray[j]) &#123;</span><br><span class="line">    j = prefixArray[j]</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">iNeedAdd</span>: <span class="literal">false</span>, <span class="attr">jNeedAdd</span>: <span class="literal">false</span>, <span class="attr">isMatched</span>: <span class="literal">true</span> &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (textArray[i] === patternArray[j]) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">iNeedAdd</span>: <span class="literal">true</span>, <span class="attr">jNeedAdd</span>: <span class="literal">true</span>, <span class="attr">isMatched</span>: <span class="literal">false</span> &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    j = prefixArray[j]</span><br><span class="line">    <span class="keyword">if</span> (j === <span class="number">-1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">iNeedAdd</span>: <span class="literal">true</span>, <span class="attr">jNeedAdd</span>: <span class="literal">true</span>, <span class="attr">isMatched</span>: <span class="literal">false</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">iNeedAdd</span>: <span class="literal">true</span>, <span class="attr">jNeedAdd</span>: <span class="literal">false</span>, <span class="attr">isMatched</span>: <span class="literal">false</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> STATUS_MAP = &#123;</span><br><span class="line">  <span class="string">"init"</span>: initState,</span><br><span class="line">  <span class="string">"prefixtable"</span>: patteranStart,</span><br><span class="line">  <span class="string">"movePrefixTable"</span>: movePrefixTable,</span><br><span class="line">  <span class="string">"KMPSearch"</span>: KMPSearch</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">match</span>(<span class="params">_text, _pattern</span>) </span>&#123;</span><br><span class="line">  text = _text</span><br><span class="line">  pattern = _pattern</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> patternState = initState</span><br><span class="line">  <span class="keyword">let</span> STATUS_MAP_KEYS = <span class="built_in">Object</span>.keys(STATUS_MAP)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> status = <span class="number">0</span>; status &lt; STATUS_MAP_KEYS.length; status++) &#123;</span><br><span class="line">    patternState = STATUS_MAP[STATUS_MAP_KEYS[status]]</span><br><span class="line">    <span class="keyword">if</span> (STATUS_MAP_KEYS[status] === <span class="string">"init"</span>) &#123;</span><br><span class="line"></span><br><span class="line">      patternState()</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (STATUS_MAP_KEYS[status] === <span class="string">"prefixtable"</span>) &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> res = &#123; <span class="attr">len</span>: <span class="number">0</span>, <span class="attr">needAdd</span>: <span class="literal">true</span> &#125;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= patternLen; res.needAdd &amp;&amp; i++) &#123;</span><br><span class="line">        res = patternState(i)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (STATUS_MAP_KEYS[status] === <span class="string">"movePrefixTable"</span>) &#123;</span><br><span class="line"></span><br><span class="line">      patternState()</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (STATUS_MAP_KEYS[status] === <span class="string">"KMPSearch"</span>) &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> kmpSearchRes = &#123; <span class="attr">iNeedAdd</span>: <span class="literal">false</span>, <span class="attr">jNeedAdd</span>: <span class="literal">false</span>, <span class="attr">isMatched</span>: <span class="literal">false</span> &#125;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; textLen;) &#123;</span><br><span class="line">        kmpSearchRes = patternState(i, j)</span><br><span class="line">        <span class="keyword">if</span> (kmpSearchRes.isMatched) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">"First Found pattern at "</span>, i - j)</span><br><span class="line">          <span class="keyword">return</span> kmpSearchRes.isMatched</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (kmpSearchRes.iNeedAdd)</span><br><span class="line">          i++</span><br><span class="line">        <span class="keyword">if</span> (kmpSearchRes.jNeedAdd)</span><br><span class="line">          j++</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> kmpSearchRes.isMatched</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">match(<span class="string">"ABABABABCABAAB"</span>, <span class="string">"ABABCABAA"</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行结果<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/7079d40d337c97ae742c21e0f7a2f87320359.png" alt="基于 KMP 的 FSM 处理 pattern 运行结果"></li>
+</ul>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.bilibili.com/video/BV1Px411z7Yo" target="_blank" rel="noopener">KMP 算法视频讲解</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html" target="_blank" rel="noopener">KMP-最长公共前后缀长度</a></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>感谢在 KMP 算法折腾时，提供帮助的 田神大大【 🤫 等我有他联系方式了，我悄悄同步给你们</li>
+<li>学而不思则罔</li>
+<li>祝大家多多发财</li>
+</ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/05/17/Toy-Browser-DAY3/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Toy-Bro...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/05/15/Toy-Browser-DAY2/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Toy-Bro...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Be kind.</a><br>EllePeng
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button> 
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar.jpeg" alt="EllePeng"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>EllePeng</p>
+          <span class="tagline">stay awesome.</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-th-list fa-fw"></i>Categories</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
+    </li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>Friends</span>
+        <ul>
+          <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/local.search.js"></script>
+
+</body>
+</html>

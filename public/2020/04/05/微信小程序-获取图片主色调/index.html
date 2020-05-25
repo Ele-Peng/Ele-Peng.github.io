@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>微信小程序-获取图片主色调 | Be kind.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="EllePeng">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'hexo-theme-lx',
+    version: '0.3.9',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/css/main.min.css">
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "greenish",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+<div class="single">
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Search..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
+    <span>2020-04-05</span>
+    <h2>微信小程序-获取图片主色调</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a></div>
+    <div class="social-links">
+    <a href="https://github.com/Ele-Peng" target="_blank"><i class="fa fa-github fa-fw"></i></a>
+    <a href="mailto:EllePeng@aliyun.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+    <a href="https://weibo.com/3199262327/profile?topnav=1&amp;wvr=6" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>是的我要开始做：根据图片的主色调来改变一下页面背景颜色了🙆</li>
+<li>记录一下，自己碰到的问题以及思考</li>
+<li>时间多的话，会考虑将代码发在github，欢迎大家去star😘</li>
+</ul>
+<hr>
+<h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><ul>
+<li>理一下思路<ol>
+<li>将网络图片绘制进canvas</li>
+<li>通过canvas的getImageData获取图片的像素数据<ul>
+<li><a href="https://blog.csdn.net/Elle_Peng/article/details/105030971" target="_blank" rel="noopener">canvas 2d 与旧版 canvas 将网络图片绘制进canvas的两种方法实践</a></li>
+</ul>
+</li>
+<li>分析目前主要用于获取图片主色调的算法，并实践</li>
+<li>得到主要色调，再将rgb转换成hsb，并对b值，进行修改，制作渐变，左侧35，右侧15<a id="more"></a>
+<ul>
+<li>嗯，祝我成功<h2 id="颜色空间基础知识背景-减色算法"><a href="#颜色空间基础知识背景-减色算法" class="headerlink" title="颜色空间基础知识背景+减色算法"></a>颜色空间基础知识背景+减色算法</h2></li>
+<li><a href="http://www.360doc.com/content/17/0417/19/41797635_646363886.shtml" target="_blank" rel="noopener">颜色空间 RGB CMY HSV HSL LAB</a></li>
+<li>图片颜色量化算法</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>比较常见的应用就是用于提取图片的主色调用于上色配色,当然也可以用于图像分割</li>
+<li>主流算法<ul>
+<li>两个大方向</li>
+<li><strong>在颜色空间合理地选取采样点来构造颜色表，使得减色后的图像和原图尽可能地接近</strong><ul>
+<li>直接量化<ul>
+<li>对每个颜色通道单独重新采样，将每个通道的色阶从256减少到某个指定的数字。这样得到一个新的小的多的颜色空间，而原图像中的每一个像素将被用在新的颜色空间中的最近邻取代</li>
+</ul>
+</li>
+<li>统计量化<ul>
+<li>核心：调整直方图使得累积分布曲线呈线性，从而使图像像素点的亮度值尽可能均匀地分布</li>
+<li>利用原图的直方图来引导采样点的选取，使得每个采样点可以大致覆盖相同数量的像素点</li>
+<li>对每个颜色通道建立直方图，然后根据这些直方图对各个颜色通道单独采样，在像素值分布多的区域进行密集采样，别的区域稀疏采样，再利用这些采样点来组合成最终的颜色表，原图中的每个像素点用颜色表中最接近的颜色替换掉</li>
+</ul>
+</li>
+<li>颜色空间分割(Median-Cut)<ul>
+<li>核心：在颜色空间建立一棵二叉树，通过不断地细化这棵树来近似得到一个颜色三维直方图，然后再根据这棵树来分配采样点</li>
+<li>基于图像颜色样本分布的自适应方法，不论图像中颜色样本的分布如何，总是可以生成一个和颜色样本分布匹配良好的颜色表：在颜色样本分布密集的区域内采样点分布也相对密集，其他区域则分配了较少的采样点。且相同数目的颜色样本总是用同样数量的采样点来代表，所以颜色样本分布密集的区域，采样点的数量自然就会多，反之则相应的比较少</li>
+<li>最重要、应用最广泛的减色算法之一</li>
+</ul>
+</li>
+<li>k均值聚类(k-Means clustering)<ul>
+<li>核心：将像素按颜色的相似程度归类</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>从一个初始的颜色表出发，通过不断修改颜色表来改善减色效果</strong><ul>
+<li>神经网络方法(ANN)<ul>
+<li>颜色表通过神经元来编码，通过缓慢的调节神经元的颜色值以保证整个神经网络逐步收敛于最小误差状态（即通过神经网络产生的图像和原图之间误差最小）<h2 id="直接量化实践"><a href="#直接量化实践" class="headerlink" title="直接量化实践"></a>直接量化实践</h2><ul>
+<li>首先我们可以来看一看getImageData后的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzljZjVjMjQzMDI0NmE0YjE0YzFlYmMzMjYwZDkwYTgwNTQzMDIucG5n?x-oss-process=image/format,png" alt="getImageData数据"></li>
+<li>可以简单看作是外层循环为rgba的打平了二维数组<ul>
+<li>如果按满足需求做，只要一个主色调的话，可以把整个getImageData获得的数据，进行各个通道的平均值求值，再拼接，像这样<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">getUniqueColor(imageData) &#123;</span><br><span class="line">   <span class="keyword">let</span> res_r = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_g = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_b = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_a = <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imageData.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">0</span>) &#123;</span><br><span class="line">       res_r += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">1</span>) &#123;</span><br><span class="line">       res_g += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">2</span>) &#123;</span><br><span class="line">       res_b += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">3</span>) &#123;</span><br><span class="line">       res_a += imageData[i]</span><br><span class="line">     &#125; </span><br><span class="line">   &#125;</span><br><span class="line">   res_r = <span class="built_in">Math</span>.round(res_r / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_g =  <span class="built_in">Math</span>.round(res_g / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_b =  <span class="built_in">Math</span>.round(res_b / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_a =  <span class="built_in">Math</span>.round(res_a / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_r'</span>, res_r)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_g'</span>, res_g)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_b'</span>, res_b)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_a'</span>, res_a)</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzc4NzFiOTVmYzA4NWQ3NGQwNDc4OWY0ZWI5Yzc0YThmNzQ5OTYucG5n?x-oss-process=image/format,png" alt="暴力法求主色调"></li>
+<li>无相关点越多，误差越大👎<ul>
+<li>我们可以“对每个颜色通道单独重新采样，将每个通道的色阶从256减少到某个指定的数字。这样得到一个新的小的多的颜色空间，而原图像中的每一个像素将被用在新的颜色空间中的最近邻取代”<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> COLOR_SIZE = <span class="number">40</span> <span class="comment">// 单位色块的大小（像素个数，默认40）。以单位色块的平均像素值为作为统计单位</span></span><br><span class="line"><span class="keyword">const</span> LEVEL = <span class="number">32</span> <span class="comment">// 色深，颜色分区参数（0-255），总256，2^8，即8bit，4个通道（rgba），即默认色深4*8bit，32bit</span></span><br><span class="line"><span class="comment">// 分区块，可以拓展性的求主要色板，用来做palette</span></span><br><span class="line">   <span class="keyword">const</span> mapData = that.getLevelData(imageData);</span><br><span class="line">   <span class="keyword">const</span> colors = that.getMostColor(mapData);</span><br><span class="line">   <span class="keyword">if</span> (!colors) &#123;</span><br><span class="line">     <span class="keyword">return</span></span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">const</span> color = that.getAverageColor(colors)</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'color'</span>, color)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>将getImageData数据分成特定大小的区块，分别算出各个区块的averageColor，再利用map特性，将averageColor作key，count各个averageColor个数  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取每段的颜色数据</span></span><br><span class="line"><span class="comment">// 根据像素数据，按单位色块进行切割</span></span><br><span class="line">getLevelData(imageData) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = imageData.length;</span><br><span class="line">  <span class="keyword">const</span> mapData = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i += COLOR_SIZE * <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> blockColor = <span class="keyword">this</span>.getBlockColor(imageData, i); <span class="comment">// 该区块平均rgba [&#123;r,g,b,a&#125;]数据</span></span><br><span class="line">    <span class="comment">// 获取各个区块的平均rgba数据，将各个通道的颜色进行LEVEL色深降级</span></span><br><span class="line">    <span class="comment">// 根据r_g_b_a 建立map索引</span></span><br><span class="line">    <span class="keyword">const</span> key = <span class="keyword">this</span>.getColorLevel(blockColor);</span><br><span class="line">    !mapData[key] &amp;&amp; (mapData[key] = []);</span><br><span class="line">    mapData[key].push(blockColor);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> mapData;</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 获取单位块的全部色值</span></span><br><span class="line"><span class="comment">// 并根据全部色值，计算平均色值</span></span><br><span class="line"><span class="comment">// 处理最后边界值，小于COLOR_SIZE</span></span><br><span class="line">getBlockColor(imageData, start) &#123;</span><br><span class="line">  <span class="keyword">let</span> data = [],</span><br><span class="line">    count = COLOR_SIZE,</span><br><span class="line">    len = COLOR_SIZE * <span class="number">4</span>;</span><br><span class="line">  imageData.length &lt;= start + len &amp;&amp; (count = <span class="built_in">Math</span>.floor((imageData.length - start - <span class="number">1</span>) / <span class="number">4</span>));</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; count; i += <span class="number">4</span>) &#123;</span><br><span class="line">    data.push(&#123;</span><br><span class="line">      r: imageData[start + i + <span class="number">0</span>],</span><br><span class="line">      g: imageData[start + i + <span class="number">1</span>],</span><br><span class="line">      b: imageData[start + i + <span class="number">2</span>],</span><br><span class="line">      a: imageData[start + i + <span class="number">3</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getAverageColor(data);</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 取出各个通道的平均值，即为改色块的平均色值</span></span><br><span class="line">getAverageColor(colorArr) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = colorArr.length;</span><br><span class="line">  <span class="keyword">let</span> sr = <span class="number">0</span>, sg = <span class="number">0</span>, sb = <span class="number">0</span>, sa = <span class="number">0</span>;</span><br><span class="line">  colorArr.map(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">    sr += item.r;</span><br><span class="line">    sg += item.g;</span><br><span class="line">    sb += item.b;</span><br><span class="line">    sa += item.a;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    r: <span class="built_in">Math</span>.round(sr / len),</span><br><span class="line">    g: <span class="built_in">Math</span>.round(sg / len),</span><br><span class="line">    b: <span class="built_in">Math</span>.round(sb / len),</span><br><span class="line">    a: <span class="built_in">Math</span>.round(sa / len)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line">getColorLevel(color) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getLevel(color.r) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.g) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.b) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.a)</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 色深降级</span></span><br><span class="line">getLevel(value) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.round(value / LEVEL)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>把出现次数最多的averageColor区块，作为采样区块，再获取一遍averageColor，即是最终主色调  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据色块颜色，获取</span></span><br><span class="line">getMostColor(colorData) &#123;</span><br><span class="line">  <span class="keyword">let</span> rst = <span class="literal">null</span>, len = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> colorData) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, colorData[key].length)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, colorData[key])</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, key)</span><br><span class="line">    colorData[key].length &gt; len &amp;&amp; (</span><br><span class="line">      rst = colorData[key],</span><br><span class="line">      len = colorData[key].length</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> rst;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2ViYzI3MmNkNzU2NjNhODUxYmM2MWQ0MDE4OWJjZGI3NzQ5NDUucG5n?x-oss-process=image/format,png" alt="区块获取主色调"></li>
+<li>颜色可信度提高了很多<h2 id="拓展实践-医学灰色影像"><a href="#拓展实践-医学灰色影像" class="headerlink" title="拓展实践-医学灰色影像"></a>拓展实践-医学灰色影像</h2><ul>
+<li>核心：将<strong>三通道转成单通道</strong>即可<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> greyImageData = that.greyTheImage(imageData)</span><br><span class="line">   wx.canvasPutImageData(&#123;</span><br><span class="line">     canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">     x: <span class="number">150</span>,</span><br><span class="line">     y: <span class="number">0</span>,</span><br><span class="line">     width: <span class="number">150</span>,</span><br><span class="line">     height: <span class="number">100</span>,</span><br><span class="line">     data: greyImageData,</span><br><span class="line">     success (res) &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'canvasPutImageData it worked!'</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line"> greyTheImage(imageData) &#123;</span><br><span class="line">     <span class="comment">// imageData有4个通道rgba</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imageData.length; i += <span class="number">4</span>) &#123;</span><br><span class="line">       <span class="keyword">let</span> sum_rgb = <span class="number">0</span></span><br><span class="line">       <span class="comment">// 但我们只需要rgb三通道，a-alpha通道无用</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j += <span class="number">1</span>) &#123;</span><br><span class="line">         sum_rgb = sum_rgb + imageData[i + j]</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">let</span> grey = <span class="built_in">Math</span>.round(sum_rgb / <span class="number">3</span>)</span><br><span class="line">       imageData[i] = grey</span><br><span class="line">       imageData[i + <span class="number">1</span>] = grey</span><br><span class="line">       imageData[i + <span class="number">2</span>] = grey</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> imageData</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></li>
+<li>运行截图<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmNWJhNzk2OTJjOWEwOTA2MDNlMzkxMzBlMDRiZTY4MTAwNzcwLnBuZw?x-oss-process=image/format,png" alt="医学灰色影像"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="格式化rgba输出"><a href="#格式化rgba输出" class="headerlink" title="格式化rgba输出"></a>格式化rgba输出</h2><ul>
+<li>像这样<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxNDVhYzM4YzQ1MjFkNDgzNGNkZGQ5NTNmNjQ1MWQ3NTI0NTkucG5n?x-oss-process=image/format,png" alt="格式化rgba输出">  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对最终颜色的字符串格式化</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * result:&#123;</span></span><br><span class="line"><span class="comment"> *   hex:'#ffffff',            十六位值</span></span><br><span class="line"><span class="comment"> *   hexa:'#ffffff00',         十六位值带alpha值</span></span><br><span class="line"><span class="comment"> *   rgb:'rgb(0,0,0)',         RGB值</span></span><br><span class="line"><span class="comment"> *   rgba:'rgba(0,0,0,0)'      RGB值带alpha值</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">	</span><br><span class="line">colorStrFormat(color) &#123;</span><br><span class="line">  <span class="keyword">const</span> rgba = <span class="string">'rgba('</span> + color.r + <span class="string">','</span> + color.g + <span class="string">','</span> + color.b + <span class="string">','</span> + (color.a / <span class="number">255</span>).toFixed(<span class="number">4</span>).replace(<span class="regexp">/\.*0+$/</span>, <span class="string">''</span>) + <span class="string">')'</span>;</span><br><span class="line">  <span class="keyword">const</span> rgb = <span class="string">'rgb('</span> + color.r + <span class="string">','</span> + color.g + <span class="string">','</span> + color.b + <span class="string">')'</span>;</span><br><span class="line">  <span class="keyword">const</span> hex = <span class="string">'#'</span> + <span class="keyword">this</span>.Num2Hex(color.r) + <span class="keyword">this</span>.Num2Hex(color.g) + <span class="keyword">this</span>.Num2Hex(color.b);</span><br><span class="line">  <span class="keyword">const</span> hexa = hex + <span class="keyword">this</span>.Num2Hex(color.a);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    rgba: rgba,</span><br><span class="line">    rgb: rgb,</span><br><span class="line">    hex: hex,</span><br><span class="line">    hexa: hexa</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">	</span><br><span class="line">Num2Hex(num) &#123;</span><br><span class="line">  <span class="keyword">const</span> hex = num.toString(<span class="number">16</span>) + <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">if</span> (hex.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'0'</span> + hex;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> hex;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2></li>
+<li><a href="https://blog.csdn.net/u012843346/article/details/16839649" target="_blank" rel="noopener">phg1024 JavaScript图像处理(6) - 减色算法(Color Reduction)</a></li>
+<li><a href="https://github.com/whoiam2007s/ImgMainColor" target="_blank" rel="noopener">获取图片主色调的插件</a></li>
+<li>其实也可以利用 <a href="https://blog.csdn.net/nanhupatar/article/details/82793637" target="_blank" rel="noopener">CSS新特性去改变背景颜色</a>，比如高斯模糊等来达到业务需求<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
+<li>周六听了一天 John Lennon 歌曲【这也是我拖更的原因😶 羡慕他和 Yoko 那段伊甸园般的爱情，他对 Yoko 的痴爱，他和母亲的两次分别感同身受，Beatles在一起做音乐的欢乐，他对 Sean 的宠溺父爱，但他的人生却在一次枪杀后戛然而止，心痛 心痛 🌧</li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Elle-训练...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>微信小程序-f...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Be kind.</a><br>EllePeng
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button> 
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar.jpeg" alt="EllePeng"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>EllePeng</p>
+          <span class="tagline">stay awesome.</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-th-list fa-fw"></i>Categories</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
+    </li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>Friends</span>
+        <ul>
+          <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/local.search.js"></script>
+
+</body>
+</html>
