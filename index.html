@@ -132,73 +132,7 @@
 
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>整理一下平时所学+所用到的 CSS 基本语法</li>
-</ul>
-<h2 id="CSS-基本语法"><a href="#CSS-基本语法" class="headerlink" title="CSS 基本语法"></a>CSS 基本语法</h2><h3 id="CSS2-1-语法"><a href="#CSS2-1-语法" class="headerlink" title="CSS2.1 语法"></a>CSS2.1 语法</h3><ul>
-<li><a href="https://www.w3.org/TR/CSS21/grammar.html#q25.0" target="_blank" rel="noopener">Appendix G. Grammar of CSS 2.1</a></li>
-<li><a href="https://www.w3.org/TR/css-syntax-3/" target="_blank" rel="noopener">CSS Syntax Module Level 3</a></li>
-</ul>
-<h3 id="CSS2-1-总体结构"><a href="#CSS2-1-总体结构" class="headerlink" title="CSS2.1 总体结构"></a>CSS2.1 总体结构</h3><p><img src="http://p0.meituan.net/myvideodistribute/b9beefeab08a031d689d4e989de4c2f1197837.png" alt="productions_1"><br><img src="http://p0.meituan.net/myvideodistribute/7340e333e43e235776839a2c00bfb982147104.png" alt="productions_2"></p>
-<ul>
-<li>简化为：<ul>
-<li>@charset</li>
-<li>@import</li>
-<li>rules<ul>
-<li>@media</li>
-<li>@page</li>
-<li>rule</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="CSS-Rules"><a href="#CSS-Rules" class="headerlink" title="CSS @ Rules"></a>CSS @ Rules</h2><ul>
-<li><a href="https://www.w3.org/TR/css-syntax-3/" target="_blank" rel="noopener">@charset</a></li>
-<li><a href="https://www.w3.org/TR/css-cascade-4/" target="_blank" rel="noopener">@import</a></li>
-<li><a href="https://www.w3.org/TR/css3-conditional/" target="_blank" rel="noopener">@media</a></li>
-<li><a href="https://www.w3.org/TR/css-page-3/" target="_blank" rel="noopener">@page</a></li>
-<li><a href="https://www.w3.org/TR/css-counter-styles-3/" target="_blank" rel="noopener">@counter-style</a></li>
-<li><a href="https://www.w3.org/TR/css-animations-1/" target="_blank" rel="noopener">@keyframes</a></li>
-<li><a href="https://www.w3.org/TR/css-fonts-3/" target="_blank" rel="noopener">@fontface</a></li>
-<li><a href="https://www.w3.org/TR/css3-conditional/" target="_blank" rel="noopener">@supports</a></li>
-<li><a href="https://www.w3.org/TR/css-namespaces-3/" target="_blank" rel="noopener">@namespace</a></li>
-</ul>
-<h2 id="CSS-规则的结构"><a href="#CSS-规则的结构" class="headerlink" title="CSS 规则的结构"></a>CSS 规则的结构</h2><ul>
-<li>Selector<ul>
-<li><a href="https://www.w3.org/TR/selectors-3/" target="_blank" rel="noopener">selectors-3</a></li>
-<li><a href="https://www.w3.org/TR/selectors-4/" target="_blank" rel="noopener">selectors-4</a></li>
-</ul>
-</li>
-<li>Key<ul>
-<li>Properties</li>
-<li>Variables<ul>
-<li><a href="https://www.w3.org/TR/css-variables/" target="_blank" rel="noopener">css-variables</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Value<ul>
-<li><a href="https://www.w3.org/TR/css-values-4/" target="_blank" rel="noopener">css-values-4</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="初建-CSS-知识体系"><a href="#初建-CSS-知识体系" class="headerlink" title="初建 CSS 知识体系"></a>初建 CSS 知识体系</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/236b6afc66be8e7c1ea00a43b76d43a7259289.png" alt="CSS 知识体系"></li>
-</ul>
-<h2 id="收集标准"><a href="#收集标准" class="headerlink" title="收集标准"></a>收集标准</h2><p><img src="http://p0.meituan.net/myvideodistribute/77c702cce890b37809d44d258837f1bd733569.png" alt="CSS standards"></p>
-<ul>
-<li>all standards and drafts are in the id named container of the html document.</li>
-<li>so we can write a script to collect the standards.</li>
-</ul>
-<h3 id="第一步：获取所有-li-dom-节点"><a href="#第一步：获取所有-li-dom-节点" class="headerlink" title="第一步：获取所有 li dom 节点"></a>第一步：获取所有 li dom 节点</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = <span class="built_in">document</span>.getElementById(<span class="string">"container"</span>).children</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'list'</span>, list)</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">![获取的所有 li 节点](http://p0.meituan.net/myvideodistribute/6cb3b64a2be23ea9ffce86db74757615120112.png)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 第二步：匹配出 data-tag 中为 css 的 standard</span></span><br><span class="line"><span class="string">- ![css standard](http://p1.meituan.net/myvideodistribute/3d1fb8e8198d5d5774cd861235d5682a314365.png)</span></span><br><span class="line"><span class="string">- 观察得到，我们只需要将 data-tag nodeValue 中有 “css” 抓出来即可</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	`</span><span class="string">``</span>javascript</span><br><span class="line">	<span class="keyword">const</span> list = <span class="built_in">document</span>.getElementById(<span class="string">"container"</span>).children</span><br><span class="line">	<span class="keyword">const</span> result = []</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> list) &#123;</span><br><span class="line">	  <span class="keyword">if</span> (i.getAttribute(<span class="string">'data-tag'</span>).match(<span class="regexp">/css/</span>)) &#123;</span><br><span class="line">	    result.push(&#123;</span><br><span class="line">	      name: i.children[<span class="number">1</span>].innerText,</span><br><span class="line">	      url: i.children[<span class="number">1</span>].children[<span class="number">0</span>].href</span><br><span class="line">	    &#125;)</span><br><span class="line">	  &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(result, <span class="literal">null</span>, <span class="string">'    '</span>))</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="收集-CSS-属性相关标准"><a href="#收集-CSS-属性相关标准" class="headerlink" title="收集 CSS 属性相关标准"></a>收集 CSS 属性相关标准</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">"iframe"</span>);</span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = <span class="string">""</span>;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(iframe);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">happen</span>(<span class="params">element, event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> handler = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve();</span><br><span class="line">            element.removeEventListener(event, handler);</span><br><span class="line">        &#125;</span><br><span class="line">        element.addEventListener(event, handler);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> standard <span class="keyword">of</span> standards) &#123;</span><br><span class="line">        iframe.src = standard.url;</span><br><span class="line">        <span class="built_in">console</span>.log(standard.name);</span><br><span class="line">        <span class="keyword">await</span> happen(iframe, <span class="string">"load"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-</p>
+</ul></p>
       <div class="post-button"><a class="btn" href="/2020/05/24/CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E6%9C%BA%E5%88%B6/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
     </div>
   </div>
