@@ -109,6 +109,599 @@
       </tags>
   </entry>
   <entry>
+    <title>Elle-训练算法计划</title>
+    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
+<li>主要的数据结构和算法会单开文档来写</li>
+</ul>
+<a id="more"></a>
+<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
+<li>数据结构<ul>
+<li>一维数据结构<ul>
+<li>基础：数组 array(string), 链表 linked list</li>
+<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
+</ul>
+</li>
+<li>二维数据结构<ul>
+<li>一维泛化</li>
+<li>基础：树 tree，图 graph</li>
+<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
+</ul>
+</li>
+<li>特殊数据结构<ul>
+<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
+<li>LRU Cache</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法<ul>
+<li>if-else, switch –&gt; branch</li>
+<li>for, while loop –&gt; iteration</li>
+<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
+<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
+<li>动态规划 dynamic programing</li>
+<li>二分查找 binary search</li>
+<li>贪心 greedy</li>
+<li>数学 math, 集合 geometry</li>
+</ul>
+</li>
+</ul>
+<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
+<li>刻意练习-过遍数 (五遍刷题法)<ul>
+<li>刷题第一遍<ul>
+<li>5分钟（5~15 mins）：读题+思考</li>
+<li>直接看解法：注意！多解法，比较解乏优劣</li>
+<li>有思路，直接写</li>
+<li>背诵+默写好的解法</li>
+</ul>
+</li>
+<li>刷题第二遍<ul>
+<li>马上自己写 –&gt; LeetCode提交</li>
+<li>多种解法比较、体会 –&gt; 优化</li>
+<li>多种解法自己写一遍，直到通过</li>
+</ul>
+</li>
+<li>刷题第三遍<ul>
+<li>24h后，再重复做题</li>
+<li>不同解法的熟练程度 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第四遍<ul>
+<li>过了一周后：反复回来练习相同的题目</li>
+<li>不熟练的题目 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第五遍<ul>
+<li>面试前二周恢复性训练</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>练习缺陷、弱点地方<ul>
+<li>中文站 leetcode-cn.com 刷题</li>
+<li>国际站 leetcode.com 看discuss-most votes</li>
+</ul>
+</li>
+<li>切题<ul>
+<li><strong>Clarification 审题</strong></li>
+<li><strong>Possible Solutions</strong><ul>
+<li>compare (time/space)</li>
+<li>optimal (加强)</li>
+</ul>
+</li>
+<li><strong>Coding</strong></li>
+<li><strong>Test cases</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
+<li>即时反馈</li>
+<li>主动型反馈</li>
+<li>被动型反馈<ul>
+<li>code review</li>
+</ul>
+</li>
+</ul>
+<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
+<li>top tips for vscode</li>
+</ul>
+<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
+<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
+</ul>
+<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
+<li>O(1): constant Complexity 常数复杂度</li>
+<li>O(log n): Logarithmic Complexity 对数复杂度</li>
+<li>O(n): Linear Complexity 线性时间复杂度</li>
+<li>O(n^2): N square Complexity 平方</li>
+<li>O(n^3): N cube Complexity 立方</li>
+<li>O(2^n): Exponential Growth 指数</li>
+<li>O(n!): Factorial 阶乘</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
+</ul>
+<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
+<li>二分查找</li>
+<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
+<li>二维有序矩阵</li>
+<li>归并排序 O(nlogn)</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Javascript Types</title>
+    <url>/2020/04/20/Javascript-Types/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
+<li><p>Unicode Blocks</p>
+<ul>
+<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
+<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
+</ul>
+</li>
+<li>U+000A LINE FEED 换行<ul>
+<li>Form Feed 翻页</li>
+<li>CJK 中文字符 Chinese Japan Korean</li>
+</ul>
+</li>
+<li>U+0020 SPACE 空格</li>
+<li>BMP 基本字符平面 四位能表示的范围</li>
+<li>超出BMP范围<ul>
+<li>fromCodePoint</li>
+<li>codePointAt</li>
+</ul>
+</li>
+<li>隐性需求需要可以使用\u转义<ul>
+<li>“厉害”.codePointAt(0).toString(16)</li>
+<li>\u5389\u5bb3<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>InputElement</p>
+<ul>
+<li>WhiteSpace 空格<ul>
+<li>&lt;TAB&gt; Character Tabulation</li>
+<li>&lt;VT&gt; Vertical Line</li>
+<li>&lt;FF&gt; Form Feed </li>
+<li>&lt;SP&gt; </li>
+<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
+<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
+<li>&lt;USP&gt;</li>
+</ul>
+</li>
+<li>LineTerminator 换行符<ul>
+<li>&lt;LF&gt; /n</li>
+<li>&lt;CR&gt; Carriage Return 回车 /r</li>
+<li>&lt;LS&gt; LINE SEPARATOR</li>
+<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
+</ul>
+</li>
+<li>Comment 注释</li>
+<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
+<li>自己写的，代码包含的有效信息<ul>
+<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
+<li>用作变量名，不能与关键字重复<ul>
+<li>undefined 全局变量名，修改不了</li>
+<li>离开全局作用域，便可以使用</li>
+</ul>
+</li>
+<li>用作属性的部分，可以与关键字重复</li>
+<li>Future reserved Keywords : enum</li>
+</ul>
+</li>
+<li><strong>Literal</strong> 直接量<ul>
+<li>Number    </li>
+<li>String</li>
+<li>Boolean</li>
+<li>Object</li>
+<li>Null</li>
+<li>Undefined</li>
+<li>Symbol</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>帮助程序形成结构<ul>
+<li><strong>Punctuator</strong> 符号</li>
+<li><strong>Keywords</strong> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
+<li><p>IEEE 754 Double Float</p>
+<ul>
+<li>Sign(1)</li>
+<li>Exponent(11) 指数，科学计数法</li>
+<li>Fraction(52)</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li>DecimaLiteral<ul>
+<li>0</li>
+<li>0.</li>
+<li>.2</li>
+<li>1e3</li>
+</ul>
+</li>
+<li>BinaryIntegerLiteral<ul>
+<li>0b111</li>
+</ul>
+</li>
+<li>OctalIntegerLiteral<ul>
+<li>0o10</li>
+</ul>
+</li>
+<li>HexIntegerLiteral<ul>
+<li>0xFF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>最佳实践</p>
+<ul>
+<li><p>浮点数比较时，需要加精度</p>
+<blockquote>
+<p>Number.MAX_SAFE_INTEGER</p>
+</blockquote>
+<blockquote>
+<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
+<li><p>Character</p>
+</li>
+<li><p>Code Point</p>
+</li>
+<li><p>Encoding</p>
+<blockquote>
+<p>97 .toString(2)</p>
+</blockquote>
+<blockquote>
+<p>“97.” 是一个合法的Number 01100001</p>
+</blockquote>
+<ul>
+<li>ASCII</li>
+<li>Unicode</li>
+<li>UCS U+0000 - U+FFFF</li>
+<li>GB<ul>
+<li>GB2312</li>
+<li>GBK(GB13000)</li>
+<li>GB18030</li>
+</ul>
+</li>
+<li>ISO-8859</li>
+<li>BIG5</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li><p>“abc”</p>
+<ul>
+<li>“\x10” –&gt; 8</li>
+<li>“\u000a”</li>
+</ul>
+</li>
+<li><p>‘abc’</p>
+</li>
+<li><p>`abc`</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
+<li>true</li>
+<li>false</li>
+</ul>
+<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
+<li>typeof 下为 Object</li>
+</ul>
+<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Javascript-Statement</title>
+    <url>/2020/04/26/Javascript-Statement/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h1><h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="简单语句"><a href="#简单语句" class="headerlink" title="简单语句"></a>简单语句</h3><ul>
+<li>ExpressionStatement<ul>
+<li>a = 1 + 2;</li>
+</ul>
+</li>
+<li>EmptyStatement<ul>
+<li>;</li>
+</ul>
+</li>
+<li>DebuggerStatement<ul>
+<li>debugger</li>
+</ul>
+</li>
+<li>ThrowStatement<ul>
+<li>throw a;</li>
+</ul>
+</li>
+<li>ContinueStatement<ul>
+<li>continue ;</li>
+<li>continue label;</li>
+</ul>
+</li>
+<li>BreakStatement<ul>
+<li>break ;</li>
+<li>break label;</li>
+</ul>
+</li>
+<li>ReturnStatement<ul>
+<li>return ;</li>
+<li>return expression;</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="组合语句"><a href="#组合语句" class="headerlink" title="组合语句"></a>组合语句</h3><ul>
+<li><p>BlockStatement</p>
+<ul>
+<li><p>把多条语句从语法上括起来，让它像一条语句一样</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  a: <span class="number">1</span> <span class="comment">// a 被理解为 label</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>BlockStatement 中有非 normal ，就会中断</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">  b = foo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>为 const / let 提供作用域</p>
+</li>
+<li><p>Completion Record</p>
+<ul>
+<li>[[type]]: normal</li>
+<li>[[value]]: –</li>
+<li>[[target]]: –</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IfStatement</p>
+</li>
+<li><p>SwitchStatement</p>
+</li>
+<li><p>IterationStatement</p>
+<ul>
+<li><p><s>for await(… of …)</s></p>
+</li>
+<li><p>while(Expression…) Statement…</p>
+</li>
+<li><p>do Statement… while(Expression…);</p>
+</li>
+<li><p>for(Definition…; Expression…; Expression…) Statement…</p>
+<ul>
+<li><p>Definition</p>
+<ul>
+<li>var</li>
+<li>const / let</li>
+</ul>
+</li>
+<li><p>for 会独立产生一个作用域，在 blockStatement 之外</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>for(Definition… in Expression…) Statement….</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>for(Definition…of Expression…) Statement…</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">g</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> p  <span class="keyword">of</span> g())&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>for of –&gt; Iterator –&gt; Generator/Array</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>WithStatement</p>
+</li>
+<li><p>LabelledStatement</p>
+</li>
+<li><p>TryStatement</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">catch</span>(definition...) &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="keyword">let</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> e = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>catch 中的声明，只在 {} 这一个作用域中，与 for 不一样。</p>
+</li>
+<li><p>运行时产生错误的时候，都有可能产生 throw</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> = a;</span><br><span class="line"><span class="literal">null</span>.a;</span><br></pre></td></tr></table></figure></li>
+<li><p>Completion Record</p>
+<ul>
+<li>[[type]]: return</li>
+<li>[[value]]: –</li>
+<li>[[target]]: label</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="标签、循环、break、continue"><a href="#标签、循环、break、continue" class="headerlink" title="标签、循环、break、continue"></a>标签、循环、break、continue</h3><ul>
+<li>LabelledStatement</li>
+<li>IterationStatement</li>
+<li>ContinueStatement</li>
+<li>BreakStatement</li>
+<li>SwitchStatement</li>
+<li>Completion Record<ul>
+<li>[[type]]: break continue</li>
+<li>[[value]]: –</li>
+<li>[[target]]: label</li>
+</ul>
+</li>
+</ul>
+<h3 id="声明机制"><a href="#声明机制" class="headerlink" title="声明机制"></a>声明机制</h3><ul>
+<li><p>FunctionDeclaration</p>
+</li>
+<li><p>GeneratorDeclaration</p>
+</li>
+<li><p>AsyncFunctionDeclaration</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i ++);</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
+<li><p>AsyncGeneratorDeclaration</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span> i ++;</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">&#125;()</span><br><span class="line"><span class="comment">// 想无限循环输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span>(<span class="keyword">let</span> e <span class="keyword">of</span> g) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
+<li><p>VariableStatement</p>
+</li>
+<li><p>ClassDeclaration</p>
+</li>
+<li><p>LexicalDeclaration</p>
+</li>
+<li><p>声明</p>
+<ul>
+<li><p>function</p>
+</li>
+<li><p>function *</p>
+</li>
+<li><p>async function</p>
+</li>
+<li><p>async function*</p>
+</li>
+<li><p>var</p>
+<ul>
+<li><p>有 var 不建议写在任何语句子结构里，建议写在 function 的范围内</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 0</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>class</p>
+</li>
+<li><p>const</p>
+</li>
+<li><p>let</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Completion-Record"><a href="#Completion-Record" class="headerlink" title="Completion Record"></a>Completion Record</h3><ul>
+<li>[[type]]: normal, break, continue, return, throw</li>
+<li>[[value]]: Types</li>
+<li>[[target]]: label</li>
+</ul>
+<h3 id="Lexical-Environment"><a href="#Lexical-Environment" class="headerlink" title="Lexical Environment"></a>Lexical Environment</h3><h2 id="预处理（pre-process）BoundNames"><a href="#预处理（pre-process）BoundNames" class="headerlink" title="预处理（pre-process）BoundNames"></a>预处理（pre-process）BoundNames</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a) </span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p><img src="http://p0.meituan.net/myvideodistribute/21745b775ee2bfb77aa1efdff233619737142.png" alt="var 预处理"></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">const</span> a;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p><img src="http://p1.meituan.net/myvideodistribute/172ab6a2ba78132f1dd33f2f5b64e11044523.png" alt="const 无预处理"></p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://p0.meituan.net/myvideodistribute/8b9ac53e3ae6dfca675786084237d0d971523.png" alt="作用域"></p>
+<ul>
+<li>作用域与上下文的区别<ul>
+<li>作用域可以简单理解为源代码文本的作用区域</li>
+<li>执行上下文可以理解为，在用户的电脑上，内存里的，存变量的地方，JavaScript 引擎在执行过程中需要的变量，引擎里的那块内存。</li>
+</ul>
+</li>
+</ul>
+<h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript-Expressions</title>
     <url>/2020/04/23/Javascript-Expressions/</url>
     <content><![CDATA[<style  type="text/css">
@@ -380,761 +973,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Elle-训练算法计划</title>
-    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
-<li>主要的数据结构和算法会单开文档来写</li>
-</ul>
-<a id="more"></a>
-<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
-<li>数据结构<ul>
-<li>一维数据结构<ul>
-<li>基础：数组 array(string), 链表 linked list</li>
-<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
-</ul>
-</li>
-<li>二维数据结构<ul>
-<li>一维泛化</li>
-<li>基础：树 tree，图 graph</li>
-<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
-</ul>
-</li>
-<li>特殊数据结构<ul>
-<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
-<li>LRU Cache</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>算法<ul>
-<li>if-else, switch –&gt; branch</li>
-<li>for, while loop –&gt; iteration</li>
-<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
-<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
-<li>动态规划 dynamic programing</li>
-<li>二分查找 binary search</li>
-<li>贪心 greedy</li>
-<li>数学 math, 集合 geometry</li>
-</ul>
-</li>
-</ul>
-<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
-<li>刻意练习-过遍数 (五遍刷题法)<ul>
-<li>刷题第一遍<ul>
-<li>5分钟（5~15 mins）：读题+思考</li>
-<li>直接看解法：注意！多解法，比较解乏优劣</li>
-<li>有思路，直接写</li>
-<li>背诵+默写好的解法</li>
-</ul>
-</li>
-<li>刷题第二遍<ul>
-<li>马上自己写 –&gt; LeetCode提交</li>
-<li>多种解法比较、体会 –&gt; 优化</li>
-<li>多种解法自己写一遍，直到通过</li>
-</ul>
-</li>
-<li>刷题第三遍<ul>
-<li>24h后，再重复做题</li>
-<li>不同解法的熟练程度 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第四遍<ul>
-<li>过了一周后：反复回来练习相同的题目</li>
-<li>不熟练的题目 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第五遍<ul>
-<li>面试前二周恢复性训练</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>练习缺陷、弱点地方<ul>
-<li>中文站 leetcode-cn.com 刷题</li>
-<li>国际站 leetcode.com 看discuss-most votes</li>
-</ul>
-</li>
-<li>切题<ul>
-<li><strong>Clarification 审题</strong></li>
-<li><strong>Possible Solutions</strong><ul>
-<li>compare (time/space)</li>
-<li>optimal (加强)</li>
-</ul>
-</li>
-<li><strong>Coding</strong></li>
-<li><strong>Test cases</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
-<li>即时反馈</li>
-<li>主动型反馈</li>
-<li>被动型反馈<ul>
-<li>code review</li>
-</ul>
-</li>
-</ul>
-<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
-<li>top tips for vscode</li>
-</ul>
-<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
-<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
-</ul>
-<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
-<li>O(1): constant Complexity 常数复杂度</li>
-<li>O(log n): Logarithmic Complexity 对数复杂度</li>
-<li>O(n): Linear Complexity 线性时间复杂度</li>
-<li>O(n^2): N square Complexity 平方</li>
-<li>O(n^3): N cube Complexity 立方</li>
-<li>O(2^n): Exponential Growth 指数</li>
-<li>O(n!): Factorial 阶乘</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
-</ul>
-<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
-<li>二分查找</li>
-<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
-<li>二维有序矩阵</li>
-<li>归并排序 O(nlogn)</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Javascript-Statement</title>
-    <url>/2020/04/26/Javascript-Statement/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h1><h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="简单语句"><a href="#简单语句" class="headerlink" title="简单语句"></a>简单语句</h3><ul>
-<li>ExpressionStatement<ul>
-<li>a = 1 + 2;</li>
-</ul>
-</li>
-<li>EmptyStatement<ul>
-<li>;</li>
-</ul>
-</li>
-<li>DebuggerStatement<ul>
-<li>debugger</li>
-</ul>
-</li>
-<li>ThrowStatement<ul>
-<li>throw a;</li>
-</ul>
-</li>
-<li>ContinueStatement<ul>
-<li>continue ;</li>
-<li>continue label;</li>
-</ul>
-</li>
-<li>BreakStatement<ul>
-<li>break ;</li>
-<li>break label;</li>
-</ul>
-</li>
-<li>ReturnStatement<ul>
-<li>return ;</li>
-<li>return expression;</li>
-</ul>
-</li>
-</ul>
-<a id="more"></a>
-
-<h3 id="组合语句"><a href="#组合语句" class="headerlink" title="组合语句"></a>组合语句</h3><ul>
-<li><p>BlockStatement</p>
-<ul>
-<li><p>把多条语句从语法上括起来，让它像一条语句一样</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  a: <span class="number">1</span> <span class="comment">// a 被理解为 label</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>BlockStatement 中有非 normal ，就会中断</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">  b = foo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>为 const / let 提供作用域</p>
-</li>
-<li><p>Completion Record</p>
-<ul>
-<li>[[type]]: normal</li>
-<li>[[value]]: –</li>
-<li>[[target]]: –</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>IfStatement</p>
-</li>
-<li><p>SwitchStatement</p>
-</li>
-<li><p>IterationStatement</p>
-<ul>
-<li><p><s>for await(… of …)</s></p>
-</li>
-<li><p>while(Expression…) Statement…</p>
-</li>
-<li><p>do Statement… while(Expression…);</p>
-</li>
-<li><p>for(Definition…; Expression…; Expression…) Statement…</p>
-<ul>
-<li><p>Definition</p>
-<ul>
-<li>var</li>
-<li>const / let</li>
-</ul>
-</li>
-<li><p>for 会独立产生一个作用域，在 blockStatement 之外</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>for(Definition… in Expression…) Statement….</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>for(Definition…of Expression…) Statement…</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">g</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> p  <span class="keyword">of</span> g())&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>for of –&gt; Iterator –&gt; Generator/Array</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>WithStatement</p>
-</li>
-<li><p>LabelledStatement</p>
-</li>
-<li><p>TryStatement</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">catch</span>(definition...) &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="keyword">let</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> e = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>catch 中的声明，只在 {} 这一个作用域中，与 for 不一样。</p>
-</li>
-<li><p>运行时产生错误的时候，都有可能产生 throw</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> = a;</span><br><span class="line"><span class="literal">null</span>.a;</span><br></pre></td></tr></table></figure></li>
-<li><p>Completion Record</p>
-<ul>
-<li>[[type]]: return</li>
-<li>[[value]]: –</li>
-<li>[[target]]: label</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="标签、循环、break、continue"><a href="#标签、循环、break、continue" class="headerlink" title="标签、循环、break、continue"></a>标签、循环、break、continue</h3><ul>
-<li>LabelledStatement</li>
-<li>IterationStatement</li>
-<li>ContinueStatement</li>
-<li>BreakStatement</li>
-<li>SwitchStatement</li>
-<li>Completion Record<ul>
-<li>[[type]]: break continue</li>
-<li>[[value]]: –</li>
-<li>[[target]]: label</li>
-</ul>
-</li>
-</ul>
-<h3 id="声明机制"><a href="#声明机制" class="headerlink" title="声明机制"></a>声明机制</h3><ul>
-<li><p>FunctionDeclaration</p>
-</li>
-<li><p>GeneratorDeclaration</p>
-</li>
-<li><p>AsyncFunctionDeclaration</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i ++);</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
-<li><p>AsyncGeneratorDeclaration</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span> i ++;</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">&#125;()</span><br><span class="line"><span class="comment">// 想无限循环输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span>(<span class="keyword">let</span> e <span class="keyword">of</span> g) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
-<li><p>VariableStatement</p>
-</li>
-<li><p>ClassDeclaration</p>
-</li>
-<li><p>LexicalDeclaration</p>
-</li>
-<li><p>声明</p>
-<ul>
-<li><p>function</p>
-</li>
-<li><p>function *</p>
-</li>
-<li><p>async function</p>
-</li>
-<li><p>async function*</p>
-</li>
-<li><p>var</p>
-<ul>
-<li><p>有 var 不建议写在任何语句子结构里，建议写在 function 的范围内</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 0</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>class</p>
-</li>
-<li><p>const</p>
-</li>
-<li><p>let</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Completion-Record"><a href="#Completion-Record" class="headerlink" title="Completion Record"></a>Completion Record</h3><ul>
-<li>[[type]]: normal, break, continue, return, throw</li>
-<li>[[value]]: Types</li>
-<li>[[target]]: label</li>
-</ul>
-<h3 id="Lexical-Environment"><a href="#Lexical-Environment" class="headerlink" title="Lexical Environment"></a>Lexical Environment</h3><h2 id="预处理（pre-process）BoundNames"><a href="#预处理（pre-process）BoundNames" class="headerlink" title="预处理（pre-process）BoundNames"></a>预处理（pre-process）BoundNames</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a) </span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-<p><img src="http://p0.meituan.net/myvideodistribute/21745b775ee2bfb77aa1efdff233619737142.png" alt="var 预处理"></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">const</span> a;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-<p><img src="http://p1.meituan.net/myvideodistribute/172ab6a2ba78132f1dd33f2f5b64e11044523.png" alt="const 无预处理"></p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://p0.meituan.net/myvideodistribute/8b9ac53e3ae6dfca675786084237d0d971523.png" alt="作用域"></p>
-<ul>
-<li>作用域与上下文的区别<ul>
-<li>作用域可以简单理解为源代码文本的作用区域</li>
-<li>执行上下文可以理解为，在用户的电脑上，内存里的，存变量的地方，JavaScript 引擎在执行过程中需要的变量，引擎里的那块内存。</li>
-</ul>
-</li>
-</ul>
-<h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1>]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Javascript Types</title>
-    <url>/2020/04/20/Javascript-Types/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
-<li><p>Unicode Blocks</p>
-<ul>
-<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
-<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
-</ul>
-</li>
-<li>U+000A LINE FEED 换行<ul>
-<li>Form Feed 翻页</li>
-<li>CJK 中文字符 Chinese Japan Korean</li>
-</ul>
-</li>
-<li>U+0020 SPACE 空格</li>
-<li>BMP 基本字符平面 四位能表示的范围</li>
-<li>超出BMP范围<ul>
-<li>fromCodePoint</li>
-<li>codePointAt</li>
-</ul>
-</li>
-<li>隐性需求需要可以使用\u转义<ul>
-<li>“厉害”.codePointAt(0).toString(16)</li>
-<li>\u5389\u5bb3<a id="more"></a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>InputElement</p>
-<ul>
-<li>WhiteSpace 空格<ul>
-<li>&lt;TAB&gt; Character Tabulation</li>
-<li>&lt;VT&gt; Vertical Line</li>
-<li>&lt;FF&gt; Form Feed </li>
-<li>&lt;SP&gt; </li>
-<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
-<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
-<li>&lt;USP&gt;</li>
-</ul>
-</li>
-<li>LineTerminator 换行符<ul>
-<li>&lt;LF&gt; /n</li>
-<li>&lt;CR&gt; Carriage Return 回车 /r</li>
-<li>&lt;LS&gt; LINE SEPARATOR</li>
-<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
-</ul>
-</li>
-<li>Comment 注释</li>
-<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
-<li>自己写的，代码包含的有效信息<ul>
-<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
-<li>用作变量名，不能与关键字重复<ul>
-<li>undefined 全局变量名，修改不了</li>
-<li>离开全局作用域，便可以使用</li>
-</ul>
-</li>
-<li>用作属性的部分，可以与关键字重复</li>
-<li>Future reserved Keywords : enum</li>
-</ul>
-</li>
-<li><strong>Literal</strong> 直接量<ul>
-<li>Number    </li>
-<li>String</li>
-<li>Boolean</li>
-<li>Object</li>
-<li>Null</li>
-<li>Undefined</li>
-<li>Symbol</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>帮助程序形成结构<ul>
-<li><strong>Punctuator</strong> 符号</li>
-<li><strong>Keywords</strong> </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
-<li><p>IEEE 754 Double Float</p>
-<ul>
-<li>Sign(1)</li>
-<li>Exponent(11) 指数，科学计数法</li>
-<li>Fraction(52)</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li>DecimaLiteral<ul>
-<li>0</li>
-<li>0.</li>
-<li>.2</li>
-<li>1e3</li>
-</ul>
-</li>
-<li>BinaryIntegerLiteral<ul>
-<li>0b111</li>
-</ul>
-</li>
-<li>OctalIntegerLiteral<ul>
-<li>0o10</li>
-</ul>
-</li>
-<li>HexIntegerLiteral<ul>
-<li>0xFF</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>最佳实践</p>
-<ul>
-<li><p>浮点数比较时，需要加精度</p>
-<blockquote>
-<p>Number.MAX_SAFE_INTEGER</p>
-</blockquote>
-<blockquote>
-<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
-<li><p>Character</p>
-</li>
-<li><p>Code Point</p>
-</li>
-<li><p>Encoding</p>
-<blockquote>
-<p>97 .toString(2)</p>
-</blockquote>
-<blockquote>
-<p>“97.” 是一个合法的Number 01100001</p>
-</blockquote>
-<ul>
-<li>ASCII</li>
-<li>Unicode</li>
-<li>UCS U+0000 - U+FFFF</li>
-<li>GB<ul>
-<li>GB2312</li>
-<li>GBK(GB13000)</li>
-<li>GB18030</li>
-</ul>
-</li>
-<li>ISO-8859</li>
-<li>BIG5</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li><p>“abc”</p>
-<ul>
-<li>“\x10” –&gt; 8</li>
-<li>“\u000a”</li>
-</ul>
-</li>
-<li><p>‘abc’</p>
-</li>
-<li><p>`abc`</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
-<li>true</li>
-<li>false</li>
-</ul>
-<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
-<li>typeof 下为 Object</li>
-</ul>
-<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Reg -- String</title>
-    <url>/2020/04/21/Reg-String/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
-
-
-</li>
-</ul>
-<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
-</li>
-<li><p>StringLiteral ::</p>
-<ul>
-<li><p>DoubleStringCharacters</p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/03c05dd8a9fd5b8b621593fe039e4e6c16908.png" alt="DoubleStringCharacters 大纲"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/ef23a0f824e9fc948b61da6c4a8d2a4729602.png" alt="DoubleStringCharacter 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/9004c303c8ebdbb8e38c00e7597b2c5b10649.png" alt="SourceCharacter 详情"></p>
-<blockquote>
-<p>\\u[0-9a-fA-F]{4}</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/25a7c00f444aaead5b3a187d09ab280a16997.png" alt="EscapeSequence 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/ef30597fe4124e22ae7fcf243d9712a310845.png" alt="CharacterEscapeSequence 详情"></p>
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/b495509fe89ca78a7d2f5f06831d45c79074.png" alt="SingleEscapeCharacter 详情"></p>
-<blockquote>
-<p>‘“\\bfnrtv</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/7ce330d5a54c7c8ac927771ee7a0540814453.png" alt="NonEscapeCharacter 详情"></p>
-<ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/f3d3a1b2fba86ebd4b8b6ab2959302e610550.png" alt="EscapeCharacter 详情"></p>
-<blockquote>
-<p>‘“\\bfnrtv0-9xu </p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/8c027b4dfef1876ad432fd62b6ecc4a59724.png" alt="LineTerminator 详情"></p>
-<blockquote>
-<p>\n\r\u2028\u2029</p>
-</blockquote>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/02a7f707581cb217ab5025d7a48e67e829247.png" alt="LineTerminator 码点"></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>CharacterEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>‘“\\bfnrtv0-9xu\n\r\u2028\u2029</p>
-</blockquote>
-</li>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/9207083723607a9faa4f0a560599dde17694.png" alt="HexEscapeSequence 详情"></p>
-</li>
-<li><p><strong>HexEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>\\x[0-9a-fA-F]{2}</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/545f52e053421a0e9c5e3b231a96276d10075.png" alt="UnicodeEscapeSequence 详情"></p>
-<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/8bb8c713ee753fd2844aea95e3ecde417620.png" alt="Hex4Digits 详情"></li>
-</ul>
-</li>
-<li><p><strong>UnicodeEscapeSequence</strong>总结为：</p>
-<blockquote>
-<p> \\u[0-9a-fA-F]{4}</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>EscapeSequence</strong>总结为：</p>
-<blockquote>
-<p>(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4})</p>
-</blockquote>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/bd86a4d39c1ae8d719eca6afbd9dcb147948.png" alt="LineContinuation 详情"></p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/e8b4e35d4653ecb6a0f89d848085f69b14054.png" alt="LineTerminatorSequence 详情"></li>
-</ul>
-</li>
-<li><p><strong>LineContinuation</strong>总结为：</p>
-<blockquote>
-<p>\\\n\r\u\2028]2029</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>DoubleStringCharacters</strong>总结为：</p>
-<blockquote>
-<p>“(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”</p>
-</blockquote>
-</li>
-<li><p>SingleStringCharacters</p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/6d2e2b31ed15050de59907d5537b9e9219247.png" alt="SingleStringCharacters 大纲"></li>
-</ul>
-</li>
-<li><p><strong>SingleStringCharacters</strong>总结为：</p>
-<blockquote>
-<p>‘(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>StringLiteral</strong>总结为：</p>
-<blockquote>
-<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
-</blockquote>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-        <tag>正则表达式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Reg-Number</title>
     <url>/2020/04/20/Reg-Number/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1311,6 +1149,168 @@
 <li>特殊情况 .0<ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/5d38329b0247e224ac893957ae24e9a150951.png" alt="特殊情况"></li>
 </ul>
+</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+        <tag>正则表达式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reg -- String</title>
+    <url>/2020/04/21/Reg-String/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>正则表达式，匹配所有 字符串 字面量<a id="more"></a>
+
+
+</li>
+</ul>
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/42c12116bea0d20ad46f3eaaec710ee419568.png" alt="StringLiteral 大纲"></p>
+</li>
+<li><p>StringLiteral ::</p>
+<ul>
+<li><p>DoubleStringCharacters</p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/03c05dd8a9fd5b8b621593fe039e4e6c16908.png" alt="DoubleStringCharacters 大纲"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/ef23a0f824e9fc948b61da6c4a8d2a4729602.png" alt="DoubleStringCharacter 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/9004c303c8ebdbb8e38c00e7597b2c5b10649.png" alt="SourceCharacter 详情"></p>
+<blockquote>
+<p>\\u[0-9a-fA-F]{4}</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/25a7c00f444aaead5b3a187d09ab280a16997.png" alt="EscapeSequence 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/ef30597fe4124e22ae7fcf243d9712a310845.png" alt="CharacterEscapeSequence 详情"></p>
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/b495509fe89ca78a7d2f5f06831d45c79074.png" alt="SingleEscapeCharacter 详情"></p>
+<blockquote>
+<p>‘“\\bfnrtv</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/7ce330d5a54c7c8ac927771ee7a0540814453.png" alt="NonEscapeCharacter 详情"></p>
+<ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/f3d3a1b2fba86ebd4b8b6ab2959302e610550.png" alt="EscapeCharacter 详情"></p>
+<blockquote>
+<p>‘“\\bfnrtv0-9xu </p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/8c027b4dfef1876ad432fd62b6ecc4a59724.png" alt="LineTerminator 详情"></p>
+<blockquote>
+<p>\n\r\u2028\u2029</p>
+</blockquote>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/02a7f707581cb217ab5025d7a48e67e829247.png" alt="LineTerminator 码点"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>CharacterEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>‘“\\bfnrtv0-9xu\n\r\u2028\u2029</p>
+</blockquote>
+</li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/9207083723607a9faa4f0a560599dde17694.png" alt="HexEscapeSequence 详情"></p>
+</li>
+<li><p><strong>HexEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>\\x[0-9a-fA-F]{2}</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/545f52e053421a0e9c5e3b231a96276d10075.png" alt="UnicodeEscapeSequence 详情"></p>
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/8bb8c713ee753fd2844aea95e3ecde417620.png" alt="Hex4Digits 详情"></li>
+</ul>
+</li>
+<li><p><strong>UnicodeEscapeSequence</strong>总结为：</p>
+<blockquote>
+<p> \\u[0-9a-fA-F]{4}</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>EscapeSequence</strong>总结为：</p>
+<blockquote>
+<p>(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4})</p>
+</blockquote>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/bd86a4d39c1ae8d719eca6afbd9dcb147948.png" alt="LineContinuation 详情"></p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/e8b4e35d4653ecb6a0f89d848085f69b14054.png" alt="LineTerminatorSequence 详情"></li>
+</ul>
+</li>
+<li><p><strong>LineContinuation</strong>总结为：</p>
+<blockquote>
+<p>\\\n\r\u\2028]2029</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>DoubleStringCharacters</strong>总结为：</p>
+<blockquote>
+<p>“(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”</p>
+</blockquote>
+</li>
+<li><p>SingleStringCharacters</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/6d2e2b31ed15050de59907d5537b9e9219247.png" alt="SingleStringCharacters 大纲"></li>
+</ul>
+</li>
+<li><p><strong>SingleStringCharacters</strong>总结为：</p>
+<blockquote>
+<p>‘(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>StringLiteral</strong>总结为：</p>
+<blockquote>
+<p>(^”(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*”$)|(^’(?:(\\(‘“\\bfnrtv0-9xu\n\r\u2028\u2029])|(\\x[0-9a-fA-F]{2})|(\\u[0-9a-fA-F]{4}))|(\\\n\r\u\2028]2029))*’$)</p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(^<span class="string">"(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">"$)|(^'(?:(\\('"</span>\\bfnrtv0<span class="number">-9</span>xu\n\\r\u2028\u2029])|(\x[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">2</span>&#125;)|(\u[<span class="number">0</span><span class="number">-9</span>a-fA-F]&#123;<span class="number">4</span>&#125;))|(\\\n\r\u\<span class="number">2028</span>]<span class="number">2029</span>))*<span class="string">'$)</span></span><br></pre></td></tr></table></figure>
+
+
 </li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
@@ -1523,8 +1523,8 @@
         <category>前端概念</category>
       </categories>
       <tags>
-        <tag>前端概念</tag>
         <tag>算法</tag>
+        <tag>前端概念</tag>
       </tags>
   </entry>
   <entry>
@@ -1681,6 +1681,115 @@
       </tags>
   </entry>
   <entry>
+    <title>【未完】前端性能监控</title>
+    <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>记录 性能监控 方面的学习过程🤔</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
+<li>Gmail SPA</li>
+<li>Angular/React/Vue MVVM/工程化</li>
+<li>weex/react native 跨端</li>
+<li>Node 全栈</li>
+</ul>
+<h3 id="前端变化给监控带来了什么样的改变"><a href="#前端变化给监控带来了什么样的改变" class="headerlink" title="前端变化给监控带来了什么样的改变"></a>前端变化给监控带来了什么样的改变</h3><ul>
+<li>传统监控模式能否使用于新的技术？比如 PV 统计<ul>
+<li>导致 PV 下降的原因和解法</li>
+<li>原因<ul>
+<li>业内路由替代了请求新的页面</li>
+</ul>
+</li>
+<li>解法<ul>
+<li>哈希路由：监听 hash change 变化上报 PV</li>
+<li>非哈希路由(Angular): 轻量 hack pushState 和 replaceState</li>
+</ul>
+</li>
+<li>案例<ul>
+<li>下拉刷新</li>
+<li>滚屏分页</li>
+<li>阿里云邮后台一直开着，每周上百次查看</li>
+<li>未关闭的浏览器 Ta b几小时后再次浏览</li>
+<li>查找信息时，浏览器 Tab 之间快速切换</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SPA模式下首屏如何计算？<ul>
+<li>第一阶段：自定义打点时期<ul>
+<li>页头和首屏dom处分别通过 new Date() 打点</li>
+</ul>
+</li>
+<li>第二阶段：W3C标准时期<ul>
+<li>Navigaion Timing API</li>
+</ul>
+</li>
+<li>第三阶段：SPA盛行导致w3c标准失去原来的意义</li>
+<li>现阶段：用户感官指标FMP<ul>
+<li>FMP：主要内容可见时间</li>
+<li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
+<li>什么原因导致猜想不成立？<ul>
+<li>元素是否可见</li>
+<li>每个元素对页面的影响是否等效？ –&gt; 权重</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>下一阶段：W3C/paint-timing 首屏加载时间计算已经在提案中</li>
+</ul>
+</li>
+<li>跨端开发给监控带来什么挑战？</li>
+<li>前端监控的上报模式在 Node.js 端是否合理？</li>
+</ul>
+<h3 id="前端监控的最佳实践"><a href="#前端监控的最佳实践" class="headerlink" title="前端监控的最佳实践"></a>前端监控的最佳实践</h3><ul>
+<li>主动监控</li>
+<li>性能样本分布 &amp; 慢会话<ul>
+<li>慢会话追踪</li>
+</ul>
+</li>
+<li>搜索报错明细</li>
+<li>出错行为还原</li>
+</ul>
+<h3 id="阿里云ARMS前端监控系统架构"><a href="#阿里云ARMS前端监控系统架构" class="headerlink" title="阿里云ARMS前端监控系统架构"></a>阿里云ARMS前端监控系统架构</h3><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>性能监控</category>
+      </categories>
+      <tags>
+        <tag>性能监控</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>微信小程序-气泡框</title>
     <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1798,115 +1907,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【未完】前端性能监控</title>
-    <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>记录 性能监控 方面的学习过程🤔</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
-<li>Gmail SPA</li>
-<li>Angular/React/Vue MVVM/工程化</li>
-<li>weex/react native 跨端</li>
-<li>Node 全栈</li>
-</ul>
-<h3 id="前端变化给监控带来了什么样的改变"><a href="#前端变化给监控带来了什么样的改变" class="headerlink" title="前端变化给监控带来了什么样的改变"></a>前端变化给监控带来了什么样的改变</h3><ul>
-<li>传统监控模式能否使用于新的技术？比如 PV 统计<ul>
-<li>导致 PV 下降的原因和解法</li>
-<li>原因<ul>
-<li>业内路由替代了请求新的页面</li>
-</ul>
-</li>
-<li>解法<ul>
-<li>哈希路由：监听 hash change 变化上报 PV</li>
-<li>非哈希路由(Angular): 轻量 hack pushState 和 replaceState</li>
-</ul>
-</li>
-<li>案例<ul>
-<li>下拉刷新</li>
-<li>滚屏分页</li>
-<li>阿里云邮后台一直开着，每周上百次查看</li>
-<li>未关闭的浏览器 Ta b几小时后再次浏览</li>
-<li>查找信息时，浏览器 Tab 之间快速切换</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>SPA模式下首屏如何计算？<ul>
-<li>第一阶段：自定义打点时期<ul>
-<li>页头和首屏dom处分别通过 new Date() 打点</li>
-</ul>
-</li>
-<li>第二阶段：W3C标准时期<ul>
-<li>Navigaion Timing API</li>
-</ul>
-</li>
-<li>第三阶段：SPA盛行导致w3c标准失去原来的意义</li>
-<li>现阶段：用户感官指标FMP<ul>
-<li>FMP：主要内容可见时间</li>
-<li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
-<li>什么原因导致猜想不成立？<ul>
-<li>元素是否可见</li>
-<li>每个元素对页面的影响是否等效？ –&gt; 权重</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>下一阶段：W3C/paint-timing 首屏加载时间计算已经在提案中</li>
-</ul>
-</li>
-<li>跨端开发给监控带来什么挑战？</li>
-<li>前端监控的上报模式在 Node.js 端是否合理？</li>
-</ul>
-<h3 id="前端监控的最佳实践"><a href="#前端监控的最佳实践" class="headerlink" title="前端监控的最佳实践"></a>前端监控的最佳实践</h3><ul>
-<li>主动监控</li>
-<li>性能样本分布 &amp; 慢会话<ul>
-<li>慢会话追踪</li>
-</ul>
-</li>
-<li>搜索报错明细</li>
-<li>出错行为还原</li>
-</ul>
-<h3 id="阿里云ARMS前端监控系统架构"><a href="#阿里云ARMS前端监控系统架构" class="headerlink" title="阿里云ARMS前端监控系统架构"></a>阿里云ARMS前端监控系统架构</h3><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>性能监控</category>
-      </categories>
-      <tags>
-        <tag>性能监控</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数组、链表、跳表</title>
     <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1940,81 +1940,6 @@
 <li>找最近重复问题</li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>【未完】计算机图形学初探</title>
-    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li><p>记录 计算机图形学 方面的学习过程🤔</p>
-<a id="more"></a>
-
-</li>
-</ul>
-<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>前端与图形学<ul>
-<li>shader</li>
-</ul>
-</li>
-<li>图形学应用场景<ul>
-<li>Image<ul>
-<li>pattern（多用于背景）</li>
-<li>photo</li>
-<li>shape</li>
-</ul>
-</li>
-<li>来自数学的图形–分形</li>
-<li>来自物理的图形–光的衍射<ul>
-<li>相变</li>
-<li>绿幕<ul>
-<li>PNG24 –&gt; 2张 jpg</li>
-</ul>
-</li>
-<li>3D效果<ul>
-<li>three.js</li>
-<li>babylon.js</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机图形学</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
-      </tags>
   </entry>
   <entry>
     <title>自己的前端知识体系</title>
@@ -2331,6 +2256,81 @@
       </categories>
       <tags>
         <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【未完】计算机图形学初探</title>
+    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><p>记录 计算机图形学 方面的学习过程🤔</p>
+<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
+<li>前端与图形学<ul>
+<li>shader</li>
+</ul>
+</li>
+<li>图形学应用场景<ul>
+<li>Image<ul>
+<li>pattern（多用于背景）</li>
+<li>photo</li>
+<li>shape</li>
+</ul>
+</li>
+<li>来自数学的图形–分形</li>
+<li>来自物理的图形–光的衍射<ul>
+<li>相变</li>
+<li>绿幕<ul>
+<li>PNG24 –&gt; 2张 jpg</li>
+</ul>
+</li>
+<li>3D效果<ul>
+<li>three.js</li>
+<li>babylon.js</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机图形学</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
       </tags>
   </entry>
   <entry>
@@ -3334,261 +3334,6 @@
       </tags>
   </entry>
   <entry>
-    <title>微信小程序-获取图片主色调</title>
-    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E4%B8%BB%E8%89%B2%E8%B0%83/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>是的我要开始做：根据图片的主色调来改变一下页面背景颜色了🙆</li>
-<li>记录一下，自己碰到的问题以及思考</li>
-<li><a href="https://github.com/Ele-Peng/miniprogram-main-color" target="_blank" rel="noopener">miniprogram-main-color 完整代码 点击一下</a> 欢迎大家去star😘</li>
-</ul>
-<hr>
-<h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><ul>
-<li>理一下思路<ol>
-<li>将网络图片绘制进canvas</li>
-<li>通过canvas的getImageData获取图片的像素数据<ul>
-<li><a href="https://blog.csdn.net/Elle_Peng/article/details/105030971" target="_blank" rel="noopener">canvas 2d 与旧版 canvas 将网络图片绘制进canvas的两种方法实践</a></li>
-</ul>
-</li>
-<li>分析目前主要用于获取图片主色调的算法，并实践</li>
-<li>得到主要色调，再将rgb转换成hsb，并对b值，进行修改，制作渐变，左侧35，右侧15<a id="more"></a>
-<ul>
-<li>嗯，祝我成功<h2 id="颜色空间基础知识背景-减色算法"><a href="#颜色空间基础知识背景-减色算法" class="headerlink" title="颜色空间基础知识背景+减色算法"></a>颜色空间基础知识背景+减色算法</h2></li>
-<li><a href="http://www.360doc.com/content/17/0417/19/41797635_646363886.shtml" target="_blank" rel="noopener">颜色空间 RGB CMY HSV HSL LAB</a></li>
-<li>图片颜色量化算法</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>比较常见的应用就是用于提取图片的主色调用于上色配色,当然也可以用于图像分割</li>
-<li>主流算法<ul>
-<li>两个大方向</li>
-<li><strong>在颜色空间合理地选取采样点来构造颜色表，使得减色后的图像和原图尽可能地接近</strong><ul>
-<li>直接量化<ul>
-<li>对每个颜色通道单独重新采样，将每个通道的色阶从256减少到某个指定的数字。这样得到一个新的小的多的颜色空间，而原图像中的每一个像素将被用在新的颜色空间中的最近邻取代</li>
-</ul>
-</li>
-<li>统计量化<ul>
-<li>核心：调整直方图使得累积分布曲线呈线性，从而使图像像素点的亮度值尽可能均匀地分布</li>
-<li>利用原图的直方图来引导采样点的选取，使得每个采样点可以大致覆盖相同数量的像素点</li>
-<li>对每个颜色通道建立直方图，然后根据这些直方图对各个颜色通道单独采样，在像素值分布多的区域进行密集采样，别的区域稀疏采样，再利用这些采样点来组合成最终的颜色表，原图中的每个像素点用颜色表中最接近的颜色替换掉</li>
-</ul>
-</li>
-<li>颜色空间分割(Median-Cut)<ul>
-<li>核心：在颜色空间建立一棵二叉树，通过不断地细化这棵树来近似得到一个颜色三维直方图，然后再根据这棵树来分配采样点</li>
-<li>基于图像颜色样本分布的自适应方法，不论图像中颜色样本的分布如何，总是可以生成一个和颜色样本分布匹配良好的颜色表：在颜色样本分布密集的区域内采样点分布也相对密集，其他区域则分配了较少的采样点。且相同数目的颜色样本总是用同样数量的采样点来代表，所以颜色样本分布密集的区域，采样点的数量自然就会多，反之则相应的比较少</li>
-<li>最重要、应用最广泛的减色算法之一</li>
-</ul>
-</li>
-<li>k均值聚类(k-Means clustering)<ul>
-<li>核心：将像素按颜色的相似程度归类</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>从一个初始的颜色表出发，通过不断修改颜色表来改善减色效果</strong><ul>
-<li>神经网络方法(ANN)<ul>
-<li>颜色表通过神经元来编码，通过缓慢的调节神经元的颜色值以保证整个神经网络逐步收敛于最小误差状态（即通过神经网络产生的图像和原图之间误差最小）<h2 id="直接量化实践"><a href="#直接量化实践" class="headerlink" title="直接量化实践"></a>直接量化实践</h2><ul>
-<li>首先我们可以来看一看getImageData后的数据</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzljZjVjMjQzMDI0NmE0YjE0YzFlYmMzMjYwZDkwYTgwNTQzMDIucG5n?x-oss-process=image/format,png" alt="getImageData数据"></li>
-<li>可以简单看作是外层循环为rgba的打平了二维数组<ul>
-<li>如果按满足需求做，只要一个主色调的话，可以把整个getImageData获得的数据，进行各个通道的平均值求值，再拼接，像这样<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">getUniqueColor(imageData) &#123;</span><br><span class="line">   <span class="keyword">let</span> res_r = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_g = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_b = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_a = <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imageData.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">0</span>) &#123;</span><br><span class="line">       res_r += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">1</span>) &#123;</span><br><span class="line">       res_g += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">2</span>) &#123;</span><br><span class="line">       res_b += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">3</span>) &#123;</span><br><span class="line">       res_a += imageData[i]</span><br><span class="line">     &#125; </span><br><span class="line">   &#125;</span><br><span class="line">   res_r = <span class="built_in">Math</span>.round(res_r / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_g =  <span class="built_in">Math</span>.round(res_g / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_b =  <span class="built_in">Math</span>.round(res_b / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_a =  <span class="built_in">Math</span>.round(res_a / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_r'</span>, res_r)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_g'</span>, res_g)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_b'</span>, res_b)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_a'</span>, res_a)</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>运行截图<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzc4NzFiOTVmYzA4NWQ3NGQwNDc4OWY0ZWI5Yzc0YThmNzQ5OTYucG5n?x-oss-process=image/format,png" alt="暴力法求主色调"></li>
-<li>无相关点越多，误差越大👎<ul>
-<li>我们可以“对每个颜色通道单独重新采样，将每个通道的色阶从256减少到某个指定的数字。这样得到一个新的小的多的颜色空间，而原图像中的每一个像素将被用在新的颜色空间中的最近邻取代”<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> COLOR_SIZE = <span class="number">40</span> <span class="comment">// 单位色块的大小（像素个数，默认40）。以单位色块的平均像素值为作为统计单位</span></span><br><span class="line"><span class="keyword">const</span> LEVEL = <span class="number">32</span> <span class="comment">// 色深，颜色分区参数（0-255），总256，2^8，即8bit，4个通道（rgba），即默认色深4*8bit，32bit</span></span><br><span class="line"><span class="comment">// 分区块，可以拓展性的求主要色板，用来做palette</span></span><br><span class="line">   <span class="keyword">const</span> mapData = that.getLevelData(imageData);</span><br><span class="line">   <span class="keyword">const</span> colors = that.getMostColor(mapData);</span><br><span class="line">   <span class="keyword">if</span> (!colors) &#123;</span><br><span class="line">     <span class="keyword">return</span></span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">const</span> color = that.getAverageColor(colors)</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'color'</span>, color)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>将getImageData数据分成特定大小的区块，分别算出各个区块的averageColor，再利用map特性，将averageColor作key，count各个averageColor个数  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取每段的颜色数据</span></span><br><span class="line"><span class="comment">// 根据像素数据，按单位色块进行切割</span></span><br><span class="line">getLevelData(imageData) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = imageData.length;</span><br><span class="line">  <span class="keyword">const</span> mapData = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i += COLOR_SIZE * <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> blockColor = <span class="keyword">this</span>.getBlockColor(imageData, i); <span class="comment">// 该区块平均rgba [&#123;r,g,b,a&#125;]数据</span></span><br><span class="line">    <span class="comment">// 获取各个区块的平均rgba数据，将各个通道的颜色进行LEVEL色深降级</span></span><br><span class="line">    <span class="comment">// 根据r_g_b_a 建立map索引</span></span><br><span class="line">    <span class="keyword">const</span> key = <span class="keyword">this</span>.getColorLevel(blockColor);</span><br><span class="line">    !mapData[key] &amp;&amp; (mapData[key] = []);</span><br><span class="line">    mapData[key].push(blockColor);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> mapData;</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 获取单位块的全部色值</span></span><br><span class="line"><span class="comment">// 并根据全部色值，计算平均色值</span></span><br><span class="line"><span class="comment">// 处理最后边界值，小于COLOR_SIZE</span></span><br><span class="line">getBlockColor(imageData, start) &#123;</span><br><span class="line">  <span class="keyword">let</span> data = [],</span><br><span class="line">    count = COLOR_SIZE,</span><br><span class="line">    len = COLOR_SIZE * <span class="number">4</span>;</span><br><span class="line">  imageData.length &lt;= start + len &amp;&amp; (count = <span class="built_in">Math</span>.floor((imageData.length - start - <span class="number">1</span>) / <span class="number">4</span>));</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; count; i += <span class="number">4</span>) &#123;</span><br><span class="line">    data.push(&#123;</span><br><span class="line">      r: imageData[start + i + <span class="number">0</span>],</span><br><span class="line">      g: imageData[start + i + <span class="number">1</span>],</span><br><span class="line">      b: imageData[start + i + <span class="number">2</span>],</span><br><span class="line">      a: imageData[start + i + <span class="number">3</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getAverageColor(data);</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 取出各个通道的平均值，即为改色块的平均色值</span></span><br><span class="line">getAverageColor(colorArr) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = colorArr.length;</span><br><span class="line">  <span class="keyword">let</span> sr = <span class="number">0</span>, sg = <span class="number">0</span>, sb = <span class="number">0</span>, sa = <span class="number">0</span>;</span><br><span class="line">  colorArr.map(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">    sr += item.r;</span><br><span class="line">    sg += item.g;</span><br><span class="line">    sb += item.b;</span><br><span class="line">    sa += item.a;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    r: <span class="built_in">Math</span>.round(sr / len),</span><br><span class="line">    g: <span class="built_in">Math</span>.round(sg / len),</span><br><span class="line">    b: <span class="built_in">Math</span>.round(sb / len),</span><br><span class="line">    a: <span class="built_in">Math</span>.round(sa / len)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line">getColorLevel(color) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getLevel(color.r) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.g) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.b) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.a)</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 色深降级</span></span><br><span class="line">getLevel(value) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.round(value / LEVEL)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
-<li>把出现次数最多的averageColor区块，作为采样区块，再获取一遍averageColor，即是最终主色调  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 根据色块颜色，获取</span></span><br><span class="line">getMostColor(colorData) &#123;</span><br><span class="line">  <span class="keyword">let</span> rst = <span class="literal">null</span>, len = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> colorData) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, colorData[key].length)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, colorData[key])</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, key)</span><br><span class="line">    colorData[key].length &gt; len &amp;&amp; (</span><br><span class="line">      rst = colorData[key],</span><br><span class="line">      len = colorData[key].length</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> rst;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
-<li>运行截图<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2ViYzI3MmNkNzU2NjNhODUxYmM2MWQ0MDE4OWJjZGI3NzQ5NDUucG5n?x-oss-process=image/format,png" alt="区块获取主色调"></li>
-<li>颜色可信度提高了很多<h2 id="拓展实践-医学灰色影像"><a href="#拓展实践-医学灰色影像" class="headerlink" title="拓展实践-医学灰色影像"></a>拓展实践-医学灰色影像</h2><ul>
-<li>核心：将<strong>三通道转成单通道</strong>即可<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> greyImageData = that.greyTheImage(imageData)</span><br><span class="line">   wx.canvasPutImageData(&#123;</span><br><span class="line">     canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">     x: <span class="number">150</span>,</span><br><span class="line">     y: <span class="number">0</span>,</span><br><span class="line">     width: <span class="number">150</span>,</span><br><span class="line">     height: <span class="number">100</span>,</span><br><span class="line">     data: greyImageData,</span><br><span class="line">     success (res) &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'canvasPutImageData it worked!'</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line"> greyTheImage(imageData) &#123;</span><br><span class="line">     <span class="comment">// imageData有4个通道rgba</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imageData.length; i += <span class="number">4</span>) &#123;</span><br><span class="line">       <span class="keyword">let</span> sum_rgb = <span class="number">0</span></span><br><span class="line">       <span class="comment">// 但我们只需要rgb三通道，a-alpha通道无用</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j += <span class="number">1</span>) &#123;</span><br><span class="line">         sum_rgb = sum_rgb + imageData[i + j]</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">let</span> grey = <span class="built_in">Math</span>.round(sum_rgb / <span class="number">3</span>)</span><br><span class="line">       imageData[i] = grey</span><br><span class="line">       imageData[i + <span class="number">1</span>] = grey</span><br><span class="line">       imageData[i + <span class="number">2</span>] = grey</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> imageData</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></li>
-<li>运行截图<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmNWJhNzk2OTJjOWEwOTA2MDNlMzkxMzBlMDRiZTY4MTAwNzcwLnBuZw?x-oss-process=image/format,png" alt="医学灰色影像"></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="格式化rgba输出"><a href="#格式化rgba输出" class="headerlink" title="格式化rgba输出"></a>格式化rgba输出</h2><ul>
-<li>像这样<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxNDVhYzM4YzQ1MjFkNDgzNGNkZGQ5NTNmNjQ1MWQ3NTI0NTkucG5n?x-oss-process=image/format,png" alt="格式化rgba输出">  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对最终颜色的字符串格式化</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * result:&#123;</span></span><br><span class="line"><span class="comment"> *   hex:'#ffffff',            十六位值</span></span><br><span class="line"><span class="comment"> *   hexa:'#ffffff00',         十六位值带alpha值</span></span><br><span class="line"><span class="comment"> *   rgb:'rgb(0,0,0)',         RGB值</span></span><br><span class="line"><span class="comment"> *   rgba:'rgba(0,0,0,0)'      RGB值带alpha值</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">	</span><br><span class="line">colorStrFormat(color) &#123;</span><br><span class="line">  <span class="keyword">const</span> rgba = <span class="string">'rgba('</span> + color.r + <span class="string">','</span> + color.g + <span class="string">','</span> + color.b + <span class="string">','</span> + (color.a / <span class="number">255</span>).toFixed(<span class="number">4</span>).replace(<span class="regexp">/\.*0+$/</span>, <span class="string">''</span>) + <span class="string">')'</span>;</span><br><span class="line">  <span class="keyword">const</span> rgb = <span class="string">'rgb('</span> + color.r + <span class="string">','</span> + color.g + <span class="string">','</span> + color.b + <span class="string">')'</span>;</span><br><span class="line">  <span class="keyword">const</span> hex = <span class="string">'#'</span> + <span class="keyword">this</span>.Num2Hex(color.r) + <span class="keyword">this</span>.Num2Hex(color.g) + <span class="keyword">this</span>.Num2Hex(color.b);</span><br><span class="line">  <span class="keyword">const</span> hexa = hex + <span class="keyword">this</span>.Num2Hex(color.a);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    rgba: rgba,</span><br><span class="line">    rgb: rgb,</span><br><span class="line">    hex: hex,</span><br><span class="line">    hexa: hexa</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">	</span><br><span class="line">Num2Hex(num) &#123;</span><br><span class="line">  <span class="keyword">const</span> hex = num.toString(<span class="number">16</span>) + <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">if</span> (hex.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'0'</span> + hex;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> hex;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2></li>
-<li><a href="https://blog.csdn.net/u012843346/article/details/16839649" target="_blank" rel="noopener">phg1024 JavaScript图像处理(6) - 减色算法(Color Reduction)</a></li>
-<li><a href="https://github.com/whoiam2007s/ImgMainColor" target="_blank" rel="noopener">获取图片主色调的插件</a></li>
-<li>其实也可以利用 <a href="https://blog.csdn.net/nanhupatar/article/details/82793637" target="_blank" rel="noopener">CSS新特性去改变背景颜色</a>，比如高斯模糊等来达到业务需求<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
-<li>周六听了一天 John Lennon 歌曲【这也是我拖更的原因😶 羡慕他和 Yoko 那段伊甸园般的爱情，他对 Yoko 的痴爱，他和母亲的两次分别感同身受，Beatles在一起做音乐的欢乐，他对 Sean 的宠溺父爱，但他的人生却在一次枪杀后戛然而止，心痛 心痛 🌧</li>
-<li>祝大家多多发财</li>
-</ul>
-<hr>
-]]></content>
-      <categories>
-        <category>微信小程序</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微信小程序-fix canvas原生组件最顶层</title>
-    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>大家应该都知道过，在微信小程序中，canvas等原生组件的层级是最高的，页面中无论你设置多大的z-index都无法覆盖在其之上，这就可能会产生一些问题</li>
-<li>就像这样<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png" alt="canvas顶层问题截图"></li>
-<li>柱状图是用canvas画的，它置于了我的tooltip之上。【这看起来真是一个可怕的问题<a id="more"></a>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><ul>
-<li>微信官方提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html" target="_blank" rel="noopener">cover-view</a>原生组件，覆盖在原生组件之上的文本视图</li>
-<li>微信官方提供了将canvas转化为图片的方式–<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
-</ul>
-<h3 id="方法一：cover-view"><a href="#方法一：cover-view" class="headerlink" title="方法一：cover-view"></a>方法一：cover-view</h3><ul>
-<li>将tooltip用cover-view改写，效果如下<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2Y0MTZjZjhlMjNiZWEwMjNjYTM1M2JhOGExMDM1MDM2MzYyOTIucG5n?x-oss-process=image/format,png" alt="cover-view version0.1 截图"></li>
-<li>看上去，是解决了我们的问题，且tooltip后的灰色背景不能滑动了，【妈耶，好棒！</li>
-<li>但是，这产生了一个：<strong>当文本超出tooltip宽度时，scroll-y: auto，失效了，溢出部分被直接截取</strong></li>
-<li>罪魁祸首就是它<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2M5ZDljYjZiZTQ0ZGY3YmJmNmRlMjAxNDM1ZmYzOTJjNDMxNDMucG5n?x-oss-process=image/format,png" alt="cover内置样式"></li>
-</ul>
-</li>
-<li>那我们可以：<ul>
-<li>在tooltip分段内容中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content-rule</span> &#123;</span><br><span class="line">    <span class="attribute">white-space</span>: pre-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>在内容wrapper中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>完美解决<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2FhZjRkMDAyODdjZGI4M2Y0NWRhMGVkOTg3Mzc5MGNhNDQxMjkucG5n?x-oss-process=image/format,png" alt="cover-view解决图"><h3 id="方法二：wx-canvasToTempFilePath"><a href="#方法二：wx-canvasToTempFilePath" class="headerlink" title="方法二：wx.canvasToTempFilePath"></a>方法二：wx.canvasToTempFilePath</h3></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>首先我们要做的就是将网络图片绘制进canvas，官方关于canvas类型有两种<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2E4ZjJmNjA5OGYxNmQ4MzY3NWJiN2I3OWY0ZDM1NWM1MTAwMDg3LnBuZw?x-oss-process=image/format,png" alt="两种canvas类型"></li>
-<li>新canvas 2D接口尝试  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzE5ZWE3ZGYxYjg2ODUzOWFhNzVhY2E0OTAxYzI2MzU2OTk4NDYucG5n?x-oss-process=image/format,png" alt="canvas2d 运行截图"></li>
-<li>第二种旧canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line">   wx.getImageInfo(&#123;</span><br><span class="line">       src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">       success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">         <span class="keyword">const</span> poster = res.path                                  </span><br><span class="line">         ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">         ctx.draw()</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">     <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">     wx.canvasGetImageData(&#123;</span><br><span class="line">       canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">       x: <span class="number">0</span>,</span><br><span class="line">       y: <span class="number">0</span>,</span><br><span class="line">       width: <span class="number">150</span>,</span><br><span class="line">       height: <span class="number">100</span>,</span><br><span class="line">       success(res) &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzU4NTg5MzQ4MDc3Njk3OTA0OTRmZmIzOWRiNDdjMWRmNjk4ODQucG5n?x-oss-process=image/format,png" alt="旧canvas"></li>
-<li>虽然两种方法，都能实现将网络图片绘制进canvas，但新版的进行了createImage，将其打印的话，其实就是新建了一个img标签，并将img标签的东西绘制进canvas<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzFjMjE1NzMzZTRkY2UzNGZiNzI4NDFhZWEyMDc0ZWIwMjQ1OTQucG5n?x-oss-process=image/format,png" alt="img console"></li>
-<li>为什么微信官方会仅支持以下方式进行新版canvas2d 图片的绘制，考虑是什么？</li>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JhYWQ1OWRhNDI4M2FjZmViZTY1NGQ0ZWZiNTAxZDZlMjAxMjE2LnBuZw?x-oss-process=image/format,png" alt="经典报错"></li>
-</ul>
-</li>
-<li>现在我们要将canvas的内容导成图片，同样分成新旧两版</li>
-<li>主要思路都是：在wxml中，如果canvas绘制图片没有完成，则显示canvas内容，绘制完成后，就利用canvasToTempFilePath，将图层内容生成指定大小图片，显示image<ul>
-<li>canvas2d   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">   <span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'img'</span>, img)</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">           wx.canvasToTempFilePath(&#123;</span><br><span class="line">             x: <span class="number">0</span>,</span><br><span class="line">             y: <span class="number">0</span>,</span><br><span class="line">             width: <span class="number">100</span>,</span><br><span class="line">             height: <span class="number">100</span>,</span><br><span class="line">             destWidth: <span class="number">100</span>,</span><br><span class="line">             destHeight: <span class="number">100</span>,</span><br><span class="line">             canvas: canvas,</span><br><span class="line">             success(res) &#123;</span><br><span class="line">               that.setData(&#123;</span><br><span class="line">                 imgPath: res.tempFilePath</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125;,</span><br><span class="line">             fail(err) &#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>canvas2d 需要踩得坑是：它的官方文档🙃<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UwM2Q1ZDg0YzYyNmI0NzlmZjBjOTlmNzA1YmRhYjg5NDc5MjcucG5n?x-oss-process=image/format,png" alt="canvas2d 转图片误导"></li>
-<li>尝试下来，会<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxMjRiY2Q3ZmNjYWI5ODBlNDdkMTk2YTMyZGQyODI4NDUzODcucG5n?x-oss-process=image/format,png" alt="ctx.draw报错"></li>
-</ul>
-</li>
-<li>那我们可以继续往下看<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxODk5NWFiNDY4N2IwYmZlYzhjZTZkZWU2ZWQxYmZjMTA1MTY1LnBuZw?x-oss-process=image/format,png" alt="canvas2d tempath正确实力">这才是符合我们需要</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>运行截图<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JmMzVlMzY4YzRjMmRhYTgxNTA0NzM0YTIxZGMxM2I2NDYwNzIucG5n?x-oss-process=image/format,png" alt="canvas2d运行截图"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>旧版canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">wx.getImageInfo(&#123;</span><br><span class="line">  src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">    <span class="keyword">const</span> poster = res.path</span><br><span class="line">    ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">    ctx.draw(<span class="literal">false</span>, () =&gt; &#123;</span><br><span class="line">      wx.canvasToTempFilePath(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        width: <span class="number">100</span>,</span><br><span class="line">        height: <span class="number">100</span>,</span><br><span class="line">        destWidth: <span class="number">100</span>,</span><br><span class="line">        destHeight: <span class="number">100</span>,</span><br><span class="line">        canvasId: <span class="string">"myCanvas"</span>,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          that.setData(&#123;</span><br><span class="line">            imgPath: res.tempFilePath</span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="built_in">console</span>.log(res.tempFilePath)</span><br><span class="line">        &#125;,</span><br><span class="line">        fail(err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">    wx.canvasGetImageData(&#123;</span><br><span class="line">      canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">      x: <span class="number">0</span>,</span><br><span class="line">      y: <span class="number">0</span>,</span><br><span class="line">      width: <span class="number">150</span>,</span><br><span class="line">      height: <span class="number">100</span>,</span><br><span class="line">      success(res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>运行截图<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2EzZTRiYTBkYzc2NDgzYTM1NTYxZDcwNDUzNzZkNjZmNDU5MTgucG5n?x-oss-process=image/format,png" alt="旧版canvas运行截图"><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>感谢<a href="https://github.com/skadieyes" target="_blank" rel="noopener">Skady宝贝</a>在探讨问题中给予的帮助，欢迎大家去github找她玩👈</li>
-<li>祝大家多多发财</li>
-</ul>
-<hr>
-]]></content>
-      <categories>
-        <category>微信小程序</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基于KMP的FSM处理未知 pattern</title>
     <url>/2020/05/16/%E5%9F%BA%E4%BA%8EKMP%E7%9A%84FSM%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
     <content><![CDATA[<style  type="text/css">
@@ -3835,6 +3580,261 @@
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信小程序-fix canvas原生组件最顶层</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>大家应该都知道过，在微信小程序中，canvas等原生组件的层级是最高的，页面中无论你设置多大的z-index都无法覆盖在其之上，这就可能会产生一些问题</li>
+<li>就像这样<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png" alt="canvas顶层问题截图"></li>
+<li>柱状图是用canvas画的，它置于了我的tooltip之上。【这看起来真是一个可怕的问题<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><ul>
+<li>微信官方提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html" target="_blank" rel="noopener">cover-view</a>原生组件，覆盖在原生组件之上的文本视图</li>
+<li>微信官方提供了将canvas转化为图片的方式–<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
+</ul>
+<h3 id="方法一：cover-view"><a href="#方法一：cover-view" class="headerlink" title="方法一：cover-view"></a>方法一：cover-view</h3><ul>
+<li>将tooltip用cover-view改写，效果如下<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2Y0MTZjZjhlMjNiZWEwMjNjYTM1M2JhOGExMDM1MDM2MzYyOTIucG5n?x-oss-process=image/format,png" alt="cover-view version0.1 截图"></li>
+<li>看上去，是解决了我们的问题，且tooltip后的灰色背景不能滑动了，【妈耶，好棒！</li>
+<li>但是，这产生了一个：<strong>当文本超出tooltip宽度时，scroll-y: auto，失效了，溢出部分被直接截取</strong></li>
+<li>罪魁祸首就是它<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2M5ZDljYjZiZTQ0ZGY3YmJmNmRlMjAxNDM1ZmYzOTJjNDMxNDMucG5n?x-oss-process=image/format,png" alt="cover内置样式"></li>
+</ul>
+</li>
+<li>那我们可以：<ul>
+<li>在tooltip分段内容中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content-rule</span> &#123;</span><br><span class="line">    <span class="attribute">white-space</span>: pre-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在内容wrapper中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>完美解决<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2FhZjRkMDAyODdjZGI4M2Y0NWRhMGVkOTg3Mzc5MGNhNDQxMjkucG5n?x-oss-process=image/format,png" alt="cover-view解决图"><h3 id="方法二：wx-canvasToTempFilePath"><a href="#方法二：wx-canvasToTempFilePath" class="headerlink" title="方法二：wx.canvasToTempFilePath"></a>方法二：wx.canvasToTempFilePath</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>首先我们要做的就是将网络图片绘制进canvas，官方关于canvas类型有两种<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2E4ZjJmNjA5OGYxNmQ4MzY3NWJiN2I3OWY0ZDM1NWM1MTAwMDg3LnBuZw?x-oss-process=image/format,png" alt="两种canvas类型"></li>
+<li>新canvas 2D接口尝试  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzE5ZWE3ZGYxYjg2ODUzOWFhNzVhY2E0OTAxYzI2MzU2OTk4NDYucG5n?x-oss-process=image/format,png" alt="canvas2d 运行截图"></li>
+<li>第二种旧canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line">   wx.getImageInfo(&#123;</span><br><span class="line">       src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">       success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">         <span class="keyword">const</span> poster = res.path                                  </span><br><span class="line">         ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">         ctx.draw()</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">     <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">     wx.canvasGetImageData(&#123;</span><br><span class="line">       canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">       x: <span class="number">0</span>,</span><br><span class="line">       y: <span class="number">0</span>,</span><br><span class="line">       width: <span class="number">150</span>,</span><br><span class="line">       height: <span class="number">100</span>,</span><br><span class="line">       success(res) &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzU4NTg5MzQ4MDc3Njk3OTA0OTRmZmIzOWRiNDdjMWRmNjk4ODQucG5n?x-oss-process=image/format,png" alt="旧canvas"></li>
+<li>虽然两种方法，都能实现将网络图片绘制进canvas，但新版的进行了createImage，将其打印的话，其实就是新建了一个img标签，并将img标签的东西绘制进canvas<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzFjMjE1NzMzZTRkY2UzNGZiNzI4NDFhZWEyMDc0ZWIwMjQ1OTQucG5n?x-oss-process=image/format,png" alt="img console"></li>
+<li>为什么微信官方会仅支持以下方式进行新版canvas2d 图片的绘制，考虑是什么？</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JhYWQ1OWRhNDI4M2FjZmViZTY1NGQ0ZWZiNTAxZDZlMjAxMjE2LnBuZw?x-oss-process=image/format,png" alt="经典报错"></li>
+</ul>
+</li>
+<li>现在我们要将canvas的内容导成图片，同样分成新旧两版</li>
+<li>主要思路都是：在wxml中，如果canvas绘制图片没有完成，则显示canvas内容，绘制完成后，就利用canvasToTempFilePath，将图层内容生成指定大小图片，显示image<ul>
+<li>canvas2d   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">   <span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'img'</span>, img)</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">           wx.canvasToTempFilePath(&#123;</span><br><span class="line">             x: <span class="number">0</span>,</span><br><span class="line">             y: <span class="number">0</span>,</span><br><span class="line">             width: <span class="number">100</span>,</span><br><span class="line">             height: <span class="number">100</span>,</span><br><span class="line">             destWidth: <span class="number">100</span>,</span><br><span class="line">             destHeight: <span class="number">100</span>,</span><br><span class="line">             canvas: canvas,</span><br><span class="line">             success(res) &#123;</span><br><span class="line">               that.setData(&#123;</span><br><span class="line">                 imgPath: res.tempFilePath</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125;,</span><br><span class="line">             fail(err) &#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>canvas2d 需要踩得坑是：它的官方文档🙃<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UwM2Q1ZDg0YzYyNmI0NzlmZjBjOTlmNzA1YmRhYjg5NDc5MjcucG5n?x-oss-process=image/format,png" alt="canvas2d 转图片误导"></li>
+<li>尝试下来，会<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxMjRiY2Q3ZmNjYWI5ODBlNDdkMTk2YTMyZGQyODI4NDUzODcucG5n?x-oss-process=image/format,png" alt="ctx.draw报错"></li>
+</ul>
+</li>
+<li>那我们可以继续往下看<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxODk5NWFiNDY4N2IwYmZlYzhjZTZkZWU2ZWQxYmZjMTA1MTY1LnBuZw?x-oss-process=image/format,png" alt="canvas2d tempath正确实力">这才是符合我们需要</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JmMzVlMzY4YzRjMmRhYTgxNTA0NzM0YTIxZGMxM2I2NDYwNzIucG5n?x-oss-process=image/format,png" alt="canvas2d运行截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>旧版canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">wx.getImageInfo(&#123;</span><br><span class="line">  src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">    <span class="keyword">const</span> poster = res.path</span><br><span class="line">    ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">    ctx.draw(<span class="literal">false</span>, () =&gt; &#123;</span><br><span class="line">      wx.canvasToTempFilePath(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        width: <span class="number">100</span>,</span><br><span class="line">        height: <span class="number">100</span>,</span><br><span class="line">        destWidth: <span class="number">100</span>,</span><br><span class="line">        destHeight: <span class="number">100</span>,</span><br><span class="line">        canvasId: <span class="string">"myCanvas"</span>,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          that.setData(&#123;</span><br><span class="line">            imgPath: res.tempFilePath</span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="built_in">console</span>.log(res.tempFilePath)</span><br><span class="line">        &#125;,</span><br><span class="line">        fail(err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">    wx.canvasGetImageData(&#123;</span><br><span class="line">      canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">      x: <span class="number">0</span>,</span><br><span class="line">      y: <span class="number">0</span>,</span><br><span class="line">      width: <span class="number">150</span>,</span><br><span class="line">      height: <span class="number">100</span>,</span><br><span class="line">      success(res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2EzZTRiYTBkYzc2NDgzYTM1NTYxZDcwNDUzNzZkNjZmNDU5MTgucG5n?x-oss-process=image/format,png" alt="旧版canvas运行截图"><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>感谢<a href="https://github.com/skadieyes" target="_blank" rel="noopener">Skady宝贝</a>在探讨问题中给予的帮助，欢迎大家去github找她玩👈</li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信小程序-获取图片主色调</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E4%B8%BB%E8%89%B2%E8%B0%83/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>是的我要开始做：根据图片的主色调来改变一下页面背景颜色了🙆</li>
+<li>记录一下，自己碰到的问题以及思考</li>
+<li><a href="https://github.com/Ele-Peng/miniprogram-main-color" target="_blank" rel="noopener">miniprogram-main-color 完整代码 点击一下</a> 欢迎大家去star😘</li>
+</ul>
+<hr>
+<h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><ul>
+<li>理一下思路<ol>
+<li>将网络图片绘制进canvas</li>
+<li>通过canvas的getImageData获取图片的像素数据<ul>
+<li><a href="https://blog.csdn.net/Elle_Peng/article/details/105030971" target="_blank" rel="noopener">canvas 2d 与旧版 canvas 将网络图片绘制进canvas的两种方法实践</a></li>
+</ul>
+</li>
+<li>分析目前主要用于获取图片主色调的算法，并实践</li>
+<li>得到主要色调，再将rgb转换成hsb，并对b值，进行修改，制作渐变，左侧35，右侧15<a id="more"></a>
+<ul>
+<li>嗯，祝我成功<h2 id="颜色空间基础知识背景-减色算法"><a href="#颜色空间基础知识背景-减色算法" class="headerlink" title="颜色空间基础知识背景+减色算法"></a>颜色空间基础知识背景+减色算法</h2></li>
+<li><a href="http://www.360doc.com/content/17/0417/19/41797635_646363886.shtml" target="_blank" rel="noopener">颜色空间 RGB CMY HSV HSL LAB</a></li>
+<li>图片颜色量化算法</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>比较常见的应用就是用于提取图片的主色调用于上色配色,当然也可以用于图像分割</li>
+<li>主流算法<ul>
+<li>两个大方向</li>
+<li><strong>在颜色空间合理地选取采样点来构造颜色表，使得减色后的图像和原图尽可能地接近</strong><ul>
+<li>直接量化<ul>
+<li>对每个颜色通道单独重新采样，将每个通道的色阶从256减少到某个指定的数字。这样得到一个新的小的多的颜色空间，而原图像中的每一个像素将被用在新的颜色空间中的最近邻取代</li>
+</ul>
+</li>
+<li>统计量化<ul>
+<li>核心：调整直方图使得累积分布曲线呈线性，从而使图像像素点的亮度值尽可能均匀地分布</li>
+<li>利用原图的直方图来引导采样点的选取，使得每个采样点可以大致覆盖相同数量的像素点</li>
+<li>对每个颜色通道建立直方图，然后根据这些直方图对各个颜色通道单独采样，在像素值分布多的区域进行密集采样，别的区域稀疏采样，再利用这些采样点来组合成最终的颜色表，原图中的每个像素点用颜色表中最接近的颜色替换掉</li>
+</ul>
+</li>
+<li>颜色空间分割(Median-Cut)<ul>
+<li>核心：在颜色空间建立一棵二叉树，通过不断地细化这棵树来近似得到一个颜色三维直方图，然后再根据这棵树来分配采样点</li>
+<li>基于图像颜色样本分布的自适应方法，不论图像中颜色样本的分布如何，总是可以生成一个和颜色样本分布匹配良好的颜色表：在颜色样本分布密集的区域内采样点分布也相对密集，其他区域则分配了较少的采样点。且相同数目的颜色样本总是用同样数量的采样点来代表，所以颜色样本分布密集的区域，采样点的数量自然就会多，反之则相应的比较少</li>
+<li>最重要、应用最广泛的减色算法之一</li>
+</ul>
+</li>
+<li>k均值聚类(k-Means clustering)<ul>
+<li>核心：将像素按颜色的相似程度归类</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>从一个初始的颜色表出发，通过不断修改颜色表来改善减色效果</strong><ul>
+<li>神经网络方法(ANN)<ul>
+<li>颜色表通过神经元来编码，通过缓慢的调节神经元的颜色值以保证整个神经网络逐步收敛于最小误差状态（即通过神经网络产生的图像和原图之间误差最小）<h2 id="直接量化实践"><a href="#直接量化实践" class="headerlink" title="直接量化实践"></a>直接量化实践</h2><ul>
+<li>首先我们可以来看一看getImageData后的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzljZjVjMjQzMDI0NmE0YjE0YzFlYmMzMjYwZDkwYTgwNTQzMDIucG5n?x-oss-process=image/format,png" alt="getImageData数据"></li>
+<li>可以简单看作是外层循环为rgba的打平了二维数组<ul>
+<li>如果按满足需求做，只要一个主色调的话，可以把整个getImageData获得的数据，进行各个通道的平均值求值，再拼接，像这样<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">getUniqueColor(imageData) &#123;</span><br><span class="line">   <span class="keyword">let</span> res_r = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_g = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_b = <span class="number">0</span></span><br><span class="line">   <span class="keyword">let</span> res_a = <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imageData.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">0</span>) &#123;</span><br><span class="line">       res_r += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">1</span>) &#123;</span><br><span class="line">       res_g += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">2</span>) &#123;</span><br><span class="line">       res_b += imageData[i]</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">4</span> === <span class="number">3</span>) &#123;</span><br><span class="line">       res_a += imageData[i]</span><br><span class="line">     &#125; </span><br><span class="line">   &#125;</span><br><span class="line">   res_r = <span class="built_in">Math</span>.round(res_r / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_g =  <span class="built_in">Math</span>.round(res_g / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_b =  <span class="built_in">Math</span>.round(res_b / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   res_a =  <span class="built_in">Math</span>.round(res_a / (imageData.length / <span class="number">4</span>))</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_r'</span>, res_r)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_g'</span>, res_g)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_b'</span>, res_b)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'res_a'</span>, res_a)</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzc4NzFiOTVmYzA4NWQ3NGQwNDc4OWY0ZWI5Yzc0YThmNzQ5OTYucG5n?x-oss-process=image/format,png" alt="暴力法求主色调"></li>
+<li>无相关点越多，误差越大👎<ul>
+<li>我们可以“对每个颜色通道单独重新采样，将每个通道的色阶从256减少到某个指定的数字。这样得到一个新的小的多的颜色空间，而原图像中的每一个像素将被用在新的颜色空间中的最近邻取代”<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> COLOR_SIZE = <span class="number">40</span> <span class="comment">// 单位色块的大小（像素个数，默认40）。以单位色块的平均像素值为作为统计单位</span></span><br><span class="line"><span class="keyword">const</span> LEVEL = <span class="number">32</span> <span class="comment">// 色深，颜色分区参数（0-255），总256，2^8，即8bit，4个通道（rgba），即默认色深4*8bit，32bit</span></span><br><span class="line"><span class="comment">// 分区块，可以拓展性的求主要色板，用来做palette</span></span><br><span class="line">   <span class="keyword">const</span> mapData = that.getLevelData(imageData);</span><br><span class="line">   <span class="keyword">const</span> colors = that.getMostColor(mapData);</span><br><span class="line">   <span class="keyword">if</span> (!colors) &#123;</span><br><span class="line">     <span class="keyword">return</span></span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">const</span> color = that.getAverageColor(colors)</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'color'</span>, color)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>将getImageData数据分成特定大小的区块，分别算出各个区块的averageColor，再利用map特性，将averageColor作key，count各个averageColor个数  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取每段的颜色数据</span></span><br><span class="line"><span class="comment">// 根据像素数据，按单位色块进行切割</span></span><br><span class="line">getLevelData(imageData) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = imageData.length;</span><br><span class="line">  <span class="keyword">const</span> mapData = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i += COLOR_SIZE * <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> blockColor = <span class="keyword">this</span>.getBlockColor(imageData, i); <span class="comment">// 该区块平均rgba [&#123;r,g,b,a&#125;]数据</span></span><br><span class="line">    <span class="comment">// 获取各个区块的平均rgba数据，将各个通道的颜色进行LEVEL色深降级</span></span><br><span class="line">    <span class="comment">// 根据r_g_b_a 建立map索引</span></span><br><span class="line">    <span class="keyword">const</span> key = <span class="keyword">this</span>.getColorLevel(blockColor);</span><br><span class="line">    !mapData[key] &amp;&amp; (mapData[key] = []);</span><br><span class="line">    mapData[key].push(blockColor);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> mapData;</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 获取单位块的全部色值</span></span><br><span class="line"><span class="comment">// 并根据全部色值，计算平均色值</span></span><br><span class="line"><span class="comment">// 处理最后边界值，小于COLOR_SIZE</span></span><br><span class="line">getBlockColor(imageData, start) &#123;</span><br><span class="line">  <span class="keyword">let</span> data = [],</span><br><span class="line">    count = COLOR_SIZE,</span><br><span class="line">    len = COLOR_SIZE * <span class="number">4</span>;</span><br><span class="line">  imageData.length &lt;= start + len &amp;&amp; (count = <span class="built_in">Math</span>.floor((imageData.length - start - <span class="number">1</span>) / <span class="number">4</span>));</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; count; i += <span class="number">4</span>) &#123;</span><br><span class="line">    data.push(&#123;</span><br><span class="line">      r: imageData[start + i + <span class="number">0</span>],</span><br><span class="line">      g: imageData[start + i + <span class="number">1</span>],</span><br><span class="line">      b: imageData[start + i + <span class="number">2</span>],</span><br><span class="line">      a: imageData[start + i + <span class="number">3</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getAverageColor(data);</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 取出各个通道的平均值，即为改色块的平均色值</span></span><br><span class="line">getAverageColor(colorArr) &#123;</span><br><span class="line">  <span class="keyword">const</span> len = colorArr.length;</span><br><span class="line">  <span class="keyword">let</span> sr = <span class="number">0</span>, sg = <span class="number">0</span>, sb = <span class="number">0</span>, sa = <span class="number">0</span>;</span><br><span class="line">  colorArr.map(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">    sr += item.r;</span><br><span class="line">    sg += item.g;</span><br><span class="line">    sb += item.b;</span><br><span class="line">    sa += item.a;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    r: <span class="built_in">Math</span>.round(sr / len),</span><br><span class="line">    g: <span class="built_in">Math</span>.round(sg / len),</span><br><span class="line">    b: <span class="built_in">Math</span>.round(sb / len),</span><br><span class="line">    a: <span class="built_in">Math</span>.round(sa / len)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line">getColorLevel(color) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getLevel(color.r) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.g) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.b) + <span class="string">'_'</span> + <span class="keyword">this</span>.getLevel(color.a)</span><br><span class="line">&#125;,</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 色深降级</span></span><br><span class="line">getLevel(value) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.round(value / LEVEL)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>把出现次数最多的averageColor区块，作为采样区块，再获取一遍averageColor，即是最终主色调  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 根据色块颜色，获取</span></span><br><span class="line">getMostColor(colorData) &#123;</span><br><span class="line">  <span class="keyword">let</span> rst = <span class="literal">null</span>, len = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> colorData) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, colorData[key].length)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, colorData[key])</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'colorData[key].length'</span>, key)</span><br><span class="line">    colorData[key].length &gt; len &amp;&amp; (</span><br><span class="line">      rst = colorData[key],</span><br><span class="line">      len = colorData[key].length</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> rst;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2ViYzI3MmNkNzU2NjNhODUxYmM2MWQ0MDE4OWJjZGI3NzQ5NDUucG5n?x-oss-process=image/format,png" alt="区块获取主色调"></li>
+<li>颜色可信度提高了很多<h2 id="拓展实践-医学灰色影像"><a href="#拓展实践-医学灰色影像" class="headerlink" title="拓展实践-医学灰色影像"></a>拓展实践-医学灰色影像</h2><ul>
+<li>核心：将<strong>三通道转成单通道</strong>即可<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> greyImageData = that.greyTheImage(imageData)</span><br><span class="line">   wx.canvasPutImageData(&#123;</span><br><span class="line">     canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">     x: <span class="number">150</span>,</span><br><span class="line">     y: <span class="number">0</span>,</span><br><span class="line">     width: <span class="number">150</span>,</span><br><span class="line">     height: <span class="number">100</span>,</span><br><span class="line">     data: greyImageData,</span><br><span class="line">     success (res) &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'canvasPutImageData it worked!'</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line"> greyTheImage(imageData) &#123;</span><br><span class="line">     <span class="comment">// imageData有4个通道rgba</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imageData.length; i += <span class="number">4</span>) &#123;</span><br><span class="line">       <span class="keyword">let</span> sum_rgb = <span class="number">0</span></span><br><span class="line">       <span class="comment">// 但我们只需要rgb三通道，a-alpha通道无用</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j += <span class="number">1</span>) &#123;</span><br><span class="line">         sum_rgb = sum_rgb + imageData[i + j]</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">let</span> grey = <span class="built_in">Math</span>.round(sum_rgb / <span class="number">3</span>)</span><br><span class="line">       imageData[i] = grey</span><br><span class="line">       imageData[i + <span class="number">1</span>] = grey</span><br><span class="line">       imageData[i + <span class="number">2</span>] = grey</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> imageData</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></li>
+<li>运行截图<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzhmNWJhNzk2OTJjOWEwOTA2MDNlMzkxMzBlMDRiZTY4MTAwNzcwLnBuZw?x-oss-process=image/format,png" alt="医学灰色影像"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="格式化rgba输出"><a href="#格式化rgba输出" class="headerlink" title="格式化rgba输出"></a>格式化rgba输出</h2><ul>
+<li>像这样<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxNDVhYzM4YzQ1MjFkNDgzNGNkZGQ5NTNmNjQ1MWQ3NTI0NTkucG5n?x-oss-process=image/format,png" alt="格式化rgba输出">  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对最终颜色的字符串格式化</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * result:&#123;</span></span><br><span class="line"><span class="comment"> *   hex:'#ffffff',            十六位值</span></span><br><span class="line"><span class="comment"> *   hexa:'#ffffff00',         十六位值带alpha值</span></span><br><span class="line"><span class="comment"> *   rgb:'rgb(0,0,0)',         RGB值</span></span><br><span class="line"><span class="comment"> *   rgba:'rgba(0,0,0,0)'      RGB值带alpha值</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">	</span><br><span class="line">colorStrFormat(color) &#123;</span><br><span class="line">  <span class="keyword">const</span> rgba = <span class="string">'rgba('</span> + color.r + <span class="string">','</span> + color.g + <span class="string">','</span> + color.b + <span class="string">','</span> + (color.a / <span class="number">255</span>).toFixed(<span class="number">4</span>).replace(<span class="regexp">/\.*0+$/</span>, <span class="string">''</span>) + <span class="string">')'</span>;</span><br><span class="line">  <span class="keyword">const</span> rgb = <span class="string">'rgb('</span> + color.r + <span class="string">','</span> + color.g + <span class="string">','</span> + color.b + <span class="string">')'</span>;</span><br><span class="line">  <span class="keyword">const</span> hex = <span class="string">'#'</span> + <span class="keyword">this</span>.Num2Hex(color.r) + <span class="keyword">this</span>.Num2Hex(color.g) + <span class="keyword">this</span>.Num2Hex(color.b);</span><br><span class="line">  <span class="keyword">const</span> hexa = hex + <span class="keyword">this</span>.Num2Hex(color.a);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    rgba: rgba,</span><br><span class="line">    rgb: rgb,</span><br><span class="line">    hex: hex,</span><br><span class="line">    hexa: hexa</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">	</span><br><span class="line">Num2Hex(num) &#123;</span><br><span class="line">  <span class="keyword">const</span> hex = num.toString(<span class="number">16</span>) + <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">if</span> (hex.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'0'</span> + hex;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> hex;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2></li>
+<li><a href="https://blog.csdn.net/u012843346/article/details/16839649" target="_blank" rel="noopener">phg1024 JavaScript图像处理(6) - 减色算法(Color Reduction)</a></li>
+<li><a href="https://github.com/whoiam2007s/ImgMainColor" target="_blank" rel="noopener">获取图片主色调的插件</a></li>
+<li>其实也可以利用 <a href="https://blog.csdn.net/nanhupatar/article/details/82793637" target="_blank" rel="noopener">CSS新特性去改变背景颜色</a>，比如高斯模糊等来达到业务需求<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
+<li>周六听了一天 John Lennon 歌曲【这也是我拖更的原因😶 羡慕他和 Yoko 那段伊甸园般的爱情，他对 Yoko 的痴爱，他和母亲的两次分别感同身受，Beatles在一起做音乐的欢乐，他对 Sean 的宠溺父爱，但他的人生却在一次枪杀后戛然而止，心痛 心痛 🌧</li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
       </tags>
   </entry>
   <entry>
@@ -4980,8 +4980,8 @@
         <category>前端概念</category>
       </categories>
       <tags>
-        <tag>前端概念</tag>
         <tag>算法</tag>
+        <tag>前端概念</tag>
       </tags>
   </entry>
   <entry>
