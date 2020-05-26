@@ -73,7 +73,7 @@ description:
 - [@namespace](https://www.w3.org/TR/css-namespaces-3/)
 
 
-## CSS 规则的结构
+## CSS Qualified Rule 的结构
 - Selector
 	- [selectors-3](https://www.w3.org/TR/selectors-3/)
 	- [selectors-4](https://www.w3.org/TR/selectors-4/)
@@ -99,11 +99,12 @@ description:
 ### 第一步：获取所有 li dom 节点
 	
 	
+	
 ```javascript
 const list = document.getElementById("container").children
   
 console.log('list', list)
-``` 
+```
 ![获取的所有 li 节点](http://p0.meituan.net/myvideodistribute/6cb3b64a2be23ea9ffce86db74757615120112.png)
 
 ### 第二步：匹配出 data-tag 中为 css 的 standard

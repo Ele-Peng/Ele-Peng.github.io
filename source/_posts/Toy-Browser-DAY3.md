@@ -442,7 +442,7 @@ function compare(sp1, sp2) {
 		</body>
 	</html>
 	```
-- 在 <img> 增加多个 class 选择器，那我们的选择器 match 可以改成
+- 在 &lt;img&gt; 增加多个 class 选择器，那我们的选择器 match 可以改成
 
 	```javascript
 	

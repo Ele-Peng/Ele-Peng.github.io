@@ -285,10 +285,10 @@ description:
 	- flex: none | auto | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
 
 		```javascript
-		if (itemStyle.flex) {
-	      flexLine.push(item)
-	    } 
-		``` 
+	    if (itemStyle.flex) {
+		      flexLine.push(item)
+		   } 
+		```
 - flex 容器是否换行
 	
 	```javascript
