@@ -19,6 +19,9 @@ description:
 
 <!-- more -->
 
+## 简单过程
+- 你先在浏览器里面输入 https://ele-peng.github.io/ ，这是一个 URL。浏览器只知道名字是“ele-peng.github.io”，但是不知道具体的地点，所以不知道应该如何访问。于是，它打开地址簿去查找。可以使用一般的地址簿协议 DNS 去查找，还可以使用另一种更加精准的地址簿查找协议 HTTPDNS 。
+
 ## 网络分层模型
 ### TCP/IP 协议栈
 - ![TCP/IP 协议栈](http://p0.meituan.net/myvideodistribute/6fea0628affaf34d09b59d845ffeb60a75766.png)
