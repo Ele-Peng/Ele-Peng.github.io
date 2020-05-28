@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Javascript-Expressions</title>
-    <url>/2020/04/23/Javascript-Expressions/</url>
+    <title>CSS基本语法+基础机制</title>
+    <url>/2020/05/24/CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E6%9C%BA%E5%88%B6/</url>
     <content><![CDATA[<style  type="text/css">
 .lx-entry a {
     color: #191919;
@@ -28,248 +28,245 @@
 }
 </style>
 
-<h1 id="Javascript-–-Expressions"><a href="#Javascript-–-Expressions" class="headerlink" title="Javascript – Expressions"></a>Javascript – Expressions</h1><a id="more"></a>
 
-<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expressions-表达式"><a href="#Expressions-表达式" class="headerlink" title="Expressions 表达式"></a>Expressions 表达式</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="引导：Grammar-Tree-vs-Priority"><a href="#引导：Grammar-Tree-vs-Priority" class="headerlink" title="引导：Grammar Tree vs Priority"></a>引导：Grammar Tree vs Priority</h3><ul>
-<li>+ -</li>
-<li>* /</li>
-<li>()</li>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>整理一下平时所学+所用到的 CSS 基本语法</li>
 </ul>
-<h2 id="Left-Handside-amp-Right-Handside"><a href="#Left-Handside-amp-Right-Handside" class="headerlink" title="Left Handside &amp; Right Handside"></a>Left Handside &amp; Right Handside</h2><h2 id="Left-Handside"><a href="#Left-Handside" class="headerlink" title="Left Handside"></a>Left Handside</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/4fa36955e4edcb6c2ae15f638759b365164257.png" alt="Left Handside"></li>
-<li>极限是 call</li>
-</ul>
-<h3 id="Member"><a href="#Member" class="headerlink" title="Member"></a>Member</h3><ul>
-<li><p>a.b</p>
-</li>
-<li><p>a[b]</p>
-</li>
-<li><p>foo`string`</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"Elle"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>!`</span></span><br></pre></td></tr></table></figure></li>
-<li><p>super.b</p>
-<ul>
-<li>只能在 constructor 里使用</li>
-</ul>
-</li>
-<li><p>super[‘b’]</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">this</span>.a = <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">super</span>()</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Parent.a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">new</span> Child</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
-<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/6dbc29d1a132b5099186f0f9ec8e6bd458489.png" alt="super 截图"></li>
-</ul>
-</li>
-<li><p>new.target</p>
-<ul>
-<li><p>函数外面不能使用，只能在函数里使用</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 存在一个伪造对象的可能，无法知道对象是否是被 new 调起</span></span><br><span class="line"><span class="keyword">var</span> fakeObj = &#123;&#125;</span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(fakeObj, foo.prototype)</span><br><span class="line">fakeObj.constructor = foo</span><br><span class="line">foo.apply(fakeObj)</span><br><span class="line">fakeObj <span class="keyword">instanceof</span> foo</span><br></pre></td></tr></table></figure>
 
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">new</span>.target)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> foo()</span><br></pre></td></tr></table></figure></li>
+<h2 id="CSS-基本语法"><a href="#CSS-基本语法" class="headerlink" title="CSS 基本语法"></a>CSS 基本语法</h2><h3 id="CSS2-1-语法"><a href="#CSS2-1-语法" class="headerlink" title="CSS2.1 语法"></a>CSS2.1 语法</h3><ul>
+<li><a href="https://www.w3.org/TR/CSS21/grammar.html#q25.0" target="_blank" rel="noopener">Appendix G. Grammar of CSS 2.1</a></li>
+<li><a href="https://www.w3.org/TR/css-syntax-3/" target="_blank" rel="noopener">CSS Syntax Module Level 3</a></li>
+</ul>
+<h3 id="CSS2-1-总体结构"><a href="#CSS2-1-总体结构" class="headerlink" title="CSS2.1 总体结构"></a>CSS2.1 总体结构</h3><p><img src="http://p0.meituan.net/myvideodistribute/b9beefeab08a031d689d4e989de4c2f1197837.png" alt="productions_1"><br><img src="http://p0.meituan.net/myvideodistribute/7340e333e43e235776839a2c00bfb982147104.png" alt="productions_2"></p>
+<ul>
+<li>简化为：<ul>
+<li>@charset</li>
+<li>@import</li>
+<li>rules<ul>
+<li>@media</li>
+<li>@page</li>
+<li>rule</li>
 </ul>
 </li>
-<li><p>new Foo()</p>
-<ul>
-<li><p>high priority</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls1</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(s)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls2</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"2"</span>, s)</span><br><span class="line">    <span class="keyword">return</span> cls1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> cls2(<span class="string">"goog"</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/b94c06479581e9f07cea46eed00d5c6053648.png" alt="new Foo()"></p>
+</ul>
+</li>
+</ul>
+<h2 id="CSS-Rules"><a href="#CSS-Rules" class="headerlink" title="CSS @ Rules"></a>CSS @ Rules</h2><ul>
+<li><a href="https://www.w3.org/TR/css-syntax-3/" target="_blank" rel="noopener">@charset</a></li>
+<li><a href="https://www.w3.org/TR/css-cascade-4/" target="_blank" rel="noopener">@import</a></li>
+<li><a href="https://www.w3.org/TR/css3-conditional/" target="_blank" rel="noopener">@media</a></li>
+<li><a href="https://www.w3.org/TR/css-page-3/" target="_blank" rel="noopener">@page</a></li>
+<li><a href="https://www.w3.org/TR/css-counter-styles-3/" target="_blank" rel="noopener">@counter-style</a></li>
+<li><a href="https://www.w3.org/TR/css-animations-1/" target="_blank" rel="noopener">@keyframes</a></li>
+<li><a href="https://www.w3.org/TR/css-fonts-3/" target="_blank" rel="noopener">@fontface</a></li>
+<li><a href="https://www.w3.org/TR/css3-conditional/" target="_blank" rel="noopener">@supports</a></li>
+<li><a href="https://www.w3.org/TR/css-namespaces-3/" target="_blank" rel="noopener">@namespace</a></li>
+</ul>
+<h2 id="CSS-Qualified-Rule-的结构"><a href="#CSS-Qualified-Rule-的结构" class="headerlink" title="CSS Qualified Rule 的结构"></a>CSS Qualified Rule 的结构</h2><ul>
+<li>Selector<ul>
+<li><a href="https://www.w3.org/TR/selectors-3/" target="_blank" rel="noopener">selectors-3</a></li>
+<li><a href="https://www.w3.org/TR/selectors-4/" target="_blank" rel="noopener">selectors-4</a></li>
+</ul>
+</li>
+<li>Key<ul>
+<li>Properties</li>
+<li>Variables<ul>
+<li><a href="https://www.w3.org/TR/css-variables/" target="_blank" rel="noopener">css-variables</a></li>
+</ul>
 </li>
 </ul>
 </li>
-<li><p>Member Expressions 返回的是一个 Reference 类型</p>
+<li>Value<ul>
+<li><a href="https://www.w3.org/TR/css-values-4/" target="_blank" rel="noopener">css-values-4</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="初建-CSS-知识体系"><a href="#初建-CSS-知识体系" class="headerlink" title="初建 CSS 知识体系"></a>初建 CSS 知识体系</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/236b6afc66be8e7c1ea00a43b76d43a7259289.png" alt="CSS 知识体系"></li>
+</ul>
+<h2 id="收集标准"><a href="#收集标准" class="headerlink" title="收集标准"></a>收集标准</h2><p><img src="http://p0.meituan.net/myvideodistribute/77c702cce890b37809d44d258837f1bd733569.png" alt="CSS standards"></p>
 <ul>
-<li><p>Reference</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">x</span>: <span class="number">1</span> &#125;</span><br><span class="line">o.x + <span class="number">2</span></span><br><span class="line"><span class="number">1</span> + <span class="number">2</span></span><br><span class="line"><span class="keyword">delete</span> o.x</span><br><span class="line"><span class="keyword">delete</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<li>all standards and drafts are in the id named container of the html document.</li>
+<li>so we can write a script to collect the standards.</li>
+</ul>
+<h3 id="第一步：获取所有-li-dom-节点"><a href="#第一步：获取所有-li-dom-节点" class="headerlink" title="第一步：获取所有 li dom 节点"></a>第一步：获取所有 li dom 节点</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> list = <span class="built_in">document</span>.getElementById(<span class="string">"container"</span>).children</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'list'</span>, list)</span><br></pre></td></tr></table></figure>
+<p><img src="http://p0.meituan.net/myvideodistribute/6cb3b64a2be23ea9ffce86db74757615120112.png" alt="获取的所有 li 节点"></p>
+<h3 id="第二步：匹配出-data-tag-中为-css-的-standard"><a href="#第二步：匹配出-data-tag-中为-css-的-standard" class="headerlink" title="第二步：匹配出 data-tag 中为 css 的 standard"></a>第二步：匹配出 data-tag 中为 css 的 standard</h3><ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/3d1fb8e8198d5d5774cd861235d5682a314365.png" alt="css standard"></p>
+</li>
+<li><p>观察得到，我们只需要将 data-tag nodeValue 中有 “css” 抓出来即可</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> list = <span class="built_in">document</span>.getElementById(<span class="string">"container"</span>).children</span><br><span class="line"><span class="keyword">const</span> result = []</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> list) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i.getAttribute(<span class="string">'data-tag'</span>).match(<span class="regexp">/css/</span>)) &#123;</span><br><span class="line">    result.push(&#123;</span><br><span class="line">      name: i.children[<span class="number">1</span>].innerText,</span><br><span class="line">      url: i.children[<span class="number">1</span>].children[<span class="number">0</span>].href</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(result, <span class="literal">null</span>, <span class="string">'    '</span>))</span><br></pre></td></tr></table></figure>
+
 
 </li>
 </ul>
-</li>
-</ul>
-<h3 id="New"><a href="#New" class="headerlink" title="New"></a>New</h3><ul>
-<li><p>new Foo </p>
-</li>
-<li><p>new Foo() 优先级高</p>
-</li>
-<li><p><strong>Example</strong></p>
-<ul>
-<li><p>new a()()</p>
-</li>
-<li><p>new new a()</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls1</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(s)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls2</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"2"</span>, s)</span><br><span class="line">    <span class="keyword">return</span> cls1</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new cls2-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> cls2</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-cls2("good")-=-=-=-='</span>)</span><br><span class="line">cls2(<span class="string">"good"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new cls2("good")-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> cls2(<span class="string">"good"</span>) <span class="comment">// 返回回来 cls2 实例，cls1对象</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new (cls2("good"))-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> (cls2(<span class="string">"good"</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new (new cls2)-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> (<span class="keyword">new</span> cls2)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new new cls2("good")-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> cls2(<span class="string">"good"</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/0ea9dc132069ffab80fc3260feef10d8228161.png" alt="new Foo  优先级"></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Call"><a href="#Call" class="headerlink" title="Call"></a>Call</h3><ul>
-<li>foo()</li>
-<li>super()</li>
-<li>foo()[‘b’]</li>
-<li>foo().b</li>
-<li>foo()`abc`</li>
-</ul>
-<h2 id="Right-Handside"><a href="#Right-Handside" class="headerlink" title="Right Handside"></a>Right Handside</h2><h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><ul>
-<li><p>UpdateExpression</p>
-<ul>
-<li><p>no LineTerminator here</p>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/c0869aae45e6bd6e9e6cc8261ed8888664190.png" alt="no LineTerminator here"></p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">1</span>, c = <span class="number">1</span>;</span><br><span class="line">a</span><br><span class="line">++</span><br><span class="line">b</span><br><span class="line">++</span><br><span class="line">c</span><br><span class="line"><span class="built_in">console</span>.log([a, b, c])</span><br><span class="line">a<span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span>++</span><br><span class="line">b<span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span>++</span><br><span class="line">c</span><br><span class="line"><span class="built_in">console</span>.log([a, b, c])</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>a ++</p>
-</li>
-<li><p>a –</p>
-</li>
-<li><p>– a</p>
-</li>
-<li><p>++ a</p>
-</li>
-</ul>
-<h3 id="Unary-单目运算符"><a href="#Unary-单目运算符" class="headerlink" title="Unary 单目运算符"></a>Unary 单目运算符</h3><ul>
-<li><p>delete a.b</p>
-</li>
-<li><p>void foo() </p>
-<ul>
-<li><p>void 不是返回值，是运算符在 JS 中</p>
-</li>
-<li><p>不管后面是什么，都返回 undefined</p>
-</li>
-<li><p>IIFE 立即执行函数</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 点那个按钮，都是10，为解决这个问题，我们可以使用IIFE</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">		button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果前面不加分号，在一些写法中，会发生粘起来错误</span></span><br><span class="line">   (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">     button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(i)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)()</span><br><span class="line">   </span><br><span class="line">   (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">     button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(i)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)()</span><br><span class="line"><span class="comment">// 最稳妥的就是，在前面加上void</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">void</span> <span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">		button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 并且语义正确，我们并不需要IIFE的返回值</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>typeof a</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="收集-CSS-属性相关标准"><a href="#收集-CSS-属性相关标准" class="headerlink" title="收集 CSS 属性相关标准"></a>收集 CSS 属性相关标准</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">"iframe"</span>);</span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = <span class="string">""</span>;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(iframe);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">happen</span>(<span class="params">element, event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> handler = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve();</span><br><span class="line">            element.removeEventListener(event, handler);</span><br><span class="line">        &#125;</span><br><span class="line">        element.addEventListener(event, handler);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> standard <span class="keyword">of</span> standards) &#123;</span><br><span class="line">        iframe.src = standard.url;</span><br><span class="line">        <span class="built_in">console</span>.log(standard.name);</span><br><span class="line">        <span class="keyword">await</span> happen(iframe, <span class="string">"load"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/c45593f796e09721d1b10701e366669620756.png" alt="typeof"></li>
-</ul>
-</li>
-<li><p>+ a</p>
-</li>
-<li><p>- a</p>
-</li>
-<li><p>~ a 按位取反</p>
-</li>
-<li><p>! a 取非</p>
-<ul>
-<li>!!1</li>
-</ul>
-</li>
-<li><p>await a</p>
-</li>
-</ul>
-<h3 id="Exponental"><a href="#Exponental" class="headerlink" title="Exponental"></a>Exponental</h3><ul>
-<li>**<ul>
-<li>3 ** 2 ** 3</li>
-<li>3 ** (2 ** 3)</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/18947a64bdd8ad6c249ea3e214f5b11d17541.png" alt="Exponental"></li>
-</ul>
-</li>
-</ul>
-<h3 id="Multiplicative"><a href="#Multiplicative" class="headerlink" title="Multiplicative"></a>Multiplicative</h3><ul>
-<li>* / %<ul>
-<li>JS 中有1种乘法运算符<ul>
-<li>运行时<ul>
-<li>number</li>
-<li>string</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Additive"><a href="#Additive" class="headerlink" title="Additive"></a>Additive</h3><ul>
-<li>+ -<ul>
-<li>JS 中有2种加法运算符<ul>
-<li>运行时<ul>
-<li>number</li>
-<li>string</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Shift-左右移位"><a href="#Shift-左右移位" class="headerlink" title="Shift 左右移位"></a>Shift 左右移位</h3><ul>
-<li>&lt;&lt; &gt;&gt; &gt;&gt;&gt;</li>
-</ul>
-<h3 id="Relationship-比较"><a href="#Relationship-比较" class="headerlink" title="Relationship 比较"></a>Relationship 比较</h3><ul>
-<li>&lt; &gt; &lt;= &gt;= instanceof in</li>
-</ul>
-<h3 id="Equality"><a href="#Equality" class="headerlink" title="Equality"></a>Equality</h3><ul>
-<li>==</li>
-<li>!=</li>
-<li>===</li>
-<li>!==</li>
-</ul>
-<h3 id="Bitwise"><a href="#Bitwise" class="headerlink" title="Bitwise"></a>Bitwise</h3><ul>
-<li>&amp; ^ |</li>
-</ul>
-<h3 id="Logical"><a href="#Logical" class="headerlink" title="Logical"></a>Logical</h3><ul>
-<li><p>没有任何 boolean 转换</p>
-</li>
-<li><p>&amp;&amp;</p>
-<ul>
-<li><p>有短路逻辑</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo1() &amp;&amp; foo2()</span><br><span class="line"></span><br><span class="line">foo1() || foo2()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/76bacd40d3b17ddaca8fa40b7df168cc49722.png" alt="&amp;&amp; 短路逻辑运行截图"></p>
-</li>
-</ul>
-</li>
-<li><p>||</p>
-</li>
-</ul>
-<h3 id="Conditional"><a href="#Conditional" class="headerlink" title="Conditional"></a>Conditional</h3><ul>
-<li><p>? :</p>
-<ul>
-<li><p>同样有短路逻辑</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="literal">false</span> ? foo1() : foo2()</span><br></pre></td></tr></table></figure></li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/bcb065e3ae7986b5c15333ea32404e5360600.png" alt="三目运算符短路逻辑"></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id=""><a href="#" class="headerlink" title=","></a>,</h3><h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Type-Convertion"><a href="#Type-Convertion" class="headerlink" title="Type Convertion"></a>Type Convertion</h3><ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/92ac57b25bd03ca675ef9b0d694e4415353216.png" alt="Type Convertion"></li>
-<li>undefined –&gt; number NAN</li>
-</ul>
-<h4 id="Boxing-amp-Unboxing"><a href="#Boxing-amp-Unboxing" class="headerlink" title="Boxing &amp; Unboxing"></a>Boxing &amp; Unboxing</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Number String Boolean Symbol</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>).length</span><br><span class="line"><span class="string">"hello"</span>.length</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"hello"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line">!<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">''</span>)</span><br><span class="line">!<span class="string">""</span></span><br><span class="line"><span class="comment">// Number String Boolean 不作为 new 调用，就是转换成普通类型</span></span><br><span class="line"><span class="built_in">String</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/3f64818a6b39695d9dbc489cb8bc3f6281607.png" alt="Boxing &amp; Unboxing"></p>
-</li>
-<li><p>toPremitive()</p>
-</li>
-<li><p>toString vs valueOf</p>
-<ul>
-<li><p>toString vs valueOf</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> + &#123;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="number">4</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="string">"4"</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;, toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;&#125;</span><br><span class="line"><span class="string">"1"</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;, toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;&#125;</span><br></pre></td></tr></table></figure></code></pre><ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/78cc58a640f02d8de18f21eec0c80e2f71205.png" alt="toString vs valueOf"></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><h3 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h3><h3 id="支持写"><a href="#支持写" class="headerlink" title="支持写"></a>支持写</h3><ul>
-<li>delete</li>
-<li>assign</li>
-</ul>
-<h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1><h4 id="ps-checkSign"><a href="#ps-checkSign" class="headerlink" title="ps. checkSign"></a>ps. checkSign</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params">number</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1</span> / number === <span class="literal">Infinity</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1</span> / number === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> number / <span class="built_in">Math</span>.abs(number)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>【未完】Infinity 判断</p>
-</li>
-<li><p>【未完】直接用流取出符号位</p>
-</li>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
 </ul>
 ]]></content>
       <categories>
-        <category>前端概念</category>
+        <category>CSS</category>
       </categories>
       <tags>
-        <tag>前端概念</tag>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Elle-训练算法计划</title>
+    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
+<li>主要的数据结构和算法会单开文档来写</li>
+</ul>
+<a id="more"></a>
+<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
+<li>数据结构<ul>
+<li>一维数据结构<ul>
+<li>基础：数组 array(string), 链表 linked list</li>
+<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
+</ul>
+</li>
+<li>二维数据结构<ul>
+<li>一维泛化</li>
+<li>基础：树 tree，图 graph</li>
+<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
+</ul>
+</li>
+<li>特殊数据结构<ul>
+<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
+<li>LRU Cache</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法<ul>
+<li>if-else, switch –&gt; branch</li>
+<li>for, while loop –&gt; iteration</li>
+<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
+<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
+<li>动态规划 dynamic programing</li>
+<li>二分查找 binary search</li>
+<li>贪心 greedy</li>
+<li>数学 math, 集合 geometry</li>
+</ul>
+</li>
+</ul>
+<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
+<li>刻意练习-过遍数 (五遍刷题法)<ul>
+<li>刷题第一遍<ul>
+<li>5分钟（5~15 mins）：读题+思考</li>
+<li>直接看解法：注意！多解法，比较解乏优劣</li>
+<li>有思路，直接写</li>
+<li>背诵+默写好的解法</li>
+</ul>
+</li>
+<li>刷题第二遍<ul>
+<li>马上自己写 –&gt; LeetCode提交</li>
+<li>多种解法比较、体会 –&gt; 优化</li>
+<li>多种解法自己写一遍，直到通过</li>
+</ul>
+</li>
+<li>刷题第三遍<ul>
+<li>24h后，再重复做题</li>
+<li>不同解法的熟练程度 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第四遍<ul>
+<li>过了一周后：反复回来练习相同的题目</li>
+<li>不熟练的题目 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第五遍<ul>
+<li>面试前二周恢复性训练</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>练习缺陷、弱点地方<ul>
+<li>中文站 leetcode-cn.com 刷题</li>
+<li>国际站 leetcode.com 看discuss-most votes</li>
+</ul>
+</li>
+<li>切题<ul>
+<li><strong>Clarification 审题</strong></li>
+<li><strong>Possible Solutions</strong><ul>
+<li>compare (time/space)</li>
+<li>optimal (加强)</li>
+</ul>
+</li>
+<li><strong>Coding</strong></li>
+<li><strong>Test cases</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
+<li>即时反馈</li>
+<li>主动型反馈</li>
+<li>被动型反馈<ul>
+<li>code review</li>
+</ul>
+</li>
+</ul>
+<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
+<li>top tips for vscode</li>
+</ul>
+<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
+<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
+</ul>
+<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
+<li>O(1): constant Complexity 常数复杂度</li>
+<li>O(log n): Logarithmic Complexity 对数复杂度</li>
+<li>O(n): Linear Complexity 线性时间复杂度</li>
+<li>O(n^2): N square Complexity 平方</li>
+<li>O(n^3): N cube Complexity 立方</li>
+<li>O(2^n): Exponential Growth 指数</li>
+<li>O(n!): Factorial 阶乘</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
+</ul>
+<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
+<li>二分查找</li>
+<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
+<li>二维有序矩阵</li>
+<li>归并排序 O(nlogn)</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -501,159 +498,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Elle-训练算法计划</title>
-    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
-<li>主要的数据结构和算法会单开文档来写</li>
-</ul>
-<a id="more"></a>
-<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
-<li>数据结构<ul>
-<li>一维数据结构<ul>
-<li>基础：数组 array(string), 链表 linked list</li>
-<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
-</ul>
-</li>
-<li>二维数据结构<ul>
-<li>一维泛化</li>
-<li>基础：树 tree，图 graph</li>
-<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
-</ul>
-</li>
-<li>特殊数据结构<ul>
-<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
-<li>LRU Cache</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>算法<ul>
-<li>if-else, switch –&gt; branch</li>
-<li>for, while loop –&gt; iteration</li>
-<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
-<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
-<li>动态规划 dynamic programing</li>
-<li>二分查找 binary search</li>
-<li>贪心 greedy</li>
-<li>数学 math, 集合 geometry</li>
-</ul>
-</li>
-</ul>
-<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
-<li>刻意练习-过遍数 (五遍刷题法)<ul>
-<li>刷题第一遍<ul>
-<li>5分钟（5~15 mins）：读题+思考</li>
-<li>直接看解法：注意！多解法，比较解乏优劣</li>
-<li>有思路，直接写</li>
-<li>背诵+默写好的解法</li>
-</ul>
-</li>
-<li>刷题第二遍<ul>
-<li>马上自己写 –&gt; LeetCode提交</li>
-<li>多种解法比较、体会 –&gt; 优化</li>
-<li>多种解法自己写一遍，直到通过</li>
-</ul>
-</li>
-<li>刷题第三遍<ul>
-<li>24h后，再重复做题</li>
-<li>不同解法的熟练程度 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第四遍<ul>
-<li>过了一周后：反复回来练习相同的题目</li>
-<li>不熟练的题目 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第五遍<ul>
-<li>面试前二周恢复性训练</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>练习缺陷、弱点地方<ul>
-<li>中文站 leetcode-cn.com 刷题</li>
-<li>国际站 leetcode.com 看discuss-most votes</li>
-</ul>
-</li>
-<li>切题<ul>
-<li><strong>Clarification 审题</strong></li>
-<li><strong>Possible Solutions</strong><ul>
-<li>compare (time/space)</li>
-<li>optimal (加强)</li>
-</ul>
-</li>
-<li><strong>Coding</strong></li>
-<li><strong>Test cases</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
-<li>即时反馈</li>
-<li>主动型反馈</li>
-<li>被动型反馈<ul>
-<li>code review</li>
-</ul>
-</li>
-</ul>
-<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
-<li>top tips for vscode</li>
-</ul>
-<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
-<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
-</ul>
-<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
-<li>O(1): constant Complexity 常数复杂度</li>
-<li>O(log n): Logarithmic Complexity 对数复杂度</li>
-<li>O(n): Linear Complexity 线性时间复杂度</li>
-<li>O(n^2): N square Complexity 平方</li>
-<li>O(n^3): N cube Complexity 立方</li>
-<li>O(2^n): Exponential Growth 指数</li>
-<li>O(n!): Factorial 阶乘</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
-</ul>
-<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
-<li>二分查找</li>
-<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
-<li>二维有序矩阵</li>
-<li>归并排序 O(nlogn)</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Javascript Types</title>
     <url>/2020/04/20/Javascript-Atom+Types/</url>
     <content><![CDATA[<style  type="text/css">
@@ -863,122 +707,6 @@
       </categories>
       <tags>
         <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS基本语法+基础机制</title>
-    <url>/2020/05/24/CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>整理一下平时所学+所用到的 CSS 基本语法</li>
-</ul>
-<a id="more"></a>
-
-
-<h2 id="CSS-基本语法"><a href="#CSS-基本语法" class="headerlink" title="CSS 基本语法"></a>CSS 基本语法</h2><h3 id="CSS2-1-语法"><a href="#CSS2-1-语法" class="headerlink" title="CSS2.1 语法"></a>CSS2.1 语法</h3><ul>
-<li><a href="https://www.w3.org/TR/CSS21/grammar.html#q25.0" target="_blank" rel="noopener">Appendix G. Grammar of CSS 2.1</a></li>
-<li><a href="https://www.w3.org/TR/css-syntax-3/" target="_blank" rel="noopener">CSS Syntax Module Level 3</a></li>
-</ul>
-<h3 id="CSS2-1-总体结构"><a href="#CSS2-1-总体结构" class="headerlink" title="CSS2.1 总体结构"></a>CSS2.1 总体结构</h3><p><img src="http://p0.meituan.net/myvideodistribute/b9beefeab08a031d689d4e989de4c2f1197837.png" alt="productions_1"><br><img src="http://p0.meituan.net/myvideodistribute/7340e333e43e235776839a2c00bfb982147104.png" alt="productions_2"></p>
-<ul>
-<li>简化为：<ul>
-<li>@charset</li>
-<li>@import</li>
-<li>rules<ul>
-<li>@media</li>
-<li>@page</li>
-<li>rule</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="CSS-Rules"><a href="#CSS-Rules" class="headerlink" title="CSS @ Rules"></a>CSS @ Rules</h2><ul>
-<li><a href="https://www.w3.org/TR/css-syntax-3/" target="_blank" rel="noopener">@charset</a></li>
-<li><a href="https://www.w3.org/TR/css-cascade-4/" target="_blank" rel="noopener">@import</a></li>
-<li><a href="https://www.w3.org/TR/css3-conditional/" target="_blank" rel="noopener">@media</a></li>
-<li><a href="https://www.w3.org/TR/css-page-3/" target="_blank" rel="noopener">@page</a></li>
-<li><a href="https://www.w3.org/TR/css-counter-styles-3/" target="_blank" rel="noopener">@counter-style</a></li>
-<li><a href="https://www.w3.org/TR/css-animations-1/" target="_blank" rel="noopener">@keyframes</a></li>
-<li><a href="https://www.w3.org/TR/css-fonts-3/" target="_blank" rel="noopener">@fontface</a></li>
-<li><a href="https://www.w3.org/TR/css3-conditional/" target="_blank" rel="noopener">@supports</a></li>
-<li><a href="https://www.w3.org/TR/css-namespaces-3/" target="_blank" rel="noopener">@namespace</a></li>
-</ul>
-<h2 id="CSS-Qualified-Rule-的结构"><a href="#CSS-Qualified-Rule-的结构" class="headerlink" title="CSS Qualified Rule 的结构"></a>CSS Qualified Rule 的结构</h2><ul>
-<li>Selector<ul>
-<li><a href="https://www.w3.org/TR/selectors-3/" target="_blank" rel="noopener">selectors-3</a></li>
-<li><a href="https://www.w3.org/TR/selectors-4/" target="_blank" rel="noopener">selectors-4</a></li>
-</ul>
-</li>
-<li>Key<ul>
-<li>Properties</li>
-<li>Variables<ul>
-<li><a href="https://www.w3.org/TR/css-variables/" target="_blank" rel="noopener">css-variables</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Value<ul>
-<li><a href="https://www.w3.org/TR/css-values-4/" target="_blank" rel="noopener">css-values-4</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="初建-CSS-知识体系"><a href="#初建-CSS-知识体系" class="headerlink" title="初建 CSS 知识体系"></a>初建 CSS 知识体系</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/236b6afc66be8e7c1ea00a43b76d43a7259289.png" alt="CSS 知识体系"></li>
-</ul>
-<h2 id="收集标准"><a href="#收集标准" class="headerlink" title="收集标准"></a>收集标准</h2><p><img src="http://p0.meituan.net/myvideodistribute/77c702cce890b37809d44d258837f1bd733569.png" alt="CSS standards"></p>
-<ul>
-<li>all standards and drafts are in the id named container of the html document.</li>
-<li>so we can write a script to collect the standards.</li>
-</ul>
-<h3 id="第一步：获取所有-li-dom-节点"><a href="#第一步：获取所有-li-dom-节点" class="headerlink" title="第一步：获取所有 li dom 节点"></a>第一步：获取所有 li dom 节点</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> list = <span class="built_in">document</span>.getElementById(<span class="string">"container"</span>).children</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'list'</span>, list)</span><br></pre></td></tr></table></figure>
-<p><img src="http://p0.meituan.net/myvideodistribute/6cb3b64a2be23ea9ffce86db74757615120112.png" alt="获取的所有 li 节点"></p>
-<h3 id="第二步：匹配出-data-tag-中为-css-的-standard"><a href="#第二步：匹配出-data-tag-中为-css-的-standard" class="headerlink" title="第二步：匹配出 data-tag 中为 css 的 standard"></a>第二步：匹配出 data-tag 中为 css 的 standard</h3><ul>
-<li><p><img src="http://p1.meituan.net/myvideodistribute/3d1fb8e8198d5d5774cd861235d5682a314365.png" alt="css standard"></p>
-</li>
-<li><p>观察得到，我们只需要将 data-tag nodeValue 中有 “css” 抓出来即可</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> list = <span class="built_in">document</span>.getElementById(<span class="string">"container"</span>).children</span><br><span class="line"><span class="keyword">const</span> result = []</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> list) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i.getAttribute(<span class="string">'data-tag'</span>).match(<span class="regexp">/css/</span>)) &#123;</span><br><span class="line">    result.push(&#123;</span><br><span class="line">      name: i.children[<span class="number">1</span>].innerText,</span><br><span class="line">      url: i.children[<span class="number">1</span>].children[<span class="number">0</span>].href</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(result, <span class="literal">null</span>, <span class="string">'    '</span>))</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h2 id="收集-CSS-属性相关标准"><a href="#收集-CSS-属性相关标准" class="headerlink" title="收集 CSS 属性相关标准"></a>收集 CSS 属性相关标准</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">"iframe"</span>);</span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = <span class="string">""</span>;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(iframe);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">happen</span>(<span class="params">element, event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> handler = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve();</span><br><span class="line">            element.removeEventListener(event, handler);</span><br><span class="line">        &#125;</span><br><span class="line">        element.addEventListener(event, handler);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> standard <span class="keyword">of</span> standards) &#123;</span><br><span class="line">        iframe.src = standard.url;</span><br><span class="line">        <span class="built_in">console</span>.log(standard.name);</span><br><span class="line">        <span class="keyword">await</span> happen(iframe, <span class="string">"load"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
@@ -1335,6 +1063,278 @@
       </tags>
   </entry>
   <entry>
+    <title>Javascript-Expressions</title>
+    <url>/2020/04/23/Javascript-Expressions/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h1 id="Javascript-–-Expressions"><a href="#Javascript-–-Expressions" class="headerlink" title="Javascript – Expressions"></a>Javascript – Expressions</h1><a id="more"></a>
+
+<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expressions-表达式"><a href="#Expressions-表达式" class="headerlink" title="Expressions 表达式"></a>Expressions 表达式</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="引导：Grammar-Tree-vs-Priority"><a href="#引导：Grammar-Tree-vs-Priority" class="headerlink" title="引导：Grammar Tree vs Priority"></a>引导：Grammar Tree vs Priority</h3><ul>
+<li>+ -</li>
+<li>* /</li>
+<li>()</li>
+</ul>
+<h2 id="Left-Handside-amp-Right-Handside"><a href="#Left-Handside-amp-Right-Handside" class="headerlink" title="Left Handside &amp; Right Handside"></a>Left Handside &amp; Right Handside</h2><h2 id="Left-Handside"><a href="#Left-Handside" class="headerlink" title="Left Handside"></a>Left Handside</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/4fa36955e4edcb6c2ae15f638759b365164257.png" alt="Left Handside"></li>
+<li>极限是 call</li>
+</ul>
+<h3 id="Member"><a href="#Member" class="headerlink" title="Member"></a>Member</h3><ul>
+<li><p>a.b</p>
+</li>
+<li><p>a[b]</p>
+</li>
+<li><p>foo`string`</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"Elle"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>!`</span></span><br></pre></td></tr></table></figure></li>
+<li><p>super.b</p>
+<ul>
+<li>只能在 constructor 里使用</li>
+</ul>
+</li>
+<li><p>super[‘b’]</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">this</span>.a = <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">super</span>()</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Parent.a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">new</span> Child</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/6dbc29d1a132b5099186f0f9ec8e6bd458489.png" alt="super 截图"></li>
+</ul>
+</li>
+<li><p>new.target</p>
+<ul>
+<li><p>函数外面不能使用，只能在函数里使用</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 存在一个伪造对象的可能，无法知道对象是否是被 new 调起</span></span><br><span class="line"><span class="keyword">var</span> fakeObj = &#123;&#125;</span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(fakeObj, foo.prototype)</span><br><span class="line">fakeObj.constructor = foo</span><br><span class="line">foo.apply(fakeObj)</span><br><span class="line">fakeObj <span class="keyword">instanceof</span> foo</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">new</span>.target)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> foo()</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>new Foo()</p>
+<ul>
+<li><p>high priority</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls1</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(s)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls2</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"2"</span>, s)</span><br><span class="line">    <span class="keyword">return</span> cls1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> cls2(<span class="string">"goog"</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/b94c06479581e9f07cea46eed00d5c6053648.png" alt="new Foo()"></p>
+</li>
+</ul>
+</li>
+<li><p>Member Expressions 返回的是一个 Reference 类型</p>
+<ul>
+<li><p>Reference</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">x</span>: <span class="number">1</span> &#125;</span><br><span class="line">o.x + <span class="number">2</span></span><br><span class="line"><span class="number">1</span> + <span class="number">2</span></span><br><span class="line"><span class="keyword">delete</span> o.x</span><br><span class="line"><span class="keyword">delete</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="New"><a href="#New" class="headerlink" title="New"></a>New</h3><ul>
+<li><p>new Foo </p>
+</li>
+<li><p>new Foo() 优先级高</p>
+</li>
+<li><p><strong>Example</strong></p>
+<ul>
+<li><p>new a()()</p>
+</li>
+<li><p>new new a()</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls1</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(s)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls2</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"2"</span>, s)</span><br><span class="line">    <span class="keyword">return</span> cls1</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new cls2-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> cls2</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-cls2("good")-=-=-=-='</span>)</span><br><span class="line">cls2(<span class="string">"good"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new cls2("good")-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> cls2(<span class="string">"good"</span>) <span class="comment">// 返回回来 cls2 实例，cls1对象</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new (cls2("good"))-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> (cls2(<span class="string">"good"</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new (new cls2)-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> (<span class="keyword">new</span> cls2)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-=-=-=-new new cls2("good")-=-=-=-='</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> cls2(<span class="string">"good"</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/0ea9dc132069ffab80fc3260feef10d8228161.png" alt="new Foo  优先级"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Call"><a href="#Call" class="headerlink" title="Call"></a>Call</h3><ul>
+<li>foo()</li>
+<li>super()</li>
+<li>foo()[‘b’]</li>
+<li>foo().b</li>
+<li>foo()`abc`</li>
+</ul>
+<h2 id="Right-Handside"><a href="#Right-Handside" class="headerlink" title="Right Handside"></a>Right Handside</h2><h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><ul>
+<li><p>UpdateExpression</p>
+<ul>
+<li><p>no LineTerminator here</p>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/c0869aae45e6bd6e9e6cc8261ed8888664190.png" alt="no LineTerminator here"></p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">1</span>, c = <span class="number">1</span>;</span><br><span class="line">a</span><br><span class="line">++</span><br><span class="line">b</span><br><span class="line">++</span><br><span class="line">c</span><br><span class="line"><span class="built_in">console</span>.log([a, b, c])</span><br><span class="line">a<span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span>++</span><br><span class="line">b<span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span>++</span><br><span class="line">c</span><br><span class="line"><span class="built_in">console</span>.log([a, b, c])</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>a ++</p>
+</li>
+<li><p>a –</p>
+</li>
+<li><p>– a</p>
+</li>
+<li><p>++ a</p>
+</li>
+</ul>
+<h3 id="Unary-单目运算符"><a href="#Unary-单目运算符" class="headerlink" title="Unary 单目运算符"></a>Unary 单目运算符</h3><ul>
+<li><p>delete a.b</p>
+</li>
+<li><p>void foo() </p>
+<ul>
+<li><p>void 不是返回值，是运算符在 JS 中</p>
+</li>
+<li><p>不管后面是什么，都返回 undefined</p>
+</li>
+<li><p>IIFE 立即执行函数</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 点那个按钮，都是10，为解决这个问题，我们可以使用IIFE</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">		button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果前面不加分号，在一些写法中，会发生粘起来错误</span></span><br><span class="line">   (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">     button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(i)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)()</span><br><span class="line">   </span><br><span class="line">   (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">     button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(i)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)()</span><br><span class="line"><span class="comment">// 最稳妥的就是，在前面加上void</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">	<span class="keyword">var</span> button  = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">	documents.body.append(button);</span><br><span class="line">	button.innerHTML = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">void</span> <span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">		button.onClick = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 并且语义正确，我们并不需要IIFE的返回值</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>typeof a</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/c45593f796e09721d1b10701e366669620756.png" alt="typeof"></li>
+</ul>
+</li>
+<li><p>+ a</p>
+</li>
+<li><p>- a</p>
+</li>
+<li><p>~ a 按位取反</p>
+</li>
+<li><p>! a 取非</p>
+<ul>
+<li>!!1</li>
+</ul>
+</li>
+<li><p>await a</p>
+</li>
+</ul>
+<h3 id="Exponental"><a href="#Exponental" class="headerlink" title="Exponental"></a>Exponental</h3><ul>
+<li>**<ul>
+<li>3 ** 2 ** 3</li>
+<li>3 ** (2 ** 3)</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/18947a64bdd8ad6c249ea3e214f5b11d17541.png" alt="Exponental"></li>
+</ul>
+</li>
+</ul>
+<h3 id="Multiplicative"><a href="#Multiplicative" class="headerlink" title="Multiplicative"></a>Multiplicative</h3><ul>
+<li>* / %<ul>
+<li>JS 中有1种乘法运算符<ul>
+<li>运行时<ul>
+<li>number</li>
+<li>string</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Additive"><a href="#Additive" class="headerlink" title="Additive"></a>Additive</h3><ul>
+<li>+ -<ul>
+<li>JS 中有2种加法运算符<ul>
+<li>运行时<ul>
+<li>number</li>
+<li>string</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Shift-左右移位"><a href="#Shift-左右移位" class="headerlink" title="Shift 左右移位"></a>Shift 左右移位</h3><ul>
+<li>&lt;&lt; &gt;&gt; &gt;&gt;&gt;</li>
+</ul>
+<h3 id="Relationship-比较"><a href="#Relationship-比较" class="headerlink" title="Relationship 比较"></a>Relationship 比较</h3><ul>
+<li>&lt; &gt; &lt;= &gt;= instanceof in</li>
+</ul>
+<h3 id="Equality"><a href="#Equality" class="headerlink" title="Equality"></a>Equality</h3><ul>
+<li>==</li>
+<li>!=</li>
+<li>===</li>
+<li>!==</li>
+</ul>
+<h3 id="Bitwise"><a href="#Bitwise" class="headerlink" title="Bitwise"></a>Bitwise</h3><ul>
+<li>&amp; ^ |</li>
+</ul>
+<h3 id="Logical"><a href="#Logical" class="headerlink" title="Logical"></a>Logical</h3><ul>
+<li><p>没有任何 boolean 转换</p>
+</li>
+<li><p>&amp;&amp;</p>
+<ul>
+<li><p>有短路逻辑</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo1() &amp;&amp; foo2()</span><br><span class="line"></span><br><span class="line">foo1() || foo2()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/76bacd40d3b17ddaca8fa40b7df168cc49722.png" alt="&amp;&amp; 短路逻辑运行截图"></p>
+</li>
+</ul>
+</li>
+<li><p>||</p>
+</li>
+</ul>
+<h3 id="Conditional"><a href="#Conditional" class="headerlink" title="Conditional"></a>Conditional</h3><ul>
+<li><p>? :</p>
+<ul>
+<li><p>同样有短路逻辑</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="literal">false</span> ? foo1() : foo2()</span><br></pre></td></tr></table></figure></li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/bcb065e3ae7986b5c15333ea32404e5360600.png" alt="三目运算符短路逻辑"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=","></a>,</h3><h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Type-Convertion"><a href="#Type-Convertion" class="headerlink" title="Type Convertion"></a>Type Convertion</h3><ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/92ac57b25bd03ca675ef9b0d694e4415353216.png" alt="Type Convertion"></li>
+<li>undefined –&gt; number NAN</li>
+</ul>
+<h4 id="Boxing-amp-Unboxing"><a href="#Boxing-amp-Unboxing" class="headerlink" title="Boxing &amp; Unboxing"></a>Boxing &amp; Unboxing</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Number String Boolean Symbol</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>).length</span><br><span class="line"><span class="string">"hello"</span>.length</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"hello"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line">!<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">''</span>)</span><br><span class="line">!<span class="string">""</span></span><br><span class="line"><span class="comment">// Number String Boolean 不作为 new 调用，就是转换成普通类型</span></span><br><span class="line"><span class="built_in">String</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/3f64818a6b39695d9dbc489cb8bc3f6281607.png" alt="Boxing &amp; Unboxing"></p>
+</li>
+<li><p>toPremitive()</p>
+</li>
+<li><p>toString vs valueOf</p>
+<ul>
+<li><p>toString vs valueOf</p>
+<pre><code><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> + &#123;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="number">4</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;toString()&#123;<span class="keyword">return</span> <span class="string">"4"</span>&#125;&#125;</span><br><span class="line"><span class="number">1</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;, toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;&#125;</span><br><span class="line"><span class="string">"1"</span> + &#123;valueOf()&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;, toString()&#123;<span class="keyword">return</span> <span class="string">"2"</span>&#125;&#125;</span><br></pre></td></tr></table></figure></code></pre><ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/78cc58a640f02d8de18f21eec0c80e2f71205.png" alt="toString vs valueOf"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><h3 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h3><h3 id="支持写"><a href="#支持写" class="headerlink" title="支持写"></a>支持写</h3><ul>
+<li>delete</li>
+<li>assign</li>
+</ul>
+<h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1><h4 id="ps-checkSign"><a href="#ps-checkSign" class="headerlink" title="ps. checkSign"></a>ps. checkSign</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params">number</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1</span> / number === <span class="literal">Infinity</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1</span> / number === -<span class="literal">Infinity</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> number / <span class="built_in">Math</span>.abs(number)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>【未完】Infinity 判断</p>
+</li>
+<li><p>【未完】直接用流取出符号位</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Toy-Browser-DAY5</title>
     <url>/2020/05/24/Toy-Browser-DAY5/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1532,8 +1532,8 @@
         <category>前端概念</category>
       </categories>
       <tags>
-        <tag>前端概念</tag>
         <tag>算法</tag>
+        <tag>前端概念</tag>
       </tags>
   </entry>
   <entry>
@@ -1914,41 +1914,6 @@
       <tags>
         <tag>微信小程序</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>数组、链表、跳表</title>
-    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
-<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
-<li>数学归纳法</li>
-<li>找最近重复问题</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>OOP-面向对象</title>
@@ -2349,6 +2314,209 @@
       </tags>
   </entry>
   <entry>
+    <title>Toy-Browser-DAY3</title>
+    <url>/2020/05/17/Toy-Browser-DAY3/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>implementation of a toy-browser 🙆</li>
+<li>我们开始进入到 CSS Computing 啦！！！😘</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/4bb352346db82d88a68035a6ddad906c81827.png" alt="CSS Computing"><a id="more"></a>
+
+
+</li>
+</ul>
+<h2 id="实践记录"><a href="#实践记录" class="headerlink" title="实践记录"></a>实践记录</h2><h3 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h3><blockquote>
+<p>npm install css</p>
+</blockquote>
+<h3 id="第一步：收集-CSS-规则"><a href="#第一步：收集-CSS-规则" class="headerlink" title="第一步：收集 CSS 规则"></a>第一步：收集 CSS 规则</h3><ul>
+<li><p>遇到 style 标签时，我们把 CSS 规则保存起来</p>
+</li>
+<li><p>这里我们调用 CSS Parser 来分析 CSS 规则</p>
+</li>
+<li><p>这里我们必须要仔细研究此库分析 CSS 规则的格式</p>
+</li>
+<li><p>computeCss1.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> css = <span class="built_in">require</span>(<span class="string">'css'</span>)</span><br><span class="line"></span><br><span class="line">... some code</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加入一个新的函数，addCSSRules，这里我们把 CSS 规则暂存到一个数组里</span></span><br><span class="line"><span class="keyword">let</span> rules = []</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addCSSRules</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> ast = css.parse(text)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(ast, <span class="literal">null</span>, <span class="string">"    "</span>))</span><br><span class="line">  rules.push(...ast.stylesheet.rules)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emit</span>(<span class="params">token</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  ... some code</span><br><span class="line">  </span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span> (token.type == <span class="string">"endTag"</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (top.tagName != token.tagName) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Tag start end doesn't match"</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// console.log('pop', stack.pop())</span></span><br><span class="line">      <span class="comment">/** 遇到 style 标签时，执行添加 CCS 规则的操作 */</span></span><br><span class="line">      <span class="keyword">if</span> (top.tagName === <span class="string">"style"</span>) &#123;</span><br><span class="line">        addCSSRules(top.children[<span class="number">0</span>].content)</span><br><span class="line">      &#125;</span><br><span class="line">      stack.pop()</span><br><span class="line">    &#125;</span><br><span class="line">    currentTextNode = <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  ... some code</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>这里，我们需要将添加 CSS 规则操作至元素 pop前，元素 push 后</p>
+<ul>
+<li>元素 push 后，也就是 style 标签的子元素文本节点，还未挂载到 style 标签上，styles 标签子元素还是空的</li>
+<li>pop 前，我们可以取到这个元素</li>
+</ul>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/01014f5e30127ef5f2b23dd6b7fa44ac153947.png" alt="第一步运行结果"></li>
+</ul>
+</li>
+<li><p>文本结果</p>
+  <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"stylesheet"</span>,</span><br><span class="line">    <span class="attr">"stylesheet"</span>: &#123;</span><br><span class="line">        <span class="attr">"rules"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"type"</span>: <span class="string">"rule"</span>,</span><br><span class="line">                <span class="attr">"selectors"</span>: [</span><br><span class="line">                    <span class="string">"body div #myid"</span></span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">"declarations"</span>: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">"type"</span>: <span class="string">"declaration"</span>,</span><br><span class="line">                        <span class="attr">"property"</span>: <span class="string">"width"</span>,</span><br><span class="line">                        <span class="attr">"value"</span>: <span class="string">"100px"</span>,</span><br><span class="line">                        <span class="attr">"position"</span>: &#123;</span><br><span class="line">                            <span class="attr">"start"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">3</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">9</span></span><br><span class="line">                            &#125;,</span><br><span class="line">                            <span class="attr">"end"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">3</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">20</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">"type"</span>: <span class="string">"declaration"</span>,</span><br><span class="line">                        <span class="attr">"property"</span>: <span class="string">"background-color"</span>,</span><br><span class="line">                        <span class="attr">"value"</span>: <span class="string">"#ff5000"</span>,</span><br><span class="line">                        <span class="attr">"position"</span>: &#123;</span><br><span class="line">                            <span class="attr">"start"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">4</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">9</span></span><br><span class="line">                            &#125;,</span><br><span class="line">                            <span class="attr">"end"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">4</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">34</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">"position"</span>: &#123;</span><br><span class="line">                    <span class="attr">"start"</span>: &#123;</span><br><span class="line">                        <span class="attr">"line"</span>: <span class="number">2</span>,</span><br><span class="line">                        <span class="attr">"column"</span>: <span class="number">5</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="attr">"end"</span>: &#123;</span><br><span class="line">                        <span class="attr">"line"</span>: <span class="number">5</span>,</span><br><span class="line">                        <span class="attr">"column"</span>: <span class="number">6</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"type"</span>: <span class="string">"rule"</span>,</span><br><span class="line">                <span class="attr">"selectors"</span>: [</span><br><span class="line">                    <span class="string">"body div img"</span></span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">"declarations"</span>: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">"type"</span>: <span class="string">"declaration"</span>,</span><br><span class="line">                        <span class="attr">"property"</span>: <span class="string">"width"</span>,</span><br><span class="line">                        <span class="attr">"value"</span>: <span class="string">"30px"</span>,</span><br><span class="line">                        <span class="attr">"position"</span>: &#123;</span><br><span class="line">                            <span class="attr">"start"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">7</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">9</span></span><br><span class="line">                            &#125;,</span><br><span class="line">                            <span class="attr">"end"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">7</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">19</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">"type"</span>: <span class="string">"declaration"</span>,</span><br><span class="line">                        <span class="attr">"property"</span>: <span class="string">"background-color"</span>,</span><br><span class="line">                        <span class="attr">"value"</span>: <span class="string">"#ff1111"</span>,</span><br><span class="line">                        <span class="attr">"position"</span>: &#123;</span><br><span class="line">                            <span class="attr">"start"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">8</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">9</span></span><br><span class="line">                            &#125;,</span><br><span class="line">                            <span class="attr">"end"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">8</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">34</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">"position"</span>: &#123;</span><br><span class="line">                    <span class="attr">"start"</span>: &#123;</span><br><span class="line">                        <span class="attr">"line"</span>: <span class="number">6</span>,</span><br><span class="line">                        <span class="attr">"column"</span>: <span class="number">5</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="attr">"end"</span>: &#123;</span><br><span class="line">                        <span class="attr">"line"</span>: <span class="number">9</span>,</span><br><span class="line">                        <span class="attr">"column"</span>: <span class="number">6</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">"parsingErrors"</span>: []</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="第二步：添加调用"><a href="#第二步：添加调用" class="headerlink" title="第二步：添加调用"></a>第二步：添加调用</h3><ul>
+<li><p>当我们创建一个元素后，立即计算 CSS</p>
+</li>
+<li><p>理论上，当我们分析一个元素时，所有 CSS 规则已经收集完毕</p>
+</li>
+<li><p>在真实浏览器中，可能遇到写在 body 的 style 标签，需要重新 CSS 计算的情况，这里我们忽略</p>
+</li>
+<li><p>computeCSS2.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">computeCSS</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(rules)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"-=-=-=-=-=-=-="</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"compute CSS for Element-=-=-=-=-=-="</span>, element)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"********************************************"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emit</span>(<span class="params">token</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  ... some code</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (token.type == <span class="string">"startTag"</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> element = &#123;</span><br><span class="line">      type: <span class="string">"element"</span>,</span><br><span class="line">      children: [],</span><br><span class="line">      attributes: []</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    element.tagName = token.tagName</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> p <span class="keyword">in</span> token) &#123;</span><br><span class="line">      <span class="keyword">if</span> (p != <span class="string">"type"</span> &amp;&amp; p != <span class="string">"tagName"</span>) &#123;</span><br><span class="line">        element.attributes.push(&#123;</span><br><span class="line">          name: p,</span><br><span class="line">          value: token[p]</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    computeCSS(element)</span><br><span class="line"></span><br><span class="line">    top.children.push(element)</span><br><span class="line">    element.parent = top</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!token.isSelfClosing)</span><br><span class="line">      stack.push(element)</span><br><span class="line">    </span><br><span class="line">    currentTextNode = <span class="literal">null</span></span><br><span class="line">    <span class="comment">// console.log('push', element)</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  ... some code</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这里一个元素的创建后，tagName, 属性都加好后，就应该有一个 cumputeCSS 过程</p>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/634ec08db6e9b90b38c17656be424e2d127292.png" alt="第二步：添加调用"></li>
+</ul>
+</li>
+</ul>
+<h3 id="第三步：获取父元素序列"><a href="#第三步：获取父元素序列" class="headerlink" title="第三步：获取父元素序列"></a>第三步：获取父元素序列</h3><ul>
+<li><p>在 computeCss 函数中，我们必须知道元素的所有父元素才能判断元素与规则是否匹配</p>
+</li>
+<li><p>我们从上一步骤的 stack，可以获取本元素所有的父元素</p>
+</li>
+<li><p>因为我们首先获取的是”当前元素“，所以我们获得和计算父元素匹配的顺序是从内向外</p>
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/68af300e9e207b8a190b7c3893f17ff036554.png" alt="从内向外 CSS 匹配"></li>
+</ul>
+</li>
+<li><p>computeCSS3.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">computeCSS</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">const</span> elements = stack.slice().reverse()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br></pre></td></tr></table></figure></li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/706c9c25bc5a46f41f8bc11ba2a6854e250838.png" alt="第三步运行结果"></li>
+</ul>
+</li>
+<li><p>stack.slice() 拷贝原数组，不在 stack 中操作，防御式编程避免影响 stack</p>
+</li>
+</ul>
+<h3 id="第四步：拆分选择器"><a href="#第四步：拆分选择器" class="headerlink" title="第四步：拆分选择器"></a>第四步：拆分选择器</h3><ul>
+<li><p>选择器也要从当前元素从外排列</p>
+</li>
+<li><p>复杂选择器拆成针对单个元素的选择器，用循环匹配父元素队列</p>
+</li>
+<li><p>computeCSS4.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">	</span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">specificity</span>(<span class="params">selector</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">  <span class="keyword">const</span> selectorParts = selector.split(<span class="string">" "</span>)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> part <span class="keyword">of</span> selectorParts) &#123;</span><br><span class="line">    <span class="keyword">if</span> (part.charAt(<span class="number">0</span>) == <span class="string">"#"</span>) &#123;</span><br><span class="line">      p[<span class="number">1</span>] += <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (part.charAt(<span class="number">0</span>) == <span class="string">"."</span>) &#123;</span><br><span class="line">      p[<span class="number">2</span>] += <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      p[<span class="number">3</span>] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">sp1, sp2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (sp1[<span class="number">0</span>] - sp2[<span class="number">0</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> sp1[<span class="number">0</span>] - sp2[<span class="number">0</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (sp1[<span class="number">1</span>] - sp2[<span class="number">1</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> sp1[<span class="number">1</span>] - sp2[<span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (sp1[<span class="number">2</span>] - sp2[<span class="number">2</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> sp1[<span class="number">2</span>] - sp2[<span class="number">2</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sp1[<span class="number">3</span>] - sp2[<span class="number">3</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">computeCSS</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> elements = stack.slice().reverse()</span><br><span class="line"></span><br><span class="line">	  <span class="keyword">if</span> (!element.computedStyle)</span><br><span class="line">	    element.computedStyle = &#123;&#125;</span><br><span class="line">	  </span><br><span class="line">	  <span class="keyword">for</span> (<span class="keyword">let</span> rule <span class="keyword">of</span> rules) &#123;</span><br><span class="line">	    <span class="keyword">const</span> selectorParts = rule.selectors[<span class="number">0</span>].split(<span class="string">" "</span>).reverse()</span><br><span class="line">	</span><br><span class="line">	    <span class="keyword">if</span> (!match(element, selectorParts[<span class="number">0</span>]))</span><br><span class="line">	      <span class="keyword">continue</span></span><br><span class="line">	</span><br><span class="line">	    <span class="keyword">let</span> matched = <span class="literal">false</span></span><br><span class="line">	</span><br><span class="line">	    <span class="keyword">let</span> j = <span class="number">1</span></span><br><span class="line">	</span><br><span class="line">	    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; elements.length; i ++) &#123;</span><br><span class="line">	      <span class="keyword">if</span> (match(elements[i], selectorParts[j])) &#123;</span><br><span class="line">	        j ++</span><br><span class="line">	      &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">if</span> (j &gt;= selectorParts.length) &#123;</span><br><span class="line">	      matched = <span class="literal">true</span></span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">if</span> (matched) &#123; <span class="comment">// 匹配成功</span></span><br><span class="line">	      <span class="built_in">console</span>.log(<span class="string">"Element"</span>, element, <span class="string">"matched rule"</span>, rule)</span><br><span class="line">	    &#125;</span><br><span class="line">	  &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	...some code</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h3 id="第五步：计算选择器与元素匹配"><a href="#第五步：计算选择器与元素匹配" class="headerlink" title="第五步：计算选择器与元素匹配"></a>第五步：计算选择器与元素匹配</h3><ul>
+<li><p>根据选择器的类型和元素属性，计算是否与当前元素匹配</p>
+</li>
+<li><p>这里仅实现了三种基本选择器，实际的浏览器中要处理复合选择器</p>
+</li>
+<li><p>computeCSS5.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">match</span>(<span class="params">element, selector</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!selector || !element.attributes) </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (selector.charAt(<span class="number">0</span>) == <span class="string">"#"</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> attr = element.attributes.filter(<span class="function"><span class="params">attr</span> =&gt;</span> attr.name === <span class="string">"id"</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> (attr &amp;&amp; attr.value === selector.replace(<span class="string">"#"</span>, <span class="string">''</span>))</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (selector.charAt(<span class="number">0</span>) == <span class="string">"."</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> attr = element.attributes.filter(<span class="function"><span class="params">attr</span> =&gt;</span> attr.name === <span class="string">"class"</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> (attr &amp;&amp; attr.value === selector.replace(<span class="string">"."</span>, <span class="string">''</span>))</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (element.tagName === selector) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/e23fb1db77239166c990b52468b24451353540.png" alt="第五步运行结果"></li>
+</ul>
+</li>
+</ul>
+<h4 id="第五步优化：实现支持空格的-Class-选择器"><a href="#第五步优化：实现支持空格的-Class-选择器" class="headerlink" title="第五步优化：实现支持空格的 Class 选择器"></a>第五步优化：实现支持空格的 Class 选择器</h4><ul>
+<li><p>假如我们的 html 改成这样：</p>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">maaa</span>=<span class="string">a</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">	<span class="selector-tag">body</span> <span class="selector-tag">div</span> <span class="selector-id">#myid</span>&#123;</span></span><br><span class="line"><span class="css">	    <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">	    <span class="selector-tag">background-color</span>: <span class="selector-id">#ff5000</span>;</span></span><br><span class="line">	&#125;</span><br><span class="line">	body div img&#123;</span><br><span class="line"><span class="css">	    <span class="selector-tag">width</span><span class="selector-pseudo">:30px</span>;</span></span><br><span class="line"><span class="css">	    <span class="selector-tag">background-color</span>: <span class="selector-id">#ff1111</span>;</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="css">	<span class="selector-tag">body</span> <span class="selector-tag">div</span> <span class="selector-class">.cls1</span> &#123;</span></span><br><span class="line"><span class="css">	  <span class="selector-tag">background-color</span>: <span class="selector-id">#ff9906</span>;</span></span><br><span class="line">	&#125;</span><br><span class="line">	    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">	        <span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"myid"</span>/&gt;</span></span><br><span class="line">	        <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"cls1 cls2"</span>/&gt;</span></span><br><span class="line">	    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>在 &lt;img&gt; 增加多个 class 选择器，那我们的选择器 match 可以改成</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">match</span>(<span class="params">element, selector</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!selector || !element.attributes) </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (selector.charAt(<span class="number">0</span>) == <span class="string">"#"</span>) &#123;</span><br><span class="line">	    </span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (selector.charAt(<span class="number">0</span>) == <span class="string">"."</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> attr = element.attributes.filter(<span class="function"><span class="params">attr</span> =&gt;</span> attr.name === <span class="string">"class"</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> (attr) &#123;</span><br><span class="line">      <span class="keyword">const</span> attrClassArray = attr.value.split(<span class="string">' '</span>)</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> attrClass <span class="keyword">of</span> attrClassArray) &#123;</span><br><span class="line">        <span class="keyword">if</span> (attrClass === selector.replace(<span class="string">"."</span>, <span class="string">''</span>)) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		    </span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">  &#125;</span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br></pre></td></tr></table></figure></li>
+<li><p>思路：</p>
+<ul>
+<li>我们可以看到<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/a8b9d9396713239928cd8b0af216535e40897.png" alt="多 class 选择器"></li>
+</ul>
+</li>
+<li>我们可以将 元素 attr 根据空格分隔，再利用循环匹配</li>
+</ul>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/1d5533479cdb7d6c1a0af20acdfc4e71146017.png" alt="第五步优化运行结果"></li>
+</ul>
+</li>
+</ul>
+<h3 id="第六步：生成-computed-属性"><a href="#第六步：生成-computed-属性" class="headerlink" title="第六步：生成 computed 属性"></a>第六步：生成 computed 属性</h3><ul>
+<li><p>一旦选择匹配，就应用选择器到元素上，形成 computedStyle</p>
+</li>
+<li><p>computeCSS6.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">computeCSS</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">	</span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> (matched) &#123; <span class="comment">// 匹配成功</span></span><br><span class="line">      <span class="keyword">const</span> computedStyle = element.computedStyle</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> declaration <span class="keyword">of</span> rule.declarations) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!computedStyle[declaration.property]) &#123;</span><br><span class="line">          computedStyle[declaration.property] = &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        computedStyle[declaration.property].value = declaration.value</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">console</span>.log(element.computedStyle)</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/71888ca9220eb11196bc00eb407fb05980361.png" alt="第六步运行结果"></li>
+</ul>
+</li>
+</ul>
+<h3 id="第七步：确定规则覆盖关系"><a href="#第七步：确定规则覆盖关系" class="headerlink" title="第七步：确定规则覆盖关系"></a>第七步：确定规则覆盖关系</h3><ul>
+<li><p>CSS 规则根据 specificity 和后来优先规则覆盖</p>
+</li>
+<li><p>specificity 是个四元组，越左边权重越高</p>
+</li>
+<li><p>一个 CSS 规则的 specificity 根据包含的简单选择器相加而成</p>
+</li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/a50f3ae53878adbacbdcb7798632605e283940.png" alt="selectors-3 specificity"></p>
+</li>
+<li><p>computeCSS7.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">specificity</span>(<span class="params">selector</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">  <span class="keyword">const</span> selectorParts = selector.split(<span class="string">" "</span>)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> part <span class="keyword">of</span> selectorParts) &#123;</span><br><span class="line">    <span class="keyword">if</span> (part.charAt(<span class="number">0</span>) == <span class="string">"#"</span>) &#123;</span><br><span class="line">      p[<span class="number">1</span>] += <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (part.charAt(<span class="number">0</span>) == <span class="string">"."</span>) &#123;</span><br><span class="line">      p[<span class="number">2</span>] += <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      p[<span class="number">3</span>] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">sp1, sp2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (sp1[<span class="number">0</span>] - sp2[<span class="number">0</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> sp1[<span class="number">0</span>] - sp2[<span class="number">0</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (sp1[<span class="number">1</span>] - sp2[<span class="number">1</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> sp1[<span class="number">1</span>] - sp2[<span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (sp1[<span class="number">2</span>] - sp2[<span class="number">2</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> sp1[<span class="number">2</span>] - sp2[<span class="number">2</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sp1[<span class="number">3</span>] - sp2[<span class="number">3</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">computeCSS</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">	</span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> (matched) &#123; <span class="comment">// 匹配成功</span></span><br><span class="line">      <span class="keyword">const</span> sp = specificity(rule.selectors[<span class="number">0</span>])</span><br><span class="line">      <span class="keyword">const</span> computedStyle = element.computedStyle</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> declaration <span class="keyword">of</span> rule.declarations) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!computedStyle[declaration.property]) &#123;</span><br><span class="line">          computedStyle[declaration.property] = &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!computedStyle[declaration.property].specificity) &#123;</span><br><span class="line">          computedStyle[declaration.property].value = declaration.value</span><br><span class="line">          computedStyle[declaration.property].specificity = sp</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (compare(computedStyle[declaration.property].specificity, sp) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">          computedStyle[declaration.property].value = declaration.value</span><br><span class="line">          computedStyle[declaration.property].specificity = sp</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">		</span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li>运行结果<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/063c59deee7d24e437fdff9920aec8ea216464.png" alt="第七步运行结果"></li>
+<li><img src="http://p1.meituan.net/myvideodistribute/c3a7fb73c0d001fef48137c4a23144b6211501.png" alt="第七步运行结果"></li>
+</ul>
+</li>
+</ul>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">CSS 优先级是如何计算的？</a></li>
+<li><a href="https://drafts.csswg.org/selectors-3/#specificity" target="_blank" rel="noopener">selectors-3 specificity</a></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li><a href="https://github.com/Ele-Peng/toy-browser" target="_blank" rel="noopener">完整代码地址-点击一下</a></li>
+<li>学而不思则罔</li>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>浏览器</category>
+      </categories>
+      <tags>
+        <tag>浏览器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>UTF8_Encoing</title>
     <url>/2020/04/21/UTF8-Encoing/</url>
     <content><![CDATA[<style  type="text/css">
@@ -2617,209 +2785,6 @@
       <tags>
         <tag>前端概念</tag>
         <tag>UTF-8</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Toy-Browser-DAY3</title>
-    <url>/2020/05/17/Toy-Browser-DAY3/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>implementation of a toy-browser 🙆</li>
-<li>我们开始进入到 CSS Computing 啦！！！😘</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/4bb352346db82d88a68035a6ddad906c81827.png" alt="CSS Computing"><a id="more"></a>
-
-
-</li>
-</ul>
-<h2 id="实践记录"><a href="#实践记录" class="headerlink" title="实践记录"></a>实践记录</h2><h3 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h3><blockquote>
-<p>npm install css</p>
-</blockquote>
-<h3 id="第一步：收集-CSS-规则"><a href="#第一步：收集-CSS-规则" class="headerlink" title="第一步：收集 CSS 规则"></a>第一步：收集 CSS 规则</h3><ul>
-<li><p>遇到 style 标签时，我们把 CSS 规则保存起来</p>
-</li>
-<li><p>这里我们调用 CSS Parser 来分析 CSS 规则</p>
-</li>
-<li><p>这里我们必须要仔细研究此库分析 CSS 规则的格式</p>
-</li>
-<li><p>computeCss1.js</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> css = <span class="built_in">require</span>(<span class="string">'css'</span>)</span><br><span class="line"></span><br><span class="line">... some code</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加入一个新的函数，addCSSRules，这里我们把 CSS 规则暂存到一个数组里</span></span><br><span class="line"><span class="keyword">let</span> rules = []</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addCSSRules</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> ast = css.parse(text)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(ast, <span class="literal">null</span>, <span class="string">"    "</span>))</span><br><span class="line">  rules.push(...ast.stylesheet.rules)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emit</span>(<span class="params">token</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  ... some code</span><br><span class="line">  </span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span> (token.type == <span class="string">"endTag"</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (top.tagName != token.tagName) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Tag start end doesn't match"</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// console.log('pop', stack.pop())</span></span><br><span class="line">      <span class="comment">/** 遇到 style 标签时，执行添加 CCS 规则的操作 */</span></span><br><span class="line">      <span class="keyword">if</span> (top.tagName === <span class="string">"style"</span>) &#123;</span><br><span class="line">        addCSSRules(top.children[<span class="number">0</span>].content)</span><br><span class="line">      &#125;</span><br><span class="line">      stack.pop()</span><br><span class="line">    &#125;</span><br><span class="line">    currentTextNode = <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  ... some code</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>这里，我们需要将添加 CSS 规则操作至元素 pop前，元素 push 后</p>
-<ul>
-<li>元素 push 后，也就是 style 标签的子元素文本节点，还未挂载到 style 标签上，styles 标签子元素还是空的</li>
-<li>pop 前，我们可以取到这个元素</li>
-</ul>
-</li>
-<li><p>运行结果</p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/01014f5e30127ef5f2b23dd6b7fa44ac153947.png" alt="第一步运行结果"></li>
-</ul>
-</li>
-<li><p>文本结果</p>
-  <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"stylesheet"</span>,</span><br><span class="line">    <span class="attr">"stylesheet"</span>: &#123;</span><br><span class="line">        <span class="attr">"rules"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"type"</span>: <span class="string">"rule"</span>,</span><br><span class="line">                <span class="attr">"selectors"</span>: [</span><br><span class="line">                    <span class="string">"body div #myid"</span></span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">"declarations"</span>: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">"type"</span>: <span class="string">"declaration"</span>,</span><br><span class="line">                        <span class="attr">"property"</span>: <span class="string">"width"</span>,</span><br><span class="line">                        <span class="attr">"value"</span>: <span class="string">"100px"</span>,</span><br><span class="line">                        <span class="attr">"position"</span>: &#123;</span><br><span class="line">                            <span class="attr">"start"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">3</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">9</span></span><br><span class="line">                            &#125;,</span><br><span class="line">                            <span class="attr">"end"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">3</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">20</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">"type"</span>: <span class="string">"declaration"</span>,</span><br><span class="line">                        <span class="attr">"property"</span>: <span class="string">"background-color"</span>,</span><br><span class="line">                        <span class="attr">"value"</span>: <span class="string">"#ff5000"</span>,</span><br><span class="line">                        <span class="attr">"position"</span>: &#123;</span><br><span class="line">                            <span class="attr">"start"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">4</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">9</span></span><br><span class="line">                            &#125;,</span><br><span class="line">                            <span class="attr">"end"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">4</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">34</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">"position"</span>: &#123;</span><br><span class="line">                    <span class="attr">"start"</span>: &#123;</span><br><span class="line">                        <span class="attr">"line"</span>: <span class="number">2</span>,</span><br><span class="line">                        <span class="attr">"column"</span>: <span class="number">5</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="attr">"end"</span>: &#123;</span><br><span class="line">                        <span class="attr">"line"</span>: <span class="number">5</span>,</span><br><span class="line">                        <span class="attr">"column"</span>: <span class="number">6</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"type"</span>: <span class="string">"rule"</span>,</span><br><span class="line">                <span class="attr">"selectors"</span>: [</span><br><span class="line">                    <span class="string">"body div img"</span></span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">"declarations"</span>: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">"type"</span>: <span class="string">"declaration"</span>,</span><br><span class="line">                        <span class="attr">"property"</span>: <span class="string">"width"</span>,</span><br><span class="line">                        <span class="attr">"value"</span>: <span class="string">"30px"</span>,</span><br><span class="line">                        <span class="attr">"position"</span>: &#123;</span><br><span class="line">                            <span class="attr">"start"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">7</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">9</span></span><br><span class="line">                            &#125;,</span><br><span class="line">                            <span class="attr">"end"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">7</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">19</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">"type"</span>: <span class="string">"declaration"</span>,</span><br><span class="line">                        <span class="attr">"property"</span>: <span class="string">"background-color"</span>,</span><br><span class="line">                        <span class="attr">"value"</span>: <span class="string">"#ff1111"</span>,</span><br><span class="line">                        <span class="attr">"position"</span>: &#123;</span><br><span class="line">                            <span class="attr">"start"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">8</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">9</span></span><br><span class="line">                            &#125;,</span><br><span class="line">                            <span class="attr">"end"</span>: &#123;</span><br><span class="line">                                <span class="attr">"line"</span>: <span class="number">8</span>,</span><br><span class="line">                                <span class="attr">"column"</span>: <span class="number">34</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">"position"</span>: &#123;</span><br><span class="line">                    <span class="attr">"start"</span>: &#123;</span><br><span class="line">                        <span class="attr">"line"</span>: <span class="number">6</span>,</span><br><span class="line">                        <span class="attr">"column"</span>: <span class="number">5</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="attr">"end"</span>: &#123;</span><br><span class="line">                        <span class="attr">"line"</span>: <span class="number">9</span>,</span><br><span class="line">                        <span class="attr">"column"</span>: <span class="number">6</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">"parsingErrors"</span>: []</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h3 id="第二步：添加调用"><a href="#第二步：添加调用" class="headerlink" title="第二步：添加调用"></a>第二步：添加调用</h3><ul>
-<li><p>当我们创建一个元素后，立即计算 CSS</p>
-</li>
-<li><p>理论上，当我们分析一个元素时，所有 CSS 规则已经收集完毕</p>
-</li>
-<li><p>在真实浏览器中，可能遇到写在 body 的 style 标签，需要重新 CSS 计算的情况，这里我们忽略</p>
-</li>
-<li><p>computeCSS2.js</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">computeCSS</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(rules)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"-=-=-=-=-=-=-="</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"compute CSS for Element-=-=-=-=-=-="</span>, element)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"********************************************"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emit</span>(<span class="params">token</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  ... some code</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (token.type == <span class="string">"startTag"</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> element = &#123;</span><br><span class="line">      type: <span class="string">"element"</span>,</span><br><span class="line">      children: [],</span><br><span class="line">      attributes: []</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    element.tagName = token.tagName</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> p <span class="keyword">in</span> token) &#123;</span><br><span class="line">      <span class="keyword">if</span> (p != <span class="string">"type"</span> &amp;&amp; p != <span class="string">"tagName"</span>) &#123;</span><br><span class="line">        element.attributes.push(&#123;</span><br><span class="line">          name: p,</span><br><span class="line">          value: token[p]</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    computeCSS(element)</span><br><span class="line"></span><br><span class="line">    top.children.push(element)</span><br><span class="line">    element.parent = top</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!token.isSelfClosing)</span><br><span class="line">      stack.push(element)</span><br><span class="line">    </span><br><span class="line">    currentTextNode = <span class="literal">null</span></span><br><span class="line">    <span class="comment">// console.log('push', element)</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  ... some code</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这里一个元素的创建后，tagName, 属性都加好后，就应该有一个 cumputeCSS 过程</p>
-</li>
-<li><p>运行结果</p>
-<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/634ec08db6e9b90b38c17656be424e2d127292.png" alt="第二步：添加调用"></li>
-</ul>
-</li>
-</ul>
-<h3 id="第三步：获取父元素序列"><a href="#第三步：获取父元素序列" class="headerlink" title="第三步：获取父元素序列"></a>第三步：获取父元素序列</h3><ul>
-<li><p>在 computeCss 函数中，我们必须知道元素的所有父元素才能判断元素与规则是否匹配</p>
-</li>
-<li><p>我们从上一步骤的 stack，可以获取本元素所有的父元素</p>
-</li>
-<li><p>因为我们首先获取的是”当前元素“，所以我们获得和计算父元素匹配的顺序是从内向外</p>
-<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/68af300e9e207b8a190b7c3893f17ff036554.png" alt="从内向外 CSS 匹配"></li>
-</ul>
-</li>
-<li><p>computeCSS3.js</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">computeCSS</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">const</span> elements = stack.slice().reverse()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br></pre></td></tr></table></figure></li>
-<li><p>运行结果</p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/706c9c25bc5a46f41f8bc11ba2a6854e250838.png" alt="第三步运行结果"></li>
-</ul>
-</li>
-<li><p>stack.slice() 拷贝原数组，不在 stack 中操作，防御式编程避免影响 stack</p>
-</li>
-</ul>
-<h3 id="第四步：拆分选择器"><a href="#第四步：拆分选择器" class="headerlink" title="第四步：拆分选择器"></a>第四步：拆分选择器</h3><ul>
-<li><p>选择器也要从当前元素从外排列</p>
-</li>
-<li><p>复杂选择器拆成针对单个元素的选择器，用循环匹配父元素队列</p>
-</li>
-<li><p>computeCSS4.js</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">	</span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">specificity</span>(<span class="params">selector</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">  <span class="keyword">const</span> selectorParts = selector.split(<span class="string">" "</span>)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> part <span class="keyword">of</span> selectorParts) &#123;</span><br><span class="line">    <span class="keyword">if</span> (part.charAt(<span class="number">0</span>) == <span class="string">"#"</span>) &#123;</span><br><span class="line">      p[<span class="number">1</span>] += <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (part.charAt(<span class="number">0</span>) == <span class="string">"."</span>) &#123;</span><br><span class="line">      p[<span class="number">2</span>] += <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      p[<span class="number">3</span>] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">sp1, sp2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (sp1[<span class="number">0</span>] - sp2[<span class="number">0</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> sp1[<span class="number">0</span>] - sp2[<span class="number">0</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (sp1[<span class="number">1</span>] - sp2[<span class="number">1</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> sp1[<span class="number">1</span>] - sp2[<span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (sp1[<span class="number">2</span>] - sp2[<span class="number">2</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> sp1[<span class="number">2</span>] - sp2[<span class="number">2</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sp1[<span class="number">3</span>] - sp2[<span class="number">3</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">computeCSS</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> elements = stack.slice().reverse()</span><br><span class="line"></span><br><span class="line">	  <span class="keyword">if</span> (!element.computedStyle)</span><br><span class="line">	    element.computedStyle = &#123;&#125;</span><br><span class="line">	  </span><br><span class="line">	  <span class="keyword">for</span> (<span class="keyword">let</span> rule <span class="keyword">of</span> rules) &#123;</span><br><span class="line">	    <span class="keyword">const</span> selectorParts = rule.selectors[<span class="number">0</span>].split(<span class="string">" "</span>).reverse()</span><br><span class="line">	</span><br><span class="line">	    <span class="keyword">if</span> (!match(element, selectorParts[<span class="number">0</span>]))</span><br><span class="line">	      <span class="keyword">continue</span></span><br><span class="line">	</span><br><span class="line">	    <span class="keyword">let</span> matched = <span class="literal">false</span></span><br><span class="line">	</span><br><span class="line">	    <span class="keyword">let</span> j = <span class="number">1</span></span><br><span class="line">	</span><br><span class="line">	    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; elements.length; i ++) &#123;</span><br><span class="line">	      <span class="keyword">if</span> (match(elements[i], selectorParts[j])) &#123;</span><br><span class="line">	        j ++</span><br><span class="line">	      &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">if</span> (j &gt;= selectorParts.length) &#123;</span><br><span class="line">	      matched = <span class="literal">true</span></span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">if</span> (matched) &#123; <span class="comment">// 匹配成功</span></span><br><span class="line">	      <span class="built_in">console</span>.log(<span class="string">"Element"</span>, element, <span class="string">"matched rule"</span>, rule)</span><br><span class="line">	    &#125;</span><br><span class="line">	  &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	...some code</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h3 id="第五步：计算选择器与元素匹配"><a href="#第五步：计算选择器与元素匹配" class="headerlink" title="第五步：计算选择器与元素匹配"></a>第五步：计算选择器与元素匹配</h3><ul>
-<li><p>根据选择器的类型和元素属性，计算是否与当前元素匹配</p>
-</li>
-<li><p>这里仅实现了三种基本选择器，实际的浏览器中要处理复合选择器</p>
-</li>
-<li><p>computeCSS5.js</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">match</span>(<span class="params">element, selector</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!selector || !element.attributes) </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (selector.charAt(<span class="number">0</span>) == <span class="string">"#"</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> attr = element.attributes.filter(<span class="function"><span class="params">attr</span> =&gt;</span> attr.name === <span class="string">"id"</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> (attr &amp;&amp; attr.value === selector.replace(<span class="string">"#"</span>, <span class="string">''</span>))</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (selector.charAt(<span class="number">0</span>) == <span class="string">"."</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> attr = element.attributes.filter(<span class="function"><span class="params">attr</span> =&gt;</span> attr.name === <span class="string">"class"</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> (attr &amp;&amp; attr.value === selector.replace(<span class="string">"."</span>, <span class="string">''</span>))</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (element.tagName === selector) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行结果</p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/e23fb1db77239166c990b52468b24451353540.png" alt="第五步运行结果"></li>
-</ul>
-</li>
-</ul>
-<h4 id="第五步优化：实现支持空格的-Class-选择器"><a href="#第五步优化：实现支持空格的-Class-选择器" class="headerlink" title="第五步优化：实现支持空格的 Class 选择器"></a>第五步优化：实现支持空格的 Class 选择器</h4><ul>
-<li><p>假如我们的 html 改成这样：</p>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">maaa</span>=<span class="string">a</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">	<span class="selector-tag">body</span> <span class="selector-tag">div</span> <span class="selector-id">#myid</span>&#123;</span></span><br><span class="line"><span class="css">	    <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">	    <span class="selector-tag">background-color</span>: <span class="selector-id">#ff5000</span>;</span></span><br><span class="line">	&#125;</span><br><span class="line">	body div img&#123;</span><br><span class="line"><span class="css">	    <span class="selector-tag">width</span><span class="selector-pseudo">:30px</span>;</span></span><br><span class="line"><span class="css">	    <span class="selector-tag">background-color</span>: <span class="selector-id">#ff1111</span>;</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="css">	<span class="selector-tag">body</span> <span class="selector-tag">div</span> <span class="selector-class">.cls1</span> &#123;</span></span><br><span class="line"><span class="css">	  <span class="selector-tag">background-color</span>: <span class="selector-id">#ff9906</span>;</span></span><br><span class="line">	&#125;</span><br><span class="line">	    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">	        <span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"myid"</span>/&gt;</span></span><br><span class="line">	        <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"cls1 cls2"</span>/&gt;</span></span><br><span class="line">	    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>在 &lt;img&gt; 增加多个 class 选择器，那我们的选择器 match 可以改成</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">match</span>(<span class="params">element, selector</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!selector || !element.attributes) </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (selector.charAt(<span class="number">0</span>) == <span class="string">"#"</span>) &#123;</span><br><span class="line">	    </span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (selector.charAt(<span class="number">0</span>) == <span class="string">"."</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> attr = element.attributes.filter(<span class="function"><span class="params">attr</span> =&gt;</span> attr.name === <span class="string">"class"</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> (attr) &#123;</span><br><span class="line">      <span class="keyword">const</span> attrClassArray = attr.value.split(<span class="string">' '</span>)</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> attrClass <span class="keyword">of</span> attrClassArray) &#123;</span><br><span class="line">        <span class="keyword">if</span> (attrClass === selector.replace(<span class="string">"."</span>, <span class="string">''</span>)) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		    </span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">  &#125;</span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br></pre></td></tr></table></figure></li>
-<li><p>思路：</p>
-<ul>
-<li>我们可以看到<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/a8b9d9396713239928cd8b0af216535e40897.png" alt="多 class 选择器"></li>
-</ul>
-</li>
-<li>我们可以将 元素 attr 根据空格分隔，再利用循环匹配</li>
-</ul>
-</li>
-<li><p>运行结果</p>
-<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/1d5533479cdb7d6c1a0af20acdfc4e71146017.png" alt="第五步优化运行结果"></li>
-</ul>
-</li>
-</ul>
-<h3 id="第六步：生成-computed-属性"><a href="#第六步：生成-computed-属性" class="headerlink" title="第六步：生成 computed 属性"></a>第六步：生成 computed 属性</h3><ul>
-<li><p>一旦选择匹配，就应用选择器到元素上，形成 computedStyle</p>
-</li>
-<li><p>computeCSS6.js</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">computeCSS</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">	</span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> (matched) &#123; <span class="comment">// 匹配成功</span></span><br><span class="line">      <span class="keyword">const</span> computedStyle = element.computedStyle</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> declaration <span class="keyword">of</span> rule.declarations) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!computedStyle[declaration.property]) &#123;</span><br><span class="line">          computedStyle[declaration.property] = &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        computedStyle[declaration.property].value = declaration.value</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">console</span>.log(element.computedStyle)</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行结果</p>
-<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/71888ca9220eb11196bc00eb407fb05980361.png" alt="第六步运行结果"></li>
-</ul>
-</li>
-</ul>
-<h3 id="第七步：确定规则覆盖关系"><a href="#第七步：确定规则覆盖关系" class="headerlink" title="第七步：确定规则覆盖关系"></a>第七步：确定规则覆盖关系</h3><ul>
-<li><p>CSS 规则根据 specificity 和后来优先规则覆盖</p>
-</li>
-<li><p>specificity 是个四元组，越左边权重越高</p>
-</li>
-<li><p>一个 CSS 规则的 specificity 根据包含的简单选择器相加而成</p>
-</li>
-<li><p><img src="http://p0.meituan.net/myvideodistribute/a50f3ae53878adbacbdcb7798632605e283940.png" alt="selectors-3 specificity"></p>
-</li>
-<li><p>computeCSS7.js</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">...some code</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">specificity</span>(<span class="params">selector</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">  <span class="keyword">const</span> selectorParts = selector.split(<span class="string">" "</span>)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> part <span class="keyword">of</span> selectorParts) &#123;</span><br><span class="line">    <span class="keyword">if</span> (part.charAt(<span class="number">0</span>) == <span class="string">"#"</span>) &#123;</span><br><span class="line">      p[<span class="number">1</span>] += <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (part.charAt(<span class="number">0</span>) == <span class="string">"."</span>) &#123;</span><br><span class="line">      p[<span class="number">2</span>] += <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      p[<span class="number">3</span>] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">sp1, sp2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (sp1[<span class="number">0</span>] - sp2[<span class="number">0</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> sp1[<span class="number">0</span>] - sp2[<span class="number">0</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (sp1[<span class="number">1</span>] - sp2[<span class="number">1</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> sp1[<span class="number">1</span>] - sp2[<span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (sp1[<span class="number">2</span>] - sp2[<span class="number">2</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> sp1[<span class="number">2</span>] - sp2[<span class="number">2</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sp1[<span class="number">3</span>] - sp2[<span class="number">3</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">computeCSS</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">	</span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> (matched) &#123; <span class="comment">// 匹配成功</span></span><br><span class="line">      <span class="keyword">const</span> sp = specificity(rule.selectors[<span class="number">0</span>])</span><br><span class="line">      <span class="keyword">const</span> computedStyle = element.computedStyle</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> declaration <span class="keyword">of</span> rule.declarations) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!computedStyle[declaration.property]) &#123;</span><br><span class="line">          computedStyle[declaration.property] = &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!computedStyle[declaration.property].specificity) &#123;</span><br><span class="line">          computedStyle[declaration.property].value = declaration.value</span><br><span class="line">          computedStyle[declaration.property].specificity = sp</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (compare(computedStyle[declaration.property].specificity, sp) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">          computedStyle[declaration.property].value = declaration.value</span><br><span class="line">          computedStyle[declaration.property].specificity = sp</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">		</span><br><span class="line">	...some code</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...some code</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li>运行结果<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/063c59deee7d24e437fdff9920aec8ea216464.png" alt="第七步运行结果"></li>
-<li><img src="http://p1.meituan.net/myvideodistribute/c3a7fb73c0d001fef48137c4a23144b6211501.png" alt="第七步运行结果"></li>
-</ul>
-</li>
-</ul>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">CSS 优先级是如何计算的？</a></li>
-<li><a href="https://drafts.csswg.org/selectors-3/#specificity" target="_blank" rel="noopener">selectors-3 specificity</a></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li><a href="https://github.com/Ele-Peng/toy-browser" target="_blank" rel="noopener">完整代码地址-点击一下</a></li>
-<li>学而不思则罔</li>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>浏览器</category>
-      </categories>
-      <tags>
-        <tag>浏览器</tag>
       </tags>
   </entry>
   <entry>
@@ -3193,6 +3158,163 @@
       </tags>
   </entry>
   <entry>
+    <title>数组、链表、跳表</title>
+    <url>/2020/04/07/%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8%E3%80%81%E8%B7%B3%E8%A1%A8/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><ul>
+<li>补足链表linked list，look up O(n) 的缺陷，升维思想，以空间换时间</li>
+<li>数学归纳法</li>
+<li>找最近重复问题</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>自己的前端知识体系</title>
+    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>理一下自己的技术体系吧</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/49daa01a2bbdab251434a26a618376c53934435.png" alt="技术体系脑图"></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【未完】计算机图形学初探</title>
+    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><p>记录 计算机图形学 方面的学习过程🤔</p>
+<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
+<li>前端与图形学<ul>
+<li>shader</li>
+</ul>
+</li>
+<li>图形学应用场景<ul>
+<li>Image<ul>
+<li>pattern（多用于背景）</li>
+<li>photo</li>
+<li>shape</li>
+</ul>
+</li>
+<li>来自数学的图形–分形</li>
+<li>来自物理的图形–光的衍射<ul>
+<li>相变</li>
+<li>绿幕<ul>
+<li>PNG24 –&gt; 2张 jpg</li>
+</ul>
+</li>
+<li>3D效果<ul>
+<li>three.js</li>
+<li>babylon.js</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机图形学</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>编程语言通识</title>
     <url>/2020/04/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%80%9A%E8%AF%86/</url>
     <content><![CDATA[<style  type="text/css">
@@ -3455,128 +3577,6 @@
 </li>
 </ul>
 <h2 id="一般命令式编程语言"><a href="#一般命令式编程语言" class="headerlink" title="一般命令式编程语言"></a>一般命令式编程语言</h2><h3 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h3><h3 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h3><h3 id="Statement-语句"><a href="#Statement-语句" class="headerlink" title="Statement 语句"></a>Statement 语句</h3><h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><h3 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h3>]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【未完】计算机图形学初探</title>
-    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li><p>记录 计算机图形学 方面的学习过程🤔</p>
-<a id="more"></a>
-
-</li>
-</ul>
-<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>前端与图形学<ul>
-<li>shader</li>
-</ul>
-</li>
-<li>图形学应用场景<ul>
-<li>Image<ul>
-<li>pattern（多用于背景）</li>
-<li>photo</li>
-<li>shape</li>
-</ul>
-</li>
-<li>来自数学的图形–分形</li>
-<li>来自物理的图形–光的衍射<ul>
-<li>相变</li>
-<li>绿幕<ul>
-<li>PNG24 –&gt; 2张 jpg</li>
-</ul>
-</li>
-<li>3D效果<ul>
-<li>three.js</li>
-<li>babylon.js</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机图形学</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自己的前端知识体系</title>
-    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>理一下自己的技术体系吧</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/49daa01a2bbdab251434a26a618376c53934435.png" alt="技术体系脑图"></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
       <categories>
         <category>前端概念</category>
       </categories>
@@ -4906,8 +4906,8 @@
         <category>前端概念</category>
       </categories>
       <tags>
-        <tag>前端概念</tag>
         <tag>算法</tag>
+        <tag>前端概念</tag>
       </tags>
   </entry>
   <entry>
