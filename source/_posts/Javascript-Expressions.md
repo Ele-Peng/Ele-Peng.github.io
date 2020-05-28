@@ -90,11 +90,11 @@ description:
 			console.log(this.a)
 		}
 	}
-	Parent.a = 1;
+	Parent.a = 2;
 	new Child
 	```
 	
-	- ![super 截图](http://p0.meituan.net/myvideodistribute/c869fe9598febb5fbbdab3bb66c0940859515.png)
+	- ![super 截图](http://p1.meituan.net/myvideodistribute/6dbc29d1a132b5099186f0f9ec8e6bd458489.png)
 	
 - new.target
 	- 函数外面不能使用，只能在函数里使用
@@ -136,6 +136,7 @@ description:
 	
 	new new cls2("goog")
 	```
+	- ![new Foo()](http://p0.meituan.net/myvideodistribute/b94c06479581e9f07cea46eed00d5c6053648.png)
 
 - Member Expressions 返回的是一个 Reference 类型
 	- Reference
@@ -284,10 +285,10 @@ description:
 - await a
 
 ### Exponental
-- **
+- \*\*
 	- 3 ** 2 ** 3
 	- 3 ** (2 ** 3)
-	- ![Exponental](http://p0.meituan.net/myvideodistribute/c45593f796e09721d1b10701e366669620756.png)
+	- ![Exponental](http://p1.meituan.net/myvideodistribute/18947a64bdd8ad6c249ea3e214f5b11d17541.png)
 
 
 ### Multiplicative

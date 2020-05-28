@@ -321,9 +321,9 @@ void function (){
   return ;
   var a;
 }()
-console.log(a);
+console.log('a', a);
 ```
-![var 预处理](http://p0.meituan.net/myvideodistribute/21745b775ee2bfb77aa1efdff233619737142.png)
+![var 预处理](http://p0.meituan.net/myvideodistribute/f2ca7ffe01a1005a939392f8609685d733665.png)
 
 ```javascript
 void a = 2;

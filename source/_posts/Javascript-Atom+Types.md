@@ -46,7 +46,7 @@ description:
 		- Form Feed 翻页
 		- CJK 中文字符 Chinese Japan Korean
 	- U+0020 SPACE 空格
-	- BMP 基本字符平面 四位能表示的范围
+	- BMP (Basic Multilingual Plane)基本字符平面 四位能表示的范围
 	- 超出BMP范围
 		- fromCodePoint
 		- codePointAt
