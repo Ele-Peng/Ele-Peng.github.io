@@ -110,9 +110,30 @@
 <li>简单了解一下计算机网络相关知识。是的，Elle 很惨😭 计算机网络学得稀烂</li>
 </ul>
 <a id="more"></a>
-
 <h2 id="简单过程"><a href="#简单过程" class="headerlink" title="简单过程"></a>简单过程</h2><ul>
 <li>你先在浏览器里面输入 <a href="https://ele-peng.github.io/" target="_blank" rel="noopener">https://ele-peng.github.io/</a> ，这是一个 URL。浏览器只知道名字是“ele-peng.github.io”，但是不知道具体的地点，所以不知道应该如何访问。于是，它打开地址簿去查找。可以使用一般的地址簿协议 DNS 去查找，还可以使用另一种更加精准的地址簿查找协议 HTTPDNS 。</li>
+<li>无论用哪一种方法查找，最终都会得到这个地址：52.74.223.119。这个是 IP 地址，是互联网世界的“门牌号”。</li>
+<li>知道了目标地址，浏览器就开始打包它的请求。这里会使用HTTPS协议。无论是什么协议，里面都会写明“你要请求什么”。﻿</li>
+<li>DNS、HTTP、HTTPS 所在的层我们称为<strong>应用层</strong>。经过应用层封装后，浏览器会将应用层的包交给下一层去完成，<strong>通过 socket 编程来实现</strong>。下一层是<strong>传输层</strong>。传输层有两种协议，一种是无连接的协议UDP，一种是面向连接的协议TCP。这里使用 TCP 协议。所谓的面向连接就是，TCP 会保证这个包能够到达目的地。如果不能到达，就会重新发送，直至到达。</li>
+<li>TCP 协议里面会有两个端口，一个是浏览器监听的端口，一个是 github 的服务器监听的端口。操作系统往往通过端口来判断，它得到的包应该给哪个进程。</li>
+<li>传输层封装完毕后，浏览器会将包交给操作系统的<strong>网络层</strong>。网络层的协议是 IP 协议。在 IP 协议里面会有源 IP 地址，即浏览器所在机器的 IP 地址和目标 IP 地址，也即 github 所在服务器的 IP 地址。</li>
+<li>操作系统既然知道了目标 IP 地址，就开始想如何根据这个门牌号找到目标机器。操作系统往往会判断，这个目标 IP 地址是本地人，还是外地人。如果是本地人，从门牌号就能看出来，但是显然 github 网站不在本地，而在遥远的地方。</li>
+<li>操作系统知道要离开本地去远方。虽然不知道远方在何处，但是可以这样类比一下：如果去国外要去海关，去外地就要去网关。而操作系统启动的时候，就会被 DHCP 协议配置 IP 地址，以及默认的网关的 IP 地址 192.168.1.1。</li>
+<li>操作系统如何将 IP 地址发给网关呢？在本地通信基本靠吼，于是操作系统大吼一声，谁是 192.168.1.1 啊？网关会回答它，我就是，我的本地地址在村东头。这个本地地址就是 MAC 地址，而大吼的那一声是 ARP 协议。</li>
+<li>于是操作系统将 IP 包交给了下一层，也就是 <strong>MAC 层</strong>。网卡再将包发出去。由于这个包里面是有 MAC 地址的，因而它能够到达网关。</li>
+<li>网关收到包之后，会根据自己的知识，判断下一步应该怎么走。网关往往是一个路由器，到某个 IP 地址应该怎么走，这个叫作路由表。</li>
+<li>路由器有点像玄奘西行路过的一个个国家的一个个城关。每个城关都连着两个国家，每个国家相当于一个局域网，在每个国家内部，都可以使用本地的地址 MAC 进行通信。</li>
+<li>一旦跨越城关，就需要拿出 IP 头来问，目标 IP 地址怎么走？</li>
+<li>城关往往是知道这些“知识”的，因为城关和临近的城关也会经常沟通。到哪里应该怎么走，这种沟通的协议称为路由协议，常用的有 OSP F和 BGP 。﻿</li>
+<li>城关与城关之间是一个国家，当网络包知道了下一步去哪个城关，还是要使用国家内部的 MAC 地址，通过下一个城关的 MAC 地址，找到下一个城关，然后再问下一步的路怎么走，一直到走出最后一个城关。</li>
+<li>最后一个城关知道这个网络包要去的地方。于是，对着这个国家吼一声，谁是目标 IP 啊？目标服务器就会回复一个 MAC 地址。网络包过关后，通过这个 MAC 地址就能找到目标服务器。</li>
+<li>目标服务器发现 MAC 地址对上了，取下 MAC 头来，发送给操作系统的网络层。发现 IP 也对上了，就取下 IP 头。IP 头里会写上一层封装的是 TCP 协议，然后将其交给传输层，即TCP 层。</li>
+<li>在这一层里，对于收到的每个包，都会有一个回复的包说明收到了。这个回复的包绝非这次查询请求的结果，而仅仅是 TCP 层的一个说明，即收到之后的回复。当然这个回复，会沿着刚才来的方向走回去，报个平安。</li>
+<li>如果过一段时间还是没到，发送端的 TCP 层会重新发送这个包，还是上面的过程，直到有一天收到平安到达的回复。这个重试绝非你的浏览器重新请求 github 个人主页。对于浏览器来讲，就发送了一次 github 个人主页请求，TCP 层不断自己闷头重试。除非 TCP 这一层出了问题，例如连接断了，才轮到浏览器的应用层重新发送 github 个人主页请求。</li>
+<li>当网络包平安到达 TCP 层之后，TCP 头中有目标端口号，通过这个端口号，可以找到 github 网站的进程正在监听这个端口号，假设一个 Tomcat，将这个包发给 github 网站。﻿</li>
+<li>github 网站的进程得到 HTTP 请求的内容，知道了要响应啥。往往一个电商网站最初接待请求的这个 Tomcat 只是个接待员，负责统筹处理这个请求，而不是所有的事情都自己做。例如，这个接待员要告诉专门管理 GitHub 个人主页的进程，要响应啥等等。</li>
+<li>如何告诉相关的进程呢？往往通过 RPC 调用，即远程过程调用的方式来实现。远程过程调用就是当告诉管理 GitHub 个人主页的进程的时候，接待员不用关心中间的网络互连问题，会由 RPC 框架统一处理。RPC 框架有很多种，有基于 HTTP 协议放在 HTTP 的报文里面的，有直接封装在 TCP 报文里面的。</li>
+<li>当接待员发现相应的部门都处理完毕，就回复一个 HTTPS 的包，告知查询成功。这个 HTTPS 的包，会像来的时候一样，经过千难万险到达你的个人电脑，最终进入浏览器，显示个人主页。</li>
 </ul>
 <h2 id="网络分层模型"><a href="#网络分层模型" class="headerlink" title="网络分层模型"></a>网络分层模型</h2><h3 id="TCP-IP-协议栈"><a href="#TCP-IP-协议栈" class="headerlink" title="TCP/IP 协议栈"></a>TCP/IP 协议栈</h3><ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/6fea0628affaf34d09b59d845ffeb60a75766.png" alt="TCP/IP 协议栈"></li>
@@ -212,7 +233,7 @@
 </ul>
 </li>
 <li>级域名服务器（Top-level DNS Server）：管理各自域名下的权威域名服务器，比如 com 顶级域名服务器可以返回 apple.com 域名服务器的 IP 地址</li>
-<li>权威域名服务器（Authoritative DNS Server）：管理自己域名下主机的 IP 地址，比如 apple.com 权威域名服务器可以返回 <a href="http://www.apple.com" target="_blank" rel="noopener">www.apple.com</a> 的 IP 地址</li>
+<li>权威域名服务器（Authoritative DNS Server）：管理自己域名下主机的 IP 地址，比如 apple.com 权威域名服务器可以返回 www.apple.com 的 IP 地址</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/5ac55ff4d8109df28c9afb3fbfc27208625512.png" alt="DNS 三层的树状"></li>
 </ul>
 </li>
@@ -312,15 +333,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>分类</span>
+      <i class="fa fa-th-list fa-fw"></i>Categories</span>
         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>友链</span>
+      <i class="fa fa-link fa-fw"></i>Friends</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>
