@@ -128,38 +128,47 @@
 
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>利用正则表达式，匹配所有 Number 字面量<a id="more"></a>
+
 </li>
 </ul>
 <h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/fcc73488cd245a6c48cf067a6dc7641e16278.png" alt="NumbericLiteral 大纲"></li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/fcc73488cd245a6c48cf067a6dc7641e16278.png" alt="NumbericLiteral 大纲"></p>
+</li>
 <li><p>NumericLiteral :: </p>
 <ul>
 <li><p>DecimalLiteral</p>
 <ul>
 <li><p><img src="http://p0.meituan.net/myvideodistribute/94398bab367ca56c0aa2435de753041520532.png" alt="DecimalLiteral 大纲"></p>
 <ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/40d13f93242ff1f9321411cc7886586f52608.png" alt="DecimalLiteral 详情"></li>
+<li><p><img src="http://p0.meituan.net/myvideodistribute/40d13f93242ff1f9321411cc7886586f52608.png" alt="DecimalLiteral 详情"></p>
+</li>
 <li><p>DecimalIntegerLiteral . DecimalDigits(opt) ExponentPart(opt)</p>
 <ul>
 <li><p>DecimalIntegerLiteral</p>
 <blockquote>
 <p>(0)</p>
+</blockquote>
+<blockquote>
 <p>([1-9][0-9]*)</p>
 </blockquote>
 </li>
-<li>.<blockquote>
+<li><p>.</p>
+<blockquote>
 <p>.</p>
 </blockquote>
 </li>
-<li>DecimalDigits<blockquote>
+<li><p>DecimalDigits</p>
+<blockquote>
 <p>[0-9]*</p>
 </blockquote>
 </li>
-<li>ExponentPart<blockquote>
+<li><p>ExponentPart</p>
+<blockquote>
 <p>(e|E)(\+|\-)?([0-9])*</p>
 </blockquote>
 </li>
-<li>可以推导出<blockquote>
+<li><p>可以推导出</p>
+<blockquote>
 <p>/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?$/</p>
 </blockquote>
 </li>
@@ -239,6 +248,7 @@
 <p> /^((((0)|([1-9]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(0(b|B)(0|1)+)|(0(O|o)[0-7]+)|(0(x|X)([0-9a-fA-F])+))$/</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^((((<span class="number">0</span>)|([<span class="number">1</span><span class="number">-9</span>]\d*))?.?(\d*)((e|E)?(\+|\-)?(\d*))?)|(<span class="number">0</span>(b|B)(<span class="number">0</span>|<span class="number">1</span>)+)|(<span class="number">0</span>(O|o)[<span class="number">0</span><span class="number">-7</span>]+)|(<span class="number">0</span>(x|X)([<span class="number">0</span><span class="number">-9</span>a-fA-F])+))$/</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h2 id="结果测试"><a href="#结果测试" class="headerlink" title="结果测试"></a>结果测试</h2><ul>
@@ -291,7 +301,7 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2020/04/20/Javascript-Types/">
+		<a class="copy" href="/2020/04/20/Javascript-Atom+Types/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
