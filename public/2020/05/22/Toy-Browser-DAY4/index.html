@@ -133,14 +133,11 @@
 <li><img src="http://p0.meituan.net/myvideodistribute/6d5c67d3d5d0633bf667bd680f6dfb9489753.png" alt="DOM with CSS"></li>
 </ul>
 <a id="more"></a>
-
 <h3 id="第一步：初始化"><a href="#第一步：初始化" class="headerlink" title="第一步：初始化"></a>第一步：初始化</h3><ul>
 <li><p>我们采用以下 html 代码段</p>
   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">maaa</span>=<span class="string">a</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#container</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:500px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:300px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">display</span><span class="selector-pseudo">:flex</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span><span class="selector-pseudo">:rgb(255</span>,255,255);</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-id">#container</span> <span class="selector-id">#myid</span>&#123;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">width</span><span class="selector-pseudo">:200px</span>;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span><span class="selector-pseudo">:rgb(255</span>,0,0)</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-id">#container</span> <span class="selector-class">.c1</span>&#123;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">flex</span><span class="selector-pseudo">:1</span>;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span><span class="selector-pseudo">:rgb(0</span>,255,0)</span></span><br><span class="line">    &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myid"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>代码逻辑自顶向下</p>
-</li>
-<li><p>首先，我们在 endTag 的时候进行 layout</p>
-<ul>
+<li>代码逻辑自顶向下</li>
+<li>首先，我们在 endTag 的时候进行 layout<ul>
 <li>我们只处理 flex，可以简化成在 endTag 时，进行 layout 即可</li>
 </ul>
 </li>
@@ -184,7 +181,6 @@
 <ul>
 <li><p>显示为列。但方向和column属性值是反的。</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (style.flexDirection === <span class="string">'column-reverse'</span>) &#123;</span><br><span class="line">    mainSize = <span class="string">'height'</span></span><br><span class="line">    mainStart = <span class="string">'bottom'</span></span><br><span class="line">    mainEnd = <span class="string">'top'</span></span><br><span class="line">    mainSign = <span class="number">-1</span></span><br><span class="line">    mainBase = style.height</span><br><span class="line"></span><br><span class="line">    crossSize = <span class="string">'width'</span></span><br><span class="line">    crossStart = <span class="string">'left'</span></span><br><span class="line">    crossEnd = <span class="string">'right'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 </li>
@@ -198,8 +194,7 @@
 <ul>
 <li><p>默认值，表示单行显示，不换行。于是很容易出现宽度溢出的场景，其渲染表现比较复杂，需要对CSS3宽度有一定了解。这边我们简单处理为：（以水平布局举例）</p>
 <ul>
-<li><p>flex 子项宽度 width 之和大于 flex 容器宽度，则内容溢出，表现和 white-space: nowrap 类似。</p>
-</li>
+<li>flex 子项宽度 width 之和大于 flex 容器宽度，则内容溢出，表现和 white-space: nowrap 类似。</li>
 <li><p>flex 子项宽度 width 之和大于 flex 容器宽度，则内容不溢出</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crossBase = <span class="number">0</span></span><br><span class="line">crossSign = +<span class="number">1</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -218,8 +213,6 @@
 <ul>
 <li><p>宽度不足换行显示，但是是从下往上开始，也就是原本换行在下面的子项现在跑到上面</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (style.flexWrap === <span class="string">'wrap-reverse'</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> temp = crossStart</span><br><span class="line">    crossStart = crossEnd</span><br><span class="line">    crossEnd = temp</span><br><span class="line">    crossSign = <span class="number">-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
 </li>
 </ul>
 </li>
@@ -243,8 +236,7 @@
 </li>
 <li><p>flex 容器是否换行</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当前flex 子项，大于 flex mainSize,自适应</span></span><br><span class="line"><span class="keyword">if</span> (itemStyle[mainSize] &gt; style[mainSize]) &#123;</span><br><span class="line">    itemStyle[mainSize] = style[mainSize]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 当前flex 子项，大于 flex 容器剩余 mainSpace，另起新行</span></span><br><span class="line"><span class="keyword">if</span> (mainSpace &lt; itemStyle[mainSize]) &#123;</span><br><span class="line">    flexLine.mainSpace = mainSpace</span><br><span class="line">    flexLine.crossSpace = crossSpace</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建新行</span></span><br><span class="line">    flexLine = []</span><br><span class="line">    flexLines.push(flexLine)</span><br><span class="line">    flexLine.push(item)</span><br><span class="line"></span><br><span class="line">    mainSpace = style[mainSize]</span><br><span class="line">    crossSpace = <span class="number">0</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123; <span class="comment">// 未超过 flex 容器剩余 mainSpace，添加进行 </span></span><br><span class="line">    flexLine.push(item)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 处理交叉轴，只需要取 flex 子项最大 crossSize</span></span><br><span class="line"><span class="keyword">if</span> (itemStyle[crossSize] !== <span class="literal">null</span> &amp;&amp; itemStyle[crossSize] !== (<span class="keyword">void</span> <span class="number">0</span>)) &#123;</span><br><span class="line">    crossSpace = <span class="built_in">Math</span>.max(crossSpace, itemStyle[crossSize])</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// flex 容器剩余 mainSpace</span></span><br><span class="line">mainSpace -= itemStyle[mainSize]</span><br></pre></td></tr></table></figure></li>
-<li><p><a href="https://github.com/Ele-Peng/toy-browser/blob/master/layout2.js" target="_blank" rel="noopener">layout2.js 完整代码-点击一下</a></p>
-</li>
+<li><a href="https://github.com/Ele-Peng/toy-browser/blob/master/layout2.js" target="_blank" rel="noopener">layout2.js 完整代码-点击一下</a></li>
 </ul>
 <h3 id="第三步：计算主轴"><a href="#第三步：计算主轴" class="headerlink" title="第三步：计算主轴"></a>第三步：计算主轴</h3><ul>
 <li><p>计算主轴方向</p>
@@ -267,7 +259,6 @@
 <ul>
 <li><p>默认值</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!style.justifyContent || style.justifyContent === <span class="string">'auto'</span>)</span><br><span class="line">    style.justifyContent = <span class="string">'flex-start'</span></span><br></pre></td></tr></table></figure>
-
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (style.justifyContent === <span class="string">'flex-start'</span>) &#123;</span><br><span class="line">  currentMain = mainBase</span><br><span class="line">  gap = <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
@@ -312,8 +303,7 @@
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (mainSpace &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 对负的 mainSpace， 所有该行 flex 子项等比例缩放（未设置 flex-shrink 默认值是1，也就是默认所有的 flex 子项都会收缩）</span></span><br><span class="line">    <span class="keyword">const</span> scale = style[mainSize] / (style[mainSize] - mainSpace)</span><br><span class="line">    <span class="keyword">const</span> currentMain = mainBase</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i ++) &#123;</span><br><span class="line">      <span class="keyword">const</span> item = items[i]</span><br><span class="line">      <span class="keyword">const</span> itemStyle = getStyle(item)</span><br><span class="line">	</span><br><span class="line">      <span class="keyword">if</span> (itemStyle.flex) &#123;</span><br><span class="line">        itemStyle[mainSize] = <span class="number">0</span></span><br><span class="line">      &#125;</span><br><span class="line">	</span><br><span class="line">      itemStyle[mainSize] = itemStyle[mainSize] * scale</span><br><span class="line">	</span><br><span class="line">      <span class="comment">// flex 容器这一行内，flex 子项排布</span></span><br><span class="line">      itemStyle[mainStart] = currentMain</span><br><span class="line">      itemStyle[mainEnd] = itemStyle[mainStart] + mainSign * itemStyle[mainSize]</span><br><span class="line">      currentMain = itemStyle[mainEnd]</span><br><span class="line">    &#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><p><a href="https://github.com/Ele-Peng/toy-browser/blob/master/layout3.js" target="_blank" rel="noopener">layout3.js 完整代码-点击一下</a></p>
-</li>
+<li><a href="https://github.com/Ele-Peng/toy-browser/blob/master/layout3.js" target="_blank" rel="noopener">layout3.js 完整代码-点击一下</a></li>
 </ul>
 <h3 id="第四步：计算交叉轴"><a href="#第四步：计算交叉轴" class="headerlink" title="第四步：计算交叉轴"></a>第四步：计算交叉轴</h3><ul>
 <li><p>计算交叉轴方向</p>
@@ -407,15 +397,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>Categories</span>
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>Friends</span>
+      <i class="fa fa-link fa-fw"></i>友链</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>
