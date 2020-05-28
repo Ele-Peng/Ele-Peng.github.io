@@ -482,6 +482,234 @@
       </tags>
   </entry>
   <entry>
+    <title>Javascript-Statement</title>
+    <url>/2020/04/26/Javascript-Statement/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h1><h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="简单语句"><a href="#简单语句" class="headerlink" title="简单语句"></a>简单语句</h3><ul>
+<li>ExpressionStatement<ul>
+<li>a = 1 + 2;</li>
+</ul>
+</li>
+<li>EmptyStatement<ul>
+<li>;</li>
+</ul>
+</li>
+<li>DebuggerStatement<ul>
+<li>debugger</li>
+</ul>
+</li>
+<li>ThrowStatement<ul>
+<li>throw a;</li>
+</ul>
+</li>
+<li>ContinueStatement<ul>
+<li>continue ;</li>
+<li>continue label;</li>
+</ul>
+</li>
+<li>BreakStatement<ul>
+<li>break ;</li>
+<li>break label;</li>
+</ul>
+</li>
+<li>ReturnStatement<ul>
+<li>return ;</li>
+<li>return expression;</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="组合语句"><a href="#组合语句" class="headerlink" title="组合语句"></a>组合语句</h3><ul>
+<li><p>BlockStatement</p>
+<ul>
+<li><p>把多条语句从语法上括起来，让它像一条语句一样</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  a: <span class="number">1</span> <span class="comment">// a 被理解为 label</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>BlockStatement 中有非 normal ，就会中断</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">  b = foo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>为 const / let 提供作用域</p>
+</li>
+<li><p>Completion Record</p>
+<ul>
+<li>[[type]]: normal</li>
+<li>[[value]]: –</li>
+<li>[[target]]: –</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IfStatement</p>
+</li>
+<li><p>SwitchStatement</p>
+</li>
+<li><p>IterationStatement</p>
+<ul>
+<li><p><s>for await(… of …)</s></p>
+</li>
+<li><p>while(Expression…) Statement…</p>
+</li>
+<li><p>do Statement… while(Expression…);</p>
+</li>
+<li><p>for(Definition…; Expression…; Expression…) Statement…</p>
+<ul>
+<li><p>Definition</p>
+<ul>
+<li>var</li>
+<li>const / let</li>
+</ul>
+</li>
+<li><p>for 会独立产生一个作用域，在 blockStatement 之外</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>for(Definition… in Expression…) Statement….</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>for(Definition…of Expression…) Statement…</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">g</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> p  <span class="keyword">of</span> g())&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>for of –&gt; Iterator –&gt; Generator/Array</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>WithStatement</p>
+</li>
+<li><p>LabelledStatement</p>
+</li>
+<li><p>TryStatement</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">catch</span>(definition...) &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="keyword">let</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> e = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>catch 中的声明，只在 {} 这一个作用域中，与 for 不一样。</p>
+</li>
+<li><p>运行时产生错误的时候，都有可能产生 throw</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> = a;</span><br><span class="line"><span class="literal">null</span>.a;</span><br></pre></td></tr></table></figure></li>
+<li><p>Completion Record</p>
+<ul>
+<li>[[type]]: return</li>
+<li>[[value]]: –</li>
+<li>[[target]]: label</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="标签、循环、break、continue"><a href="#标签、循环、break、continue" class="headerlink" title="标签、循环、break、continue"></a>标签、循环、break、continue</h3><ul>
+<li>LabelledStatement</li>
+<li>IterationStatement</li>
+<li>ContinueStatement</li>
+<li>BreakStatement</li>
+<li>SwitchStatement</li>
+<li>Completion Record<ul>
+<li>[[type]]: break continue</li>
+<li>[[value]]: –</li>
+<li>[[target]]: label</li>
+</ul>
+</li>
+</ul>
+<h3 id="声明机制"><a href="#声明机制" class="headerlink" title="声明机制"></a>声明机制</h3><ul>
+<li><p>FunctionDeclaration</p>
+</li>
+<li><p>GeneratorDeclaration</p>
+</li>
+<li><p>AsyncFunctionDeclaration</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i ++);</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
+<li><p>AsyncGeneratorDeclaration</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span> i ++;</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">&#125;()</span><br><span class="line"><span class="comment">// 想无限循环输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span>(<span class="keyword">let</span> e <span class="keyword">of</span> g) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
+<li><p>VariableStatement</p>
+</li>
+<li><p>ClassDeclaration</p>
+</li>
+<li><p>LexicalDeclaration</p>
+</li>
+<li><p>声明</p>
+<ul>
+<li><p>function</p>
+</li>
+<li><p>function *</p>
+</li>
+<li><p>async function</p>
+</li>
+<li><p>async function*</p>
+</li>
+<li><p>var</p>
+<ul>
+<li><p>有 var 不建议写在任何语句子结构里，建议写在 function 的范围内</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 0</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>class</p>
+</li>
+<li><p>const</p>
+</li>
+<li><p>let</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Completion-Record"><a href="#Completion-Record" class="headerlink" title="Completion Record"></a>Completion Record</h3><ul>
+<li>[[type]]: normal, break, continue, return, throw</li>
+<li>[[value]]: Types</li>
+<li>[[target]]: label</li>
+</ul>
+<h3 id="Lexical-Environment"><a href="#Lexical-Environment" class="headerlink" title="Lexical Environment"></a>Lexical Environment</h3><h2 id="预处理（pre-process）BoundNames"><a href="#预处理（pre-process）BoundNames" class="headerlink" title="预处理（pre-process）BoundNames"></a>预处理（pre-process）BoundNames</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a) </span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a'</span>, a);</span><br></pre></td></tr></table></figure>
+<p><img src="http://p0.meituan.net/myvideodistribute/f2ca7ffe01a1005a939392f8609685d733665.png" alt="var 预处理"></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">const</span> a;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p><img src="http://p1.meituan.net/myvideodistribute/172ab6a2ba78132f1dd33f2f5b64e11044523.png" alt="const 无预处理"></p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://p0.meituan.net/myvideodistribute/8b9ac53e3ae6dfca675786084237d0d971523.png" alt="作用域"></p>
+<ul>
+<li>作用域与上下文的区别<ul>
+<li>作用域可以简单理解为源代码文本的作用区域</li>
+<li>执行上下文可以理解为，在用户的电脑上，内存里的，存变量的地方，JavaScript 引擎在执行过程中需要的变量，引擎里的那块内存。</li>
+</ul>
+</li>
+</ul>
+<h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript-Expressions</title>
     <url>/2020/04/23/Javascript-Expressions/</url>
     <content><![CDATA[<style  type="text/css">
@@ -746,234 +974,6 @@
 </li>
 </ul>
 ]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Javascript-Statement</title>
-    <url>/2020/04/26/Javascript-Statement/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-<h1 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h1><h1 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h1><h1 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h1><h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2><h3 id="简单语句"><a href="#简单语句" class="headerlink" title="简单语句"></a>简单语句</h3><ul>
-<li>ExpressionStatement<ul>
-<li>a = 1 + 2;</li>
-</ul>
-</li>
-<li>EmptyStatement<ul>
-<li>;</li>
-</ul>
-</li>
-<li>DebuggerStatement<ul>
-<li>debugger</li>
-</ul>
-</li>
-<li>ThrowStatement<ul>
-<li>throw a;</li>
-</ul>
-</li>
-<li>ContinueStatement<ul>
-<li>continue ;</li>
-<li>continue label;</li>
-</ul>
-</li>
-<li>BreakStatement<ul>
-<li>break ;</li>
-<li>break label;</li>
-</ul>
-</li>
-<li>ReturnStatement<ul>
-<li>return ;</li>
-<li>return expression;</li>
-</ul>
-</li>
-</ul>
-<a id="more"></a>
-
-<h3 id="组合语句"><a href="#组合语句" class="headerlink" title="组合语句"></a>组合语句</h3><ul>
-<li><p>BlockStatement</p>
-<ul>
-<li><p>把多条语句从语法上括起来，让它像一条语句一样</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  a: <span class="number">1</span> <span class="comment">// a 被理解为 label</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>BlockStatement 中有非 normal ，就会中断</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">  b = foo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>为 const / let 提供作用域</p>
-</li>
-<li><p>Completion Record</p>
-<ul>
-<li>[[type]]: normal</li>
-<li>[[value]]: –</li>
-<li>[[target]]: –</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>IfStatement</p>
-</li>
-<li><p>SwitchStatement</p>
-</li>
-<li><p>IterationStatement</p>
-<ul>
-<li><p><s>for await(… of …)</s></p>
-</li>
-<li><p>while(Expression…) Statement…</p>
-</li>
-<li><p>do Statement… while(Expression…);</p>
-</li>
-<li><p>for(Definition…; Expression…; Expression…) Statement…</p>
-<ul>
-<li><p>Definition</p>
-<ul>
-<li>var</li>
-<li>const / let</li>
-</ul>
-</li>
-<li><p>for 会独立产生一个作用域，在 blockStatement 之外</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>for(Definition… in Expression…) Statement….</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>for(Definition…of Expression…) Statement…</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">g</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> p  <span class="keyword">of</span> g())&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>for of –&gt; Iterator –&gt; Generator/Array</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>WithStatement</p>
-</li>
-<li><p>LabelledStatement</p>
-</li>
-<li><p>TryStatement</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">catch</span>(definition...) &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  Statement...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="keyword">let</span> e;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> e = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="number">2</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>catch 中的声明，只在 {} 这一个作用域中，与 for 不一样。</p>
-</li>
-<li><p>运行时产生错误的时候，都有可能产生 throw</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> = a;</span><br><span class="line"><span class="literal">null</span>.a;</span><br></pre></td></tr></table></figure></li>
-<li><p>Completion Record</p>
-<ul>
-<li>[[type]]: return</li>
-<li>[[value]]: –</li>
-<li>[[target]]: label</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="标签、循环、break、continue"><a href="#标签、循环、break、continue" class="headerlink" title="标签、循环、break、continue"></a>标签、循环、break、continue</h3><ul>
-<li>LabelledStatement</li>
-<li>IterationStatement</li>
-<li>ContinueStatement</li>
-<li>BreakStatement</li>
-<li>SwitchStatement</li>
-<li>Completion Record<ul>
-<li>[[type]]: break continue</li>
-<li>[[value]]: –</li>
-<li>[[target]]: label</li>
-</ul>
-</li>
-</ul>
-<h3 id="声明机制"><a href="#声明机制" class="headerlink" title="声明机制"></a>声明机制</h3><ul>
-<li><p>FunctionDeclaration</p>
-</li>
-<li><p>GeneratorDeclaration</p>
-</li>
-<li><p>AsyncFunctionDeclaration</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i ++);</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
-<li><p>AsyncGeneratorDeclaration</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, d))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span> i ++;</span><br><span class="line">    <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> g.next());</span><br><span class="line">&#125;()</span><br><span class="line"><span class="comment">// 想无限循环输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> g = foo();</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span>(<span class="keyword">let</span> e <span class="keyword">of</span> g) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
-<li><p>VariableStatement</p>
-</li>
-<li><p>ClassDeclaration</p>
-</li>
-<li><p>LexicalDeclaration</p>
-</li>
-<li><p>声明</p>
-<ul>
-<li><p>function</p>
-</li>
-<li><p>function *</p>
-</li>
-<li><p>async function</p>
-</li>
-<li><p>async function*</p>
-</li>
-<li><p>var</p>
-<ul>
-<li><p>有 var 不建议写在任何语句子结构里，建议写在 function 的范围内</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 0</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">with</span>(o) &#123;</span><br><span class="line">    x = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(o.x); <span class="comment">// --&gt; 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// --&gt; 2</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>class</p>
-</li>
-<li><p>const</p>
-</li>
-<li><p>let</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><h3 id="Completion-Record"><a href="#Completion-Record" class="headerlink" title="Completion Record"></a>Completion Record</h3><ul>
-<li>[[type]]: normal, break, continue, return, throw</li>
-<li>[[value]]: Types</li>
-<li>[[target]]: label</li>
-</ul>
-<h3 id="Lexical-Environment"><a href="#Lexical-Environment" class="headerlink" title="Lexical Environment"></a>Lexical Environment</h3><h2 id="预处理（pre-process）BoundNames"><a href="#预处理（pre-process）BoundNames" class="headerlink" title="预处理（pre-process）BoundNames"></a>预处理（pre-process）BoundNames</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a) </span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a'</span>, a);</span><br></pre></td></tr></table></figure>
-<p><img src="http://p0.meituan.net/myvideodistribute/f2ca7ffe01a1005a939392f8609685d733665.png" alt="var 预处理"></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">const</span> a;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-<p><img src="http://p1.meituan.net/myvideodistribute/172ab6a2ba78132f1dd33f2f5b64e11044523.png" alt="const 无预处理"></p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://p0.meituan.net/myvideodistribute/8b9ac53e3ae6dfca675786084237d0d971523.png" alt="作用域"></p>
-<ul>
-<li>作用域与上下文的区别<ul>
-<li>作用域可以简单理解为源代码文本的作用区域</li>
-<li>执行上下文可以理解为，在用户的电脑上，内存里的，存变量的地方，JavaScript 引擎在执行过程中需要的变量，引擎里的那块内存。</li>
-</ul>
-</li>
-</ul>
-<h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1>]]></content>
       <categories>
         <category>前端概念</category>
       </categories>
@@ -3215,127 +3215,6 @@
       </tags>
   </entry>
   <entry>
-    <title>微信小程序-fix canvas原生组件最顶层</title>
-    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>大家应该都知道过，在微信小程序中，canvas等原生组件的层级是最高的，页面中无论你设置多大的z-index都无法覆盖在其之上，这就可能会产生一些问题</li>
-<li>就像这样<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png" alt="canvas顶层问题截图"></li>
-<li>柱状图是用canvas画的，它置于了我的tooltip之上。【这看起来真是一个可怕的问题<a id="more"></a>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><ul>
-<li>微信官方提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html" target="_blank" rel="noopener">cover-view</a>原生组件，覆盖在原生组件之上的文本视图</li>
-<li>微信官方提供了将canvas转化为图片的方式–<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
-</ul>
-<h3 id="方法一：cover-view"><a href="#方法一：cover-view" class="headerlink" title="方法一：cover-view"></a>方法一：cover-view</h3><ul>
-<li>将tooltip用cover-view改写，效果如下<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2Y0MTZjZjhlMjNiZWEwMjNjYTM1M2JhOGExMDM1MDM2MzYyOTIucG5n?x-oss-process=image/format,png" alt="cover-view version0.1 截图"></li>
-<li>看上去，是解决了我们的问题，且tooltip后的灰色背景不能滑动了，【妈耶，好棒！</li>
-<li>但是，这产生了一个：<strong>当文本超出tooltip宽度时，scroll-y: auto，失效了，溢出部分被直接截取</strong></li>
-<li>罪魁祸首就是它<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2M5ZDljYjZiZTQ0ZGY3YmJmNmRlMjAxNDM1ZmYzOTJjNDMxNDMucG5n?x-oss-process=image/format,png" alt="cover内置样式"></li>
-</ul>
-</li>
-<li>那我们可以：<ul>
-<li>在tooltip分段内容中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content-rule</span> &#123;</span><br><span class="line">    <span class="attribute">white-space</span>: pre-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>在内容wrapper中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>完美解决<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2FhZjRkMDAyODdjZGI4M2Y0NWRhMGVkOTg3Mzc5MGNhNDQxMjkucG5n?x-oss-process=image/format,png" alt="cover-view解决图"><h3 id="方法二：wx-canvasToTempFilePath"><a href="#方法二：wx-canvasToTempFilePath" class="headerlink" title="方法二：wx.canvasToTempFilePath"></a>方法二：wx.canvasToTempFilePath</h3></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>首先我们要做的就是将网络图片绘制进canvas，官方关于canvas类型有两种<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2E4ZjJmNjA5OGYxNmQ4MzY3NWJiN2I3OWY0ZDM1NWM1MTAwMDg3LnBuZw?x-oss-process=image/format,png" alt="两种canvas类型"></li>
-<li>新canvas 2D接口尝试  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzE5ZWE3ZGYxYjg2ODUzOWFhNzVhY2E0OTAxYzI2MzU2OTk4NDYucG5n?x-oss-process=image/format,png" alt="canvas2d 运行截图"></li>
-<li>第二种旧canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line">   wx.getImageInfo(&#123;</span><br><span class="line">       src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">       success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">         <span class="keyword">const</span> poster = res.path                                  </span><br><span class="line">         ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">         ctx.draw()</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">     <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">     wx.canvasGetImageData(&#123;</span><br><span class="line">       canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">       x: <span class="number">0</span>,</span><br><span class="line">       y: <span class="number">0</span>,</span><br><span class="line">       width: <span class="number">150</span>,</span><br><span class="line">       height: <span class="number">100</span>,</span><br><span class="line">       success(res) &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzU4NTg5MzQ4MDc3Njk3OTA0OTRmZmIzOWRiNDdjMWRmNjk4ODQucG5n?x-oss-process=image/format,png" alt="旧canvas"></li>
-<li>虽然两种方法，都能实现将网络图片绘制进canvas，但新版的进行了createImage，将其打印的话，其实就是新建了一个img标签，并将img标签的东西绘制进canvas<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzFjMjE1NzMzZTRkY2UzNGZiNzI4NDFhZWEyMDc0ZWIwMjQ1OTQucG5n?x-oss-process=image/format,png" alt="img console"></li>
-<li>为什么微信官方会仅支持以下方式进行新版canvas2d 图片的绘制，考虑是什么？</li>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JhYWQ1OWRhNDI4M2FjZmViZTY1NGQ0ZWZiNTAxZDZlMjAxMjE2LnBuZw?x-oss-process=image/format,png" alt="经典报错"></li>
-</ul>
-</li>
-<li>现在我们要将canvas的内容导成图片，同样分成新旧两版</li>
-<li>主要思路都是：在wxml中，如果canvas绘制图片没有完成，则显示canvas内容，绘制完成后，就利用canvasToTempFilePath，将图层内容生成指定大小图片，显示image<ul>
-<li>canvas2d   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">   <span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'img'</span>, img)</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">           wx.canvasToTempFilePath(&#123;</span><br><span class="line">             x: <span class="number">0</span>,</span><br><span class="line">             y: <span class="number">0</span>,</span><br><span class="line">             width: <span class="number">100</span>,</span><br><span class="line">             height: <span class="number">100</span>,</span><br><span class="line">             destWidth: <span class="number">100</span>,</span><br><span class="line">             destHeight: <span class="number">100</span>,</span><br><span class="line">             canvas: canvas,</span><br><span class="line">             success(res) &#123;</span><br><span class="line">               that.setData(&#123;</span><br><span class="line">                 imgPath: res.tempFilePath</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125;,</span><br><span class="line">             fail(err) &#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>canvas2d 需要踩得坑是：它的官方文档🙃<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UwM2Q1ZDg0YzYyNmI0NzlmZjBjOTlmNzA1YmRhYjg5NDc5MjcucG5n?x-oss-process=image/format,png" alt="canvas2d 转图片误导"></li>
-<li>尝试下来，会<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxMjRiY2Q3ZmNjYWI5ODBlNDdkMTk2YTMyZGQyODI4NDUzODcucG5n?x-oss-process=image/format,png" alt="ctx.draw报错"></li>
-</ul>
-</li>
-<li>那我们可以继续往下看<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxODk5NWFiNDY4N2IwYmZlYzhjZTZkZWU2ZWQxYmZjMTA1MTY1LnBuZw?x-oss-process=image/format,png" alt="canvas2d tempath正确实力">这才是符合我们需要</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>运行截图<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JmMzVlMzY4YzRjMmRhYTgxNTA0NzM0YTIxZGMxM2I2NDYwNzIucG5n?x-oss-process=image/format,png" alt="canvas2d运行截图"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>旧版canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">wx.getImageInfo(&#123;</span><br><span class="line">  src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">    <span class="keyword">const</span> poster = res.path</span><br><span class="line">    ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">    ctx.draw(<span class="literal">false</span>, () =&gt; &#123;</span><br><span class="line">      wx.canvasToTempFilePath(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        width: <span class="number">100</span>,</span><br><span class="line">        height: <span class="number">100</span>,</span><br><span class="line">        destWidth: <span class="number">100</span>,</span><br><span class="line">        destHeight: <span class="number">100</span>,</span><br><span class="line">        canvasId: <span class="string">"myCanvas"</span>,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          that.setData(&#123;</span><br><span class="line">            imgPath: res.tempFilePath</span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="built_in">console</span>.log(res.tempFilePath)</span><br><span class="line">        &#125;,</span><br><span class="line">        fail(err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">    wx.canvasGetImageData(&#123;</span><br><span class="line">      canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">      x: <span class="number">0</span>,</span><br><span class="line">      y: <span class="number">0</span>,</span><br><span class="line">      width: <span class="number">150</span>,</span><br><span class="line">      height: <span class="number">100</span>,</span><br><span class="line">      success(res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>运行截图<ul>
-<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2EzZTRiYTBkYzc2NDgzYTM1NTYxZDcwNDUzNzZkNjZmNDU5MTgucG5n?x-oss-process=image/format,png" alt="旧版canvas运行截图"><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>感谢<a href="https://github.com/skadieyes" target="_blank" rel="noopener">Skady宝贝</a>在探讨问题中给予的帮助，欢迎大家去github找她玩👈</li>
-<li>祝大家多多发财</li>
-</ul>
-<hr>
-]]></content>
-      <categories>
-        <category>微信小程序</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基于KMP的FSM处理未知 pattern</title>
     <url>/2020/05/16/%E5%9F%BA%E4%BA%8EKMP%E7%9A%84FSM%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
     <content><![CDATA[<style  type="text/css">
@@ -3582,6 +3461,127 @@
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信小程序-fix canvas原生组件最顶层</title>
+    <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-fix%20canvas%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E6%9C%80%E9%A1%B6%E5%B1%82/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>大家应该都知道过，在微信小程序中，canvas等原生组件的层级是最高的，页面中无论你设置多大的z-index都无法覆盖在其之上，这就可能会产生一些问题</li>
+<li>就像这样<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxYmQ5OTM2M2VkYjU1NTRmYjc5MzBlZDllMTA0ZjEwMTc2MDM0LnBuZw?x-oss-process=image/format,png" alt="canvas顶层问题截图"></li>
+<li>柱状图是用canvas画的，它置于了我的tooltip之上。【这看起来真是一个可怕的问题<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><ul>
+<li>微信官方提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html" target="_blank" rel="noopener">cover-view</a>原生组件，覆盖在原生组件之上的文本视图</li>
+<li>微信官方提供了将canvas转化为图片的方式–<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html" target="_blank" rel="noopener">wx.canvasToTempFilePath</a>，这样就可以”降级“</li>
+</ul>
+<h3 id="方法一：cover-view"><a href="#方法一：cover-view" class="headerlink" title="方法一：cover-view"></a>方法一：cover-view</h3><ul>
+<li>将tooltip用cover-view改写，效果如下<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2Y0MTZjZjhlMjNiZWEwMjNjYTM1M2JhOGExMDM1MDM2MzYyOTIucG5n?x-oss-process=image/format,png" alt="cover-view version0.1 截图"></li>
+<li>看上去，是解决了我们的问题，且tooltip后的灰色背景不能滑动了，【妈耶，好棒！</li>
+<li>但是，这产生了一个：<strong>当文本超出tooltip宽度时，scroll-y: auto，失效了，溢出部分被直接截取</strong></li>
+<li>罪魁祸首就是它<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2M5ZDljYjZiZTQ0ZGY3YmJmNmRlMjAxNDM1ZmYzOTJjNDMxNDMucG5n?x-oss-process=image/format,png" alt="cover内置样式"></li>
+</ul>
+</li>
+<li>那我们可以：<ul>
+<li>在tooltip分段内容中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content-rule</span> &#123;</span><br><span class="line">    <span class="attribute">white-space</span>: pre-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在内容wrapper中加上  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.modal-layer-content</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>完美解决<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2FhZjRkMDAyODdjZGI4M2Y0NWRhMGVkOTg3Mzc5MGNhNDQxMjkucG5n?x-oss-process=image/format,png" alt="cover-view解决图"><h3 id="方法二：wx-canvasToTempFilePath"><a href="#方法二：wx-canvasToTempFilePath" class="headerlink" title="方法二：wx.canvasToTempFilePath"></a>方法二：wx.canvasToTempFilePath</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>首先我们要做的就是将网络图片绘制进canvas，官方关于canvas类型有两种<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2E4ZjJmNjA5OGYxNmQ4MzY3NWJiN2I3OWY0ZDM1NWM1MTAwMDg3LnBuZw?x-oss-process=image/format,png" alt="两种canvas类型"></li>
+<li>新canvas 2D接口尝试  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzE5ZWE3ZGYxYjg2ODUzOWFhNzVhY2E0OTAxYzI2MzU2OTk4NDYucG5n?x-oss-process=image/format,png" alt="canvas2d 运行截图"></li>
+<li>第二种旧canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line">   wx.getImageInfo(&#123;</span><br><span class="line">       src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">       success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">         <span class="keyword">const</span> poster = res.path                                  </span><br><span class="line">         ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">         ctx.draw()</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">     <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">     wx.canvasGetImageData(&#123;</span><br><span class="line">       canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">       x: <span class="number">0</span>,</span><br><span class="line">       y: <span class="number">0</span>,</span><br><span class="line">       width: <span class="number">150</span>,</span><br><span class="line">       height: <span class="number">100</span>,</span><br><span class="line">       success(res) &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">         <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>运行截图<img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzU4NTg5MzQ4MDc3Njk3OTA0OTRmZmIzOWRiNDdjMWRmNjk4ODQucG5n?x-oss-process=image/format,png" alt="旧canvas"></li>
+<li>虽然两种方法，都能实现将网络图片绘制进canvas，但新版的进行了createImage，将其打印的话，其实就是新建了一个img标签，并将img标签的东西绘制进canvas<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlLzFjMjE1NzMzZTRkY2UzNGZiNzI4NDFhZWEyMDc0ZWIwMjQ1OTQucG5n?x-oss-process=image/format,png" alt="img console"></li>
+<li>为什么微信官方会仅支持以下方式进行新版canvas2d 图片的绘制，考虑是什么？</li>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JhYWQ1OWRhNDI4M2FjZmViZTY1NGQ0ZWZiNTAxZDZlMjAxMjE2LnBuZw?x-oss-process=image/format,png" alt="经典报错"></li>
+</ul>
+</li>
+<li>现在我们要将canvas的内容导成图片，同样分成新旧两版</li>
+<li>主要思路都是：在wxml中，如果canvas绘制图片没有完成，则显示canvas内容，绘制完成后，就利用canvasToTempFilePath，将图层内容生成指定大小图片，显示image<ul>
+<li>canvas2d   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">   <span class="keyword">const</span> query = wx.createSelectorQuery().in(<span class="keyword">this</span>)</span><br><span class="line">   query.select(<span class="string">'#myCanvas'</span>)</span><br><span class="line">     .fields(&#123; <span class="attr">node</span>: <span class="literal">true</span>, <span class="attr">size</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">     .exec(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node</span><br><span class="line">       <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">       <span class="keyword">const</span> img = canvas.createImage()</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'img'</span>, img)</span><br><span class="line">       img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">         ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">           wx.canvasToTempFilePath(&#123;</span><br><span class="line">             x: <span class="number">0</span>,</span><br><span class="line">             y: <span class="number">0</span>,</span><br><span class="line">             width: <span class="number">100</span>,</span><br><span class="line">             height: <span class="number">100</span>,</span><br><span class="line">             destWidth: <span class="number">100</span>,</span><br><span class="line">             destHeight: <span class="number">100</span>,</span><br><span class="line">             canvas: canvas,</span><br><span class="line">             success(res) &#123;</span><br><span class="line">               that.setData(&#123;</span><br><span class="line">                 imgPath: res.tempFilePath</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125;,</span><br><span class="line">             fail(err) &#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line">       img.src = <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span></span><br><span class="line">       <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">       <span class="built_in">console</span>.log(ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>).data)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">type</span>=<span class="string">"2d"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>canvas2d 需要踩得坑是：它的官方文档🙃<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UwM2Q1ZDg0YzYyNmI0NzlmZjBjOTlmNzA1YmRhYjg5NDc5MjcucG5n?x-oss-process=image/format,png" alt="canvas2d 转图片误导"></li>
+<li>尝试下来，会<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2UxMjRiY2Q3ZmNjYWI5ODBlNDdkMTk2YTMyZGQyODI4NDUzODcucG5n?x-oss-process=image/format,png" alt="ctx.draw报错"></li>
+</ul>
+</li>
+<li>那我们可以继续往下看<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2YxODk5NWFiNDY4N2IwYmZlYzhjZTZkZWU2ZWQxYmZjMTA1MTY1LnBuZw?x-oss-process=image/format,png" alt="canvas2d tempath正确实力">这才是符合我们需要</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AxLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2JmMzVlMzY4YzRjMmRhYTgxNTA0NzM0YTIxZGMxM2I2NDYwNzIucG5n?x-oss-process=image/format,png" alt="canvas2d运行截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>旧版canvas  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line"><span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">wx.getImageInfo(&#123;</span><br><span class="line">  src: <span class="string">'https://p0.meituan.net/myvideodistribute/0990cc2062e81ab6cc11fd8690f8755042005.jpg'</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'res'</span>, res)</span><br><span class="line">    <span class="keyword">const</span> poster = res.path</span><br><span class="line">    ctx.drawImage(poster, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">    ctx.draw(<span class="literal">false</span>, () =&gt; &#123;</span><br><span class="line">      wx.canvasToTempFilePath(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        width: <span class="number">100</span>,</span><br><span class="line">        height: <span class="number">100</span>,</span><br><span class="line">        destWidth: <span class="number">100</span>,</span><br><span class="line">        destHeight: <span class="number">100</span>,</span><br><span class="line">        canvasId: <span class="string">"myCanvas"</span>,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          that.setData(&#123;</span><br><span class="line">            imgPath: res.tempFilePath</span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="built_in">console</span>.log(res.tempFilePath)</span><br><span class="line">        &#125;,</span><br><span class="line">        fail(err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 这种方式获取canvas区域隐含的像素数据</span></span><br><span class="line">    wx.canvasGetImageData(&#123;</span><br><span class="line">      canvasId: <span class="string">'myCanvas'</span>,</span><br><span class="line">      x: <span class="number">0</span>,</span><br><span class="line">      y: <span class="number">0</span>,</span><br><span class="line">      width: <span class="number">150</span>,</span><br><span class="line">      height: <span class="number">100</span>,</span><br><span class="line">      success(res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res.width) <span class="comment">// 150</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.height) <span class="comment">// 100</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data <span class="keyword">instanceof</span> <span class="built_in">Uint8ClampedArray</span>) <span class="comment">// true</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">        <span class="built_in">console</span>.log(res.data.length) <span class="comment">// 150 * 100 * 4</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;!imgPath&#125;&#125;"</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">canvas-id</span>=<span class="string">"myCanvas"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">wx:else</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;imgPath&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"width: 330px;height: 340px;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行截图<ul>
+<li><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3AwLm1laXR1YW4ubmV0L215dmlkZW9kaXN0cmlidXRlL2EzZTRiYTBkYzc2NDgzYTM1NTYxZDcwNDUzNzZkNjZmNDU5MTgucG5n?x-oss-process=image/format,png" alt="旧版canvas运行截图"><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>感谢<a href="https://github.com/skadieyes" target="_blank" rel="noopener">Skady宝贝</a>在探讨问题中给予的帮助，欢迎大家去github找她玩👈</li>
+<li>祝大家多多发财</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
       </tags>
   </entry>
   <entry>
