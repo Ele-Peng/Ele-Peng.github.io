@@ -117,371 +117,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Elle-训练算法计划</title>
-    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
-<li>主要的数据结构和算法会单开文档来写</li>
-</ul>
-<a id="more"></a>
-<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
-<li>数据结构<ul>
-<li>一维数据结构<ul>
-<li>基础：数组 array(string), 链表 linked list</li>
-<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
-</ul>
-</li>
-<li>二维数据结构<ul>
-<li>一维泛化</li>
-<li>基础：树 tree，图 graph</li>
-<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
-</ul>
-</li>
-<li>特殊数据结构<ul>
-<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
-<li>LRU Cache</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>算法<ul>
-<li>if-else, switch –&gt; branch</li>
-<li>for, while loop –&gt; iteration</li>
-<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
-<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
-<li>动态规划 dynamic programing</li>
-<li>二分查找 binary search</li>
-<li>贪心 greedy</li>
-<li>数学 math, 集合 geometry</li>
-</ul>
-</li>
-</ul>
-<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
-<li>刻意练习-过遍数 (五遍刷题法)<ul>
-<li>刷题第一遍<ul>
-<li>5分钟（5~15 mins）：读题+思考</li>
-<li>直接看解法：注意！多解法，比较解乏优劣</li>
-<li>有思路，直接写</li>
-<li>背诵+默写好的解法</li>
-</ul>
-</li>
-<li>刷题第二遍<ul>
-<li>马上自己写 –&gt; LeetCode提交</li>
-<li>多种解法比较、体会 –&gt; 优化</li>
-<li>多种解法自己写一遍，直到通过</li>
-</ul>
-</li>
-<li>刷题第三遍<ul>
-<li>24h后，再重复做题</li>
-<li>不同解法的熟练程度 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第四遍<ul>
-<li>过了一周后：反复回来练习相同的题目</li>
-<li>不熟练的题目 –&gt; 专项练习</li>
-</ul>
-</li>
-<li>刷题第五遍<ul>
-<li>面试前二周恢复性训练</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>练习缺陷、弱点地方<ul>
-<li>中文站 leetcode-cn.com 刷题</li>
-<li>国际站 leetcode.com 看discuss-most votes</li>
-</ul>
-</li>
-<li>切题<ul>
-<li><strong>Clarification 审题</strong></li>
-<li><strong>Possible Solutions</strong><ul>
-<li>compare (time/space)</li>
-<li>optimal (加强)</li>
-</ul>
-</li>
-<li><strong>Coding</strong></li>
-<li><strong>Test cases</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
-<li>即时反馈</li>
-<li>主动型反馈</li>
-<li>被动型反馈<ul>
-<li>code review</li>
-</ul>
-</li>
-</ul>
-<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
-<li>top tips for vscode</li>
-</ul>
-<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
-<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
-</ul>
-<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
-<li>O(1): constant Complexity 常数复杂度</li>
-<li>O(log n): Logarithmic Complexity 对数复杂度</li>
-<li>O(n): Linear Complexity 线性时间复杂度</li>
-<li>O(n^2): N square Complexity 平方</li>
-<li>O(n^3): N cube Complexity 立方</li>
-<li>O(2^n): Exponential Growth 指数</li>
-<li>O(n!): Factorial 阶乘</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
-</ul>
-<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
-<li>二分查找</li>
-<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
-<li>二维有序矩阵</li>
-<li>归并排序 O(nlogn)</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Javascript Types</title>
-    <url>/2020/04/20/Javascript-Atom+Types/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
-<li><p>Unicode Blocks</p>
-<ul>
-<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
-<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
-</ul>
-</li>
-<li>U+000A LINE FEED 换行<ul>
-<li>Form Feed 翻页</li>
-<li>CJK 中文字符 Chinese Japan Korean</li>
-</ul>
-</li>
-<li>U+0020 SPACE 空格</li>
-<li>BMP (Basic Multilingual Plane)基本字符平面 四位能表示的范围</li>
-<li>超出BMP范围<ul>
-<li>fromCodePoint</li>
-<li>codePointAt</li>
-</ul>
-</li>
-<li>隐性需求需要可以使用\u转义<ul>
-<li>“厉害”.codePointAt(0).toString(16)</li>
-<li>\u5389\u5bb3<a id="more"></a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>InputElement</p>
-<ul>
-<li>WhiteSpace 空格<ul>
-<li>&lt;TAB&gt; Character Tabulation</li>
-<li>&lt;VT&gt; Vertical Line</li>
-<li>&lt;FF&gt; Form Feed </li>
-<li>&lt;SP&gt; </li>
-<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
-<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
-<li>&lt;USP&gt;</li>
-</ul>
-</li>
-<li>LineTerminator 换行符<ul>
-<li>&lt;LF&gt; /n</li>
-<li>&lt;CR&gt; Carriage Return 回车 /r</li>
-<li>&lt;LS&gt; LINE SEPARATOR</li>
-<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
-</ul>
-</li>
-<li>Comment 注释</li>
-<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
-<li>自己写的，代码包含的有效信息<ul>
-<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
-<li>用作变量名，不能与关键字重复<ul>
-<li>undefined 全局变量名，修改不了</li>
-<li>离开全局作用域，便可以使用</li>
-</ul>
-</li>
-<li>用作属性的部分，可以与关键字重复</li>
-<li>Future reserved Keywords : enum</li>
-</ul>
-</li>
-<li><strong>Literal</strong> 直接量<ul>
-<li>Number    </li>
-<li>String</li>
-<li>Boolean</li>
-<li>Object</li>
-<li>Null</li>
-<li>Undefined</li>
-<li>Symbol</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>帮助程序形成结构<ul>
-<li><strong>Punctuator</strong> 符号</li>
-<li><strong>Keywords</strong> </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
-<li><p>IEEE 754 Double Float</p>
-<ul>
-<li>Sign(1)</li>
-<li>Exponent(11) 指数，科学计数法</li>
-<li>Fraction(52)</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li>DecimaLiteral<ul>
-<li>0</li>
-<li>0.</li>
-<li>.2</li>
-<li>1e3</li>
-</ul>
-</li>
-<li>BinaryIntegerLiteral<ul>
-<li>0b111</li>
-</ul>
-</li>
-<li>OctalIntegerLiteral<ul>
-<li>0o10</li>
-</ul>
-</li>
-<li>HexIntegerLiteral<ul>
-<li>0xFF</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>最佳实践</p>
-<ul>
-<li><p>浮点数比较时，需要加精度</p>
-<blockquote>
-<p>Number.MAX_SAFE_INTEGER</p>
-</blockquote>
-<blockquote>
-<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
-<li><p>Character</p>
-</li>
-<li><p>Code Point</p>
-</li>
-<li><p>Encoding</p>
-<blockquote>
-<p>97 .toString(2)</p>
-</blockquote>
-<blockquote>
-<p>“97.” 是一个合法的Number 01100001</p>
-</blockquote>
-<ul>
-<li>ASCII</li>
-<li>Unicode</li>
-<li>UCS U+0000 - U+FFFF</li>
-<li>GB<ul>
-<li>GB2312</li>
-<li>GBK(GB13000)</li>
-<li>GB18030</li>
-</ul>
-</li>
-<li>ISO-8859</li>
-<li>BIG5</li>
-</ul>
-</li>
-<li><p>Grammar</p>
-<ul>
-<li><p>“abc”</p>
-<ul>
-<li>“\x10” –&gt; 8</li>
-<li>“\u000a”</li>
-</ul>
-</li>
-<li><p>‘abc’</p>
-</li>
-<li><p>`abc`</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
-<li>true</li>
-<li>false</li>
-</ul>
-<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
-<li>typeof 下为 Object</li>
-</ul>
-<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Javascript-Statement</title>
     <url>/2020/04/26/Javascript-Statement/</url>
     <content><![CDATA[<style  type="text/css">
@@ -702,6 +337,218 @@
 </li>
 </ul>
 <h1 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h1><h1 id="Program-Module"><a href="#Program-Module" class="headerlink" title="Program/Module"></a>Program/Module</h1>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Javascript Types</title>
+    <url>/2020/04/20/Javascript-Atom+Types/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
+<li><p>Unicode Blocks</p>
+<ul>
+<li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
+<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
+</ul>
+</li>
+<li>U+000A LINE FEED 换行<ul>
+<li>Form Feed 翻页</li>
+<li>CJK 中文字符 Chinese Japan Korean</li>
+</ul>
+</li>
+<li>U+0020 SPACE 空格</li>
+<li>BMP (Basic Multilingual Plane)基本字符平面 四位能表示的范围</li>
+<li>超出BMP范围<ul>
+<li>fromCodePoint</li>
+<li>codePointAt</li>
+</ul>
+</li>
+<li>隐性需求需要可以使用\u转义<ul>
+<li>“厉害”.codePointAt(0).toString(16)</li>
+<li>\u5389\u5bb3<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>InputElement</p>
+<ul>
+<li>WhiteSpace 空格<ul>
+<li>&lt;TAB&gt; Character Tabulation</li>
+<li>&lt;VT&gt; Vertical Line</li>
+<li>&lt;FF&gt; Form Feed </li>
+<li>&lt;SP&gt; </li>
+<li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
+<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
+<li>&lt;USP&gt;</li>
+</ul>
+</li>
+<li>LineTerminator 换行符<ul>
+<li>&lt;LF&gt; /n</li>
+<li>&lt;CR&gt; Carriage Return 回车 /r</li>
+<li>&lt;LS&gt; LINE SEPARATOR</li>
+<li>&lt;PS&gt; PARAGRAPH SEPARATOR</li>
+</ul>
+</li>
+<li>Comment 注释</li>
+<li><strong>Token</strong> 与word不同，记号标记，JS中有效的东西<ul>
+<li>自己写的，代码包含的有效信息<ul>
+<li><strong>Identifier</strong> 标识符，以英文字母开头<ul>
+<li>用作变量名，不能与关键字重复<ul>
+<li>undefined 全局变量名，修改不了</li>
+<li>离开全局作用域，便可以使用</li>
+</ul>
+</li>
+<li>用作属性的部分，可以与关键字重复</li>
+<li>Future reserved Keywords : enum</li>
+</ul>
+</li>
+<li><strong>Literal</strong> 直接量<ul>
+<li>Number    </li>
+<li>String</li>
+<li>Boolean</li>
+<li>Object</li>
+<li>Null</li>
+<li>Undefined</li>
+<li>Symbol</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>帮助程序形成结构<ul>
+<li><strong>Punctuator</strong> 符号</li>
+<li><strong>Keywords</strong> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
+<li><p>IEEE 754 Double Float</p>
+<ul>
+<li>Sign(1)</li>
+<li>Exponent(11) 指数，科学计数法</li>
+<li>Fraction(52)</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li>DecimaLiteral<ul>
+<li>0</li>
+<li>0.</li>
+<li>.2</li>
+<li>1e3</li>
+</ul>
+</li>
+<li>BinaryIntegerLiteral<ul>
+<li>0b111</li>
+</ul>
+</li>
+<li>OctalIntegerLiteral<ul>
+<li>0o10</li>
+</ul>
+</li>
+<li>HexIntegerLiteral<ul>
+<li>0xFF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>最佳实践</p>
+<ul>
+<li><p>浮点数比较时，需要加精度</p>
+<blockquote>
+<p>Number.MAX_SAFE_INTEGER</p>
+</blockquote>
+<blockquote>
+<p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
+<li><p>Character</p>
+</li>
+<li><p>Code Point</p>
+</li>
+<li><p>Encoding</p>
+<blockquote>
+<p>97 .toString(2)</p>
+</blockquote>
+<blockquote>
+<p>“97.” 是一个合法的Number 01100001</p>
+</blockquote>
+<ul>
+<li>ASCII</li>
+<li>Unicode</li>
+<li>UCS U+0000 - U+FFFF</li>
+<li>GB<ul>
+<li>GB2312</li>
+<li>GBK(GB13000)</li>
+<li>GB18030</li>
+</ul>
+</li>
+<li>ISO-8859</li>
+<li>BIG5</li>
+</ul>
+</li>
+<li><p>Grammar</p>
+<ul>
+<li><p>“abc”</p>
+<ul>
+<li>“\x10” –&gt; 8</li>
+<li>“\u000a”</li>
+</ul>
+</li>
+<li><p>‘abc’</p>
+</li>
+<li><p>`abc`</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
+<li>true</li>
+<li>false</li>
+</ul>
+<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
+<li>typeof 下为 Object</li>
+</ul>
+<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>]]></content>
       <categories>
         <category>前端概念</category>
       </categories>
@@ -979,6 +826,159 @@
       </categories>
       <tags>
         <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Elle-训练算法计划</title>
+    <url>/2020/04/06/Elle-%E8%AE%AD%E7%BB%83%E7%AE%97%E6%B3%95%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>简单记录一下自己整个算法训练的基础步骤+学习方法</li>
+<li>主要的数据结构和算法会单开文档来写</li>
+</ul>
+<a id="more"></a>
+<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up 切碎知识点"></a>Chunk it up 切碎知识点</h2><ul>
+<li>数据结构<ul>
+<li>一维数据结构<ul>
+<li>基础：数组 array(string), 链表 linked list</li>
+<li>高级：栈 stack, 队列 queue, 双端队列 deque, 集合 set, 映射 map (hash or map), etc</li>
+</ul>
+</li>
+<li>二维数据结构<ul>
+<li>一维泛化</li>
+<li>基础：树 tree，图 graph</li>
+<li>高级：二叉搜索树 binary search tree (red-black tree, AVL)，堆 heap, 并查集 disjoint set, 字典树 trie, etc</li>
+</ul>
+</li>
+<li>特殊数据结构<ul>
+<li>位运算 bitwise, 布隆过滤器 bloom filter</li>
+<li>LRU Cache</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法<ul>
+<li>if-else, switch –&gt; branch</li>
+<li>for, while loop –&gt; iteration</li>
+<li>递归 recursion (divide &amp; conquer 分治, backtrace 回溯)</li>
+<li>搜索 search: 深度优先搜索 depth first search, 广度优先搜索 breadth first search, A* (启发式搜索), etc</li>
+<li>动态规划 dynamic programing</li>
+<li>二分查找 binary search</li>
+<li>贪心 greedy</li>
+<li>数学 math, 集合 geometry</li>
+</ul>
+</li>
+</ul>
+<h2 id="Deliberate-Practicing-刻意练习"><a href="#Deliberate-Practicing-刻意练习" class="headerlink" title="Deliberate Practicing 刻意练习"></a>Deliberate Practicing 刻意练习</h2><ul>
+<li>刻意练习-过遍数 (五遍刷题法)<ul>
+<li>刷题第一遍<ul>
+<li>5分钟（5~15 mins）：读题+思考</li>
+<li>直接看解法：注意！多解法，比较解乏优劣</li>
+<li>有思路，直接写</li>
+<li>背诵+默写好的解法</li>
+</ul>
+</li>
+<li>刷题第二遍<ul>
+<li>马上自己写 –&gt; LeetCode提交</li>
+<li>多种解法比较、体会 –&gt; 优化</li>
+<li>多种解法自己写一遍，直到通过</li>
+</ul>
+</li>
+<li>刷题第三遍<ul>
+<li>24h后，再重复做题</li>
+<li>不同解法的熟练程度 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第四遍<ul>
+<li>过了一周后：反复回来练习相同的题目</li>
+<li>不熟练的题目 –&gt; 专项练习</li>
+</ul>
+</li>
+<li>刷题第五遍<ul>
+<li>面试前二周恢复性训练</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>练习缺陷、弱点地方<ul>
+<li>中文站 leetcode-cn.com 刷题</li>
+<li>国际站 leetcode.com 看discuss-most votes</li>
+</ul>
+</li>
+<li>切题<ul>
+<li><strong>Clarification 审题</strong></li>
+<li><strong>Possible Solutions</strong><ul>
+<li>compare (time/space)</li>
+<li>optimal (加强)</li>
+</ul>
+</li>
+<li><strong>Coding</strong></li>
+<li><strong>Test cases</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback 反馈"></a>Feedback 反馈</h2><ul>
+<li>即时反馈</li>
+<li>主动型反馈</li>
+<li>被动型反馈<ul>
+<li>code review</li>
+</ul>
+</li>
+</ul>
+<h2 id="指法"><a href="#指法" class="headerlink" title="指法"></a>指法</h2><ul>
+<li>top tips for vscode</li>
+</ul>
+<h2 id="自顶向下的编程方式"><a href="#自顶向下的编程方式" class="headerlink" title="自顶向下的编程方式"></a>自顶向下的编程方式</h2><ul>
+<li><a href="http://markhneedham.com/blog/2008/09/15/clean-code-book-review/" target="_blank" rel="noopener">自顶向下的编程方式</a></li>
+</ul>
+<h2 id="Big-O-Notation"><a href="#Big-O-Notation" class="headerlink" title="Big O Notation"></a>Big O Notation</h2><ul>
+<li>O(1): constant Complexity 常数复杂度</li>
+<li>O(log n): Logarithmic Complexity 对数复杂度</li>
+<li>O(n): Linear Complexity 线性时间复杂度</li>
+<li>O(n^2): N square Complexity 平方</li>
+<li>O(n^3): N cube Complexity 立方</li>
+<li>O(2^n): Exponential Growth 指数</li>
+<li>O(n!): Factorial 阶乘</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/c88294c6a8b88448ae14e2914c7bbfd2337181.png" alt="时间复杂度"></li>
+</ul>
+<h2 id="master-theorem"><a href="#master-theorem" class="headerlink" title="master theorem"></a>master theorem</h2><ul>
+<li>二分查找</li>
+<li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
+<li>二维有序矩阵</li>
+<li>归并排序 O(nlogn)</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1532,8 +1532,117 @@
         <category>前端概念</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>前端概念</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【未完】前端性能监控</title>
+    <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>记录 性能监控 方面的学习过程🤔</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
+<li>Gmail SPA</li>
+<li>Angular/React/Vue MVVM/工程化</li>
+<li>weex/react native 跨端</li>
+<li>Node 全栈</li>
+</ul>
+<h3 id="前端变化给监控带来了什么样的改变"><a href="#前端变化给监控带来了什么样的改变" class="headerlink" title="前端变化给监控带来了什么样的改变"></a>前端变化给监控带来了什么样的改变</h3><ul>
+<li>传统监控模式能否使用于新的技术？比如 PV 统计<ul>
+<li>导致 PV 下降的原因和解法</li>
+<li>原因<ul>
+<li>业内路由替代了请求新的页面</li>
+</ul>
+</li>
+<li>解法<ul>
+<li>哈希路由：监听 hash change 变化上报 PV</li>
+<li>非哈希路由(Angular): 轻量 hack pushState 和 replaceState</li>
+</ul>
+</li>
+<li>案例<ul>
+<li>下拉刷新</li>
+<li>滚屏分页</li>
+<li>阿里云邮后台一直开着，每周上百次查看</li>
+<li>未关闭的浏览器 Ta b几小时后再次浏览</li>
+<li>查找信息时，浏览器 Tab 之间快速切换</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SPA模式下首屏如何计算？<ul>
+<li>第一阶段：自定义打点时期<ul>
+<li>页头和首屏dom处分别通过 new Date() 打点</li>
+</ul>
+</li>
+<li>第二阶段：W3C标准时期<ul>
+<li>Navigaion Timing API</li>
+</ul>
+</li>
+<li>第三阶段：SPA盛行导致w3c标准失去原来的意义</li>
+<li>现阶段：用户感官指标FMP<ul>
+<li>FMP：主要内容可见时间</li>
+<li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
+<li>什么原因导致猜想不成立？<ul>
+<li>元素是否可见</li>
+<li>每个元素对页面的影响是否等效？ –&gt; 权重</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>下一阶段：W3C/paint-timing 首屏加载时间计算已经在提案中</li>
+</ul>
+</li>
+<li>跨端开发给监控带来什么挑战？</li>
+<li>前端监控的上报模式在 Node.js 端是否合理？</li>
+</ul>
+<h3 id="前端监控的最佳实践"><a href="#前端监控的最佳实践" class="headerlink" title="前端监控的最佳实践"></a>前端监控的最佳实践</h3><ul>
+<li>主动监控</li>
+<li>性能样本分布 &amp; 慢会话<ul>
+<li>慢会话追踪</li>
+</ul>
+</li>
+<li>搜索报错明细</li>
+<li>出错行为还原</li>
+</ul>
+<h3 id="阿里云ARMS前端监控系统架构"><a href="#阿里云ARMS前端监控系统架构" class="headerlink" title="阿里云ARMS前端监控系统架构"></a>阿里云ARMS前端监控系统架构</h3><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>性能监控</category>
+      </categories>
+      <tags>
+        <tag>性能监控</tag>
       </tags>
   </entry>
   <entry>
@@ -1690,115 +1799,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【未完】前端性能监控</title>
-    <url>/2020/04/16/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>记录 性能监控 方面的学习过程🤔</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h3 id="大前端时代前端变化"><a href="#大前端时代前端变化" class="headerlink" title="大前端时代前端变化"></a>大前端时代前端变化</h3><ul>
-<li>Gmail SPA</li>
-<li>Angular/React/Vue MVVM/工程化</li>
-<li>weex/react native 跨端</li>
-<li>Node 全栈</li>
-</ul>
-<h3 id="前端变化给监控带来了什么样的改变"><a href="#前端变化给监控带来了什么样的改变" class="headerlink" title="前端变化给监控带来了什么样的改变"></a>前端变化给监控带来了什么样的改变</h3><ul>
-<li>传统监控模式能否使用于新的技术？比如 PV 统计<ul>
-<li>导致 PV 下降的原因和解法</li>
-<li>原因<ul>
-<li>业内路由替代了请求新的页面</li>
-</ul>
-</li>
-<li>解法<ul>
-<li>哈希路由：监听 hash change 变化上报 PV</li>
-<li>非哈希路由(Angular): 轻量 hack pushState 和 replaceState</li>
-</ul>
-</li>
-<li>案例<ul>
-<li>下拉刷新</li>
-<li>滚屏分页</li>
-<li>阿里云邮后台一直开着，每周上百次查看</li>
-<li>未关闭的浏览器 Ta b几小时后再次浏览</li>
-<li>查找信息时，浏览器 Tab 之间快速切换</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>SPA模式下首屏如何计算？<ul>
-<li>第一阶段：自定义打点时期<ul>
-<li>页头和首屏dom处分别通过 new Date() 打点</li>
-</ul>
-</li>
-<li>第二阶段：W3C标准时期<ul>
-<li>Navigaion Timing API</li>
-</ul>
-</li>
-<li>第三阶段：SPA盛行导致w3c标准失去原来的意义</li>
-<li>现阶段：用户感官指标FMP<ul>
-<li>FMP：主要内容可见时间</li>
-<li>猜想：主要内容 = 元素增量最大的点 （猜想不成立）<ul>
-<li>什么原因导致猜想不成立？<ul>
-<li>元素是否可见</li>
-<li>每个元素对页面的影响是否等效？ –&gt; 权重</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>下一阶段：W3C/paint-timing 首屏加载时间计算已经在提案中</li>
-</ul>
-</li>
-<li>跨端开发给监控带来什么挑战？</li>
-<li>前端监控的上报模式在 Node.js 端是否合理？</li>
-</ul>
-<h3 id="前端监控的最佳实践"><a href="#前端监控的最佳实践" class="headerlink" title="前端监控的最佳实践"></a>前端监控的最佳实践</h3><ul>
-<li>主动监控</li>
-<li>性能样本分布 &amp; 慢会话<ul>
-<li>慢会话追踪</li>
-</ul>
-</li>
-<li>搜索报错明细</li>
-<li>出错行为还原</li>
-</ul>
-<h3 id="阿里云ARMS前端监控系统架构"><a href="#阿里云ARMS前端监控系统架构" class="headerlink" title="阿里云ARMS前端监控系统架构"></a>阿里云ARMS前端监控系统架构</h3><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>性能监控</category>
-      </categories>
-      <tags>
-        <tag>性能监控</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>微信小程序-气泡框</title>
     <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%B0%94%E6%B3%A1%E6%A1%86%20Popover/</url>
     <content><![CDATA[<style  type="text/css">
@@ -1949,398 +1949,6 @@
 <li>找最近重复问题</li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>编程语言通识</title>
-    <url>/2020/04/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%80%9A%E8%AF%86/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="语言按语法分类"><a href="#语言按语法分类" class="headerlink" title="语言按语法分类"></a>语言按语法分类</h2><ul>
-<li>非形式语言<ul>
-<li>中文、英文</li>
-</ul>
-</li>
-<li>形式语言（乔姆斯基谱系）<strong>追溯</strong>19世纪50年代<ul>
-<li>0型 无限制文法</li>
-<li>1型 上下文相关文法</li>
-<li>2型 上下文无关文法<ul>
-<li>大部分计算机语言主体上都是上下文无关文法</li>
-<li>比如Javascript就是上下文无关文法，会在某些点，违反上下文无关文法原则（get）</li>
-</ul>
-</li>
-<li>3型 正则文法<a id="more"></a>
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="理解形式语言"><a href="#理解形式语言" class="headerlink" title="理解形式语言"></a>理解形式语言</h2><h3 id="产生式（BNF-–-Backus-Naur-Form）"><a href="#产生式（BNF-–-Backus-Naur-Form）" class="headerlink" title="产生式（BNF – Backus-Naur Form）"></a>产生式（BNF – Backus-Naur Form）</h3><ul>
-<li>用尖括号括起来的名称来表示语法结构名</li>
-<li>语法结构分成基础结构和需要用其他语法结构定义的复合结构<ul>
-<li>基础结构称终结符</li>
-<li>复合结构称非终结符</li>
-</ul>
-</li>
-<li>引号和中间的字符表示终结符</li>
-<li>可以有括号</li>
-<li><ul>
-<li>表示重复多次</li>
-</ul>
-</li>
-<li>| 表示或</li>
-<li><ul>
-<li>表示至少一次</li>
-</ul>
-</li>
-</ul>
-<h4 id="BNF-表示-四则运算"><a href="#BNF-表示-四则运算" class="headerlink" title="BNF 表示 四则运算"></a>BNF 表示 四则运算</h4><ul>
-<li><p>加法，允许连加</p>
-<ul>
-<li>&lt;Number&gt;::= “0” | “1” | “2” | “3” | … | “9”</li>
-<li>&lt;DecimalNumber&gt;::= “0” | ((“1” | “2” | “3” | … “9”) &lt;Number&gt;*)</li>
-<li>&lt;AddtiveExpression&gt;::= &lt;DecimalNumber&gt; “+” &lt;DecimalNumber&gt;</li>
-<li>支持多个连加，采用递归：<ul>
-<li>&lt;AddtiveExpression&gt;::= &lt;AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</li>
-</ul>
-</li>
-<li>最终：<ul>
-<li>&lt;AddtiveExpression&gt;::= &lt;DecimalNumber&gt; | &lt;AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>乘法</p>
-<ul>
-<li><p>&lt;MultiplecativeExpression&gt;::= &lt;DecimalNumber&gt; | &lt; MultiplecativeExpression&gt; “*” &lt;DecimalNumber&gt;</p>
-</li>
-<li><p>1 + 2 * 3</p>
-<ul>
-<li><p>加法表达式，是由两个乘法表达式加起来的</p>
-</li>
-<li><p>1 * 1 + 2 * 3</p>
-</li>
-<li><p>因此<strong>加法表示成</strong></p>
-<blockquote>
-<p>&lt;AddtiveExpression&gt;::= &lt; MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>LogicExpression</p>
-<blockquote>
-<p>&lt;LogicExpression&gt;::= &lt;AddtiveExpression&gt; | </p>
-<pre><code>&amp;lt;LogicExpression&amp;gt; &quot;||&quot; &amp;lt;AddtiveExpression&amp;gt; |
-&amp;lt;LogicExpression&amp;gt; &quot;&amp;&amp;&quot; &amp;lt;AddtiveExpression&amp;gt;</code></pre></blockquote>
-</li>
-<li><p>除法</p>
-<blockquote>
-<p>&lt;MultiplecativeExpression&gt;::= &lt;DecimalNumber&gt; | &lt; MultiplecativeExpression&gt; “/“ &lt;DecimalNumber&gt;</p>
-</blockquote>
-</li>
-<li><p>减法</p>
-<blockquote>
-<p>&lt;AddtiveExpression&gt;::= &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “-“ &lt;MultiplecativeExpression&gt;</p>
-</blockquote>
-</li>
-<li><p>带括号的四则运算</p>
-<ul>
-<li><p>括号</p>
-<blockquote>
-<p>&lt;PrimaryExpression&lt;::= &lt;DecimalNumber&lt; | “(“ | &lt;LogicExpression&lt; | “)”</p>
-</blockquote>
-</li>
-<li><p>乘法表达式便可以变成</p>
-<blockquote>
-<p>&lt;MultiplecativeExpression&gt;::= &lt;PrimaryExpression&gt; | &lt; MultiplecativeExpression&gt; “*” &lt; PrimaryExpression&gt;</p>
-</blockquote>
-</li>
-<li><p>除法，同理乘法，换符号</p>
-<blockquote>
-<p>&lt;MultiplecativeExpression&gt;::= &lt;PrimaryExpression&gt; | &lt; MultiplecativeExpression&gt; “/“ &lt; PrimaryExpression&gt;</p>
-</blockquote>
-</li>
-<li><p>加减</p>
-<blockquote>
-<p>&lt;AddtiveExpression&gt;::= &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “+” &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “-“ &lt;MultiplecativeExpression&gt;</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="通过-BNF-理解形式语言（乔姆斯基谱系）"><a href="#通过-BNF-理解形式语言（乔姆斯基谱系）" class="headerlink" title="通过 BNF 理解形式语言（乔姆斯基谱系）"></a>通过 BNF 理解形式语言（乔姆斯基谱系）</h4><ul>
-<li>0型 无限制文法<ul>
-<li>?::=?</li>
-</ul>
-</li>
-<li>1型 上下文相关文法<ul>
-<li><span style="color: red">?</span>&lt;A&gt;<span style="color:blue">?</span>::=<span style="color: red">?</span>&lt;B&gt;<span style="color:blue">?</span></li>
-</ul>
-</li>
-</ul>
-<pre><code>    <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">get</span> a &#123; <span class="keyword">return</span> <span class="number">1</span>&#125;,</span><br><span class="line">  <span class="keyword">get</span>: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-- 1）类似关键字， 2）get: 属性</code></pre><ul>
-<li><p>2型 上下文无关文法</p>
-<ul>
-<li>&lt;A&gt;::=?</li>
-<li>2 ** 1 ** 2</li>
-</ul>
-</li>
-<li><p>3型 正则文法，只允许左递归（Javascript在**出现前，一直遵循着左递归）</p>
-<ul>
-<li><p>&lt;A&gt;::=&lt;A&gt;?</p>
-</li>
-<li><p>&lt;A&gt;::=?&lt;A&gt;<span style="color: red">x</span></p>
-</li>
-<li><p>Javascript 表达式大部分在3型</p>
-</li>
-<li><p>** 右结合</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">2</span> --&gt; <span class="number">4</span></span><br><span class="line"><span class="number">2</span> ** (<span class="number">2</span> ** <span class="number">3</span>) --&gt; <span class="number">256</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>**</p>
-<blockquote>
-<p>&lt;ExpExpression&gt; = &lt;MulticativeExpression&gt; | &lt;MulticativeExpression&gt; “**” &lt;ExpExpression&gt;</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="optional-正则表达式-BNF-表示四则运算"><a href="#optional-正则表达式-BNF-表示四则运算" class="headerlink" title="optional 正则表达式+ BNF 表示四则运算"></a>optional 正则表达式+ BNF 表示四则运算</h4><h3 id="其他产生式"><a href="#其他产生式" class="headerlink" title="其他产生式"></a>其他产生式</h3><ul>
-<li>EBNF ABNF Customized<ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/1d1c7542767173de3c87f7a9e00a445763429.png" alt="ECMA-Script EBNF"></li>
-</ul>
-</li>
-</ul>
-<h3 id="现代语言语言的特例"><a href="#现代语言语言的特例" class="headerlink" title="现代语言语言的特例"></a>现代语言语言的特例</h3><ul>
-<li>C++，* 可能表示乘号或者指针，具体是哪个，取决于星号前面的标识符是否被声明为类型<ul>
-<li>非形式话语言，语法与语义相关，* 可以在很早之前出现</li>
-</ul>
-</li>
-<li>VB中， &lt; 可能是小于号，也可能是 XML 直接量的开始，取决于当前位置是否可以接受 XML 直接量<ul>
-<li>1型 上下文无关文法</li>
-</ul>
-</li>
-<li>Python，行首的 tab 符和空格会根据上一行的行首空白以一定规则被处理成虚拟终结符 indent 或者 dedent </li>
-<li>Javascript，/ 可能是除号，也可能是正则表达式开头，处理方式类似于VB，字符串模板中也需要特殊处理},还有自动插入分号规则<ul>
-<li>同 VB / JSX</li>
-</ul>
-</li>
-</ul>
-<h2 id="语言的分类"><a href="#语言的分类" class="headerlink" title="语言的分类"></a>语言的分类</h2><h3 id="图灵完备性"><a href="#图灵完备性" class="headerlink" title="图灵完备性"></a>图灵完备性</h3><ul>
-<li>图灵机（凡是可计算的，都能计算出来）</li>
-<li>图灵完备性<ul>
-<li>命令式 – 图灵机<ul>
-<li>goto</li>
-<li>if 和 while</li>
-</ul>
-</li>
-<li>声明式 – lambda<ul>
-<li>递归</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="动态与静态"><a href="#动态与静态" class="headerlink" title="动态与静态"></a>动态与静态</h3><ul>
-<li>动态：<ul>
-<li>在用户的设备/在线服务器上</li>
-<li>产品实际运行时</li>
-<li>Runtime</li>
-</ul>
-</li>
-<li>静态<ul>
-<li>在程序员的设备上</li>
-<li>产品开发时</li>
-<li>Compiletime</li>
-</ul>
-</li>
-</ul>
-<h4 id="类型系统-In-静态语言"><a href="#类型系统-In-静态语言" class="headerlink" title="类型系统 In 静态语言"></a>类型系统 In 静态语言</h4><ul>
-<li>动态类型系统和静态类型系统<ul>
-<li>不是说 Typescript 才有类型系统，而是它才有静态类型系统</li>
-</ul>
-</li>
-<li>强类型和弱类型<ul>
-<li>String + Number<ul>
-<li>产生了隐式的类型转换</li>
-</ul>
-</li>
-<li>String == Boolean</li>
-<li>C++ 有隐式转换，弱类型</li>
-</ul>
-</li>
-<li>复合类型<ul>
-<li>结构体</li>
-<li><strong>函数签名</strong><ul>
-<li>参数列表 + 返回值类型</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>子类型<ul>
-<li>逆变/协变<ul>
-<li>协变 –&gt; 凡是能用到Array&lt;Parent&gt;的地方，都能用Array&lt;Child&gt;</li>
-<li>逆变 –&gt; 凡是能用到Array&lt;Child&gt;的地方，都能用Array&lt;Parent&gt;</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="一般命令式编程语言"><a href="#一般命令式编程语言" class="headerlink" title="一般命令式编程语言"></a>一般命令式编程语言</h2><h3 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h3><h3 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h3><h3 id="Statement-语句"><a href="#Statement-语句" class="headerlink" title="Statement 语句"></a>Statement 语句</h3><h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><h3 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h3>]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自己的前端知识体系</title>
-    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>理一下自己的技术体系吧</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/49daa01a2bbdab251434a26a618376c53934435.png" alt="技术体系脑图"></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端概念</category>
-      </categories>
-      <tags>
-        <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【未完】计算机图形学初探</title>
-    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
-    <content><![CDATA[<style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li><p>记录 计算机图形学 方面的学习过程🤔</p>
-<a id="more"></a>
-
-</li>
-</ul>
-<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
-<li>前端与图形学<ul>
-<li>shader</li>
-</ul>
-</li>
-<li>图形学应用场景<ul>
-<li>Image<ul>
-<li>pattern（多用于背景）</li>
-<li>photo</li>
-<li>shape</li>
-</ul>
-</li>
-<li>来自数学的图形–分形</li>
-<li>来自物理的图形–光的衍射<ul>
-<li>相变</li>
-<li>绿幕<ul>
-<li>PNG24 –&gt; 2张 jpg</li>
-</ul>
-</li>
-<li>3D效果<ul>
-<li>three.js</li>
-<li>babylon.js</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机图形学</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
-      </tags>
   </entry>
   <entry>
     <title>OOP-面向对象</title>
@@ -3585,6 +3193,398 @@
       </tags>
   </entry>
   <entry>
+    <title>编程语言通识</title>
+    <url>/2020/04/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%80%9A%E8%AF%86/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="语言按语法分类"><a href="#语言按语法分类" class="headerlink" title="语言按语法分类"></a>语言按语法分类</h2><ul>
+<li>非形式语言<ul>
+<li>中文、英文</li>
+</ul>
+</li>
+<li>形式语言（乔姆斯基谱系）<strong>追溯</strong>19世纪50年代<ul>
+<li>0型 无限制文法</li>
+<li>1型 上下文相关文法</li>
+<li>2型 上下文无关文法<ul>
+<li>大部分计算机语言主体上都是上下文无关文法</li>
+<li>比如Javascript就是上下文无关文法，会在某些点，违反上下文无关文法原则（get）</li>
+</ul>
+</li>
+<li>3型 正则文法<a id="more"></a>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="理解形式语言"><a href="#理解形式语言" class="headerlink" title="理解形式语言"></a>理解形式语言</h2><h3 id="产生式（BNF-–-Backus-Naur-Form）"><a href="#产生式（BNF-–-Backus-Naur-Form）" class="headerlink" title="产生式（BNF – Backus-Naur Form）"></a>产生式（BNF – Backus-Naur Form）</h3><ul>
+<li>用尖括号括起来的名称来表示语法结构名</li>
+<li>语法结构分成基础结构和需要用其他语法结构定义的复合结构<ul>
+<li>基础结构称终结符</li>
+<li>复合结构称非终结符</li>
+</ul>
+</li>
+<li>引号和中间的字符表示终结符</li>
+<li>可以有括号</li>
+<li><ul>
+<li>表示重复多次</li>
+</ul>
+</li>
+<li>| 表示或</li>
+<li><ul>
+<li>表示至少一次</li>
+</ul>
+</li>
+</ul>
+<h4 id="BNF-表示-四则运算"><a href="#BNF-表示-四则运算" class="headerlink" title="BNF 表示 四则运算"></a>BNF 表示 四则运算</h4><ul>
+<li><p>加法，允许连加</p>
+<ul>
+<li>&lt;Number&gt;::= “0” | “1” | “2” | “3” | … | “9”</li>
+<li>&lt;DecimalNumber&gt;::= “0” | ((“1” | “2” | “3” | … “9”) &lt;Number&gt;*)</li>
+<li>&lt;AddtiveExpression&gt;::= &lt;DecimalNumber&gt; “+” &lt;DecimalNumber&gt;</li>
+<li>支持多个连加，采用递归：<ul>
+<li>&lt;AddtiveExpression&gt;::= &lt;AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</li>
+</ul>
+</li>
+<li>最终：<ul>
+<li>&lt;AddtiveExpression&gt;::= &lt;DecimalNumber&gt; | &lt;AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>乘法</p>
+<ul>
+<li><p>&lt;MultiplecativeExpression&gt;::= &lt;DecimalNumber&gt; | &lt; MultiplecativeExpression&gt; “*” &lt;DecimalNumber&gt;</p>
+</li>
+<li><p>1 + 2 * 3</p>
+<ul>
+<li><p>加法表达式，是由两个乘法表达式加起来的</p>
+</li>
+<li><p>1 * 1 + 2 * 3</p>
+</li>
+<li><p>因此<strong>加法表示成</strong></p>
+<blockquote>
+<p>&lt;AddtiveExpression&gt;::= &lt; MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “+” &lt;DecimalNumber&gt;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>LogicExpression</p>
+<blockquote>
+<p>&lt;LogicExpression&gt;::= &lt;AddtiveExpression&gt; | </p>
+<pre><code>&amp;lt;LogicExpression&amp;gt; &quot;||&quot; &amp;lt;AddtiveExpression&amp;gt; |
+&amp;lt;LogicExpression&amp;gt; &quot;&amp;&amp;&quot; &amp;lt;AddtiveExpression&amp;gt;</code></pre></blockquote>
+</li>
+<li><p>除法</p>
+<blockquote>
+<p>&lt;MultiplecativeExpression&gt;::= &lt;DecimalNumber&gt; | &lt; MultiplecativeExpression&gt; “/“ &lt;DecimalNumber&gt;</p>
+</blockquote>
+</li>
+<li><p>减法</p>
+<blockquote>
+<p>&lt;AddtiveExpression&gt;::= &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “-“ &lt;MultiplecativeExpression&gt;</p>
+</blockquote>
+</li>
+<li><p>带括号的四则运算</p>
+<ul>
+<li><p>括号</p>
+<blockquote>
+<p>&lt;PrimaryExpression&lt;::= &lt;DecimalNumber&lt; | “(“ | &lt;LogicExpression&lt; | “)”</p>
+</blockquote>
+</li>
+<li><p>乘法表达式便可以变成</p>
+<blockquote>
+<p>&lt;MultiplecativeExpression&gt;::= &lt;PrimaryExpression&gt; | &lt; MultiplecativeExpression&gt; “*” &lt; PrimaryExpression&gt;</p>
+</blockquote>
+</li>
+<li><p>除法，同理乘法，换符号</p>
+<blockquote>
+<p>&lt;MultiplecativeExpression&gt;::= &lt;PrimaryExpression&gt; | &lt; MultiplecativeExpression&gt; “/“ &lt; PrimaryExpression&gt;</p>
+</blockquote>
+</li>
+<li><p>加减</p>
+<blockquote>
+<p>&lt;AddtiveExpression&gt;::= &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “+” &lt;MultiplecativeExpression&gt; | &lt; AddtiveExpression&gt; “-“ &lt;MultiplecativeExpression&gt;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="通过-BNF-理解形式语言（乔姆斯基谱系）"><a href="#通过-BNF-理解形式语言（乔姆斯基谱系）" class="headerlink" title="通过 BNF 理解形式语言（乔姆斯基谱系）"></a>通过 BNF 理解形式语言（乔姆斯基谱系）</h4><ul>
+<li>0型 无限制文法<ul>
+<li>?::=?</li>
+</ul>
+</li>
+<li>1型 上下文相关文法<ul>
+<li><span style="color: red">?</span>&lt;A&gt;<span style="color:blue">?</span>::=<span style="color: red">?</span>&lt;B&gt;<span style="color:blue">?</span></li>
+</ul>
+</li>
+</ul>
+<pre><code>    <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">get</span> a &#123; <span class="keyword">return</span> <span class="number">1</span>&#125;,</span><br><span class="line">  <span class="keyword">get</span>: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+- 1）类似关键字， 2）get: 属性</code></pre><ul>
+<li><p>2型 上下文无关文法</p>
+<ul>
+<li>&lt;A&gt;::=?</li>
+<li>2 ** 1 ** 2</li>
+</ul>
+</li>
+<li><p>3型 正则文法，只允许左递归（Javascript在**出现前，一直遵循着左递归）</p>
+<ul>
+<li><p>&lt;A&gt;::=&lt;A&gt;?</p>
+</li>
+<li><p>&lt;A&gt;::=?&lt;A&gt;<span style="color: red">x</span></p>
+</li>
+<li><p>Javascript 表达式大部分在3型</p>
+</li>
+<li><p>** 右结合</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">2</span> --&gt; <span class="number">4</span></span><br><span class="line"><span class="number">2</span> ** (<span class="number">2</span> ** <span class="number">3</span>) --&gt; <span class="number">256</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>**</p>
+<blockquote>
+<p>&lt;ExpExpression&gt; = &lt;MulticativeExpression&gt; | &lt;MulticativeExpression&gt; “**” &lt;ExpExpression&gt;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="optional-正则表达式-BNF-表示四则运算"><a href="#optional-正则表达式-BNF-表示四则运算" class="headerlink" title="optional 正则表达式+ BNF 表示四则运算"></a>optional 正则表达式+ BNF 表示四则运算</h4><h3 id="其他产生式"><a href="#其他产生式" class="headerlink" title="其他产生式"></a>其他产生式</h3><ul>
+<li>EBNF ABNF Customized<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/1d1c7542767173de3c87f7a9e00a445763429.png" alt="ECMA-Script EBNF"></li>
+</ul>
+</li>
+</ul>
+<h3 id="现代语言语言的特例"><a href="#现代语言语言的特例" class="headerlink" title="现代语言语言的特例"></a>现代语言语言的特例</h3><ul>
+<li>C++，* 可能表示乘号或者指针，具体是哪个，取决于星号前面的标识符是否被声明为类型<ul>
+<li>非形式话语言，语法与语义相关，* 可以在很早之前出现</li>
+</ul>
+</li>
+<li>VB中， &lt; 可能是小于号，也可能是 XML 直接量的开始，取决于当前位置是否可以接受 XML 直接量<ul>
+<li>1型 上下文无关文法</li>
+</ul>
+</li>
+<li>Python，行首的 tab 符和空格会根据上一行的行首空白以一定规则被处理成虚拟终结符 indent 或者 dedent </li>
+<li>Javascript，/ 可能是除号，也可能是正则表达式开头，处理方式类似于VB，字符串模板中也需要特殊处理},还有自动插入分号规则<ul>
+<li>同 VB / JSX</li>
+</ul>
+</li>
+</ul>
+<h2 id="语言的分类"><a href="#语言的分类" class="headerlink" title="语言的分类"></a>语言的分类</h2><h3 id="图灵完备性"><a href="#图灵完备性" class="headerlink" title="图灵完备性"></a>图灵完备性</h3><ul>
+<li>图灵机（凡是可计算的，都能计算出来）</li>
+<li>图灵完备性<ul>
+<li>命令式 – 图灵机<ul>
+<li>goto</li>
+<li>if 和 while</li>
+</ul>
+</li>
+<li>声明式 – lambda<ul>
+<li>递归</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="动态与静态"><a href="#动态与静态" class="headerlink" title="动态与静态"></a>动态与静态</h3><ul>
+<li>动态：<ul>
+<li>在用户的设备/在线服务器上</li>
+<li>产品实际运行时</li>
+<li>Runtime</li>
+</ul>
+</li>
+<li>静态<ul>
+<li>在程序员的设备上</li>
+<li>产品开发时</li>
+<li>Compiletime</li>
+</ul>
+</li>
+</ul>
+<h4 id="类型系统-In-静态语言"><a href="#类型系统-In-静态语言" class="headerlink" title="类型系统 In 静态语言"></a>类型系统 In 静态语言</h4><ul>
+<li>动态类型系统和静态类型系统<ul>
+<li>不是说 Typescript 才有类型系统，而是它才有静态类型系统</li>
+</ul>
+</li>
+<li>强类型和弱类型<ul>
+<li>String + Number<ul>
+<li>产生了隐式的类型转换</li>
+</ul>
+</li>
+<li>String == Boolean</li>
+<li>C++ 有隐式转换，弱类型</li>
+</ul>
+</li>
+<li>复合类型<ul>
+<li>结构体</li>
+<li><strong>函数签名</strong><ul>
+<li>参数列表 + 返回值类型</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>子类型<ul>
+<li>逆变/协变<ul>
+<li>协变 –&gt; 凡是能用到Array&lt;Parent&gt;的地方，都能用Array&lt;Child&gt;</li>
+<li>逆变 –&gt; 凡是能用到Array&lt;Child&gt;的地方，都能用Array&lt;Parent&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="一般命令式编程语言"><a href="#一般命令式编程语言" class="headerlink" title="一般命令式编程语言"></a>一般命令式编程语言</h2><h3 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h3><h3 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h3><h3 id="Statement-语句"><a href="#Statement-语句" class="headerlink" title="Statement 语句"></a>Statement 语句</h3><h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><h3 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h3>]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自己的前端知识体系</title>
+    <url>/2020/04/12/%E8%87%AA%E5%B7%B1%E7%9A%84%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>理一下自己的技术体系吧</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="技术体系脑图"><a href="#技术体系脑图" class="headerlink" title="技术体系脑图"></a>技术体系脑图</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/49daa01a2bbdab251434a26a618376c53934435.png" alt="技术体系脑图"></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【未完】计算机图形学初探</title>
+    <url>/2020/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%88%9D%E6%8E%A2/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><p>记录 计算机图形学 方面的学习过程🤔</p>
+<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
+<li>前端与图形学<ul>
+<li>shader</li>
+</ul>
+</li>
+<li>图形学应用场景<ul>
+<li>Image<ul>
+<li>pattern（多用于背景）</li>
+<li>photo</li>
+<li>shape</li>
+</ul>
+</li>
+<li>来自数学的图形–分形</li>
+<li>来自物理的图形–光的衍射<ul>
+<li>相变</li>
+<li>绿幕<ul>
+<li>PNG24 –&gt; 2张 jpg</li>
+</ul>
+</li>
+<li>3D效果<ul>
+<li>three.js</li>
+<li>babylon.js</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="图形学基础设施"><a href="#图形学基础设施" class="headerlink" title="图形学基础设施"></a>图形学基础设施</h2></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机图形学</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>微信小程序-获取图片主色调</title>
     <url>/2020/04/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E4%B8%BB%E8%89%B2%E8%B0%83/</url>
     <content><![CDATA[<style  type="text/css">
@@ -4649,6 +4649,183 @@
       </tags>
   </entry>
   <entry>
+    <title>【未完】从URL输入到...（一）</title>
+    <url>/2020/05/12/%E4%BB%8EURL%E8%BE%93%E5%85%A5%E5%88%B0/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>嘿嘿嘿 😱</li>
+<li>别想歪，我们这个系列要做的是从经典面试题入手<ul>
+<li>从 URL 输入 <a href="https://ele-peng.github.io/" target="_blank" rel="noopener">https://ele-peng.github.io/</a> 到页面展现到底发生了什么？</li>
+</ul>
+</li>
+<li>简单了解一下计算机网络相关知识。是的，Elle 很惨😭 计算机网络学得稀烂</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="简单过程"><a href="#简单过程" class="headerlink" title="简单过程"></a>简单过程</h2><ul>
+<li>你先在浏览器里面输入 <a href="https://ele-peng.github.io/" target="_blank" rel="noopener">https://ele-peng.github.io/</a> ，这是一个 URL。浏览器只知道名字是“ele-peng.github.io”，但是不知道具体的地点，所以不知道应该如何访问。于是，它打开地址簿去查找。可以使用一般的地址簿协议 DNS 去查找，还可以使用另一种更加精准的地址簿查找协议 HTTPDNS 。</li>
+<li>无论用哪一种方法查找，最终都会得到这个地址：52.74.223.119。这个是 IP 地址，是互联网世界的“门牌号”。</li>
+<li>知道了目标地址，浏览器就开始打包它的请求。这里会使用HTTPS协议。无论是什么协议，里面都会写明“你要请求什么”。﻿</li>
+<li>DNS、HTTP、HTTPS 所在的层我们称为<strong>应用层</strong>。经过应用层封装后，浏览器会将应用层的包交给下一层去完成，<strong>通过 socket 编程来实现</strong>。下一层是<strong>传输层</strong>。传输层有两种协议，一种是无连接的协议UDP，一种是面向连接的协议TCP。这里使用 TCP 协议。所谓的面向连接就是，TCP 会保证这个包能够到达目的地。如果不能到达，就会重新发送，直至到达。</li>
+<li>TCP 协议里面会有两个端口，一个是浏览器监听的端口，一个是 github 的服务器监听的端口。操作系统往往通过端口来判断，它得到的包应该给哪个进程。</li>
+<li>传输层封装完毕后，浏览器会将包交给操作系统的<strong>网络层</strong>。网络层的协议是 IP 协议。在 IP 协议里面会有源 IP 地址，即浏览器所在机器的 IP 地址和目标 IP 地址，也即 github 所在服务器的 IP 地址。</li>
+<li>操作系统既然知道了目标 IP 地址，就开始想如何根据这个门牌号找到目标机器。操作系统往往会判断，这个目标 IP 地址是本地人，还是外地人。如果是本地人，从门牌号就能看出来，但是显然 github 网站不在本地，而在遥远的地方。</li>
+<li>操作系统知道要离开本地去远方。虽然不知道远方在何处，但是可以这样类比一下：如果去国外要去海关，去外地就要去网关。而操作系统启动的时候，就会被 DHCP 协议配置 IP 地址，以及默认的网关的 IP 地址 192.168.1.1。</li>
+<li>操作系统如何将 IP 地址发给网关呢？在本地通信基本靠吼，于是操作系统大吼一声，谁是 192.168.1.1 啊？网关会回答它，我就是，我的本地地址在村东头。这个本地地址就是 MAC 地址，而大吼的那一声是 ARP 协议。</li>
+<li>于是操作系统将 IP 包交给了下一层，也就是 <strong>MAC 层</strong>。网卡再将包发出去。由于这个包里面是有 MAC 地址的，因而它能够到达网关。</li>
+<li>网关收到包之后，会根据自己的知识，判断下一步应该怎么走。网关往往是一个路由器，到某个 IP 地址应该怎么走，这个叫作路由表。</li>
+<li>路由器有点像玄奘西行路过的一个个国家的一个个城关。每个城关都连着两个国家，每个国家相当于一个局域网，在每个国家内部，都可以使用本地的地址 MAC 进行通信。</li>
+<li>一旦跨越城关，就需要拿出 IP 头来问，目标 IP 地址怎么走？</li>
+<li>城关往往是知道这些“知识”的，因为城关和临近的城关也会经常沟通。到哪里应该怎么走，这种沟通的协议称为路由协议，常用的有 OSP F和 BGP 。﻿</li>
+<li>城关与城关之间是一个国家，当网络包知道了下一步去哪个城关，还是要使用国家内部的 MAC 地址，通过下一个城关的 MAC 地址，找到下一个城关，然后再问下一步的路怎么走，一直到走出最后一个城关。</li>
+<li>最后一个城关知道这个网络包要去的地方。于是，对着这个国家吼一声，谁是目标 IP 啊？目标服务器就会回复一个 MAC 地址。网络包过关后，通过这个 MAC 地址就能找到目标服务器。</li>
+<li>目标服务器发现 MAC 地址对上了，取下 MAC 头来，发送给操作系统的网络层。发现 IP 也对上了，就取下 IP 头。IP 头里会写上一层封装的是 TCP 协议，然后将其交给传输层，即TCP 层。</li>
+<li>在这一层里，对于收到的每个包，都会有一个回复的包说明收到了。这个回复的包绝非这次查询请求的结果，而仅仅是 TCP 层的一个说明，即收到之后的回复。当然这个回复，会沿着刚才来的方向走回去，报个平安。</li>
+<li>如果过一段时间还是没到，发送端的 TCP 层会重新发送这个包，还是上面的过程，直到有一天收到平安到达的回复。这个重试绝非你的浏览器重新请求 github 个人主页。对于浏览器来讲，就发送了一次 github 个人主页请求，TCP 层不断自己闷头重试。除非 TCP 这一层出了问题，例如连接断了，才轮到浏览器的应用层重新发送 github 个人主页请求。</li>
+<li>当网络包平安到达 TCP 层之后，TCP 头中有目标端口号，通过这个端口号，可以找到 github 网站的进程正在监听这个端口号，假设一个 Tomcat，将这个包发给 github 网站。﻿</li>
+<li>github 网站的进程得到 HTTP 请求的内容，知道了要响应啥。往往一个电商网站最初接待请求的这个 Tomcat 只是个接待员，负责统筹处理这个请求，而不是所有的事情都自己做。例如，这个接待员要告诉专门管理 GitHub 个人主页的进程，要响应啥等等。</li>
+<li>如何告诉相关的进程呢？往往通过 RPC 调用，即远程过程调用的方式来实现。远程过程调用就是当告诉管理 GitHub 个人主页的进程的时候，接待员不用关心中间的网络互连问题，会由 RPC 框架统一处理。RPC 框架有很多种，有基于 HTTP 协议放在 HTTP 的报文里面的，有直接封装在 TCP 报文里面的。</li>
+<li>当接待员发现相应的部门都处理完毕，就回复一个 HTTPS 的包，告知查询成功。这个 HTTPS 的包，会像来的时候一样，经过千难万险到达你的个人电脑，最终进入浏览器，显示个人主页。</li>
+</ul>
+<h2 id="网络分层模型"><a href="#网络分层模型" class="headerlink" title="网络分层模型"></a>网络分层模型</h2><h3 id="TCP-IP-协议栈"><a href="#TCP-IP-协议栈" class="headerlink" title="TCP/IP 协议栈"></a>TCP/IP 协议栈</h3><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/6fea0628affaf34d09b59d845ffeb60a75766.png" alt="TCP/IP 协议栈"></li>
+<li><strong>link layer 链接层</strong>：负责在以太网、WiFi 这样的底层网络上发送原始数据包（frame 帧），工作在网卡这个层次，使用 MAC 地址来标记网络上的设备，所以有时候也叫 MAC 层。</li>
+<li><strong>internet layer 网际层</strong>：IP 协议就处在这一层。因为 IP 协议定义了“IP 地址”的概念，所以就可以在“链接层”的基础上，用 IP 地址取代 MAC 地址，把许许多多的局域网、广域网连接成一个虚拟的巨大网络，在这个网络里找设备时只要把 IP 地址再“翻译”成 MAC 地址就可以了。传输单位是包（packet）</li>
+<li><strong>transport layer 传输层</strong>：TCP/UDP 协议工作的层次<ul>
+<li>TCP 是一个有状态的协议，需要先与对方建立连接然后才能发送数据，而且保证数据不丢失不重复。而 UDP 则比较简单，它无状态，不用事先建立连接就可以任意发送数据，但不保证数据一定会发到对方。两个协议的另一个重要区别在于数据的形式。TCP 的数据是连续的“字节流”，有先后顺序，而 UDP 则是分散的小数据包，是顺序发，乱序收。</li>
+<li>TCP 层的传输单位是段（segment）</li>
+</ul>
+</li>
+<li><strong>application layer 应用层</strong>：各种面向具体应用的协议，例如 DHCP、HTTP、HTTPS、RTMP、DNS、P2P、GTP、RPC、Telnet、SSH、FTP、SMTP 等等。<ul>
+<li>HTTP 的传输单位则是消息或报文（message）</li>
+</ul>
+</li>
+</ul>
+<h3 id="OSI-Open-System-Interconnection-Reference-Model-开放式系统互联通信参考模型"><a href="#OSI-Open-System-Interconnection-Reference-Model-开放式系统互联通信参考模型" class="headerlink" title="OSI (Open System Interconnection Reference Model) 开放式系统互联通信参考模型"></a>OSI (Open System Interconnection Reference Model) 开放式系统互联通信参考模型</h3><ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/53145af5e2b1d0846761c3382cce24c5104243.png" alt="OSI参考模型"></li>
+<li><strong>physical layer 物理层</strong>：网络的物理形式，例如电缆、光纤、网卡、集线器等等</li>
+<li><strong>data link layer 数据链路层</strong>：基本相当于 TCP/IP 的链接层</li>
+<li><strong>network layer 网络层</strong>：相当于 TCP/IP 里的网际层</li>
+<li><strong>transport layer 传输层</strong>：相当于 TCP/IP 里的传输层</li>
+<li><strong>session layer 会话层</strong>：维护网络中的连接状态，即保持会话和同步</li>
+<li><strong>presentation layer 表示层</strong>：把数据转换为合适、可理解的语法和语义</li>
+<li><strong>application layer 应用层</strong>：面向具体的应用传输数据</li>
+</ul>
+<h3 id="两个分层模型的映射关系"><a href="#两个分层模型的映射关系" class="headerlink" title="两个分层模型的映射关系"></a>两个分层模型的映射关系</h3><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/0042adbffe9810c7913862252fa27662164155.png" alt="两个分层模型的映射关系"></li>
+<li>第一层：物理层，TCP/IP 里无对应</li>
+<li>第二层：数据链路层，对应 TCP/IP 的链接层</li>
+<li>第三层：网络层，对应 TCP/IP 的网际层</li>
+<li>第四层：传输层，对应 TCP/IP 的传输层</li>
+<li>第五、六、七层：统一对应到 TCP/IP 的应用层<ul>
+<li>TCP/IP 实际应用时的会话管理、编码转换、压缩等和具体应用经常联系的很紧密，很难分开</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTTP-HyperText-Transfer-Protocol"><a href="#HTTP-HyperText-Transfer-Protocol" class="headerlink" title="HTTP - HyperText Transfer Protocol"></a>HTTP - HyperText Transfer Protocol</h2><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/0eac1c72dc8c7c0ac87363d73f51b19b30633.png" alt="HTTP概览图"></li>
+<li>Protocol<ul>
+<li>协议必须要有两个或多个参与者，也就是“协”</li>
+<li>协议是对参与者的一种行为约定和规范，也就是“议”，包括语法、语义、同步规则和错误处理</li>
+<li>总结：<strong>HTTP 是一个用在计算机世界里的协议。它使用计算机能够理解的语言确立了一种计算机之间交流通信的规范，以及相关的各种控制和错误处理方式。</strong></li>
+</ul>
+</li>
+<li>Transfer<ul>
+<li>HTTP 协议是一个“双向协议”</li>
+<li>数据虽然是在 A 和 B 之间传输，但并没有限制只有 A 和 B 这两个角色，允许中间有“中转”或者“接力”<ul>
+<li>传输方式从“A&lt;===&gt;B” 可以变成了 “A&lt;=&gt;X&lt;=&gt;Y&lt;=&gt;Z&lt;=&gt;B”</li>
+<li>A 到 B 的传输过程中可以存在任意多个“中间人”，而这些中间人也都遵从 HTTP 协议，只要不打扰基本的数据传输，就可以添加任意的额外功能，例如安全认证、数据压缩、编码转换等等，优化整个传输过程。</li>
+</ul>
+</li>
+<li>总结：<strong>HTTP 是一个在计算机世界里专门用来在两点之间传输数据的约定和规范。</strong></li>
+</ul>
+</li>
+<li>HyperText<ul>
+<li>Text<ul>
+<li>表示 HTTP 传输的不是 TCP/UDP 这些底层协议里被切分的杂乱无章的二进制包（datagram），而是完整的、有意义的数据，可以被浏览器、服务器这样的上层应用程序处理。</li>
+</ul>
+</li>
+<li>超文本：文字、图片、音频和视频等的混合体，最关键的是含有“超链接”，能够从一个“超文本”跳跃到另一个“超文本”，形成复杂的非线性、网状的结构关系。</li>
+</ul>
+</li>
+<li>总结：<strong>HTTP 是一个在计算机世界里专门在两点之间传输文字、图片、音频、视频等超文本数据的约定和规范</strong></li>
+</ul>
+<h3 id="HTTP不是？"><a href="#HTTP不是？" class="headerlink" title="HTTP不是？"></a>HTTP不是？</h3><ul>
+<li><strong>不存在“单独的实体”</strong>，但 HTTP 又与应用程序、操作系统、Web 服务器密切相关，在它们之间的通信过程中存在，而且是一种“动态的存在”，是发生在网络连接、传输超文本数据时的一个“动态过程”。</li>
+<li><strong>HTTP 不是互联网</strong><ul>
+<li>互联网（Internet）是遍布于全球的许多网络互相连接而形成的一个巨大的国际网络，在它上面存放着各式各样的资源，也对应着各式各样的协议，例如超文本资源使用 HTTP，普通文件使用 FTP，电子邮件使用 SMTP 和 POP3 等。</li>
+</ul>
+</li>
+<li><strong>HTTP 不是编程语言</strong><ul>
+<li>编程语言是人与计算机沟通交流所使用的语言，而 HTTP 是计算机与计算机沟通交流的语言</li>
+<li>无法使用 HTTP 来编程，但可以反过来，用编程语言去实现 HTTP，告诉计算机如何用 HTTP 来与外界通信</li>
+</ul>
+</li>
+<li><strong>HTTP 不是用于从互联网服务器传输超文本到本地浏览器的协议</strong><ul>
+<li>过于片面，HTTP 发生在两点之间，即服务端与客户端，客户端不是只包括本地浏览器，服务器也可以作为客户端，客户端也不仅仅只有浏览器，还可以有 App、小程序，浏览器只能作为客户端</li>
+</ul>
+</li>
+<li><strong>HTTP 不是一个孤立的协议</strong><ul>
+<li>HTTP 通常跑在 TCP/IP 协议栈之上，依靠 IP 协议实现寻址和路由、TCP 协议实现可靠数据传输、DNS 协议实现域名查找、SSL/TLS 协议实现安全通信</li>
+<li>还有一些协议依赖于 HTTP，例如 WebSocket、HTTPDNS 等</li>
+</ul>
+</li>
+<li>总结：<strong>HTTP 是构建互联网的重要基础技术，它没有实体，依赖许多其他的技术来实现，但同时许多技术也都依赖于它。</strong></li>
+</ul>
+<h2 id="Domain"><a href="#Domain" class="headerlink" title="Domain"></a>Domain</h2><h3 id="Domain-形式"><a href="#Domain-形式" class="headerlink" title="Domain 形式"></a>Domain 形式</h3><ul>
+<li>域名是一个有层次的结构，是一串用“.”分隔的多个单词，最右边的被称为“顶级域名”，然后是“二级域名”，层级关系向左依次降低。</li>
+<li>本质上还是个名字空间系统</li>
+</ul>
+<h3 id="DNS-Domain-Name-System"><a href="#DNS-Domain-Name-System" class="headerlink" title="DNS Domain Name System"></a>DNS Domain Name System</h3><ul>
+<li>就像 IP 地址必须转换成 MAC 地址才能访问主机一样，域名也必须要转换成 IP 地址，这个过程就是“域名解析”。</li>
+<li>DNS 使用 TCP 和 UDP 端口53</li>
+<li>DNS 的核心系统是一个三层的树状、分布式服务，基本对应域名的结构：<ul>
+<li>根域名服务器（Root DNS Server）：管理顶级域名服务器，返回“com”“net”“cn”等顶级域名服务器的 IP 地址<ul>
+<li>全世界共有 13 组根域名服务器，又有数百台的镜像，保证一定能够被访问到</li>
+</ul>
+</li>
+<li>级域名服务器（Top-level DNS Server）：管理各自域名下的权威域名服务器，比如 com 顶级域名服务器可以返回 apple.com 域名服务器的 IP 地址</li>
+<li>权威域名服务器（Authoritative DNS Server）：管理自己域名下主机的 IP 地址，比如 apple.com 权威域名服务器可以返回 <a href="http://www.apple.com" target="_blank" rel="noopener">www.apple.com</a> 的 IP 地址</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/5ac55ff4d8109df28c9afb3fbfc27208625512.png" alt="DNS 三层的树状"></li>
+</ul>
+</li>
+<li>所以我们访问 <a href="https://ele-peng.github.io/" target="_blank" rel="noopener">https://ele-peng.github.io/</a> 就需要进行下面的三次查询<ul>
+<li>访问根域名服务器，它会告诉你 “io” 顶级域名服务器的地址</li>
+<li>访问 “io” 顶级域名服务器，它再告诉你 “github.io” 域名服务器的地址</li>
+<li>最后访问 “github.io” 域名服务器，就得到了 “ele-peng.github.io” 的地址</li>
+</ul>
+</li>
+<li>DNS 是一个树状的分布式查询系统，为了提高查询效率，外围有多级的缓存（非权威域名服务器、操作系统缓存和 hosts 文件等手段）用来减轻域名解析的压力，并且能够更快地获取结果，基本思路都是<strong>“缓存”</strong><ul>
+<li>许多大公司、网络运行商都会建立自己的 DNS 服务器，作为用户 DNS 查询的代理，代替用户访问核心 DNS 系统。这些“野生”服务器被称为“非权威域名服务器”，可以缓存之前的查询结果，如果已经有了记录，就无需再向根服务器发起查询，直接返回对应的 IP 地址<ul>
+<li>这些 DNS 服务器的数量要比核心系统的服务器多很多，而且大多部署在离用户很近的地方。比较知名的 DNS 有 Google 的“8.8.8.8”，Microsoft 的“4.2.2.1”，还有 CloudFlare 的“1.1.1.1”等等。</li>
+</ul>
+</li>
+<li>其次，操作系统里也会对 DNS 解析结果做缓存，如果你之前访问过“ele-peng.github.io”，那么下一次在浏览器里再输入这个网址的时候就不会再跑到 DNS 那里去问了，直接在操作系统里就可以拿到 IP 地址</li>
+<li>另外，操作系统里还有一个特殊的“主机映射”文件</li>
+</ul>
+</li>
+<li>假如访问 www.不存在.com <ul>
+<li>www.不存在.com -&gt; Hosts 文件 -&gt; 操作系统本地缓存 -&gt; 非权威域名服务器查询其缓存 -&gt; 查询根域名、顶级域名、以及域名服务器，当后面的查询得到结果时，将会写入本地缓存</li>
+</ul>
+</li>
+<li>现在的 DNS 架构<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/3ba7d376ea3f43fcb761deeb78932622389661.png" alt="现在的 DNS 架构"></li>
+</ul>
+</li>
+<li><strong>使用 DNS 可以实现基于域名的负载均衡，既可以在内网，也可以在外网</strong></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>学而不思则罔 互勉</li>
+<li>祝大家多多发财ee</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript-convertStringToNumber</title>
     <url>/2020/04/24/convertStringToNumber/</url>
     <content><![CDATA[<style  type="text/css">
@@ -4863,185 +5040,8 @@
         <category>前端概念</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>前端概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【未完】从URL输入到...（一）</title>
-    <url>/2020/05/12/%E4%BB%8EURL%E8%BE%93%E5%85%A5%E5%88%B0/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>嘿嘿嘿 😱</li>
-<li>别想歪，我们这个系列要做的是从经典面试题入手<ul>
-<li>从 URL 输入 <a href="https://ele-peng.github.io/" target="_blank" rel="noopener">https://ele-peng.github.io/</a> 到页面展现到底发生了什么？</li>
-</ul>
-</li>
-<li>简单了解一下计算机网络相关知识。是的，Elle 很惨😭 计算机网络学得稀烂</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="简单过程"><a href="#简单过程" class="headerlink" title="简单过程"></a>简单过程</h2><ul>
-<li>你先在浏览器里面输入 <a href="https://ele-peng.github.io/" target="_blank" rel="noopener">https://ele-peng.github.io/</a> ，这是一个 URL。浏览器只知道名字是“ele-peng.github.io”，但是不知道具体的地点，所以不知道应该如何访问。于是，它打开地址簿去查找。可以使用一般的地址簿协议 DNS 去查找，还可以使用另一种更加精准的地址簿查找协议 HTTPDNS 。</li>
-<li>无论用哪一种方法查找，最终都会得到这个地址：52.74.223.119。这个是 IP 地址，是互联网世界的“门牌号”。</li>
-<li>知道了目标地址，浏览器就开始打包它的请求。这里会使用HTTPS协议。无论是什么协议，里面都会写明“你要请求什么”。﻿</li>
-<li>DNS、HTTP、HTTPS 所在的层我们称为<strong>应用层</strong>。经过应用层封装后，浏览器会将应用层的包交给下一层去完成，<strong>通过 socket 编程来实现</strong>。下一层是<strong>传输层</strong>。传输层有两种协议，一种是无连接的协议UDP，一种是面向连接的协议TCP。这里使用 TCP 协议。所谓的面向连接就是，TCP 会保证这个包能够到达目的地。如果不能到达，就会重新发送，直至到达。</li>
-<li>TCP 协议里面会有两个端口，一个是浏览器监听的端口，一个是 github 的服务器监听的端口。操作系统往往通过端口来判断，它得到的包应该给哪个进程。</li>
-<li>传输层封装完毕后，浏览器会将包交给操作系统的<strong>网络层</strong>。网络层的协议是 IP 协议。在 IP 协议里面会有源 IP 地址，即浏览器所在机器的 IP 地址和目标 IP 地址，也即 github 所在服务器的 IP 地址。</li>
-<li>操作系统既然知道了目标 IP 地址，就开始想如何根据这个门牌号找到目标机器。操作系统往往会判断，这个目标 IP 地址是本地人，还是外地人。如果是本地人，从门牌号就能看出来，但是显然 github 网站不在本地，而在遥远的地方。</li>
-<li>操作系统知道要离开本地去远方。虽然不知道远方在何处，但是可以这样类比一下：如果去国外要去海关，去外地就要去网关。而操作系统启动的时候，就会被 DHCP 协议配置 IP 地址，以及默认的网关的 IP 地址 192.168.1.1。</li>
-<li>操作系统如何将 IP 地址发给网关呢？在本地通信基本靠吼，于是操作系统大吼一声，谁是 192.168.1.1 啊？网关会回答它，我就是，我的本地地址在村东头。这个本地地址就是 MAC 地址，而大吼的那一声是 ARP 协议。</li>
-<li>于是操作系统将 IP 包交给了下一层，也就是 <strong>MAC 层</strong>。网卡再将包发出去。由于这个包里面是有 MAC 地址的，因而它能够到达网关。</li>
-<li>网关收到包之后，会根据自己的知识，判断下一步应该怎么走。网关往往是一个路由器，到某个 IP 地址应该怎么走，这个叫作路由表。</li>
-<li>路由器有点像玄奘西行路过的一个个国家的一个个城关。每个城关都连着两个国家，每个国家相当于一个局域网，在每个国家内部，都可以使用本地的地址 MAC 进行通信。</li>
-<li>一旦跨越城关，就需要拿出 IP 头来问，目标 IP 地址怎么走？</li>
-<li>城关往往是知道这些“知识”的，因为城关和临近的城关也会经常沟通。到哪里应该怎么走，这种沟通的协议称为路由协议，常用的有 OSP F和 BGP 。﻿</li>
-<li>城关与城关之间是一个国家，当网络包知道了下一步去哪个城关，还是要使用国家内部的 MAC 地址，通过下一个城关的 MAC 地址，找到下一个城关，然后再问下一步的路怎么走，一直到走出最后一个城关。</li>
-<li>最后一个城关知道这个网络包要去的地方。于是，对着这个国家吼一声，谁是目标 IP 啊？目标服务器就会回复一个 MAC 地址。网络包过关后，通过这个 MAC 地址就能找到目标服务器。</li>
-<li>目标服务器发现 MAC 地址对上了，取下 MAC 头来，发送给操作系统的网络层。发现 IP 也对上了，就取下 IP 头。IP 头里会写上一层封装的是 TCP 协议，然后将其交给传输层，即TCP 层。</li>
-<li>在这一层里，对于收到的每个包，都会有一个回复的包说明收到了。这个回复的包绝非这次查询请求的结果，而仅仅是 TCP 层的一个说明，即收到之后的回复。当然这个回复，会沿着刚才来的方向走回去，报个平安。</li>
-<li>如果过一段时间还是没到，发送端的 TCP 层会重新发送这个包，还是上面的过程，直到有一天收到平安到达的回复。这个重试绝非你的浏览器重新请求 github 个人主页。对于浏览器来讲，就发送了一次 github 个人主页请求，TCP 层不断自己闷头重试。除非 TCP 这一层出了问题，例如连接断了，才轮到浏览器的应用层重新发送 github 个人主页请求。</li>
-<li>当网络包平安到达 TCP 层之后，TCP 头中有目标端口号，通过这个端口号，可以找到 github 网站的进程正在监听这个端口号，假设一个 Tomcat，将这个包发给 github 网站。﻿</li>
-<li>github 网站的进程得到 HTTP 请求的内容，知道了要响应啥。往往一个电商网站最初接待请求的这个 Tomcat 只是个接待员，负责统筹处理这个请求，而不是所有的事情都自己做。例如，这个接待员要告诉专门管理 GitHub 个人主页的进程，要响应啥等等。</li>
-<li>如何告诉相关的进程呢？往往通过 RPC 调用，即远程过程调用的方式来实现。远程过程调用就是当告诉管理 GitHub 个人主页的进程的时候，接待员不用关心中间的网络互连问题，会由 RPC 框架统一处理。RPC 框架有很多种，有基于 HTTP 协议放在 HTTP 的报文里面的，有直接封装在 TCP 报文里面的。</li>
-<li>当接待员发现相应的部门都处理完毕，就回复一个 HTTPS 的包，告知查询成功。这个 HTTPS 的包，会像来的时候一样，经过千难万险到达你的个人电脑，最终进入浏览器，显示个人主页。</li>
-</ul>
-<h2 id="网络分层模型"><a href="#网络分层模型" class="headerlink" title="网络分层模型"></a>网络分层模型</h2><h3 id="TCP-IP-协议栈"><a href="#TCP-IP-协议栈" class="headerlink" title="TCP/IP 协议栈"></a>TCP/IP 协议栈</h3><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/6fea0628affaf34d09b59d845ffeb60a75766.png" alt="TCP/IP 协议栈"></li>
-<li><strong>link layer 链接层</strong>：负责在以太网、WiFi 这样的底层网络上发送原始数据包（frame 帧），工作在网卡这个层次，使用 MAC 地址来标记网络上的设备，所以有时候也叫 MAC 层。</li>
-<li><strong>internet layer 网际层</strong>：IP 协议就处在这一层。因为 IP 协议定义了“IP 地址”的概念，所以就可以在“链接层”的基础上，用 IP 地址取代 MAC 地址，把许许多多的局域网、广域网连接成一个虚拟的巨大网络，在这个网络里找设备时只要把 IP 地址再“翻译”成 MAC 地址就可以了。传输单位是包（packet）</li>
-<li><strong>transport layer 传输层</strong>：TCP/UDP 协议工作的层次<ul>
-<li>TCP 是一个有状态的协议，需要先与对方建立连接然后才能发送数据，而且保证数据不丢失不重复。而 UDP 则比较简单，它无状态，不用事先建立连接就可以任意发送数据，但不保证数据一定会发到对方。两个协议的另一个重要区别在于数据的形式。TCP 的数据是连续的“字节流”，有先后顺序，而 UDP 则是分散的小数据包，是顺序发，乱序收。</li>
-<li>TCP 层的传输单位是段（segment）</li>
-</ul>
-</li>
-<li><strong>application layer 应用层</strong>：各种面向具体应用的协议，例如 DHCP、HTTP、HTTPS、RTMP、DNS、P2P、GTP、RPC、Telnet、SSH、FTP、SMTP 等等。<ul>
-<li>HTTP 的传输单位则是消息或报文（message）</li>
-</ul>
-</li>
-</ul>
-<h3 id="OSI-Open-System-Interconnection-Reference-Model-开放式系统互联通信参考模型"><a href="#OSI-Open-System-Interconnection-Reference-Model-开放式系统互联通信参考模型" class="headerlink" title="OSI (Open System Interconnection Reference Model) 开放式系统互联通信参考模型"></a>OSI (Open System Interconnection Reference Model) 开放式系统互联通信参考模型</h3><ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/53145af5e2b1d0846761c3382cce24c5104243.png" alt="OSI参考模型"></li>
-<li><strong>physical layer 物理层</strong>：网络的物理形式，例如电缆、光纤、网卡、集线器等等</li>
-<li><strong>data link layer 数据链路层</strong>：基本相当于 TCP/IP 的链接层</li>
-<li><strong>network layer 网络层</strong>：相当于 TCP/IP 里的网际层</li>
-<li><strong>transport layer 传输层</strong>：相当于 TCP/IP 里的传输层</li>
-<li><strong>session layer 会话层</strong>：维护网络中的连接状态，即保持会话和同步</li>
-<li><strong>presentation layer 表示层</strong>：把数据转换为合适、可理解的语法和语义</li>
-<li><strong>application layer 应用层</strong>：面向具体的应用传输数据</li>
-</ul>
-<h3 id="两个分层模型的映射关系"><a href="#两个分层模型的映射关系" class="headerlink" title="两个分层模型的映射关系"></a>两个分层模型的映射关系</h3><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/0042adbffe9810c7913862252fa27662164155.png" alt="两个分层模型的映射关系"></li>
-<li>第一层：物理层，TCP/IP 里无对应</li>
-<li>第二层：数据链路层，对应 TCP/IP 的链接层</li>
-<li>第三层：网络层，对应 TCP/IP 的网际层</li>
-<li>第四层：传输层，对应 TCP/IP 的传输层</li>
-<li>第五、六、七层：统一对应到 TCP/IP 的应用层<ul>
-<li>TCP/IP 实际应用时的会话管理、编码转换、压缩等和具体应用经常联系的很紧密，很难分开</li>
-</ul>
-</li>
-</ul>
-<h2 id="HTTP-HyperText-Transfer-Protocol"><a href="#HTTP-HyperText-Transfer-Protocol" class="headerlink" title="HTTP - HyperText Transfer Protocol"></a>HTTP - HyperText Transfer Protocol</h2><ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/0eac1c72dc8c7c0ac87363d73f51b19b30633.png" alt="HTTP概览图"></li>
-<li>Protocol<ul>
-<li>协议必须要有两个或多个参与者，也就是“协”</li>
-<li>协议是对参与者的一种行为约定和规范，也就是“议”，包括语法、语义、同步规则和错误处理</li>
-<li>总结：<strong>HTTP 是一个用在计算机世界里的协议。它使用计算机能够理解的语言确立了一种计算机之间交流通信的规范，以及相关的各种控制和错误处理方式。</strong></li>
-</ul>
-</li>
-<li>Transfer<ul>
-<li>HTTP 协议是一个“双向协议”</li>
-<li>数据虽然是在 A 和 B 之间传输，但并没有限制只有 A 和 B 这两个角色，允许中间有“中转”或者“接力”<ul>
-<li>传输方式从“A&lt;===&gt;B” 可以变成了 “A&lt;=&gt;X&lt;=&gt;Y&lt;=&gt;Z&lt;=&gt;B”</li>
-<li>A 到 B 的传输过程中可以存在任意多个“中间人”，而这些中间人也都遵从 HTTP 协议，只要不打扰基本的数据传输，就可以添加任意的额外功能，例如安全认证、数据压缩、编码转换等等，优化整个传输过程。</li>
-</ul>
-</li>
-<li>总结：<strong>HTTP 是一个在计算机世界里专门用来在两点之间传输数据的约定和规范。</strong></li>
-</ul>
-</li>
-<li>HyperText<ul>
-<li>Text<ul>
-<li>表示 HTTP 传输的不是 TCP/UDP 这些底层协议里被切分的杂乱无章的二进制包（datagram），而是完整的、有意义的数据，可以被浏览器、服务器这样的上层应用程序处理。</li>
-</ul>
-</li>
-<li>超文本：文字、图片、音频和视频等的混合体，最关键的是含有“超链接”，能够从一个“超文本”跳跃到另一个“超文本”，形成复杂的非线性、网状的结构关系。</li>
-</ul>
-</li>
-<li>总结：<strong>HTTP 是一个在计算机世界里专门在两点之间传输文字、图片、音频、视频等超文本数据的约定和规范</strong></li>
-</ul>
-<h3 id="HTTP不是？"><a href="#HTTP不是？" class="headerlink" title="HTTP不是？"></a>HTTP不是？</h3><ul>
-<li><strong>不存在“单独的实体”</strong>，但 HTTP 又与应用程序、操作系统、Web 服务器密切相关，在它们之间的通信过程中存在，而且是一种“动态的存在”，是发生在网络连接、传输超文本数据时的一个“动态过程”。</li>
-<li><strong>HTTP 不是互联网</strong><ul>
-<li>互联网（Internet）是遍布于全球的许多网络互相连接而形成的一个巨大的国际网络，在它上面存放着各式各样的资源，也对应着各式各样的协议，例如超文本资源使用 HTTP，普通文件使用 FTP，电子邮件使用 SMTP 和 POP3 等。</li>
-</ul>
-</li>
-<li><strong>HTTP 不是编程语言</strong><ul>
-<li>编程语言是人与计算机沟通交流所使用的语言，而 HTTP 是计算机与计算机沟通交流的语言</li>
-<li>无法使用 HTTP 来编程，但可以反过来，用编程语言去实现 HTTP，告诉计算机如何用 HTTP 来与外界通信</li>
-</ul>
-</li>
-<li><strong>HTTP 不是用于从互联网服务器传输超文本到本地浏览器的协议</strong><ul>
-<li>过于片面，HTTP 发生在两点之间，即服务端与客户端，客户端不是只包括本地浏览器，服务器也可以作为客户端，客户端也不仅仅只有浏览器，还可以有 App、小程序，浏览器只能作为客户端</li>
-</ul>
-</li>
-<li><strong>HTTP 不是一个孤立的协议</strong><ul>
-<li>HTTP 通常跑在 TCP/IP 协议栈之上，依靠 IP 协议实现寻址和路由、TCP 协议实现可靠数据传输、DNS 协议实现域名查找、SSL/TLS 协议实现安全通信</li>
-<li>还有一些协议依赖于 HTTP，例如 WebSocket、HTTPDNS 等</li>
-</ul>
-</li>
-<li>总结：<strong>HTTP 是构建互联网的重要基础技术，它没有实体，依赖许多其他的技术来实现，但同时许多技术也都依赖于它。</strong></li>
-</ul>
-<h2 id="Domain"><a href="#Domain" class="headerlink" title="Domain"></a>Domain</h2><h3 id="Domain-形式"><a href="#Domain-形式" class="headerlink" title="Domain 形式"></a>Domain 形式</h3><ul>
-<li>域名是一个有层次的结构，是一串用“.”分隔的多个单词，最右边的被称为“顶级域名”，然后是“二级域名”，层级关系向左依次降低。</li>
-<li>本质上还是个名字空间系统</li>
-</ul>
-<h3 id="DNS-Domain-Name-System"><a href="#DNS-Domain-Name-System" class="headerlink" title="DNS Domain Name System"></a>DNS Domain Name System</h3><ul>
-<li>就像 IP 地址必须转换成 MAC 地址才能访问主机一样，域名也必须要转换成 IP 地址，这个过程就是“域名解析”。</li>
-<li>DNS 使用 TCP 和 UDP 端口53</li>
-<li>DNS 的核心系统是一个三层的树状、分布式服务，基本对应域名的结构：<ul>
-<li>根域名服务器（Root DNS Server）：管理顶级域名服务器，返回“com”“net”“cn”等顶级域名服务器的 IP 地址<ul>
-<li>全世界共有 13 组根域名服务器，又有数百台的镜像，保证一定能够被访问到</li>
-</ul>
-</li>
-<li>级域名服务器（Top-level DNS Server）：管理各自域名下的权威域名服务器，比如 com 顶级域名服务器可以返回 apple.com 域名服务器的 IP 地址</li>
-<li>权威域名服务器（Authoritative DNS Server）：管理自己域名下主机的 IP 地址，比如 apple.com 权威域名服务器可以返回 <a href="http://www.apple.com" target="_blank" rel="noopener">www.apple.com</a> 的 IP 地址</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/5ac55ff4d8109df28c9afb3fbfc27208625512.png" alt="DNS 三层的树状"></li>
-</ul>
-</li>
-<li>所以我们访问 <a href="https://ele-peng.github.io/" target="_blank" rel="noopener">https://ele-peng.github.io/</a> 就需要进行下面的三次查询<ul>
-<li>访问根域名服务器，它会告诉你 “io” 顶级域名服务器的地址</li>
-<li>访问 “io” 顶级域名服务器，它再告诉你 “github.io” 域名服务器的地址</li>
-<li>最后访问 “github.io” 域名服务器，就得到了 “ele-peng.github.io” 的地址</li>
-</ul>
-</li>
-<li>DNS 是一个树状的分布式查询系统，为了提高查询效率，外围有多级的缓存（非权威域名服务器、操作系统缓存和 hosts 文件等手段）用来减轻域名解析的压力，并且能够更快地获取结果，基本思路都是<strong>“缓存”</strong><ul>
-<li>许多大公司、网络运行商都会建立自己的 DNS 服务器，作为用户 DNS 查询的代理，代替用户访问核心 DNS 系统。这些“野生”服务器被称为“非权威域名服务器”，可以缓存之前的查询结果，如果已经有了记录，就无需再向根服务器发起查询，直接返回对应的 IP 地址<ul>
-<li>这些 DNS 服务器的数量要比核心系统的服务器多很多，而且大多部署在离用户很近的地方。比较知名的 DNS 有 Google 的“8.8.8.8”，Microsoft 的“4.2.2.1”，还有 CloudFlare 的“1.1.1.1”等等。</li>
-</ul>
-</li>
-<li>其次，操作系统里也会对 DNS 解析结果做缓存，如果你之前访问过“ele-peng.github.io”，那么下一次在浏览器里再输入这个网址的时候就不会再跑到 DNS 那里去问了，直接在操作系统里就可以拿到 IP 地址</li>
-<li>另外，操作系统里还有一个特殊的“主机映射”文件</li>
-</ul>
-</li>
-<li>假如访问 www.不存在.com <ul>
-<li>www.不存在.com -&gt; Hosts 文件 -&gt; 操作系统本地缓存 -&gt; 非权威域名服务器查询其缓存 -&gt; 查询根域名、顶级域名、以及域名服务器，当后面的查询得到结果时，将会写入本地缓存</li>
-</ul>
-</li>
-<li>现在的 DNS 架构<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/3ba7d376ea3f43fcb761deeb78932622389661.png" alt="现在的 DNS 架构"></li>
-</ul>
-</li>
-<li><strong>使用 DNS 可以实现基于域名的负载均衡，既可以在内网，也可以在外网</strong></li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>学而不思则罔 互勉</li>
-<li>祝大家多多发财ee</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>计算机网络</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
