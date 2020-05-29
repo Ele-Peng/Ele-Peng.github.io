@@ -103,6 +103,44 @@
 
   <div class="lx-entry padding">
     <div>
+      <h2 class="title"><a href="/2020/05/02/Javascrtip-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%88%E4%BA%8C%EF%BC%89/">Javascript-运行机制（二）</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-02 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></span>
+      <p><style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>嗯，发现 运行机制 的面试题是真的多。。😓</li>
+<li>那这就是，最末篇吧</li>
+<li>加油 Elle 🤦‍♀️</li>
+<li>五一倒计时 2 天</li>
+</ul></p>
+      <div class="post-button"><a class="btn" href="/2020/05/02/Javascrtip-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
       <h2 class="title"><a href="/2020/04/30/Javascript-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">【未完】Javascript-运行机制（一）</a></h2>
       <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-04-30 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></span>
       <p><style  type="text/css">
@@ -469,56 +507,10 @@
       <div class="post-button"><a class="btn" href="/2020/04/20/Javascript-Atom+Types/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2 class="title"><a href="/2020/04/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%80%9A%E8%AF%86/">编程语言通识</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-04-20 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></span>
-      <p><style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-<h2 id="语言按语法分类"><a href="#语言按语法分类" class="headerlink" title="语言按语法分类"></a>语言按语法分类</h2><ul>
-<li>非形式语言<ul>
-<li>中文、英文</li>
-</ul>
-</li>
-<li>形式语言（乔姆斯基谱系）<strong>追溯</strong>19世纪50年代<ul>
-<li>0型 无限制文法</li>
-<li>1型 上下文相关文法</li>
-<li>2型 上下文无关文法<ul>
-<li>大部分计算机语言主体上都是上下文无关文法</li>
-<li>比如Javascript就是上下文无关文法，会在某些点，违反上下文无关文法原则（get）</li>
-</ul>
-</li>
-<li>3型 正则文法</p>
-      <div class="post-button"><a class="btn" href="/2020/04/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%80%9A%E8%AF%86/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
-    </div>
-  </div>
 
 
 <div id="pagination">
-  <a class="extend prev" rel="prev" href="/"></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"></a>
+  <a class="extend prev" rel="prev" href="/"></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"></a>
 </div>
 
 <footer>
