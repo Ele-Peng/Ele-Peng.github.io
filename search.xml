@@ -5787,9 +5787,9 @@ for (let i = 7; i &gt;= 0; i --) {
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>CSS 选择器相关知识</li>
 </ul>
+<a id="more"></a>
 <h2 id="选择器语法"><a href="#选择器语法" class="headerlink" title="选择器语法"></a>选择器语法</h2><h3 id="简单选择器"><a href="#简单选择器" class="headerlink" title="简单选择器"></a>简单选择器</h3><ul>
-<li><p>*</p>
-</li>
+<li>*</li>
 <li><p>div svg|a</p>
 <ul>
 <li><p><a href="http://www.w3.org/2000/svg" target="_blank" rel="noopener">SVG</a></p>
@@ -5797,12 +5797,9 @@ for (let i = 7; i &gt;= 0; i --) {
   <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@namespace</span> svg url(<span class="attribute">http:</span>//www.w3.org/<span class="number">2000</span>/svg);</span><br><span class="line"><span class="keyword">@namespace</span> html url(<span class="attribute">http:</span>//www.w3.org/<span class="number">1999</span>/xhtml);</span><br><span class="line">svg|a &#123;</span><br><span class="line">  <span class="selector-tag">stroke</span><span class="selector-pseudo">:blue</span>;</span><br><span class="line">  <span class="selector-tag">stroke-width</span><span class="selector-pseudo">:1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">html|a &#123;</span><br><span class="line">  <span class="selector-tag">font-size</span><span class="selector-pseudo">:40px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><p>.cls</p>
-</li>
-<li><p>#id</p>
-</li>
-<li><p>[attr=value]</p>
-<ul>
+<li>.cls</li>
+<li>#id</li>
+<li>[attr=value]<ul>
 <li>【未完】编写测试用例</li>
 <li>[attr]<ul>
 <li>直接在方括号中放入属性名，是检查元素是否具有这个属性，只要元素有这个属性，不论属性是什么值，都可以被选中</li>
@@ -5822,10 +5819,8 @@ for (let i = 7; i &gt;= 0; i --) {
 </li>
 </ul>
 </li>
-<li><p>:hover</p>
-</li>
-<li><p>::before</p>
-</li>
+<li>:hover</li>
+<li>::before</li>
 </ul>
 <h3 id="复合选择器"><a href="#复合选择器" class="headerlink" title="复合选择器"></a>复合选择器</h3><ul>
 <li>&lt;简单选择器&gt;&lt;简单选择器&gt;&lt;简单选择器&gt;</li>
@@ -5904,6 +5899,34 @@ for (let i = 7; i &gt;= 0; i --) {
 <li>元素的第一个字母</li>
 </ul>
 </li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS-排版</title>
+    <url>/2020/05/30/CSS-%E6%8E%92%E7%89%88/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>CSS 排版相关知识</li>
+</ul>
+<a id="more"></a>
+<h2 id="盒（Box）"><a href="#盒（Box）" class="headerlink" title="盒（Box）"></a>盒（Box）</h2><h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><h2 id="正常流"><a href="#正常流" class="headerlink" title="正常流"></a>正常流</h2><h3 id="正常流排版"><a href="#正常流排版" class="headerlink" title="正常流排版"></a>正常流排版</h3><h3 id="正常流的行模型"><a href="#正常流的行模型" class="headerlink" title="正常流的行模型"></a>正常流的行模型</h3><h3 id="正常流的三大难题"><a href="#正常流的三大难题" class="headerlink" title="正常流的三大难题"></a>正常流的三大难题</h3><ul>
+<li>overflow:visible 与 BFC</li>
+<li>margin collapse</li>
+<li>float 与 clear</li>
+</ul>
+<h2 id="Flex"><a href="#Flex" class="headerlink" title="Flex"></a>Flex</h2><h3 id="Flex-排版"><a href="#Flex-排版" class="headerlink" title="Flex 排版"></a>Flex 排版</h3><ul>
+<li>收集盒进行</li>
+<li>计算盒在主轴方向的排布</li>
+<li>计算盒在交叉轴方向的排布</li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
