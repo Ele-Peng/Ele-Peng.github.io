@@ -103,6 +103,16 @@
 
   <div class="lx-entry padding">
     <div>
+      <h2 class="title"><a href="/2020/05/30/CSS-%E6%8E%92%E7%89%88/">CSS-排版</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-30 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/CSS/">CSS</a></span>
+      <p><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>CSS 排版相关知识</li>
+</ul></p>
+      <div class="post-button"><a class="btn" href="/2020/05/30/CSS-%E6%8E%92%E7%89%88/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
       <h2 class="title"><a href="/2020/05/29/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/">CSS-选择器</a></h2>
       <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-29 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/CSS/">CSS</a></span>
       <p><style  type="text/css">
@@ -132,130 +142,8 @@
 
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>CSS 选择器相关知识</li>
-</ul>
-<h2 id="选择器语法"><a href="#选择器语法" class="headerlink" title="选择器语法"></a>选择器语法</h2><h3 id="简单选择器"><a href="#简单选择器" class="headerlink" title="简单选择器"></a>简单选择器</h3><ul>
-<li><p>*</p>
-</li>
-<li><p>div svg|a</p>
-<ul>
-<li><p><a href="http://www.w3.org/2000/svg" target="_blank" rel="noopener">SVG</a></p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>JS Bin<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"28"</span> <span class="attr">viewBox</span>=<span class="string">"0 0 100 28"</span> <span class="attr">version</span>=<span class="string">"1.1"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">desc</span>&gt;</span>Example link01 - a link on an ellipse</span><br><span class="line">  <span class="tag">&lt;/<span class="name">desc</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">xlink:href</span>=<span class="string">"http://www.w3.org"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">y</span>=<span class="string">"100%"</span>&gt;</span>name<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void 0;"</span>&gt;</span>name<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@namespace</span> svg url(<span class="attribute">http:</span>//www.w3.org/<span class="number">2000</span>/svg);</span><br><span class="line"><span class="keyword">@namespace</span> html url(<span class="attribute">http:</span>//www.w3.org/<span class="number">1999</span>/xhtml);</span><br><span class="line">svg|a &#123;</span><br><span class="line">  <span class="selector-tag">stroke</span><span class="selector-pseudo">:blue</span>;</span><br><span class="line">  <span class="selector-tag">stroke-width</span><span class="selector-pseudo">:1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">html|a &#123;</span><br><span class="line">  <span class="selector-tag">font-size</span><span class="selector-pseudo">:40px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>.cls</p>
-</li>
-<li><p>#id</p>
-</li>
-<li><p>[attr=value]</p>
-<ul>
-<li>【未完】编写测试用例</li>
-<li>[attr]<ul>
-<li>直接在方括号中放入属性名，是检查元素是否具有这个属性，只要元素有这个属性，不论属性是什么值，都可以被选中</li>
-</ul>
-</li>
-<li>[attr=val]<ul>
-<li>精确匹配，检查一个元素属性的值是否是 val</li>
-</ul>
-</li>
-<li>[att~=val]<ul>
-<li>多种匹配，检查一个元素的值是否是若干值之一，这里的 val 不是一个单一的值了，可以是用空格分隔的一个序列</li>
-</ul>
-</li>
-<li>[att|=val]<ul>
-<li>开头匹配，检查一个元素的值是否是以 val 开头，它跟精确匹配的区别是属性只要以 val 开头即可，后面内容不管</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>:hover</p>
-</li>
-<li><p>::before</p>
-</li>
-</ul>
-<h3 id="复合选择器"><a href="#复合选择器" class="headerlink" title="复合选择器"></a>复合选择器</h3><ul>
-<li>&lt;简单选择器&gt;&lt;简单选择器&gt;&lt;简单选择器&gt;</li>
-<li><ul>
-<li>或者 div 必须写在最前面</li>
-</ul>
-</li>
-</ul>
-<h3 id="复杂选择器"><a href="#复杂选择器" class="headerlink" title="复杂选择器"></a>复杂选择器</h3><ul>
-<li>&lt;复合选择器&gt;&lt;sp&gt;&lt;复合选择器&gt;<ul>
-<li>子孙<ul>
-<li>后代，表示选中所有符合条件的后代节点</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>&lt;复合选择器&gt;”&gt;”&lt;复合选择器&gt;<ul>
-<li>子选择器，只能选择子一级</li>
-<li>子代，表示选中符合条件的子节点</li>
-</ul>
-</li>
-<li>&lt;复合选择器&gt;”~”&lt;复合选择器&gt;<ul>
-<li>sibling</li>
-<li>后继，表示选中所有符合条件的后继节点，后继节点即跟当前节点具有同一个父元素，并出现在它之后的节点</li>
-</ul>
-</li>
-<li>&lt;复合选择器&gt;”+”&lt;复合选择器&gt;<ul>
-<li>sibling</li>
-<li>直接后继，表示选中符合条件的直接后继节点，直接后继节点即 nextSlibling</li>
-</ul>
-</li>
-<li>&lt;复合选择器&gt;”||”&lt;复合选择器&gt;<ul>
-<li>selectors-4</li>
-<li>table 里选中一列</li>
-<li>列选择器，表示选中对应列中符合条件的单元格</li>
-</ul>
-</li>
-</ul>
-<h3 id="选择器列表"><a href="#选择器列表" class="headerlink" title="选择器列表"></a>选择器列表</h3><ul>
-<li>以 comma 分隔的复杂选择器序列</li>
-</ul>
-<h2 id="选择器优先级"><a href="#选择器优先级" class="headerlink" title="选择器优先级"></a>选择器优先级</h2><ul>
-<li><a href="http://www.standardista.com/css3/css-specificity/" target="_blank" rel="noopener">图解 css-specificity</a></li>
-<li><a href="https://www.w3.org/TR/2018/WD-selectors-4-20181121/#specificity-rules" target="_blank" rel="noopener">w3 css-specificity</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank" rel="noopener">MDN css-specificity</a></li>
-</ul>
-<h2 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h2><h3 id="链接-行为"><a href="#链接-行为" class="headerlink" title="链接/行为"></a>链接/行为</h3><ul>
-<li>:any-link</li>
-<li>:link :visited</li>
-<li>:hover</li>
-<li>:active</li>
-<li>:focus</li>
-<li>:target</li>
-</ul>
-<h3 id="树结构"><a href="#树结构" class="headerlink" title="树结构"></a>树结构</h3><ul>
-<li>:empty</li>
-<li>:nth-child()<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/75fe112b20e952564395fc869bf398d694743.png" alt=":nth-child An+B"></li>
-</ul>
-</li>
-<li>:nth-last-child()</li>
-<li>:first-child :last-child :only-child</li>
-</ul>
-<h3 id="逻辑型"><a href="#逻辑型" class="headerlink" title="逻辑型"></a>逻辑型</h3><ul>
-<li>:not 伪类</li>
-<li>:where :has</li>
-</ul>
-<h2 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h2><ul>
-<li>::before</li>
-<li>::after</li>
-<li>::first-line<ul>
-<li>元素的第一行</li>
-</ul>
-</li>
-<li>::first-letter<ul>
-<li>元素的第一个字母</li>
-</ul>
-</li>
-</ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-</p>
-      <div class="post-button"><a class="btn" href="/2020/05/29/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+</ul></p>
+      <div class="post-button"><a class="btn" href="/2020/05/29/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -291,7 +179,7 @@
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>整理一下平时所学+所用到的 CSS 基本语法</li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/24/CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E6%9C%BA%E5%88%B6/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/24/CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E6%9C%BA%E5%88%B6/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -329,7 +217,7 @@
 <li>最末篇：浏览器的绘制，完结 toy-browser ✊</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/5c3903a71266e72d2e3f21a276c0efad94997.png" alt="DOM with Position"></li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/24/Toy-Browser-DAY5/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/24/Toy-Browser-DAY5/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -367,7 +255,7 @@
 <li>嘻嘻嘻，我们将要在做 toy-browser 浏览器相关排版问题啦</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/6d5c67d3d5d0633bf667bd680f6dfb9489753.png" alt="DOM with CSS"></li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/22/Toy-Browser-DAY4/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/22/Toy-Browser-DAY4/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -405,7 +293,7 @@
 <li>implementation of a toy-browser 🙆</li>
 <li>我们开始进入到 CSS Computing 啦！！！😘</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/4bb352346db82d88a68035a6ddad906c81827.png" alt="CSS Computing"></p>
-      <div class="post-button"><a class="btn" href="/2020/05/17/Toy-Browser-DAY3/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/17/Toy-Browser-DAY3/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -447,7 +335,7 @@
 </ul>
 </li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/16/%E5%9F%BA%E4%BA%8EKMP%E7%9A%84FSM%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/16/%E5%9F%BA%E4%BA%8EKMP%E7%9A%84FSM%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -485,7 +373,7 @@
 <li>DAY1，我们已经完成 HTTP相关解析，现在我们可以写 HTML 的解析啦，开不开心！😝</li>
 <li><img src="http://p1.meituan.net/myvideodistribute/6e1d35dcd8c01b557925f8d799583cb1130452.png" alt="HTML 的解析"></li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/15/Toy-Browser-DAY2/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/15/Toy-Browser-DAY2/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -500,7 +388,7 @@
 </li>
 <li>简单了解一下计算机网络相关知识。是的，Elle 很惨😭 计算机网络学得稀烂</li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/12/%E4%BB%8EURL%E8%BE%93%E5%85%A5%E5%88%B0/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/12/%E4%BB%8EURL%E8%BE%93%E5%85%A5%E5%88%B0/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -537,43 +425,7 @@
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>implementation of a toy-browser 🙆</li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/10/Toy-Browser-DAY1/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2 class="title"><a href="/2020/05/08/Realm/">Realm</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-08 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></span>
-      <p><style  type="text/css">
-.lx-entry a {
-    color: #191919;
-    padding: 2px 0 1px 0;
-    text-decoration: none;
-    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
-    background-size: 100% 200%;
-    background-position: 0 0;
-    word-break: break-word;
-}
-
-.lx-entry a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
-  background-position: 0 100%;
-}
-
-.post-button a:hover {
-  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
-  background-position: 0 100% !important;
-  outline: none !important;
-  text-decoration: none !important;
-}
-</style>
-
-
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>Before it is evaluated, all ECMAScript code must be associated with a realm. Conceptually, a realm consists of a set of intrinsic objects, an ECMAScript global environment, all of the ECMAScript code that is loaded within the scope of that global environment, and other associated state and resources.</li>
-</ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/08/Realm/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/10/Toy-Browser-DAY1/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
 
@@ -615,15 +467,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>Categories</span>
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>Friends</span>
+      <i class="fa fa-link fa-fw"></i>友链</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>
