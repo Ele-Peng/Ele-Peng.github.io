@@ -16,8 +16,12 @@ description:
 <!-- more -->
 
 ## 盒（Box）
+- 基本元素 盒 + 文字
+- 排版和渲染的基本单位是盒
+- CSS 在排版时可能产生多个盒
 
 ## 盒模型
+- box-sizing: 为什么没有 margin-box
 
 ## 正常流
 
@@ -32,6 +36,7 @@ description:
 - overflow:visible 与 BFC
 - margin collapse
 - float 与 clear
+	- 
 
 ## Flex
 

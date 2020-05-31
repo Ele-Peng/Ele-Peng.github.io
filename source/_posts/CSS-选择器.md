@@ -103,7 +103,7 @@ description:
 
 ### 复杂选择器
 - &lt;复合选择器&gt;&lt;sp&gt;&lt;复合选择器&gt;
-  - 子孙
+	- 子孙
 	- 后代，表示选中所有符合条件的后代节点
 - &lt;复合选择器&gt;">"&lt;复合选择器&gt;
 	- 子选择器，只能选择子一级
@@ -126,6 +126,18 @@ description:
 - [图解 css-specificity](http://www.standardista.com/css3/css-specificity/)
 - [w3 css-specificity](https://www.w3.org/TR/2018/WD-selectors-4-20181121/#specificity-rules)
 - [MDN css-specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
+
+- 练习
+- **[ inline-element,    id,    class | pseudo | attr,    type ]
+:not 伪类不参与计算**
+	- div#a.b .c[id=x]
+		- [0,1,3,1]
+	- \#a:not(#b)
+		- [0,2,0,0]
+	- *.a
+		- [0,0,1,0]
+	- div.a
+		- [0,0,1,1]
 
 ## 伪类
 ### 链接/行为
@@ -152,6 +164,7 @@ description:
 - ::after
 - ::first-line
 	- 元素的第一行
+	- first-line 若有 float ，则会脱离文档流出去，然后又选中第一行，又脱离文档流出去循环了
 - ::first-letter
 	- 元素的第一个字母
 
