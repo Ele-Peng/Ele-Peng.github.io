@@ -130,8 +130,11 @@
 <li>CSS 选择器相关知识</li>
 </ul>
 <a id="more"></a>
+
+
 <h2 id="选择器语法"><a href="#选择器语法" class="headerlink" title="选择器语法"></a>选择器语法</h2><h3 id="简单选择器"><a href="#简单选择器" class="headerlink" title="简单选择器"></a>简单选择器</h3><ul>
-<li>*</li>
+<li><p>*</p>
+</li>
 <li><p>div svg|a</p>
 <ul>
 <li><p><a href="http://www.w3.org/2000/svg" target="_blank" rel="noopener">SVG</a></p>
@@ -139,9 +142,12 @@
   <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@namespace</span> svg url(<span class="attribute">http:</span>//www.w3.org/<span class="number">2000</span>/svg);</span><br><span class="line"><span class="keyword">@namespace</span> html url(<span class="attribute">http:</span>//www.w3.org/<span class="number">1999</span>/xhtml);</span><br><span class="line">svg|a &#123;</span><br><span class="line">  <span class="selector-tag">stroke</span><span class="selector-pseudo">:blue</span>;</span><br><span class="line">  <span class="selector-tag">stroke-width</span><span class="selector-pseudo">:1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">html|a &#123;</span><br><span class="line">  <span class="selector-tag">font-size</span><span class="selector-pseudo">:40px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>.cls</li>
-<li>#id</li>
-<li>[attr=value]<ul>
+<li><p>.cls</p>
+</li>
+<li><p>#id</p>
+</li>
+<li><p>[attr=value]</p>
+<ul>
 <li>【未完】编写测试用例</li>
 <li>[attr]<ul>
 <li>直接在方括号中放入属性名，是检查元素是否具有这个属性，只要元素有这个属性，不论属性是什么值，都可以被选中</li>
@@ -161,8 +167,10 @@
 </li>
 </ul>
 </li>
-<li>:hover</li>
-<li>::before</li>
+<li><p>:hover</p>
+</li>
+<li><p>::before</p>
+</li>
 </ul>
 <h3 id="复合选择器"><a href="#复合选择器" class="headerlink" title="复合选择器"></a>复合选择器</h3><ul>
 <li>&lt;简单选择器&gt;&lt;简单选择器&gt;&lt;简单选择器&gt;</li>
@@ -173,10 +181,8 @@
 </ul>
 <h3 id="复杂选择器"><a href="#复杂选择器" class="headerlink" title="复杂选择器"></a>复杂选择器</h3><ul>
 <li>&lt;复合选择器&gt;&lt;sp&gt;&lt;复合选择器&gt;<ul>
-<li>子孙<ul>
+<li>子孙</li>
 <li>后代，表示选中所有符合条件的后代节点</li>
-</ul>
-</li>
 </ul>
 </li>
 <li>&lt;复合选择器&gt;”&gt;”&lt;复合选择器&gt;<ul>
@@ -205,9 +211,34 @@
 <li>以 comma 分隔的复杂选择器序列</li>
 </ul>
 <h2 id="选择器优先级"><a href="#选择器优先级" class="headerlink" title="选择器优先级"></a>选择器优先级</h2><ul>
-<li><a href="http://www.standardista.com/css3/css-specificity/" target="_blank" rel="noopener">图解 css-specificity</a></li>
-<li><a href="https://www.w3.org/TR/2018/WD-selectors-4-20181121/#specificity-rules" target="_blank" rel="noopener">w3 css-specificity</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank" rel="noopener">MDN css-specificity</a></li>
+<li><p><a href="http://www.standardista.com/css3/css-specificity/" target="_blank" rel="noopener">图解 css-specificity</a></p>
+</li>
+<li><p><a href="https://www.w3.org/TR/2018/WD-selectors-4-20181121/#specificity-rules" target="_blank" rel="noopener">w3 css-specificity</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank" rel="noopener">MDN css-specificity</a></p>
+</li>
+<li><p>练习</p>
+</li>
+<li><p><strong>[ inline-element,    id,    class | pseudo | attr,    type ]<br>:not 伪类不参与计算</strong></p>
+<ul>
+<li>div#a.b .c[id=x]<ul>
+<li>[0,1,3,1]</li>
+</ul>
+</li>
+<li>#a:not(#b)<ul>
+<li>[0,2,0,0]</li>
+</ul>
+</li>
+<li>*.a<ul>
+<li>[0,0,1,0]</li>
+</ul>
+</li>
+<li>div.a<ul>
+<li>[0,0,1,1]</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h2><h3 id="链接-行为"><a href="#链接-行为" class="headerlink" title="链接/行为"></a>链接/行为</h3><ul>
 <li>:any-link</li>
@@ -235,6 +266,7 @@
 <li>::after</li>
 <li>::first-line<ul>
 <li>元素的第一行</li>
+<li>first-line 若有 float ，则会脱离文档流出去，然后又选中第一行，又脱离文档流出去循环了</li>
 </ul>
 </li>
 <li>::first-letter<ul>
@@ -312,15 +344,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>分类</span>
+      <i class="fa fa-th-list fa-fw"></i>Categories</span>
         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>友链</span>
+      <i class="fa fa-link fa-fw"></i>Friends</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>
