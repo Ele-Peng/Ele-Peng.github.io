@@ -134,11 +134,8 @@
 <li>但我至少没有鸽掉 嘻嘻嘻 【手动狗头</li>
 </ul>
 <a id="more"></a>
-
-
 <h2 id="选择器语法"><a href="#选择器语法" class="headerlink" title="选择器语法"></a>选择器语法</h2><h3 id="简单选择器"><a href="#简单选择器" class="headerlink" title="简单选择器"></a>简单选择器</h3><ul>
-<li><p>*</p>
-</li>
+<li>*</li>
 <li><p>div svg|a</p>
 <ul>
 <li><p><a href="http://www.w3.org/2000/svg" target="_blank" rel="noopener">SVG</a></p>
@@ -146,12 +143,9 @@
   <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@namespace</span> svg url(<span class="attribute">http:</span>//www.w3.org/<span class="number">2000</span>/svg);</span><br><span class="line"><span class="keyword">@namespace</span> html url(<span class="attribute">http:</span>//www.w3.org/<span class="number">1999</span>/xhtml);</span><br><span class="line">svg|a &#123;</span><br><span class="line">  <span class="selector-tag">stroke</span><span class="selector-pseudo">:blue</span>;</span><br><span class="line">  <span class="selector-tag">stroke-width</span><span class="selector-pseudo">:1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">html|a &#123;</span><br><span class="line">  <span class="selector-tag">font-size</span><span class="selector-pseudo">:40px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><p>.cls</p>
-</li>
-<li><p>#id</p>
-</li>
-<li><p>[attr=value]</p>
-<ul>
+<li>.cls</li>
+<li>#id</li>
+<li>[attr=value]<ul>
 <li>[attr]<ul>
 <li>直接在方括号中放入属性名，是检查元素是否具有这个属性，只要元素有这个属性，不论属性是什么值，都可以被选中</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/ee7f5620eec48d0a237b15ed61a83404257138.png" alt="[attr]"></li>
@@ -174,10 +168,8 @@
 </li>
 </ul>
 </li>
-<li><p>:hover</p>
-</li>
-<li><p>::before</p>
-</li>
+<li>:hover</li>
+<li>::before</li>
 </ul>
 <h3 id="复合选择器"><a href="#复合选择器" class="headerlink" title="复合选择器"></a>复合选择器</h3><ul>
 <li>&lt;简单选择器&gt;&lt;简单选择器&gt;&lt;简单选择器&gt;</li>
@@ -277,8 +269,7 @@
 </li>
 </ul>
 <h2 id="优化-toy-browser-CSS-selector-match"><a href="#优化-toy-browser-CSS-selector-match" class="headerlink" title="优化 toy-browser CSS selector match"></a>优化 toy-browser CSS selector match</h2><ul>
-<li><p>首先我们可以先观察</p>
-<ul>
+<li>首先我们可以先观察<ul>
 <li>toy-browser 是根据 space 拆分选择器的。那么选择器我们需要处理特殊情况只有 <ul>
 <li>#id.cls1.cls2.cl3</li>
 <li>.cls1#id.cls2</li>
@@ -407,15 +398,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>Categories</span>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>Friends</span>
+      <i class="fa fa-link fa-fw"></i>友链</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>
