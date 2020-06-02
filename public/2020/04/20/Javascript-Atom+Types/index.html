@@ -126,11 +126,11 @@
 }
 </style>
 
-<h1 id="Javascript-–-Atom-Types"><a href="#Javascript-–-Atom-Types" class="headerlink" title="Javascript – Atom - Types"></a>Javascript – Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
+<h1 id="Javascript-—-Atom-Types"><a href="#Javascript-—-Atom-Types" class="headerlink" title="Javascript — Atom - Types"></a>Javascript — Atom - Types</h1><h2 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h2><h3 id="Unicode-（字符集）"><a href="#Unicode-（字符集）" class="headerlink" title="Unicode （字符集）"></a>Unicode （字符集）</h3><ul>
 <li><p>Unicode Blocks</p>
 <ul>
 <li>JS使用的不是ASCII字符集，但是都要兼容ASCII字符集<ul>
-<li>a 码点 –&gt; 97, A 码点 –&gt; 65</li>
+<li>a 码点 —&gt; 97, A 码点 —&gt; 65</li>
 </ul>
 </li>
 <li>U+000A LINE FEED 换行<ul>
@@ -161,7 +161,7 @@
 <li>&lt;FF&gt; Form Feed </li>
 <li>&lt;SP&gt; </li>
 <li>&lt;NBSP&gt; html根据空格分词，不想让词分根据空格分开，可以使用&nbsp;</li>
-<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM –&gt; Bit Order Mask</li>
+<li>&lt;ZWNBSP&gt; U+FEFF Zero WIDTH NO-BREAK SPACE，BOM —&gt; Bit Order Mask</li>
 <li>&lt;USP&gt;</li>
 </ul>
 </li>
@@ -208,15 +208,13 @@
 </li>
 </ul>
 <h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
-<li><p>IEEE 754 Double Float</p>
-<ul>
+<li>IEEE 754 Double Float<ul>
 <li>Sign(1)</li>
 <li>Exponent(11) 指数，科学计数法</li>
 <li>Fraction(52)</li>
 </ul>
 </li>
-<li><p>Grammar</p>
-<ul>
+<li>Grammar<ul>
 <li>DecimaLiteral<ul>
 <li>0</li>
 <li>0.</li>
@@ -243,8 +241,6 @@
 <li><p>浮点数比较时，需要加精度</p>
 <blockquote>
 <p>Number.MAX_SAFE_INTEGER</p>
-</blockquote>
-<blockquote>
 <p>Math.abs(0.1 + 0.2 - 0.3) &lt;= Number.EPSILON</p>
 </blockquote>
 </li>
@@ -252,15 +248,11 @@
 </li>
 </ul>
 <h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
-<li><p>Character</p>
-</li>
-<li><p>Code Point</p>
-</li>
+<li>Character</li>
+<li>Code Point</li>
 <li><p>Encoding</p>
 <blockquote>
 <p>97 .toString(2)</p>
-</blockquote>
-<blockquote>
 <p>“97.” 是一个合法的Number 01100001</p>
 </blockquote>
 <ul>
@@ -279,18 +271,14 @@
 </li>
 <li><p>Grammar</p>
 <ul>
-<li><p>“abc”</p>
-<ul>
-<li>“\x10” –&gt; 8</li>
+<li>“abc”<ul>
+<li>“\x10” —&gt; 8</li>
 <li>“\u000a”</li>
 </ul>
 </li>
-<li><p>‘abc’</p>
-</li>
+<li>‘abc’</li>
 <li><p>`abc`</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">/a/g 正则表达式直接量</span><br><span class="line">(a)</span><br><span class="line">/a/g --&gt; 则表示除法</span><br><span class="line">(a)/a/g</span><br></pre></td></tr></table></figure>
-
-
 </li>
 </ul>
 </li>
@@ -369,15 +357,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>Categories</span>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>Friends</span>
+      <i class="fa fa-link fa-fw"></i>友链</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>

@@ -129,22 +129,18 @@
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>昨天 Mentor 说以后要开始用 React Hooks（我还没有涉足 ）写点东西，进而谈论到 React 生态一直想推展开来的的函数式编程思想，我不由得想到一个问题：都说 Javascript 不是典型的面向对象编程语言，它并不具备完整的 OOP 该有的特性，它虽引进了 class 语法糖，但只是让对象原型写法更加像面向对象编程语言的写法，那面向对象到底可以理解为什么 ? 🤔 以及函数式编程思想在推什么？Javascript 定位究竟是什么？</li>
 <li>简单记录一下自己关于这个问题的思考<a id="more"></a>
-
 </li>
 </ul>
 <h2 id="OOP-Wikipedia"><a href="#OOP-Wikipedia" class="headerlink" title="OOP Wikipedia"></a>OOP Wikipedia</h2><ul>
-<li><p>探讨的是面向对象</p>
-</li>
-<li><p>我们首先可以想想，我们为什么需要封装成对象？</p>
-<ul>
+<li>探讨的是面向对象</li>
+<li>我们首先可以想想，我们为什么需要封装成对象？<ul>
 <li>我的理解是：我们需要减少我们的操作粒度，每个操作都去落实到 bit 数据是非常庞大的，减少问题求解复杂度</li>
 <li>wiki 上关于 object 特性也给到了支持</li>
 </ul>
 </li>
 <li><p>A feature of objects is an object’s procedures that can <strong>access</strong> and <strong>often modify the data fields</strong> of the object with which they are associated (objects have a notion of “this” or “self”).</p>
 <ul>
-<li><p>可以和面向过程 (Procedure Oriented) 放在一起说。</p>
-</li>
+<li>可以和面向过程 (Procedure Oriented) 放在一起说。</li>
 <li><p>首先 OOP 是一个很自然的思想，在C语言中也能写出<strong>符合</strong>面向对象思想的代码</p>
   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C语言例子</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *name;  <span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">int</span> num;  <span class="comment">//学号</span></span><br><span class="line">    <span class="keyword">int</span> age;  <span class="comment">//年龄</span></span><br><span class="line">    <span class="keyword">char</span> group;  <span class="comment">//所在学习小组</span></span><br><span class="line">    <span class="keyword">float</span> score;  <span class="comment">//成绩</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">GetStudentName</span><span class="params">(struct Student* stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetStudentName</span><span class="params">(struct Student* stu, <span class="keyword">char</span>* newName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span> <span class="title">s1</span>, <span class="title">s2</span>, <span class="title">s3</span>, <span class="title">s4</span>;</span> <span class="comment">// 创建了多个学生</span></span><br><span class="line">    SetStudentName(&amp;s1, <span class="string">"小明"</span>);</span><br><span class="line">    SetStudentName(&amp;s2, <span class="string">"小红"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -157,20 +153,15 @@
 <li>而面对这种频繁操作数据单元的使用面向过程编程思想，可能会在现有对象加上判断，万一节假日还要做其他的业务，判断只会越来越多。这就与我们 Nicklaus Wirth 提出的：<strong>程序 = 数据结构 + 算法</strong>，越来越割裂。</li>
 </ul>
 </li>
-<li><p>在我现在的浅薄思考看来：面向对象编程思想比较广泛的 Object-based 实现是想先让不同对象以尽可能的统一特性进行归组，形成“大对象”，然后各个对象变成了这个大对象中衍生出来的基类，并在父类派生出来的对象中，去实现各自解决问题的具体方法。这样当我们在拿到一个问题，我们可以不用去管它的内部实现，我们根据类型就可以知道它能做什么事，这比我们手动去一步一步执行要先进点。<strong>让对象有多态性，把不同对象以同一特性来归组，统一处理。至于所谓继承等概念，是实现的细节</strong>。</p>
-</li>
+<li>在我现在的浅薄思考看来：面向对象编程思想比较广泛的 Object-based 实现是想先让不同对象以尽可能的统一特性进行归组，形成“大对象”，然后各个对象变成了这个大对象中衍生出来的基类，并在父类派生出来的对象中，去实现各自解决问题的具体方法。这样当我们在拿到一个问题，我们可以不用去管它的内部实现，我们根据类型就可以知道它能做什么事，这比我们手动去一步一步执行要先进点。<strong>让对象有多态性，把不同对象以同一特性来归组，统一处理。至于所谓继承等概念，是实现的细节</strong>。</li>
 </ul>
 </li>
 </ul>
 <h2 id="prototype-based-programming"><a href="#prototype-based-programming" class="headerlink" title="prototype-based programming"></a>prototype-based programming</h2><ul>
-<li><p>Languages with abstract data type support which may be used to <strong>resemble OO programming</strong>, but <strong>without all features of object-orientation</strong>. This includes object-based and <strong>prototype-based languages</strong>. Examples: JavaScript, Lua, Modula-2, CLU.</p>
-</li>
-<li><p>The Document Object Model of HTML, XHTML, and XML documents on the Internet has bindings to the popular JavaScript/ECMAScript language. <strong>JavaScript is perhaps the best known prototype-based programming language, which employs cloning from prototypes rather than inheriting from a class (contrast to class-based programming)</strong>. </p>
-</li>
-<li><p>我们在大概了解了 OOP 思想后，我们可以继续看看 OOP编程思想的另一种实现“类OOP”–基于原型编程 Javascript 实现</p>
-</li>
-<li><p>我们可以先从 ECMA-262 规范中找到关于 Object 的定义</p>
-<ul>
+<li>Languages with abstract data type support which may be used to <strong>resemble OO programming</strong>, but <strong>without all features of object-orientation</strong>. This includes object-based and <strong>prototype-based languages</strong>. Examples: JavaScript, Lua, Modula-2, CLU.</li>
+<li>The Document Object Model of HTML, XHTML, and XML documents on the Internet has bindings to the popular JavaScript/ECMAScript language. <strong>JavaScript is perhaps the best known prototype-based programming language, which employs cloning from prototypes rather than inheriting from a class (contrast to class-based programming)</strong>. </li>
+<li>我们在大概了解了 OOP 思想后，我们可以继续看看 OOP编程思想的另一种实现“类OOP”—基于原型编程 Javascript 实现</li>
+<li>我们可以先从 ECMA-262 规范中找到关于 Object 的定义<ul>
 <li>“Objects are created by using constructors in <strong>new expressions</strong>.”</li>
 <li>“Each constructor is a function that has a property named <strong>‘prototype’ that is used to implement prototype-based inheritance and shared properties</strong>.”</li>
 <li>“Every object created by a constructor has an implicit reference (called the object’s prototype) to the value of its constructor’s ‘prototype’ property. Furthermore, a prototype may have a non-null implicit reference to its prototype, and so on; this is called the prototype chain. When a reference is made to a property in an object, that reference is to the property of that name in the first object in the prototype chain that contains a property of that name. In other words, first the object mentioned directly is examined for such a property; if that object contains the named property, that is the property to which the reference refers; if that object does not contain the named property, the prototype for that object is examined next; and so on.”</li>
@@ -184,19 +175,18 @@
 <li>“What could be more object oriented than that?” 😝</li>
 </ul>
 </li>
-<li><p>也有新的对 Object 的思考</p>
-<ul>
+<li>也有新的对 Object 的思考<ul>
 <li>“In JavaScript, <strong>an object is an associative array</strong>, augmented with a prototype (see below); each string key provides the name for an object property, and there are two syntactical ways to specify such a name: dot notation (obj.x = 10) and bracket notation (obj[‘x’] = 10). A property may be added, rebound, or deleted at run-time. Most properties of an object (and any property that belongs to an object’s prototype inheritance chain) can be enumerated using a for…in loop.”</li>
 </ul>
 </li>
 </ul>
 <h2 id="Functional-programming"><a href="#Functional-programming" class="headerlink" title="Functional programming"></a>Functional programming</h2><ul>
-<li>Functional programming has its origins in lambda calculus.It is a programming paradigm —- a style of building the structure and elements of computer programs – that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.</li>
+<li>Functional programming has its origins in lambda calculus.It is a programming paradigm —- a style of building the structure and elements of computer programs — that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.</li>
 <li>One of the key motivations for the development of functional programming is making a program easier to understand by eliminating changes in state that <strong>do not depend on function inputs</strong> which are called side effects.</li>
 <li>side effects include modifying a non-local variable, modifying a static local variable, modifying a mutable argument passed by reference, performing I/O or calling other side-effect functions.</li>
 <li>referential transparency<ul>
 <li>the same language expression can result in different values at different times depending on the state of the executing program.</li>
-<li>Consider C assignment statement x = x * 10, this changes the value assigned to the variable x. Let us say that the initial value of x was 1, then two consecutive evaluations of the variable x yields 10 and 100 respectively. Clearly, replacing x = x * 10 with either 10 or 100 gives a program with different meaning, and so the expression is not referentially transparent. In fact, assignment statements are never referentially transparent.</li>
+<li>Consider C assignment statement x = x <em> 10, this changes the value assigned to the variable x. Let us say that the initial value of x was 1, then two consecutive evaluations of the variable x yields 10 and 100 respectively. Clearly, replacing x = x </em> 10 with either 10 or 100 gives a program with different meaning, and so the expression is not referentially transparent. In fact, assignment statements are never referentially transparent.</li>
 <li>Absence of side effects is a necessary, but not sufficient, condition for referential transparency. <strong>Referential transparency means that an expression (such as a function call) can be replaced with its value</strong>. This requires that the expression is pure, that is to say the expression must be deterministic (always give the same value for the same input) and side-effect free.</li>
 </ul>
 </li>
@@ -206,105 +196,18 @@
 </ul>
 <h2 id="All-Objects-in-Javascript"><a href="#All-Objects-in-Javascript" class="headerlink" title="All Objects in Javascript"></a>All Objects in Javascript</h2><ul>
 <li><p>可参考<a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMA-Script 262 Chapter18.3 Constructor Properties of the Global Object P399</a> </p>
-<table>
-<thead>
-<tr>
-<th>基本类型</th>
-<th>Error</th>
-<th>数据结构 &amp; 内置对象</th>
-<th>TypedArray</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Boolean</td>
-<td>Error</td>
-<td>Array</td>
-<td>Float32Array</td>
-</tr>
-<tr>
-<td>Number</td>
-<td>EvalError</td>
-<td>ArrayBuffer</td>
-<td>Float64Array</td>
-</tr>
-<tr>
-<td>Object</td>
-<td>RangeError</td>
-<td>DataView</td>
-<td>Int8Array</td>
-</tr>
-<tr>
-<td>String</td>
-<td>ReferenceError</td>
-<td>Date</td>
-<td>Int16Array</td>
-</tr>
-<tr>
-<td>Symbol</td>
-<td>SyntaxError</td>
-<td>Function</td>
-<td>Int32Array</td>
-</tr>
-<tr>
-<td></td>
-<td>TypeError</td>
-<td>Map</td>
-<td>Uint8Array</td>
-</tr>
-<tr>
-<td></td>
-<td>URIError</td>
-<td>Promise</td>
-<td>Uint8ClampedArray</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Proxy</td>
-<td>Uint16Array</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>RegExp</td>
-<td>Uint32Array</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Set</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>SharedArrayBuffer</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>WeakMap</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>WeakSet</td>
-<td></td>
-</tr>
-</tbody></table>
+<p>  | 基本类型|  Error  | 数据结构 &amp; 内置对象  | TypedArray |<br>  | —- | —- | —- | —- |<br>  | Boolean | Error | Array | Float32Array |<br>  | Number | EvalError |    ArrayBuffer |     Float64Array |<br>  | Object | RangeError | DataView | Int8Array |<br>  | String | ReferenceError | Date | Int16Array |<br>  | Symbol | SyntaxError | Function | Int32Array |<br>  |  | TypeError | Map | Uint8Array |<br>  |  | URIError | Promise | Uint8ClampedArray |<br>  |  |  | Proxy | Uint16Array |<br>  |  |  | RegExp | Uint32Array |<br>  |  |  |Set |  |<br>  |  |  | SharedArrayBuffer |  |<br>  |  |  | WeakMap |  |<br>  |  |  | WeakSet |  |</p>
 </li>
 </ul>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects" target="_blank" rel="noopener">引入 Javascript 对象</a></li>
 <li><a href="https://software.intel.com/en-us/blogs/2008/08/22/flaws-of-object-oriented-modeling/" target="_blank" rel="noopener">Flaws of Object Oriented Modeling</a></li>
-<li><a href="https://books.google.com/books?id=xb-sAQAAQBAJ&printsec=frontcover&dq=isbn:9788090466180&hl=zh-CN&sa=X&ved=0ahUKEwiG-8y8qdroAhWmUt8KHey5Dl0Q6AEIKDAA#v=onepage&q&f=false" target="_blank" rel="noopener">learn object oriented thinking &amp; programming</a></li>
-<li><a href="https://books.google.com/books?id=WzsFCAAAQBAJ&printsec=frontcover&dq=isbn:9780735619654&hl=zh-CN&sa=X&ved=0ahUKEwiqzaPSqNroAhVvUd8KHc80CYEQ6AEIKDAA#v=onepage&q&f=false" target="_blank" rel="noopener">Obejct thinking</a></li>
+<li><a href="https://books.google.com/books?id=xb-sAQAAQBAJ&amp;printsec=frontcover&amp;dq=isbn:9788090466180&amp;hl=zh-CN&amp;sa=X&amp;ved=0ahUKEwiG-8y8qdroAhWmUt8KHey5Dl0Q6AEIKDAA#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener">learn object oriented thinking &amp; programming</a></li>
+<li><a href="https://books.google.com/books?id=WzsFCAAAQBAJ&amp;printsec=frontcover&amp;dq=isbn:9780735619654&amp;hl=zh-CN&amp;sa=X&amp;ved=0ahUKEwiqzaPSqNroAhVvUd8KHc80CYEQ6AEIKDAA#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener">Obejct thinking</a></li>
 <li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener">Javascript Object-orientation (prototype-based)</a></li>
 <li><a href="https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep" target="_blank" rel="noopener">Introduction to Object Oriented Programming Concepts (OOP) and More</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank" rel="noopener">Functional_programming wikipedia</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)" target="_blank" rel="noopener">Side effect wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science" target="_blank" rel="noopener">Side effect wikipedia</a>)</li>
 <li><a href="https://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">Object-oriented programming wikipedia</a></li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
@@ -382,15 +285,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>Categories</span>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>Friends</span>
+      <i class="fa fa-link fa-fw"></i>友链</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>

@@ -103,21 +103,46 @@
       <div>
         <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>CSS 排版相关知识</li>
+<li>CSS 属性<ul>
+<li>排版</li>
+<li>渲染</li>
+<li>交互</li>
+</ul>
+</li>
 </ul>
 <a id="more"></a>
-
 <h2 id="盒（Box）"><a href="#盒（Box）" class="headerlink" title="盒（Box）"></a>盒（Box）</h2><ul>
+<li>源代码 - 标签 - tag</li>
+<li>语义 - 元素 - element</li>
+<li>表现 - 盒 - box</li>
 <li>基本元素 盒 + 文字</li>
 <li>排版和渲染的基本单位是盒</li>
 <li>CSS 在排版时可能产生多个盒</li>
 </ul>
 <h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><ul>
-<li>box-sizing: 为什么没有 margin-box</li>
+<li>【未完】box-sizing: 为什么没有 margin-box</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/1ed695c617e6c1ac8ba2b6650d5bb2c5220253.png" alt="盒模型"></li>
 </ul>
-<h2 id="正常流"><a href="#正常流" class="headerlink" title="正常流"></a>正常流</h2><h3 id="正常流排版"><a href="#正常流排版" class="headerlink" title="正常流排版"></a>正常流排版</h3><h3 id="正常流的行模型"><a href="#正常流的行模型" class="headerlink" title="正常流的行模型"></a>正常流的行模型</h3><h3 id="正常流的三大难题"><a href="#正常流的三大难题" class="headerlink" title="正常流的三大难题"></a>正常流的三大难题</h3><ul>
+<h2 id="正常流"><a href="#正常流" class="headerlink" title="正常流"></a>正常流</h2><h3 id="正常流排版"><a href="#正常流排版" class="headerlink" title="正常流排版"></a>正常流排版</h3><h3 id="正常流的行模型"><a href="#正常流的行模型" class="headerlink" title="正常流的行模型"></a>正常流的行模型</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"font-size:50px;line-height:100px;background-color:pink;"</span>&gt;</span></span><br><span class="line">	Hello</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"line-height:70px;width:100px;height:150px;background-color:aqua;display:inline-block"</span>&gt;</span>world!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行截图<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/2e8597eb317b1096396a1b7ebfa335bb188008.png" alt="运行截图"></li>
+</ul>
+</li>
+<li>发现，即使行高不一致， Hello 与 world！ 也基于 baseline 对齐</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"font-size:50px;line-height:100px;background-color:pink;"</span>&gt;</span></span><br><span class="line">	Hello</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"line-height:70px;width:100px;height:150px;background-color:aqua;display:inline-block"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行截图<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/cdac1ebe861651fc773f462496bcaa58175250.png" alt="运行截图"></li>
+</ul>
+</li>
+<li>发现，当没有内容时，使用盒子 bottom 对齐 文字 baseline</li>
+</ul>
+<h3 id="正常流的三大难题"><a href="#正常流的三大难题" class="headerlink" title="正常流的三大难题"></a>正常流的三大难题</h3><ul>
 <li>overflow:visible 与 BFC</li>
 <li>margin collapse</li>
-<li><h2 id="float-与-clear"><a href="#float-与-clear" class="headerlink" title="float 与 clear"></a>float 与 clear</h2></li>
+<li>float 与 clear</li>
 </ul>
 <h2 id="Flex"><a href="#Flex" class="headerlink" title="Flex"></a>Flex</h2><h3 id="Flex-排版"><a href="#Flex-排版" class="headerlink" title="Flex 排版"></a>Flex 排版</h3><ul>
 <li>收集盒进行</li>
@@ -135,12 +160,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="#">
+		<a class="copy" href="/2020/06/02/2020%E5%B9%B4%E7%AC%AC23%E5%91%A8%E6%88%91%E5%9C%A8%E8%AF%BB%E4%BB%80%E4%B9%88/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>No newer post</h3>
+						<h3>2020年第2...</h3>
 					</div>
 				</div>
 			</div>
@@ -194,15 +219,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>Categories</span>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>Friends</span>
+      <i class="fa fa-link fa-fw"></i>友链</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>
