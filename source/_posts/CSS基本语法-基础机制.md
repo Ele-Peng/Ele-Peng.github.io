@@ -83,6 +83,23 @@ description:
 		- [css-variables](https://www.w3.org/TR/css-variables/)
 - Value
 	- [css-values-4](https://www.w3.org/TR/css-values-4/)
+	- CSS 属性值可能是以下类型。
+		- CSS 范围的关键字：initial，unset，inherit，任何属性都可以的关键字。
+		- 字符串：比如 content 属性。
+		- URL：使用 url() 函数的 URL 值。
+		- 整数 / 实数：比如 flex 属性。
+		- 维度：单位的整数 / 实数，比如 width 属性。
+		- 百分比：大部分维度都支持。
+		- 颜色：比如 background-color 属性。
+		- 图片：比如 background-image 属性。
+		- 2D 位置：比如 background-position 属性。
+		- 函数：来自函数的值，比如 transform 属性。
+			- calc()
+			- max()
+			- min()
+			- clamp()
+			- toggle()
+			- attr()
 
 
 ## 初建 CSS 知识体系

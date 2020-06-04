@@ -13,6 +13,7 @@
 </li>
 </ul>
 <a id="more"></a>
+
 <h2 id="盒（Box）"><a href="#盒（Box）" class="headerlink" title="盒（Box）"></a>盒（Box）</h2><ul>
 <li>源代码 - 标签 - tag</li>
 <li>语义 - 元素 - element</li>
@@ -65,7 +66,8 @@
 <li>结论：<strong>正常流的行模型推荐 vertical-align: top/bottom/middle</strong></li>
 </ul>
 <h3 id="正常流的三大难题"><a href="#正常流的三大难题" class="headerlink" title="正常流的三大难题"></a>正常流的三大难题</h3><ul>
-<li>overflow:visible 与 BFC</li>
+<li><p>overflow:visible 与 BFC</p>
+</li>
 <li><p>margin collapse</p>
 <ul>
 <li><a href="https://www.w3.org/TR/CSS2/visuren.html#block-formatting" target="_blank" rel="noopener">W3 BFC</a></li>
@@ -98,8 +100,19 @@
 <li>table inline-table</li>
 <li>grid inline-grid</li>
 <li>block inlie-block</li>
-<li><strong>block containers: block inlie-block</strong></li>
-<li><strong>Block-level boxes: flex table grid block</strong></li>
+<li><strong>block containers: block inline-block</strong><ul>
+<li>表示可以容纳bfc</li>
+</ul>
+</li>
+<li><strong>Block-level boxes: flex table grid block</strong><ul>
+<li>表示可以被放入bfc</li>
+</ul>
+</li>
+<li><strong>Block boxes</strong><ul>
+<li>block-box = block-level + block-container</li>
+<li>block-box 如果 overflow 是 visible， 那么就跟父bfc合并</li>
+</ul>
+</li>
 <li>只要包含正常流，都会产生 BFC, 剩下的都是由一些奇怪的 display, 最子一级元素也会产生 BFC ，like flex-item table-cell</li>
 </ul>
 </li>
