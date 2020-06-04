@@ -126,8 +126,13 @@ description:
 		- table inline-table
 		- grid inline-grid
 		- block inlie-block
-		- **block containers: block inlie-block**
+		- **block containers: block inline-block**
+			- 表示可以容纳bfc
 		- **Block-level boxes: flex table grid block**
+			- 表示可以被放入bfc
+		- **Block boxes**
+			- block-box = block-level + block-container
+			- block-box 如果 overflow 是 visible， 那么就跟父bfc合并
 		- 只要包含正常流，都会产生 BFC, 剩下的都是由一些奇怪的 display, 最子一级元素也会产生 BFC ，like flex-item table-cell
 
 - float 与 clear
