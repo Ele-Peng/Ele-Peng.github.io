@@ -131,6 +131,8 @@
 <li>整理一下平时所学+所用到的 CSS 基本语法</li>
 </ul>
 <a id="more"></a>
+
+
 <h2 id="CSS-基本语法"><a href="#CSS-基本语法" class="headerlink" title="CSS 基本语法"></a>CSS 基本语法</h2><h3 id="CSS2-1-语法"><a href="#CSS2-1-语法" class="headerlink" title="CSS2.1 语法"></a>CSS2.1 语法</h3><ul>
 <li><a href="https://www.w3.org/TR/CSS21/grammar.html#q25.0" target="_blank" rel="noopener">Appendix G. Grammar of CSS 2.1</a></li>
 <li><a href="https://www.w3.org/TR/css-syntax-3/" target="_blank" rel="noopener">CSS Syntax Module Level 3</a></li>
@@ -176,6 +178,27 @@
 </li>
 <li>Value<ul>
 <li><a href="https://www.w3.org/TR/css-values-4/" target="_blank" rel="noopener">css-values-4</a></li>
+<li>CSS 属性值可能是以下类型。<ul>
+<li>CSS 范围的关键字：initial，unset，inherit，任何属性都可以的关键字。</li>
+<li>字符串：比如 content 属性。</li>
+<li>URL：使用 url() 函数的 URL 值。</li>
+<li>整数 / 实数：比如 flex 属性。</li>
+<li>维度：单位的整数 / 实数，比如 width 属性。</li>
+<li>百分比：大部分维度都支持。</li>
+<li>颜色：比如 background-color 属性。</li>
+<li>图片：比如 background-image 属性。</li>
+<li>2D 位置：比如 background-position 属性。</li>
+<li>函数：来自函数的值，比如 transform 属性。<ul>
+<li>calc()</li>
+<li>max()</li>
+<li>min()</li>
+<li>clamp()</li>
+<li>toggle()</li>
+<li>attr()</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -190,12 +213,17 @@
 <h3 id="第一步：获取所有-li-dom-节点"><a href="#第一步：获取所有-li-dom-节点" class="headerlink" title="第一步：获取所有 li dom 节点"></a>第一步：获取所有 li dom 节点</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = <span class="built_in">document</span>.getElementById(<span class="string">"container"</span>).children</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'list'</span>, list)</span><br></pre></td></tr></table></figure>
 <p><img src="http://p0.meituan.net/myvideodistribute/6cb3b64a2be23ea9ffce86db74757615120112.png" alt="获取的所有 li 节点"></p>
 <h3 id="第二步：匹配出-data-tag-中为-css-的-standard"><a href="#第二步：匹配出-data-tag-中为-css-的-standard" class="headerlink" title="第二步：匹配出 data-tag 中为 css 的 standard"></a>第二步：匹配出 data-tag 中为 css 的 standard</h3><ul>
-<li><img src="http://p1.meituan.net/myvideodistribute/3d1fb8e8198d5d5774cd861235d5682a314365.png" alt="css standard"></li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/3d1fb8e8198d5d5774cd861235d5682a314365.png" alt="css standard"></p>
+</li>
 <li><p>观察得到，我们只需要将 data-tag nodeValue 中有 “css” 抓出来即可</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = <span class="built_in">document</span>.getElementById(<span class="string">"container"</span>).children</span><br><span class="line"><span class="keyword">const</span> result = []</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> list) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i.getAttribute(<span class="string">'data-tag'</span>).match(<span class="regexp">/css/</span>)) &#123;</span><br><span class="line">    result.push(&#123;</span><br><span class="line">      name: i.children[<span class="number">1</span>].innerText,</span><br><span class="line">      url: i.children[<span class="number">1</span>].children[<span class="number">0</span>].href</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(result, <span class="literal">null</span>, <span class="string">'    '</span>))</span><br></pre></td></tr></table></figure>
+
+
 </li>
 </ul>
 <h2 id="收集-CSS-属性相关标准"><a href="#收集-CSS-属性相关标准" class="headerlink" title="收集 CSS 属性相关标准"></a>收集 CSS 属性相关标准</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">"iframe"</span>);</span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = <span class="string">""</span>;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(iframe);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">happen</span>(<span class="params">element, event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> handler = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve();</span><br><span class="line">            element.removeEventListener(event, handler);</span><br><span class="line">        &#125;</span><br><span class="line">        element.addEventListener(event, handler);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> standard <span class="keyword">of</span> standards) &#123;</span><br><span class="line">        iframe.src = standard.url;</span><br><span class="line">        <span class="built_in">console</span>.log(standard.name);</span><br><span class="line">        <span class="keyword">await</span> happen(iframe, <span class="string">"load"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
@@ -266,15 +294,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>分类</span>
+      <i class="fa fa-th-list fa-fw"></i>Categories</span>
         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>友链</span>
+      <i class="fa fa-link fa-fw"></i>Friends</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>
