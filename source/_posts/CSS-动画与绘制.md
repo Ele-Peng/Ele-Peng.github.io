@@ -43,6 +43,32 @@ description:
 - 以后周六早课，一定要在8点前享受完早餐！今早跳舞低血糖，双耳一直耳鸣
 
 
+## Animation
+- @keyframes 定义
+- animation: 使用
+
+	```javascript
+	@keyframes mykf {
+	  from {background: red;}
+	  to {background: yellow;}
+	}
+	
+	div {
+	  width: 100px;
+	  height: 100px;
+	  animation: mykf 5s infinite;
+	}
+	```
+	
+### Animation Shortcut
+- animation-name: 时间曲线
+- animation-duration: 动画时长
+- animation-timing-function: 动画的时间曲线
+- animation-delay: 动画开始前的延迟
+- animation-iteration-count: 动画的播放次数
+- animation-direction: 动画方向
+
+
 
 
 
