@@ -105,7 +105,7 @@ description:
 - 所有的 DOM 默认有且只有一个父元素
 	- 不能被两次插入 DOM 树中。
 	- 将一个 DOM 元素，插入到 a 位置，再调用插入到 b 位置，会默认的先从 a 位置 remove 出来
-	- 【未完实例】
+	- ![ChildNodes living collection](http://p1.meituan.net/myvideodistribute/fa6ba8388663f1d63bc4d062f05c7da8276923.png)
 - appendChild
 - insertBefore
 - removeChild
@@ -122,6 +122,7 @@ description:
 
 ## Event: 冒泡与捕获
 - [addEventListener MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+- ![冒泡与捕获](http://p0.meituan.net/myvideodistribute/46f706af50150735f325d6b6c7ac7c77150662.png)
 
 
 ## Range API
