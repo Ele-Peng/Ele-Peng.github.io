@@ -105,11 +105,151 @@
     <div>
       <h2 class="title"><a href="/2020/06/06/HTML-XML%E4%B8%8ESGML/">HTML-XML与SGML</a></h2>
       <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-06-06 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/HTML/">HTML</a></span>
-      <p><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+      <p><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>永远不要再鸽，是不可能的</li>
+<li>补到第二天的 12:37</li>
+</ul>
+<h2 id="HTML-的定义：XML-与-SGML"><a href="#HTML-的定义：XML-与-SGML" class="headerlink" title="HTML 的定义：XML 与 SGML"></a>HTML 的定义：XML 与 SGML</h2><h3 id="DTD-与-XML-namespace"><a href="#DTD-与-XML-namespace" class="headerlink" title="DTD 与 XML namespace"></a>DTD 与 XML namespace</h3><ul>
+<li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</a><ul>
+<li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent</a><ul>
+<li>\&nbsp; \u00A0 “ “ (no-break space = non-breaking space)</li>
+<li>\&lt;!ENTITY nbsp    “\&#160;”> \&lt;!— no-break space = non-breaking space, U+00A0 ISOnum —></li>
+</ul>
+</li>
+<li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent</a></li>
+<li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent</a><ul>
+<li>html 属性中不能使用 \”, 需要转义<ul>
+<li>\&lt;!ENTITY quot    “\&#34;”> \&lt;!—  quotation mark, U+0022 ISOnum —> \”</li>
+</ul>
+</li>
+<li>html 中不能使用 \&amp;, 需要转义<ul>
+<li>\&lt;!ENTITY amp    “\&#38;#38;”> \&lt;!—  ampersand, U+0026 ISOnum —> \&amp;</li>
+</ul>
+</li>
+<li>html 中不能使用 \&lt;, 需要转义<ul>
+<li>\&lt;!ENTITY lt    “\&#38;#60;”> \&lt;!—  less-than sign, U+003C ISOnum —> \&lt;</li>
+</ul>
+</li>
+<li>html 中不能使用 >, 需要转义<ul>
+<li>&lt;!ENTITY gt    “\&#62;”> \&lt;!—  greater-than sign, U+003E ISOnum —> ></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://www.w3.org/1999/xhtml" target="_blank" rel="noopener">http://www.w3.org/1999/xhtml</a></li>
+</ul>
+<h2 id="HTML-标签-语义"><a href="#HTML-标签-语义" class="headerlink" title="HTML 标签 - 语义"></a>HTML 标签 - 语义</h2><h3 id="为-wiki-编写-HTML"><a href="#为-wiki-编写-HTML" class="headerlink" title="为 wiki 编写 HTML"></a>为 wiki 编写 HTML</h3><ul>
+<li><a href="http://static001.geekbang.org/static/time/quote/World_Wide_Web-Wikipedia.html" target="_blank" rel="noopener">示例 wiki</a></li>
+</ul>
+<h2 id="HTML-语法"><a href="#HTML-语法" class="headerlink" title="HTML - 语法"></a>HTML - 语法</h2><h3 id="合法元素"><a href="#合法元素" class="headerlink" title="合法元素"></a>合法元素</h3><ul>
+<li>Element: &lt;tagname&gt;…&lt;/tagname&gt;</li>
+<li>Text: text</li>
+<li>Comment: \&lt;!— comments —></li>
+<li>DocumentType: &lt;!Doctype html&gt;</li>
+<li>ProcessingInstruction: &lt;?a 1?&gt; <ul>
+<li>预处理</li>
+</ul>
+</li>
+<li>CDATA: &lt;![CDATA[]]&gt;</li>
+</ul>
+<h3 id="字符引用"><a href="#字符引用" class="headerlink" title="字符引用"></a>字符引用</h3><ul>
+<li>\&amp;#160; \&nbsp;</li>
+<li>\&amp;</li>
+<li>\&lt;</li>
+<li>\&gt;</li>
+<li>\&quot;</li>
+</ul>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><h3 id="导航类操作"><a href="#导航类操作" class="headerlink" title="导航类操作"></a>导航类操作</h3><ul>
+<li>parentNode</li>
+<li>childNodes<ul>
+<li>living collection 会被实时修改</li>
+</ul>
+</li>
+<li>firstChild</li>
+<li>lastChild</li>
+<li>nextSibling</li>
+<li>previousSibling</li>
+</ul>
+<h3 id="修改操作"><a href="#修改操作" class="headerlink" title="修改操作"></a>修改操作</h3><ul>
+<li>所有的 DOM 默认有且只有一个父元素<ul>
+<li>不能被两次插入 DOM 树中。</li>
+<li>将一个 DOM 元素，插入到 a 位置，再调用插入到 b 位置，会默认的先从 a 位置 remove 出来</li>
+<li>【未完实例】</li>
+</ul>
+</li>
+<li>appendChild</li>
+<li>insertBefore</li>
+<li>removeChild</li>
+<li>replaceChild</li>
+</ul>
+<h3 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h3><ul>
+<li>compareDocumentPosition 是一个用于比较两个节点中关系的函数</li>
+<li>contains 检查一个节点是否包含另一个节点的函数</li>
+<li>isEqualNode 检查两个节点是否完全相同</li>
+<li>isSameNode 检查两个节点是否是同一个节点，实际上在 JS 中可以用 ===</li>
+<li>cloneNode 复制一个节点，如果传入参数 true，则会连同子元素做深拷贝</li>
+</ul>
+<h2 id="Event-冒泡与捕获"><a href="#Event-冒泡与捕获" class="headerlink" title="Event: 冒泡与捕获"></a>Event: 冒泡与捕获</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">addEventListener MDN</a></li>
+</ul>
+<h2 id="Range-API"><a href="#Range-API" class="headerlink" title="Range API"></a>Range API</h2><h4 id="把一个元素的所有子元素逆序"><a href="#把一个元素的所有子元素逆序" class="headerlink" title="把一个元素的所有子元素逆序"></a>把一个元素的所有子元素逆序</h4><h3 id="Range-用法"><a href="#Range-用法" class="headerlink" title="Range 用法"></a>Range 用法</h3><ul>
+<li>var range = new Range()</li>
+<li>range.setStart(element, 9)</li>
+<li>range.setEnd(element, 4)</li>
+<li>var range = document.getSelection().getRangeAt(0)</li>
+<li>var fragment = range.extractContents()</li>
+<li>range.insertNode(document.createTextNode(“aaa”))</li>
+</ul>
+<h3 id="Range-API-1"><a href="#Range-API-1" class="headerlink" title="Range API"></a>Range API</h3><ul>
+<li>range.setStartBefore</li>
+<li>range.setEndBefore</li>
+<li>range.setStartAfter</li>
+<li>range.setEndAfter</li>
+<li>range.selectNode</li>
+<li>range.selectNodeContents</li>
+<li>结论：range 更为精细操作 DOM，批量操作 DOM</li>
+</ul>
+<h2 id="CSSOM"><a href="#CSSOM" class="headerlink" title="CSSOM"></a>CSSOM</h2><h3 id="document-styleSheets"><a href="#document-styleSheets" class="headerlink" title="document.styleSheets"></a>document.styleSheets</h3><ul>
+<li>document.styleSheets</li>
+<li>案例</li>
+</ul>
+<h3 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h3><ul>
+<li>document.styleSheets[0].cssRules</li>
+<li>document.styleSheets[0].insertRule(“p{color: pink;}”, 0)</li>
+<li>document.styleSheets[0].removeRule(0)</li>
+</ul>
+<h3 id="Rule"><a href="#Rule" class="headerlink" title="Rule"></a>Rule</h3><ul>
+<li>CSSStyleRule<ul>
+<li>selectorText String</li>
+<li>style k-v 结构</li>
+</ul>
+</li>
+<li>CSSCharsetRule</li>
+<li>CSSImportRule</li>
+<li>CSSMediaRule</li>
+<li>CSSFontFaceRule</li>
+<li>CSSPageRule</li>
+<li>CSSNamespaceRule</li>
+<li>CSSKeyframesRule</li>
+<li>CSSKeyframeRule</li>
+<li>CSSSupportRule</li>
+<li>…</li>
+</ul>
+<h3 id="getComputedStyle"><a href="#getComputedStyle" class="headerlink" title="getComputedStyle"></a>getComputedStyle</h3><ul>
+<li>window.getComputedStyle(elt, pseudoElt)<ul>
+<li>elt 想要获取的元素</li>
+<li>pseudoElt 可选，伪元素</li>
+</ul>
+</li>
+</ul>
+<h3 id="CSSOM-View"><a href="#CSSOM-View" class="headerlink" title="CSSOM View"></a>CSSOM View</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>, <span class="string">"width=100,height=100,left=100,top=100"</span>)</span><br><span class="line"></span><br><span class="line">childWindow.moveBy(<span class="number">-50</span>, <span class="number">-50</span>)</span><br><span class="line"></span><br><span class="line">childWindow.resizeBy(<span class="number">50</span>, <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动至 (0, 50)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scrollBy(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动绝对值</span></span><br><span class="line"></span><br><span class="line">getClientRects() <span class="comment">// 伪元素不会被计入</span></span><br><span class="line"></span><br><span class="line">getBoundingClientRect()</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerHeight</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().height</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerWidth</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().width</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerHeight</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerWidth</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.devicePixelRatio</span><br></pre></td></tr></table></figure>
+<h2 id="所有-API"><a href="#所有-API" class="headerlink" title="所有 API"></a>所有 API</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
 </p>
-      <div class="post-button"><a class="btn" href="/2020/06/06/HTML-XML%E4%B8%8ESGML/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/06/06/HTML-XML%E4%B8%8ESGML/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -147,76 +287,8 @@
 <li>CSS 动画与绘制</li>
 <li>3个小时的舞跳下来，这周竟然还不累？好吧，其实是我中间划水了 🙃</li>
 <li>以后周六早课，一定要在8点前享受完早餐！今早跳舞低血糖，双耳一直耳鸣</li>
-</ul>
-<h2 id="动画与绘制"><a href="#动画与绘制" class="headerlink" title="动画与绘制"></a>动画与绘制</h2><h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><ul>
-<li><p>@keyframes 定义</p>
-</li>
-<li><p>animation: 使用</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@keyframes mykf &#123;</span><br><span class="line">  <span class="keyword">from</span> &#123;<span class="attr">background</span>: red;&#125;</span><br><span class="line">  to &#123;<span class="attr">background</span>: yellow;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">div &#123;</span><br><span class="line">  width: <span class="number">100</span>px;</span><br><span class="line">  height: <span class="number">100</span>px;</span><br><span class="line">  animation: mykf <span class="number">5</span>s infinite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="Animation-Shortcut"><a href="#Animation-Shortcut" class="headerlink" title="Animation Shortcut"></a>Animation Shortcut</h3><ul>
-<li>animation-name: 时间曲线</li>
-<li>animation-duration: 动画时长</li>
-<li>animation-timing-function: 动画的时间曲线<ul>
-<li><a href="https://cubic-bezier.com/#.17,.67,.83,.67" target="_blank" rel="noopener">cubic-bezier 效果</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/%E8%B2%9D%E8%8C%B2%E6%9B%B2%E7%B7%9A" target="_blank" rel="noopener">wiki cubic-bezier</a></li>
-</ul>
-</li>
-<li>animation-delay: 动画开始前的延迟</li>
-<li>animation-iteration-count: 动画的播放次数<ul>
-<li>&lt;single-animation-iteration-count&gt; = infinite | &lt;number&gt;</li>
-</ul>
-</li>
-<li>animation-direction: 动画方向<ul>
-<li>&lt;single-animation-direction&gt; = normal | reverse | alternate | alternate-reverse</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* @keyframes duration | timing-function | delay | </span></span><br><span class="line"><span class="comment">iteration-count | direction | fill-mode | play-state | name */</span></span><br><span class="line"><span class="selector-tag">animation</span>: 3<span class="selector-tag">s</span> <span class="selector-tag">ease-in</span> 1<span class="selector-tag">s</span> 2 <span class="selector-tag">reverse</span> <span class="selector-tag">both</span> <span class="selector-tag">paused</span> <span class="selector-tag">slidein</span>;</span><br><span class="line">	</span><br><span class="line"><span class="comment">/* @keyframes name | duration | timing-function | delay */</span></span><br><span class="line"><span class="selector-tag">animation</span>: 3<span class="selector-tag">s</span> <span class="selector-tag">linear</span> 1<span class="selector-tag">s</span> <span class="selector-tag">slidein</span>;</span><br><span class="line">	</span><br><span class="line"><span class="comment">/* @keyframes name | duration */</span></span><br><span class="line"><span class="selector-tag">animation</span>: <span class="selector-tag">slidein</span> 3<span class="selector-tag">s</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation" target="_blank" rel="noopener">MDN CSS animation</a></li>
-</ul>
-<h3 id="贝瑟尔曲线拟合"><a href="#贝瑟尔曲线拟合" class="headerlink" title="贝瑟尔曲线拟合"></a>贝瑟尔曲线拟合</h3><ul>
-<li><a href="">demo</a></li>
-</ul>
-<h2 id="Transition"><a href="#Transition" class="headerlink" title="Transition"></a>Transition</h2><h3 id="Transition-Shortcut"><a href="#Transition-Shortcut" class="headerlink" title="Transition Shortcut"></a>Transition Shortcut</h3><ul>
-<li>transition-property: 要变换的属性</li>
-<li>transition-duration: 变换的时长</li>
-<li>transition-timing-function: 时间曲线</li>
-<li>transition-delay: 延迟</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Apply to 1 property */</span></span><br><span class="line"><span class="comment">/* property name | duration */</span></span><br><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">margin-right</span> 4<span class="selector-tag">s</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* property name | duration | delay */</span></span><br><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">margin-right</span> 4<span class="selector-tag">s</span> 1<span class="selector-tag">s</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* property name | duration | timing function */</span></span><br><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">margin-right</span> 4<span class="selector-tag">s</span> <span class="selector-tag">ease-in-out</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* property name | duration | timing function | delay */</span></span><br><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">margin-right</span> 4<span class="selector-tag">s</span> <span class="selector-tag">ease-in-out</span> 1<span class="selector-tag">s</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Apply to 2 properties */</span></span><br><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">margin-right</span> 4<span class="selector-tag">s</span>, <span class="selector-tag">color</span> 1<span class="selector-tag">s</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Apply to all changed properties */</span></span><br><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">all</span> 0<span class="selector-class">.5s</span> <span class="selector-tag">ease-out</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Global values */</span></span><br><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">inherit</span>;</span><br><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">initial</span>;</span><br><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">unset</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition" target="_blank" rel="noopener">MDN CSS transition</a></li>
-</ul>
-<h2 id="渲染与颜色"><a href="#渲染与颜色" class="headerlink" title="渲染与颜色"></a>渲染与颜色</h2><h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><h4 id="CMYK-与-RGB"><a href="#CMYK-与-RGB" class="headerlink" title="CMYK 与 RGB"></a>CMYK 与 RGB</h4><h4 id="HSL-与-HSV"><a href="#HSL-与-HSV" class="headerlink" title="HSL 与 HSV"></a>HSL 与 HSV</h4><ul>
-<li>Hue 色相(360度) Saturaiotn 饱和度、纯度 Lightness 明度<ul>
-<li>补色，对角色 –&gt; Hue + 180</li>
-</ul>
-</li>
-<li>Hue Saturation Value</li>
-</ul>
-<h3 id="形状"><a href="#形状" class="headerlink" title="形状"></a>形状</h3><ul>
-<li>border</li>
-<li>box-shadow</li>
-<li>border-radius</li>
-</ul>
-<h4 id="data-uri-svg"><a href="#data-uri-svg" class="headerlink" title="data uri + svg"></a>data uri + svg</h4><ul>
-<li>encodeUriComponent</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:image&#x2F;svg+xml,%3csvg%20width&#x3D;%22100%25%22%20height&#x3D;%22100%25%22%20version&#x3D;%221.1%22%20xmlns&#x3D;%22http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg%22%3e%3cellipse%20cx&#x3D;%22300%22%20cy&#x3D;%22150%22%20rx&#x3D;%22200%22%20ry&#x3D;%2280%22%20style&#x3D;%22fill:rgb(200,100,50);%20stroke:rgb(0,0,100);stroke-width:2%22&#x2F;%3e%20%3c&#x2F;svg%3e</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
-<li>祝大家多多发财</li>
-</ul>
-</p>
-      <div class="post-button"><a class="btn" href="/2020/06/06/CSS-%E5%8A%A8%E7%94%BB%E4%B8%8E%E7%BB%98%E5%88%B6/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+</ul></p>
+      <div class="post-button"><a class="btn" href="/2020/06/06/CSS-%E5%8A%A8%E7%94%BB%E4%B8%8E%E7%BB%98%E5%88%B6/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -228,7 +300,7 @@
 <li>但周一读完了《契诃夫的一生》有点点零碎的情感</li>
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></p>
-      <div class="post-button"><a class="btn" href="/2020/06/02/2020%E5%B9%B4%E7%AC%AC23%E5%91%A8%E6%88%91%E5%9C%A8%E8%AF%BB%E4%BB%80%E4%B9%88/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/06/02/2020%E5%B9%B4%E7%AC%AC23%E5%91%A8%E6%88%91%E5%9C%A8%E8%AF%BB%E4%BB%80%E4%B9%88/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -244,7 +316,7 @@
 </ul>
 </li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/30/CSS-%E6%8E%92%E7%89%88/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/30/CSS-%E6%8E%92%E7%89%88/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -283,7 +355,7 @@
 <li>本来这个很早就能写完的，周五学了个空翻，周六去上了个身体开发基础课，然后全身酸痛，酸痛到起床都起不来的那种，就拖了两天</li>
 <li>但我至少没有鸽掉 嘻嘻嘻 【手动狗头</li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/29/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/29/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -319,7 +391,7 @@
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>整理一下平时所学+所用到的 CSS 基本语法</li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/24/CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E6%9C%BA%E5%88%B6/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/24/CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E6%9C%BA%E5%88%B6/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -357,7 +429,7 @@
 <li>最末篇：浏览器的绘制，完结 toy-browser ✊</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/5c3903a71266e72d2e3f21a276c0efad94997.png" alt="DOM with Position"></li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/24/Toy-Browser-DAY5/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/24/Toy-Browser-DAY5/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -395,7 +467,7 @@
 <li>嘻嘻嘻，我们将要在做 toy-browser 浏览器相关排版问题啦</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/6d5c67d3d5d0633bf667bd680f6dfb9489753.png" alt="DOM with CSS"></li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/22/Toy-Browser-DAY4/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/22/Toy-Browser-DAY4/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -433,7 +505,7 @@
 <li>implementation of a toy-browser 🙆</li>
 <li>我们开始进入到 CSS Computing 啦！！！😘</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/4bb352346db82d88a68035a6ddad906c81827.png" alt="CSS Computing"></p>
-      <div class="post-button"><a class="btn" href="/2020/05/17/Toy-Browser-DAY3/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/17/Toy-Browser-DAY3/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -475,7 +547,7 @@
 </ul>
 </li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/16/%E5%9F%BA%E4%BA%8EKMP%E7%9A%84FSM%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/16/%E5%9F%BA%E4%BA%8EKMP%E7%9A%84FSM%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
 
@@ -517,15 +589,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>Categories</span>
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>Friends</span>
+      <i class="fa fa-link fa-fw"></i>友链</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>

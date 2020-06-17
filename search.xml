@@ -6212,12 +6212,11 @@ for (let i = 7; i &gt;= 0; i --) {
 <li>3个小时的舞跳下来，这周竟然还不累？好吧，其实是我中间划水了 🙃</li>
 <li>以后周六早课，一定要在8点前享受完早餐！今早跳舞低血糖，双耳一直耳鸣</li>
 </ul>
+<a id="more"></a>
 <h2 id="动画与绘制"><a href="#动画与绘制" class="headerlink" title="动画与绘制"></a>动画与绘制</h2><h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><ul>
-<li><p>@keyframes 定义</p>
-</li>
+<li>@keyframes 定义</li>
 <li><p>animation: 使用</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">@keyframes mykf &#123;</span><br><span class="line">  <span class="keyword">from</span> &#123;<span class="attr">background</span>: red;&#125;</span><br><span class="line">  to &#123;<span class="attr">background</span>: yellow;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">div &#123;</span><br><span class="line">  width: <span class="number">100</span>px;</span><br><span class="line">  height: <span class="number">100</span>px;</span><br><span class="line">  animation: mykf <span class="number">5</span>s infinite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <h3 id="Animation-Shortcut"><a href="#Animation-Shortcut" class="headerlink" title="Animation Shortcut"></a>Animation Shortcut</h3><ul>
@@ -6257,7 +6256,7 @@ for (let i = 7; i &gt;= 0; i --) {
 </ul>
 <h2 id="渲染与颜色"><a href="#渲染与颜色" class="headerlink" title="渲染与颜色"></a>渲染与颜色</h2><h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><h4 id="CMYK-与-RGB"><a href="#CMYK-与-RGB" class="headerlink" title="CMYK 与 RGB"></a>CMYK 与 RGB</h4><h4 id="HSL-与-HSV"><a href="#HSL-与-HSV" class="headerlink" title="HSL 与 HSV"></a>HSL 与 HSV</h4><ul>
 <li>Hue 色相(360度) Saturaiotn 饱和度、纯度 Lightness 明度<ul>
-<li>补色，对角色 –&gt; Hue + 180</li>
+<li>补色，对角色 —&gt; Hue + 180</li>
 </ul>
 </li>
 <li>Hue Saturation Value</li>
@@ -6271,11 +6270,6 @@ for (let i = 7; i &gt;= 0; i --) {
 <li>encodeUriComponent</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data:image&#x2F;svg+xml,%3csvg%20width&#x3D;%22100%25%22%20height&#x3D;%22100%25%22%20version&#x3D;%221.1%22%20xmlns&#x3D;%22http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg%22%3e%3cellipse%20cx&#x3D;%22300%22%20cy&#x3D;%22150%22%20rx&#x3D;%22200%22%20ry&#x3D;%2280%22%20style&#x3D;%22fill:rgb(200,100,50);%20stroke:rgb(0,0,100);stroke-width:2%22&#x2F;%3e%20%3c&#x2F;svg%3e</span><br></pre></td></tr></table></figure>
-
-
-
-
-
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
@@ -6290,7 +6284,147 @@ for (let i = 7; i &gt;= 0; i --) {
   <entry>
     <title>HTML-XML与SGML</title>
     <url>/2020/06/06/HTML-XML%E4%B8%8ESGML/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>永远不要再鸽，是不可能的</li>
+<li>补到第二天的 12:37</li>
+</ul>
+<h2 id="HTML-的定义：XML-与-SGML"><a href="#HTML-的定义：XML-与-SGML" class="headerlink" title="HTML 的定义：XML 与 SGML"></a>HTML 的定义：XML 与 SGML</h2><h3 id="DTD-与-XML-namespace"><a href="#DTD-与-XML-namespace" class="headerlink" title="DTD 与 XML namespace"></a>DTD 与 XML namespace</h3><ul>
+<li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</a><ul>
+<li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent</a><ul>
+<li>\&nbsp; \u00A0 “ “ (no-break space = non-breaking space)</li>
+<li>\&lt;!ENTITY nbsp    “\&#160;”> \&lt;!— no-break space = non-breaking space, U+00A0 ISOnum —></li>
+</ul>
+</li>
+<li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent</a></li>
+<li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent</a><ul>
+<li>html 属性中不能使用 \”, 需要转义<ul>
+<li>\&lt;!ENTITY quot    “\&#34;”> \&lt;!—  quotation mark, U+0022 ISOnum —> \”</li>
+</ul>
+</li>
+<li>html 中不能使用 \&amp;, 需要转义<ul>
+<li>\&lt;!ENTITY amp    “\&#38;#38;”> \&lt;!—  ampersand, U+0026 ISOnum —> \&amp;</li>
+</ul>
+</li>
+<li>html 中不能使用 \&lt;, 需要转义<ul>
+<li>\&lt;!ENTITY lt    “\&#38;#60;”> \&lt;!—  less-than sign, U+003C ISOnum —> \&lt;</li>
+</ul>
+</li>
+<li>html 中不能使用 >, 需要转义<ul>
+<li>&lt;!ENTITY gt    “\&#62;”> \&lt;!—  greater-than sign, U+003E ISOnum —> ></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://www.w3.org/1999/xhtml" target="_blank" rel="noopener">http://www.w3.org/1999/xhtml</a></li>
+</ul>
+<h2 id="HTML-标签-语义"><a href="#HTML-标签-语义" class="headerlink" title="HTML 标签 - 语义"></a>HTML 标签 - 语义</h2><h3 id="为-wiki-编写-HTML"><a href="#为-wiki-编写-HTML" class="headerlink" title="为 wiki 编写 HTML"></a>为 wiki 编写 HTML</h3><ul>
+<li><a href="http://static001.geekbang.org/static/time/quote/World_Wide_Web-Wikipedia.html" target="_blank" rel="noopener">示例 wiki</a></li>
+</ul>
+<h2 id="HTML-语法"><a href="#HTML-语法" class="headerlink" title="HTML - 语法"></a>HTML - 语法</h2><h3 id="合法元素"><a href="#合法元素" class="headerlink" title="合法元素"></a>合法元素</h3><ul>
+<li>Element: &lt;tagname&gt;…&lt;/tagname&gt;</li>
+<li>Text: text</li>
+<li>Comment: \&lt;!— comments —></li>
+<li>DocumentType: &lt;!Doctype html&gt;</li>
+<li>ProcessingInstruction: &lt;?a 1?&gt; <ul>
+<li>预处理</li>
+</ul>
+</li>
+<li>CDATA: &lt;![CDATA[]]&gt;</li>
+</ul>
+<h3 id="字符引用"><a href="#字符引用" class="headerlink" title="字符引用"></a>字符引用</h3><ul>
+<li>\&amp;#160; \&nbsp;</li>
+<li>\&amp;</li>
+<li>\&lt;</li>
+<li>\&gt;</li>
+<li>\&quot;</li>
+</ul>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><h3 id="导航类操作"><a href="#导航类操作" class="headerlink" title="导航类操作"></a>导航类操作</h3><ul>
+<li>parentNode</li>
+<li>childNodes<ul>
+<li>living collection 会被实时修改</li>
+</ul>
+</li>
+<li>firstChild</li>
+<li>lastChild</li>
+<li>nextSibling</li>
+<li>previousSibling</li>
+</ul>
+<h3 id="修改操作"><a href="#修改操作" class="headerlink" title="修改操作"></a>修改操作</h3><ul>
+<li>所有的 DOM 默认有且只有一个父元素<ul>
+<li>不能被两次插入 DOM 树中。</li>
+<li>将一个 DOM 元素，插入到 a 位置，再调用插入到 b 位置，会默认的先从 a 位置 remove 出来</li>
+<li>【未完实例】</li>
+</ul>
+</li>
+<li>appendChild</li>
+<li>insertBefore</li>
+<li>removeChild</li>
+<li>replaceChild</li>
+</ul>
+<h3 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h3><ul>
+<li>compareDocumentPosition 是一个用于比较两个节点中关系的函数</li>
+<li>contains 检查一个节点是否包含另一个节点的函数</li>
+<li>isEqualNode 检查两个节点是否完全相同</li>
+<li>isSameNode 检查两个节点是否是同一个节点，实际上在 JS 中可以用 ===</li>
+<li>cloneNode 复制一个节点，如果传入参数 true，则会连同子元素做深拷贝</li>
+</ul>
+<h2 id="Event-冒泡与捕获"><a href="#Event-冒泡与捕获" class="headerlink" title="Event: 冒泡与捕获"></a>Event: 冒泡与捕获</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">addEventListener MDN</a></li>
+</ul>
+<h2 id="Range-API"><a href="#Range-API" class="headerlink" title="Range API"></a>Range API</h2><h4 id="把一个元素的所有子元素逆序"><a href="#把一个元素的所有子元素逆序" class="headerlink" title="把一个元素的所有子元素逆序"></a>把一个元素的所有子元素逆序</h4><h3 id="Range-用法"><a href="#Range-用法" class="headerlink" title="Range 用法"></a>Range 用法</h3><ul>
+<li>var range = new Range()</li>
+<li>range.setStart(element, 9)</li>
+<li>range.setEnd(element, 4)</li>
+<li>var range = document.getSelection().getRangeAt(0)</li>
+<li>var fragment = range.extractContents()</li>
+<li>range.insertNode(document.createTextNode(“aaa”))</li>
+</ul>
+<h3 id="Range-API-1"><a href="#Range-API-1" class="headerlink" title="Range API"></a>Range API</h3><ul>
+<li>range.setStartBefore</li>
+<li>range.setEndBefore</li>
+<li>range.setStartAfter</li>
+<li>range.setEndAfter</li>
+<li>range.selectNode</li>
+<li>range.selectNodeContents</li>
+<li>结论：range 更为精细操作 DOM，批量操作 DOM</li>
+</ul>
+<h2 id="CSSOM"><a href="#CSSOM" class="headerlink" title="CSSOM"></a>CSSOM</h2><h3 id="document-styleSheets"><a href="#document-styleSheets" class="headerlink" title="document.styleSheets"></a>document.styleSheets</h3><ul>
+<li>document.styleSheets</li>
+<li>案例</li>
+</ul>
+<h3 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h3><ul>
+<li>document.styleSheets[0].cssRules</li>
+<li>document.styleSheets[0].insertRule(“p{color: pink;}”, 0)</li>
+<li>document.styleSheets[0].removeRule(0)</li>
+</ul>
+<h3 id="Rule"><a href="#Rule" class="headerlink" title="Rule"></a>Rule</h3><ul>
+<li>CSSStyleRule<ul>
+<li>selectorText String</li>
+<li>style k-v 结构</li>
+</ul>
+</li>
+<li>CSSCharsetRule</li>
+<li>CSSImportRule</li>
+<li>CSSMediaRule</li>
+<li>CSSFontFaceRule</li>
+<li>CSSPageRule</li>
+<li>CSSNamespaceRule</li>
+<li>CSSKeyframesRule</li>
+<li>CSSKeyframeRule</li>
+<li>CSSSupportRule</li>
+<li>…</li>
+</ul>
+<h3 id="getComputedStyle"><a href="#getComputedStyle" class="headerlink" title="getComputedStyle"></a>getComputedStyle</h3><ul>
+<li>window.getComputedStyle(elt, pseudoElt)<ul>
+<li>elt 想要获取的元素</li>
+<li>pseudoElt 可选，伪元素</li>
+</ul>
+</li>
+</ul>
+<h3 id="CSSOM-View"><a href="#CSSOM-View" class="headerlink" title="CSSOM View"></a>CSSOM View</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>, <span class="string">"width=100,height=100,left=100,top=100"</span>)</span><br><span class="line"></span><br><span class="line">childWindow.moveBy(<span class="number">-50</span>, <span class="number">-50</span>)</span><br><span class="line"></span><br><span class="line">childWindow.resizeBy(<span class="number">50</span>, <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动至 (0, 50)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scrollBy(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动绝对值</span></span><br><span class="line"></span><br><span class="line">getClientRects() <span class="comment">// 伪元素不会被计入</span></span><br><span class="line"></span><br><span class="line">getBoundingClientRect()</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerHeight</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().height</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerWidth</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().width</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerHeight</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerWidth</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.devicePixelRatio</span><br></pre></td></tr></table></figure>
+<h2 id="所有-API"><a href="#所有-API" class="headerlink" title="所有 API"></a>所有 API</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
 ]]></content>
