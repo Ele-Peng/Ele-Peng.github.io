@@ -10,9 +10,37 @@ description:
 ---
 
 
+<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
 ## 写在前面
-- 永远不要再鸽，是不可能的
+- 永不再鸽，是不可能的
 - 补到第二天的 12:37
+
+<!-- more -->
 
 ## HTML 的定义：XML 与 SGML
 
@@ -150,45 +178,95 @@ description:
 	- pseudoElt 可选，伪元素
 
 ### CSSOM View
+#### 窗口API
+窗口 API 用于操作浏览器窗口的位置、尺寸等
+
+- moveTo(x, y) 窗口移动到屏幕的特定坐标；
+- moveBy(x, y) 窗口移动特定距离；
+- resizeTo(x, y) 改变窗口大小到特定尺寸；
+- resizeBy(x, y) 改变窗口大小特定尺寸。
+- open()
 
 
-```javascript
-let childWindow = window.open("about:blank", "_blank")
+	```javascript
+	let childWindow = window.open("about:blank", "_blank")
+	
+	let childWindow = window.open("about:blank", "_blank", "width=100,height=100,left=100,top=100")
+	
+	childWindow.moveBy(-50, -50)
+	
+	childWindow.resizeBy(50, 50)
+	```
 
-let childWindow = window.open("about:blank", "_blank", "width=100,height=100,left=100,top=100")
+#### 滚动API
+视口滚动 API(可视区域，由 window 对象操作)
 
-childWindow.moveBy(-50, -50)
+- scrollX 是视口的属性，表示 X 方向上的当前滚动距离，有别名 pageXOffset；
+- scrollY 是视口的属性，表示 Y 方向上的当前滚动距离，有别名 pageYOffset；
+- scroll(x, y) 使得页面滚动到特定的位置，有别名 scrollTo，支持传入配置型参数 {top, left}；
+- scrollBy(x, y) 使得页面滚动特定的距离，支持传入配置型参数 {top, left}。
 
-childWindow.resizeBy(50, 50)
+元素滚动 API(元素滚动 API，在 Element 类上)
 
-window.scroll(0, 0)
+- scrollTop 元素的属性，表示 Y 方向上的当前滚动距离。
+- scrollLeft 元素的属性，表示 X 方向上的当前滚动距离。
+- scrollWidth 元素的属性，表示元素内部的滚动内容的宽度，一般来说会大于等于元素宽度。
+- scrollHeight 元素的属性，表示元素内部的滚动内容的高度，一般来说会大于等于元素高度。
+- scroll(x, y) 使得元素滚动到特定的位置，有别名 scrollTo，支持传入配置型参数 {top, left}。scrollBy(x, y) 使得元素滚动到特定的位置，支持传入配置型参数 {top, left}。
+- scrollIntoView(arg) 滚动元素所在的父元素，使得元素滚动到可见区域，可以通过 arg 来指定滚到中间、开始或者就近。
 
-window.scroll(0, 50) // 滚动至 (0, 50)
 
-window.scrollBy(0, 50) // 滚动绝对值
+	```javascript
+	window.scroll(0, 0)
+	
+	window.scroll(0, 50) // 滚动至 (0, 50)
+	
+	window.scrollBy(0, 50) // 滚动绝对值
+	```
 
-getClientRects() // 伪元素不会被计入
+#### 布局API
+全局尺寸信息
 
-getBoundingClientRect()
+- window.innerHeight, window.innerWidth 这两个属性表示视口的大小。
+- window.outerWidth, window.outerHeight 这两个属性表示浏览器窗口占据的大小，很多浏览器没有实现，一般来说这两个属性无关紧要。
+- window.devicePixelRatio 这个属性非常重要，表示物理像素和 CSS 像素单位的倍率关系，Retina 屏这个值是 2，后来也出现了一些 3 倍的 Android 屏。
+- window.screen （屏幕尺寸相关的信息）
+	- window.screen.width, window.screen.height 设备的屏幕尺寸。
+	- window.screen.availWidth, window.screen.availHeight 设备屏幕的可渲染区域尺寸，一些 Android 机器会把屏幕的一部分预留做固定按钮，所以有这两个属性，实际上一般浏览器不会实现的这么细致。
+	- window.screen.colorDepth, window.screen.pixelDepth 这两个属性是固定值 24，应该是为了以后预留。
 
-window.innerHeight
-// 等同于 document.documentElement.getBoundingClientRect().height
+元素的布局信息
 
-window.innerWidth
-// 等同于 document.documentElement.getBoundingClientRect().width
+- getClientRects(),会返回一个列表，里面包含元素对应的每一个盒所占据的客户端矩形区域，这里每一个矩形区域可以用 x, y, width, height 来获取它的位置和尺寸;
+- getBoundingClientRect(),它返回元素对应的所有盒的包裹的矩形区域，需要注意，这个 API 获取的区域会包括当 overflow 为 visible 时的子元素区域。
 
-window.outerHeight
 
-window.outerWidth
-
-window.devicePixelRatio
-```
+	```javascript
+	getClientRects() // 伪元素不会被计入
+	
+	getBoundingClientRect()
+	
+	window.innerHeight
+	// 等同于 document.documentElement.getBoundingClientRect().height
+	
+	window.innerWidth
+	// 等同于 document.documentElement.getBoundingClientRect().width
+	
+	window.outerHeight
+	
+	window.outerWidth
+	
+	window.devicePixelRatio
+	```
 
 
 
 ## 所有 API
 
 
+
+## Reference
+- [杨登程 CSSOM Note](https://github.com/yangdengcheng/Frontend-01-Template/blob/master/week10/NOTE.md)
 
 
 ## 写在后面
