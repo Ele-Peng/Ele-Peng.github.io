@@ -96,7 +96,7 @@ animation: slidein 3s;
 - [MDN CSS animation](https://developer.mozilla.org/en-US/docs/Web/CSS/animation)
 
 ### 贝瑟尔曲线拟合
-- [demo]()
+- [贝瑟尔曲线](https://cubic-bezier.com/#.17,.67,.83,.67)
 
 
 ## Transition
@@ -155,6 +155,11 @@ transition: unset;
 ```
 data:image/svg+xml,%3csvg%20width=%22100%25%22%20height=%22100%25%22%20version=%221.1%22%20xmlns=%22http://www.w3.org/2000/svg%22%3e%3cellipse%20cx=%22300%22%20cy=%22150%22%20rx=%22200%22%20ry=%2280%22%20style=%22fill:rgb(200,100,50);%20stroke:rgb(0,0,100);stroke-width:2%22/%3e%20%3c/svg%3e
 ```
+
+
+## 将 ComputedStyle 分类
+- [完整代码-点击一下](https://github.com/Ele-Peng/toy-browser/blob/master/crawler.html)
+- [CSS-Property.xmind](https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week09/CSS-Property.xmind)
 
 
 

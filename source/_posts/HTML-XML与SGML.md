@@ -263,7 +263,8 @@ description:
 
 
 ## 所有 API
-
+- [完整代码-点击一下](https://github.com/Ele-Peng/toy-browser/blob/master/html-apis.html)
+- [Web APIs](https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week10/WebAPI.xmind)
 
 
 ## Reference
