@@ -60,7 +60,7 @@
   
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 <body>
 <div class="single">
 <a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
@@ -101,33 +101,61 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>永远不要再鸽，是不可能的</li>
+        <style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>永不再鸽，是不可能的</li>
 <li>补到第二天的 12:37</li>
 </ul>
+<a id="more"></a>
+
 <h2 id="HTML-的定义：XML-与-SGML"><a href="#HTML-的定义：XML-与-SGML" class="headerlink" title="HTML 的定义：XML 与 SGML"></a>HTML 的定义：XML 与 SGML</h2><h3 id="DTD-与-XML-namespace"><a href="#DTD-与-XML-namespace" class="headerlink" title="DTD 与 XML namespace"></a>DTD 与 XML namespace</h3><ul>
 <li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</a><ul>
 <li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent</a><ul>
-<li>\&nbsp; \u00A0 “ “ (no-break space = non-breaking space)</li>
-<li>\&lt;!ENTITY nbsp    “\&#160;”> \&lt;!— no-break space = non-breaking space, U+00A0 ISOnum —></li>
+<li>&amp;nbsp; \u00A0 “ “ (no-break space = non-breaking space)</li>
+<li>&lt;!ENTITY nbsp    “&amp;#160;”&gt; &lt;!– no-break space = non-breaking space, U+00A0 ISOnum –&gt;</li>
 </ul>
 </li>
 <li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent</a></li>
 <li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent</a><ul>
-<li>html 属性中不能使用 \”, 需要转义<ul>
-<li>\&lt;!ENTITY quot    “\&#34;”> \&lt;!—  quotation mark, U+0022 ISOnum —> \”</li>
+<li>html 属性中不能使用 &quot;, 需要转义<ul>
+<li>&lt;!ENTITY quot    “&amp;#34;”&gt; &lt;!–  quotation mark, U+0022 ISOnum –&gt; &quot;</li>
 </ul>
 </li>
-<li>html 中不能使用 \&amp;, 需要转义<ul>
-<li>\&lt;!ENTITY amp    “\&#38;#38;”> \&lt;!—  ampersand, U+0026 ISOnum —> \&amp;</li>
+<li>html 中不能使用 &amp;, 需要转义<ul>
+<li>&lt;!ENTITY amp    “&amp;#38;#38;”&gt; &lt;!–  ampersand, U+0026 ISOnum –&gt; &amp;</li>
 </ul>
 </li>
-<li>html 中不能使用 \&lt;, 需要转义<ul>
-<li>\&lt;!ENTITY lt    “\&#38;#60;”> \&lt;!—  less-than sign, U+003C ISOnum —> \&lt;</li>
+<li>html 中不能使用 &lt;, 需要转义<ul>
+<li>&lt;!ENTITY lt    “&amp;#38;#60;”&gt; &lt;!–  less-than sign, U+003C ISOnum –&gt; &lt;</li>
 </ul>
 </li>
-<li>html 中不能使用 >, 需要转义<ul>
-<li>&lt;!ENTITY gt    “\&#62;”> \&lt;!—  greater-than sign, U+003E ISOnum —> ></li>
+<li>html 中不能使用 &gt;, 需要转义<ul>
+<li>&lt;!ENTITY gt    “&amp;#62;”&gt; &lt;!–  greater-than sign, U+003E ISOnum –&gt; &gt;</li>
 </ul>
 </li>
 </ul>
@@ -142,20 +170,20 @@
 <h2 id="HTML-语法"><a href="#HTML-语法" class="headerlink" title="HTML - 语法"></a>HTML - 语法</h2><h3 id="合法元素"><a href="#合法元素" class="headerlink" title="合法元素"></a>合法元素</h3><ul>
 <li>Element: &lt;tagname&gt;…&lt;/tagname&gt;</li>
 <li>Text: text</li>
-<li>Comment: \&lt;!— comments —></li>
-<li>DocumentType: &lt;!Doctype html&gt;</li>
-<li>ProcessingInstruction: &lt;?a 1?&gt; <ul>
+<li>Comment: &lt;!– comments –&gt;</li>
+<li>DocumentType: <!Doctype html></li>
+<li>ProcessingInstruction: <?a 1?> <ul>
 <li>预处理</li>
 </ul>
 </li>
-<li>CDATA: &lt;![CDATA[]]&gt;</li>
+<li>CDATA: <![CDATA[]]></li>
 </ul>
 <h3 id="字符引用"><a href="#字符引用" class="headerlink" title="字符引用"></a>字符引用</h3><ul>
-<li>\&amp;#160; \&nbsp;</li>
-<li>\&amp;</li>
-<li>\&lt;</li>
-<li>\&gt;</li>
-<li>\&quot;</li>
+<li>&amp;#160; &amp;nbsp;</li>
+<li>&amp;amp;</li>
+<li>&amp;lt;</li>
+<li>&amp;gt;</li>
+<li>&amp;quot;</li>
 </ul>
 <h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><h3 id="导航类操作"><a href="#导航类操作" class="headerlink" title="导航类操作"></a>导航类操作</h3><ul>
 <li>parentNode</li>
@@ -172,7 +200,7 @@
 <li>所有的 DOM 默认有且只有一个父元素<ul>
 <li>不能被两次插入 DOM 树中。</li>
 <li>将一个 DOM 元素，插入到 a 位置，再调用插入到 b 位置，会默认的先从 a 位置 remove 出来</li>
-<li>【未完实例】</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/fa6ba8388663f1d63bc4d062f05c7da8276923.png" alt="ChildNodes living collection"></li>
 </ul>
 </li>
 <li>appendChild</li>
@@ -189,6 +217,7 @@
 </ul>
 <h2 id="Event-冒泡与捕获"><a href="#Event-冒泡与捕获" class="headerlink" title="Event: 冒泡与捕获"></a>Event: 冒泡与捕获</h2><ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">addEventListener MDN</a></li>
+<li><img src="http://p0.meituan.net/myvideodistribute/46f706af50150735f325d6b6c7ac7c77150662.png" alt="冒泡与捕获"></li>
 </ul>
 <h2 id="Range-API"><a href="#Range-API" class="headerlink" title="Range API"></a>Range API</h2><h4 id="把一个元素的所有子元素逆序"><a href="#把一个元素的所有子元素逆序" class="headerlink" title="把一个元素的所有子元素逆序"></a>把一个元素的所有子元素逆序</h4><h3 id="Range-用法"><a href="#Range-用法" class="headerlink" title="Range 用法"></a>Range 用法</h3><ul>
 <li>var range = new Range()</li>
@@ -240,8 +269,55 @@
 </ul>
 </li>
 </ul>
-<h3 id="CSSOM-View"><a href="#CSSOM-View" class="headerlink" title="CSSOM View"></a>CSSOM View</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>, <span class="string">"width=100,height=100,left=100,top=100"</span>)</span><br><span class="line"></span><br><span class="line">childWindow.moveBy(<span class="number">-50</span>, <span class="number">-50</span>)</span><br><span class="line"></span><br><span class="line">childWindow.resizeBy(<span class="number">50</span>, <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动至 (0, 50)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scrollBy(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动绝对值</span></span><br><span class="line"></span><br><span class="line">getClientRects() <span class="comment">// 伪元素不会被计入</span></span><br><span class="line"></span><br><span class="line">getBoundingClientRect()</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerHeight</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().height</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerWidth</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().width</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerHeight</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerWidth</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.devicePixelRatio</span><br></pre></td></tr></table></figure>
-<h2 id="所有-API"><a href="#所有-API" class="headerlink" title="所有 API"></a>所有 API</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<h3 id="CSSOM-View"><a href="#CSSOM-View" class="headerlink" title="CSSOM View"></a>CSSOM View</h3><h4 id="窗口API"><a href="#窗口API" class="headerlink" title="窗口API"></a>窗口API</h4><p>窗口 API 用于操作浏览器窗口的位置、尺寸等</p>
+<ul>
+<li>moveTo(x, y) 窗口移动到屏幕的特定坐标；</li>
+<li>moveBy(x, y) 窗口移动特定距离；</li>
+<li>resizeTo(x, y) 改变窗口大小到特定尺寸；</li>
+<li>resizeBy(x, y) 改变窗口大小特定尺寸。</li>
+<li>open()</li>
+</ul>
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>, <span class="string">"width=100,height=100,left=100,top=100"</span>)</span><br><span class="line"></span><br><span class="line">childWindow.moveBy(<span class="number">-50</span>, <span class="number">-50</span>)</span><br><span class="line"></span><br><span class="line">childWindow.resizeBy(<span class="number">50</span>, <span class="number">50</span>)</span><br></pre></td></tr></table></figure></code></pre><h4 id="滚动API"><a href="#滚动API" class="headerlink" title="滚动API"></a>滚动API</h4><p>视口滚动 API(可视区域，由 window 对象操作)</p>
+<ul>
+<li>scrollX 是视口的属性，表示 X 方向上的当前滚动距离，有别名 pageXOffset；</li>
+<li>scrollY 是视口的属性，表示 Y 方向上的当前滚动距离，有别名 pageYOffset；</li>
+<li>scroll(x, y) 使得页面滚动到特定的位置，有别名 scrollTo，支持传入配置型参数 {top, left}；</li>
+<li>scrollBy(x, y) 使得页面滚动特定的距离，支持传入配置型参数 {top, left}。</li>
+</ul>
+<p>元素滚动 API(元素滚动 API，在 Element 类上)</p>
+<ul>
+<li>scrollTop 元素的属性，表示 Y 方向上的当前滚动距离。</li>
+<li>scrollLeft 元素的属性，表示 X 方向上的当前滚动距离。</li>
+<li>scrollWidth 元素的属性，表示元素内部的滚动内容的宽度，一般来说会大于等于元素宽度。</li>
+<li>scrollHeight 元素的属性，表示元素内部的滚动内容的高度，一般来说会大于等于元素高度。</li>
+<li>scroll(x, y) 使得元素滚动到特定的位置，有别名 scrollTo，支持传入配置型参数 {top, left}。scrollBy(x, y) 使得元素滚动到特定的位置，支持传入配置型参数 {top, left}。</li>
+<li>scrollIntoView(arg) 滚动元素所在的父元素，使得元素滚动到可见区域，可以通过 arg 来指定滚到中间、开始或者就近。</li>
+</ul>
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动至 (0, 50)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scrollBy(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动绝对值</span></span><br></pre></td></tr></table></figure></code></pre><h4 id="布局API"><a href="#布局API" class="headerlink" title="布局API"></a>布局API</h4><p>全局尺寸信息</p>
+<ul>
+<li>window.innerHeight, window.innerWidth 这两个属性表示视口的大小。</li>
+<li>window.outerWidth, window.outerHeight 这两个属性表示浏览器窗口占据的大小，很多浏览器没有实现，一般来说这两个属性无关紧要。</li>
+<li>window.devicePixelRatio 这个属性非常重要，表示物理像素和 CSS 像素单位的倍率关系，Retina 屏这个值是 2，后来也出现了一些 3 倍的 Android 屏。</li>
+<li>window.screen （屏幕尺寸相关的信息）<ul>
+<li>window.screen.width, window.screen.height 设备的屏幕尺寸。</li>
+<li>window.screen.availWidth, window.screen.availHeight 设备屏幕的可渲染区域尺寸，一些 Android 机器会把屏幕的一部分预留做固定按钮，所以有这两个属性，实际上一般浏览器不会实现的这么细致。</li>
+<li>window.screen.colorDepth, window.screen.pixelDepth 这两个属性是固定值 24，应该是为了以后预留。</li>
+</ul>
+</li>
+</ul>
+<p>元素的布局信息</p>
+<ul>
+<li>getClientRects(),会返回一个列表，里面包含元素对应的每一个盒所占据的客户端矩形区域，这里每一个矩形区域可以用 x, y, width, height 来获取它的位置和尺寸;</li>
+<li>getBoundingClientRect(),它返回元素对应的所有盒的包裹的矩形区域，需要注意，这个 API 获取的区域会包括当 overflow 为 visible 时的子元素区域。</li>
+</ul>
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">getClientRects() <span class="comment">// 伪元素不会被计入</span></span><br><span class="line"></span><br><span class="line">getBoundingClientRect()</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerHeight</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().height</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerWidth</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().width</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerHeight</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerWidth</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.devicePixelRatio</span><br></pre></td></tr></table></figure></code></pre><h2 id="所有-API"><a href="#所有-API" class="headerlink" title="所有 API"></a>所有 API</h2><ul>
+<li><a href="https://github.com/Ele-Peng/toy-browser/blob/master/html-apis.html" target="_blank" rel="noopener">完整代码-点击一下</a></li>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week10/WebAPI.xmind" target="_blank" rel="noopener">Web APIs</a></li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://github.com/yangdengcheng/Frontend-01-Template/blob/master/week10/NOTE.md" target="_blank" rel="noopener">杨登程 CSSOM Note</a></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
 
@@ -252,12 +328,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="#">
+		<a class="copy" href="/2020/06/20/JS-%E5%BC%82%E6%AD%A5/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>没有更新的文章</h3>
+						<h3>JS: 异步</h3>
 					</div>
 				</div>
 			</div>
@@ -311,15 +387,15 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>分类</span>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
+      <i class="fa fa-th-list fa-fw"></i>Categories</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>友链</span>
+      <i class="fa fa-link fa-fw"></i>Friends</span>
         <ul>
           <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
         </ul>

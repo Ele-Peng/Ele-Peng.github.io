@@ -3,7 +3,33 @@
   <entry>
     <title>CSS-排版</title>
     <url>/2020/05/30/CSS-%E6%8E%92%E7%89%88/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>CSS 排版相关知识</li>
 <li>CSS 属性<ul>
 <li>排版</li>
@@ -6213,10 +6239,17 @@ for (let i = 7; i &gt;= 0; i --) {
 <li>以后周六早课，一定要在8点前享受完早餐！今早跳舞低血糖，双耳一直耳鸣</li>
 </ul>
 <a id="more"></a>
+
+
+
+
+
 <h2 id="动画与绘制"><a href="#动画与绘制" class="headerlink" title="动画与绘制"></a>动画与绘制</h2><h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><ul>
-<li>@keyframes 定义</li>
+<li><p>@keyframes 定义</p>
+</li>
 <li><p>animation: 使用</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">@keyframes mykf &#123;</span><br><span class="line">  <span class="keyword">from</span> &#123;<span class="attr">background</span>: red;&#125;</span><br><span class="line">  to &#123;<span class="attr">background</span>: yellow;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">div &#123;</span><br><span class="line">  width: <span class="number">100</span>px;</span><br><span class="line">  height: <span class="number">100</span>px;</span><br><span class="line">  animation: mykf <span class="number">5</span>s infinite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h3 id="Animation-Shortcut"><a href="#Animation-Shortcut" class="headerlink" title="Animation Shortcut"></a>Animation Shortcut</h3><ul>
@@ -6242,7 +6275,7 @@ for (let i = 7; i &gt;= 0; i --) {
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation" target="_blank" rel="noopener">MDN CSS animation</a></li>
 </ul>
 <h3 id="贝瑟尔曲线拟合"><a href="#贝瑟尔曲线拟合" class="headerlink" title="贝瑟尔曲线拟合"></a>贝瑟尔曲线拟合</h3><ul>
-<li><a href="">demo</a></li>
+<li><a href="https://cubic-bezier.com/#.17,.67,.83,.67" target="_blank" rel="noopener">贝瑟尔曲线</a></li>
 </ul>
 <h2 id="Transition"><a href="#Transition" class="headerlink" title="Transition"></a>Transition</h2><h3 id="Transition-Shortcut"><a href="#Transition-Shortcut" class="headerlink" title="Transition Shortcut"></a>Transition Shortcut</h3><ul>
 <li>transition-property: 要变换的属性</li>
@@ -6256,7 +6289,7 @@ for (let i = 7; i &gt;= 0; i --) {
 </ul>
 <h2 id="渲染与颜色"><a href="#渲染与颜色" class="headerlink" title="渲染与颜色"></a>渲染与颜色</h2><h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><h4 id="CMYK-与-RGB"><a href="#CMYK-与-RGB" class="headerlink" title="CMYK 与 RGB"></a>CMYK 与 RGB</h4><h4 id="HSL-与-HSV"><a href="#HSL-与-HSV" class="headerlink" title="HSL 与 HSV"></a>HSL 与 HSV</h4><ul>
 <li>Hue 色相(360度) Saturaiotn 饱和度、纯度 Lightness 明度<ul>
-<li>补色，对角色 —&gt; Hue + 180</li>
+<li>补色，对角色 –&gt; Hue + 180</li>
 </ul>
 </li>
 <li>Hue Saturation Value</li>
@@ -6270,6 +6303,12 @@ for (let i = 7; i &gt;= 0; i --) {
 <li>encodeUriComponent</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data:image&#x2F;svg+xml,%3csvg%20width&#x3D;%22100%25%22%20height&#x3D;%22100%25%22%20version&#x3D;%221.1%22%20xmlns&#x3D;%22http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg%22%3e%3cellipse%20cx&#x3D;%22300%22%20cy&#x3D;%22150%22%20rx&#x3D;%22200%22%20ry&#x3D;%2280%22%20style&#x3D;%22fill:rgb(200,100,50);%20stroke:rgb(0,0,100);stroke-width:2%22&#x2F;%3e%20%3c&#x2F;svg%3e</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="将-ComputedStyle-分类"><a href="#将-ComputedStyle-分类" class="headerlink" title="将 ComputedStyle 分类"></a>将 ComputedStyle 分类</h2><ul>
+<li><a href="https://github.com/Ele-Peng/toy-browser/blob/master/crawler.html" target="_blank" rel="noopener">完整代码-点击一下</a></li>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week09/CSS-Property.xmind" target="_blank" rel="noopener">CSS-Property.xmind</a></li>
+</ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
@@ -6284,33 +6323,61 @@ for (let i = 7; i &gt;= 0; i --) {
   <entry>
     <title>HTML-XML与SGML</title>
     <url>/2020/06/06/HTML-XML%E4%B8%8ESGML/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>永远不要再鸽，是不可能的</li>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>永不再鸽，是不可能的</li>
 <li>补到第二天的 12:37</li>
 </ul>
+<a id="more"></a>
+
 <h2 id="HTML-的定义：XML-与-SGML"><a href="#HTML-的定义：XML-与-SGML" class="headerlink" title="HTML 的定义：XML 与 SGML"></a>HTML 的定义：XML 与 SGML</h2><h3 id="DTD-与-XML-namespace"><a href="#DTD-与-XML-namespace" class="headerlink" title="DTD 与 XML namespace"></a>DTD 与 XML namespace</h3><ul>
 <li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</a><ul>
 <li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent</a><ul>
-<li>\&nbsp; \u00A0 “ “ (no-break space = non-breaking space)</li>
-<li>\&lt;!ENTITY nbsp    “\&#160;”> \&lt;!— no-break space = non-breaking space, U+00A0 ISOnum —></li>
+<li>&amp;nbsp; \u00A0 “ “ (no-break space = non-breaking space)</li>
+<li>&lt;!ENTITY nbsp    “&amp;#160;”&gt; &lt;!– no-break space = non-breaking space, U+00A0 ISOnum –&gt;</li>
 </ul>
 </li>
 <li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent</a></li>
 <li><a href="https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent" target="_blank" rel="noopener">https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent</a><ul>
-<li>html 属性中不能使用 \”, 需要转义<ul>
-<li>\&lt;!ENTITY quot    “\&#34;”> \&lt;!—  quotation mark, U+0022 ISOnum —> \”</li>
+<li>html 属性中不能使用 &quot;, 需要转义<ul>
+<li>&lt;!ENTITY quot    “&amp;#34;”&gt; &lt;!–  quotation mark, U+0022 ISOnum –&gt; &quot;</li>
 </ul>
 </li>
-<li>html 中不能使用 \&amp;, 需要转义<ul>
-<li>\&lt;!ENTITY amp    “\&#38;#38;”> \&lt;!—  ampersand, U+0026 ISOnum —> \&amp;</li>
+<li>html 中不能使用 &amp;, 需要转义<ul>
+<li>&lt;!ENTITY amp    “&amp;#38;#38;”&gt; &lt;!–  ampersand, U+0026 ISOnum –&gt; &amp;</li>
 </ul>
 </li>
-<li>html 中不能使用 \&lt;, 需要转义<ul>
-<li>\&lt;!ENTITY lt    “\&#38;#60;”> \&lt;!—  less-than sign, U+003C ISOnum —> \&lt;</li>
+<li>html 中不能使用 &lt;, 需要转义<ul>
+<li>&lt;!ENTITY lt    “&amp;#38;#60;”&gt; &lt;!–  less-than sign, U+003C ISOnum –&gt; &lt;</li>
 </ul>
 </li>
-<li>html 中不能使用 >, 需要转义<ul>
-<li>&lt;!ENTITY gt    “\&#62;”> \&lt;!—  greater-than sign, U+003E ISOnum —> ></li>
+<li>html 中不能使用 &gt;, 需要转义<ul>
+<li>&lt;!ENTITY gt    “&amp;#62;”&gt; &lt;!–  greater-than sign, U+003E ISOnum –&gt; &gt;</li>
 </ul>
 </li>
 </ul>
@@ -6325,20 +6392,20 @@ for (let i = 7; i &gt;= 0; i --) {
 <h2 id="HTML-语法"><a href="#HTML-语法" class="headerlink" title="HTML - 语法"></a>HTML - 语法</h2><h3 id="合法元素"><a href="#合法元素" class="headerlink" title="合法元素"></a>合法元素</h3><ul>
 <li>Element: &lt;tagname&gt;…&lt;/tagname&gt;</li>
 <li>Text: text</li>
-<li>Comment: \&lt;!— comments —></li>
-<li>DocumentType: &lt;!Doctype html&gt;</li>
-<li>ProcessingInstruction: &lt;?a 1?&gt; <ul>
+<li>Comment: &lt;!– comments –&gt;</li>
+<li>DocumentType: <!Doctype html></li>
+<li>ProcessingInstruction: <?a 1?> <ul>
 <li>预处理</li>
 </ul>
 </li>
-<li>CDATA: &lt;![CDATA[]]&gt;</li>
+<li>CDATA: <![CDATA[]]></li>
 </ul>
 <h3 id="字符引用"><a href="#字符引用" class="headerlink" title="字符引用"></a>字符引用</h3><ul>
-<li>\&amp;#160; \&nbsp;</li>
-<li>\&amp;</li>
-<li>\&lt;</li>
-<li>\&gt;</li>
-<li>\&quot;</li>
+<li>&amp;#160; &amp;nbsp;</li>
+<li>&amp;amp;</li>
+<li>&amp;lt;</li>
+<li>&amp;gt;</li>
+<li>&amp;quot;</li>
 </ul>
 <h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><h3 id="导航类操作"><a href="#导航类操作" class="headerlink" title="导航类操作"></a>导航类操作</h3><ul>
 <li>parentNode</li>
@@ -6355,7 +6422,7 @@ for (let i = 7; i &gt;= 0; i --) {
 <li>所有的 DOM 默认有且只有一个父元素<ul>
 <li>不能被两次插入 DOM 树中。</li>
 <li>将一个 DOM 元素，插入到 a 位置，再调用插入到 b 位置，会默认的先从 a 位置 remove 出来</li>
-<li>【未完实例】</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/fa6ba8388663f1d63bc4d062f05c7da8276923.png" alt="ChildNodes living collection"></li>
 </ul>
 </li>
 <li>appendChild</li>
@@ -6372,6 +6439,7 @@ for (let i = 7; i &gt;= 0; i --) {
 </ul>
 <h2 id="Event-冒泡与捕获"><a href="#Event-冒泡与捕获" class="headerlink" title="Event: 冒泡与捕获"></a>Event: 冒泡与捕获</h2><ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">addEventListener MDN</a></li>
+<li><img src="http://p0.meituan.net/myvideodistribute/46f706af50150735f325d6b6c7ac7c77150662.png" alt="冒泡与捕获"></li>
 </ul>
 <h2 id="Range-API"><a href="#Range-API" class="headerlink" title="Range API"></a>Range API</h2><h4 id="把一个元素的所有子元素逆序"><a href="#把一个元素的所有子元素逆序" class="headerlink" title="把一个元素的所有子元素逆序"></a>把一个元素的所有子元素逆序</h4><h3 id="Range-用法"><a href="#Range-用法" class="headerlink" title="Range 用法"></a>Range 用法</h3><ul>
 <li>var range = new Range()</li>
@@ -6423,8 +6491,55 @@ for (let i = 7; i &gt;= 0; i --) {
 </ul>
 </li>
 </ul>
-<h3 id="CSSOM-View"><a href="#CSSOM-View" class="headerlink" title="CSSOM View"></a>CSSOM View</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>, <span class="string">"width=100,height=100,left=100,top=100"</span>)</span><br><span class="line"></span><br><span class="line">childWindow.moveBy(<span class="number">-50</span>, <span class="number">-50</span>)</span><br><span class="line"></span><br><span class="line">childWindow.resizeBy(<span class="number">50</span>, <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动至 (0, 50)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scrollBy(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动绝对值</span></span><br><span class="line"></span><br><span class="line">getClientRects() <span class="comment">// 伪元素不会被计入</span></span><br><span class="line"></span><br><span class="line">getBoundingClientRect()</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerHeight</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().height</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerWidth</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().width</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerHeight</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerWidth</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.devicePixelRatio</span><br></pre></td></tr></table></figure>
-<h2 id="所有-API"><a href="#所有-API" class="headerlink" title="所有 API"></a>所有 API</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<h3 id="CSSOM-View"><a href="#CSSOM-View" class="headerlink" title="CSSOM View"></a>CSSOM View</h3><h4 id="窗口API"><a href="#窗口API" class="headerlink" title="窗口API"></a>窗口API</h4><p>窗口 API 用于操作浏览器窗口的位置、尺寸等</p>
+<ul>
+<li>moveTo(x, y) 窗口移动到屏幕的特定坐标；</li>
+<li>moveBy(x, y) 窗口移动特定距离；</li>
+<li>resizeTo(x, y) 改变窗口大小到特定尺寸；</li>
+<li>resizeBy(x, y) 改变窗口大小特定尺寸。</li>
+<li>open()</li>
+</ul>
+<pre><code><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>, <span class="string">"width=100,height=100,left=100,top=100"</span>)</span><br><span class="line"></span><br><span class="line">childWindow.moveBy(<span class="number">-50</span>, <span class="number">-50</span>)</span><br><span class="line"></span><br><span class="line">childWindow.resizeBy(<span class="number">50</span>, <span class="number">50</span>)</span><br></pre></td></tr></table></figure></code></pre><h4 id="滚动API"><a href="#滚动API" class="headerlink" title="滚动API"></a>滚动API</h4><p>视口滚动 API(可视区域，由 window 对象操作)</p>
+<ul>
+<li>scrollX 是视口的属性，表示 X 方向上的当前滚动距离，有别名 pageXOffset；</li>
+<li>scrollY 是视口的属性，表示 Y 方向上的当前滚动距离，有别名 pageYOffset；</li>
+<li>scroll(x, y) 使得页面滚动到特定的位置，有别名 scrollTo，支持传入配置型参数 {top, left}；</li>
+<li>scrollBy(x, y) 使得页面滚动特定的距离，支持传入配置型参数 {top, left}。</li>
+</ul>
+<p>元素滚动 API(元素滚动 API，在 Element 类上)</p>
+<ul>
+<li>scrollTop 元素的属性，表示 Y 方向上的当前滚动距离。</li>
+<li>scrollLeft 元素的属性，表示 X 方向上的当前滚动距离。</li>
+<li>scrollWidth 元素的属性，表示元素内部的滚动内容的宽度，一般来说会大于等于元素宽度。</li>
+<li>scrollHeight 元素的属性，表示元素内部的滚动内容的高度，一般来说会大于等于元素高度。</li>
+<li>scroll(x, y) 使得元素滚动到特定的位置，有别名 scrollTo，支持传入配置型参数 {top, left}。scrollBy(x, y) 使得元素滚动到特定的位置，支持传入配置型参数 {top, left}。</li>
+<li>scrollIntoView(arg) 滚动元素所在的父元素，使得元素滚动到可见区域，可以通过 arg 来指定滚到中间、开始或者就近。</li>
+</ul>
+<pre><code><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动至 (0, 50)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scrollBy(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动绝对值</span></span><br></pre></td></tr></table></figure></code></pre><h4 id="布局API"><a href="#布局API" class="headerlink" title="布局API"></a>布局API</h4><p>全局尺寸信息</p>
+<ul>
+<li>window.innerHeight, window.innerWidth 这两个属性表示视口的大小。</li>
+<li>window.outerWidth, window.outerHeight 这两个属性表示浏览器窗口占据的大小，很多浏览器没有实现，一般来说这两个属性无关紧要。</li>
+<li>window.devicePixelRatio 这个属性非常重要，表示物理像素和 CSS 像素单位的倍率关系，Retina 屏这个值是 2，后来也出现了一些 3 倍的 Android 屏。</li>
+<li>window.screen （屏幕尺寸相关的信息）<ul>
+<li>window.screen.width, window.screen.height 设备的屏幕尺寸。</li>
+<li>window.screen.availWidth, window.screen.availHeight 设备屏幕的可渲染区域尺寸，一些 Android 机器会把屏幕的一部分预留做固定按钮，所以有这两个属性，实际上一般浏览器不会实现的这么细致。</li>
+<li>window.screen.colorDepth, window.screen.pixelDepth 这两个属性是固定值 24，应该是为了以后预留。</li>
+</ul>
+</li>
+</ul>
+<p>元素的布局信息</p>
+<ul>
+<li>getClientRects(),会返回一个列表，里面包含元素对应的每一个盒所占据的客户端矩形区域，这里每一个矩形区域可以用 x, y, width, height 来获取它的位置和尺寸;</li>
+<li>getBoundingClientRect(),它返回元素对应的所有盒的包裹的矩形区域，需要注意，这个 API 获取的区域会包括当 overflow 为 visible 时的子元素区域。</li>
+</ul>
+<pre><code><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">getClientRects() <span class="comment">// 伪元素不会被计入</span></span><br><span class="line"></span><br><span class="line">getBoundingClientRect()</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerHeight</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().height</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerWidth</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().width</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerHeight</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerWidth</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.devicePixelRatio</span><br></pre></td></tr></table></figure></code></pre><h2 id="所有-API"><a href="#所有-API" class="headerlink" title="所有 API"></a>所有 API</h2><ul>
+<li><a href="https://github.com/Ele-Peng/toy-browser/blob/master/html-apis.html" target="_blank" rel="noopener">完整代码-点击一下</a></li>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week10/WebAPI.xmind" target="_blank" rel="noopener">Web APIs</a></li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://github.com/yangdengcheng/Frontend-01-Template/blob/master/week10/NOTE.md" target="_blank" rel="noopener">杨登程 CSSOM Note</a></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
 ]]></content>
@@ -6433,6 +6548,45 @@ for (let i = 7; i &gt;= 0; i --) {
       </categories>
       <tags>
         <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS: 异步</title>
+    <url>/2020/06/20/JS-%E5%BC%82%E6%AD%A5/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
       </tags>
   </entry>
 </search>
