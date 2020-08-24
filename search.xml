@@ -6605,8 +6605,7 @@ for (let i = 7; i &gt;= 0; i --) {
 </li>
 <li><p>引入  CIE  Lab</p>
 </li>
-<li><p>即使我们可以均匀地修改每组的亮度和饱和度，但这样修改后，由于人眼对不同频率的光的敏感度不同，我们仍然会感觉有的颜色看起来和其他的颜色差距明显，有的颜色还是没那么明显</p>
-</li>
+<li>即使我们可以均匀地修改每组的亮度和饱和度，但这样修改后，由于人眼对不同频率的光的敏感度不同，我们仍然会感觉有的颜色看起来和其他的颜色差距明显，有的颜色还是没那么明显</li>
 </ul>
 <h2 id="CIE-Lab-CIE-Lch"><a href="#CIE-Lab-CIE-Lch" class="headerlink" title="CIE Lab /  CIE Lch"></a>CIE Lab /  CIE Lch</h2><ul>
 <li>RGB -&gt; sRGB -&gt; CIE XYZ色彩空间 -&gt; CIE Lab / Lch</li>
