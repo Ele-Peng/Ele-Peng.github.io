@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>Javascript-convertStringToNumber | Be kind.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="EllePeng">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'hexo-theme-lx',
+    version: '0.3.9',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/css/main.min.css">
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "greenish",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+<div class="single">
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Search..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
+    <span>2020-04-24</span>
+    <h2>Javascript-c...</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/" rel="tag">前端概念</a> <i class="fa fa-tag"></i><a class="tag-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></div>
+    <div class="social-links">
+    <a href="https://github.com/Ele-Peng" target="_blank"><i class="fa fa-github fa-fw"></i></a>
+    <a href="mailto:EllePeng@aliyun.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+    <a href="https://weibo.com/3199262327/profile?topnav=1&amp;wvr=6" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>简单记录一下，Javascript parseInt+parseFloat 内部实现，并实现 convertStringToNumber</li>
+</ul>
+<a id="more"></a>
+<h2 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h2><ul>
+<li>首先我们需要简单梳理一下我们的实现过程，再根据 <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMAScript-262</a> 标准完善实现</li>
+<li>input: @params: { str } 输入需要转换的字符串, { radix } 转换的指定基数</li>
+<li>对 input 的简单处理 StringNumericLiteral<ul>
+<li>规格化 str</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/6f4d129d30fe4d0b45743d72da9760ca14615.png" alt="StringNumericLiteral BNF"><ul>
+<li>将 str 中可能出现的 StrWhiteSpace 去掉<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/3ab76a2ee0627ddeeec42e093ae8307717214.png" alt="StrWhiteSpace BNF"><ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/d9ba181d676994f053ba3ba067279cf48592.png" alt="LineTerminator BNF"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>判断 radix 是否合法，仅支持 Decimal / BinaryInteger / OctalInteger / HexInteger radix<ul>
+<li>Decimal: 10</li>
+<li>BinaryInteger: 2</li>
+<li>OctalInteger: 8</li>
+<li>HexInteger: 16</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>简单算法处理过程<ul>
+<li>十进制数<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/dbb89c490f4cbe92ce1e7b1025912cde51542.png" alt="StrDecimalLiteral BNF"></li>
+<li>处理 Infinity 情况</li>
+<li>符号位处理</li>
+<li>小数点</li>
+<li>科学计数法</li>
+</ul>
+</li>
+<li>二进制数<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/f12e98da62b6529c1d3781a6c1dc36a86760.png" alt="BinaryInteger"></li>
+</ul>
+</li>
+<li>八进制数<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/e11bf633f8350bb17f761b719762ed038371.png" alt="OctalInteger"></li>
+</ul>
+</li>
+<li>十六进制数<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/274e704676b7d52093ac555c4b43f61013946.png" alt="HexInteger"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>output: return number</li>
+</ul>
+<h2 id="详细实践"><a href="#详细实践" class="headerlink" title="详细实践"></a>详细实践</h2><ul>
+<li>根据上面的实践准备</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* @params: &#123; str &#125; 输入需要转换的字符串, &#123; radix &#125; 转换的指定基数</span></span><br><span class="line"><span class="comment">* return: number</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertStringToNumber</span>(<span class="params">str, radix</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> noWhiteSpaceStr = replaceWhiteSpaceInStr(str) <span class="comment">/** 将 str 中的 whitespace 进行匹配 */</span></span><br><span class="line">  <span class="keyword">const</span> checkedRadixStr = formatStrByRadix(str, radix) <span class="comment">/** 将 str 根据指定基数进行转换 */</span></span><br><span class="line">  <span class="keyword">let</span> resNum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">switch</span> (radix) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">10</span>:</span><br><span class="line">      resNum = converStringToDeciaml(str) <span class="comment">/** 将 str 转成十进制 */</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">      resNum = converStringToBinaryInteger(str) <span class="comment">/** 将 str 转成二进制*/</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">      resNum = converStringToOctalInteger(str) <span class="comment">/** 将 str 转成八进制*/</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">16</span>:</span><br><span class="line">      resNum = converStringToHexIntegers(str) <span class="comment">/** 将 str 转成十六进制*/</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">NaN</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resNum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>将 str 中的 whitespace 进行匹配</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* @params: &#123; str &#125; 输入需要替换的字符串</span></span><br><span class="line"><span class="comment">* return: resStr 无 whitespace 字符串</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceWhiteSpaceInStr</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> resStr = str.replace(<span class="regexp">/\s*/g</span>, <span class="string">''</span>) <span class="comment">// 去除空格</span></span><br><span class="line">  <span class="comment">// resStr = resStr.replace(/^[\u000A|\u000D|\u2028|\u2029]/g, '') // 去除 LineTerminator unicode输入方式</span></span><br><span class="line">  resStr =  resStr.replace(<span class="regexp">/[\r|\n]/g</span>, <span class="string">''</span>) <span class="comment">// 去除换行</span></span><br><span class="line">  <span class="keyword">return</span> resStr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>单元测试<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/a70fa86dd4d8261537f8cbf5c0e5bc2c71147.png" alt="单元测试截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>将 str 根据指定基数进行转换</p>
+<ul>
+<li><p><a href="https://ele-peng.github.io/2020/04/20/Reg-Number/" target="_blank" rel="noopener">正则表达式匹配 Number 字面量</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* @params: &#123; str &#125; 输入需要替换的字符串, &#123; radix &#125; 转换的指定基数</span></span><br><span class="line"><span class="comment">* return: resStr 根据指定基数转换过得字符串</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatStrByRadix</span>(<span class="params">str, radix</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> resStr = <span class="string">''</span></span><br><span class="line">  <span class="keyword">let</span> testReg = <span class="literal">null</span></span><br><span class="line">  <span class="keyword">switch</span> (radix) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">10</span>:</span><br><span class="line">      testReg = <span class="regexp">/^((0)|([1-9][0-9]*))?.?([0-9]*)((e|E)?(\+|\-)?([0-9]*))?/</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">      <span class="comment">// 根据 ECMA-262 是 /^0(b|B)(0|1)+$/</span></span><br><span class="line">      <span class="comment">// 但是我在 Chrome 浏览器上测了，二进制没有 'b' or 'B'</span></span><br><span class="line">      testReg = <span class="regexp">/^(0|1)+/</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">      <span class="comment">// 根据 ECMA-262 是 /^0(O|o)[0-7]+$/</span></span><br><span class="line">      <span class="comment">// 但是我在 Chrome 浏览器上测了，二进制没有 'o' or 'O'</span></span><br><span class="line">      testReg = <span class="regexp">/^[0-7]+/</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">16</span>:</span><br><span class="line">      <span class="comment">// 根据 ECMA-262 是 /^0(x|X)([0-9a-fA-F])+/</span></span><br><span class="line">      <span class="comment">// 但是我在 Chrome 浏览器自测中发现，没有表示符 'x' or 'X'也可</span></span><br><span class="line">      testReg = <span class="regexp">/^0(x|X)?([0-9a-fA-F])+/</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`radix: <span class="subst">$&#123;radix&#125;</span>, str:  <span class="subst">$&#123;str&#125;</span> illegal radix`</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  resStr = (testReg.exec(str) &amp;&amp; testReg.exec(str)[<span class="string">'0'</span>]) || <span class="string">'convert fail'</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`radix: <span class="subst">$&#123;radix&#125;</span>, <span class="subst">$&#123;str&#125;</span> --&gt; resStr: `</span>, resStr)</span><br><span class="line">&#125;</span><br><span class="line">formatStrByRadix(<span class="string">'001010101'</span>, <span class="number">3</span>)</span><br><span class="line">formatStrByRadix(<span class="string">'001010101'</span>, <span class="number">2</span>)</span><br><span class="line">formatStrByRadix(<span class="string">'001010101'</span>, <span class="number">8</span>)</span><br><span class="line">formatStrByRadix(<span class="string">'0b01010101'</span>, <span class="number">2</span>)</span><br><span class="line">formatStrByRadix(<span class="string">'012345677'</span>, <span class="number">8</span>)</span><br><span class="line">formatStrByRadix(<span class="string">'012345677'</span>, <span class="number">2</span>)</span><br><span class="line">formatStrByRadix(<span class="string">'0o12345677'</span>, <span class="number">8</span>)</span><br><span class="line">formatStrByRadix(<span class="string">'1.01E+23'</span>, <span class="number">10</span>)</span><br><span class="line">formatStrByRadix(<span class="string">'.012345677'</span>, <span class="number">10</span>)</span><br><span class="line">formatStrByRadix(<span class="string">'.012345677'</span>, <span class="number">10</span>)</span><br><span class="line">formatStrByRadix(<span class="string">'0123acfACF'</span>, <span class="number">16</span>)</span><br><span class="line">formatStrByRadix(<span class="string">'0x123acfACF'</span>, <span class="number">16</span>)</span><br><span class="line">formatStrByRadix(<span class="string">'0x123acfACFG'</span>, <span class="number">16</span>)</span><br></pre></td></tr></table></figure></li>
+<li>单元测试<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/ff9d3e6a3cd279427f8873f91911290774369.png" alt="单元测试"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>根据指定基数进行相应算法转换</p>
+<ul>
+<li><p>二进制：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 将 str 转成二进制</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">converStringToBinaryInteger</span>(<span class="params">str, radix</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> strMultipleRadix(str, radix)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* @params: &#123; str &#125; 输入需要替换的字符串, &#123; radix &#125; 转换的指定基数</span></span><br><span class="line"><span class="comment">* return: resStr 乘以指定基数转换过得字符串</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strMultipleRadix</span>(<span class="params">str, radix</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> tempStrArr = str.split(<span class="string">''</span>)</span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = tempStrArr.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i --) &#123;</span><br><span class="line">    res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>)) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line">converStringToBinaryInteger(<span class="string">'001010101'</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>单元测试<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/5f3f3d1a2d0851eddaa1e258a182831864745.png" alt="单元测试截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>八进制</p>
+<ul>
+<li><p>同上</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将 str 转成八进制</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">converStringToBinaryInteger</span>(<span class="params">str, radix</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> strMultipleRadix(str, radix)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* @params: &#123; str &#125; 输入需要替换的字符串, &#123; radix &#125; 转换的指定基数</span></span><br><span class="line"><span class="comment">* return: resStr 乘以指定基数转换过得字符串</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strMultipleRadix</span>(<span class="params">str, radix</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> tempStrArr = str.split(<span class="string">''</span>)</span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = tempStrArr.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i --) &#123;</span><br><span class="line">    res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>)) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line">converStringToBinaryInteger(<span class="string">'001010101'</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure></li>
+<li>单元测试<ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/e9db13d824513d4e72509cd571f90dc069034.png" alt="单元测试截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>十六进制</p>
+<ul>
+<li><p>需要对 a-f A-F 进行判断，别忘了+10</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将 str 转成十六进制</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">converStringToBinaryInteger</span>(<span class="params">str, radix</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> strMultipleRadix(str, radix)</span><br><span class="line">&#125;</span><br><span class="line">			</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* @params: &#123; str &#125; 输入需要替换的字符串, &#123; radix &#125; 转换的指定基数</span></span><br><span class="line"><span class="comment">* return: resStr 乘以指定基数转换过得字符串</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strMultipleRadix</span>(<span class="params">str, radix</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> tempStrArr = str.split(<span class="string">''</span>)</span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = tempStrArr.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">    <span class="keyword">if</span> (radix === <span class="number">16</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> ((tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>) &gt;= <span class="number">0</span>) &amp;&amp; (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>) &lt; <span class="number">10</span>)) &#123;</span><br><span class="line">        res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>)) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'a'</span>.codePointAt(<span class="number">0</span>) &gt;= <span class="number">0</span>) &amp;&amp; (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'a'</span>.codePointAt(<span class="number">0</span>) &lt; <span class="number">6</span>)) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'(tempStrArr[i].codePointAt(0)a'</span>, tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'a'</span>.codePointAt(<span class="number">0</span>))</span><br><span class="line">        res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'a'</span>.codePointAt(<span class="number">0</span>) + <span class="number">10</span>) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'A'</span>.codePointAt(<span class="number">0</span>) &gt;= <span class="number">0</span>) &amp;&amp; (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'A'</span>.codePointAt(<span class="number">0</span>) &lt; <span class="number">6</span>)) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'(tempStrArr[i].codePointAt(0)A'</span>, tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'A'</span>.codePointAt(<span class="number">0</span>))</span><br><span class="line">        res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'A'</span>.codePointAt(<span class="number">0</span>) + <span class="number">10</span>) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>)) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(converStringToBinaryInteger(<span class="string">'001010101'</span>, <span class="number">16</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToBinaryInteger(<span class="string">'00101acfAFF'</span>, <span class="number">16</span>))</span><br></pre></td></tr></table></figure></li>
+<li>单元测试<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/e2e319f170fe2334f7b589cfc0f77b06205824.png" alt="单元测试截图"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>最终二/八/十六进制根据指定基数进行相应算法转换方法为：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @params: &#123; str &#125; 输入需要替换的字符串, &#123; radix &#125; 转换的指定基数</span></span><br><span class="line"><span class="comment"> * return: resStr 乘以指定基数转换过得字符串</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">strMultipleRadix</span>(<span class="params">str, radix</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">let</span> tempStrArr = str.split(<span class="string">''</span>)</span><br><span class="line">   <span class="keyword">let</span> res = <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = tempStrArr.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">     <span class="keyword">if</span> (radix === <span class="number">16</span>) &#123;</span><br><span class="line">       <span class="keyword">if</span> ((tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>) &gt;= <span class="number">0</span>) &amp;&amp; (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>) &lt; <span class="number">10</span>)) &#123;</span><br><span class="line">         res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>)) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'a'</span>.codePointAt(<span class="number">0</span>) &gt;= <span class="number">0</span>) &amp;&amp; (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'a'</span>.codePointAt(<span class="number">0</span>) &lt; <span class="number">6</span>)) &#123;</span><br><span class="line">         res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'a'</span>.codePointAt(<span class="number">0</span>) + <span class="number">10</span>) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'A'</span>.codePointAt(<span class="number">0</span>) &gt;= <span class="number">0</span>) &amp;&amp; (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'A'</span>.codePointAt(<span class="number">0</span>) &lt; <span class="number">6</span>)) &#123;</span><br><span class="line">         res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'A'</span>.codePointAt(<span class="number">0</span>) + <span class="number">10</span>) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">       &#125;</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>)) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> res</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="转换成十进制"><a href="#转换成十进制" class="headerlink" title="转换成十进制"></a>转换成十进制</h3></li>
+<li><p>实践思路</p>
+<ol>
+<li>判断正负符号位</li>
+<li>判断是否为 Infinity</li>
+<li>判断是否为 整数<ol>
+<li>整数<ol>
+<li>是否为科学计数法表示<ol>
+<li>是，通过指数位置分成两部分：整数部分+指数部分</li>
+<li>否，只需处理整数部分</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>小数<ol>
+<li>是否为科学计数法表示<ol>
+<li>是，通过分割成小数点到指数，分成三部分：整数部分+小数部分+指数部分</li>
+<li>否，通过小数点位置，分成两部分：整数部分+小数部分</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>代码大致为：</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">converStringToDeciaml</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// console.log('str-=-=--=-==-=', str)</span></span><br><span class="line">  <span class="keyword">const</span> sign = getSign(str)</span><br><span class="line">  <span class="keyword">const</span> strFormatBySign = formatStrBySign(str)</span><br><span class="line">  <span class="keyword">if</span> (isInfinity(strFormatBySign)) <span class="keyword">return</span> (<span class="number">1</span> / <span class="number">0</span>) * sign <span class="comment">// 如果为 Inifity,乘以符号位输出Infinity</span></span><br><span class="line">  <span class="keyword">const</span> numberObject = splitStr(strFormatBySign)</span><br><span class="line">  <span class="keyword">const</span> &#123;int, float, exponentSign, exponent&#125; = numberObject</span><br><span class="line">  <span class="comment">// console.log('numberObject', numberObject)</span></span><br><span class="line">  <span class="keyword">const</span> resInt = calculateInt(int) <span class="comment">// 计算整数部分</span></span><br><span class="line">  <span class="comment">// console.log('resInt', resInt)</span></span><br><span class="line">  <span class="keyword">const</span> resFloat = calculateFloat(float) <span class="comment">// 计算小数部分</span></span><br><span class="line">  <span class="comment">// console.log('resFloat', resFloat)</span></span><br><span class="line">  <span class="keyword">const</span> resExponent = calculateExponent(resInt, resFloat, exponentSign, exponent) <span class="comment">// 计算（整数+小数）*  指数部分</span></span><br><span class="line">  <span class="keyword">const</span> res = sign * resExponent <span class="comment">// 最后乘以符号位</span></span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="判断正负，并根据符号位格式化字符串"><a href="#判断正负，并根据符号位格式化字符串" class="headerlink" title="判断正负，并根据符号位格式化字符串"></a>判断正负，并根据符号位格式化字符串</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 获取符号位</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSign</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 如果S的首字符为'-'</span></span><br><span class="line">  <span class="keyword">if</span>(str.indexOf(<span class="string">'-'</span>) == <span class="number">0</span>) &#123; </span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="根据符号位格式化字符串（移除字符号位）"><a href="#根据符号位格式化字符串（移除字符号位）" class="headerlink" title="根据符号位格式化字符串（移除字符号位）"></a>根据符号位格式化字符串（移除字符号位）</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据符号位格式化字符串</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatStrBySign</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 如果 str 的首字符为‘+’或'-'，则移除首字符</span></span><br><span class="line">  <span class="keyword">if</span> (str.indexOf(<span class="string">'-'</span>) == <span class="number">0</span> || str.indexOf(<span class="string">'+'</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">    str = str.substring(<span class="number">1</span>, str.length)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> str</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="判断是否为Infinity"><a href="#判断是否为Infinity" class="headerlink" title="判断是否为Infinity"></a>判断是否为Infinity</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 是否为 Infinity</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isInfinity</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> testReg = <span class="regexp">/^Infinity/</span></span><br><span class="line">  <span class="keyword">let</span> resReg = testReg.exec(str)</span><br><span class="line">  <span class="keyword">return</span> resReg &amp;&amp; resReg[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="切割字符串，分成整数-小数-指数位符号-指数部分"><a href="#切割字符串，分成整数-小数-指数位符号-指数部分" class="headerlink" title="切割字符串，分成整数+小数+指数位符号+指数部分"></a>切割字符串，分成整数+小数+指数位符号+指数部分</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 切割字符串</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* @params: &#123; str &#125; 输入需要切割的字符串</span></span><br><span class="line"><span class="comment">* return: res: Object &#123;</span></span><br><span class="line"><span class="comment">*   int: 整数位,</span></span><br><span class="line"><span class="comment">*   float: 小数位,</span></span><br><span class="line"><span class="comment">*   exponentSign: 指数位符号,</span></span><br><span class="line"><span class="comment">*   exponent: 指数位</span></span><br><span class="line"><span class="comment">* &#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">splitStr</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> testReg = <span class="regexp">/^((0)|([1-9][0-9]*))?.?([0-9]*)(e|E)?((\+|\-)?([0-9]*))?/</span></span><br><span class="line">  <span class="keyword">let</span> resReg = testReg.exec(str)</span><br><span class="line">  <span class="keyword">let</span> res = &#123;</span><br><span class="line">    int: resReg[<span class="string">'1'</span>] || <span class="number">0</span>,</span><br><span class="line">    float: resReg[<span class="string">'4'</span>] || <span class="number">0</span>,</span><br><span class="line">    exponentSign: resReg[<span class="string">'7'</span>] || <span class="string">'+'</span>,</span><br><span class="line">    exponent: resReg[<span class="string">'8'</span>] || <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="整数部分运算"><a href="#整数部分运算" class="headerlink" title="整数部分运算"></a>整数部分运算</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 整数部分运算</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculateInt</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">0</span></span><br><span class="line">  <span class="keyword">const</span> radix = <span class="number">10</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = str.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    res += (str[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>)) * <span class="built_in">Math</span>.pow(radix, str.length - i - <span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="小数部分运算"><a href="#小数部分运算" class="headerlink" title="小数部分运算"></a>小数部分运算</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 小数部分运算</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculateFloat</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">0</span></span><br><span class="line">  <span class="keyword">const</span> radix = <span class="number">10</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">    res += (str[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>)) * <span class="built_in">Math</span>.pow(radix, i * <span class="number">-1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="指数部分运算"><a href="#指数部分运算" class="headerlink" title="指数部分运算"></a>指数部分运算</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 指数部分运算</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculateExponent</span>(<span class="params">int, float, exponentSign, exponent</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// if (float)</span></span><br><span class="line">  <span class="keyword">let</span> str = int + <span class="number">0.1</span> * float</span><br><span class="line">  <span class="keyword">const</span> radix = <span class="number">10</span></span><br><span class="line">  <span class="keyword">const</span> exponentInt = calculateInt(exponent)</span><br><span class="line">  <span class="keyword">if</span> (exponentSign === <span class="string">'+'</span>) &#123;</span><br><span class="line">    str = str * <span class="built_in">Math</span>.pow(radix, exponentInt)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    str = str * <span class="built_in">Math</span>.pow(radix, exponentInt * <span class="number">-1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// console.log('Math.abs(str)', Math.abs(str) -  Math.floor(str))</span></span><br><span class="line">  <span class="comment">// // console.log('Number.EPSILON', Number.EPSILON)</span></span><br><span class="line">  <span class="comment">// if (Math.abs(str) -  Math.floor(str)) &#123;</span></span><br><span class="line">  <span class="comment">//   return str.toFixed(1)</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="keyword">return</span> str</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h4><ul>
+<li>测试用例</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'1.0e+10'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'1.0e+10'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'-1.0e+10'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'-1.0e+10'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'1.012e+10'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'1.012e+10'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'-1.012e+10'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'-1.012e+10'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'.012e+10'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'.012e+10'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'-.012e+10'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'-.012e+10'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'0.12e+10'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'0.12e+10'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'-0.12e+10'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'-0.12e+10'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'1.2e-10'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'1.2e-10'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'-1.2e-10'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'-1.2e-10'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'-1.22'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'-1.22'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'Infinity'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'Infinity'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'Infinity2222'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'Infinity2222'</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">console</span>.log(converStringToDeciaml(<span class="string">'22Infinity2222'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'parseFloat 结果'</span>, <span class="built_in">parseFloat</span>(<span class="string">'22Infinity2222'</span>, <span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试截图</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/f3bc45ab42eea92318ad58711d21a666220332.png" alt="第一部分测试截图"></li>
+<li><img src="http://p1.meituan.net/myvideodistribute/2cf7b8c0ae63f2009cbd77d83dec1e2c176792.png" alt="第二部分测试截图"></li>
+</ul>
+<h2 id="待解决问题"><a href="#待解决问题" class="headerlink" title="待解决问题"></a>待解决问题</h2><ul>
+<li>是的 😭 它的浮点数的舍入，我没有想到好的方法，哭唧唧</li>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week03/convertStringToNumber.html" target="_blank" rel="noopener">代码地址</a></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>等我有空把博客评论搞一下，欢迎大家来告诉我的遗留问题该怎么解决，以及你们在参考我的实现时，有测试用例过不去的地方，也可以评论告诉我，我优化代码。</li>
+<li>大家等不及的话，可以去我的 <a href="https://blog.csdn.net/Elle_Peng/article/details/105748022" target="_blank" rel="noopener">csdn</a> 评论告诉我，卑微小彭，在线求解</li>
+<li>祝大家多多发财</li>
+</ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/25/convertNumberToString/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>convert...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/23/Javascript-Expressions/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Javascr...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Be kind.</a><br>EllePeng
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button> 
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar.jpeg" alt="EllePeng"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>EllePeng</p>
+          <span class="tagline">stay awesome.</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
+    </li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/local.search.js"></script>
+
+</body>
+</html>

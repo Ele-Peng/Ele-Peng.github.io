@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>CSS-排版 | Be kind.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="EllePeng">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'hexo-theme-lx',
+    version: '0.3.9',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/css/main.min.css">
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "greenish",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+<div class="single">
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Search..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
+    <span>2020-05-30</span>
+    <h2>CSS-排版</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/CSS/" rel="tag">CSS</a></div>
+    <div class="social-links">
+    <a href="https://github.com/Ele-Peng" target="_blank"><i class="fa fa-github fa-fw"></i></a>
+    <a href="mailto:EllePeng@aliyun.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+    <a href="https://weibo.com/3199262327/profile?topnav=1&amp;wvr=6" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>CSS 排版相关知识</li>
+<li>CSS 属性<ul>
+<li>排版</li>
+<li>渲染</li>
+<li>交互</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="盒（Box）"><a href="#盒（Box）" class="headerlink" title="盒（Box）"></a>盒（Box）</h2><ul>
+<li>源代码 - 标签 - tag</li>
+<li>语义 - 元素 - element</li>
+<li>表现 - 盒 - box</li>
+<li>基本元素 盒 + 文字</li>
+<li>排版和渲染的基本单位是盒</li>
+<li>CSS 在排版时可能产生多个盒</li>
+</ul>
+<h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><ul>
+<li>【未完】box-sizing: 为什么没有 margin-box</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/1ed695c617e6c1ac8ba2b6650d5bb2c5220253.png" alt="盒模型"></li>
+</ul>
+<h2 id="正常流"><a href="#正常流" class="headerlink" title="正常流"></a>正常流</h2><h3 id="正常流排版"><a href="#正常流排版" class="headerlink" title="正常流排版"></a>正常流排版</h3><h3 id="正常流的行模型"><a href="#正常流的行模型" class="headerlink" title="正常流的行模型"></a>正常流的行模型</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"font-size:50px;line-height:100px;background-color:pink;"</span>&gt;</span></span><br><span class="line">	Hello</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"line-height:70px;width:100px;height:150px;background-color:aqua;display:inline-block"</span>&gt;</span>world!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行截图<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/2e8597eb317b1096396a1b7ebfa335bb188008.png" alt="运行截图"></li>
+</ul>
+</li>
+<li>发现，即使行高不一致， Hello 与 world！ 也基于 baseline 对齐</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"font-size:50px;line-height:100px;background-color:pink;"</span>&gt;</span></span><br><span class="line">	Hello</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"line-height:70px;width:100px;height:150px;background-color:aqua;display:inline-block"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行截图<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/cdac1ebe861651fc773f462496bcaa58175250.png" alt="运行截图"></li>
+</ul>
+</li>
+<li>发现，当没有内容时，使用盒子 bottom 对齐 文字 baseline</li>
+<li>所以一般要给盒子设置 vertical-align: bottom / top</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"font-size:50px;line-height:100px;background-color:pink;"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- &lt;div style="vertical-align:baseline;overflow:visible;display: inline-block;width:1px;;height:1px;background:red;"&gt;</span></span><br><span class="line"><span class="comment">    &lt;div style="width:1000px;;height:1px;background:red;"&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="comment">  &lt;/div&gt; --&gt;</span></span><br><span class="line">	Hello</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"vertical-align:bottom;line-height:70px;width:100px;height:150px;background-color:aqua;display:inline-block"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"vertical-align:top;line-height:70px;width:100px;height:50px;background-color:aqua;display:inline-block"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"vertical-align:bottom;line-height:70px;width:100px;height:200px;background-color:plum;display:inline-block"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行截图<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/368d5d1389c38ac68370ed80b6f22cf4231244.png" alt="运行截图"></li>
+</ul>
+</li>
+<li>可以发现 vertical-aign 与 line-height 高度设定无关，与最终被撑开的盒子高度有关</li>
+<li>没有设定 vertical-align 如果超过 line-height 始终与最高元素的对齐方式保持一致</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=<span class="string">"font-size:50px;line-height:100px;background-color:pink;"</span>&gt;</span><br><span class="line">  &lt;div style=<span class="string">"vertical-align:text-bottom;overflow:visible;display:inline-block;width:1px;height:1px;background:red;"</span>&gt;</span><br><span class="line">    &lt;div style=<span class="string">"width:1000px;;height:1px;background:red;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">  &lt;div style=<span class="string">"vertical-align:text-top;overflow:visible;display:inline-block;width:1px;height:1px;background:red;"</span>&gt;</span><br><span class="line">    &lt;div style=<span class="string">"width:1000px;;height:1px;background:red;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">	Hello</span><br><span class="line">  &lt;div style=<span class="string">"vertical-align:text-top;line-height:70px;width:100px;height:50px;background-color:aqua;display:inline-block"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;div style="vertical-align:text-top;line-height:70px;width:100px;height:150px;background-color:aqua;display:inline-block"&gt;&lt;/</span>div&gt;</span><br><span class="line">  &lt;div style=<span class="string">"vertical-align:text-bottom;line-height:70px;width:100px;height:200px;background-color:plum;display:inline-block"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行截图<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/9b109f5fd664383e3df90e99684c3e44251251.png" alt="运行截图"></li>
+</ul>
+</li>
+<li>当我们把 vertical-align 设置成 text-top / text-bottom 我们可以发现，上边缘是由 text-top 元素撑开，下边缘是由 text-bottom 元素撑开的</li>
+<li>正常流交叉轴的 crossBase = 上边缘 + 下边缘 - text高度</li>
+<li>vertical-align: baseline，是拿自己的 baseline 去对其行的 baseline </li>
+<li>vertical-align: top，middle，bottom，是拿自己的 ”顶部“ “中线” ”底部“ 去对其行的 ”顶部“ “中线” ”底部“ </li>
+<li>vertical-align: text-top，text-bottom，是拿自己的 ”顶部“ ”底部“ 去对齐行的 text-top 和 text-bottom </li>
+<li>结论：<strong>正常流的行模型推荐 vertical-align: top/bottom/middle</strong></li>
+</ul>
+<h3 id="正常流的三大难题"><a href="#正常流的三大难题" class="headerlink" title="正常流的三大难题"></a>正常流的三大难题</h3><ul>
+<li><p>overflow:visible 与 BFC</p>
+</li>
+<li><p>margin collapse</p>
+<ul>
+<li><a href="https://www.w3.org/TR/CSS2/visuren.html#block-formatting" target="_blank" rel="noopener">W3 BFC</a></li>
+<li><img src="http://p0.meituan.net/myvideodistribute/fb01ede731f8f6ceb2f700f2b73cf681228107.png" alt="BFC conception"></li>
+<li><img src="http://p0.meituan.net/myvideodistribute/9e455229b4b2a2214199f9754a4b022c290880.png" alt="BFC margin collapse"><ul>
+<li>我们可以看到在 BFC 中 发生了 margin collapse</li>
+</ul>
+</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/77ea7124c4f4e610b397483990fd009c222906.png" alt="new BFC margin collapse"><ul>
+<li>在这里，我们将 4、5 用一个 div 框起来，设置 overflow other than visible 在新的 div 里形成一个新的 BFC</li>
+<li>BFC 与 BFC 之间不发生 margin collapse</li>
+</ul>
+</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/b85b5b56118aaa06c6c1eb1d67d1d565238437.png" alt="BFC V3"><ul>
+<li>我们在 div 里新建的 BFC ,里面发生 margin collapse，margin-top: 20px;</li>
+<li>div 所处外面同一级 BFC ，也发生 margin collapse， 变成 50px;</li>
+</ul>
+</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/a7eb565313d603a0440434d2c3aaed71220282.png" alt="BFC V4"><ul>
+<li>将 overflow: visible 后，整个 div 就像不存在一样，没有影响，产生 margin collaps</li>
+</ul>
+</li>
+<li><img src="http://p1.meituan.net/myvideodistribute/ce562c00cac00a70bfa7ea23851785d2234933.png" alt="BFC V5"><ul>
+<li>但我们增加 margin-top: 50px 后，奇怪的事情发生了</li>
+</ul>
+</li>
+<li><strong>overflow: visible 是特例，里面是 block, 外面也是 block, 会合并成一个 block</strong></li>
+<li><strong>Block-level boxes that are also block containers are called block boxes.</strong><ul>
+<li>flex inline-flex</li>
+<li>table inline-table</li>
+<li>grid inline-grid</li>
+<li>block inlie-block</li>
+<li><strong>block containers: block inline-block</strong><ul>
+<li>表示可以容纳bfc</li>
+</ul>
+</li>
+<li><strong>Block-level boxes: flex table grid block</strong><ul>
+<li>表示可以被放入bfc</li>
+</ul>
+</li>
+<li><strong>Block boxes</strong><ul>
+<li>block-box = block-level + block-container</li>
+<li>block-box 如果 overflow 是 visible， 那么就跟父bfc合并</li>
+</ul>
+</li>
+<li>只要包含正常流，都会产生 BFC, 剩下的都是由一些奇怪的 display, 最子一级元素也会产生 BFC ，like flex-item table-cell</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>float 与 clear</p>
+</li>
+</ul>
+<h2 id="Flex"><a href="#Flex" class="headerlink" title="Flex"></a>Flex</h2><h3 id="Flex-排版"><a href="#Flex-排版" class="headerlink" title="Flex 排版"></a>Flex 排版</h3><ul>
+<li>收集盒进行</li>
+<li>计算盒在主轴方向的排布</li>
+<li>计算盒在交叉轴方向的排布</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/06/02/2020%E5%B9%B4%E7%AC%AC23%E5%91%A8%E6%88%91%E5%9C%A8%E8%AF%BB%E4%BB%80%E4%B9%88/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>2020年第2...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/05/29/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>CSS-选择器</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Be kind.</a><br>EllePeng
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button> 
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar.jpeg" alt="EllePeng"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>EllePeng</p>
+          <span class="tagline">stay awesome.</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
+    </li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/local.search.js"></script>
+
+</body>
+</html>
