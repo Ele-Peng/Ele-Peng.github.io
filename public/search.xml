@@ -6590,9 +6590,9 @@ for (let i = 7; i &gt;= 0; i --) {
       </tags>
   </entry>
   <entry>
-    <title>颜色空间</title>
+    <title>色彩空间</title>
     <url>/2020/08/23/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/</url>
-    <content><![CDATA[<h1 id="颜色空间"><a href="#颜色空间" class="headerlink" title="颜色空间"></a>颜色空间</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h2 id="加色法混色模型-RGB-与-减色法混色模型-CMYK"><a href="#加色法混色模型-RGB-与-减色法混色模型-CMYK" class="headerlink" title="加色法混色模型 RGB 与 减色法混色模型 CMYK"></a>加色法混色模型 RGB 与 减色法混色模型 CMYK</h2><ul>
+    <content><![CDATA[<h1 id="色彩空间"><a href="#色彩空间" class="headerlink" title="色彩空间"></a>色彩空间</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h2 id="加色法混色模型-RGB-与-减色法混色模型-CMYK"><a href="#加色法混色模型-RGB-与-减色法混色模型-CMYK" class="headerlink" title="加色法混色模型 RGB 与 减色法混色模型 CMYK"></a>加色法混色模型 RGB 与 减色法混色模型 CMYK</h2><ul>
 <li>过渡到 HSV HSL </li>
 <li>rgb 对色彩的描述，对计算机友好，但不够人性化，我们对色彩的认识往往先是：颜色是什么，鲜艳不鲜艳，亮还是暗</li>
 </ul>
@@ -6608,5 +6608,12 @@ for (let i = 7; i &gt;= 0; i --) {
 <li>RGB -&gt; sRGB -&gt; CIE XYZ色彩空间 -&gt; CIE Lab / Lch</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>WebGL</category>
+      </categories>
+      <tags>
+        <tag>writing</tag>
+        <tag>WebGL</tag>
+      </tags>
   </entry>
 </search>
