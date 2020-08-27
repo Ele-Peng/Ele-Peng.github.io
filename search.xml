@@ -6855,15 +6855,18 @@
 </style>
 
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>对自己的技能书进行简单梳理</li>
+<li>对自己的技能树进行简单梳理</li>
 </ul>
 <a id="more"></a>
+
 <h2 id="编程通识-week01-02"><a href="#编程通识-week01-02" class="headerlink" title="编程通识 week01 ~ 02"></a>编程通识 week01 ~ 02</h2><ul>
-<li>从产生式的角度来理解编程语言<ul>
+<li><p>从产生式的角度来理解编程语言</p>
+<ul>
 <li><a href="https://ele-peng.github.io/2020/04/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%80%9A%E8%AF%86/" target="_blank" rel="noopener">编程语言通识</a></li>
 </ul>
 </li>
-<li>依据产生式，利用正则表达式来匹配 字符串/Number字面量<ul>
+<li><p>依据产生式，利用正则表达式来匹配 字符串/Number字面量</p>
+<ul>
 <li><a href="https://ele-peng.github.io/2020/04/20/Reg-Number/" target="_blank" rel="noopener">Reg-Number</a></li>
 <li><a href="https://ele-peng.github.io/2020/04/21/Reg-String/" target="_blank" rel="noopener">Reg-String</a></li>
 </ul>
