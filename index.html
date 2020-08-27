@@ -179,46 +179,8 @@
 <li>【未完实例】</li>
 </ul>
 </li>
-<li>appendChild</li>
-<li>insertBefore</li>
-<li>removeChild</li>
-<li>replaceChild</li>
-</ul>
-<h3 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h3><ul>
-<li>compareDocumentPosition 是一个用于比较两个节点中关系的函数</li>
-<li>contains 检查一个节点是否包含另一个节点的函数</li>
-<li>isEqualNode 检查两个节点是否完全相同</li>
-<li>isSameNode 检查两个节点是否是同一个节点，实际上在 JS 中可以用 ===</li>
-<li>cloneNode 复制一个节点，如果传入参数 true，则会连同子元素做深拷贝</li>
-</ul>
-<h2 id="Event-冒泡与捕获"><a href="#Event-冒泡与捕获" class="headerlink" title="Event: 冒泡与捕获"></a>Event: 冒泡与捕获</h2><ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">addEventListener MDN</a></li>
-</ul>
-<h2 id="Range-API"><a href="#Range-API" class="headerlink" title="Range API"></a>Range API</h2><h4 id="把一个元素的所有子元素逆序"><a href="#把一个元素的所有子元素逆序" class="headerlink" title="把一个元素的所有子元素逆序"></a>把一个元素的所有子元素逆序</h4><h3 id="Range-用法"><a href="#Range-用法" class="headerlink" title="Range 用法"></a>Range 用法</h3><ul>
-<li>var range = new Range()</li>
-<li>range.setStart(element, 9)</li>
-<li>range.setEnd(element, 4)</li>
-<li>var range = document.getSelection().getRangeAt(0)</li>
-<li>var fragment = range.extractContents()</li>
-<li>range.insertNode(document.createTextNode(“aaa”))</li>
-</ul>
-<h3 id="Range-API-1"><a href="#Range-API-1" class="headerlink" title="Range API"></a>Range API</h3><ul>
-<li>range.setStartBefore</li>
-<li>range.setEndBefore</li>
-<li>range.setStartAfter</li>
-<li>range.setEndAfter</li>
-<li>range.selectNode</li>
-<li>range.selectNodeContents</li>
-<li>结论：range 更为精细操作 DOM，批量操作 DOM</li>
-</ul>
-<h2 id="CSSOM"><a href="#CSSOM" class="headerlink" title="CSSOM"></a>CSSOM</h2><h3 id="document-styleSheets"><a href="#document-styleSheets" class="headerlink" title="document.styleSheets"></a>document.styleSheets</h3><ul>
-<li>document.styleSheets</li>
-<li>案例</li>
-</ul>
-<h3 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h3><ul>
-<li>document.styleSheets[0].cssRules</li>
-<li>document.styleSheets[0].insertRule(“p{color: pink;}”, 0)</li>
-<li>document.styleSheets[0].removeRule(0)</li>
+<li><p>即使我们可以均匀地修改每组的亮度和饱和度，但这样修改后，由于人眼对不同频率的光的敏感度不同，我们仍然会感觉有的颜色看起来和其他的颜色差距明显，有的颜色还是没那么明显</p>
+</li>
 </ul>
 <h3 id="Rule"><a href="#Rule" class="headerlink" title="Rule"></a>Rule</h3><ul>
 <li>CSSStyleRule<ul>
@@ -249,7 +211,7 @@
 <li>祝大家多多发财</li>
 </ul>
 </p>
-      <div class="post-button"><a class="btn" href="/2020/06/06/HTML-XML%E4%B8%8ESGML/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+      <div class="post-button"><a class="btn" href="/2020/08/23/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -299,8 +261,8 @@
 <li>这是一个新的分类，阅读对我来说是一件私密的事</li>
 <li>但周一读完了《契诃夫的一生》有点点零碎的情感</li>
 </ul>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></p>
-      <div class="post-button"><a class="btn" href="/2020/06/02/2020%E5%B9%B4%E7%AC%AC23%E5%91%A8%E6%88%91%E5%9C%A8%E8%AF%BB%E4%BB%80%E4%B9%88/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+</p>
+      <div class="post-button"><a class="btn" href="/2020/06/20/JS-%E5%BC%82%E6%AD%A5/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -316,7 +278,7 @@
 </ul>
 </li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/30/CSS-%E6%8E%92%E7%89%88/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+      <div class="post-button"><a class="btn" href="/2020/06/06/HTML-XML%E4%B8%8ESGML/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -355,7 +317,19 @@
 <li>本来这个很早就能写完的，周五学了个空翻，周六去上了个身体开发基础课，然后全身酸痛，酸痛到起床都起不来的那种，就拖了两天</li>
 <li>但我至少没有鸽掉 嘻嘻嘻 【手动狗头</li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/29/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+      <div class="post-button"><a class="btn" href="/2020/06/06/CSS-%E5%8A%A8%E7%94%BB%E4%B8%8E%E7%BB%98%E5%88%B6/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
+      <h2 class="title"><a href="/2020/06/02/2020%E5%B9%B4%E7%AC%AC23%E5%91%A8%E6%88%91%E5%9C%A8%E8%AF%BB%E4%BB%80%E4%B9%88/">2020年第23周我在读什么</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-06-02 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></span>
+      <p><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>这是一个新的分类，阅读对我来说是一件私密的事</li>
+<li>但周一读完了《契诃夫的一生》有点点零碎的情感</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2></p>
+      <div class="post-button"><a class="btn" href="/2020/06/02/2020%E5%B9%B4%E7%AC%AC23%E5%91%A8%E6%88%91%E5%9C%A8%E8%AF%BB%E4%BB%80%E4%B9%88/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -391,7 +365,7 @@
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>整理一下平时所学+所用到的 CSS 基本语法</li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/24/CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E6%9C%BA%E5%88%B6/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/30/CSS-%E6%8E%92%E7%89%88/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -429,7 +403,7 @@
 <li>最末篇：浏览器的绘制，完结 toy-browser ✊</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/5c3903a71266e72d2e3f21a276c0efad94997.png" alt="DOM with Position"></li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/24/Toy-Browser-DAY5/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/29/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -467,7 +441,7 @@
 <li>嘻嘻嘻，我们将要在做 toy-browser 浏览器相关排版问题啦</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/6d5c67d3d5d0633bf667bd680f6dfb9489753.png" alt="DOM with CSS"></li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/22/Toy-Browser-DAY4/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/24/CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E6%9C%BA%E5%88%B6/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -503,9 +477,10 @@
 
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>implementation of a toy-browser 🙆</li>
-<li>我们开始进入到 CSS Computing 啦！！！😘</li>
-<li><img src="http://p0.meituan.net/myvideodistribute/4bb352346db82d88a68035a6ddad906c81827.png" alt="CSS Computing"></p>
-      <div class="post-button"><a class="btn" href="/2020/05/17/Toy-Browser-DAY3/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+<li>最末篇：浏览器的绘制，完结 toy-browser ✊</li>
+<li><img src="http://p0.meituan.net/myvideodistribute/5c3903a71266e72d2e3f21a276c0efad94997.png" alt="DOM with Position"></li>
+</ul></p>
+      <div class="post-button"><a class="btn" href="/2020/05/24/Toy-Browser-DAY5/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
   <div class="lx-entry padding">
@@ -547,7 +522,7 @@
 </ul>
 </li>
 </ul></p>
-      <div class="post-button"><a class="btn" href="/2020/05/16/%E5%9F%BA%E4%BA%8EKMP%E7%9A%84FSM%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+      <div class="post-button"><a class="btn" href="/2020/05/22/Toy-Browser-DAY4/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
     </div>
   </div>
 
@@ -593,7 +568,7 @@
     <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
     <li class="has-sub"><span class="dropdown-heading">
       <i class="fa fa-th-list fa-fw"></i>分类</span>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WebGL/">WebGL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
