@@ -7,6 +7,8 @@ categories:
 - HTML
 description:
 - HTML
+
+
 ---
 
 
@@ -49,8 +51,8 @@ description:
 	- [https://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent](https://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent)
 		- \&nbsp; \u00A0 " " (no-break space = non-breaking space)
 		- \<!ENTITY nbsp    "\&#160;"\> \<!-- no-break space = non-breaking space, U+00A0 ISOnum --\>
-	- [https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent](https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent)
-	- [https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent](https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent)
+	- [https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent](https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent) Mathematical, Greek and Symbolic characters for XHTML
+	- [https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent](https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent) Special characters for XHTML
 		- html 属性中不能使用 \", 需要转义
 			- \<!ENTITY quot    "\&#34;"\> \<!--  quotation mark, U+0022 ISOnum --\> \"
 		- html 中不能使用 \&, 需要转义
