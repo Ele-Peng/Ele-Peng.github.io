@@ -133,11 +133,16 @@
 <li><img src="http://p0.meituan.net/myvideodistribute/5c3903a71266e72d2e3f21a276c0efad94997.png" alt="DOM with Position"></li>
 </ul>
 <a id="more"></a>
+
 <h2 id="第一步：绘制单个元素"><a href="#第一步：绘制单个元素" class="headerlink" title="第一步：绘制单个元素"></a>第一步：绘制单个元素</h2><ul>
-<li>绘制需要依赖一个图形环境</li>
-<li>这里采用 npm package — images</li>
-<li>绘制先在一个 viewport 上进行</li>
-<li>暂时只处理绘制属性：background-color</li>
+<li><p>绘制需要依赖一个图形环境</p>
+</li>
+<li><p>这里采用 npm package – images</p>
+</li>
+<li><p>绘制先在一个 viewport 上进行</p>
+</li>
+<li><p>暂时只处理绘制属性：background-color</p>
+</li>
 <li><p>render1.js</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> images = <span class="built_in">require</span>(<span class="string">'images'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">viewport, element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (element.style) &#123;</span><br><span class="line">    <span class="keyword">const</span> img = images(element.style.width, element.style.height)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (element.style[<span class="string">"background-color"</span>]) &#123;</span><br><span class="line">      <span class="keyword">let</span> color = element.style[<span class="string">"background-color"</span>] || <span class="string">"rgb(0,0,0)"</span></span><br><span class="line">      color.match(<span class="regexp">/rgb\((\d+),(\d+),(\d+)\)/</span>)</span><br><span class="line">      <span class="comment">// .fill(red, green, blue[, alpha])</span></span><br><span class="line">      img.fill(<span class="built_in">Number</span>(<span class="built_in">RegExp</span>.$<span class="number">1</span>), <span class="built_in">Number</span>(<span class="built_in">RegExp</span>.$<span class="number">2</span>), <span class="built_in">Number</span>(<span class="built_in">RegExp</span>.$<span class="number">3</span>), <span class="number">1</span>)</span><br><span class="line">      viewport.draw(img, element.style.left || <span class="number">0</span>, element.style.top || <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = render</span><br></pre></td></tr></table></figure>
 </li>
@@ -153,12 +158,16 @@
 </li>
 </ul>
 <h2 id="第二步：绘制-DOM"><a href="#第二步：绘制-DOM" class="headerlink" title="第二步：绘制 DOM"></a>第二步：绘制 DOM</h2><ul>
-<li>递归调用子元素的绘制方法完成 DOM 树的构建</li>
+<li><p>递归调用子元素的绘制方法完成 DOM 树的构建</p>
+</li>
 <li><p>render2.js</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> images = <span class="built_in">require</span>(<span class="string">'images'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">viewport, element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (element.style) &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// some code</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (element.children) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> child <span class="keyword">of</span> element.children) &#123;</span><br><span class="line">      render(viewport, child)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = render</span><br></pre></td></tr></table></figure></li>
-<li>忽略一些不需要绘制的节点</li>
-<li>实际浏览器中，文字绘制是难点，需要依赖字体库，这里忽略</li>
-<li>实际浏览器中，还会对一些图层做 compositing，这里忽略</li>
+<li><p>忽略一些不需要绘制的节点</p>
+</li>
+<li><p>实际浏览器中，文字绘制是难点，需要依赖字体库，这里忽略</p>
+</li>
+<li><p>实际浏览器中，还会对一些图层做 compositing，这里忽略</p>
+</li>
 <li><p>server.js 将response Content-Type 设置为 text/html</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// some code</span></span><br><span class="line"></span><br><span class="line">res.writeHead(<span class="number">200</span>, &#123; <span class="string">'Content-Type'</span>: <span class="string">'text/html'</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// some code</span></span><br></pre></td></tr></table></figure>
 </li>
