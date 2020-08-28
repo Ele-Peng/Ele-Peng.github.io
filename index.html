@@ -138,9 +138,102 @@
   </div>
   <div class="lx-entry padding">
     <div>
+      <h2 class="title"><a href="/2020/08/26/Fibonacci/">Fibonacci</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-08-26 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span>
+      <p><style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/Fibonacci_number" target="_blank" rel="noopener">Fibonacci numbers</a></li>
+<li>斐波那契数列特点：<ul>
+<li>F<sub>0</sub> = 0,F<sub>1</sub> = 1;</li>
+<li>F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>;</li>
+<li>such as:<ul>
+<li>0, 1, 1, 2, 3, 5, 8, 13, 21 …</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="基础实现：递归实现"><a href="#基础实现：递归实现" class="headerlink" title="基础实现：递归实现"></a>基础实现：递归实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 递归 Time: O(2^n) Space: O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.max(n, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="初级实现：简单-for-循化实现"><a href="#初级实现：简单-for-循化实现" class="headerlink" title="初级实现：简单 for 循化实现"></a>初级实现：简单 for 循化实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 循环 Time: O(n) Space: O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.max(n, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> res = [<span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt; n; i ++) &#123;</span><br><span class="line">    res.push(res[i - <span class="number">1</span>] + res[i - <span class="number">2</span>])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res[n - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="中级实现：简单-for-循化实现"><a href="#中级实现：简单-for-循化实现" class="headerlink" title="中级实现：简单 for 循化实现"></a>中级实现：简单 for 循化实现</h2><pre><code class="lang-javascript">// 递归优化，跳过计算过的中间变量 Time: O(n) Space: O(n)
+{
+  let res = [0]
+  function fibonacci(n) {
+    if (n &lt;= 1) {
+      return res[n] = Math.max(n, 0);
+    }
+    if (res[n]) {
+      return res[n];
+    }
+    res[n] = fibonacci(n - 1) + fibonacci(n - 2);
+    return res[n]
+  }
+  // 求数组第十项的值
+  fibonacci(9)
+}
+</code></pre>
+<h2 id="高级实现：矩阵乘法-快速幂"><a href="#高级实现：矩阵乘法-快速幂" class="headerlink" title="高级实现：矩阵乘法 + 快速幂"></a>高级实现：矩阵乘法 + 快速幂</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+</p>
+      <div class="post-button"><a class="btn" href="/2020/08/26/Fibonacci/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
       <h2 class="title"><a href="/2020/08/23/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/">色彩空间</a></h2>
       <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-08-23 | <i class="fa fa-folder-o"></i> <a class="category-link" href="/categories/WebGL/">WebGL</a></span>
-      <p><h1 id="色彩空间"><a href="#色彩空间" class="headerlink" title="色彩空间"></a>色彩空间</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
+      <p><style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>提到色彩，刚有辨知能力的小朋友，也能说上几句～</li>
 <li>那我们前端工程师，无论工作还是生活，每天都在与各种色彩打交道，那更有必要系统地了解关于色彩方面的知识</li>
 </ul>
@@ -184,6 +277,9 @@
 </ul>
 <h3 id="CSSOM-View"><a href="#CSSOM-View" class="headerlink" title="CSSOM View"></a>CSSOM View</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> childWindow = <span class="built_in">window</span>.open(<span class="string">"about:blank"</span>, <span class="string">"_blank"</span>, <span class="string">"width=100,height=100,left=100,top=100"</span>)</span><br><span class="line"></span><br><span class="line">childWindow.moveBy(<span class="number">-50</span>, <span class="number">-50</span>)</span><br><span class="line"></span><br><span class="line">childWindow.resizeBy(<span class="number">50</span>, <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scroll(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动至 (0, 50)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.scrollBy(<span class="number">0</span>, <span class="number">50</span>) <span class="comment">// 滚动绝对值</span></span><br><span class="line"></span><br><span class="line">getClientRects() <span class="comment">// 伪元素不会被计入</span></span><br><span class="line"></span><br><span class="line">getBoundingClientRect()</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerHeight</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().height</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.innerWidth</span><br><span class="line"><span class="comment">// 等同于 document.documentElement.getBoundingClientRect().width</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerHeight</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.outerWidth</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.devicePixelRatio</span><br></pre></td></tr></table></figure>
 <h2 id="所有-API"><a href="#所有-API" class="headerlink" title="所有 API"></a>所有 API</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
 </p>

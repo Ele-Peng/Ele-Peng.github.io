@@ -6798,7 +6798,32 @@
   <entry>
     <title>色彩空间</title>
     <url>/2020/08/23/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/</url>
-    <content><![CDATA[<h1 id="色彩空间"><a href="#色彩空间" class="headerlink" title="色彩空间"></a>色彩空间</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
 <li>提到色彩，刚有辨知能力的小朋友，也能说上几句～</li>
 <li>那我们前端工程师，无论工作还是生活，每天都在与各种色彩打交道，那更有必要系统地了解关于色彩方面的知识</li>
 </ul>
@@ -6811,11 +6836,13 @@
 </li>
 <li><p>引入  CIE  Lab</p>
 </li>
-<li><p>即使我们可以均匀地修改每组的亮度和饱和度，但这样修改后，由于人眼对不同频率的光的敏感度不同，我们仍然会感觉有的颜色看起来和其他的颜色差距明显，有的颜色还是没那么明显</p>
-</li>
+<li>即使我们可以均匀地修改每组的亮度和饱和度，但这样修改后，由于人眼对不同频率的光的敏感度不同，我们仍然会感觉有的颜色看起来和其他的颜色差距明显，有的颜色还是没那么明显</li>
 </ul>
 <h2 id="CIE-Lab-CIE-Lch"><a href="#CIE-Lab-CIE-Lch" class="headerlink" title="CIE Lab /  CIE Lch"></a>CIE Lab /  CIE Lch</h2><ul>
 <li>RGB -&gt; sRGB -&gt; CIE XYZ色彩空间 -&gt; CIE Lab / Lch</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
 </ul>
 ]]></content>
       <categories>
