@@ -47,6 +47,8 @@ description:
 	-  such as:
 		- 0, 1, 1, 2, 3, 5, 8, 13, 21 ...
 
+<!-- more -->
+
 ## 基础实现：递归实现
 
 ```javascript
