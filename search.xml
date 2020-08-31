@@ -6824,14 +6824,20 @@
 </style>
 
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>提到色彩，刚有辨知能力的小朋友，也能说上几句～</li>
-<li>那我们前端工程师，无论工作还是生活，每天都在与各种色彩打交道，更有必要系统地了解关于色彩方面的知识</li>
-<li>本文将从前端角度，聊聊色彩空间</li>
+<li><p>提到色彩，刚有辨知能力的小朋友，也能说上几句～</p>
+</li>
+<li><p>那我们前端工程师，无论工作还是生活，每天都在与各种色彩打交道，更有必要系统地了解关于色彩方面的知识</p>
+</li>
+<li><p>本文将从前端角度，聊聊色彩空间</p>
+</li>
 <li><p>根据 <a href="https://www.w3.org/TR/css-color-4/" target="_blank" rel="noopener">CSS Color Module Level 4</a> 标准</p>
   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;color&gt; &#x3D; &lt;hex-color&gt; | &lt;named-color&gt; | currentcolor | transparent</span><br><span class="line">          &lt;rgb()&gt; | &lt;rgba()&gt; | &lt;hsl()&gt; | &lt;hsla()&gt; | &lt;hwb()&gt; |</span><br><span class="line">          &lt;lab()&gt; | &lt;lch()&gt; | &lt;gray()&gt; |</span><br><span class="line">          &lt;color()&gt; | &lt;device-cmyk()&gt; |</span><br><span class="line">          &lt;system-color&gt;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <a id="more"></a>
+
+
 <h2 id="named-color"><a href="#named-color" class="headerlink" title="named-color"></a>named-color</h2><ul>
 <li><a href="https://www.w3.org/TR/css-color-4/#named-color" target="_blank" rel="noopener">#named-color</a></li>
 </ul>
@@ -6848,6 +6854,8 @@
 <li><a href="https://github.com/Ele-Peng/data-visualization/blob/master/color/CSS-Color-Module-Level-4-demo-3.html" target="_blank" rel="noopener">&lt;color&gt; = &lt;system-color&gt;小例子</a></li>
 </ul>
 <!-- 这些零散的 css color 属性值简单介绍到这，后面我们系统的介绍下，剩下的几种色彩分类 -->
+
+
 <h2 id="加色法混色模型-RGB-与-减色法混色模型-CMYK"><a href="#加色法混色模型-RGB-与-减色法混色模型-CMYK" class="headerlink" title="加色法混色模型 RGB 与 减色法混色模型 CMYK"></a>加色法混色模型 RGB 与 减色法混色模型 CMYK</h2><h3 id="减色法混色模型-CMYK"><a href="#减色法混色模型-CMYK" class="headerlink" title="减色法混色模型 CMYK"></a>减色法混色模型 <a href="https://zh.wikipedia.org/wiki/%E5%8D%B0%E5%88%B7%E5%9B%9B%E5%88%86%E8%89%B2%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">CMYK</a></h3><ul>
 <li>C - <strong>C</strong>yan - 青色</li>
 <li>M - <strong>M</strong>agenta - 红色</li>
@@ -6879,6 +6887,7 @@
 </li>
 </ul>
 <!-- 过渡到 HSV HSL -->
+
 <h2 id="HSL-HSB-amp-HSV"><a href="#HSL-HSB-amp-HSV" class="headerlink" title="HSL HSB&amp;HSV"></a>HSL HSB&amp;HSV</h2><ul>
 <li>CSS 和 Canvas2D 都可以直接支持 HSL 颜色，只有 WebGL 需要做 RGB2HSV 转换。</li>
 </ul>
@@ -6888,12 +6897,12 @@
 <li>在实际应用中，我们需要记住色相环上的六大主色，用作基本参照：360°/0°红、60°黄、120°绿、180°青、240°蓝、300°洋红，它们在色相环上按照60°圆心角的间隔排列。</li>
 </ul>
 <p><img src="http://p0.meituan.net/myvideodistribute/01ed240165965600fde0a031d193f8c6325809.png" alt="HSL 色相环"></p>
-<h4 id="S-Saturation-饱和度-0-1-或者-0-100-间的值"><a href="#S-Saturation-饱和度-0-1-或者-0-100-间的值" class="headerlink" title="S - Saturation - 饱和度 - 0~1 或者 0%~100% 间的值"></a>S - Saturation - 饱和度 - 0~1 或者 0%~100% 间的值</h4><ul>
+<h4 id="S-Saturation-饱和度-01-或者-0-100-间的值"><a href="#S-Saturation-饱和度-01-或者-0-100-间的值" class="headerlink" title="S - Saturation - 饱和度 - 01 或者 0%100% 间的值"></a>S - Saturation - 饱和度 - 0<del>1 或者 0%</del>100% 间的值</h4><ul>
 <li>和黑白没有关系，饱和度不控制颜色中混入黑白的多寡</li>
 <li>数值越大，颜色中的灰色越少，颜色越鲜艳，呈现一种从灰度到纯色的变化。</li>
 </ul>
 <p><img src="https://pic1.zhimg.com/80/v2-e606821a1171451b35f08b68aaf833b9_1440w.jpg?source=1940ef5c" alt="HSL S"></p>
-<h4 id="L-Lightness-亮度-0-1-或者-0-100-间的值"><a href="#L-Lightness-亮度-0-1-或者-0-100-间的值" class="headerlink" title="L - Lightness - 亮度 - 0~1 或者 0%~100% 间的值"></a>L - Lightness - 亮度 - 0~1 或者 0%~100% 间的值</h4><ul>
+<h4 id="L-Lightness-亮度-01-或者-0-100-间的值"><a href="#L-Lightness-亮度-01-或者-0-100-间的值" class="headerlink" title="L - Lightness - 亮度 - 01 或者 0%100% 间的值"></a>L - Lightness - 亮度 - 0<del>1 或者 0%</del>100% 间的值</h4><ul>
 <li>控制纯色中的混入的黑白两种颜色</li>
 <li>数值越小，色彩越暗，越接近于黑色；数值越大，色彩越亮，越接近于白色。</li>
 </ul>
@@ -6906,20 +6915,23 @@
 </ul>
 </li>
 </ul>
-<h4 id="S-Saturation-饱和度-0-1-或者-0-100-间的值-1"><a href="#S-Saturation-饱和度-0-1-或者-0-100-间的值-1" class="headerlink" title="S - Saturation - 饱和度 - 0~1 或者 0%~100%间的值"></a>S - Saturation - 饱和度 - 0~1 或者 0%~100%间的值</h4><ul>
+<h4 id="S-Saturation-饱和度-01-或者-0-100-间的值-1"><a href="#S-Saturation-饱和度-01-或者-0-100-间的值-1" class="headerlink" title="S - Saturation - 饱和度 - 01 或者 0%100%间的值"></a>S - Saturation - 饱和度 - 0<del>1 或者 0%</del>100%间的值</h4><ul>
 <li>控制纯色中混入白色的量，值越大，白色越少，颜色越纯；</li>
 </ul>
-<h4 id="B-Brightness-亮度-0-1-或者-0-100-间的值"><a href="#B-Brightness-亮度-0-1-或者-0-100-间的值" class="headerlink" title="B - Brightness - 亮度 - 0~1 或者 0%~100%间的值"></a>B - Brightness - 亮度 - 0~1 或者 0%~100%间的值</h4><ul>
+<h4 id="B-Brightness-亮度-01-或者-0-100-间的值"><a href="#B-Brightness-亮度-01-或者-0-100-间的值" class="headerlink" title="B - Brightness - 亮度 - 01 或者 0%100%间的值"></a>B - Brightness - 亮度 - 0<del>1 或者 0%</del>100%间的值</h4><ul>
 <li>控制纯色中混入黑色的量，值越大，黑色越少，明度越高</li>
 </ul>
 <h3 id="RGB-立方体转换成-HSL-HSV-过程"><a href="#RGB-立方体转换成-HSL-HSV-过程" class="headerlink" title="RGB 立方体转换成 HSL / HSV 过程"></a>RGB 立方体转换成 HSL / HSV 过程</h3><p><img src="http://p0.meituan.net/myvideodistribute/719dd96f97590c2fc3041f661e3db30c200249.png" alt="RGB 立方体转换成 HSL / HSV 过程"></p>
 <ul>
-<li>我们可以把这个过程简单理解成，将 RGB 颜色的立方体从直角坐标系投影到极坐标系的圆柱上</li>
-<li>HSV（色相、饱和度、明度）在概念上可以被认为是颜色的倒圆锥体（黑点在下顶点，白色在上底面圆心）<ul>
+<li><p>我们可以把这个过程简单理解成，将 RGB 颜色的立方体从直角坐标系投影到极坐标系的圆柱上</p>
+</li>
+<li><p>HSV（色相、饱和度、明度）在概念上可以被认为是颜色的倒圆锥体（黑点在下顶点，白色在上底面圆心）</p>
+<ul>
 <li><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/HSV_cone.png/440px-HSV_cone.png" alt="HSV 概念图"></li>
 </ul>
 </li>
-<li>HSL 在概念上表示了一个双圆锥体和圆球体（白色在上顶点，黑色在下顶点，最大横切面的圆心是半程灰色）<ul>
+<li><p>HSL 在概念上表示了一个双圆锥体和圆球体（白色在上顶点，黑色在下顶点，最大横切面的圆心是半程灰色）</p>
+<ul>
 <li><img src="https://pic4.zhimg.com/80/v2-3df1e851938562c2a9d1c76cc8af23e2_1440w.jpg?source=1940ef5c" alt="HSL 概念图"></li>
 </ul>
 </li>
@@ -6953,8 +6965,11 @@
 </li>
 </ul>
 <!-- 于是 CIE Lab 诞生了 -->
+
+
 <h2 id="CIE-Lab-CIE-Lch"><a href="#CIE-Lab-CIE-Lch" class="headerlink" title="CIE Lab /  CIE Lch"></a>CIE Lab /  CIE Lch</h2><ul>
-<li><a href="https://zh.wikipedia.org/wiki/Lab%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4" target="_blank" rel="noopener">Lab色彩空间</a>（英语：Lab color space）是颜色-对立空间，带有维度L表示亮度，a和b表示颜色对立维度，基于了非线性压缩的CIE XYZ色彩空间坐标。</li>
+<li><p><a href="https://zh.wikipedia.org/wiki/Lab%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4" target="_blank" rel="noopener">Lab色彩空间</a>（英语：Lab color space）是颜色-对立空间，带有维度L表示亮度，a和b表示颜色对立维度，基于了非线性压缩的CIE XYZ色彩空间坐标。</p>
+</li>
 <li><p>CIE Lab 比较特殊的一点是，目前还没有能支持 CIE Lab 的图形系统，但<a href="https://www.w3.org/TR/css-color-4/#funcdef-lab" target="_blank" rel="noopener">规范</a>中已经给出了 Lab 颜色值的定义</p>
   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lab() &#x3D; lab( &lt;percentage&gt; &lt;number&gt; &lt;number&gt; [ &#x2F; &lt;alpha-value&gt; ]? )</span><br><span class="line">lch() &#x3D; lch( &lt;percentage&gt; &lt;number&gt; &lt;hue&gt; [ &#x2F; &lt;alpha-value&gt; ]? )</span><br></pre></td></tr></table></figure>
 </li>
@@ -6962,16 +6977,20 @@
 <ul>
 <li><p>我们可以通过 <a href="https://bl.ocks.org/mbostock/9f37cc207c0cb166921b" target="_blank" rel="noopener">Lab color picker</a>来了解三个颜色之前的相互作用</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">const</span> c = d3.lab(<span class="number">30</span>, i * <span class="number">15</span> - <span class="number">150</span>, i * <span class="number">15</span> - <span class="number">150</span>).rgb();</span><br><span class="line">  ctx.fillStyle = <span class="string">`rgb(<span class="subst">$&#123;c.r&#125;</span>, <span class="subst">$&#123;c.g&#125;</span>, <span class="subst">$&#123;c.b&#125;</span>)`</span>;</span><br><span class="line">  ctx.beginPath();</span><br><span class="line">  ctx.arc((i - <span class="number">10</span>) * <span class="number">20</span>, <span class="number">60</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>);</span><br><span class="line">  ctx.fill();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">const</span> c = d3.lab(i * <span class="number">5</span>, <span class="number">80</span>, <span class="number">80</span>).rgb();</span><br><span class="line">  ctx.fillStyle = <span class="string">`rgb(<span class="subst">$&#123;c.r&#125;</span>, <span class="subst">$&#123;c.g&#125;</span>, <span class="subst">$&#123;c.b&#125;</span>)`</span>;</span><br><span class="line">  ctx.beginPath();</span><br><span class="line">  ctx.arc((i - <span class="number">10</span>) * <span class="number">20</span>, <span class="number">-60</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>);</span><br><span class="line">  ctx.fill();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>这个例子与 HSL 的例子一样，也是显示两排圆形。<ul>
+<li><p>这个例子与 HSL 的例子一样，也是显示两排圆形。</p>
+<ul>
 <li>第一排相邻圆形之间的 lab 色值的欧氏空间距离相同</li>
 <li>第二排相邻圆形之间的亮度按 5 阶的方式递增</li>
 </ul>
 </li>
-<li><img src="https://static001.geekbang.org/resource/image/9c/92/9c0898db90d53fe4fd3e6b3c83043d92.jpeg" alt="d3 lab demo"></li>
+<li><p><img src="https://static001.geekbang.org/resource/image/9c/92/9c0898db90d53fe4fd3e6b3c83043d92.jpeg" alt="d3 lab demo"></p>
+</li>
 </ul>
 </li>
-<li>可以看出，在以 CIELab 方式呈现的色彩变化中，我们设置的数值和人眼感知的一致性比较强。</li>
-<li>至此，规范中出现的色彩空间表示方法已经介绍完了。</li>
+<li><p>可以看出，在以 CIELab 方式呈现的色彩变化中，我们设置的数值和人眼感知的一致性比较强。</p>
+</li>
+<li><p>至此，规范中出现的色彩空间表示方法已经介绍完了。</p>
+</li>
 </ul>
 <h3 id="Cubehelix-色盘"><a href="#Cubehelix-色盘" class="headerlink" title="Cubehelix 色盘"></a><a href="http://www.mrao.cam.ac.uk/~dag/CUBEHELIX/" target="_blank" rel="noopener">Cubehelix</a> 色盘</h3><!-- 最后，我们再来说一种特殊的颜色表示法 -->
 <ul>
@@ -6987,9 +7006,12 @@
 </ul>
 </li>
 </ul>
-<pre><code><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;cubehelix&#125; <span class="keyword">from</span> <span class="string">'cubehelix'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">'canvas'</span>);</span><br><span class="line"><span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line"></span><br><span class="line">ctx.translate(<span class="number">0</span>, <span class="number">256</span>);</span><br><span class="line">ctx.scale(<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> color = cubehelix(); <span class="comment">// 构造cubehelix色盘颜色映射函数</span></span><br><span class="line"><span class="keyword">const</span> T = <span class="number">2000</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="number">0.5</span> + <span class="number">0.5</span> * <span class="built_in">Math</span>.sin(t / T);</span><br><span class="line">  ctx.clearRect(<span class="number">0</span>, <span class="number">-256</span>, <span class="number">512</span>, <span class="number">512</span>);</span><br><span class="line">  <span class="keyword">const</span> &#123;r, g, b&#125; = color(p);</span><br><span class="line">  ctx.fillStyle = <span class="string">`rgb(<span class="subst">$&#123;<span class="number">255</span> * r&#125;</span>,<span class="subst">$&#123;<span class="number">255</span> * g&#125;</span>,<span class="subst">$&#123;<span class="number">255</span> * b&#125;</span>)`</span>;</span><br><span class="line">  ctx.beginPath();</span><br><span class="line">  ctx.rect(<span class="number">20</span>, <span class="number">-20</span>, <span class="number">480</span> * p, <span class="number">40</span>);</span><br><span class="line">  ctx.fill();</span><br><span class="line">  <span class="built_in">window</span>.ctx = ctx;</span><br><span class="line">  requestAnimationFrame(update);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">update(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-- ![Cubehelix rect](https://static001.geekbang.org/resource/image/4d/ef/4d71b84fc3282e84a98141e444f658ef.gif)
-</code></pre><h3 id="Coverting"><a href="#Coverting" class="headerlink" title="Coverting"></a>Coverting</h3><ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;cubehelix&#125; <span class="keyword">from</span> <span class="string">'cubehelix'</span>;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">const</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">'canvas'</span>);</span><br><span class="line"><span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line">	</span><br><span class="line">ctx.translate(<span class="number">0</span>, <span class="number">256</span>);</span><br><span class="line">ctx.scale(<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">	</span><br><span class="line"><span class="keyword">const</span> color = cubehelix(); <span class="comment">// 构造cubehelix色盘颜色映射函数</span></span><br><span class="line"><span class="keyword">const</span> T = <span class="number">2000</span>;</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="number">0.5</span> + <span class="number">0.5</span> * <span class="built_in">Math</span>.sin(t / T);</span><br><span class="line">  ctx.clearRect(<span class="number">0</span>, <span class="number">-256</span>, <span class="number">512</span>, <span class="number">512</span>);</span><br><span class="line">  <span class="keyword">const</span> &#123;r, g, b&#125; = color(p);</span><br><span class="line">  ctx.fillStyle = <span class="string">`rgb(<span class="subst">$&#123;<span class="number">255</span> * r&#125;</span>,<span class="subst">$&#123;<span class="number">255</span> * g&#125;</span>,<span class="subst">$&#123;<span class="number">255</span> * b&#125;</span>)`</span>;</span><br><span class="line">  ctx.beginPath();</span><br><span class="line">  ctx.rect(<span class="number">20</span>, <span class="number">-20</span>, <span class="number">480</span> * p, <span class="number">40</span>);</span><br><span class="line">  ctx.fill();</span><br><span class="line">  <span class="built_in">window</span>.ctx = ctx;</span><br><span class="line">  requestAnimationFrame(update);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">update(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><img src="https://static001.geekbang.org/resource/image/4d/ef/4d71b84fc3282e84a98141e444f658ef.gif" alt="Cubehelix rect"></li>
+</ul>
+<h3 id="Coverting"><a href="#Coverting" class="headerlink" title="Coverting"></a>Coverting</h3><ul>
 <li><a href="https://www.w3.org/TR/css-color-4/#hsl-to-rgb" target="_blank" rel="noopener">hsl-to-rgb</a></li>
 <li><a href="https://www.w3.org/TR/css-color-4/#rgb-to-lab" target="_blank" rel="noopener">rgb-to-lab</a></li>
 <li><a href="https://www.w3.org/TR/css-color-4/#lab-to-rgb" target="_blank" rel="noopener">lab-to-rgb</a></li>
