@@ -200,12 +200,12 @@
 <li>在实际应用中，我们需要记住色相环上的六大主色，用作基本参照：360°/0°红、60°黄、120°绿、180°青、240°蓝、300°洋红，它们在色相环上按照60°圆心角的间隔排列。</li>
 </ul>
 <p><img src="http://p0.meituan.net/myvideodistribute/01ed240165965600fde0a031d193f8c6325809.png" alt="HSL 色相环"></p>
-<h4 id="S-Saturation-饱和度-01-或者-0-100-间的值"><a href="#S-Saturation-饱和度-01-或者-0-100-间的值" class="headerlink" title="S - Saturation - 饱和度 - 01 或者 0%100% 间的值"></a>S - Saturation - 饱和度 - 0<del>1 或者 0%</del>100% 间的值</h4><ul>
+<h4 id="S-Saturation-饱和度-0-1-或者-0-100-间的值"><a href="#S-Saturation-饱和度-0-1-或者-0-100-间的值" class="headerlink" title="S - Saturation - 饱和度 - 0~1 或者 0%~100% 间的值"></a>S - Saturation - 饱和度 - 0~1 或者 0%~100% 间的值</h4><ul>
 <li>和黑白没有关系，饱和度不控制颜色中混入黑白的多寡</li>
 <li>数值越大，颜色中的灰色越少，颜色越鲜艳，呈现一种从灰度到纯色的变化。</li>
 </ul>
 <p><img src="https://pic1.zhimg.com/80/v2-e606821a1171451b35f08b68aaf833b9_1440w.jpg?source=1940ef5c" alt="HSL S"></p>
-<h4 id="L-Lightness-亮度-01-或者-0-100-间的值"><a href="#L-Lightness-亮度-01-或者-0-100-间的值" class="headerlink" title="L - Lightness - 亮度 - 01 或者 0%100% 间的值"></a>L - Lightness - 亮度 - 0<del>1 或者 0%</del>100% 间的值</h4><ul>
+<h4 id="L-Lightness-亮度-0-1-或者-0-100-间的值"><a href="#L-Lightness-亮度-0-1-或者-0-100-间的值" class="headerlink" title="L - Lightness - 亮度 - 0~1 或者 0%~100% 间的值"></a>L - Lightness - 亮度 - 0~1 或者 0%~100% 间的值</h4><ul>
 <li>控制纯色中的混入的黑白两种颜色</li>
 <li>数值越小，色彩越暗，越接近于黑色；数值越大，色彩越亮，越接近于白色。</li>
 </ul>
@@ -218,10 +218,10 @@
 </ul>
 </li>
 </ul>
-<h4 id="S-Saturation-饱和度-01-或者-0-100-间的值-1"><a href="#S-Saturation-饱和度-01-或者-0-100-间的值-1" class="headerlink" title="S - Saturation - 饱和度 - 01 或者 0%100%间的值"></a>S - Saturation - 饱和度 - 0<del>1 或者 0%</del>100%间的值</h4><ul>
+<h4 id="S-Saturation-饱和度-0-1-或者-0-100-间的值-1"><a href="#S-Saturation-饱和度-0-1-或者-0-100-间的值-1" class="headerlink" title="S - Saturation - 饱和度 - 0~1 或者 0%~100%间的值"></a>S - Saturation - 饱和度 - 0~1 或者 0%~100%间的值</h4><ul>
 <li>控制纯色中混入白色的量，值越大，白色越少，颜色越纯；</li>
 </ul>
-<h4 id="B-Brightness-亮度-01-或者-0-100-间的值"><a href="#B-Brightness-亮度-01-或者-0-100-间的值" class="headerlink" title="B - Brightness - 亮度 - 01 或者 0%100%间的值"></a>B - Brightness - 亮度 - 0<del>1 或者 0%</del>100%间的值</h4><ul>
+<h4 id="B-Brightness-亮度-0-1-或者-0-100-间的值"><a href="#B-Brightness-亮度-0-1-或者-0-100-间的值" class="headerlink" title="B - Brightness - 亮度 - 0~1 或者 0%~100%间的值"></a>B - Brightness - 亮度 - 0~1 或者 0%~100%间的值</h4><ul>
 <li>控制纯色中混入黑色的量，值越大，黑色越少，明度越高</li>
 </ul>
 <h3 id="RGB-立方体转换成-HSL-HSV-过程"><a href="#RGB-立方体转换成-HSL-HSV-过程" class="headerlink" title="RGB 立方体转换成 HSL / HSV 过程"></a>RGB 立方体转换成 HSL / HSV 过程</h3><p><img src="http://p0.meituan.net/myvideodistribute/719dd96f97590c2fc3041f661e3db30c200249.png" alt="RGB 立方体转换成 HSL / HSV 过程"></p>
@@ -278,7 +278,7 @@
 </li>
 <li><p>且一些 JavaScript 库也已经可以直接处理 Lab 颜色空间了，如 <a href="https://d3js.org.cn/document/d3-color/" target="_blank" rel="noopener">d3-color</a>    </p>
 <ul>
-<li><p>我们可以通过 <a href="https://bl.ocks.org/mbostock/9f37cc207c0cb166921b" target="_blank" rel="noopener">Lab color picker</a>来了解三个颜色之前的相互作用</p>
+<li><p>我们可以通过 <a href="https://bl.ocks.org/mbostock/9f37cc207c0cb166921b" target="_blank" rel="noopener">Lab color picker</a> 来了解三个颜色之前的相互作用</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">const</span> c = d3.lab(<span class="number">30</span>, i * <span class="number">15</span> - <span class="number">150</span>, i * <span class="number">15</span> - <span class="number">150</span>).rgb();</span><br><span class="line">  ctx.fillStyle = <span class="string">`rgb(<span class="subst">$&#123;c.r&#125;</span>, <span class="subst">$&#123;c.g&#125;</span>, <span class="subst">$&#123;c.b&#125;</span>)`</span>;</span><br><span class="line">  ctx.beginPath();</span><br><span class="line">  ctx.arc((i - <span class="number">10</span>) * <span class="number">20</span>, <span class="number">60</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>);</span><br><span class="line">  ctx.fill();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">const</span> c = d3.lab(i * <span class="number">5</span>, <span class="number">80</span>, <span class="number">80</span>).rgb();</span><br><span class="line">  ctx.fillStyle = <span class="string">`rgb(<span class="subst">$&#123;c.r&#125;</span>, <span class="subst">$&#123;c.g&#125;</span>, <span class="subst">$&#123;c.b&#125;</span>)`</span>;</span><br><span class="line">  ctx.beginPath();</span><br><span class="line">  ctx.arc((i - <span class="number">10</span>) * <span class="number">20</span>, <span class="number">-60</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>);</span><br><span class="line">  ctx.fill();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>这个例子与 HSL 的例子一样，也是显示两排圆形。</p>
 <ul>
