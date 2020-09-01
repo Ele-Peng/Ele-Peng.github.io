@@ -152,7 +152,7 @@
 <ul>
 <li>它的原理就是在 RGB 的立方中构建一段螺旋线，让色相随着亮度增加螺旋变换。</li>
 <li><img src="https://static001.geekbang.org/resource/image/28/0c/281b8bbdeebyy0f3e62c80278267150c.jpg" alt="Cubehelix 螺旋线原理"></li>
-<li>我们可以用 cubehelix 写一个颜色随着长度变化的长度<ul>
+<li>我们可以用 <a href="https://www.npmjs.com/package/cubehelix" target="_blank" rel="noopener">cubehelix</a> 写一个颜色随着长度变化的长度<ul>
 <li>首先，我们直接使用 cubehelix 函数创建一个 color 映射。<ul>
 <li>cubehelix 函数是一个高阶函数，它的返回值是一个色盘映射函数。这个返回函数的参数范围是 0 到 1，当它从小到大依次改变的时候，不仅颜色会依次改变，亮度也会依次增强。</li>
 </ul>
