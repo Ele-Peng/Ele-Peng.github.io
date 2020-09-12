@@ -173,9 +173,7 @@ int main(int argx, const char * argv[]) {
 		
 
 
-# Javascript 结构化程序设计基础设施
-
-- 
+# Javascript 结构化程序设计基础
 
 
 ## 实践记录
