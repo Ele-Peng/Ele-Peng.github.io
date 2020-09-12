@@ -106,7 +106,7 @@ description:
 - 没有设定 vertical-align 如果超过 line-height 始终与最高元素的对齐方式保持一致
 
 
-```javascript
+```html
 <div style="font-size:50px;line-height:100px;background-color:pink;">
   <div style="vertical-align:text-bottom;overflow:visible;display:inline-block;width:1px;height:1px;background:red;">
     <div style="width:1000px;;height:1px;background:red;"></div>
