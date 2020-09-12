@@ -84,7 +84,7 @@ function fibonacci(n) {
 
 ```javascript
 // 递归优化，跳过计算过的中间变量 Time: O(n) Space: O(n)
-{
+// {
   let res = [0]
   function fibonacci(n) {
     if (n <= 1) {
@@ -98,7 +98,7 @@ function fibonacci(n) {
   }
   // 求数组第十项的值
   fibonacci(9)
-}
+// }
 ```	
 
 ## 高级实现：矩阵乘法 + 快速幂
