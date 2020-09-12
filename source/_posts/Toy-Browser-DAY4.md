@@ -259,17 +259,17 @@ description:
 - flex 容器没有设置 mainSize，直接撑开，count flex 子项 mainSize
 
 	```javascript
-  let isAutoMainSize = false
-  // 没有设置 mainSize 直接撑开
-  if (!style[mainSize]) { // auto sizing
-		elementStyle[mainSize] = 0
-		for (let i = 0; i < items.length; i ++) {
-		    let item = items[i]
-		    if (itemStyle[mainSize] !== null || itemStyle[mainSize] !== (void 0)) 
-		      elementStyle[mainSize] = elementStyle[mainSize] + itemStyle[mainSize]
-		}
-		isAutoMainSize = true
-  }
+	let isAutoMainSize = false
+	// 没有设置 mainSize 直接撑开
+	if (!style[mainSize]) { // auto sizing
+      elementStyle[mainSize] = 0
+	  for (let i = 0; i < items.length; i ++) {
+		let item = items[i]
+		if (itemStyle[mainSize] !== null || itemStyle[mainSize] !== (void 0)) 
+		  elementStyle[mainSize] = elementStyle[mainSize] + itemStyle[mainSize]
+	  }
+	  isAutoMainSize = true
+	}
 	```
 	
 - flex 容器 flex-wrap: no-wrap && isAutoMainSize，mainSpace 为0，允许撑大，**强行分进第一行**

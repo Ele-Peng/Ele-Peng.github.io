@@ -52,7 +52,7 @@ description:
 
 ### Server 端实现
 
-```
+```javascript
 // Returns content-type = text/plain
 const server = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'text/html');
@@ -77,7 +77,7 @@ server.listen(8088);
 
 #### 第一版：简单实现
 
-```
+```javascript
 const net = require('net');
 const client = net.createConnection({ port: 8088 }, () => {
   // 'connect' listener.
