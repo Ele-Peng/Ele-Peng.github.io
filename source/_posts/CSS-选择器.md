@@ -50,6 +50,8 @@ description:
 ## 选择器语法
 
 ### 简单选择器
+- ![简单选择器结构图](https://static001.geekbang.org/resource/image/4c/ce/4c9ac78870342dc802137ea9c848c0ce.png)
+- 针对某一特征判断是否选中元素。
 - *
 - div svg|a
 	- [SVG](http://www.w3.org/2000/svg)
@@ -102,15 +104,99 @@ description:
 	- [att|=val]
 		- 开头匹配，检查一个元素的值是否是以 val 开头，它跟精确匹配的区别是属性只要以 val 开头即可，后面内容不管（红圈圈出的是生效样式）
 		- ![[att|=val]](http://p0.meituan.net/myvideodistribute/4f1459c9d673adf7ac337f06569ec688330483.png)
-- :hover
-- ::before
+		
+- 伪类选择器
+	- 树结构关系伪类选择器
+		- :root
+			- 表示树的根元素
+		- :empty
+			- 表示没有子节点的元素
+
+				```html
+				<div class="box"><!-- I will be lime. --></div>
+				<div class="box">I will be pink.</div>
+				<div class="box">
+					<!-- I will be pink in older browsers because of the whitespace around this comment. -->
+				</div>
+				<div class="box">
+					<p><!-- I will be pink in all browsers because of the non-collapsible whitespace and elements around this comment. --></p>
+				</div>
+				```
+				```css
+				.box {
+					  background: pink;
+					  height: 80px;
+					  width: 80px;
+					}
+					
+					.box:empty {
+					  background: lime;
+					}
+				```
+			- ![:empty 伪类运行结果]()
+		- :nth-child 和 :nth-last-child
+			- ![nth-child 和 :nth-last-child](https://static001.geekbang.org/resource/image/1e/a9/1ebdba2978a22c13844d108318b271a9.png)
+		- :nth-last-child
+			- 从后往前数
+		- :first-child :last-child
+			- 分别表示第一个和最后一个元素
+		- :only-child
+			- 按字面意思理解即可，选中唯一一个子元素
+	- 链接与行为伪类选择器（链接与行为是第一批设计出来的伪类，也是最常用的一批）
+		- :any-link
+			- 表示任意的链接，包括 a、area 和 link 标签都可能匹配到这个伪类
+		- :link
+			- 表示未访问过的链接
+		- :visited
+			- 表示已经访问过的链接
+		- :hover
+			- 表示鼠标悬停在上的元素
+		- :active
+			- 表示用户正在激活这个元素，如用户按下按钮，鼠标还未抬起时，这个按钮就处于激活状态
+		- :focus
+			- 表示焦点落在这个元素之上
+		- :target
+			- 用于选中浏览器 URL 的 hash 部分所指示的元素
+
+	- 逻辑伪类选择器
+		- :not
+			- 但目前还没有看到浏览器实现它
+
+	- 其它伪类选择器
+		- 国际化：用于处理国际化和多语言问题。
+			- dir
+			- lang
+		- 音频 / 视频：用于区分音视频播放状态。
+			- play
+			- pause
+		- 时序：用于配合读屏软件等时序性客户端的伪类。
+			- current
+			- past
+			- future
+		- 表格：用于处理 table 的列的伪类。
+			- nth-col
+			- nth-last-col
+- 伪元素选择器
+	- ::first-line
+		- 表示元素的第一行
+		- first-line 若有 float ，则会脱离文档流出去，然后又选中第一行，又脱离文档流出去循环了
+	- ::first-letter
+		- 表示元素的第一个字母
+		- CSS 标准只要求 ::first-line 和 ::first-letter 实现有限的几个 CSS 属性，都是文本相关，这些属性是下面这些
+			- ![实现有限的几个 CSS 属性](https://static001.geekbang.org/resource/image/6e/48/6e050ee9f7a0b1657388271cceb0c548.png)
+	- ::before
+		- 表示在元素内容之前插入一个虚拟的元素
+	- ::after
+		- 则表示在元素内容之后插入
 
 
 ### 复合选择器
+- 连续写在一起的简单选择器，针对元素自身特征选择单个元素
 - &lt;简单选择器&gt;&lt;简单选择器&gt;&lt;简单选择器&gt;
-- * 或者 div 必须写在最前面
+- \* 或者 div 必须写在最前面
 
 ### 复杂选择器
+- 由“（空格）”“ >”“ ~”“ +”“ ||”等符号连接的复合选择器，根据父元素或者前序元素检查单个元素
 - &lt;复合选择器&gt;&lt;sp&gt;&lt;复合选择器&gt;
 	- 子孙
 	- 后代，表示选中所有符合条件的后代节点
@@ -129,7 +215,7 @@ description:
 	- 列选择器，表示选中对应列中符合条件的单元格
 	
 ### 选择器列表
-- 以 comma 分隔的复杂选择器序列
+- 以 comma 分隔的复杂选择器序列，表示“或”的关系
 
 ## 选择器优先级
 - [图解 css-specificity](http://www.standardista.com/css3/css-specificity/)
@@ -146,35 +232,6 @@ description:
 		- [0,0,1,0]
 	- div.a
 		- [0,0,1,1]
-
-## 伪类
-### 链接/行为
-- :any-link
-- :link :visited
-- :hover
-- :active
-- :focus
-- :target
-
-### 树结构
-- :empty
-- :nth-child()
-	- ![:nth-child An+B](http://p0.meituan.net/myvideodistribute/75fe112b20e952564395fc869bf398d694743.png)
-- :nth-last-child()
-- :first-child :last-child :only-child
-
-### 逻辑型
-- :not 伪类
-- :where :has
-
-## 伪元素
-- ::before
-- ::after
-- ::first-line
-	- 元素的第一行
-	- first-line 若有 float ，则会脱离文档流出去，然后又选中第一行，又脱离文档流出去循环了
-- ::first-letter
-	- 元素的第一个字母
 
 ## 优化 toy-browser CSS selector match
 - 首先我们可以先观察

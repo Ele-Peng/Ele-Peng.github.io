@@ -101,9 +101,156 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <h1 id="色彩空间"><a href="#色彩空间" class="headerlink" title="色彩空间"></a>色彩空间</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h2 id="加色法混色模型-RGB-与-减色法混色模型-CMYK"><a href="#加色法混色模型-RGB-与-减色法混色模型-CMYK" class="headerlink" title="加色法混色模型 RGB 与 减色法混色模型 CMYK"></a>加色法混色模型 RGB 与 减色法混色模型 CMYK</h2><ul>
-<li>过渡到 HSV HSL </li>
-<li>rgb 对色彩的描述，对计算机友好，但不够人性化，我们对色彩的认识往往先是：颜色是什么，鲜艳不鲜艳，亮还是暗</li>
+        <style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><p>提到色彩，即使是刚有辨知能力的小朋友，也能说上几句～</p>
+</li>
+<li><p>那我们前端工程师，无论工作还是生活，每天都在与各种色彩打交道，那便更有必要系统地了解关于色彩方面的知识</p>
+</li>
+<li><p>本文将从前端角度，聊聊色彩空间</p>
+</li>
+<li><p>根据 <a href="https://www.w3.org/TR/css-color-4/" target="_blank" rel="noopener">CSS Color Module Level 4</a> 标准</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;color&gt; &#x3D; &lt;hex-color&gt; | &lt;named-color&gt; | currentcolor | transparent</span><br><span class="line">          &lt;rgb()&gt; | &lt;rgba()&gt; | &lt;hsl()&gt; | &lt;hsla()&gt; | &lt;hwb()&gt; |</span><br><span class="line">          &lt;lab()&gt; | &lt;lch()&gt; | &lt;gray()&gt; |</span><br><span class="line">          &lt;color()&gt; | &lt;device-cmyk()&gt; |</span><br><span class="line">          &lt;system-color&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<a id="more"></a>
+
+
+<h2 id="named-color"><a href="#named-color" class="headerlink" title="named-color"></a>named-color</h2><ul>
+<li><a href="https://www.w3.org/TR/css-color-4/#named-color" target="_blank" rel="noopener">#named-color</a></li>
+</ul>
+<h3 id="transparent"><a href="#transparent" class="headerlink" title="transparent"></a>transparent</h3><ul>
+<li><a href="https://www.w3.org/TR/css-color-4/#valdef-color-transparent" target="_blank" rel="noopener">#transparent</a></li>
+<li><a href="https://github.com/Ele-Peng/data-visualization/blob/master/color/CSS-Color-Module-Level-4-demo-1.html" target="_blank" rel="noopener">&lt;color&gt; = transparent 小例子</a></li>
+</ul>
+<h2 id="currentcolor"><a href="#currentcolor" class="headerlink" title="currentcolor"></a>currentcolor</h2><ul>
+<li><a href="https://www.w3.org/TR/css-color-4/#valdef-color-currentcolor" target="_blank" rel="noopener">#currentcolor</a></li>
+<li><a href="https://github.com/Ele-Peng/data-visualization/blob/master/color/CSS-Color-Module-Level-4-demo-2.html" target="_blank" rel="noopener">&lt;color&gt; = currentcolor 小例子</a></li>
+</ul>
+<h2 id="system-color"><a href="#system-color" class="headerlink" title="system-color"></a>system-color</h2><ul>
+<li><a href="https://www.w3.org/TR/css-color-4/#css-system-colors" target="_blank" rel="noopener">#system-colors</a></li>
+<li><a href="https://github.com/Ele-Peng/data-visualization/blob/master/color/CSS-Color-Module-Level-4-demo-3.html" target="_blank" rel="noopener">&lt;color&gt; = &lt;system-color&gt;小例子</a></li>
+</ul>
+<!-- 这些零散的 css color 属性值简单介绍到这，后面我们系统的介绍下，剩下的几种色彩分类 -->
+
+
+<h2 id="减色法混色模型-CMYK-与-加色法混色模型-RGB"><a href="#减色法混色模型-CMYK-与-加色法混色模型-RGB" class="headerlink" title="减色法混色模型 CMYK 与 加色法混色模型 RGB"></a>减色法混色模型 CMYK 与 加色法混色模型 RGB</h2><h3 id="减色法混色模型-CMYK"><a href="#减色法混色模型-CMYK" class="headerlink" title="减色法混色模型 CMYK"></a>减色法混色模型 <a href="https://zh.wikipedia.org/wiki/%E5%8D%B0%E5%88%B7%E5%9B%9B%E5%88%86%E8%89%B2%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">CMYK</a></h3><ul>
+<li>C - <strong>C</strong>yan - 青色</li>
+<li>M - <strong>M</strong>agenta - 红色</li>
+<li>Y - <strong>Y</strong>ellow - 黄色</li>
+<li>K - blac<strong>K</strong> - 黑色（防止与 RGB 的 B 冲突）</li>
+<li>上过美术课，应该听过“红黄蓝”三原色的说法，但这和 CMYK 不太一样，实际上，颜料显示颜色的原理是它吸收了所有别的颜色的光，只反射一种颜色，所以颜料三原色其实是红、绿、蓝的补色，也就是：品红、黄、青。因为它们跟红、黄、蓝相近，所以有了这样的说法。</li>
+<li>为什么会比三原色多了一色呢？<ul>
+<li>三种颜色调成黑色，<strong>贵</strong></li>
+<li>且<strong>不是纯粹的黑</strong>，三色等量相加之后只能形成一种深灰或深褐（我要五彩斑斓的黑</li>
+</ul>
+</li>
+</ul>
+<h3 id="加色法混色模型-RGB"><a href="#加色法混色模型-RGB" class="headerlink" title="加色法混色模型 RGB"></a>加色法混色模型 <a href="https://www.wikiwand.com/en/RGB_color_model" target="_blank" rel="noopener">RGB</a></h3><ul>
+<li>我们在 CSS 样式中看到的形式如 #RRGGBB 的颜色代码，就是 RGB 颜色的十六进制表示法，其中 RR、GG、BB 分别是两位十六进制数字，表示红、绿、蓝三色通道的色阶。色阶可以表示某个通道的强弱。</li>
+<li>但 RGB 并不能表示人眼所见的所有颜色，它只能表示下面的这个区域</li>
+</ul>
+<p><img src="http://p1.meituan.net/myvideodistribute/a9c085522b90c1a0254ac3c64ac37728490575.png" alt="人眼看到的颜色vsRGB能表示的颜色"></p>
+<ul>
+<li>RGB 对色彩的描述，对计算机友好，但不够人性化</li>
+<li>RGB 我们只能大致判断出它偏向于红色、绿色还是蓝色，或者在颜色立方体的大致位置。</li>
+<li>以及对比两个 RGB 颜色的时候，我们只能通过对比它们在 RGB 立方体中的相对距离，来判断它们的颜色差异。 </li>
+</ul>
+<p><img src="http://p1.meituan.net/myvideodistribute/15a8b3e684bdfce7333105cc23ed332d239313.png" alt="RGB 立方体几何表示"></p>
+<ul>
+<li>但我们对色彩的认识往往先是：颜色是什么，鲜艳不鲜艳，亮还是暗</li>
+<li>and It’s not easy to to alter an RGB color to produce a lighter variant of the same hue.<ul>
+<li>这在我们开发中也十分常见，有些时候设计师定下视觉基调和主色，我们需要根据数据情况由前端动态生成颜色值</li>
+</ul>
+</li>
+</ul>
+<!-- 过渡到 HSV HSL -->
+
+<h2 id="HSL-HSB-amp-HSV"><a href="#HSL-HSB-amp-HSV" class="headerlink" title="HSL HSB&amp;HSV"></a>HSL HSB&amp;HSV</h2><ul>
+<li>CSS 和 Canvas2D 都可以直接支持 HSL 颜色，只有 WebGL 需要做 RGB2HSV 转换。</li>
+</ul>
+<h3 id="HSL"><a href="#HSL" class="headerlink" title="HSL"></a>HSL</h3><h4 id="H-Hue-色相-0-360°的圆心角"><a href="#H-Hue-色相-0-360°的圆心角" class="headerlink" title="H - Hue - 色相 - 0-360°的圆心角"></a>H - Hue - 色相 - 0-360°的圆心角</h4><ul>
+<li>H(hue)分量，代表的是人眼所能感知的颜色范围，这些颜色分布在一个平面的色相环上，取值范围是0°到360°的圆心角，每个角度可以代表一种颜色。</li>
+<li>色相值的意义在于，我们可以在不改变光感的情况下，通过旋转色相环来改变颜色。</li>
+<li>在实际应用中，我们需要记住色相环上的六大主色，用作基本参照：360°/0°红、60°黄、120°绿、180°青、240°蓝、300°洋红，它们在色相环上按照60°圆心角的间隔排列。</li>
+</ul>
+<p><img src="http://p0.meituan.net/myvideodistribute/01ed240165965600fde0a031d193f8c6325809.png" alt="HSL 色相环"></p>
+<h4 id="S-Saturation-饱和度-0-1-或者-0-100-间的值"><a href="#S-Saturation-饱和度-0-1-或者-0-100-间的值" class="headerlink" title="S - Saturation - 饱和度 - 0~1 或者 0%~100% 间的值"></a>S - Saturation - 饱和度 - 0~1 或者 0%~100% 间的值</h4><ul>
+<li>和黑白没有关系，饱和度不控制颜色中混入黑白的多寡</li>
+<li>数值越大，颜色中的灰色越少，颜色越鲜艳，呈现一种从灰度到纯色的变化。</li>
+</ul>
+<p><img src="https://pic1.zhimg.com/80/v2-e606821a1171451b35f08b68aaf833b9_1440w.jpg?source=1940ef5c" alt="HSL S"></p>
+<h4 id="L-Lightness-亮度-0-1-或者-0-100-间的值"><a href="#L-Lightness-亮度-0-1-或者-0-100-间的值" class="headerlink" title="L - Lightness - 亮度 - 0~1 或者 0%~100% 间的值"></a>L - Lightness - 亮度 - 0~1 或者 0%~100% 间的值</h4><ul>
+<li>控制纯色中的混入的黑白两种颜色</li>
+<li>数值越小，色彩越暗，越接近于黑色；数值越大，色彩越亮，越接近于白色。</li>
+</ul>
+<p><img src="https://picb.zhimg.com/80/v2-ef76260bcc83056006bf0376e9036b79_1440w.jpg?source=1940ef5c" alt="HSL L"></p>
+<h3 id="HSB-amp-HSV"><a href="#HSB-amp-HSV" class="headerlink" title="HSB &amp; HSV"></a>HSB &amp; HSV</h3><ul>
+<li>HSB 又称 HSV</li>
+<li><a href="https://github.com/Ele-Peng/data-visualization/blob/master/color/CSS-Color-Module-Level-4-demo-hsv-wheel.html" target="_blank" rel="noopener">HSV 色轮- WebGL 实现</a><ul>
+<li>像素坐标转换为极坐标，再除以 2π，就能得到 HSV 的 H 值</li>
+<li>鼠标位置的 x、y 坐标来决定 S 和 V 的值</li>
+</ul>
+</li>
+</ul>
+<h4 id="S-Saturation-饱和度-0-1-或者-0-100-间的值-1"><a href="#S-Saturation-饱和度-0-1-或者-0-100-间的值-1" class="headerlink" title="S - Saturation - 饱和度 - 0~1 或者 0%~100%间的值"></a>S - Saturation - 饱和度 - 0~1 或者 0%~100%间的值</h4><ul>
+<li>控制纯色中混入白色的量，值越大，白色越少，颜色越纯；</li>
+</ul>
+<h4 id="B-Brightness-亮度-0-1-或者-0-100-间的值"><a href="#B-Brightness-亮度-0-1-或者-0-100-间的值" class="headerlink" title="B - Brightness - 亮度 - 0~1 或者 0%~100%间的值"></a>B - Brightness - 亮度 - 0~1 或者 0%~100%间的值</h4><ul>
+<li>控制纯色中混入黑色的量，值越大，黑色越少，明度越高</li>
+</ul>
+<h3 id="RGB-立方体转换成-HSL-HSV-过程"><a href="#RGB-立方体转换成-HSL-HSV-过程" class="headerlink" title="RGB 立方体转换成 HSL / HSV 过程"></a>RGB 立方体转换成 HSL / HSV 过程</h3><p><img src="http://p0.meituan.net/myvideodistribute/719dd96f97590c2fc3041f661e3db30c200249.png" alt="RGB 立方体转换成 HSL / HSV 过程"></p>
+<ul>
+<li><p>我们可以把这个过程简单理解成，将 RGB 颜色的立方体从直角坐标系投影到极坐标系的圆柱上</p>
+</li>
+<li><p>HSV（色相、饱和度、明度）在概念上可以被认为是颜色的倒圆锥体（黑点在下顶点，白色在上底面圆心）</p>
+<ul>
+<li><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/HSV_cone.png/440px-HSV_cone.png" alt="HSV 概念图"></li>
+</ul>
+</li>
+<li><p>HSL 在概念上表示了一个双圆锥体和圆球体（白色在上顶点，黑色在下顶点，最大横切面的圆心是半程灰色）</p>
+<ul>
+<li><img src="https://pic4.zhimg.com/80/v2-3df1e851938562c2a9d1c76cc8af23e2_1440w.jpg?source=1940ef5c" alt="HSL 概念图"></li>
+</ul>
+</li>
+<li><p>我们可以从下图来对比 HSL &amp; HSV</p>
+<ul>
+<li><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/HSL_HSV_cylinder_color_solid_comparison.png/800px-HSL_HSV_cylinder_color_solid_comparison.png" alt="HSL &amp; HSV 对比图"></li>
+</ul>
+</li>
+<li><p><strong>但即使我们可以均匀地修改每组的亮度和饱和度，由于人眼对不同频率的光的敏感度不同，我们仍然会感觉有的颜色看起来和其他的颜色差距明显，有的颜色还是没那么明显</strong></p>
+</li>
+<li><p>看下面的例子</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">  ctx.fillStyle = <span class="string">`hsl(<span class="subst">$&#123;<span class="built_in">Math</span>.floor(i * <span class="number">15</span>)&#125;</span>, 50%, 50%)`</span>;</span><br><span class="line">  ctx.beginPath();</span><br><span class="line">  ctx.arc((i - <span class="number">10</span>) * <span class="number">20</span>, <span class="number">60</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>);</span><br><span class="line">  ctx.fill();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">  ctx.fillStyle = <span class="string">`hsl(<span class="subst">$&#123;<span class="built_in">Math</span>.floor((i % <span class="number">2</span> ? <span class="number">60</span> : <span class="number">210</span>) + <span class="number">3</span> * i)&#125;</span>, 50%, 50%)`</span>;</span><br><span class="line">  ctx.beginPath();</span><br><span class="line">  ctx.arc((i - <span class="number">10</span>) * <span class="number">20</span>, <span class="number">-60</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>);</span><br><span class="line">  ctx.fill();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>我们绘制两排不同的圆，让第一排每个圆的色相间隔都是 15，再让第二排圆的颜色在色相 60 和 210 附近两两交错。</li>
+<li>最终生成效果如下：<ul>
+<li><img src="https://static001.geekbang.org/resource/image/67/61/674ae06ae45050bb2e9840a1c081b661.jpeg" alt="HSL 色相修改"></li>
 </ul>
 </li>
 <li>可以看出：<ul>

@@ -106,7 +106,7 @@ description:
 - 没有设定 vertical-align 如果超过 line-height 始终与最高元素的对齐方式保持一致
 
 
-```javascript
+```html
 <div style="font-size:50px;line-height:100px;background-color:pink;">
   <div style="vertical-align:text-bottom;overflow:visible;display:inline-block;width:1px;height:1px;background:red;">
     <div style="width:1000px;;height:1px;background:red;"></div>
@@ -128,12 +128,13 @@ description:
 - vertical-align: top，middle，bottom，是拿自己的 ”顶部“ “中线” ”底部“ 去对其行的 ”顶部“ “中线” ”底部“ 
 - vertical-align: text-top，text-bottom，是拿自己的 ”顶部“ ”底部“ 去对齐行的 text-top 和 text-bottom 
 - 结论：**正常流的行模型推荐 vertical-align: top/bottom/middle**
+![vertical-align相关概念](https://static001.geekbang.org/resource/image/aa/e3/aa6611b00f71f606493f165294410ee3.png)
 
 
 
 ### 正常流的三大难题
 - overflow:visible 与 BFC
-- margin collapse
+- margin collapse （一个元素规定了自身周围至少需要的空间）
 	- [W3 BFC](https://www.w3.org/TR/CSS2/visuren.html#block-formatting)
 	- ![BFC conception](http://p0.meituan.net/myvideodistribute/fb01ede731f8f6ceb2f700f2b73cf681228107.png)
 	- ![BFC margin collapse](http://p0.meituan.net/myvideodistribute/9e455229b4b2a2214199f9754a4b022c290880.png)
