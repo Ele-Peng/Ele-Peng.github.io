@@ -78,7 +78,7 @@
 <li>可以发现 vertical-aign 与 line-height 高度设定无关，与最终被撑开的盒子高度有关</li>
 <li>没有设定 vertical-align 如果超过 line-height 始终与最高元素的对齐方式保持一致</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div style=<span class="string">"font-size:50px;line-height:100px;background-color:pink;"</span>&gt;</span><br><span class="line">  &lt;div style=<span class="string">"vertical-align:text-bottom;overflow:visible;display:inline-block;width:1px;height:1px;background:red;"</span>&gt;</span><br><span class="line">    &lt;div style=<span class="string">"width:1000px;;height:1px;background:red;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">  &lt;div style=<span class="string">"vertical-align:text-top;overflow:visible;display:inline-block;width:1px;height:1px;background:red;"</span>&gt;</span><br><span class="line">    &lt;div style=<span class="string">"width:1000px;;height:1px;background:red;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">	Hello</span><br><span class="line">  &lt;div style=<span class="string">"vertical-align:text-top;line-height:70px;width:100px;height:50px;background-color:aqua;display:inline-block"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;div style="vertical-align:text-top;line-height:70px;width:100px;height:150px;background-color:aqua;display:inline-block"&gt;&lt;/</span>div&gt;</span><br><span class="line">  &lt;div style=<span class="string">"vertical-align:text-bottom;line-height:70px;width:100px;height:200px;background-color:plum;display:inline-block"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"font-size:50px;line-height:100px;background-color:pink;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"vertical-align:text-bottom;overflow:visible;display:inline-block;width:1px;height:1px;background:red;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width:1000px;;height:1px;background:red;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"vertical-align:text-top;overflow:visible;display:inline-block;width:1px;height:1px;background:red;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width:1000px;;height:1px;background:red;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	Hello</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"vertical-align:text-top;line-height:70px;width:100px;height:50px;background-color:aqua;display:inline-block"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"vertical-align:text-top;line-height:70px;width:100px;height:150px;background-color:aqua;display:inline-block"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"vertical-align:text-bottom;line-height:70px;width:100px;height:200px;background-color:plum;display:inline-block"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>运行截图<ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/9b109f5fd664383e3df90e99684c3e44251251.png" alt="运行截图"></li>
@@ -89,12 +89,12 @@
 <li>vertical-align: baseline，是拿自己的 baseline 去对其行的 baseline </li>
 <li>vertical-align: top，middle，bottom，是拿自己的 ”顶部“ “中线” ”底部“ 去对其行的 ”顶部“ “中线” ”底部“ </li>
 <li>vertical-align: text-top，text-bottom，是拿自己的 ”顶部“ ”底部“ 去对齐行的 text-top 和 text-bottom </li>
-<li>结论：<strong>正常流的行模型推荐 vertical-align: top/bottom/middle</strong></li>
+<li>结论：<strong>正常流的行模型推荐 vertical-align: top/bottom/middle</strong><br><img src="https://static001.geekbang.org/resource/image/aa/e3/aa6611b00f71f606493f165294410ee3.png" alt="vertical-align相关概念"></li>
 </ul>
 <h3 id="正常流的三大难题"><a href="#正常流的三大难题" class="headerlink" title="正常流的三大难题"></a>正常流的三大难题</h3><ul>
 <li><p>overflow:visible 与 BFC</p>
 </li>
-<li><p>margin collapse</p>
+<li><p>margin collapse （一个元素规定了自身周围至少需要的空间）</p>
 <ul>
 <li><a href="https://www.w3.org/TR/CSS2/visuren.html#block-formatting" target="_blank" rel="noopener">W3 BFC</a></li>
 <li><img src="http://p0.meituan.net/myvideodistribute/fb01ede731f8f6ceb2f700f2b73cf681228107.png" alt="BFC conception"></li>
@@ -1947,6 +1947,10 @@
 
 
 <h2 id="选择器语法"><a href="#选择器语法" class="headerlink" title="选择器语法"></a>选择器语法</h2><h3 id="简单选择器"><a href="#简单选择器" class="headerlink" title="简单选择器"></a>简单选择器</h3><ul>
+<li><p><img src="https://static001.geekbang.org/resource/image/4c/ce/4c9ac78870342dc802137ea9c848c0ce.png" alt="简单选择器结构图"></p>
+</li>
+<li><p>针对某一特征判断是否选中元素。</p>
+</li>
 <li><p>*</p>
 </li>
 <li><p>div svg|a</p>
@@ -1984,19 +1988,146 @@
 </li>
 </ul>
 </li>
-<li><p>:hover</p>
+<li><p>伪类选择器</p>
+<ul>
+<li><p>树结构关系伪类选择器</p>
+<ul>
+<li><p>:root</p>
+<ul>
+<li>表示树的根元素</li>
+</ul>
 </li>
-<li><p>::before</p>
+<li><p>:empty</p>
+<ul>
+<li><p>表示没有子节点的元素</p>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="comment">&lt;!-- I will be lime. --&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span>I will be pink.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- I will be pink in older browsers because of the whitespace around this comment. --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="comment">&lt;!-- I will be pink in all browsers because of the non-collapsible whitespace and elements around this comment. --&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">	  <span class="attribute">background</span>: pink;</span><br><span class="line">	  <span class="attribute">height</span>: <span class="number">80px</span>;</span><br><span class="line">	  <span class="attribute">width</span>: <span class="number">80px</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="selector-class">.box</span><span class="selector-pseudo">:empty</span> &#123;</span><br><span class="line">	  <span class="attribute">background</span>: lime;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><img src="" alt=":empty 伪类运行结果"></p>
+</li>
+</ul>
+</li>
+<li><p>:nth-child 和 :nth-last-child</p>
+<ul>
+<li><img src="https://static001.geekbang.org/resource/image/1e/a9/1ebdba2978a22c13844d108318b271a9.png" alt="nth-child 和 :nth-last-child"></li>
+</ul>
+</li>
+<li><p>:nth-last-child</p>
+<ul>
+<li>从后往前数</li>
+</ul>
+</li>
+<li><p>:first-child :last-child</p>
+<ul>
+<li>分别表示第一个和最后一个元素</li>
+</ul>
+</li>
+<li><p>:only-child</p>
+<ul>
+<li>按字面意思理解即可，选中唯一一个子元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>链接与行为伪类选择器（链接与行为是第一批设计出来的伪类，也是最常用的一批）</p>
+<ul>
+<li>:any-link<ul>
+<li>表示任意的链接，包括 a、area 和 link 标签都可能匹配到这个伪类</li>
+</ul>
+</li>
+<li>:link<ul>
+<li>表示未访问过的链接</li>
+</ul>
+</li>
+<li>:visited<ul>
+<li>表示已经访问过的链接</li>
+</ul>
+</li>
+<li>:hover<ul>
+<li>表示鼠标悬停在上的元素</li>
+</ul>
+</li>
+<li>:active<ul>
+<li>表示用户正在激活这个元素，如用户按下按钮，鼠标还未抬起时，这个按钮就处于激活状态</li>
+</ul>
+</li>
+<li>:focus<ul>
+<li>表示焦点落在这个元素之上</li>
+</ul>
+</li>
+<li>:target<ul>
+<li>用于选中浏览器 URL 的 hash 部分所指示的元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>逻辑伪类选择器</p>
+<ul>
+<li>:not<ul>
+<li>但目前还没有看到浏览器实现它</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>其它伪类选择器</p>
+<ul>
+<li>国际化：用于处理国际化和多语言问题。<ul>
+<li>dir</li>
+<li>lang</li>
+</ul>
+</li>
+<li>音频 / 视频：用于区分音视频播放状态。<ul>
+<li>play</li>
+<li>pause</li>
+</ul>
+</li>
+<li>时序：用于配合读屏软件等时序性客户端的伪类。<ul>
+<li>current</li>
+<li>past</li>
+<li>future</li>
+</ul>
+</li>
+<li>表格：用于处理 table 的列的伪类。<ul>
+<li>nth-col</li>
+<li>nth-last-col</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>伪元素选择器</p>
+<ul>
+<li>::first-line<ul>
+<li>表示元素的第一行</li>
+<li>first-line 若有 float ，则会脱离文档流出去，然后又选中第一行，又脱离文档流出去循环了</li>
+</ul>
+</li>
+<li>::first-letter<ul>
+<li>表示元素的第一个字母</li>
+<li>CSS 标准只要求 ::first-line 和 ::first-letter 实现有限的几个 CSS 属性，都是文本相关，这些属性是下面这些<ul>
+<li><img src="https://static001.geekbang.org/resource/image/6e/48/6e050ee9f7a0b1657388271cceb0c548.png" alt="实现有限的几个 CSS 属性"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>::before<ul>
+<li>表示在元素内容之前插入一个虚拟的元素</li>
+</ul>
+</li>
+<li>::after<ul>
+<li>则表示在元素内容之后插入</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 <h3 id="复合选择器"><a href="#复合选择器" class="headerlink" title="复合选择器"></a>复合选择器</h3><ul>
+<li>连续写在一起的简单选择器，针对元素自身特征选择单个元素</li>
 <li>&lt;简单选择器&gt;&lt;简单选择器&gt;&lt;简单选择器&gt;</li>
-<li><ul>
-<li>或者 div 必须写在最前面</li>
-</ul>
-</li>
+<li>* 或者 div 必须写在最前面</li>
 </ul>
 <h3 id="复杂选择器"><a href="#复杂选择器" class="headerlink" title="复杂选择器"></a>复杂选择器</h3><ul>
+<li>由“（空格）”“ &gt;”“ ~”“ +”“ ||”等符号连接的复合选择器，根据父元素或者前序元素检查单个元素</li>
 <li>&lt;复合选择器&gt;&lt;sp&gt;&lt;复合选择器&gt;<ul>
 <li>子孙</li>
 <li>后代，表示选中所有符合条件的后代节点</li>
@@ -2025,7 +2156,7 @@
 </li>
 </ul>
 <h3 id="选择器列表"><a href="#选择器列表" class="headerlink" title="选择器列表"></a>选择器列表</h3><ul>
-<li>以 comma 分隔的复杂选择器序列</li>
+<li>以 comma 分隔的复杂选择器序列，表示“或”的关系</li>
 </ul>
 <h2 id="选择器优先级"><a href="#选择器优先级" class="headerlink" title="选择器优先级"></a>选择器优先级</h2><ul>
 <li><a href="http://www.standardista.com/css3/css-specificity/" target="_blank" rel="noopener">图解 css-specificity</a></li>
@@ -2049,40 +2180,6 @@
 <li>[0,0,1,1]</li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-<h2 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h2><h3 id="链接-行为"><a href="#链接-行为" class="headerlink" title="链接/行为"></a>链接/行为</h3><ul>
-<li>:any-link</li>
-<li>:link :visited</li>
-<li>:hover</li>
-<li>:active</li>
-<li>:focus</li>
-<li>:target</li>
-</ul>
-<h3 id="树结构"><a href="#树结构" class="headerlink" title="树结构"></a>树结构</h3><ul>
-<li>:empty</li>
-<li>:nth-child()<ul>
-<li><img src="http://p0.meituan.net/myvideodistribute/75fe112b20e952564395fc869bf398d694743.png" alt=":nth-child An+B"></li>
-</ul>
-</li>
-<li>:nth-last-child()</li>
-<li>:first-child :last-child :only-child</li>
-</ul>
-<h3 id="逻辑型"><a href="#逻辑型" class="headerlink" title="逻辑型"></a>逻辑型</h3><ul>
-<li>:not 伪类</li>
-<li>:where :has</li>
-</ul>
-<h2 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h2><ul>
-<li>::before</li>
-<li>::after</li>
-<li>::first-line<ul>
-<li>元素的第一行</li>
-<li>first-line 若有 float ，则会脱离文档流出去，然后又选中第一行，又脱离文档流出去循环了</li>
-</ul>
-</li>
-<li>::first-letter<ul>
-<li>元素的第一个字母</li>
 </ul>
 </li>
 </ul>
@@ -2525,7 +2622,7 @@
 <a id="more"></a>
 
 
-<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><h3 id="Server-端实现"><a href="#Server-端实现" class="headerlink" title="Server 端实现"></a>Server 端实现</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; Returns content-type &#x3D; text&#x2F;plain</span><br><span class="line">const server &#x3D; http.createServer((req, res) &#x3D;&gt; &#123;</span><br><span class="line">  res.setHeader(&#39;Content-Type&#39;, &#39;text&#x2F;html&#39;);</span><br><span class="line">  res.setHeader(&#39;X-Foo&#39;, &#39;bar&#39;);</span><br><span class="line">  res.writeHead(200, &#123; &#39;Content-Type&#39;: &#39;text&#x2F;plain&#39; &#125;);</span><br><span class="line">  res.end(&#39;ok&#39;);</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(8088);</span><br></pre></td></tr></table></figure>
+<h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><h3 id="Server-端实现"><a href="#Server-端实现" class="headerlink" title="Server 端实现"></a>Server 端实现</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Returns content-type = text/plain</span></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html'</span>);</span><br><span class="line">  res.setHeader(<span class="string">'X-Foo'</span>, <span class="string">'bar'</span>);</span><br><span class="line">  res.writeHead(<span class="number">200</span>, &#123; <span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span> &#125;);</span><br><span class="line">  res.end(<span class="string">'ok'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">8088</span>);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>When headers have been set with response.setHeader(), they will be merged with any headers passed to response.writeHead(), with the headers passed to <strong>response.writeHead() given precedence</strong>.</p>
@@ -2539,7 +2636,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="Client-端实现"><a href="#Client-端实现" class="headerlink" title="Client 端实现"></a>Client 端实现</h3><h4 id="第一版：简单实现"><a href="#第一版：简单实现" class="headerlink" title="第一版：简单实现"></a>第一版：简单实现</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const net &#x3D; require(&#39;net&#39;);</span><br><span class="line">const client &#x3D; net.createConnection(&#123; port: 8088 &#125;, () &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; &#39;connect&#39; listener.</span><br><span class="line">  console.log(&#39;connected to server!&#39;);</span><br><span class="line">  client.write(&#39;POST &#x2F; HTTP&#x2F;1.1\r\n&#39;);</span><br><span class="line">  client.write(&#39;HOST: 127.0.0.1\r\n&#39;);</span><br><span class="line">  client.write(&#39;Content-Length: 9\r\n&#39;);</span><br><span class="line">  client.write(&#39;Content-Type: application&#x2F;x-www-form-urlencoded\r\n&#39;);</span><br><span class="line">  client.write(&#39;\r\n&#39;);</span><br><span class="line">  client.write(&#39;name&#x3D;elle&#39;);</span><br><span class="line">  client.write(&#39;\r\n&#39;);</span><br><span class="line">&#125;);</span><br><span class="line">client.on(&#39;data&#39;, (data) &#x3D;&gt; &#123;</span><br><span class="line">  console.log(data.toString());</span><br><span class="line">  client.end();</span><br><span class="line">&#125;);</span><br><span class="line">client.on(&#39;end&#39;, () &#x3D;&gt; &#123;</span><br><span class="line">  console.log(&#39;disconnected from server&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="Client-端实现"><a href="#Client-端实现" class="headerlink" title="Client 端实现"></a>Client 端实现</h3><h4 id="第一版：简单实现"><a href="#第一版：简单实现" class="headerlink" title="第一版：简单实现"></a>第一版：简单实现</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"><span class="keyword">const</span> client = net.createConnection(&#123; <span class="attr">port</span>: <span class="number">8088</span> &#125;, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// 'connect' listener.</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'connected to server!'</span>);</span><br><span class="line">  client.write(<span class="string">'POST / HTTP/1.1\r\n'</span>);</span><br><span class="line">  client.write(<span class="string">'HOST: 127.0.0.1\r\n'</span>);</span><br><span class="line">  client.write(<span class="string">'Content-Length: 9\r\n'</span>);</span><br><span class="line">  client.write(<span class="string">'Content-Type: application/x-www-form-urlencoded\r\n'</span>);</span><br><span class="line">  client.write(<span class="string">'\r\n'</span>);</span><br><span class="line">  client.write(<span class="string">'name=elle'</span>);</span><br><span class="line">  client.write(<span class="string">'\r\n'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">'data'</span>, (data) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data.toString());</span><br><span class="line">  client.end();</span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'disconnected from server'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>我们开启服务端<blockquote>
@@ -4277,7 +4374,7 @@
 </ul>
 <h3 id="第二步：收集元素进行"><a href="#第二步：收集元素进行" class="headerlink" title="第二步：收集元素进行"></a>第二步：收集元素进行</h3><ul>
 <li><p>flex 容器没有设置 mainSize，直接撑开，count flex 子项 mainSize</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> isAutoMainSize = <span class="literal">false</span></span><br><span class="line"><span class="comment">// 没有设置 mainSize 直接撑开</span></span><br><span class="line"><span class="keyword">if</span> (!style[mainSize]) &#123; <span class="comment">// auto sizing</span></span><br><span class="line">elementStyle[mainSize] = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i ++) &#123;</span><br><span class="line">    <span class="keyword">let</span> item = items[i]</span><br><span class="line">    <span class="keyword">if</span> (itemStyle[mainSize] !== <span class="literal">null</span> || itemStyle[mainSize] !== (<span class="keyword">void</span> <span class="number">0</span>)) </span><br><span class="line">      elementStyle[mainSize] = elementStyle[mainSize] + itemStyle[mainSize]</span><br><span class="line">&#125;</span><br><span class="line">isAutoMainSize = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> isAutoMainSize = <span class="literal">false</span></span><br><span class="line"><span class="comment">// 没有设置 mainSize 直接撑开</span></span><br><span class="line"><span class="keyword">if</span> (!style[mainSize]) &#123; <span class="comment">// auto sizing</span></span><br><span class="line">     elementStyle[mainSize] = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i ++) &#123;</span><br><span class="line">	<span class="keyword">let</span> item = items[i]</span><br><span class="line">	<span class="keyword">if</span> (itemStyle[mainSize] !== <span class="literal">null</span> || itemStyle[mainSize] !== (<span class="keyword">void</span> <span class="number">0</span>)) </span><br><span class="line">	  elementStyle[mainSize] = elementStyle[mainSize] + itemStyle[mainSize]</span><br><span class="line">  &#125;</span><br><span class="line">  isAutoMainSize = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>flex 容器 flex-wrap: no-wrap &amp;&amp; isAutoMainSize，mainSpace 为0，允许撑大，<strong>强行分进第一行</strong></p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (style.flexWrap === <span class="string">'nowrap'</span> &amp;&amp; isAutoMainSize) &#123;</span><br><span class="line">     mainSpace -= itemStyle[mainSize]</span><br><span class="line">     <span class="keyword">if</span> (itemStyle[crossSize] !== <span class="literal">null</span> &amp;&amp; itemStyle[crossSize] !== (<span class="keyword">void</span> <span class="number">0</span>)) &#123;</span><br><span class="line">       crossSpace = <span class="built_in">Math</span>.max(crossSpace, itemStyle[crossSize])</span><br><span class="line">     &#125;</span><br><span class="line">     flexLine.push(item)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
@@ -5457,7 +5554,9 @@
 <li>五一倒计时 3 天</li>
 </ul>
 <a id="more"></a>
+
 <h2 id="实践准备"><a href="#实践准备" class="headerlink" title="实践准备"></a>实践准备</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line">#import &lt;JavaScriptCore&#x2F;JavaScriptCore.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argx, const char * argv[]) &#123;</span><br><span class="line">  @autoreleasepool &#123;</span><br><span class="line">    &#x2F;&#x2F; var context &#x3D; new JSContext</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; define a javascript context</span><br><span class="line">    JSContext* context &#x3D; [[JSContext alloc] init];</span><br><span class="line">    &#x2F;&#x2F; like:var result &#x3D; null;</span><br><span class="line">    JSValue* result;</span><br><span class="line">    </span><br><span class="line">    while(true) &#123;</span><br><span class="line">      char sourcecode[1024];</span><br><span class="line">      </span><br><span class="line">      scanf(&#39;%s&#39;, &amp;sourcecode);</span><br><span class="line">      NSString* code &#x3D; [NSString stringWithUTF8String: sourcecode];</span><br><span class="line">      </span><br><span class="line">      result &#x3D; [context evaluateScript:code];</span><br><span class="line">      </span><br><span class="line">      NSLog(@&quot;%@&quot;, [result toString]);</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>如上实现一个简单的事件循环，用来输出 console</li>
 <li><img src="http://p1.meituan.net/myvideodistribute/a99619da1cded49f443ded2fc219b27432778.png" alt="OC 方法"></li>
@@ -5470,10 +5569,12 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line">#import &lt;JavaScriptCore&#x2F;JavaScriptCore.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argx, const char * argv[]) &#123;</span><br><span class="line">  @autoreleasepool &#123;</span><br><span class="line">    &#x2F;&#x2F; var context &#x3D; new JSContext</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; define a javascript context</span><br><span class="line">    JSContext* context &#x3D; [[JSContext alloc] init];</span><br><span class="line">    &#x2F;&#x2F; like:var result &#x3D; null;</span><br><span class="line">    JSValue* result;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; TODO: calculate the square of arg x</span><br><span class="line">    NSString* code &#x3D; @&quot;(function(x)&#123; return x * x; &#125;)&quot;;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; like: result &#x3D; (function(x)&#123; return x * x; &#125;)</span><br><span class="line">    result &#x3D; [context evaluateScript:code];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; passing the number 4 into the function</span><br><span class="line">    JSValue* arg1 &#x3D; [JSValue valueWithInt32:4 inContext:context];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; execute the function with arg of 4</span><br><span class="line">    NSLog(@&quot;%@&quot;, [[result callWithArguments:@[arg1]] toString]);</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>上面的 Object-C 代码，可以看出来，我们是将一段一段的代码，传入 evaluateScript 中执行。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line">#import &lt;JavaScriptCore&#x2F;JavaScriptCore.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argx, const char * argv[]) &#123;</span><br><span class="line">  @autoreleasepool &#123;</span><br><span class="line">    &#x2F;&#x2F; var context &#x3D; new JSContext</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; define a javascript context</span><br><span class="line">    JSContext* context &#x3D; [[JSContext alloc] init];</span><br><span class="line">    &#x2F;&#x2F; like:var result &#x3D; null;</span><br><span class="line">    JSValue* result;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; TODO: calculate the square of arg x</span><br><span class="line">    NSString* code &#x3D; @&quot;new Promise(resolve &#x3D;&gt; resolve()).then(() &#x3D;&gt; this.a &#x3D; 3), function()&#123;return this.a&#125;;&quot;;</span><br><span class="line">        </span><br><span class="line">    result &#x3D; [context evaluateScript:code];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; like: result();</span><br><span class="line">    NSLog(@&quot;%@&quot;, [[result callWithArguments:@[]] toString]);</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>evaluateScript 实际上执行两步：</p>
 <ol>
@@ -5485,7 +5586,8 @@
 <li>逗号表达式，永远返回后面的值，如果被调用，前面的会被执行</li>
 </ul>
 </li>
-<li>执行 Promise 中 then 后面的语句</li>
+<li><p>执行 Promise 中 then 后面的语句</p>
+</li>
 </ol>
 <ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/81d945c99778450fd86a710f20355cbc269796.png" alt="evaluateScript"></li>
@@ -5494,16 +5596,18 @@
 <li>而 Promise 是 JS 本身自带的 API，这种就是微任务。</li>
 </ul>
 </li>
-<li>总结：<strong>宿主提供的方法是宏任务，JS 自带的是微任务</strong></li>
-<li><strong>任务列表列里面有很多宏任务，然后每个宏任务里面有一个微任务列表，每个宏任务执行下一个宏任务之前会把自己内部的微任务执行完</strong></li>
-<li><strong>宏任务</strong>包括：script 、setTimeout、setInterval 、setImmediate 、I/O 、UI rendering。</li>
-<li><strong>微任务</strong>包括：MutationObserver、Promise.then()或catch()、Promise为基础开发的其它技术，比如fetch API、V8的垃圾回收过程、Node独有的process.nextTick。</li>
+<li><p>总结：<strong>宿主提供的方法是宏任务，JS 自带的是微任务</strong></p>
+</li>
+<li><p><strong>任务列表列里面有很多宏任务，然后每个宏任务里面有一个微任务列表，每个宏任务执行下一个宏任务之前会把自己内部的微任务执行完</strong></p>
+</li>
+<li><p><strong>宏任务</strong>包括：script 、setTimeout、setInterval 、setImmediate 、I/O 、UI rendering。</p>
+</li>
+<li><p><strong>微任务</strong>包括：MutationObserver、Promise.then()或catch()、Promise为基础开发的其它技术，比如fetch API、V8的垃圾回收过程、Node独有的process.nextTick。</p>
+</li>
 </ul>
-<h1 id="Javascript-结构化程序设计基础设施"><a href="#Javascript-结构化程序设计基础设施" class="headerlink" title="Javascript 结构化程序设计基础设施"></a>Javascript 结构化程序设计基础设施</h1><ul>
-<li></li>
-</ul>
-<h2 id="实践记录"><a href="#实践记录" class="headerlink" title="实践记录"></a>实践记录</h2><h3 id="基础题"><a href="#基础题" class="headerlink" title="基础题"></a>基础题</h3><p>1.1 题目一</p>
+<h1 id="Javascript-结构化程序设计基础"><a href="#Javascript-结构化程序设计基础" class="headerlink" title="Javascript 结构化程序设计基础"></a>Javascript 结构化程序设计基础</h1><h2 id="实践记录"><a href="#实践记录" class="headerlink" title="实践记录"></a>实践记录</h2><h3 id="基础题"><a href="#基础题" class="headerlink" title="基础题"></a>基础题</h3><p>1.1 题目一</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'1'</span>, promise1);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析：</p>
 <ul>
@@ -5514,7 +5618,8 @@
 </li>
 <li><p>再执行同步代码</p>
 </li>
-<li>执行完后， promise1 中并没有 resolved, rejected， 一直处在 pending 的状态</li>
+<li><p>执行完后， promise1 中并没有 resolved, rejected， 一直处在 pending 的状态</p>
+</li>
 </ul>
 </li>
 <li><p>运行结果</p>
@@ -5525,6 +5630,7 @@
 </ul>
 <p>1.2 题目二</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  resolve(<span class="string">'success'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5553,6 +5659,7 @@
 </ul>
 <p>1.3 题目三</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5578,6 +5685,7 @@
 </ul>
 <p>1.4 题目四</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</span><br><span class="line">  resolve(<span class="string">'resolve1'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> promise2 = promise1.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'1'</span>, promise1);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'2'</span>, promise2);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5616,6 +5724,7 @@
 </ul>
 <p>1.5 题目五</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="function"><span class="params">()</span> =&gt;</span> <span class="function">(<span class="params"><span class="keyword">new</span> <span class="built_in">Promise</span>((resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  resolve(<span class="string">'success'</span>)</span><br><span class="line">&#125;))</span><br><span class="line">fn().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5644,6 +5753,7 @@
 </ul>
 <p>1.6 题目六</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="function"><span class="params">()</span> =&gt;</span></span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    resolve(<span class="string">"success"</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"start"</span>);</span><br><span class="line">fn().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5672,6 +5782,7 @@
 </ul>
 <h3 id="Promise-结合-setTimeout"><a href="#Promise-结合-setTimeout" class="headerlink" title="Promise 结合 setTimeout"></a>Promise 结合 setTimeout</h3><p>2.1 题目一</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>)</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'time'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'resolve'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'end'</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5703,6 +5814,7 @@
 </ul>
 <p>2.2 题目二</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"timerStart"</span>);</span><br><span class="line">    resolve(<span class="string">"success"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"timerEnd"</span>);</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5736,6 +5848,7 @@
 </ul>
 <p>2.3 题目三</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timer1'</span>);</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timer3'</span>)</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timer2'</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5771,6 +5884,7 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timer1'</span>);</span><br><span class="line">  <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timer2'</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5806,6 +5920,7 @@
 </ul>
 <p>2.4 题目四</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>);</span><br><span class="line">  <span class="keyword">const</span> timer2 = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timer2'</span>)</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> timer1 = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timer1'</span>)</span><br><span class="line">  <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5838,6 +5953,7 @@
 </ul>
 <p>2.5 题目五 ** 存在和之前一样的，promise resolved 后，状态上抛至上一个 宏任务队列的问题</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="string">'success'</span>)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> promise2 = promise1.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error!!!'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'promise1'</span>, promise1)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'promise2'</span>, promise2)</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>, promise1)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise2'</span>, promise2)</span><br><span class="line">&#125;, <span class="number">2000</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5848,12 +5964,12 @@
 <li>执行同步代码<ul>
 <li>console.log(‘promise1’, promise1)<ul>
 <li>其中 promise1 没有 resolved、rejected,一直处在 pending 状态</li>
-<li>promise1 Promise {\<pending\>}</li>
+<li>promise1 Promise {&lt;pending&gt;}</li>
 </ul>
 </li>
 <li>console.log(‘promise2’, promise2)<ul>
 <li>其中 promise1 一直处在 pending 状态，直接影响到 promise2 也一直处在 pending 状态</li>
-<li>promise2 Promise {\<pending\>}</li>
+<li>promise2 Promise {&lt;pending&gt;}</li>
 </ul>
 </li>
 </ul>
@@ -5869,11 +5985,11 @@
 <li>执行同步代码<ul>
 <li>console.log(‘promise1’, promise1)<ul>
 <li>其中 promise1 处在 resolved 状态</li>
-<li>promise1 Promise {\<resolved\>: “success”}</li>
+<li>promise1 Promise {&lt;resolved&gt;: “success”}</li>
 </ul>
 </li>
 <li>console.log(‘promise2’, promise2)<ul>
-<li>promise2 Promise {\<rejected\>: Error: error!!! at \<anonymous\>:8:9}</li>
+<li>promise2 Promise {&lt;rejected&gt;: Error: error!!! at &lt;anonymous&gt;:8:9}</li>
 </ul>
 </li>
 </ul>
@@ -5888,6 +6004,7 @@
 </ul>
 <p>2.6 题目六</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="string">"success"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"timer1"</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"promise1里的内容"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> promise2 = promise1.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"error!!!"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"promise1"</span>, promise1);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"promise2"</span>, promise2);</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"timer2"</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"promise1"</span>, promise1);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"promise2"</span>, promise2);</span><br><span class="line">&#125;, <span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5901,14 +6018,14 @@
 <li>执行同步代码<ul>
 <li>console.log(“promise1”, promise1);<ul>
 <li>其中 promise1 没有 resolved、rejected 掉，一直处在 pending 状态<ul>
-<li>promise1 Promise {\<pending\>}</li>
+<li>promise1 Promise {&lt;pending&gt;}</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>console.log(“promise2”, promise2);<ul>
 <li>primise1 的 pending 状态，直接影响 promise2 也处在 pending 状态<ul>
-<li>promise2 Promise {\<pending\>}</li>
+<li>promise2 Promise {&lt;pending&gt;}</li>
 </ul>
 </li>
 </ul>
@@ -5935,11 +6052,11 @@
 <li>console.log(“timer2”);</li>
 <li>console.log(“promise1”, promise1);<ul>
 <li>其中 promise1 的状态已经 resloved</li>
-<li>promise1 Promise {\<resolved\>: “success”}</li>
+<li>promise1 Promise {&lt;resolved&gt;: “success”}</li>
 </ul>
 </li>
 <li>console.log(“promise2”, promise2);<ul>
-<li>promise2 Promise {\<rejected\>: Error: error!!! at \<anonymous\>:8:9}</li>
+<li>promise2 Promise {&lt;rejected&gt;: Error: error!!! at &lt;anonymous&gt;:8:9}</li>
 </ul>
 </li>
 </ul>
@@ -5956,6 +6073,7 @@
 </ul>
 <h3 id="Promise-中的-then、catch、finally"><a href="#Promise-中的-then、catch、finally" class="headerlink" title="Promise 中的 then、catch、finally"></a>Promise 中的 then、catch、finally</h3><p>3.1 题目一</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve(<span class="string">"success1"</span>);</span><br><span class="line">  reject(<span class="string">"error"</span>);</span><br><span class="line">  resolve(<span class="string">"success2"</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise</span><br><span class="line">.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"then: "</span>, res);</span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"catch: "</span>, err);</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -5975,7 +6093,8 @@
 <li><img src="http://p0.meituan.net/myvideodistribute/448d9fb1db29ba7e76762f97a9508d1e35386.png" alt="题目一运行结果"></li>
 </ul>
 </li>
-<li>结论<ul>
+<li><p>结论</p>
+<ul>
 <li><strong>Promise的状态一经改变就不能再改变</strong></li>
 <li><strong>构造函数中的 resolve 或 reject 只有第一次执行有效，多次调用没有任何作用</strong>。</li>
 </ul>
@@ -5983,6 +6102,7 @@
 </ul>
 <p>3.2 题目二</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  reject(<span class="string">"error"</span>);</span><br><span class="line">  resolve(<span class="string">"success2"</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise</span><br><span class="line">.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"then1: "</span>, res);</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"then2: "</span>, res);</span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"catch: "</span>, err);</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"then3: "</span>, res);</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -6002,7 +6122,7 @@
 <li><p>结论</p>
 <ul>
 <li><strong>catch不管被连接到哪里，都能捕获上层未捕捉过的错误</strong></li>
-<li>至于 then3 也会被执行，那是因为<strong>catch()也会返回一个 Promise </strong>，且由于这个 Promise 没有返回值，所以打印出来的是 undefined 。</li>
+<li>至于 then3 也会被执行，那是因为*<em>catch()也会返回一个 Promise *</em>，且由于这个 Promise 没有返回值，所以打印出来的是 undefined 。</li>
 </ul>
 </li>
 <li><p>运行结果</p>
@@ -6013,12 +6133,13 @@
 </ul>
 <p>3.3 题目三</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
 <li>代码从上至下开始执行</li>
 <li>promise 状态为 resolved, 因此触发 then<ul>
-<li>console.log(res); res —&gt; 1</li>
+<li>console.log(res); res –&gt; 1</li>
 </ul>
 </li>
 <li>没有报错，略过 catch</li>
@@ -6041,12 +6162,13 @@
 </ul>
 <p>3.4 题目四</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.reject(<span class="number">1</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
 <li>代码从上至下开始执行</li>
 <li>promise 状态为 rejected，因此触发 catch<ul>
-<li>console.log(err); err —&gt; 1</li>
+<li>console.log(err); err –&gt; 1</li>
 <li>return resolve(3)</li>
 </ul>
 </li>
@@ -6064,6 +6186,7 @@
 </ul>
 <p>3.5 题目五</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timer'</span>)</span><br><span class="line">    resolve(<span class="string">'success'</span>)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line">promise.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res, <span class="built_in">Date</span>.now() - start)</span><br><span class="line">&#125;)</span><br><span class="line">promise.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res, <span class="built_in">Date</span>.now() - start)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -6092,13 +6215,15 @@
 <li><strong>Promise 的 .then 或者 .catch 可以被调用多次，但这里 Promise 构造函数只执行一次。或者说 promise 内部状态一经改变，并且有了一个值，那么后续每次调用 .then 或者 .catch 都会直接拿到该值。</strong></li>
 </ul>
 </li>
-<li>运行结果<ul>
+<li><p>运行结果</p>
+<ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/9ee74ca562f7c913d51c9fd5fe60680543896.png" alt="题目五运行结果"></li>
 </ul>
 </li>
 </ul>
 <p>3.6 题目六</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error!!!'</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"then: "</span>, res)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"catch: "</span>, err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -6110,7 +6235,7 @@
 </ul>
 </li>
 <li>被 catch 捕捉<ul>
-<li>console.log(“catch: “, err) err —&gt; error</li>
+<li>console.log(“catch: “, err) err –&gt; error</li>
 </ul>
 </li>
 </ul>
@@ -6123,6 +6248,7 @@
 </ul>
 <p>3.7 题目七</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> promise;</span><br><span class="line">&#125;)</span><br><span class="line">promise.catch(<span class="built_in">console</span>.err)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -6147,6 +6273,7 @@
 </ul>
 <p>3.8 题目八</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line">  .then(<span class="number">2</span>)</span><br><span class="line">  .then(<span class="built_in">Promise</span>.resolve(<span class="number">3</span>))</span><br><span class="line">  .then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -6169,18 +6296,24 @@
 </ul>
 <p>3.9 题目九</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.reject(<span class="string">'err!!!'</span>)</span><br><span class="line">  .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'success'</span>, res)</span><br><span class="line">  &#125;, (err) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'error'</span>, err)</span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'catch'</span>, err)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>我们可以先来看看，如果 catch 住了错误，err 会一直链式传递下去被 catch嘛</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/f9859062c1341e2e575f952e320aba4222620.png" alt="是否会被一直catch"><ul>
+<li><p>我们可以先来看看，如果 catch 住了错误，err 会一直链式传递下去被 catch嘛</p>
+</li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/f9859062c1341e2e575f952e320aba4222620.png" alt="是否会被一直catch"></p>
+<ul>
 <li>一旦 catch 住当前报错，当前报错并不会再往下传递</li>
 </ul>
 </li>
-<li><img src="http://p1.meituan.net/myvideodistribute/9846287852a98f322045973bf302c58f24992.png" alt="逐行调用catch是会一直传递下去的"><ul>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/9846287852a98f322045973bf302c58f24992.png" alt="逐行调用catch是会一直传递下去的"></p>
+<ul>
 <li>逐行调用 then 是会一直传递下去的</li>
 </ul>
 </li>
-<li>那我还可以看看，如果没有错误，res 会一直链式传递 then 执行嘛</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/e2e72158c05ceee7da7528ff9a20348426425.png" alt="是否会被一直then"><ul>
+<li><p>那我还可以看看，如果没有错误，res 会一直链式传递 then 执行嘛</p>
+</li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/e2e72158c05ceee7da7528ff9a20348426425.png" alt="是否会被一直then"></p>
+<ul>
 <li>可以看出 then 是会一直往下传递的</li>
 </ul>
 </li>
@@ -6195,7 +6328,7 @@
 <li>promise 状态改变为 rejected，return ‘err!!!’</li>
 <li>执行 then，then 中第二个函数，相当于 catch</li>
 <li>因此执行</li>
-<li>console.log(‘error’, err) err —&gt; err!!!</li>
+<li>console.log(‘error’, err) err –&gt; err!!!</li>
 </ul>
 </li>
 <li><p>运行结果</p>
@@ -6205,6 +6338,7 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> <span class="title">success</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error!!!'</span>)</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> <span class="title">fail1</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'fail1'</span>, err)</span><br><span class="line">  &#125;).catch(<span class="function"><span class="keyword">function</span> <span class="title">fail2</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'fail2'</span>, err)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -6215,7 +6349,7 @@
 </ul>
 </li>
 <li>被 catch <ul>
-<li>console.log(‘fail2’, err) err —&gt; error!!!</li>
+<li>console.log(‘fail2’, err) err –&gt; error!!!</li>
 </ul>
 </li>
 </ul>
@@ -6228,13 +6362,14 @@
 </ul>
 <p>3.10 题目十</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve(<span class="string">'1'</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res)</span><br><span class="line">  &#125;)</span><br><span class="line">  .finally(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'finally'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="built_in">Promise</span>.resolve(<span class="string">'2'</span>)</span><br><span class="line">  .finally(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'finally2'</span>)</span><br><span class="line">  	<span class="keyword">return</span> <span class="string">'我是finally2返回的值'</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'finally2后面的then函数'</span>, res)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
 <li>代码从上至下开始执行</li>
 <li>promise 状态变为 resolve，return 1</li>
 <li>执行 then<ul>
-<li>console.log(res) res —&gt; return new Promise， resolve(1) 加入微任务队列</li>
+<li>console.log(res) res –&gt; return new Promise， resolve(1) 加入微任务队列</li>
 </ul>
 </li>
 <li>promise 状态变为 resolve, return 2<ul>
@@ -6247,7 +6382,7 @@
 </li>
 <li>当前同步代码执行完成，开始还行微任务队列<ul>
 <li>console.log(‘finally’)</li>
-<li>console.log(‘finally2后面的then函数’, res) res —&gt; 2</li>
+<li>console.log(‘finally2后面的then函数’, res) res –&gt; 2</li>
 </ul>
 </li>
 </ul>
@@ -6273,8 +6408,10 @@
 </ul>
 <p>4.1 题目一</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runAsync</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">r</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> r(x, <span class="built_in">console</span>.log(x)), <span class="number">1000</span>))</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.all([runAsync(<span class="number">1</span>), runAsync(<span class="number">2</span>), runAsync(<span class="number">3</span>)])</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>分析<ul>
+<li><p>分析</p>
+<ul>
 <li>代码从上至下开始执行</li>
 <li>Promise.all 入队微任务队列</li>
 <li>当前同步代码执行完成，开始执行微任务队列<ul>
@@ -6298,6 +6435,7 @@
 </ul>
 <p>4.2 题目二</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runAsync</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">r</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> r(x, <span class="built_in">console</span>.log(x)), <span class="number">1000</span>))</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runReject</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res, rej</span>) =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> rej(<span class="string">`Error: <span class="subst">$&#123;x&#125;</span>`</span>, <span class="built_in">console</span>.log(x)), <span class="number">1000</span> * x))</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.all([runAsync(<span class="number">1</span>), runReject(<span class="number">4</span>), runAsync(<span class="number">3</span>), runReject(<span class="number">2</span>)])</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err))</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -6309,12 +6447,12 @@
 </li>
 <li>由于 runReject(4) 比 runReject(2) 晚入微任务队列，且 catch 只执行一次<ul>
 <li>再间隔一秒后<ul>
-<li>console.log(x) x —&gt; 2</li>
+<li>console.log(x) x –&gt; 2</li>
 <li>console.log(‘Error: 2’)</li>
 </ul>
 </li>
 <li>再间隔2秒后<ul>
-<li>console.log(x) x —&gt; 4</li>
+<li>console.log(x) x –&gt; 4</li>
 <li>不会再执行 catch</li>
 </ul>
 </li>
@@ -6329,13 +6467,15 @@
 </li>
 <li><p>等同于</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runAsync</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">r</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> r(x, <span class="built_in">console</span>.log(x)), <span class="number">1000</span>))</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runReject</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res, rej</span>) =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> rej(<span class="string">`Error: <span class="subst">$&#123;x&#125;</span>`</span>, <span class="built_in">console</span>.log(x)), <span class="number">1000</span> * x))</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.all([runAsync(<span class="number">1</span>), runReject(<span class="number">4</span>), runAsync(<span class="number">3</span>), runReject(<span class="number">2</span>)])</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res), </span><br><span class="line">  err =&gt; <span class="built_in">console</span>.log(err);</span><br></pre></td></tr></table></figure></li>
-<li>结论<ul>
+<li><p>结论</p>
+<ul>
 <li>all 和 race传入的数组中如果有会抛出异常的异步任务，那么只有最先抛出的错误会被捕获，并且是被 then 的第二个参数或者后面的 catch 捕获；但并不会影响数组中其它的异步任务的执行。</li>
 </ul>
 </li>
 </ul>
 <p>4.3 题目三</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runAsync</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">r</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> r(x, <span class="built_in">console</span>.log(x)), <span class="number">1000</span>))</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.race([runAsync(<span class="number">1</span>), runAsync(<span class="number">2</span>), runAsync(<span class="number">3</span>)])</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'result: '</span>, res))</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err))</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -6344,16 +6484,16 @@
 <li>当前宏任务中同步任务执行完成，开始执行微任务</li>
 <li>在间隔时间都一样的情况下，runAsync1 最先加入队列</li>
 <li>因此<ul>
-<li>console.log(x) x —&gt; 1</li>
+<li>console.log(x) x –&gt; 1</li>
 </ul>
 </li>
 <li>由于 race 的特殊性，只捕捉最先执行完成的那个结果<ul>
-<li>console.log(‘result: ‘, res) res —&gt; 1</li>
+<li>console.log(‘result: ‘, res) res –&gt; 1</li>
 </ul>
 </li>
 <li>再<ul>
-<li>console.log(x) x —&gt; 2</li>
-<li>console.log(x) x —&gt; 3</li>
+<li>console.log(x) x –&gt; 2</li>
+<li>console.log(x) x –&gt; 3</li>
 </ul>
 </li>
 <li>没有报错，不会被 catch</li>
@@ -6367,6 +6507,7 @@
 </ul>
 <p>4.4 题目四</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runAsync</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">r</span> =&gt;</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> r(x, <span class="built_in">console</span>.log(x)), <span class="number">1000</span>)</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runReject</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res, rej</span>) =&gt;</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> rej(<span class="string">`Error: <span class="subst">$&#123;x&#125;</span>`</span>, <span class="built_in">console</span>.log(x)), <span class="number">1000</span> * x)</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.race([runReject(<span class="number">0</span>), runAsync(<span class="number">1</span>), runAsync(<span class="number">2</span>), runAsync(<span class="number">3</span>)])</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"result: "</span>, res))</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err));</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>分析</p>
 <ul>
@@ -6375,16 +6516,16 @@
 <li>当前宏任务中同步任务执行完成，开始执行微任务</li>
 <li>runReject(0) 最先传入</li>
 <li>因此<ul>
-<li>console.log(x) x —&gt; 0</li>
-<li>console.log(err) err —&gt; Error: 0</li>
+<li>console.log(x) x –&gt; 0</li>
+<li>console.log(err) err –&gt; Error: 0</li>
 </ul>
 </li>
 <li>间隔小于1秒后</li>
 <li>runAsync(1), runAsync(2), runAsync(3)<ul>
 <li>依次为</li>
-<li>console.log(x) x —&gt; 1</li>
-<li>console.log(x) x —&gt; 2</li>
-<li>console.log(x) x —&gt; 3</li>
+<li>console.log(x) x –&gt; 1</li>
+<li>console.log(x) x –&gt; 2</li>
+<li>console.log(x) x –&gt; 3</li>
 </ul>
 </li>
 </ul>
@@ -6527,7 +6668,7 @@
       </tags>
   </entry>
   <entry>
-    <title>HTML-XML与SGML</title>
+    <title>HTML-XML与SGML，DOM &amp; CSSOM</title>
     <url>/2020/06/06/HTML-XML%E4%B8%8ESGML/</url>
     <content><![CDATA[<style  type="text/css">
 .lx-entry a {
@@ -7039,6 +7180,235 @@
       <tags>
         <tag>writing</tag>
         <tag>WebGL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Elle 技能树梳理</title>
+    <url>/2020/08/27/Elle-%E6%8A%80%E8%83%BD%E6%A0%91%E6%A2%B3%E7%90%86/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>对自己的技能树进行简单梳理</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="编程通识-week01-02"><a href="#编程通识-week01-02" class="headerlink" title="编程通识 week01 ~ 02"></a>编程通识 week01 ~ 02</h2><ul>
+<li><p>从产生式的角度来理解编程语言</p>
+<ul>
+<li><a href="https://ele-peng.github.io/2020/04/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%80%9A%E8%AF%86/" target="_blank" rel="noopener">编程语言通识</a></li>
+</ul>
+</li>
+<li><p>依据产生式，利用正则表达式来匹配 字符串/Number字面量</p>
+<ul>
+<li><a href="https://ele-peng.github.io/2020/04/20/Reg-Number/" target="_blank" rel="noopener">Reg-Number</a></li>
+<li><a href="https://ele-peng.github.io/2020/04/21/Reg-String/" target="_blank" rel="noopener">Reg-String</a></li>
+</ul>
+</li>
+<li><p>UTF-8 + 十进制小数的二进制表示</p>
+<ul>
+<li><a href="https://ele-peng.github.io/2020/04/21/UTF8-Encoing/" target="_blank" rel="noopener">UTF-8 encode+decode, 0.1 + 0.2 ≠ 0.3解析</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm" target="_blank" rel="noopener">ECMA-262</a></p>
+</li>
+</ul>
+<h2 id="Javascript-week03-05"><a href="#Javascript-week03-05" class="headerlink" title="Javascript week03 ~ 05"></a>Javascript week03 ~ 05</h2><ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/a40944a8d5cbaf127ef177026ae1d60d108355.png" alt="Javascript - xmind"></li>
+<li><a href="https://ele-peng.github.io/2020/04/20/Javascript-Atom+Types/" target="_blank" rel="noopener">Javascript-Atom + Types</a><ul>
+<li><a href="https://ele-peng.github.io/2020/04/24/convertStringToNumber/" target="_blank" rel="noopener">convert String to Number</a></li>
+<li><a href="https://ele-peng.github.io/2020/04/25/convertNumberToString/" target="_blank" rel="noopener">convert Number to String</a></li>
+</ul>
+</li>
+<li><a href="https://ele-peng.github.io/2020/04/23/Javascript-Expressions/" target="_blank" rel="noopener">Javascript-Expressions</a></li>
+<li><a href="https://ele-peng.github.io/2020/04/26/Javascript-Statement/" target="_blank" rel="noopener">Javascript-Statement</a></li>
+<li>Javascript-Structure<ul>
+<li><a href="https://ele-peng.github.io/2020/04/30/Javascript-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/" target="_blank" rel="noopener">五一 Elle 快要写吐的 45道 promise面试题题解（一）</a></li>
+<li><a href="https://ele-peng.github.io/2020/05/02/Javascrtip-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">五一 Elle 快要写吐的 45道 promise面试题题解（二）</a></li>
+</ul>
+</li>
+<li>Javascript-Program/Module</li>
+<li>自己对<a href="https://ele-peng.github.io/2020/04/09/OOP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" target="_blank" rel="noopener">面向对象OOP粗略的理解+Javascript标准里所有的对象</a></li>
+<li><a href="https://ele-peng.github.io/2020/05/08/Realm/" target="_blank" rel="noopener">G6 antv 可视化 Realm 中的所有对象</a></li>
+</ul>
+<h2 id="浏览器的工作原理和API-week05-07"><a href="#浏览器的工作原理和API-week05-07" class="headerlink" title="浏览器的工作原理和API week05 ~ 07"></a>浏览器的工作原理和API week05 ~ 07</h2><h3 id="浏览器的工作原理"><a href="#浏览器的工作原理" class="headerlink" title="浏览器的工作原理"></a>浏览器的工作原理</h3><ul>
+<li><a href="https://ele-peng.github.io/2020/05/10/Toy-Browser-DAY1/" target="_blank" rel="noopener">URL- HTTP 协议 + 语法与词法分析</a><ul>
+<li><a href="https://ele-peng.github.io/2020/05/12/%E4%BB%8EURL%E8%BE%93%E5%85%A5%E5%88%B0/" target="_blank" rel="noopener">未完-从URL输入到页面展现发生了什么</a></li>
+<li>FSM<ul>
+<li><a href="https://ele-peng.github.io/2020/05/16/%E5%9F%BA%E4%BA%8EKMP%E7%9A%84FSM%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_blank" rel="noopener">基于KMP的FSM处理 pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://ele-peng.github.io/2020/05/15/Toy-Browser-DAY2/" target="_blank" rel="noopener">HTML - Parser</a></li>
+<li><a href="https://ele-peng.github.io/2020/05/17/Toy-Browser-DAY3/" target="_blank" rel="noopener">CSS - CSS Computing</a></li>
+<li><a href="https://ele-peng.github.io/2020/05/22/Toy-Browser-DAY4/" target="_blank" rel="noopener">DOM with CSS - Layout</a><ul>
+<li>主要实现 flex layout</li>
+</ul>
+</li>
+<li><a href="https://ele-peng.github.io/2020/05/24/Toy-Browser-DAY5/" target="_blank" rel="noopener">DOM with position - Render</a></li>
+<li><img src="http://p0.meituan.net/myvideodistribute/5c3903a71266e72d2e3f21a276c0efad94997.png" alt="浏览器工作原理图"></li>
+<li><a href="https://github.com/Ele-Peng/toy-browser" target="_blank" rel="noopener">完整项目代码</a></li>
+</ul>
+<h3 id="浏览器API"><a href="#浏览器API" class="headerlink" title="浏览器API"></a>浏览器API</h3><ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/64bf3e3fac9ab50d884671909e47b53c274299.png" alt="Web-Apis"></li>
+</ul>
+<h2 id="CSS-week-07-09"><a href="#CSS-week-07-09" class="headerlink" title="CSS week 07 ~ 09"></a>CSS week 07 ~ 09</h2><ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/855b161fdbce05796f748906fa13987a182699.png" alt="CSS - xmind"></li>
+<li><a href="https://ele-peng.github.io/2020/05/24/CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E5%9F%BA%E7%A1%80%E6%9C%BA%E5%88%B6/" target="_blank" rel="noopener">CSS 基本语法+基础机制</a></li>
+<li><a href="https://ele-peng.github.io/2020/05/29/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/" target="_blank" rel="noopener">CSS 选择器</a></li>
+<li><a href="https://ele-peng.github.io/2020/05/30/CSS-%E6%8E%92%E7%89%88/" target="_blank" rel="noopener">CSS 排版</a></li>
+<li><a href="https://ele-peng.github.io/2020/06/06/CSS-%E5%8A%A8%E7%94%BB%E4%B8%8E%E7%BB%98%E5%88%B6/" target="_blank" rel="noopener">CSS 动画与绘制</a></li>
+<li><img src="http://p0.meituan.net/myvideodistribute/dfa2d75397034ebf8f6f854845a6729760145.png" alt="CSS property"><ul>
+<li><a href="https://ele-peng.github.io/2020/08/23/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/" target="_blank" rel="noopener">色彩空间</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="HTML-week-09-10"><a href="#HTML-week-09-10" class="headerlink" title="HTML week 09 ~ 10"></a>HTML week 09 ~ 10</h2><ul>
+<li><img src="http://p1.meituan.net/myvideodistribute/3d33254e89dce4bb6e40ceefe4c40945138850.png" alt="HTML - xmind"></li>
+<li><a href="https://ele-peng.github.io/2020/06/06/HTML-XML%E4%B8%8ESGML/" target="_blank" rel="noopener">HTML - 元素+语言+补充标准</a></li>
+</ul>
+<h2 id="编程与算法实践-week-10-13"><a href="#编程与算法实践-week-10-13" class="headerlink" title="编程与算法实践 week 10 ~ 13"></a>编程与算法实践 week 10 ~ 13</h2><h3 id="Tic-Tac-Toe"><a href="#Tic-Tac-Toe" class="headerlink" title="Tic Tac Toe"></a>Tic Tac Toe</h3><ul>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week10/tic-tac-toe.html" target="_blank" rel="noopener">完整项目代码</a></li>
+</ul>
+<h3 id="寻路算法（A-，启发式算法，dfs，bfs）"><a href="#寻路算法（A-，启发式算法，dfs，bfs）" class="headerlink" title="寻路算法（A*，启发式算法，dfs，bfs）"></a>寻路算法（A*，启发式算法，dfs，bfs）</h3><ul>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week11/roar-search.html" target="_blank" rel="noopener">完整项目代码</a></li>
+</ul>
+<h3 id="四则运算"><a href="#四则运算" class="headerlink" title="四则运算"></a>四则运算</h3><ul>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week12/1x.html" target="_blank" rel="noopener">完整项目代码</a></li>
+</ul>
+<h3 id="字符串算法"><a href="#字符串算法" class="headerlink" title="字符串算法"></a>字符串算法</h3><h4 id="Trie-字典树"><a href="#Trie-字典树" class="headerlink" title="Trie 字典树"></a>Trie 字典树</h4><ul>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week12/trie.html" target="_blank" rel="noopener">完整项目代码</a></li>
+</ul>
+<h4 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h4><ul>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week12/KMP.html" target="_blank" rel="noopener">完整项目代码</a></li>
+</ul>
+<h4 id="WildCard"><a href="#WildCard" class="headerlink" title="WildCard"></a>WildCard</h4><ul>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week12/wildcard.html" target="_blank" rel="noopener">完整项目代码</a></li>
+</ul>
+<h3 id="Proxy-与双向绑定"><a href="#Proxy-与双向绑定" class="headerlink" title="Proxy 与双向绑定"></a>Proxy 与双向绑定</h3><ul>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week13/proxy.html" target="_blank" rel="noopener">完整项目代码</a></li>
+</ul>
+<h3 id="Range-实现-DOM-精确操作"><a href="#Range-实现-DOM-精确操作" class="headerlink" title="Range 实现 DOM 精确操作"></a>Range 实现 DOM 精确操作</h3><ul>
+<li><a href="https://github.com/Ele-Peng/Frontend-01-Template/blob/master/week13/dragable.html" target="_blank" rel="noopener">完整项目代码</a></li>
+</ul>
+<h2 id="组件化-week-13-17"><a href="#组件化-week-13-17" class="headerlink" title="组件化 week 13 ~ 17"></a>组件化 week 13 ~ 17</h2><ul>
+<li><a href="https://github.com/Ele-Peng/component" target="_blank" rel="noopener">完整项目代码</a></li>
+<li><a href="">待写-组件化思考</a></li>
+</ul>
+<h2 id="工具链-week-17-19"><a href="#工具链-week-17-19" class="headerlink" title="工具链 week 17 ~ 19"></a>工具链 week 17 ~ 19</h2><ul>
+<li><a href="https://github.com/Ele-Peng/tool-chain" target="_blank" rel="noopener">完整项目代码</a></li>
+</ul>
+<h2 id="发布系统-week19-21"><a href="#发布系统-week19-21" class="headerlink" title="发布系统 week19 ~ 21"></a>发布系统 week19 ~ 21</h2><ul>
+<li><a href="https://github.com/Ele-Peng/publish" target="_blank" rel="noopener">完整项目代码</a></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端概念</category>
+      </categories>
+      <tags>
+        <tag>前端概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Fibonacci</title>
+    <url>/2020/08/26/Fibonacci/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/Fibonacci_number" target="_blank" rel="noopener">Fibonacci numbers</a></li>
+<li>斐波那契数列特点：<ul>
+<li>F<sub>0</sub> = 0,F<sub>1</sub> = 1;</li>
+<li>F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>;</li>
+<li>such as:<ul>
+<li>0, 1, 1, 2, 3, 5, 8, 13, 21 …</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="基础实现：递归实现"><a href="#基础实现：递归实现" class="headerlink" title="基础实现：递归实现"></a>基础实现：递归实现</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 递归 Time: O(2^n) Space: O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.max(n, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="初级实现：简单-for-循化实现"><a href="#初级实现：简单-for-循化实现" class="headerlink" title="初级实现：简单 for 循化实现"></a>初级实现：简单 for 循化实现</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 循环 Time: O(n) Space: O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.max(n, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> res = [<span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt; n; i ++) &#123;</span><br><span class="line">    res.push(res[i - <span class="number">1</span>] + res[i - <span class="number">2</span>])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res[n - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="中级实现：简单-for-循化实现"><a href="#中级实现：简单-for-循化实现" class="headerlink" title="中级实现：简单 for 循化实现"></a>中级实现：简单 for 循化实现</h2><pre><code class="javascript"><span class="comment">// 递归优化，跳过计算过的中间变量 Time: O(n) Space: O(n)</span>
+<span class="comment">// {</span>
+  <span class="keyword">let</span> res = [<span class="number">0</span>]
+  <span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>) </span>{
+    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) {
+      <span class="keyword">return</span> res[n] = <span class="built_in">Math</span>.max(n, <span class="number">0</span>);
+    }
+    <span class="keyword">if</span> (res[n]) {
+      <span class="keyword">return</span> res[n];
+    }
+    res[n] = fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);
+    <span class="keyword">return</span> res[n]
+  }
+  <span class="comment">// 求数组第十项的值</span>
+  fibonacci(<span class="number">9</span>)
+<span class="comment">// }</span></code></pre>
+<h2 id="高级实现：矩阵乘法-快速幂"><a href="#高级实现：矩阵乘法-快速幂" class="headerlink" title="高级实现：矩阵乘法 + 快速幂"></a>高级实现：矩阵乘法 + 快速幂</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>writing</tag>
       </tags>
   </entry>
 </search>
