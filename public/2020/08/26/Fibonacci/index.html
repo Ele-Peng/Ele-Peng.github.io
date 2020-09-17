@@ -140,25 +140,28 @@
 </li>
 </ul>
 <a id="more"></a>
+
 <h2 id="基础实现：递归实现"><a href="#基础实现：递归实现" class="headerlink" title="基础实现：递归实现"></a>基础实现：递归实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 递归 Time: O(2^n) Space: O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.max(n, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="初级实现：简单-for-循化实现"><a href="#初级实现：简单-for-循化实现" class="headerlink" title="初级实现：简单 for 循化实现"></a>初级实现：简单 for 循化实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 循环 Time: O(n) Space: O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.max(n, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> res = [<span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt; n; i ++) &#123;</span><br><span class="line">    res.push(res[i - <span class="number">1</span>] + res[i - <span class="number">2</span>])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res[n - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="中级实现：简单-for-循化实现"><a href="#中级实现：简单-for-循化实现" class="headerlink" title="中级实现：简单 for 循化实现"></a>中级实现：简单 for 循化实现</h2><pre><code class="lang-javascript">// 递归优化，跳过计算过的中间变量 Time: O(n) Space: O(n)
-{
-  let res = [0]
-  function fibonacci(n) {
-    if (n &lt;= 1) {
-      return res[n] = Math.max(n, 0);
+
+<h2 id="中级实现：简单-for-循化实现"><a href="#中级实现：简单-for-循化实现" class="headerlink" title="中级实现：简单 for 循化实现"></a>中级实现：简单 for 循化实现</h2><pre><code class="javascript"><span class="comment">// 递归优化，跳过计算过的中间变量 Time: O(n) Space: O(n)</span>
+<span class="comment">// {</span>
+  <span class="keyword">let</span> res = [<span class="number">0</span>]
+  <span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>) </span>{
+    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) {
+      <span class="keyword">return</span> res[n] = <span class="built_in">Math</span>.max(n, <span class="number">0</span>);
     }
-    if (res[n]) {
-      return res[n];
+    <span class="keyword">if</span> (res[n]) {
+      <span class="keyword">return</span> res[n];
     }
-    res[n] = fibonacci(n - 1) + fibonacci(n - 2);
-    return res[n]
+    res[n] = fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);
+    <span class="keyword">return</span> res[n]
   }
-  // 求数组第十项的值
-  fibonacci(9)
-}
-</code></pre>
+  <span class="comment">// 求数组第十项的值</span>
+  fibonacci(<span class="number">9</span>)
+<span class="comment">// }</span></code></pre>
 <h2 id="高级实现：矩阵乘法-快速幂"><a href="#高级实现：矩阵乘法-快速幂" class="headerlink" title="高级实现：矩阵乘法 + 快速幂"></a>高级实现：矩阵乘法 + 快速幂</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>祝大家多多发财</li>
 </ul>
