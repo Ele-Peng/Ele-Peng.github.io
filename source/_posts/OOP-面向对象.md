@@ -45,10 +45,30 @@ description:
 <!-- more -->
 
 ## OOP Wikipedia
-- 探讨的是面向对象
-- 我们首先可以想想，我们为什么需要封装成对象？
-	- 我的理解是：我们需要减少我们的操作粒度，每个操作都去落实到 bit 数据是非常庞大的，减少问题求解复杂度
-	- wiki 上关于 object 特性也给到了支持
+### 探讨的是面向对象
+#### 对象的自然定义
+- 在《面向对象分析与设计》这本书中，Grady Booch 替我们做了总结，他认为，从人类的认知角度来说，对象应该是下列事物之一：
+	- 一个可以触摸或者可以看见的东西；
+	- 人的智力可以理解的东西；
+	- 可以指导思考或行动（进行想象或施加动作）的东西。
+- 有了对象的自然定义后，我们就可以描述编程语言中的对象了。在不同的编程语言中，设计者也利用各种不同的语言特性来抽象描述对象，最为成功的流派是使用“类”的方式来描述对象，这诞生了诸如 C++、Java 等流行的编程语言。
+- 而 JavaScript 早年却选择了一个更为冷门的方式：原型
+
+> “基于类”并非面向对象的唯一形态
+
+#### 对象的本质特征
+- 对象的本质特征（参考 Grandy Booch《面向对象分析与设计》）。总结来看，对象有如下几个特点。
+	- 对象具有唯一标识性：
+	- 即使完全相同的两个对象，也并非同一个对象。
+	- 对象有状态：对象具有状态，同一对象可能处于不同状态之下。对象具有行为：即对象的状态，可能因为它的行为产生变迁。
+
+	
+> JavaScript 中对象独有的特色是：对象具有高度的动态性，这是因为 JavaScript 赋予了使用者在运行时为对象添改状态和行为的能力。
+
+	
+### 我们可以想想，我们为什么需要封装成对象？
+- 我的理解是：我们需要减少我们的操作粒度，每个操作都去落实到 bit 数据是非常庞大的，减少问题求解复杂度
+- wiki 上关于 object 特性也给到了支持
 - A feature of objects is an object's procedures that can **access** and **often modify the data fields** of the object with which they are associated (objects have a notion of "this" or "self").
 	- 可以和面向过程 (Procedure Oriented) 放在一起说。
 	- 首先 OOP 是一个很自然的思想，在C语言中也能写出**符合**面向对象思想的代码
@@ -106,6 +126,7 @@ description:
 	- "Each constructor is a function that has a property named **'prototype' that is used to implement prototype-based inheritance and shared properties**."
 	- "Every object created by a constructor has an implicit reference (called the object's prototype) to the value of its constructor's 'prototype' property. Furthermore, a prototype may have a non-null implicit reference to its prototype, and so on; this is called the prototype chain. When a reference is made to a property in an object, that reference is to the property of that name in the first object in the prototype chain that contains a property of that name. In other words, first the object mentioned directly is examined for such a property; if that object contains the named property, that is the property to which the reference refers; if that object does not contain the named property, the prototype for that object is examined next; and so on."
 	- ![ECMA原型链](http://p0.meituan.net/myvideodistribute/54f432d1395e59da48e0e7935ffd7665110363.png)
+	- 
 - 同时 Douglas Crockford 关于 [prototypal inheritance](https://crockford.com/javascript/prototypal.html)
 
 	```javascript
@@ -167,6 +188,10 @@ description:
 ## 写在后面
 - 有对 Object 以及对 reference 产生的 side effects 
 新的认识
+- JavaScript 提供了完全运行时的对象系统，这使得它可以模仿多数面向对象编程范式（基于类和基于原型），所以它也是正统的面向对象语言。
+- JavaScript 语言标准也已经明确说明，JavaScript 是一门面向对象的语言。（标准中能这样说，正是因为 JavaScript 的高度动态性的对象系统）
+
+
 - 闭包 closure
 	- A nested function is a function defined within another function. It is created each time the outer function is invoked. In addition, each nested function forms a lexical closure: The lexical scope of the outer function (including any constant, local variable, or argument value) becomes part of the internal state of each inner function object, even after execution of the outer function concludes.
 - 祝大家多多发财

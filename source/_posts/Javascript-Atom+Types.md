@@ -161,12 +161,21 @@ description:
 
 
 #### Object
+- 为什么给对象添加的方法能用在基本类型上？
+- 运算符提供了装箱操作，它会根据基础类型构造一个临时对象，使得我们能在基础类型上调用对应对象的方法。
 
 #### Null
 - typeof 下为 Object
 
 
 #### Undefined
+- JavaScript 的代码 undefined 是一个变量，而并非是一个关键字，所以，为了避免无意中被篡改，建议使用 void 0 来获取 undefined 值。
+- 實際上，es5後undefined已經被改為read-only屬性了。 但在局部作用域上，是會被修改的！ 如考慮以下函數： 
+
+	```javascript
+	const test = () =>{ var undefined = 5; console.log(typeof undefined)//輸出number } 
+	```
+- 為了避免無意中被竄改，使用void(0)還是比較好的做法 而且在進行代碼壓縮時，undefined也會被換成void(0)
 
 #### Symbol
 
