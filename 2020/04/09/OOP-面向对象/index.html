@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>OOP-面向对象 | Be kind.</title>
+  <title>OOP-面向对象 | 我好菜哇</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="EllePeng">
   <meta name="keywords" content="">
@@ -132,14 +132,34 @@
 
 </li>
 </ul>
-<h2 id="OOP-Wikipedia"><a href="#OOP-Wikipedia" class="headerlink" title="OOP Wikipedia"></a>OOP Wikipedia</h2><ul>
-<li><p>探讨的是面向对象</p>
-</li>
-<li><p>我们首先可以想想，我们为什么需要封装成对象？</p>
-<ul>
-<li>我的理解是：我们需要减少我们的操作粒度，每个操作都去落实到 bit 数据是非常庞大的，减少问题求解复杂度</li>
-<li>wiki 上关于 object 特性也给到了支持</li>
+<h2 id="OOP-Wikipedia"><a href="#OOP-Wikipedia" class="headerlink" title="OOP Wikipedia"></a>OOP Wikipedia</h2><h3 id="探讨的是面向对象"><a href="#探讨的是面向对象" class="headerlink" title="探讨的是面向对象"></a>探讨的是面向对象</h3><h4 id="对象的自然定义"><a href="#对象的自然定义" class="headerlink" title="对象的自然定义"></a>对象的自然定义</h4><ul>
+<li>在《面向对象分析与设计》这本书中，Grady Booch 替我们做了总结，他认为，从人类的认知角度来说，对象应该是下列事物之一：<ul>
+<li>一个可以触摸或者可以看见的东西；</li>
+<li>人的智力可以理解的东西；</li>
+<li>可以指导思考或行动（进行想象或施加动作）的东西。</li>
 </ul>
+</li>
+<li>有了对象的自然定义后，我们就可以描述编程语言中的对象了。在不同的编程语言中，设计者也利用各种不同的语言特性来抽象描述对象，最为成功的流派是使用“类”的方式来描述对象，这诞生了诸如 C++、Java 等流行的编程语言。</li>
+<li>而 JavaScript 早年却选择了一个更为冷门的方式：原型</li>
+</ul>
+<blockquote>
+<p>“基于类”并非面向对象的唯一形态</p>
+</blockquote>
+<h4 id="对象的本质特征"><a href="#对象的本质特征" class="headerlink" title="对象的本质特征"></a>对象的本质特征</h4><ul>
+<li>对象的本质特征（参考 Grandy Booch《面向对象分析与设计》）。总结来看，对象有如下几个特点。<ul>
+<li>对象具有唯一标识性：</li>
+<li>即使完全相同的两个对象，也并非同一个对象。</li>
+<li>对象有状态：对象具有状态，同一对象可能处于不同状态之下。对象具有行为：即对象的状态，可能因为它的行为产生变迁。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>JavaScript 中对象独有的特色是：对象具有高度的动态性，这是因为 JavaScript 赋予了使用者在运行时为对象添改状态和行为的能力。</p>
+</blockquote>
+<h3 id="我们可以想想，我们为什么需要封装成对象？"><a href="#我们可以想想，我们为什么需要封装成对象？" class="headerlink" title="我们可以想想，我们为什么需要封装成对象？"></a>我们可以想想，我们为什么需要封装成对象？</h3><ul>
+<li><p>我的理解是：我们需要减少我们的操作粒度，每个操作都去落实到 bit 数据是非常庞大的，减少问题求解复杂度</p>
+</li>
+<li><p>wiki 上关于 object 特性也给到了支持</p>
 </li>
 <li><p>A feature of objects is an object’s procedures that can <strong>access</strong> and <strong>often modify the data fields</strong> of the object with which they are associated (objects have a notion of “this” or “self”).</p>
 <ul>
@@ -175,6 +195,7 @@
 <li>“Each constructor is a function that has a property named <strong>‘prototype’ that is used to implement prototype-based inheritance and shared properties</strong>.”</li>
 <li>“Every object created by a constructor has an implicit reference (called the object’s prototype) to the value of its constructor’s ‘prototype’ property. Furthermore, a prototype may have a non-null implicit reference to its prototype, and so on; this is called the prototype chain. When a reference is made to a property in an object, that reference is to the property of that name in the first object in the prototype chain that contains a property of that name. In other words, first the object mentioned directly is examined for such a property; if that object contains the named property, that is the property to which the reference refers; if that object does not contain the named property, the prototype for that object is examined next; and so on.”</li>
 <li><img src="http://p0.meituan.net/myvideodistribute/54f432d1395e59da48e0e7935ffd7665110363.png" alt="ECMA原型链"></li>
+<li></li>
 </ul>
 </li>
 <li><p>同时 Douglas Crockford 关于 <a href="https://crockford.com/javascript/prototypal.html" target="_blank" rel="noopener">prototypal inheritance</a></p>
@@ -309,6 +330,10 @@
 </ul>
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
 <li>有对 Object 以及对 reference 产生的 side effects<br>新的认识</li>
+<li>JavaScript 提供了完全运行时的对象系统，这使得它可以模仿多数面向对象编程范式（基于类和基于原型），所以它也是正统的面向对象语言。</li>
+<li>JavaScript 语言标准也已经明确说明，JavaScript 是一门面向对象的语言。（标准中能这样说，正是因为 JavaScript 的高度动态性的对象系统）</li>
+</ul>
+<ul>
 <li>闭包 closure<ul>
 <li>A nested function is a function defined within another function. It is created each time the outer function is invoked. In addition, each nested function forms a lexical closure: The lexical scope of the outer function (including any constant, local variable, or argument value) becomes part of the internal state of each inner function object, even after execution of the outer function concludes.</li>
 </ul>
@@ -353,7 +378,7 @@
 
 <footer>
   <div>
-  Copyright &copy; 2019.<a href="/">Be kind.</a><br>EllePeng
+  Copyright &copy; 2019.<a href="/">我好菜哇</a><br>EllePeng
   </div>
 </footer>
 
