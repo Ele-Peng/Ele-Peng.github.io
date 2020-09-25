@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>Javascript Types | Be kind.</title>
+  <title>Javascript Types | 我好菜哇</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="EllePeng">
   <meta name="keywords" content="">
@@ -299,10 +299,22 @@
 <li>true</li>
 <li>false</li>
 </ul>
-<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
+<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><ul>
+<li>为什么给对象添加的方法能用在基本类型上？</li>
+<li>运算符提供了装箱操作，它会根据基础类型构造一个临时对象，使得我们能在基础类型上调用对应对象的方法。</li>
+</ul>
+<h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h4><ul>
 <li>typeof 下为 Object</li>
 </ul>
-<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>
+<h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h4><ul>
+<li><p>JavaScript 的代码 undefined 是一个变量，而并非是一个关键字，所以，为了避免无意中被篡改，建议使用 void 0 来获取 undefined 值。</p>
+</li>
+<li><p>實際上，es5後undefined已經被改為read-only屬性了。 但在局部作用域上，是會被修改的！ 如考慮以下函數： </p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = <span class="function"><span class="params">()</span> =&gt;</span>&#123; <span class="keyword">var</span> <span class="literal">undefined</span> = <span class="number">5</span>; <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">undefined</span>)<span class="comment">//輸出number &#125;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>為了避免無意中被竄改，使用void(0)還是比較好的做法 而且在進行代碼壓縮時，undefined也會被換成void(0)</p>
+</li>
+</ul>
+<h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><h2 id="Statemment"><a href="#Statemment" class="headerlink" title="Statemment"></a>Statemment</h2><h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2>
       </div>
     </div>
   </div>
@@ -340,7 +352,7 @@
 
 <footer>
   <div>
-  Copyright &copy; 2019.<a href="/">Be kind.</a><br>EllePeng
+  Copyright &copy; 2019.<a href="/">我好菜哇</a><br>EllePeng
   </div>
 </footer>
 
