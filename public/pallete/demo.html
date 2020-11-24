@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      box-sizing: border-box;
+      height: 100%;
+      background: linear-gradient(0deg, #b7eb8f, 20%, #b5f5ec);
+    }
+
+    .feature-info {
+      height: 20px;
+      line-height: 20px;
+      padding: 14px;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .operator-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .input-file-container {
+      position: relative;
+      width: 80px;
+      height: 24px;
+      line-height: 24px;
+      border-radius: 4px;
+      background-color: #95de64;
+      color: #fff;
+      font-size: 14px;
+      box-shadow: 1px 1px 5px #888;
+      text-align: center;
+    }
+
+    .input-file-button {
+      position: absolute;
+      left: 0px;
+      width: 80px;
+      opacity: 0;
+    }
+
+    .item_file img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .item_colors {
+      color: #fff;
+      font-size: 14px;
+      line-height: 20px;
+      margin-top: 26px;
+      margin-left: 26px;
+    }
+
+    .item_file {
+      padding: 20px;
+      width: 200px;
+      margin-left: 26px;
+    }
+
+    .button {
+      width: 80px;
+      height: 24px;
+      line-height: 24px;
+      border-radius: 4px;
+      background-color: #95de64;
+      color: #fff;
+      font-size: 14px;
+      box-shadow: 1px 1px 5px #888;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="feature-info">支持图片主色调获取、暖色调、美颜等</div>
+    <div class="operator-container">
+      <div>
+        <div class="input-file-container">
+          <span>选择图片</span>
+          <input type="file" id="file" class="input-file-button" />
+        </div>
+        <div id="button-list" style="display: none;">
+          <div class="button" id="grey-image">灰度化图片</div>
+          <div class="button" id="warm-image">暖色调</div>
+          <div class="button" id="gaussian-blur-image">高斯模糊</div>
+        </div>
+      </div>
+      <div class="imgfile">
+        <div class="item item_file" id="demo"></div>
+        <div class="item_colors" id="colors"></div>
+      </div>
+    </div>
+    <div class="demos"></div>
+  </div>
+</body>
+<script src="./image-main-color.js"></script>
+<script type="module">
+    import { traverse, gaussianBlur } from './lib/utils.js';
+    import { transformColor, brightness, saturate, channel, grayscale, contrast } from './lib/color-matrix.js';
+    let imageDataDefaultObj = [];
+    document.getElementById("file").addEventListener("change", (e) => {
+        const { files } = e.target;
+        let file = files ? files[0] : null;
+        if (!file) return;
+        getLocationUrl(file, (src) => {
+            const image = document.getElementById("image");
+            if (!image) {
+                document.getElementById("demo").innerHTML = `<img src="${src}" id="image"/>`;
+            } else {
+                image.src = src;
+            }
+            initImage(src, (imageData) => {
+                imageDataDefaultObj = imageData;
+                const res = getMainColor(imageData.data);
+                if (imageData.data && imageData.data.length) {
+                    document.getElementById("button-list").style.display = "block";
+                }
+                document.getElementById('demo').style.background = res.hex;
+                document.getElementById('colors').innerHTML = '<div>图片主色调为：</div><div>HEX：' + res.hex + '</div>' +
+                    '<div>HEXA：' + res.hexa + '</div>' +
+                    '<div>RGB：' + res.rgb + '</div>' +
+                    '<div>RGBA：' + res.rgba + '</div>';
+            });
+        })
+    })
+
+    document.getElementById("grey-image").addEventListener("click", () => {
+        const buttonForGaussian = document.getElementById("gaussian-blur-image");
+        const buttonForWarm = document.getElementById("warm-image");
+        const buttonForGrey = document.getElementById("grey-image");
+        buttonForGaussian.style.backgroundColor = "#95de64";
+        buttonForWarm.style.backgroundColor = "#95de64";
+        buttonForGrey.style.backgroundColor = "#888888";
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        //   const height = document.getElementById("image").clientHeight; // 图片宽
+        //   const width = document.getElementById("image").clientWidth; // 图片高
+        const x = document.getElementById("image").clientLeft; // 居左坐标
+        const y = document.getElementById("image").clientTop; // 居右坐标
+        const tempImageDataObj = context.createImageData(imageDataDefaultObj.width, imageDataDefaultObj.height);
+        for (let i = 0; i < imageDataDefaultObj.data.length; i++) {
+            tempImageDataObj.data[i] = imageDataDefaultObj.data[i];
+            tempImageDataObj.data[i + 1] = imageDataDefaultObj.data[i + 1];
+            tempImageDataObj.data[i + 2] = imageDataDefaultObj.data[i + 2];
+            tempImageDataObj.data[i + 3] = imageDataDefaultObj.data[i + 3];
+        }
+        greyTheImage(tempImageDataObj)
+        canvas.width = imageDataDefaultObj.width;
+        canvas.height = imageDataDefaultObj.height;
+        // imageDataDefaultObj.data = greyImageData;
+        context.putImageData(tempImageDataObj, x, y);
+        var data = canvas.toDataURL("image/png", 1);
+        var img = document.getElementById("image");
+        img.src = data;
+    })
+
+    document.getElementById("warm-image").addEventListener("click", () => {
+        const buttonForGaussian = document.getElementById("gaussian-blur-image");
+        const buttonForWarm = document.getElementById("warm-image");
+        const buttonForGrey = document.getElementById("grey-image");
+        buttonForGaussian.style.backgroundColor = "#95de64";
+        buttonForWarm.style.backgroundColor = "#888888";
+        buttonForGrey.style.backgroundColor = "#95de64";
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        //   const height = document.getElementById("image").clientHeight; // 图片宽
+        //   const width = document.getElementById("image").clientWidth; // 图片高
+        const x = document.getElementById("image").clientLeft; // 居左坐标
+        const y = document.getElementById("image").clientTop; // 居右坐标
+        // const tempImageData = new ImageData(imageDataDefaultObj);
+        const tempImageDataObj = context.createImageData(imageDataDefaultObj.width, imageDataDefaultObj.height);
+        for (let i = 0; i < imageDataDefaultObj.data.length; i++) {
+            tempImageDataObj.data[i] = imageDataDefaultObj.data[i];
+            tempImageDataObj.data[i + 1] = imageDataDefaultObj.data[i + 1];
+            tempImageDataObj.data[i + 2] = imageDataDefaultObj.data[i + 2];
+            tempImageDataObj.data[i + 3] = imageDataDefaultObj.data[i + 3];
+        }
+        traverse(tempImageDataObj, ({ r, g, b, a }) => {
+            return transformColor(
+                [r, g, b, a],
+                channel({ r: 1.2 }),
+                brightness(1.2),
+                saturate(1.2),
+            );
+        });
+        canvas.width = imageDataDefaultObj.width;
+        canvas.height = imageDataDefaultObj.height;
+        // imageDataDefaultObj.data = tempImageData;
+        context.putImageData(tempImageDataObj, x, y);
+        var data = canvas.toDataURL("image/png", 1);
+        var img = document.getElementById("image");
+        img.src = data;
+    })
+
+    document.getElementById("gaussian-blur-image").addEventListener("click", () => {
+        const buttonForGaussian = document.getElementById("gaussian-blur-image");
+        const buttonForWarm = document.getElementById("warm-image");
+        const buttonForGrey = document.getElementById("grey-image");
+        buttonForGaussian.style.backgroundColor = "#888888";
+        buttonForWarm.style.backgroundColor = "#95de64";
+        buttonForGrey.style.backgroundColor = "#95de64";
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        //   const height = document.getElementById("image").clientHeight; // 图片宽
+        //   const width = document.getElementById("image").clientWidth; // 图片高
+        const x = document.getElementById("image").clientLeft; // 居左坐标
+        const y = document.getElementById("image").clientTop; // 居右坐标
+        // const tempImageData = new ImageData(imageDataDefaultObj);
+        const tempImageDataObj = context.createImageData(imageDataDefaultObj.width, imageDataDefaultObj.height);
+        for (let i = 0; i < imageDataDefaultObj.data.length; i++) {
+            tempImageDataObj.data[i] = imageDataDefaultObj.data[i];
+            tempImageDataObj.data[i + 1] = imageDataDefaultObj.data[i + 1];
+            tempImageDataObj.data[i + 2] = imageDataDefaultObj.data[i + 2];
+            tempImageDataObj.data[i + 3] = imageDataDefaultObj.data[i + 3];
+        }
+        gaussianBlur(tempImageDataObj.data, tempImageDataObj.width, tempImageDataObj.height, 4);
+        traverse(tempImageDataObj, ({r, g, b, a}) => {
+            return transformColor([r, g, b, a], grayscale(0.5), saturate(1.2), contrast(1.1), brightness(1.2));
+        });
+        canvas.width = imageDataDefaultObj.width;
+        canvas.height = imageDataDefaultObj.height;
+        // imageDataDefaultObj.data = tempImageData;
+        context.putImageData(tempImageDataObj, x, y);
+        var data = canvas.toDataURL("image/png", 1);
+        var img = document.getElementById("image");
+        img.src = data;
+    })
+
+    function getLocationUrl(file, callback) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (e) => {
+            const { result } = e.target;
+            callback(result);
+        }
+    }
+</script>
+
+</html>
