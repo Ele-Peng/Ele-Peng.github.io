@@ -5,7 +5,7 @@ class AudioVisualizer {
     this.draw = draw;
 
     this.source = null;
-    this.count = 0;
+    this.id = 0;
     this.ac = new (window.AudioContext || window.webkitAudioContext)();
     this.analyser = this.ac.createAnalyser();
     // 当执行快速傅里叶变换（Fast Fourier Transfor (FFT)）时，这些（信号）样本被用来获取频域数据。
@@ -60,19 +60,19 @@ class AudioVisualizer {
   }
 
   play(path) {
-    let n = ++this.count;
+    let n = ++this.id;
     const self = this;
-    self.source && self.source[self.source.stop ? "stop" : "nodeOff"]();
+    self.source && self.source[self.source.stop ? "stop" : "noteOff"]();
     if (path instanceof ArrayBuffer) {
       self.decode(path, (buffer) => {
-        if (n !== self.count) return ;
+        if (n !== self.id) return ;
         this.inputBufferSource(buffer);
       })
     } else {
       self.load(path, (arraybuffer) => {
-        if (n !== this.count) return ;
+        if (n !== this.id) return ;
         self.decode(arraybuffer, (buffer) => {
-          if (n !== self.count) return ;
+          if (n !== self.id) return ;
           this.inputBufferSource(buffer);
         })
       })
