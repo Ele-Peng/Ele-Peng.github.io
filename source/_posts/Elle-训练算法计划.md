@@ -1,4 +1,4 @@
----
+<!-- ---
 title: Elle-训练算法计划
 date: 2020-04-06 18:37:00
 tags: 
@@ -41,10 +41,10 @@ description:
 
 ## 写在前面
 - 简单记录一下自己整个算法训练的基础步骤+学习方法
-- 主要的数据结构和算法会单开文档来写
+- 主要的数据结构和算法会单开文档来写 -->
 
 <!-- more -->
-## Chunk it up 切碎知识点
+<!-- ## Chunk it up 切碎知识点
 - 数据结构
 	- 一维数据结构
 		- 基础：数组 array(string), 链表 linked list
@@ -123,4 +123,4 @@ description:
 - 二叉树的遍历（每个节点都访问一次，且仅访问一次）
 - 二维有序矩阵
 - 归并排序 O(nlogn)
-- ![主定理](http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png)
+- ![主定理](http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png) -->
