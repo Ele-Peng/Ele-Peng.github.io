@@ -728,7 +728,7 @@
 <li>二叉树的遍历（每个节点都访问一次，且仅访问一次）</li>
 <li>二维有序矩阵</li>
 <li>归并排序 O(nlogn)</li>
-<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"></li>
+<li><img src="http://p1.meituan.net/myvideodistribute/5b978d58635ea2e9233ea5e502ab706f246540.png" alt="主定理"> –&gt;</li>
 </ul>
 ]]></content>
       <categories>
@@ -2271,7 +2271,7 @@
 </li>
 <li><p>useDebugValue</p>
 </li>
-</ul>
+<li><p>useDebugValue</p>
 </li>
 </ul>
 <h2 id="react-hooks-改写-TO-DO-Lists"><a href="#react-hooks-改写-TO-DO-Lists" class="headerlink" title="react-hooks 改写 TO DO Lists"></a>react-hooks 改写 TO DO Lists</h2><h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
@@ -2724,6 +2724,8 @@
 </li>
 </ul>
 </li>
+<li>VB中， &lt; 可能是小于号，也可能是 XML 直接量的开始，取决于当前位置是否可以接受 XML 直接量<ul>
+<li>1型 上下文无关文法</li>
 </ul>
 </li>
 </ul>
@@ -2761,6 +2763,10 @@
 </ul>
 </li>
 </ul>
+<h4 id="类型系统-In-静态语言"><a href="#类型系统-In-静态语言" class="headerlink" title="类型系统 In 静态语言"></a>类型系统 In 静态语言</h4><ul>
+<li>动态类型系统和静态类型系统<ul>
+<li>不是说 Typescript 才有类型系统，而是它才有静态类型系统</li>
+</ul>
 </li>
 </ul>
 <h3 id="动态与静态"><a href="#动态与静态" class="headerlink" title="动态与静态"></a>动态与静态</h3><ul>
@@ -2776,6 +2782,10 @@
 <li>Compiletime</li>
 </ul>
 </li>
+<li>复合类型<ul>
+<li>结构体</li>
+<li><strong>函数签名</strong><ul>
+<li>参数列表 + 返回值类型</li>
 </ul>
 <h4 id="类型系统-In-静态语言"><a href="#类型系统-In-静态语言" class="headerlink" title="类型系统 In 静态语言"></a>类型系统 In 静态语言</h4><ul>
 <li>动态类型系统和静态类型系统<ul>
@@ -4989,7 +4999,9 @@
 <li>我们可以发现，前一个字符 A 对应的 prefix 为 3，对应的pattern[3]为 B（prefix[len - 1] === B），B的前一个字符 A 对应的 prefix 为 1（len = prefix[len - 1] –&gt; 0），pattern[1] 为 A，再执行上层代码 prefix[8] === len[0]</li>
 </ul>
 </li>
-</ul>
+<li><p>那么根据</p>
+<ul>
+<li><p>A –&gt; len = 0, i = 0</p>
 </li>
 </ul>
 </li>
@@ -5123,6 +5135,10 @@
 <li>首先我们可以来看一看getImageData后的数据</li>
 </ul>
 </li>
+<li><strong>从一个初始的颜色表出发，通过不断修改颜色表来改善减色效果</strong><ul>
+<li>神经网络方法(ANN)<ul>
+<li>颜色表通过神经元来编码，通过缓慢的调节神经元的颜色值以保证整个神经网络逐步收敛于最小误差状态（即通过神经网络产生的图像和原图之间误差最小）<h2 id="直接量化实践"><a href="#直接量化实践" class="headerlink" title="直接量化实践"></a>直接量化实践</h2><ul>
+<li>首先我们可以来看一看getImageData后的数据</li>
 </ul>
 </li>
 </ul>
@@ -6188,9 +6204,31 @@
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (style.flexDirection === <span class="string">'column-reverse'</span>) &#123;</span><br><span class="line">    mainSize = <span class="string">'height'</span></span><br><span class="line">    mainStart = <span class="string">'bottom'</span></span><br><span class="line">    mainEnd = <span class="string">'top'</span></span><br><span class="line">    mainSign = <span class="number">-1</span></span><br><span class="line">    mainBase = style.height</span><br><span class="line"></span><br><span class="line">    crossSize = <span class="string">'width'</span></span><br><span class="line">    crossStart = <span class="string">'left'</span></span><br><span class="line">    crossEnd = <span class="string">'right'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
-</ul>
+<li><p>最终二/八/十六进制根据指定基数进行相应算法转换方法为：</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @params: &#123; str &#125; 输入需要替换的字符串, &#123; radix &#125; 转换的指定基数</span></span><br><span class="line"><span class="comment"> * return: resStr 乘以指定基数转换过得字符串</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">strMultipleRadix</span>(<span class="params">str, radix</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">let</span> tempStrArr = str.split(<span class="string">''</span>)</span><br><span class="line">   <span class="keyword">let</span> res = <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = tempStrArr.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">     <span class="keyword">if</span> (radix === <span class="number">16</span>) &#123;</span><br><span class="line">       <span class="keyword">if</span> ((tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>) &gt;= <span class="number">0</span>) &amp;&amp; (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>) &lt; <span class="number">10</span>)) &#123;</span><br><span class="line">         res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>)) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'a'</span>.codePointAt(<span class="number">0</span>) &gt;= <span class="number">0</span>) &amp;&amp; (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'a'</span>.codePointAt(<span class="number">0</span>) &lt; <span class="number">6</span>)) &#123;</span><br><span class="line">         res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'a'</span>.codePointAt(<span class="number">0</span>) + <span class="number">10</span>) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'A'</span>.codePointAt(<span class="number">0</span>) &gt;= <span class="number">0</span>) &amp;&amp; (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'A'</span>.codePointAt(<span class="number">0</span>) &lt; <span class="number">6</span>)) &#123;</span><br><span class="line">         res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'A'</span>.codePointAt(<span class="number">0</span>) + <span class="number">10</span>) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">       &#125;</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       res += (tempStrArr[i].codePointAt(<span class="number">0</span>) - <span class="string">'0'</span>.codePointAt(<span class="number">0</span>)) * <span class="built_in">Math</span>.pow(radix, tempStrArr.length - i - <span class="number">1</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> res</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="转换成十进制"><a href="#转换成十进制" class="headerlink" title="转换成十进制"></a>转换成十进制</h3></li>
+<li><p>实践思路</p>
+<ol>
+<li>判断正负符号位</li>
+<li>判断是否为 Infinity</li>
+<li>判断是否为 整数<ol>
+<li>整数<ol>
+<li>是否为科学计数法表示<ol>
+<li>是，通过指数位置分成两部分：整数部分+指数部分</li>
+<li>否，只需处理整数部分</li>
+</ol>
 </li>
-</ul>
+</ol>
+</li>
+<li>小数<ol>
+<li>是否为科学计数法表示<ol>
+<li>是，通过分割成小数点到指数，分成三部分：整数部分+小数部分+指数部分</li>
+<li>否，通过小数点位置，分成两部分：整数部分+小数部分</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
 </li>
 </ul>
 <h4 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h4><ul>
@@ -6313,6 +6351,8 @@
 <li><p>若剩余空间为负数，所有 flex 元素为 0，等比压缩剩余元素</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (mainSpace &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 对负的 mainSpace， 所有该行 flex 子项等比例缩放（未设置 flex-shrink 默认值是1，也就是默认所有的 flex 子项都会收缩）</span></span><br><span class="line">    <span class="keyword">const</span> scale = style[mainSize] / (style[mainSize] - mainSpace)</span><br><span class="line">    <span class="keyword">const</span> currentMain = mainBase</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i ++) &#123;</span><br><span class="line">      <span class="keyword">const</span> item = items[i]</span><br><span class="line">      <span class="keyword">const</span> itemStyle = getStyle(item)</span><br><span class="line">	</span><br><span class="line">      <span class="keyword">if</span> (itemStyle.flex) &#123;</span><br><span class="line">        itemStyle[mainSize] = <span class="number">0</span></span><br><span class="line">      &#125;</span><br><span class="line">	</span><br><span class="line">      itemStyle[mainSize] = itemStyle[mainSize] * scale</span><br><span class="line">	</span><br><span class="line">      <span class="comment">// flex 容器这一行内，flex 子项排布</span></span><br><span class="line">      itemStyle[mainStart] = currentMain</span><br><span class="line">      itemStyle[mainEnd] = itemStyle[mainStart] + mainSign * itemStyle[mainSize]</span><br><span class="line">      currentMain = itemStyle[mainEnd]</span><br><span class="line">    &#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
+<h3 id="第四步：创建元素"><a href="#第四步：创建元素" class="headerlink" title="第四步：创建元素"></a>第四步：创建元素</h3><ul>
+<li><p>在状态中，除了状态迁移，我们还会要加入业务逻辑</p>
 </li>
 <li><p><a href="https://github.com/Ele-Peng/toy-browser/blob/master/layout3.js" target="_blank" rel="noopener">layout3.js 完整代码-点击一下</a></p>
 </li>
@@ -6330,6 +6370,8 @@
 <ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/0e488c9e6c482d1d67f2a1872a58aa0d231450.png" alt="第四步运行结果"></li>
 </ul>
+<h3 id="第五步：处理属性"><a href="#第五步：处理属性" class="headerlink" title="第五步：处理属性"></a>第五步：处理属性</h3><ul>
+<li><p>属性分为单引号、双引号、无引号三种写法，因此需要较多状态处理</p>
 </li>
 <li><p><a href="https://github.com/Ele-Peng/toy-browser/blob/master/layout4.js" target="_blank" rel="noopener">layout4.js 完整代码-点击一下</a></p>
 </li>
@@ -6461,6 +6503,8 @@
 <li>编程语言是人与计算机沟通交流所使用的语言，而 HTTP 是计算机与计算机沟通交流的语言</li>
 <li>无法使用 HTTP 来编程，但可以反过来，用编程语言去实现 HTTP，告诉计算机如何用 HTTP 来与外界通信</li>
 </ul>
+<h3 id="第六步：构建-DOM-树"><a href="#第六步：构建-DOM-树" class="headerlink" title="第六步：构建 DOM 树"></a>第六步：构建 DOM 树</h3><ul>
+<li><p>从标签创建 DOM 树的基本技巧是使用栈</p>
 </li>
 <li><strong>HTTP 不是用于从互联网服务器传输超文本到本地浏览器的协议</strong><ul>
 <li>过于片面，HTTP 发生在两点之间，即服务端与客户端，客户端不是只包括本地浏览器，服务器也可以作为客户端，客户端也不仅仅只有浏览器，还可以有 App、小程序，浏览器只能作为客户端</li>
@@ -6620,6 +6664,20 @@
 <li>单元测试<ul>
 <li><img src="http://p0.meituan.net/myvideodistribute/a70fa86dd4d8261537f8cbf5c0e5bc2c71147.png" alt="单元测试截图"></li>
 </ul>
+<h1 id="Javascript-结构化程序设计基础"><a href="#Javascript-结构化程序设计基础" class="headerlink" title="Javascript 结构化程序设计基础"></a>Javascript 结构化程序设计基础</h1><h2 id="实践记录"><a href="#实践记录" class="headerlink" title="实践记录"></a>实践记录</h2><h3 id="基础题"><a href="#基础题" class="headerlink" title="基础题"></a>基础题</h3><p>1.1 题目一</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'1'</span>, promise1);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>分析：</p>
+<ul>
+<li><p>从上至下，先执行 new Promise，执行该构造函数中 console.log(‘promise1’)</p>
+<blockquote>
+<p>console.log(‘1’, promise1);</p>
+</blockquote>
+</li>
+<li><p>再执行同步代码</p>
+</li>
+<li><p>执行完后， promise1 中并没有 resolved, rejected， 一直处在 pending 的状态</p>
 </li>
 </ul>
 </li>
@@ -6632,6 +6690,17 @@
 <li><img src="http://p0.meituan.net/myvideodistribute/ff9d3e6a3cd279427f8873f91911290774369.png" alt="单元测试"></li>
 </ul>
 </li>
+</ul>
+<p>1.2 题目二</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  resolve(<span class="string">'success'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promise.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>分析</p>
+<ul>
+<li>从上至下，先执行 new Promise，执行该构造函数中<ul>
+<li>console.log(1);</li>
+<li>resolve(‘success’) 将 promise 中的状态更改为 resolved，并保存下来</li>
+<li>console.log(2);</li>
 </ul>
 </li>
 <li><p>根据指定基数进行相应算法转换</p>
@@ -6796,6 +6865,9 @@
 </li>
 <li><p>parseHTML1.js</p>
 </li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/b6e827ca293c65c261a83a81f1f5411227105.png" alt="题目三执行"></li>
 </ul>
 <pre><code><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 拆分文件</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.parseHTML = <span class="function"><span class="keyword">function</span> <span class="title">parseHTML</span>(<span class="params">html</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(html)</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><ul>
 <li>运行结果<ul>
@@ -7094,6 +7166,13 @@
 <li>promise2 中状态为pending</li>
 </ul>
 </li>
+<li>第一个宏任务执行完了，开始执行下一个宏任务</li>
+<li>resolve(‘success’) 将 promise1 中的状态更改为 resolved，并保存下来</li>
+<li>第二个宏任务执行完了，开始执行下一个宏任务</li>
+<li>执行同步代码<ul>
+<li>console.log(‘promise1’, promise1)<ul>
+<li>其中 promise1 处在 resolved 状态</li>
+<li>promise1 Promise {&lt;resolved&gt;: “success”}</li>
 </ul>
 </li>
 <li>当前宏任务中的所有同步代码执行完毕，开始执行当前宏任务中的微任务队列 promise1.then <ul>
@@ -7139,6 +7218,8 @@
 <li><img src="http://p1.meituan.net/myvideodistribute/955895672615c24a4eb671617d8b739829033.png" alt="题目五运行结果"></li>
 </ul>
 </li>
+<li>console.log(“promise2”, promise2);<ul>
+<li>promise2 Promise {&lt;rejected&gt;: Error: error!!! at &lt;anonymous&gt;:8:9}</li>
 </ul>
 <p>1.6 题目六</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="function"><span class="params">()</span> =&gt;</span></span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    resolve(<span class="string">"success"</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"start"</span>);</span><br><span class="line">fn().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -7227,6 +7308,9 @@
 <li>console.log(“timerEnd”);</li>
 </ul>
 </li>
+<li><p>结论</p>
+<ul>
+<li><strong>Promise 可以链式调用</strong>，不过 promise 每次调用 .then 或者 .catch 都会返回一个新的 promise，从而实现了链式调用, 它并不像一般我们任务的链式调用一样 return this。</li>
 </ul>
 </li>
 <li><p>运行结果</p>
@@ -7292,6 +7376,9 @@
 <li>console.log(‘promise’)</li>
 </ul>
 </li>
+<li><p>运行结果</p>
+<ul>
+<li><img src="http://p0.meituan.net/myvideodistribute/9ee74ca562f7c913d51c9fd5fe60680543896.png" alt="题目五运行结果"></li>
 </ul>
 </li>
 <li>第二个宏任务执行完了，开始执行下一个宏任务 setTimeout …</li>
@@ -7381,6 +7468,8 @@
 <li>promise2 Promise {&lt;rejected&gt;: Error: error!!! at &lt;anonymous&gt;:8:9}</li>
 </ul>
 </li>
+<li>执行同步代码<ul>
+<li>promise.catch promise cycle</li>
 </ul>
 </li>
 </ul>
@@ -7419,6 +7508,9 @@
 </li>
 </ul>
 </li>
+<li><p><img src="http://p1.meituan.net/myvideodistribute/e2e72158c05ceee7da7528ff9a20348426425.png" alt="是否会被一直then"></p>
+<ul>
+<li>可以看出 then 是会一直往下传递的</li>
 </ul>
 </li>
 <li>setTimeout … 入队宏任务队列</li>
@@ -7448,6 +7540,8 @@
 <li>promise2 Promise {&lt;rejected&gt;: Error: error!!! at &lt;anonymous&gt;:8:9}</li>
 </ul>
 </li>
+<li>被 catch <ul>
+<li>console.log(‘fail2’, err) err –&gt; error!!!</li>
 </ul>
 </li>
 </ul>
@@ -7565,6 +7659,9 @@
 <li>console.log(3) </li>
 </ul>
 </li>
+<li>再<ul>
+<li>console.log(x) x –&gt; 2</li>
+<li>console.log(x) x –&gt; 3</li>
 </ul>
 </li>
 <li><p>运行结果</p>

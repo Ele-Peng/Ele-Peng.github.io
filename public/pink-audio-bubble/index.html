@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全都是泡沫</title>
+    <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body class="container">
+    <div class="operator">
+        <button id="upload">Upload Song</button>
+        <input id="loadfile" type="file" accept="audio/x-wav, audio/basic, audio/mid, audio/x-pn-realaudio, audio/mpeg, audio/mid, audio/x-mpegurl, audio/x-aiff"/>
+        <div class="volume" id="volume-container" style="display: none;">
+            <svg t="1606309620737" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1175" width="20" height="20"><path d="M462.06 142.1L284.12 320H80c-26.52 0-48 21.48-48 48v288c0 26.5 21.48 48 48 48h204.12l177.94 177.9c30.06 30.06 81.94 8.94 81.94-33.94V176.04c0-42.92-51.92-63.96-81.94-33.94zM992 512c0-127.06-64.12-243.88-171.54-312.48-22.38-14.28-52.06-7.64-66.24 14.92s-7.56 52.42 14.82 66.72C848.54 331.94 896 418.22 896 512s-47.46 180.06-126.96 230.84c-22.38 14.28-29 44.14-14.82 66.72 13.02 20.72 42.24 30.28 66.24 14.92C927.88 755.88 992 639.06 992 512z m-283.54-153.74c-23.16-12.66-52.38-4.32-65.22 18.9-12.78 23.22-4.32 52.4 18.9 65.22C687.96 456.56 704 483.26 704 512c0 28.76-16.04 55.44-41.84 69.62-23.22 12.82-31.68 42-18.9 65.22 12.86 23.32 42.1 31.6 65.22 18.9 56.46-31.1 91.54-90 91.54-153.76s-35.08-122.64-91.56-153.72z" p-id="1176" fill="#d4237a"></path></svg>    
+            <input id="volume" type="range" min="0" max="100" value="60">
+        </div>
+        <p>听到这首歌，我的周围就冒起了粉色的泡泡～～～</p>
+    </div>
+    <!-- canvas 区域 -->
+    <div id="canvas-wrapper"></div>
+    <script type="text/javascript" src="./audio-visualizer.js"></script>
+    <script>
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext("2d");
+        const canvasWrapper = document.getElementById("canvas-wrapper");
+        canvasWrapper.appendChild(canvas);
+
+        /**
+         * 在 [m, n] 之间取随机数
+         */
+        function getRandom(m, n) {
+            return Math.round(Math.random() * (n - m) + m);
+        }
+
+        let width, height;
+        const dots = [];
+        const SIZE = 128;
+        function getDots() {
+            for (let i = 0; i < SIZE; i ++) {
+                const dotX = getRandom(0, width);
+                const dotY = getRandom(0, height);
+                // TODO 改成 hsl，让其在 粉色色相内 变化
+                const dotColor = `rgba(${getRandom(254, 255)}, ${getRandom(10, 255)}, ${getRandom(140, 180)}, 0)`;
+                dots.push({
+                    x: dotX,
+                    y: dotY,
+                    color: dotColor,
+                    cap: 0,
+                    dy: getRandom(1, 2),
+                });
+            }
+        }
+
+        function drawBg(arr) {
+            ctx.clearRect(0, 0, width, height);
+            for (let i = 0; i < SIZE; i ++) {
+                const o = dots[i];
+                ctx.beginPath();
+                const r = 5 + arr[i] / 256 * Math.max(height, width) / 12;
+                ctx.arc(o.x, o.y, r, 0, Math.PI * 2, true);
+                const round = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, r);
+                round.addColorStop(0, "#fff");
+                round.addColorStop(1, o.color);
+                ctx.fillStyle = round;
+                ctx.fill();
+                o.y -= o.dy;
+                o.y = o.y < 0 ? height : o.y;
+            }
+        }
+
+        function drawBar(arr) {
+            const barWidth = width / SIZE - 1;
+            let barHeight;
+            let x = 0;
+            for (let i = 0; i < SIZE; i ++) {
+              barHeight = arr[i];
+              ctx.fillStyle = 'rgba(' + (barHeight + 100) + ', 10, 180, .8)';
+              ctx.fillRect(x, height - barHeight / 2, barWidth, barHeight / 2);
+
+              x += barWidth + 1;
+            }
+        }
+
+        function resize() {
+            width = canvasWrapper.clientWidth;
+            height = canvasWrapper.clientHeight;
+            canvas.width = width;
+            canvas.height = height;
+
+            getDots();
+        }
+        resize();
+        window.onresize = resize;
+
+        document.getElementById("upload").onclick = function() {
+            document.getElementById("loadfile").click();
+        }
+
+        let audio = new AudioVisualizer({
+            size: SIZE,
+            draw: [drawBg, drawBar],
+        });
+
+        document.getElementById("loadfile").onchange = function() {
+            const file = this.files[0];
+            const fileReader = new FileReader;
+            fileReader.onload = (e) => {
+                const { result } = e.target;
+                audio.play(result);
+                document.getElementById("volume-container").style.display = "flex";
+                audio.changeVolume(0.5);
+            }
+            fileReader.readAsArrayBuffer(file);
+        }
+
+        document.getElementById("volume").onchange = function() {
+            audio.changeVolume(this.value / this.max);
+        }
+    </script>
+</body>
+</html>
