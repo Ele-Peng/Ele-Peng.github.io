@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>算法模板 | 我好菜哇</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="EllePeng">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'hexo-theme-lx',
+    version: '0.3.9',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/css/main.min.css">
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "greenish",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+<div class="single">
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Search..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
+    <span>2020-09-24</span>
+    <h2>算法模板</h2>
+    
+    <div class="social-links">
+    <a href="https://github.com/Ele-Peng" target="_blank"><i class="fa fa-github fa-fw"></i></a>
+    <a href="mailto:EllePeng@aliyun.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+    <a href="https://weibo.com/3199262327/profile?topnav=1&amp;wvr=6" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><!-- - 常见算法模板（自己总结，非官方） -->
+
+<a id="more"></a>
+
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ul>
+<li><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">26. 删除排序数组中的重复项</a></li>
+<li><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">66. 加一</a></li>
+<li><a href="https://leetcode-cn.com/problems/merge-sorted-array/" target="_blank" rel="noopener">88. 合并两个有序数组</a></li>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">122. 买卖股票的最佳时机</a></li>
+<li><a href="https://leetcode-cn.com/problems/assign-cookies/" target="_blank" rel="noopener">455. 分发饼干</a></li>
+<li><a href="https://leetcode-cn.com/problems/rotate-array/" target="_blank" rel="noopener">✨189. 旋转数组</a></li>
+<li><a href="https://leetcode-cn.com/problems/ugly-number-ii/" target="_blank" rel="noopener">✨264. 丑数-ii</a></li>
+<li><a href="https://leetcode-cn.com/problems/walking-robot-simulation/" target="_blank" rel="noopener">874. 模拟行走机器人</a></li>
+<li><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">5. 最长回文子串</a></li>
+<li><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">66. 加一</a></li>
+<li><a href="https://leetcode-cn.com/problems/pascals-triangle/" target="_blank" rel="noopener">118. 杨辉三角</a></li>
+<li><a href="https://leetcode-cn.com/problems/candy" target="_blank" rel="noopener">135. 分发糖果</a></li>
+<li><a href="https://leetcode-cn.com/problems/house-robber" target="_blank" rel="noopener">198. 打家劫舍</a></li>
+<li><a href="https://leetcode-cn.com/problems/count-primes" target="_blank" rel="noopener">204. 计数质数</a></li>
+<li><a href="https://leetcode-cn.com/problems/word-pattern" target="_blank" rel="noopener">290. 单词规律</a></li>
+<li><a href="https://leetcode-cn.com/problems/patching-array" target="_blank" rel="noopener">330. 按要求补充数组</a></li>
+<li><a href="https://leetcode-cn.com/problems/non-overlapping-intervals" target="_blank" rel="noopener">435. 无重叠区间</a></li>
+<li><a href="https://leetcode-cn.com/problems/minimum-number-of-arrows-to-burst-balloons" target="_blank" rel="noopener">452. 用最少数量的箭引爆气球</a></li>
+<li><a href="https://leetcode-cn.com/problems/split-array-into-consecutive-subsequences" target="_blank" rel="noopener">659. 分割数组为连续子序列</a></li>
+<li><a href="https://leetcode-cn.com/problems/monotone-increasing-digits" target="_blank" rel="noopener">738. 单调递增的数字</a></li>
+<li><a href="https://leetcode-cn.com/problems/min-cost-climbing-stairs" target="_blank" rel="noopener">746. 使用最小花费爬楼梯</a></li>
+<li><a href="https://leetcode-cn.com/problems/score-after-flipping-matrix" target="_blank" rel="noopener">861. 翻转矩阵后的得分</a></li>
+<li><a href="https://leetcode-cn.com/problems/largest-perimeter-triangle" target="_blank" rel="noopener">976. 三角形的最大周长</a></li>
+</ul>
+<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><ul>
+<li><a href="https://leetcode-cn.com/problems/linked-list-cycle/" target="_blank" rel="noopener">✨141. 环形链表-i</a></li>
+<li><a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/" target="_blank" rel="noopener">✨142. 环形链表-ii</a></li>
+<li><a href="https://leetcode-cn.com/problems/reverse-linked-list/" target="_blank" rel="noopener">✨206. 反转链表</a></li>
+</ul>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><ul>
+<li><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">20. 有效的括号</a></li>
+<li><a href="https://leetcode-cn.com/problems/min-stack/" target="_blank" rel="noopener">155. 最小栈</a></li>
+</ul>
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><ul>
+<li><a href="https://leetcode-cn.com/problems/design-circular-queue/" target="_blank" rel="noopener">622. 设计循环队列</a></li>
+<li><a href="https://leetcode-cn.com/problems/design-circular-deque/" target="_blank" rel="noopener">🤔641. 设计循环双端队列</a></li>
+</ul>
+<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><ul>
+<li><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. 两数之和</a></li>
+<li><a href="https://leetcode-cn.com/problems/group-anagrams/" target="_blank" rel="noopener">49. 字母异位词分组</a></li>
+<li><a href="https://leetcode-cn.com/problems/majority-element/" target="_blank" rel="noopener">169. 多数元素</a></li>
+<li><a href="https://leetcode-cn.com/problems/valid-anagram/" target="_blank" rel="noopener">242. 有效的字母异位词</a></li>
+<li><a href="https://leetcode-cn.com/problems/lemonade-change/" target="_blank" rel="noopener">860. 柠檬水找零</a></li>
+<li><a href="https://leetcode-cn.com/problems/contains-duplicate" target="_blank" rel="noopener">217. 存在重复元素</a></li>
+<li><a href="https://leetcode-cn.com/problems/first-unique-character-in-a-string" target="_blank" rel="noopener">387. 字符串中的第一个唯一字符</a></li>
+<li><a href="https://leetcode-cn.com/problems/find-the-difference" target="_blank" rel="noopener">389. 找不同</a></li>
+<li><a href="https://leetcode-cn.com/problems/reorganize-string" target="_blank" rel="noopener">767. 重构字符串</a></li>
+</ul>
+<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a><a href="https://leetcode-cn.com/problems/sliding-window-maximum/solution/239-hua-dong-chuang-kou-zui-da-zhi-by-alexer-660/" target="_blank" rel="noopener">滑动窗口</a></h3><ul>
+<li><a href="https://leetcode-cn.com/problems/sliding-window-maximum/" target="_blank" rel="noopener">✨239. 滑动窗口最大值</a></li>
+<li></li>
+</ul>
+<h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><ul>
+<li><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">21. 合并两个有序链表</a></li>
+<li><a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">24. 两两交换链表中的节点</a></li>
+<li><a href="https://leetcode-cn.com/problems/reverse-nodes-in-k-group/" target="_blank" rel="noopener">💉25. k个一组翻转链表</a></li>
+<li><a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/" target="_blank" rel="noopener">💉92. 反转链表-ii</a><ul>
+<li><a href="https://mp.weixin.qq.com/s/5wz_YJ3lTkDH3nWfVDi5SA" target="_blank" rel="noopener">92. 反转链表-ii 题解</a></li>
+</ul>
+</li>
+<li><a href="https://leetcode-cn.com/problems/same-tree/" target="_blank" rel="noopener">100. 相同的树</a></li>
+<li><a href="https://leetcode-cn.com/problems/count-complete-tree-nodes/" target="_blank" rel="noopener">222. 完全二叉树的节点个数</a></li>
+<li><a href="https://leetcode-cn.com/problems/search-in-a-binary-search-tree/" target="_blank" rel="noopener">700. 二叉搜索树中的搜索</a></li>
+<li><a href="https://leetcode-cn.com/problems/insert-into-a-binary-search-tree/" target="_blank" rel="noopener">701. 二叉搜索树中的插入操作</a></li>
+<li><a href="https://leetcode-cn.com/problems/find-duplicate-subtrees/" target="_blank" rel="noopener">✨652. 寻找重复的子树</a></li>
+<li><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst" target="_blank" rel="noopener">✨230. 二叉搜索树中的第k小的元素</a></li>
+<li><a href="https://leetcode-cn.com/problems/convert-bst-to-greater-tree" target="_blank" rel="noopener">✨538. 把二叉搜索树转换成累加树</a></li>
+<li><a href="https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/" target="_blank" rel="noopener">✨297. 二叉树的序列化与反序列化</a></li>
+<li><a href="https://leetcode-cn.com/problems/invert-binary-tree/" target="_blank" rel="noopener">✨226. 翻转二叉树</a></li>
+<li><a href="https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/" target="_blank" rel="noopener">✨116. 填充每个节点的下一个右侧节点指针</a></li>
+<li><a href="https://leetcode-cn.com/problems/validate-binary-search-tree/" target="_blank" rel="noopener">✨98. 验证二叉搜索树</a></li>
+<li><a href="https://leetcode-cn.com/problems/path-sum/" target="_blank" rel="noopener">✨112. 路经总和</a></li>
+<li><a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">✨104. 二叉树的最大深度</a></li>
+<li><a href="https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/" target="_blank" rel="noopener">✨111. 二叉树的最小深度</a></li>
+<li><a href="https://leetcode-cn.com/problems/delete-node-in-a-bst/" target="_blank" rel="noopener">✨450. 删除二叉搜索树中的节点</a></li>
+<li><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">✨105. 从前序与中序遍历序列构造二叉树</a></li>
+<li><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/" target="_blank" rel="noopener">✨106. 从中序与后序遍历序列构造二叉树</a></li>
+<li><a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/" target="_blank" rel="noopener">✨236. 二叉树的最近公共祖先</a></li>
+<li><a href="https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/" target="_blank" rel="noopener">🤔️114. 二叉树展开为链表</a></li>
+<li><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">✨144. 二叉树的前序遍历</a></li>
+<li><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">✨94. 二叉树的中序遍历</a></li>
+<li><a href="https://leetcode-cn.com/problems/binary-tree-postorder-traversal/" target="_blank" rel="noopener">✨145. 二叉树的后序遍历</a></li>
+<li><a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">✨102. 二叉树的层序遍历</a></li>
+<li><a href="https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/" target="_blank" rel="noopener">✨589. N叉树的前序遍历</a></li>
+<li><a href="https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/" target="_blank" rel="noopener">✨590. N叉树的后序遍历</a></li>
+<li><a href="https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/" target="_blank" rel="noopener">✨429. N叉树的层序遍历</a></li>
+<li><a href="https://leetcode-cn.com/problems/maximum-binary-tree" target="_blank" rel="noopener">654. 最大二叉树</a></li>
+</ul>
+<h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">✨560. 和为k的子数组</a></li>
+</ul>
+<h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">42. 接雨水</a></li>
+<li><a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">84. 柱状图中最大的矩形</a></li>
+<li><a href="https://leetcode-cn.com/problems/next-greater-element-i/" target="_blank" rel="noopener">✨496. 下一个更大元素-i</a></li>
+<li><a href="https://leetcode-cn.com/problems/next-greater-element-ii/" target="_blank" rel="noopener">✨503. 下一个更大元素-ii</a></li>
+<li><a href="https://leetcode-cn.com/problems/daily-temperatures/" target="_blank" rel="noopener">✨739. 每日温度</a></li>
+<li><a href="https://leetcode-cn.com/problems/remove-duplicate-letters" target="_blank" rel="noopener">316. 去除重复字母</a></li>
+<li></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 84. 柱状图中最大的矩形</span></span><br><span class="line"><span class="comment">// 单调栈</span></span><br><span class="line"><span class="keyword">var</span> largestRectangleArea = <span class="function"><span class="keyword">function</span>(<span class="params">heights</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> area = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> stack = [];</span><br><span class="line">  <span class="keyword">let</span> current = <span class="number">0</span>;</span><br><span class="line">  heights = [<span class="number">0</span>, ...heights, <span class="number">0</span>];</span><br><span class="line">  <span class="keyword">while</span> (current &lt; heights.length) &#123;</span><br><span class="line">    <span class="comment">// 栈不为空 且 当前元素 要 大于 栈顶元素</span></span><br><span class="line">    <span class="comment">// 才能被框住</span></span><br><span class="line">    <span class="keyword">while</span>(stack.length &amp;&amp; heights[current] &lt; heights[stack[stack.length - <span class="number">1</span>]]) &#123;</span><br><span class="line">      <span class="keyword">let</span> h = heights[stack[stack.length - <span class="number">1</span>]];</span><br><span class="line">      stack.pop();</span><br><span class="line">      <span class="keyword">if</span> (!stack.length) <span class="keyword">break</span>;</span><br><span class="line">      area = <span class="built_in">Math</span>.max(area, (current - stack[stack.length - <span class="number">1</span>] - <span class="number">1</span>) * h)</span><br><span class="line">    &#125;</span><br><span class="line">    stack.push(current);</span><br><span class="line">    current ++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> area;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> stack = [];</span><br><span class="line"><span class="keyword">let</span> current = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(current &lt; nums.length) &#123;</span><br><span class="line">    <span class="comment">// 这是单调递增栈，视情况而定，当前元素是否大于栈顶元素</span></span><br><span class="line">    <span class="keyword">while</span>(stack.length &amp;&amp; nums[current] &lt; nums[stack[stack.length <span class="number">-1</span>]]) &#123;</span><br><span class="line">        <span class="keyword">let</span> base = nums[stack[stack.length <span class="number">-1</span>]];</span><br><span class="line">        stack.pop();</span><br><span class="line">        <span class="keyword">if</span> (!stack.length) <span class="keyword">break</span>;</span><br><span class="line">        <span class="comment">// some code ...</span></span><br><span class="line">    &#125;</span><br><span class="line">    stack.push(current);</span><br><span class="line">    current ++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. 两数之和</a></li>
+<li><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">11. 盛最多水的容器</a></li>
+<li><a href="https://leetcode-cn.com/problems/3sum/" target="_blank" rel="noopener">✨15. 三数之和</a></li>
+<li><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">26. 删除排序数组中的重复项</a></li>
+<li><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">42. 接雨水</a></li>
+<li><a href="https://leetcode-cn.com/problems/move-zeroes/" target="_blank" rel="noopener">✨283. 移动零</a></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> max = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, j = nums.length - <span class="number">1</span>; i !== j; ) &#123;</span><br><span class="line">    max = <span class="built_in">Math</span>.max(max, <span class="built_in">Math</span>.min(nums[i], nums[j]) * (j - i)) ;</span><br><span class="line">    <span class="keyword">if</span> (nums[i] &lt; nums[j]) &#123;</span><br><span class="line">        i ++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        j --;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> max;</span><br></pre></td></tr></table></figure>
+
+<h3 id="双指针暴力"><a href="#双指针暴力" class="headerlink" title="双指针暴力"></a>双指针暴力</h3><ul>
+<li><a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">84. 柱状图中的最大矩形</a></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> largestRectangleArea = <span class="function"><span class="keyword">function</span>(<span class="params">heights</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!heights.length) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> area = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; heights.length; i ++) &#123;</span><br><span class="line">      <span class="keyword">let</span> leftIndex = i;</span><br><span class="line">      <span class="keyword">let</span> rightIndex = i;</span><br><span class="line">      <span class="keyword">let</span> h = heights[i]; <span class="comment">// 基准点，往前往后遍历求解</span></span><br><span class="line">      <span class="keyword">while</span>(heights[leftIndex - <span class="number">1</span>] &gt;= h) &#123;</span><br><span class="line">        leftIndex --;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">while</span>(heights[rightIndex + <span class="number">1</span>] &gt;= h) &#123;</span><br><span class="line">        rightIndex ++;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">let</span> distance = rightIndex - leftIndex + <span class="number">1</span>;</span><br><span class="line">      area = <span class="built_in">Math</span>.max(area, distance * h);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> area;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// let max = 0;</span></span><br><span class="line"><span class="keyword">let</span> leftMax = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> rightMax = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, j = nums.length - <span class="number">1</span>; i !== j; ) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[i] &lt; nums[j]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (leftMax &lt; nums[i]) &#123;</span><br><span class="line">            leftMax = nums[i];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// some code ...</span></span><br><span class="line">        &#125;</span><br><span class="line">        i ++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (rightMax &lt; nums[j]) &#123;</span><br><span class="line">            rightMax = nums[j];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// some code ...</span></span><br><span class="line">        &#125;</span><br><span class="line">        j --;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/climbing-stairs/" target="_blank" rel="noopener">70. 爬楼梯</a></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">recursion</span>(<span class="params">level, param1, param2, ...</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// recursion terminator</span></span><br><span class="line">	<span class="keyword">if</span> (level &gt; MAX_LEVEL) &#123;</span><br><span class="line">		procrss_result;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// process logic in current level</span></span><br><span class="line">	process(level, data ... );</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// drill down</span></span><br><span class="line">	recursion(level + <span class="number">1</span>, <span class="keyword">new</span> param1, <span class="keyword">new</span> param2, ... );</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// reverse the current level status if needed</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/create-maximum-number" target="_blank" rel="noopener">321. 拼接最大数</a></li>
+<li></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">divideConquer</span>(<span class="params">problem, param1, param2, ... </span>) </span>&#123;</span><br><span class="line">	<span class="comment">// recursion terminator</span></span><br><span class="line">	<span class="keyword">if</span> (!problem) &#123;</span><br><span class="line">		print_result;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// prepare data</span></span><br><span class="line">	data = prepareData(problem);</span><br><span class="line">	subProblems = splitProblem(problem, data);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// conquer subProblems</span></span><br><span class="line">	subResult1 = divideConquer(subProblems[<span class="number">0</span>], newParam1, <span class="keyword">new</span> Param2, ... );</span><br><span class="line">	subResult2 = divideConquer(subProblems[<span class="number">1</span>], newParam1, <span class="keyword">new</span> Param2, ... );</span><br><span class="line">	subResult3 = divideConquer(subProblems[<span class="number">2</span>], newParam1, <span class="keyword">new</span> Param2, ... );</span><br><span class="line">	...</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// process and generate the final result</span></span><br><span class="line">	result = processResult(subResult1, subResult2, subResult3, ... );</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// revert the current level status</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="DFS-回溯"><a href="#DFS-回溯" class="headerlink" title="DFS + 回溯"></a><a href="https://leetcode-cn.com/problems/permutations/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liweiw/" target="_blank" rel="noopener">DFS + 回溯</a></h2><blockquote>
+<p>tips: 基础类型不能代入到参数列表中，不会被改变</p>
+</blockquote>
+<ul>
+<li><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/" target="_blank" rel="noopener">17. 电话号码的字母组合</a></li>
+<li><a href="https://leetcode-cn.com/problems/generate-parentheses/" target="_blank" rel="noopener">22. 括号生成</a></li>
+<li><a href="https://leetcode-cn.com/problems/permutations/" target="_blank" rel="noopener">46. 全排列-i</a></li>
+<li><a href="https://leetcode-cn.com/problems/permutations-ii/" target="_blank" rel="noopener">47. 全排列-ii</a></li>
+<li><a href="https://leetcode-cn.com/problems/n-queens/" target="_blank" rel="noopener">51. N皇后</a></li>
+<li><a href="https://leetcode-cn.com/problems/combinations/" target="_blank" rel="noopener">77. 组合</a></li>
+<li><a href="https://leetcode-cn.com/problems/tar.get-sum/" target="_blank" rel="noopener">494. 目标和</a></li>
+<li><a href="https://leetcode-cn.com/problems/split-array-into-fibonacci-sequence" target="_blank" rel="noopener">842. 将数组拆分为斐波那契数列</a></li>
+</ul>
+<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/jump-game/" target="_blank" rel="noopener">55. 跳跃游戏</a></li>
+<li><a href="https://leetcode-cn.com/problems/jump-game-ii/" target="_blank" rel="noopener">45. 跳跃游戏-ii</a></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (node <span class="keyword">in</span> visited) &#123;</span><br><span class="line">		<span class="comment">// already visited</span></span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	visited.add(node);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// process current node</span></span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	<span class="comment">// logic here</span></span><br><span class="line">	</span><br><span class="line">	dfs(node.left);</span><br><span class="line">	dfs(node.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DFS-代码-递归写法"><a href="#DFS-代码-递归写法" class="headerlink" title="DFS 代码 - 递归写法"></a>DFS 代码 - 递归写法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> visited = <span class="keyword">new</span> <span class="built_in">Set</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">node, visited</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (node <span class="keyword">in</span> visited) &#123;</span><br><span class="line">		<span class="comment">// already visited</span></span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;	</span><br><span class="line">	</span><br><span class="line">	visited.add(node);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// process current  node here</span></span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">for</span> (nextNode <span class="keyword">in</span> node.children) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!nextNode <span class="keyword">in</span> visited) &#123;</span><br><span class="line">			dfs(nextNode, visited);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DFS-代码-非递归写法"><a href="#DFS-代码-非递归写法" class="headerlink" title="DFS 代码 - 非递归写法"></a>DFS 代码 - 非递归写法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!root) <span class="keyword">return</span> [];</span><br><span class="line">	<span class="keyword">const</span> visited = <span class="keyword">new</span> <span class="built_in">Set</span>;</span><br><span class="line">	<span class="keyword">const</span> stack = [root];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span> (stack.length) &#123;</span><br><span class="line">		<span class="keyword">let</span> node = stack.pop();</span><br><span class="line">		visited.add(node);</span><br><span class="line">		</span><br><span class="line">		process(node);</span><br><span class="line">		nodes = generateRelatedNodes(node);</span><br><span class="line">		stack.push(nodes);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// other processing work</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/word-ladder/" target="_blank" rel="noopener">127. 单词接龙-i</a></li>
+<li><a href="https://leetcode-cn.com/problems/open-the-lock/" target="_blank" rel="noopener">752. 打开转盘锁</a></li>
+<li><a href="https://leetcode-cn.com/problems/word-ladder-ii/" target="_blank" rel="noopener">126. 单词接龙-ii</a></li>
+<li><a href="https://leetcode-cn.com/problems/number-of-islands/" target="_blank" rel="noopener">200. 岛屿数量</a></li>
+<li><a href="https://leetcode-cn.com/problems/minesweeper/" target="_blank" rel="noopener">529. 扫雷游戏</a></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BFS</span>(<span class="params">graph, start, end</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> queue = [];</span><br><span class="line">	queue.push([start]);</span><br><span class="line">	<span class="keyword">const</span> visited = <span class="keyword">new</span> <span class="built_in">Set</span>;</span><br><span class="line">	visited.add(start);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span> (queue.length) &#123;</span><br><span class="line">		<span class="keyword">let</span> node = queue.shift();</span><br><span class="line">		visited.add(node);</span><br><span class="line">		</span><br><span class="line">		process(node);</span><br><span class="line">		nodes = generateRelatedNodes(node);</span><br><span class="line">		queue.push(nodes);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// other processing work</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank" rel="noopener">153. 寻找旋转排序数组中的最小值</a><ul>
+<li><a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/solution/er-fen-cha-zhao-wei-shi-yao-zuo-you-bu-dui-cheng-z/" target="_blank" rel="noopener">题解</a></li>
+</ul>
+</li>
+<li><a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">33. 搜索旋转排序数组</a></li>
+<li><a href="https://leetcode-cn.com/problems/search-a-2d-matrix/" target="_blank" rel="noopener">74. 搜索二维矩阵</a></li>
+<li><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank" rel="noopener">34. 在排序数组中查找元素中的第一个和最后一个位置</a></li>
+<li><a href="https://leetcode-cn.com/problems/russian-doll-envelopes" target="_blank" rel="noopener">354. 俄罗斯套娃信封问题</a></li>
+<li></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> left = <span class="number">0</span>, right = arr.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (left &lt; = right) &#123;</span><br><span class="line">	<span class="keyword">let</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span> (arr[mid] === target) &#123;</span><br><span class="line">		<span class="comment">// find the target</span></span><br><span class="line">		<span class="keyword">break</span> or <span class="keyword">return</span> result;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; target) &#123;</span><br><span class="line">		left = mid + <span class="number">1</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		right = mid - <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/combinations/" target="_blank" rel="noopener">77. 组合</a></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> combine = <span class="function"><span class="keyword">function</span> (<span class="params">n, k</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> res = [];</span><br><span class="line">	<span class="keyword">let</span> start = <span class="number">1</span>, path = [];</span><br><span class="line">	combineHelper(n, k, start, res, path);</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>n 1 ... n 数组 1 ~ n</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>k 取 k 个数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>start 从哪个开始取（不从数组下标0开始）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>res 结果集</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>path 单个结果</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> combineHelper = <span class="function"><span class="keyword">function</span> (<span class="params">n, k, start, res, path</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// recursion terminator</span></span><br><span class="line">	<span class="keyword">if</span> (path.length === k) &#123;</span><br><span class="line">		res.push(path.slice()); <span class="comment">// 备份一份</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// logic process</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= n; i ++) &#123; <span class="comment">// 数组为 1 ～ n，所以终止条件 i &lt;= n;（视情况而定）</span></span><br><span class="line">		path.push(i); <span class="comment">// 选</span></span><br><span class="line">		<span class="comment">// drill down</span></span><br><span class="line">		combineHelper(n. k, i + <span class="number">1</span>, res, path);</span><br><span class="line">		path.pop(); <span class="comment">// 不选</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="排列"><a href="#排列" class="headerlink" title="排列"></a>排列</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/permutations/" target="_blank" rel="noopener">46. 全排列-i</a></li>
+<li><a href="https://leetcode-cn.com/problems/permutations-ii/" target="_blank" rel="noopener">47. 全排列-ii</a></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> permute = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> res = [];</span><br><span class="line">	<span class="keyword">let</span> path =[];</span><br><span class="line">	<span class="keyword">let</span> usedNum = &#123;&#125;;</span><br><span class="line">	permuteHelper(nums, res, path, usedNum);</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>nums 用于排列的数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>res 结果集</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>path 单个结果</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>usedNum 使用过的数字</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> permuteHelper = <span class="function"><span class="keyword">function</span>(<span class="params">nums, res, path, usedNum</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// recursion terminator</span></span><br><span class="line">	<span class="keyword">if</span> (path.length === nums.length) &#123;</span><br><span class="line">    <span class="comment">// 变量 path 所指向的列表 在深度优先遍历的过程中只有一份 ，深度优先遍历完成以后，回到了根结点，成为空列表。</span></span><br><span class="line">		res.push(path.slice());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// current level logic </span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i ++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (usedNum[nums[i]] !== <span class="keyword">void</span> <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		path.push(nums[i]); <span class="comment">// 选中</span></span><br><span class="line">		usedNum[nums[i]] = truel;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// drill down</span></span><br><span class="line">		permuteHelper(nums, res, path, usedNum);</span><br><span class="line">		</span><br><span class="line">		path.pop(); <span class="comment">// 未选中</span></span><br><span class="line">		usedNum[nums[i]] = <span class="literal">false</span>; <span class="comment">// 撤销使用记录</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> permuteUnique = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  <span class="keyword">let</span> defaultNum = &#123;&#125;;</span><br><span class="line">  <span class="comment">// 统计字符出现个数</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i ++) &#123;</span><br><span class="line">    defaultNum[nums[i]] ? defaultNum[nums[i]] ++ : defaultNum[nums[i]] = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> usedNum = &#123;... defaultNum&#125;;</span><br><span class="line">  nums = nums.sort();</span><br><span class="line">  permuteUniqueHelper(nums, res, [], usedNum);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>nums 传入的可使用数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>res 结果</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>path 当前层结果</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>usedNum 使用过的map</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> permuteUniqueHelper = <span class="function"><span class="keyword">function</span>(<span class="params">nums, res, path, usedNum</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// recursion terminator</span></span><br><span class="line">  <span class="keyword">if</span> (path.length === nums.length) &#123;</span><br><span class="line">    res.push(path.slice());</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// current level logic</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i ++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[i - <span class="number">1</span>] == nums[i] &amp;&amp; i - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; usedNum[nums[i]]) &#123; <span class="comment">// 避免产生重复的排列</span></span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (usedNum[nums[i]] !== <span class="keyword">void</span> <span class="number">0</span> &amp;&amp; usedNum[nums[i]] === <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">    usedNum[nums[i]] --; <span class="comment">// 使用次数减一</span></span><br><span class="line">    path.push(nums[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// drill down</span></span><br><span class="line">    permuteUniqueHelper(nums, res, path, usedNum);</span><br><span class="line">    </span><br><span class="line">    path.pop();</span><br><span class="line">    usedNum[nums[i]] ++; <span class="comment">// 撤销使用记录 </span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">✨300. 最长上升子序列</a></li>
+<li><a href="https://leetcode-cn.com/problems/coin-change/" target="_blank" rel="noopener">✨322 零钱兑换</a></li>
+<li><a href="https://leetcode-cn.com/problems/longest-valid-parentheses/" target="_blank" rel="noopener">32. 最长有效括号</a></li>
+<li><a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="noopener">53. 最大子序和</a></li>
+<li><a href="https://leetcode-cn.com/problems/unique-paths/" target="_blank" rel="noopener">62. 不同路径</a></li>
+<li><a href="https://leetcode-cn.com/problems/edit-distance/" target="_blank" rel="noopener">72. 编辑距离</a></li>
+<li><a href="https://leetcode-cn.com/problems/decode-ways/" target="_blank" rel="noopener">91. 解码方法</a></li>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock" target="_blank" rel="noopener">121. 买卖股票的最佳时机</a></li>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii" target="_blank" rel="noopener">122. 买卖股票的最佳时机-ii</a></li>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii" target="_blank" rel="noopener">123. 买卖股票的最佳时机-iii</a></li>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv" target="_blank" rel="noopener">188. 买票股票的最佳时机-iv</a></li>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown" target="_blank" rel="noopener">309. 最佳买卖股票时机含冷冻期</a></li>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee" target="_blank" rel="noopener">714. 买卖股票的最佳时机含手续费</a></li>
+<li><a href="https://leetcode-cn.com/problems/house-robber-ii" target="_blank" rel="noopener">213. 打家劫舍</a></li>
+<li><a href="https://leetcode-cn.com/problems/coin-change" target="_blank" rel="noopener">322. 零钱兑换</a></li>
+<li><a href="https://leetcode-cn.com/problems/coin-change-2" target="_blank" rel="noopener">518. 零钱兑换-ii</a></li>
+<li><a href="https://leetcode-cn.com/problems/house-robber-iii" target="_blank" rel="noopener">337. 打家劫舍-iii</a></li>
+<li><a href="https://leetcode-cn.com/problems/wiggle-subsequence" target="_blank" rel="noopener">376. 摆动序列</a></li>
+<li><a href="https://leetcode-cn.com/problems/partition-equal-subset-sum" target="_blank" rel="noopener">416. 分割等和子集</a></li>
+<li><a href="https://leetcode-cn.com/problems/fibonacci-number" target="_blank" rel="noopener">509. 斐波那契数列</a></li>
+<li><a href="https://leetcode-cn.com/problems/longest-palindromic-subsequence" target="_blank" rel="noopener">516. 最长回文子序列</a></li>
+<li><a href="https://leetcode-cn.com/problems/longest-common-subsequence" target="_blank" rel="noopener">1143. 最长公共子序列</a></li>
+</ul>
+<h2 id="博弈论"><a href="#博弈论" class="headerlink" title="博弈论"></a>博弈论</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/nim-game/" target="_blank" rel="noopener">292. Nim游戏</a></li>
+<li><a href="https://leetcode-cn.com/problems/stone-game/" target="_blank" rel="noopener">877. 石子游戏</a></li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><ul>
+<li>最新更新 2020-12-29</li>
+</ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>No newer post</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/08/27/Elle-%E6%8A%80%E8%83%BD%E6%A0%91%E6%A2%B3%E7%90%86/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Elle 技能...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">我好菜哇</a><br>EllePeng
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button> 
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar.jpeg" alt="EllePeng"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>EllePeng</p>
+          <span class="tagline">stay awesome.</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-th-list fa-fw"></i>Categories</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WebGL/">WebGL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A6%82%E5%BF%B5/">前端概念</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/">性能监控</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li></ul>
+    </li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>Friends</span>
+        <ul>
+          <li> <a href="https://blog.csdn.net/Elle_Peng" target="_blank">csdn</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/local.search.js"></script>
+
+</body>
+</html>
