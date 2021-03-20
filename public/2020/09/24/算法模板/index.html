@@ -60,7 +60,7 @@
   
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 <body>
 <div class="single">
 <a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
@@ -126,8 +126,9 @@
 }
 </style>
 
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><!-- - 常见算法模板（自己总结，非官方） -->
-
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>常见算法模板（自己总结，非官方）</li>
+</ul>
 <a id="more"></a>
 
 <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ul>
@@ -183,6 +184,8 @@
 <li><a href="https://leetcode-cn.com/problems/sliding-window-maximum/" target="_blank" rel="noopener">✨239. 滑动窗口最大值</a></li>
 <li></li>
 </ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">s, t</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> need = <span class="keyword">new</span> <span class="built_in">Map</span>; <span class="comment">// 需要凑齐的字符数</span></span><br><span class="line">  <span class="keyword">let</span> <span class="built_in">window</span> = <span class="keyword">new</span> <span class="built_in">Map</span>; <span class="comment">// 窗口中的字符数</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> t) &#123;</span><br><span class="line">    <span class="keyword">if</span> (need.has(i)) need.set(i, need.get(i) + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">else</span> need.set(i, <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> valid = <span class="number">0</span>; <span class="comment">// 窗口中满足 need 条件的字符个数</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 判断左侧窗口是否要收缩</span></span><br><span class="line">  <span class="keyword">while</span> (right &lt; s.length) &#123;</span><br><span class="line">    <span class="keyword">let</span> c = s[right]; <span class="comment">// 即将移入窗口的字符</span></span><br><span class="line">    right ++; <span class="comment">// 右移窗口</span></span><br><span class="line">    <span class="comment">// 进行窗口内数据的一系列更新</span></span><br><span class="line">    <span class="comment">// ... some code</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// debug here ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断左侧窗口是否要收缩</span></span><br><span class="line">    <span class="keyword">while</span> (valid === need.size) &#123;</span><br><span class="line">      <span class="keyword">let</span> d = s[left]; <span class="comment">// 即将移出窗口的字符</span></span><br><span class="line">      left ++; <span class="comment">// 左移窗口</span></span><br><span class="line">      <span class="comment">// 进行窗口内数据的一系列更新</span></span><br><span class="line">      <span class="comment">// ... some code</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><ul>
 <li><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">21. 合并两个有序链表</a></li>
 <li><a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">24. 两两交换链表中的节点</a></li>
