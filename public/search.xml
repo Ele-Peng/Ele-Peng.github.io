@@ -8163,7 +8163,6 @@
 <li>唯一一次 on site 😃</li>
 </ul>
 <a id="more"></a>
-
 <h1 id="当前状态"><a href="#当前状态" class="headerlink" title="当前状态"></a>当前状态</h1><ul>
 <li>已投递</li>
 <li>已拿 Offer</li>
@@ -8216,7 +8215,7 @@
 <li>Windows 和 Mac 上都有 hosts 文件嘛？</li>
 <li>对 B端 和 C端 的理解</li>
 </ul>
-<p>正式三面</p>
+<p>正式三面：</p>
 <ul>
 <li>如何进行小程序版本管理的</li>
 <li>Webpack code split</li>
