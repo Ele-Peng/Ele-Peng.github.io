@@ -8316,7 +8316,7 @@
 <li>js如何实现继承</li>
 </ul>
 <h3 id="coding-1"><a href="#coding-1" class="headerlink" title="coding"></a>coding</h3><ul>
-<li>无序数组里面找它的第k大元素</li>
+<li><a href="https://leetcode-cn.com/problems/generate-parentheses/" target="_blank" rel="noopener">括号生成</a></li>
 </ul>
 <h2 id="三轮面试"><a href="#三轮面试" class="headerlink" title="三轮面试"></a>三轮面试</h2><p>已省略略重复问到的问题</p>
 <h3 id="项目相关-2"><a href="#项目相关-2" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-2"><a href="#技术相关-2" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
@@ -8328,26 +8328,16 @@
 <h3 id="coding-2"><a href="#coding-2" class="headerlink" title="coding"></a>coding</h3><ul>
 <li><a href="https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&tqId=11154&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&tab=answerKey" target="_blank" rel="noopener">二维数组查找</a></li>
 </ul>
-<h2 id="三轮面试-1"><a href="#三轮面试-1" class="headerlink" title="三轮面试"></a>三轮面试</h2><p>已省略略重复问到的问题</p>
-<h3 id="项目相关-3"><a href="#项目相关-3" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-3"><a href="#技术相关-3" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
-<li>Http 2.0 与 Http 1.0 区别</li>
-<li>阐述对 Http 3.0 的了解</li>
-<li>阐述一下对闭包的理解</li>
-<li>阐述原型链</li>
-</ul>
-<h3 id="coding-3"><a href="#coding-3" class="headerlink" title="coding"></a>coding</h3><ul>
-<li><a href="https://leetcode-cn.com/problems/generate-parentheses/" target="_blank" rel="noopener">括号生成</a></li>
-</ul>
 <h2 id="四轮面试"><a href="#四轮面试" class="headerlink" title="四轮面试"></a>四轮面试</h2><p>已省略略重复问到的问题</p>
-<h3 id="项目相关-4"><a href="#项目相关-4" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-4"><a href="#技术相关-4" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
+<h3 id="项目相关-3"><a href="#项目相关-3" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-3"><a href="#技术相关-3" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
 <li>React-Router 的实现原理</li>
 <li>如何在JavaScript中实现不可变对象？</li>
 </ul>
-<h3 id="coding-4"><a href="#coding-4" class="headerlink" title="coding"></a>coding</h3><ul>
+<h3 id="coding-3"><a href="#coding-3" class="headerlink" title="coding"></a>coding</h3><ul>
 <li>采用发布订阅模式，实现 Promise</li>
 </ul>
 <h2 id="五轮面试"><a href="#五轮面试" class="headerlink" title="五轮面试"></a>五轮面试</h2><p>已省略略重复问到的问题</p>
-<h3 id="项目相关-5"><a href="#项目相关-5" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-5"><a href="#技术相关-5" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
+<h3 id="项目相关-4"><a href="#项目相关-4" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-4"><a href="#技术相关-4" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
 <li><p>常用的 ES6 语法</p>
 </li>
 <li><p>对于 script 标签的了解</p>
@@ -8360,7 +8350,7 @@
 <li><p>从输入URL到页面展示，这中间发生了什么？</p>
 </li>
 </ul>
-<h3 id="coding-5"><a href="#coding-5" class="headerlink" title="coding"></a>coding</h3><ul>
+<h3 id="coding-4"><a href="#coding-4" class="headerlink" title="coding"></a>coding</h3><ul>
 <li><a href="https://www.nowcoder.com/practice/7edf70f2d29c4b599693dc3aaeea1d31?tpId=117&&tqId=693" target="_blank" rel="noopener">螺旋矩阵</a></li>
 </ul>
 <h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><ul>
