@@ -8232,4 +8232,147 @@
         <tag>面经</tag>
       </tags>
   </entry>
+  <entry>
+    <title> 面经：腾讯</title>
+    <url>/2021/03/21/%E9%9D%A2%E7%BB%8F%EF%BC%9A%E8%85%BE%E8%AE%AF/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><ul>
+<li>腾讯的面试周期非常非常长 😃<ul>
+<li>整个面试过程2个多月，<strong>早投，做好长期奋战的准备</strong></li>
+</ul>
+</li>
+<li>会有面委会等加试过程（不止一轮）</li>
+<li>微软面经下周产出预告 ⚠️</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="当前状态"><a href="#当前状态" class="headerlink" title="当前状态"></a>当前状态</h1><ul>
+<li>已投递</li>
+<li>已拿 Offer</li>
+</ul>
+<h1 id="面试总结"><a href="#面试总结" class="headerlink" title="面试总结"></a>面试总结</h1><h2 id="一轮面试"><a href="#一轮面试" class="headerlink" title="一轮面试"></a>一轮面试</h2><h3 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关"><a href="#技术相关" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
+<li>前端持久化存储有哪些解决方案？</li>
+<li>GET 和 POST 区别</li>
+<li>跨域定义，在生产环境中有哪些解决方案</li>
+<li>Webpack<ul>
+<li>基本配置结构</li>
+<li>基本工作原理</li>
+<li>plugin 在什么时候会参与到整个工作中去</li>
+</ul>
+</li>
+<li>React 虚拟 dom<ul>
+<li>本质上是什么</li>
+<li>为了解决什么问题？</li>
+<li>如果让你去实现，会怎么去实现？</li>
+</ul>
+</li>
+<li>弹性布局</li>
+<li>垂直居中，不用 flex 怎么去做？</li>
+<li>CSS 动画<ul>
+<li>animation 与 transiaction 哪一个可以实现更加高精度的动画？</li>
+</ul>
+</li>
+<li>绘制圆形</li>
+<li>绘制三角形</li>
+<li>实现半透明<ul>
+<li>蒙层效果</li>
+<li>opacity background-opacity 区别？</li>
+</ul>
+</li>
+<li>前端安全<ul>
+<li>如何配置CSP</li>
+</ul>
+</li>
+</ul>
+<h3 id="coding"><a href="#coding" class="headerlink" title="coding"></a>coding</h3><p>问题太多，没有时间进行 coding 测试</p>
+<h2 id="二轮面试"><a href="#二轮面试" class="headerlink" title="二轮面试"></a>二轮面试</h2><p>已省略略重复问到的问题</p>
+<h3 id="项目相关-1"><a href="#项目相关-1" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-1"><a href="#技术相关-1" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
+<li>阐述对 this 理解</li>
+<li>箭头函数为什么不能用做构造函数</li>
+<li>js如何实现继承</li>
+</ul>
+<h3 id="coding-1"><a href="#coding-1" class="headerlink" title="coding"></a>coding</h3><ul>
+<li>无序数组里面找它的第k大元素</li>
+</ul>
+<h2 id="三轮面试"><a href="#三轮面试" class="headerlink" title="三轮面试"></a>三轮面试</h2><p>已省略略重复问到的问题</p>
+<h3 id="项目相关-2"><a href="#项目相关-2" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-2"><a href="#技术相关-2" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
+<li>Http 2.0 与 Http 1.0 区别</li>
+<li>阐述对 Http 3.0 的了解</li>
+<li>阐述一下对闭包的理解</li>
+<li>阐述原型链</li>
+</ul>
+<h3 id="coding-2"><a href="#coding-2" class="headerlink" title="coding"></a>coding</h3><ul>
+<li><a href="https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&tqId=11154&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&tab=answerKey" target="_blank" rel="noopener">二维数组查找</a></li>
+</ul>
+<h2 id="三轮面试-1"><a href="#三轮面试-1" class="headerlink" title="三轮面试"></a>三轮面试</h2><p>已省略略重复问到的问题</p>
+<h3 id="项目相关-3"><a href="#项目相关-3" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-3"><a href="#技术相关-3" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
+<li>Http 2.0 与 Http 1.0 区别</li>
+<li>阐述对 Http 3.0 的了解</li>
+<li>阐述一下对闭包的理解</li>
+<li>阐述原型链</li>
+</ul>
+<h3 id="coding-3"><a href="#coding-3" class="headerlink" title="coding"></a>coding</h3><ul>
+<li><a href="https://leetcode-cn.com/problems/generate-parentheses/" target="_blank" rel="noopener">括号生成</a></li>
+</ul>
+<h2 id="四轮面试"><a href="#四轮面试" class="headerlink" title="四轮面试"></a>四轮面试</h2><p>已省略略重复问到的问题</p>
+<h3 id="项目相关-4"><a href="#项目相关-4" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-4"><a href="#技术相关-4" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
+<li>React-Router 的实现原理</li>
+<li>如何在JavaScript中实现不可变对象？</li>
+</ul>
+<h3 id="coding-4"><a href="#coding-4" class="headerlink" title="coding"></a>coding</h3><ul>
+<li>采用发布订阅模式，实现 Promise</li>
+</ul>
+<h2 id="五轮面试"><a href="#五轮面试" class="headerlink" title="五轮面试"></a>五轮面试</h2><p>已省略略重复问到的问题</p>
+<h3 id="项目相关-5"><a href="#项目相关-5" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-5"><a href="#技术相关-5" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
+<li><p>常用的 ES6 语法</p>
+</li>
+<li><p>对于 script 标签的了解</p>
+<ul>
+<li>defer</li>
+<li>async </li>
+<li>type=”module”</li>
+</ul>
+</li>
+<li><p>从输入URL到页面展示，这中间发生了什么？</p>
+</li>
+</ul>
+<h3 id="coding-5"><a href="#coding-5" class="headerlink" title="coding"></a>coding</h3><ul>
+<li><a href="https://www.nowcoder.com/practice/7edf70f2d29c4b599693dc3aaeea1d31?tpId=117&&tqId=693" target="_blank" rel="noopener">螺旋矩阵</a></li>
+</ul>
+<h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><ul>
+<li>腾讯非常喜欢问 <strong>前端安全</strong>，累计被问三遍 🤩</li>
+<li>祝大家多多发财</li>
+</ul>
+<!-- more -->]]></content>
+      <categories>
+        <category>面经</category>
+      </categories>
+      <tags>
+        <tag>面经</tag>
+      </tags>
+  </entry>
 </search>
