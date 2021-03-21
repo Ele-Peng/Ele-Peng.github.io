@@ -8131,4 +8131,105 @@
         <tag>面经</tag>
       </tags>
   </entry>
+  <entry>
+    <title>面经：B站</title>
+    <url>/2021/03/21/%E9%9D%A2%E7%BB%8F%EF%BC%9AB%E7%AB%99/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><ul>
+<li>唯一一次 on site 😃</li>
+</ul>
+<a id="more"></a>
+<h1 id="当前状态"><a href="#当前状态" class="headerlink" title="当前状态"></a>当前状态</h1><ul>
+<li>已投递</li>
+<li>已拿 Offer</li>
+</ul>
+<h1 id="面试总结"><a href="#面试总结" class="headerlink" title="面试总结"></a>面试总结</h1><h2 id="一轮面试"><a href="#一轮面试" class="headerlink" title="一轮面试"></a>一轮面试</h2><h3 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关"><a href="#技术相关" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
+<li>前端通用优化手段</li>
+<li>阐述 Http 2.0 与 Http 1.0</li>
+<li>前端安全<ul>
+<li>XSS</li>
+<li>CSRF<ul>
+<li>如何防范</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>new 语法糖，经历了哪些过程？</li>
+<li>JS 继承</li>
+<li>防抖 与 节流</li>
+<li>CSS 宽高不定，如何水平结局</li>
+</ul>
+<h3 id="coding"><a href="#coding" class="headerlink" title="coding"></a>coding</h3><ul>
+<li>实现 Array.prototype.flat()</li>
+</ul>
+<h3 id="coding-1"><a href="#coding-1" class="headerlink" title="coding"></a>coding</h3><h2 id="二轮面试"><a href="#二轮面试" class="headerlink" title="二轮面试"></a>二轮面试</h2><h3 id="项目相关-1"><a href="#项目相关-1" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-1"><a href="#技术相关-1" class="headerlink" title="技术相关"></a>技术相关</h3><ul>
+<li>阿里 flexible 库有什么了解嘛？<ul>
+<li>使用到 rem 有遇到什么问题嘛？</li>
+</ul>
+</li>
+<li>小程序使用 Canvas 有遇到什么问题嘛？</li>
+<li>阐述一下 Web Worker</li>
+<li>打开页面的时候，整个的一个渲染过程</li>
+<li>DNS 解析</li>
+<li>response header code<ul>
+<li>403</li>
+<li>401</li>
+<li>404</li>
+<li>203</li>
+</ul>
+</li>
+<li>HTTP 2.0</li>
+</ul>
+<h3 id="coding-2"><a href="#coding-2" class="headerlink" title="coding"></a>coding</h3><h2 id="三轮面试"><a href="#三轮面试" class="headerlink" title="三轮面试"></a>三轮面试</h2><p>现场面试，三面面试官前一轮面试没有结束，二面面试官便再聊一次</p>
+<h3 id="项目相关-2"><a href="#项目相关-2" class="headerlink" title="项目相关"></a>项目相关</h3><h3 id="技术相关-2"><a href="#技术相关-2" class="headerlink" title="技术相关"></a>技术相关</h3><p>闲聊：</p>
+<ul>
+<li>关于前一面有什么要补充的嘛？</li>
+<li>对 flex 布局的理解<ul>
+<li>如何进行主轴交叉轴计算，相关子段等</li>
+</ul>
+</li>
+<li>Windows 和 Mac 上都有 hosts 文件嘛？</li>
+<li>对 B端 和 C端 的理解</li>
+</ul>
+<p>正式三面：</p>
+<ul>
+<li>如何进行小程序版本管理的</li>
+<li>Webpack code split</li>
+<li>阐述快排算法，顺带讲了归并</li>
+</ul>
+<h3 id="coding-3"><a href="#coding-3" class="headerlink" title="coding"></a>coding</h3><h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>面经</category>
+      </categories>
+      <tags>
+        <tag>面经</tag>
+      </tags>
+  </entry>
 </search>
