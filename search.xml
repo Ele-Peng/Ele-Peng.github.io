@@ -8365,4 +8365,112 @@
         <tag>面经</tag>
       </tags>
   </entry>
+  <entry>
+    <title>面经：微软</title>
+    <url>/2021/03/28/%E9%9D%A2%E7%BB%8F%EF%BC%9A%E5%BE%AE%E8%BD%AF/</url>
+    <content><![CDATA[<style  type="text/css">
+.lx-entry a {
+    color: #191919;
+    padding: 2px 0 1px 0;
+    text-decoration: none;
+    background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+    transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
+    background-size: 100% 200%;
+    background-position: 0 0;
+    word-break: break-word;
+}
+
+.lx-entry a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(247,65,65,.761) calc(50% - 9px), rgba(247,65,65,.761) 100% );
+  background-position: 0 100%;
+}
+
+.post-button a:hover {
+  background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), transparent calc(50% - 9px), transparent 100% ) !important;
+  background-position: 0 100% !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+</style>
+
+<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><ul>
+<li>微软面试轮次多，但时间并不会很长，HR 一般会和你沟通，尽量把时间安排在 1 ~ 2 天进行集中面试<ul>
+<li>其中一两面，如果面崩了，心态也不要崩，稳扎稳打，慢慢闯关～</li>
+</ul>
+</li>
+<li>英文自我介绍+项目介绍可以准备一下～ <ul>
+<li>确定要面微软的话，准备过程中尽可能让自己恢复一点语感，能表达自己的意思就行，因为面试过程中不定时会有一些英语交流，不单单在技术方面～</li>
+</ul>
+</li>
+<li>简历可以直接发我邮箱 😃 </li>
+</ul>
+<a id="more"></a>
+<h1 id="当前状态"><a href="#当前状态" class="headerlink" title="当前状态"></a>当前状态</h1><ul>
+<li>已投递</li>
+<li>已拿 Offer</li>
+<li>已入职</li>
+</ul>
+<h1 id="一轮面试"><a href="#一轮面试" class="headerlink" title="一轮面试"></a>一轮面试</h1><h2 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h2><h2 id="技术相关"><a href="#技术相关" class="headerlink" title="技术相关"></a>技术相关</h2><ul>
+<li>用英文讲讲 React Virtual Dom</li>
+<li>CSS 垂直居中布局</li>
+</ul>
+<h2 id="coding"><a href="#coding" class="headerlink" title="coding"></a>coding</h2><ul>
+<li>二叉树的遍历-递归实现<ul>
+<li><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">✨144. 二叉树的前序遍历</a></li>
+<li><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">✨94. 二叉树的中序遍历</a></li>
+<li><a href="https://leetcode-cn.com/problems/binary-tree-postorder-traversal/" target="_blank" rel="noopener">✨145. 二叉树的后序遍历</a></li>
+<li><a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">✨102. 二叉树的层序遍历</a></li>
+</ul>
+</li>
+<li>二叉树的遍历-非递归实现</li>
+</ul>
+<h1 id="二轮面试"><a href="#二轮面试" class="headerlink" title="二轮面试"></a>二轮面试</h1><h2 id="项目相关-1"><a href="#项目相关-1" class="headerlink" title="项目相关"></a>项目相关</h2><ul>
+<li>英文</li>
+</ul>
+<h2 id="技术相关-1"><a href="#技术相关-1" class="headerlink" title="技术相关"></a>技术相关</h2><ul>
+<li>简单讲讲 React-Hooks</li>
+<li>JS 原型链</li>
+</ul>
+<h2 id="coding-1"><a href="#coding-1" class="headerlink" title="coding"></a>coding</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener">3. 无重复字符的最长子串</a></li>
+</ul>
+<h1 id="三轮面试"><a href="#三轮面试" class="headerlink" title="三轮面试"></a>三轮面试</h1><h2 id="项目相关-2"><a href="#项目相关-2" class="headerlink" title="项目相关"></a>项目相关</h2><h2 id="技术相关-2"><a href="#技术相关-2" class="headerlink" title="技术相关"></a>技术相关</h2><ul>
+<li>前端常见优化方案</li>
+<li>prefetch / preload</li>
+</ul>
+<h2 id="coding-2"><a href="#coding-2" class="headerlink" title="coding"></a>coding</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/generate-parentheses/" target="_blank" rel="noopener">22. 括号生成</a></li>
+</ul>
+<h1 id="四轮面试"><a href="#四轮面试" class="headerlink" title="四轮面试"></a>四轮面试</h1><h2 id="项目相关-3"><a href="#项目相关-3" class="headerlink" title="项目相关"></a>项目相关</h2><h2 id="技术相关-3"><a href="#技术相关-3" class="headerlink" title="技术相关"></a>技术相关</h2><ul>
+<li>React 的 immutable 机制</li>
+<li>英文讲讲常见排序算法</li>
+</ul>
+<h2 id="coding-3"><a href="#coding-3" class="headerlink" title="coding"></a>coding</h2><ul>
+<li>快排</li>
+</ul>
+<h1 id="五轮面试"><a href="#五轮面试" class="headerlink" title="五轮面试"></a>五轮面试</h1><h2 id="项目相关-4"><a href="#项目相关-4" class="headerlink" title="项目相关"></a>项目相关</h2><h2 id="技术相关-4"><a href="#技术相关-4" class="headerlink" title="技术相关"></a>技术相关</h2><ul>
+<li>前端跨域问题</li>
+<li>GET / POST 区别</li>
+</ul>
+<h2 id="coding-4"><a href="#coding-4" class="headerlink" title="coding"></a>coding</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/unique-paths/" target="_blank" rel="noopener">62. 不同路径</a></li>
+</ul>
+<h1 id="六轮面试"><a href="#六轮面试" class="headerlink" title="六轮面试"></a>六轮面试</h1><h2 id="项目相关-5"><a href="#项目相关-5" class="headerlink" title="项目相关"></a>项目相关</h2><h2 id="技术相关-5"><a href="#技术相关-5" class="headerlink" title="技术相关"></a>技术相关</h2><ul>
+<li>描述输入 URL 到页面出现的过程</li>
+<li>JS 继承</li>
+</ul>
+<h2 id="coding-5"><a href="#coding-5" class="headerlink" title="coding"></a>coding</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/validate-binary-search-tree/" target="_blank" rel="noopener">98. 验证二叉搜索树</a></li>
+</ul>
+<h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><ul>
+<li>祝大家多多发财</li>
+</ul>
+]]></content>
+      <categories>
+        <category>面经</category>
+      </categories>
+      <tags>
+        <tag>面经</tag>
+      </tags>
+  </entry>
 </search>
